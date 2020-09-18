@@ -1,9 +1,11 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2020.09.18.01
+// @version      2020.09.18.02
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun
+// @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME%20LaneTools.user.js
+// @downloadURL  https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME%20LaneTools.user.js
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/
 // @require      https://greasyfork.org/scripts/24851-wazewrap/code/WazeWrap.js
 // @grant        none
