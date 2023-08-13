@@ -20,7 +20,12 @@
   "use strict";
   const stringArrayRef = getStringArray();
 
-  const divStr = "<div>";
+  const constantStrings = {
+    divStr : "<div>",
+    checkedStr : "checked",
+    mapTag : "#map",
+    htmlStr : "html"
+  };
   const LANETOOLS_VERSION = "" + GM_info.script.version,
     GF_LINK = getString(0x41e),
     FORUM_LINK = "https://www.waze.com/forum/viewtopic.php?f=819&t=30115",
@@ -161,7 +166,7 @@
       (UPDATEDZOOM = W.map.getOLMap().getZoom() === 23);
     const ltCSSClasses = [
         ".lt-wrapper\x20{position:relative;width:100%;font-size:12px;font-family:\x22Rubik\x22,\x20\x22Boing-light\x22, sans-serif;user-select:none;}",
-        getString(0x203),
+        ".lt-section-wrapper\x20{display:block;width:100%;padding:4px;",
         ".lt-section-wrapper.border\x20{border-bottom:1px\x20solid\x20grey;margin-bottom:5px;}",
         getString(0x300),
         getString(0x462),
@@ -198,31 +203,26 @@
       (seaPickle = W.loginManager.user),
       (_pickleColor = seaPickle["rank"]);
     _pickleColor >= 0x0
-      ? (WazeWrap.Interface[getString(0x3f8)](
-          "LT",
-          initMsg.html,
-          setupOptions,
-          "LT"
-        ),
+      ? (WazeWrap.Interface[getString(0x3f8)]("LT", initMsg.html, setupOptions, "LT"),
         $("<style\x20type=\x22text/css\x22>" + ltCSSClasses + "</style>").appendTo("head"),
-        $(getString(0x3c6))[getString(0x394)](message[getString(0x3a1)]()),
-        WazeWrap[getString(0x31b)][getString(0x401)](
-          GM_info[getString(0x309)][getString(0x412)],
-          GM_info[getString(0x309)][getString(0x220)],
+        $(constantStrings.mapTag)[getString(0x394)](message.html()),
+        WazeWrap.Interface[getString(0x401)](
+          GM_info.script[getString(0x412)],
+          GM_info.script.version,
           LI_UPDATE_NOTES,
           GF_LINK,
           FORUM_LINK
         ),
-        console[getString(0x387)](getString(0x352)))
-      : console[getString(0x32b)]("LaneTools:\x20loading\x20error....");
+        console.log("LaneTools:\x20Loaded"))
+      : console.error("LaneTools:\x20loading\x20error....");
   }
 
   async function setupOptions() {
     function _0x1bd25b() {
       _0x26700c("lt-ScriptEnabled", LtSettings["ScriptEnabled"]),
-        _0x26700c("lt-UIEnable", LtSettings[getString(0x2ce)]),
-        _0x26700c("lt-AutoOpenWidth", LtSettings[getString(0x2ee)]),
-        _0x26700c(getString(0x402), LtSettings[getString(0x224)]),
+        _0x26700c("lt-UIEnable", LtSettings.UIEnable),
+        _0x26700c("lt-AutoOpenWidth", LtSettings.AutoOpenWidth),
+        _0x26700c("lt-AutoExpandLanes", LtSettings.AutoExpandLanes),
         _0x26700c("lt-AutoLanesTab", LtSettings["AutoLanesTab"]),
         _0x26700c(getString(0x33a), LtSettings[getString(0x229)]),
         _0x26700c(getString(0x43d), LtSettings["LabelsEnable"]),
@@ -256,16 +256,14 @@
         _0x1871fd(getString(0x23b), LtSettings[getString(0x38d)]),
         _0x1871fd(getString(0x2f3), LtSettings[getString(0x29a)]),
         _0x1871fd(getString(0x3a0), LtSettings["HeurFailColor"]);
-      !getId("lt-ClickSaveEnable").checked &&
-        $(getString(0x326))[getString(0x1e2)]();
+      !getId("lt-ClickSaveEnable").checked && $(getString(0x326))[getString(0x1e2)]();
       !getId(getString(0x3c8))["checked"] && $(getString(0x226))["hide"]();
       !getId(getString(0x33a))["checked"] &&
         $("#lt-highlights-wrapper")[getString(0x1e2)]();
       !getId(getString(0x3c4))[getString(0x32a)] &&
         $(getString(0x32f))[getString(0x1e2)]();
-      function _0x26700c(_0x63a5c0, _0x42074d) {
-        const _0x4a4370 = getString;
-        $("#" + _0x63a5c0)["prop"](_0x4a4370(0x32a), _0x42074d);
+      function _0x26700c(propertyID, propertyValue) {
+        $("#" + propertyID).prop(getString(0x32a), propertyValue);
       }
       function _0x1871fd(_0x5bc5b8, _0x369929) {
         const _0x6eb29f = getString,
