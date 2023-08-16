@@ -221,32 +221,32 @@
 
   async function setupOptions() {
     function _0x1bd25b() {
-      _0x26700c("lt-ScriptEnabled", LtSettings.ScriptEnabled),
-        _0x26700c("lt-UIEnable", LtSettings.UIEnable),
-        _0x26700c("lt-AutoOpenWidth", LtSettings.AutoOpenWidth),
-        _0x26700c("lt-AutoExpandLanes", LtSettings.AutoExpandLanes),
-        _0x26700c("lt-AutoLanesTab", LtSettings.AutoLanesTab),
-        _0x26700c("lt-HighlightsEnable", LtSettings.HighlightsEnable),
-        _0x26700c("lt-LabelsEnable", LtSettings.LabelsEnable),
-        _0x26700c("lt-NodesEnable", LtSettings.NodesEnable),
-        _0x26700c("lt-LIOEnable", LtSettings.LIOEnable),
-        _0x26700c("lt-CSEnable", LtSettings.CSEnable),
-        _0x26700c("lt-highlightOverride", LtSettings.highlightOverride),
-        _0x26700c("lt-CopyEnable", LtSettings.CopyEnable),
-        _0x26700c("lt-SelAllEnable", LtSettings.SelAllEnable),
-        _0x26700c("lt-serverSelect", LtSettings.serverSelect),
-        _0x26700c("lt-AutoFocusLanes", LtSettings.AutoFocusLanes),
-        _0x26700c("lt-ReverseLanesIcon", LtSettings.ReverseLanesIcon),
-        _0x26700c("lt-ClickSaveEnable", LtSettings.ClickSaveEnable),
-        _0x26700c("lt-ClickSaveStraight", LtSettings.ClickSaveStraight),
-        _0x26700c("lt-ClickSaveTurns", LtSettings.ClickSaveTurns),
-        _0x26700c("lt-LaneHeurPosHighlight", LtSettings.LaneHeurPosHighlight),
-        _0x26700c("lt-LaneHeurNegHighlight", LtSettings.LaneHeurNegHighlight),
-        _0x26700c("lt-LaneHeuristicsChecks", LtSettings.LaneHeuristicsChecks),
-        _0x26700c("lt-highlightCSIcons", LtSettings.highlightCSIcons),
-        _0x26700c("lt-AddTIO", LtSettings.addTIO),
-        _0x26700c("lt-IconsEnable", LtSettings.IconsEnable),
-        _0x26700c("lt-IconsRotate", LtSettings.IconsRotate),
+      setSetting("lt-ScriptEnabled", LtSettings.ScriptEnabled),
+        setSetting("lt-UIEnable", LtSettings.UIEnable),
+        setSetting("lt-AutoOpenWidth", LtSettings.AutoOpenWidth),
+        setSetting("lt-AutoExpandLanes", LtSettings.AutoExpandLanes),
+        setSetting("lt-AutoLanesTab", LtSettings.AutoLanesTab),
+        setSetting("lt-HighlightsEnable", LtSettings.HighlightsEnable),
+        setSetting("lt-LabelsEnable", LtSettings.LabelsEnable),
+        setSetting("lt-NodesEnable", LtSettings.NodesEnable),
+        setSetting("lt-LIOEnable", LtSettings.LIOEnable),
+        setSetting("lt-CSEnable", LtSettings.CSEnable),
+        setSetting("lt-highlightOverride", LtSettings.highlightOverride),
+        setSetting("lt-CopyEnable", LtSettings.CopyEnable),
+        setSetting("lt-SelAllEnable", LtSettings.SelAllEnable),
+        setSetting("lt-serverSelect", LtSettings.serverSelect),
+        setSetting("lt-AutoFocusLanes", LtSettings.AutoFocusLanes),
+        setSetting("lt-ReverseLanesIcon", LtSettings.ReverseLanesIcon),
+        setSetting("lt-ClickSaveEnable", LtSettings.ClickSaveEnable),
+        setSetting("lt-ClickSaveStraight", LtSettings.ClickSaveStraight),
+        setSetting("lt-ClickSaveTurns", LtSettings.ClickSaveTurns),
+        setSetting("lt-LaneHeurPosHighlight", LtSettings.LaneHeurPosHighlight),
+        setSetting("lt-LaneHeurNegHighlight", LtSettings.LaneHeurNegHighlight),
+        setSetting("lt-LaneHeuristicsChecks", LtSettings.LaneHeuristicsChecks),
+        setSetting("lt-highlightCSIcons", LtSettings.highlightCSIcons),
+        setSetting("lt-AddTIO", LtSettings.addTIO),
+        setSetting("lt-IconsEnable", LtSettings.IconsEnable),
+        setSetting("lt-IconsRotate", LtSettings.IconsRotate),
         _0x1871fd("lt-ABColor", LtSettings.ABColor),
         _0x1871fd("lt-BAColor", LtSettings.BAColor),
         _0x1871fd("lt-LabelColor", LtSettings.LabelColor),
@@ -261,9 +261,8 @@
       !getId("lt-ClickSaveEnable").checked && $("#lt-ClickSaveEnable").hide();
       !getId("lt-UIEnable").checked && $("#lt-UI-wrapper").hide();
       !getId("lt-HighlightsEnable")["checked"] && $("#lt-highlights-wrapper").hide();
-      !getId(getString(0x3c4))[getString(0x32a)] &&
-        $(getString(0x32f))[getString(0x1e2)]();
-      function _0x26700c(propertyID, propertyValue) {
+      !getId(getString(0x3c4))[getString(0x32a)] && $(getString(0x32f))[getString(0x1e2)]();
+      function setSetting(propertyID, propertyValue) {
         $("#" + propertyID).prop(getString(0x32a), propertyValue);
       }
       function _0x1871fd(_0x5bc5b8, _0x369929) {
