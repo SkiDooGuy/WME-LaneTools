@@ -220,7 +220,7 @@
   }
 
   async function setupOptions() {
-    function _0x1bd25b() {
+    function processOptionSettings() {
       setSetting("lt-ScriptEnabled", LtSettings.ScriptEnabled),
         setSetting("lt-UIEnable", LtSettings.UIEnable),
         setSetting("lt-AutoOpenWidth", LtSettings.AutoOpenWidth),
@@ -247,248 +247,166 @@
         setSetting("lt-AddTIO", LtSettings.addTIO),
         setSetting("lt-IconsEnable", LtSettings.IconsEnable),
         setSetting("lt-IconsRotate", LtSettings.IconsRotate),
-        _0x1871fd("lt-ABColor", LtSettings.ABColor),
-        _0x1871fd("lt-BAColor", LtSettings.BAColor),
-        _0x1871fd("lt-LabelColor", LtSettings.LabelColor),
-        _0x1871fd("lt-ErrorColor", LtSettings.ErrorColor),
-        _0x1871fd("lt-NodeColor", LtSettings.NodeColor),
-        _0x1871fd("lt-TIOColor", LtSettings.TIOColor),
-        _0x1871fd("lt-LIOColor", LtSettings.LIOColor),
-        _0x1871fd("lt-CS1Color", LtSettings.CS1Color),
-        _0x1871fd("lt-CS2Color", LtSettings.CS2Color),
-        _0x1871fd("lt-HeurColor", LtSettings.HeurColor),
-        _0x1871fd("lt-HeurFailColor", LtSettings.HeurFailColor);
+        setCSSBorder("lt-ABColor", LtSettings.ABColor),
+        setCSSBorder("lt-BAColor", LtSettings.BAColor),
+        setCSSBorder("lt-LabelColor", LtSettings.LabelColor),
+        setCSSBorder("lt-ErrorColor", LtSettings.ErrorColor),
+        setCSSBorder("lt-NodeColor", LtSettings.NodeColor),
+        setCSSBorder("lt-TIOColor", LtSettings.TIOColor),
+        setCSSBorder("lt-LIOColor", LtSettings.LIOColor),
+        setCSSBorder("lt-CS1Color", LtSettings.CS1Color),
+        setCSSBorder("lt-CS2Color", LtSettings.CS2Color),
+        setCSSBorder("lt-HeurColor", LtSettings.HeurColor),
+        setCSSBorder("lt-HeurFailColor", LtSettings.HeurFailColor);
       !getId("lt-ClickSaveEnable").checked && $("#lt-ClickSaveEnable").hide();
       !getId("lt-UIEnable").checked && $("#lt-UI-wrapper").hide();
       !getId("lt-HighlightsEnable")["checked"] && $("#lt-highlights-wrapper").hide();
-      !getId(getString(0x3c4))[getString(0x32a)] && $(getString(0x32f))[getString(0x1e2)]();
+      !getId("lt-LaneHeuristicsChecks").checked && $("#lt-heur-wrapper").hide();
       function setSetting(propertyID, propertyValue) {
-        $("#" + propertyID).prop(getString(0x32a), propertyValue);
+        $("#" + propertyID).prop("checked", propertyValue);
       }
-      function _0x1871fd(_0x5bc5b8, _0x369929) {
-        const _0x6eb29f = getString,
-          _0x2a45eb = $("#" + _0x5bc5b8);
-        _0x2a45eb[_0x6eb29f(0x398)](_0x6eb29f(0x37c), _0x369929),
-          _0x2a45eb[_0x6eb29f(0x1e9)](
-            _0x6eb29f(0x22c),
-            _0x6eb29f(0x3a4) + _0x369929
-          );
+      function setCSSBorder(idName, value) {
+        const idSelector = $("#" + idName);
+        idSelector.attr("value", value),
+          idSelector.css("border", "2px\x20solid" + value);
       }
     }
     await loadSettings(),
       await loadSpreadsheet(),
       initLaneGuidanceClickSaver(),
-      (LTHighlightLayer = new OpenLayers[getString(0x21e)][getString(0x209)](
-        "LTHighlightLayer",
-        { uniqueName: getString(0x43c) }
-      )),
-      W[getString(0x423)][getString(0x43a)](LTHighlightLayer),
-      LTHighlightLayer[getString(0x2a6)](!![]),
-      (LTLaneGraphics = new OpenLayers["Layer"][getString(0x209)](
-        getString(0x411),
-        { uniqueName: "LTLaneGraphics" }
-      )),
-      W[getString(0x423)][getString(0x43a)](LTLaneGraphics),
-      LTLaneGraphics[getString(0x2a6)](!![]);
-    const _0x7526c2 = new OpenLayers["Style"]({
-      fontFamily: getString(0x1e4),
+      (LTHighlightLayer = new OpenLayers.Layer.Vector("LTHighlightLayer", { uniqueName: "_LTHighlightLayer" })),
+      W.map.addLayer(LTHighlightLayer),
+      LTHighlightLayer.setVisibility(true),
+      (LTLaneGraphics = new OpenLayers.Layer.Vector("LTLaneGraphics", { uniqueName: "LTLaneGraphics" })),
+      W.map.addLayer(LTLaneGraphics),
+      LTLaneGraphics.setVisibility(true);
+    const style_map = new OpenLayers["Style"]({
+      fontFamily: "Open Sans, Alef, helvetica, sans-serif, monospace",
       labelOutlineColor: "black",
-      fontColor: getString(0x44a),
+      fontColor: "${labelColor}",
       fontSize: "16",
       labelXOffset: 0xf,
       labelYOffset: -0xf,
       labelOutlineWidth: "3",
-      label: getString(0x217),
+      label: "${labelText}",
       angle: "",
       labelAlign: "cm",
       "stroke-width": "0",
     });
-    (LTNamesLayer = new OpenLayers[getString(0x21e)][getString(0x209)](
-      getString(0x376),
-      {
-        uniqueName: getString(0x376),
-        styleMap: new OpenLayers[getString(0x392)](_0x7526c2),
-      }
-    )),
-      W[getString(0x423)][getString(0x43a)](LTNamesLayer),
-      LTNamesLayer[getString(0x2a6)](!![]),
-      WazeWrap["Events"][getString(0x21d)]("moveend", null, scanArea),
-      WazeWrap[getString(0x32d)][getString(0x21d)](
-        "moveend",
-        null,
-        displayLaneGraphics
-      ),
-      WazeWrap["Events"][getString(0x21d)](getString(0x1e0), null, scanArea),
-      WazeWrap[getString(0x32d)][getString(0x21d)](
-        getString(0x1e0),
-        null,
-        displayLaneGraphics
-      ),
-      WazeWrap[getString(0x32d)][getString(0x21d)](
-        getString(0x3b6),
-        null,
-        scanArea
-      ),
-      WazeWrap[getString(0x32d)][getString(0x21d)](
-        "afteraction",
-        null,
-        lanesTabSetup
-      ),
-      WazeWrap["Events"]["register"](
-        getString(0x3b6),
-        null,
-        displayLaneGraphics
-      ),
-      WazeWrap["Events"][getString(0x21d)](getString(0x2ad), null, scanArea),
-      WazeWrap[getString(0x32d)][getString(0x21d)](
-        getString(0x2ad),
-        null,
-        lanesTabSetup
-      ),
-      WazeWrap[getString(0x32d)][getString(0x21d)](
-        getString(0x2ad),
-        null,
-        displayLaneGraphics
-      ),
-      WazeWrap[getString(0x32d)]["register"](getString(0x371), null, scanArea),
-      WazeWrap[getString(0x32d)][getString(0x21d)](
-        getString(0x273),
-        null,
-        scanArea
-      ),
-      WazeWrap[getString(0x32d)][getString(0x21d)](
-        getString(0x273),
-        null,
-        lanesTabSetup
-      ),
-      WazeWrap["Events"]["register"](
-        "selectionchanged",
-        null,
-        displayLaneGraphics
-      ),
-      WazeWrap[getString(0x32d)][getString(0x21d)](
-        getString(0x414),
-        null,
-        scanArea
-      );
+    (LTNamesLayer = new OpenLayers.Layer.Vector("LTNamesLayer", {
+      uniqueName: "LTNamesLayer",
+      styleMap: new OpenLayers.StyleMap(style_map),
+    })),
+      W.map.addLayer(LTNamesLayer),
+      LTNamesLayer.setVisibility(true),
+      WazeWrap.Events.register("moveend", null, scanArea),
+      WazeWrap.Events.register("moveend", null, displayLaneGraphics),
+      WazeWrap.Events.register("zoomend", null, scanArea),
+      WazeWrap.Events.register("zoomend", null, displayLaneGraphics),
+      WazeWrap.Events.register("afteraction", null, scanArea),
+      WazeWrap.Events.register("afteraction", null, lanesTabSetup),
+      WazeWrap.Events.register("afteraction", null, displayLaneGraphics),
+      WazeWrap.Events.register("afterundoaction", null, scanArea),
+      WazeWrap.Events.register("afterundoaction", null, lanesTabSetup),
+      WazeWrap.Events.register("afterundoaction", null, displayLaneGraphics),
+      WazeWrap.Events.register("afterclearactions", null, scanArea),
+      WazeWrap.Events.register("selectionchanged", null, scanArea),
+      WazeWrap.Events.register("selectionchanged", null, lanesTabSetup),
+      WazeWrap.Events.register("selectionchanged", null, displayLaneGraphics),
+      WazeWrap.Events.register(getString(0x414), null, scanArea);
     try {
-      new WazeWrap["Interface"]["Shortcut"](
-        getString(0x30f),
-        getString(0x2db),
-        getString(0x339),
-        getString(0x29e),
+      new WazeWrap.Interface.Shortcut(
+        "enableHighlights",
+        "Toggle\x20lane\x20highlights",
+        "wmelt",
+        "Lane\x20Tools",
         LtSettings["enableHighlights"],
         toggleHighlights,
         null
-      )["add"](),
-        new WazeWrap[getString(0x31b)][getString(0x426)](
-          getString(0x283),
-          getString(0x46b),
+      ).add(),
+        new WazeWrap.Interface.Shortcut(
+          "enableUIEnhancements",
+          "Toggle\x20UI\x20enhancements",
           "wmelt",
-          getString(0x29e),
-          LtSettings[getString(0x283)],
+          "Lane\x20Tools",
+          LtSettings["enableUIEnhancements"],
           toggleUIEnhancements,
           null
-        )[getString(0x455)](),
-        new WazeWrap[getString(0x31b)]["Shortcut"](
-          getString(0x294),
+        ).add(),
+        new WazeWrap.Interface.Shortcut(
+          "enableHeuristics",
           "Toggle\x20heuristic\x20highlights",
-          getString(0x339),
-          getString(0x29e),
-          LtSettings[getString(0x294)],
+          "wmelt",
+          "Lane\x20Tools",
+          LtSettings["enableHeuristics"],
           toggleLaneHeuristicsChecks,
           null
-        )[getString(0x455)](),
-        new WazeWrap[getString(0x31b)][getString(0x426)](
+        ).add(),
+        new WazeWrap.Interface.Shortcut(
           "enableScript",
-          getString(0x3e8),
-          getString(0x339),
-          getString(0x29e),
-          LtSettings[getString(0x29c)],
+          "Toggle\x20script",
+          "wmelt",
+          "Lane\x20Tools",
+          LtSettings["enableScript"],
           toggleScript,
           null
-        )["add"]();
-    } catch (_0x17dfe8) {
-      console[getString(0x387)](getString(0x312)),
-        $(getString(0x468))[getString(0x278)](
-          "" + TRANSLATIONS[getString(0x30c)][getString(0x3eb)]
-        ),
-        $(getString(0x370))[getString(0x278)](
-          "" + TRANSLATIONS[getString(0x30c)][getString(0x3eb)]
-        ),
-        $(getString(0x28c))[getString(0x278)](
-          "" + TRANSLATIONS[getString(0x30c)][getString(0x3eb)]
-        ),
-        $("#lt-LaneHeurChecksShortcut")[getString(0x278)](
-          "" + TRANSLATIONS[getString(0x30c)][getString(0x3eb)]
-        ),
-        (shortcutsDisabled = !![]);
+        ).add();
+    } catch (err) {
+      console.log(
+        "LT\x20Error\x20creating\x20shortcuts.\x20This\x20feature\x20will\x20be\x20disabled."
+      ),
+        $("#lt-EnableShortcut").text("" + TRANSLATIONS.default.disabled),
+        $("#lt-HighlightShortcut").text("" + TRANSLATIONS.default.disabled),
+        $("#lt-UIEnhanceShortcut").text("" + TRANSLATIONS.default.disabled),
+        $("#lt-LaneHeurChecksShortcut").text("" + TRANSLATIONS.default.disabled),
+        (shortcutsDisabled = true);
     }
-    const _0x4f3ebb = $("#lt-HighlightsEnable"),
-      _0x1aa43c = $(getString(0x2e7)),
-      _0xceb2f2 = $(getString(0x384));
-    _0x1bd25b(),
-      setTimeout(() => {
-        updateShortcutLabels();
-      }, 0x32),
-      setHeuristics(),
-      setTranslations();
+    const highlightsEnabledID = $("#lt-HighlightsEnable"),
+      colorTitleID = $("#lt-color-title"),
+      laneHeuristicsChecksID = $("#lt-LaneHeuristicsChecks");
+    processOptionSettings();
+    setTimeout(() => {updateShortcutLabels();}, 50);
+    setHeuristics(),
+    setTranslations();
     if (_pickleColor > 0x1) {
-      let _0x14481a = getString(0x313);
-      $(getString(0x2a1))[getString(0x1e9)](getString(0x36a), "block"),
-        $(getString(0x3cd))[getString(0x398)](
-          getString(0x3f4),
-          "" + strings[getString(0x466)]
-        ),
-        $(getString(0x3cd))["tooltip"](),
-        _[getString(0x3e2)](RBSArray, (_0x6e99f9) => {
-          _0x6e99f9[0x0] === seaPickle["userName"] &&
-            (_0x6e99f9[0x1] === "1" && (isRBS = !![]),
-            _0x6e99f9[0x2] === "1" && (allowCpyPst = !![]));
-        }),
-        isRBS &&
-          ($("#lt-serverSelectContainer")[getString(0x1e9)](
-            getString(0x36a),
-            getString(0x314)
-          ),
-          (_0x14481a += "RBS\x20Heuristics")),
+      let ltEnabledFeatures = "LaneTools:\x20The\x20following\x20special\x20access\x20features\x20are\x20enabled:\x20";
+      $("#lt-adv-tools").css("display", "block");
+      $("#lt-trans-quickTog").attr(getString(0x3f4), "" + strings[getString(0x466)]);
+      $("#lt-trans-quickTog").tooltip();
+      _.each(RBSArray, (argument) => {
+        argument[0x0] === seaPickle["userName"] &&
+          (argument[0x1] === "1" && (isRBS = true),
+          argument[0x2] === "1" && (allowCpyPst = true));
+      });
+      isRBS &&
+        ($("#lt-serverSelectContainer").css("display", "block"),(ltEnabledFeatures += "RBS\x20Heuristics"));
         allowCpyPst &&
-          ($(getString(0x315))["css"]({
-            display: getString(0x314),
-            margin: getString(0x2d1),
-          }),
-          $(getString(0x2ac))["css"]({
-            padding: getString(0x2d1),
-            border: getString(0x1ed),
-            "border-radius": getString(0x299),
-            "text-decoration": getString(0x460),
-          }),
-          $("#lt-sheet-link\x20>\x20a")["hover"](
-            function () {
-              const _0x229336 = getString;
-              $(this)[_0x229336(0x1e9)](_0x229336(0x234), _0x229336(0x251));
-            },
-            function () {
-              const _0x4af9ec = getString;
-              $(this)["css"]("background-color", _0x4af9ec(0x2b0));
-            }
+          ($("#lt-sheet-link").css({display: "block", margin: "2px",}),
+           $("#lt-sheet-link > a").css({padding: "2px", border: "2px\x20solid\x20black", 
+                                        "border-radius": "6px",
+                                        "text-decoration": "none",
+                                      }),
+            $("#lt-sheet-link\x20>\x20a").hover(function () {
+                $(this).css("background-color", "orange");
+              },
+              function () {
+                $(this).css("background-color", "#eeeeee");
+              }
           ),
-          $(".lt-toolbar-button")[getString(0x304)](function () {
-            const _0x5ee0a0 = getString;
-            $(this)[0x0]["id"] === _0x5ee0a0(0x2d8) && copyLaneInfo("A"),
-              $(this)[0x0]["id"] === _0x5ee0a0(0x30a) && copyLaneInfo("B"),
-              $(this)[0x0]["id"] === _0x5ee0a0(0x342) && pasteLaneInfo("A"),
-              $(this)[0x0]["id"] === _0x5ee0a0(0x1f8) && pasteLaneInfo("B");
+          $(".lt-toolbar-button").click(function () {
+            $(this)[0x0]["id"] === "copyA-button" && copyLaneInfo("A"),
+              $(this)[0x0]["id"] === "copyB-button" && copyLaneInfo("B"),
+              $(this)[0x0]["id"] === "pasteA-button" && pasteLaneInfo("A"),
+              $(this)[0x0]["id"] === "pasteB-button" && pasteLaneInfo("B");
           }),
-          (_0x14481a = isRBS
-            ? _0x14481a + ",\x20Copy/Paste"
-            : _0x14481a + getString(0x213))),
-        (isRBS || allowCpyPst) && console[getString(0x387)](_0x14481a);
-    } else $(getString(0x1f9))[getString(0x1e9)](getString(0x36a), "none");
-    $(getString(0x3a8))["click"](function () {
-      const _0x3eebba = getString;
-      let _0x4705e5 = $(this)[0x0]["id"][_0x3eebba(0x2d6)](0x3);
-      (LtSettings[_0x4705e5] = this[_0x3eebba(0x32a)]), saveSettings();
+          (ltEnabledFeatures = isRBS
+            ? ltEnabledFeatures + ",\x20Copy/Paste"
+            : ltEnabledFeatures + "Copy/Paste")),
+        (isRBS || allowCpyPst) && console.log(ltEnabledFeatures);
+    } else $("#lt-LaneTabFeatures").css("display", "none");
+    $(".lt-checkbox").click(function () {
+      let settingName = $(this)[0x0].id.substr(0x3);
+      (LtSettings[settingName] = this.checked), saveSettings();
     }),
       $(getString(0x45a))["change"](function () {
         const _0x1d9517 = getString;
@@ -508,7 +426,7 @@
           ? scanArea()
           : (removeHighlights(), removeLaneGraphics());
       }),
-      _0x4f3ebb[getString(0x304)](() => {
+      highlightsEnabledID[getString(0x304)](() => {
         const _0x368214 = getString;
         getId(_0x368214(0x33a))[_0x368214(0x32a)]
           ? scanArea()
@@ -545,7 +463,7 @@
           ? scanArea()
           : (removeHighlights(), scanArea());
       }),
-      _0x1aa43c[getString(0x304)](() => {
+      colorTitleID[getString(0x304)](() => {
         const _0x25c145 = getString;
         $(_0x25c145(0x298))[_0x25c145(0x461)]();
       }),
@@ -557,14 +475,14 @@
         const _0x5035b8 = getString;
         $(_0x5035b8(0x226))[_0x5035b8(0x461)](), removeLaneGraphics();
       }),
-      _0x4f3ebb[getString(0x304)](() => {
+      highlightsEnabledID[getString(0x304)](() => {
         const _0x547e3b = getString;
         $(_0x547e3b(0x1e3))[_0x547e3b(0x461)]();
       }),
-      _0xceb2f2["click"](() => {
+      laneHeuristicsChecksID["click"](() => {
         $("#lt-heur-wrapper")["toggle"]();
       }),
-      _0xceb2f2[getString(0x304)](() => {
+      laneHeuristicsChecksID[getString(0x304)](() => {
         const _0x5d42b3 = getString;
         getId(_0x5d42b3(0x3c4))[_0x5d42b3(0x32a)]
           ? scanArea()
@@ -596,7 +514,7 @@
       $(getString(0x2c4))["on"]("hide", () => {
         checkShortcutsChanged();
       }),
-      _0x1aa43c["tooltip"]();
+      colorTitleID["tooltip"]();
   }
   async function loadSettings() {
     const _0x5758b1 = getString,
@@ -609,14 +527,14 @@
     !_0x2414f3 && console[_0x5758b1(0x32b)](_0x5758b1(0x2b3));
     const _0x483de2 = {
       lastSaveAction: 0x0,
-      ScriptEnabled: !![],
-      UIEnable: !![],
+      ScriptEnabled: true,
+      UIEnable: true,
       AutoOpenWidth: ![],
       AutoExpandLanes: ![],
       AutoLanesTab: ![],
-      HighlightsEnable: !![],
-      LabelsEnable: !![],
-      NodesEnable: !![],
+      HighlightsEnable: true,
+      LabelsEnable: true,
+      NodesEnable: true,
       ABColor: _0x5758b1(0x276),
       BAColor: _0x5758b1(0x3b0),
       LabelColor: "#FFAD08",
@@ -631,13 +549,13 @@
       CopyEnable: ![],
       SelAllEnable: ![],
       serverSelect: ![],
-      LIOEnable: !![],
-      CSEnable: !![],
-      AutoFocusLanes: !![],
+      LIOEnable: true,
+      CSEnable: true,
+      AutoFocusLanes: true,
       ReverseLanesIcon: ![],
-      ClickSaveEnable: !![],
+      ClickSaveEnable: true,
       ClickSaveStraight: ![],
-      ClickSaveTurns: !![],
+      ClickSaveTurns: true,
       enableScript: "",
       enableHighlights: "",
       enableUIEnhancements: "",
@@ -646,10 +564,10 @@
       LaneHeurPosHighlight: ![],
       LaneHeuristicsChecks: ![],
       highlightCSIcons: ![],
-      highlightOverride: !![],
+      highlightOverride: true,
       AddTIO: ![],
-      IconsEnable: !![],
-      IconsRotate: !![],
+      IconsEnable: true,
+      IconsRotate: true,
     };
     LtSettings = $[_0x5758b1(0x3dd)]({}, _0x483de2, _0x1a5064);
     if (_0x2414f3 && _0x2414f3["lastSaveAction"] > LtSettings[_0x5758b1(0x419)])
@@ -757,9 +675,9 @@
       if (_0x5e73d9 === _0xa877ff(0x339)) {
         let _0x413fe0 = "";
         _0x2783a6
-          ? (_0x2783a6[_0xa877ff(0x3fd)] === !![] && (_0x413fe0 += "A"),
-            _0x2783a6["shiftKey"] === !![] && (_0x413fe0 += "S"),
-            _0x2783a6[_0xa877ff(0x21c)] === !![] && (_0x413fe0 += "C"),
+          ? (_0x2783a6[_0xa877ff(0x3fd)] === true && (_0x413fe0 += "A"),
+            _0x2783a6["shiftKey"] === true && (_0x413fe0 += "S"),
+            _0x2783a6[_0xa877ff(0x21c)] === true && (_0x413fe0 += "C"),
             _0x413fe0 !== "" && (_0x413fe0 += "+"),
             _0x2783a6[_0xa877ff(0x1ea)] &&
               (_0x413fe0 += _0x2783a6[_0xa877ff(0x1ea)]))
@@ -794,7 +712,7 @@
               GM_info.script[getString(0x412)],
               getString(0x1f3)
             ),
-            (RBSArray[getString(0x40a)] = !![]));
+            (RBSArray[getString(0x40a)] = true));
       },
       _0x4f837b = (_0x4e546b, _0x559463, _0x2eb7ed) => {
         const _0x2c7900 = getString;
@@ -887,25 +805,25 @@
       $(_0x53aaab(0x3cc))[_0x53aaab(0x278)](strings[_0x53aaab(0x335)]),
       $("#lt-trans-uiEnhance")[_0x53aaab(0x278)](strings[_0x53aaab(0x331)]),
       $(_0x53aaab(0x473))[_0x53aaab(0x278)](strings[_0x53aaab(0x22e)]),
-      $(_0x53aaab(0x37b))["text"](strings[_0x53aaab(0x399)]),
+      $(_0x53aaab(0x37b)).text(strings[_0x53aaab(0x399)]),
       $(_0x53aaab(0x272))[_0x53aaab(0x278)](strings[_0x53aaab(0x439)]),
       $("#lt-trans-autoFocus")[_0x53aaab(0x278)](strings[_0x53aaab(0x27e)]),
       $(_0x53aaab(0x296))[_0x53aaab(0x278)](strings[_0x53aaab(0x3b8)]),
       $(_0x53aaab(0x354))[_0x53aaab(0x278)](strings[_0x53aaab(0x450)]),
-      $("#lt-trans-straClick")["text"](strings[_0x53aaab(0x45f)]),
+      $("#lt-trans-straClick").text(strings[_0x53aaab(0x45f)]),
       $("#lt-trans-turnClick")[_0x53aaab(0x278)](strings[_0x53aaab(0x23e)]),
       $("#lt-trans-mapHigh")[_0x53aaab(0x278)](strings["mapHighlight"]),
       $(_0x53aaab(0x2a4))[_0x53aaab(0x278)](strings[_0x53aaab(0x435)]),
       $(_0x53aaab(0x1dc))[_0x53aaab(0x278)](strings[_0x53aaab(0x3b2)]),
       $(_0x53aaab(0x29f))[_0x53aaab(0x278)](strings[_0x53aaab(0x35a)]),
-      $("#lt-trans-csOver")["text"](strings[_0x53aaab(0x24a)]),
+      $("#lt-trans-csOver").text(strings[_0x53aaab(0x24a)]),
       $(_0x53aaab(0x20b))[_0x53aaab(0x278)](strings[_0x53aaab(0x270)]),
       $(_0x53aaab(0x359))[_0x53aaab(0x278)](strings[_0x53aaab(0x40f)]),
       $("#lt-trans-heurNeg")[_0x53aaab(0x278)](strings[_0x53aaab(0x1da)]),
-      $("#lt-trans-highCol")["text"](strings[_0x53aaab(0x1f6)]),
+      $("#lt-trans-highCol").text(strings[_0x53aaab(0x1f6)]),
       $(_0x53aaab(0x228))[_0x53aaab(0x278)](strings[_0x53aaab(0x325)]),
-      $(_0x53aaab(0x3a2))["text"](strings["revCol"]),
-      $("#lt-trans-labelCol")["text"](strings[_0x53aaab(0x34d)]),
+      $(_0x53aaab(0x3a2)).text(strings["revCol"]),
+      $("#lt-trans-labelCol").text(strings[_0x53aaab(0x34d)]),
       $("#lt-trans-errorCol")[_0x53aaab(0x278)](strings[_0x53aaab(0x231)]),
       $(_0x53aaab(0x2fb))[_0x53aaab(0x278)](strings[_0x53aaab(0x253)]),
       $(_0x53aaab(0x2e0))[_0x53aaab(0x278)](strings[_0x53aaab(0x42b)]),
@@ -921,15 +839,15 @@
       $(_0x53aaab(0x3d1))[_0x53aaab(0x278)](strings["highlightOverride"]),
       $("#lt-trans-AddTIO")[_0x53aaab(0x278)](strings[_0x53aaab(0x31f)]),
       $(_0x53aaab(0x3b9))[_0x53aaab(0x278)](strings[_0x53aaab(0x348)]),
-      $(_0x53aaab(0x2b6))["text"](strings[_0x53aaab(0x42a)]),
+      $(_0x53aaab(0x2b6)).text(strings[_0x53aaab(0x42a)]),
       $(_0x53aaab(0x2e7))["attr"](_0x53aaab(0x3f4), strings[_0x53aaab(0x3c2)]),
       shortcutsDisabled &&
         ($("#lt-EnableShortcut")[_0x53aaab(0x278)](
           "" + strings[_0x53aaab(0x3eb)]
         ),
-        $(_0x53aaab(0x370))["text"]("" + strings[_0x53aaab(0x3eb)]),
-        $("#lt-UIEnhanceShortcut")["text"]("" + strings["disabled"]),
-        $(_0x53aaab(0x440))["text"]("" + strings["disabled"]));
+        $(_0x53aaab(0x370)).text("" + strings[_0x53aaab(0x3eb)]),
+        $("#lt-UIEnhanceShortcut").text("" + strings["disabled"]),
+        $(_0x53aaab(0x440)).text("" + strings["disabled"]));
   }
   function setHeuristics() {
     const _0x351760 = getString;
@@ -954,15 +872,15 @@
       if (_0x135b0b === _0x122119(0x339)) {
         let _0x5cbe2b = "";
         _0x2642ce
-          ? (_0x2642ce[_0x122119(0x3fd)] === !![] && (_0x5cbe2b += "A"),
-            _0x2642ce[_0x122119(0x444)] === !![] && (_0x5cbe2b += "S"),
-            _0x2642ce[_0x122119(0x21c)] === !![] && (_0x5cbe2b += "C"),
+          ? (_0x2642ce[_0x122119(0x3fd)] === true && (_0x5cbe2b += "A"),
+            _0x2642ce[_0x122119(0x444)] === true && (_0x5cbe2b += "S"),
+            _0x2642ce[_0x122119(0x21c)] === true && (_0x5cbe2b += "C"),
             _0x5cbe2b !== "" && (_0x5cbe2b += "+"),
             _0x2642ce[_0x122119(0x1ea)] &&
               (_0x5cbe2b += _0x2642ce[_0x122119(0x1ea)]))
           : (_0x5cbe2b = "-1");
         if (LtSettings[_0x57f80e] !== _0x5cbe2b) {
-          (_0x91c506 = !![]),
+          (_0x91c506 = true),
             console[_0x122119(0x387)](
               "LaneTools:\x20Stored\x20shortcut\x20" +
                 _0x57f80e +
@@ -1010,13 +928,13 @@
   }
   function updateShortcutLabels() {
     !shortcutsDisabled &&
-      ($(getString(0x468))["text"](getKeyboardShortcut(getString(0x29c))),
-      $(getString(0x370))[getString(0x278)](
+      ($("#lt-EnableShortcut").text(getKeyboardShortcut("enableScript")),
+      $("#lt-HighlightShortcut").text(
         getKeyboardShortcut("enableHighlights")
       ),
-      $(getString(0x28c))["text"](getKeyboardShortcut("enableUIEnhancements")),
-      $("#lt-LaneHeurChecksShortcut")["text"](
-        getKeyboardShortcut(getString(0x294))
+      $("#lt-UIEnhanceShortcut").text(getKeyboardShortcut("enableUIEnhancements")),
+      $("#lt-LaneHeurChecksShortcut").text(
+        getKeyboardShortcut("enableHeuristics")
       ));
   }
   function getSegObj(_0x10546d) {
@@ -1034,7 +952,7 @@
         _0x476310(0x408)
       ] == 0x0
     ) {
-      setTimeout(lanesTabSetup, 0x1f40), console["log"](_0x476310(0x1de));
+      setTimeout(lanesTabSetup, 0x1f40), console.log(_0x476310(0x1de));
       return;
     }
     const _0x3cd891 = W["selectionManager"][_0x476310(0x476)]();
@@ -1123,11 +1041,11 @@
           else
             _0x3cd891[0x0]["attributes"][_0x5f4b3e(0x23a)][_0x5f4b3e(0x3db)][
               _0x5f4b3e(0x395)
-            ][_0x5f4b3e(0x223)] != !![] &&
+            ][_0x5f4b3e(0x223)] != true &&
               (_0x336aa4[_0x5f4b3e(0x36f)]("title", "rev"),
               _0x336aa4[_0x5f4b3e(0x3ab)](_0x5f4b3e(0x3fc)));
         } else
-          $(_0x5f4b3e(0x454))["css"](
+          $(_0x5f4b3e(0x454)).css(
             _0x5f4b3e(0x464),
             "4px\x20dashed\x20" + LtSettings[_0x5f4b3e(0x344)]
           );
@@ -1147,7 +1065,7 @@
           else
             _0x3cd891[0x0][_0x5f4b3e(0x395)][_0x5f4b3e(0x23a)][
               _0x5f4b3e(0x3db)
-            ]["attributes"][_0x5f4b3e(0x2f9)] != !![] &&
+            ]["attributes"][_0x5f4b3e(0x2f9)] != true &&
               (_0x336aa4[_0x5f4b3e(0x36f)](_0x5f4b3e(0x3f7), _0x5f4b3e(0x374)),
               _0x336aa4[_0x5f4b3e(0x3ab)](_0x5f4b3e(0x3fc)));
         } else
@@ -1160,14 +1078,14 @@
         $("#li-del-fwd-btn")[_0x5f4b3e(0x304)](function () {
           const _0x33647a = _0x5f4b3e;
           delLanes(_0x33647a(0x374)),
-            (_0xc1406f = !![]),
+            (_0xc1406f = true),
             setTimeout(function () {
               _0x5a28b7();
             }, 0xc8);
         }),
           $(_0x5f4b3e(0x445))[_0x5f4b3e(0x304)](function () {
             delLanes("rev"),
-              (_0x4c54c4 = !![]),
+              (_0x4c54c4 = true),
               setTimeout(function () {
                 _0x5a28b7();
               }, 0xc8);
@@ -1177,8 +1095,8 @@
             let _0x535f00 = $(this)[_0x1f68e4(0x36f)](_0x1f68e4(0x3f7));
             delLanes(_0x535f00),
               _0x535f00 === _0x1f68e4(0x3f5)
-                ? (_0x4c54c4 = !![])
-                : (_0xc1406f = !![]),
+                ? (_0x4c54c4 = true)
+                : (_0xc1406f = true),
               _0x5a28b7();
           });
       }
@@ -1218,25 +1136,25 @@
       const _0x5ee852 = $(_0x5ef5c8(0x351)),
         _0x3df49c = $(_0x5ef5c8(0x2ef));
       _0x5ee852[_0x5ef5c8(0x46c)](_0x5ef5c8(0x1df))["click"](() => {
-        (_0xc1406f = !![]),
+        (_0xc1406f = true),
           setTimeout(function () {
             _0x5a28b7();
           }, 0xc8);
       }),
         _0x3df49c[_0x5ef5c8(0x46c)](_0x5ef5c8(0x1df))[_0x5ef5c8(0x304)](() => {
-          (_0x4c54c4 = !![]),
+          (_0x4c54c4 = true),
             setTimeout(function () {
               _0x5a28b7();
             }, 0xc8);
         }),
         _0x5ee852[_0x5ef5c8(0x46c)](".cancel-button")[_0x5ef5c8(0x304)](() => {
-          (_0xc1406f = !![]),
+          (_0xc1406f = true),
             setTimeout(function () {
               _0x5a28b7();
             }, 0xc8);
         }),
         _0x3df49c[_0x5ef5c8(0x46c)](_0x5ef5c8(0x246))[_0x5ef5c8(0x304)](() => {
-          (_0x4c54c4 = !![]),
+          (_0x4c54c4 = true),
             setTimeout(function () {
               _0x5a28b7();
             }, 0xc8);
@@ -1271,7 +1189,7 @@
           margin: _0x23df2c(0x418),
         }),
         $(_0x23df2c(0x2bb))[_0x23df2c(0x1e9)]("padding-top", _0x23df2c(0x44e)),
-        $(_0x23df2c(0x340))["css"]("padding-top", "10px"),
+        $(_0x23df2c(0x340)).css("padding-top", "10px"),
         $(_0x23df2c(0x40e))[_0x23df2c(0x1e9)](_0x23df2c(0x421), "4px"),
         $(
           ".rev-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.edit-region\x20>\x20div\x20>\x20div\x20>\x20div:nth-child(1)"
@@ -1527,7 +1445,7 @@
           _0x37b735 = $(_0x521d54(0x38a))[_0x521d54(0x268)]();
         for (i = 0x0; i < _0x37b735[_0x521d54(0x408)]; i++) {
           _0x37b735[i]["title"] == _0x21c6d0[0x5] &&
-            $(_0x37b735[i])["css"]("background-color", _0xc39df0);
+            $(_0x37b735[i]).css("background-color", _0xc39df0);
         }
       }
     }
@@ -1552,7 +1470,7 @@
             );
         }
       }
-      _0xe8a45d = !![];
+      _0xe8a45d = true;
     }
     if (
       getId(_0x476310(0x3c8))[_0x476310(0x32a)] &&
@@ -2327,7 +2245,7 @@
       (_0x1d94fe["type"] === getString(0x1f7) &&
         _0x1d94fe["attributes"]["roadType"] === LT_ROAD_TYPE["FREEWAY"])
     )
-      return W[getString(0x423)]
+      return W.map
         [getString(0x2ec)]()
         [getString(0x3ef)](_0x1d94fe[getString(0x28f)]["getBounds"]());
     return ![];
@@ -2732,7 +2650,7 @@
             _0x249a9b[_0x422622(0x395)][_0x422622(0x23a)][_0x422622(0x3db)]
           ));
       }),
-      scanSegments(_0x4174e4, !![]),
+      scanSegments(_0x4174e4, true),
       _0x232b3f
     );
   }
@@ -2838,7 +2756,7 @@
             _0x193f41,
             _0x211d6a
           );
-          _0x436364 === HeuristicsCandidate["ERROR"] && (_0x12606 = !![]);
+          _0x436364 === HeuristicsCandidate["ERROR"] && (_0x12606 = true);
           if (!_0x495382) _0x436364 = HeuristicsCandidate[_0x4ea309(0x2cf)];
           else
             _0x436364 !== HeuristicsCandidate[_0x4ea309(0x2cf)] &&
@@ -2900,7 +2818,7 @@
               _0x3a8c59,
               _0x12606,
               _0x436364,
-              !![]
+              true
             ),
               highlightSegment(
                 _0x53f387["seg"][_0x4ea309(0x28f)],
@@ -2913,10 +2831,10 @@
                 0x0,
                 ![],
                 _0x436364,
-                !![]
+                true
               ),
-              highlightNode(_0x405af6[_0x4ea309(0x28f)], _0x4063ba, !![]),
-              highlightNode(_0x3f1bfc[_0x4ea309(0x28f)], _0x4063ba, !![]);
+              highlightNode(_0x405af6[_0x4ea309(0x28f)], _0x4063ba, true),
+              highlightNode(_0x3f1bfc[_0x4ea309(0x28f)], _0x4063ba, true);
           }
         }
       }
@@ -2949,11 +2867,11 @@
           _0x124a73
         )[_0x4fbab6(0x254)]();
       if (_0x3f357d[_0x4fbab6(0x3a5)] === 0x1) {
-        _0x3f357d["hasInstructionOpcode"]() && (_0x55ea18 = !![]);
+        _0x3f357d["hasInstructionOpcode"]() && (_0x55ea18 = true);
         if (_0x3f357d["hasLanes"]()) {
-          _0x739f97 = !![];
+          _0x739f97 = true;
           _0x3f357d[_0x4fbab6(0x2b5)]()[_0x4fbab6(0x307)]() &&
-            (_0x161259 = !![]);
+            (_0x161259 = true);
           if (_0x3f357d[_0x4fbab6(0x2b5)]()[_0x4fbab6(0x201)]() === 0x1)
             (_0x5c5507 = 0x1),
               (_0x4211dc = W[_0x4fbab6(0x240)]["streets"][_0x4fbab6(0x393)](
@@ -2974,7 +2892,7 @@
             _0x382bd8 < _0x40bbd8 + 0x1;
             _0x382bd8++
           ) {
-            let _0x18e06a = !![];
+            let _0x18e06a = true;
             for (
               let _0x774514 = 0x0;
               _0x774514 < _0x44a7d8[_0x4fbab6(0x408)];
@@ -2993,12 +2911,12 @@
       _0x5082cd < _0x44a7d8[_0x4fbab6(0x408)];
       _0x5082cd++
     ) {
-      _0x44a7d8[_0x5082cd] !== _0x5082cd && (_0x16f110 = !![]);
+      _0x44a7d8[_0x5082cd] !== _0x5082cd && (_0x16f110 = true);
     }
     return (
       _0x44a7d8[_0x4fbab6(0x408)] < _0x4e9244 &&
         onScreen(_0x42e6cf, _0xd63ac8) &&
-        (_0x16f110 = !![]),
+        (_0x16f110 = true),
       [_0x739f97, _0x55ea18, _0x161259, _0x16f110, _0x5c5507, _0x4211dc]
     );
   }
@@ -3031,7 +2949,7 @@
               ["call"](_0x2010bf[_0x3a1fa0(0x349)](_0x3a1fa0(0x441)))
               ["reduce"](
                 (_0x58c1c4, _0x4afea1) =>
-                  _0x4afea1[_0x3a1fa0(0x32a)] === !![]
+                  _0x4afea1[_0x3a1fa0(0x32a)] === true
                     ? _0x58c1c4 + 0x1
                     : _0x58c1c4,
                 0x0
@@ -3053,14 +2971,14 @@
             _0x5c6270[0x0][_0x3a1fa0(0x32a)] === ![] &&
             getId("lt-ClickSaveTurns")[_0x3a1fa0(0x32a)]
           )
-            (_0x16a6be = !![]), _0x5c6270[0x0]["click"]();
+            (_0x16a6be = true), _0x5c6270[0x0]["click"]();
           else
             _0x496f7c[_0x3a1fa0(0x2e5)](_0x217ae4)[_0x3a1fa0(0x408)] > 0x0 &&
               _0x5c6270[_0x5c6270["length"] - 0x1]["checked"] !== undefined &&
               _0x5c6270[_0x5c6270[_0x3a1fa0(0x408)] - 0x1][_0x3a1fa0(0x32a)] ===
                 ![] &&
               getId("lt-ClickSaveTurns")[_0x3a1fa0(0x32a)] &&
-              ((_0x43ae0b = !![]),
+              ((_0x43ae0b = true),
               _0x5c6270[_0x5c6270[_0x3a1fa0(0x408)] - 0x1][_0x3a1fa0(0x304)]());
         }
       }
@@ -3146,8 +3064,8 @@
       }
     });
     _0x324acf[_0x3dd95f(0x2a8)](document["getElementById"]("edit-panel"), {
-      childList: !![],
-      subtree: !![],
+      childList: true,
+      subtree: true,
     });
   }
   function isHeuristicsCandidate(
@@ -3548,7 +3466,7 @@
         return lt_log(_0xddec1(0x2af), 0x3), ![];
       if (!_0x17bc7b[_0xddec1(0x369)](_0x85690c, _0x31445a))
         return lt_log("Other\x20restriction\x20applies", 0x3), ![];
-      return !![];
+      return true;
     }
   }
   function lt_segment_length(_0x59d9ca) {
@@ -3797,7 +3715,7 @@
           (_0x3ce23[_0x205264(0x235)] =
             $(_0x3399d1[_0xa51b27])
               [_0x205264(0x46c)](".small-uturn")
-              ["css"](_0x205264(0x36a)) !== _0x205264(0x460)),
+              .css(_0x205264(0x36a)) !== _0x205264(0x460)),
           (_0x3ce23[_0x205264(0x2b8)] = $(_0x3399d1[_0xa51b27])
             [_0x205264(0x46c)](_0x205264(0x2b8))
             [_0x205264(0x423)](function () {
@@ -4163,14 +4081,14 @@
           _0x543941 = "",
           _0x4e547b = { x: 0x0, y: 0x0 },
           _0x43b459 = { x: 0x0, y: 0x0 };
-        _0x25119b["uturn"] === !![] &&
+        _0x25119b["uturn"] === true &&
           ((_0x543941 =
             "https://editor-assets.waze.com/production/font/aae5ed152758cb6a9191b91e6cedf322.svg"),
           (_0x4e547b["x"] = 0.6),
           (_0x4e547b["y"] = 0.6),
           (_0x43b459["x"] = -0x7),
           (_0x43b459["y"] = -0xc));
-        _0x25119b["miniuturn"] === !![] &&
+        _0x25119b["miniuturn"] === true &&
           ((_0x543941 = _0x21418c(0x274)),
           (_0x4e547b["x"] = 0.3),
           (_0x4e547b["y"] = 0.25),
@@ -4420,7 +4338,7 @@
       if (_0x4fe049 === _0x1fd245) break;
       else push(shift());
     } catch (_0x415ba0) {
-      stringArrayRef["push"](stringArrayRef["shift"]());
+      push(shift());
     }
   }
 })();
