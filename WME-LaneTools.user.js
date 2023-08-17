@@ -16,6 +16,8 @@
 // @contributionURL https://github.com/WazeDev/Thank-The-Authors
 // ==/UserScript==
 
+import "WazeWrapLib"
+
 (function main() {
   "use strict";
   const stringArrayRef = getStringArray();
@@ -27,9 +29,9 @@
     htmlStr: "html",
   };
   const LANETOOLS_VERSION = "" + GM_info.script.version,
-    GF_LINK = getString(0x41e),
+    GF_LINK = "https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js",
     FORUM_LINK = "https://www.waze.com/forum/viewtopic.php?f=819&t=30115",
-    LI_UPDATE_NOTES = getString(611),
+    LI_UPDATE_NOTES = "<b>NEW:</b><br>\x0a<b>FIXES:</b><br><br>\x0a",
     LANETOOLS_DEBUG_LEVEL = 0x1,
     configArray = {},
     RBSArray = { failed: false },
@@ -363,7 +365,7 @@
     if (_pickleColor > 0x1) {
       let ltEnabledFeatures = "LaneTools:\x20The\x20following\x20special\x20access\x20features\x20are\x20enabled:\x20";
       $("#lt-adv-tools").css("display", "block");
-      $("#lt-trans-quickTog").attr(getString(0x3f4), "" + strings[getString(0x466)]);
+      $("#lt-trans-quickTog").attr("data-original-title", "" + strings[getString(0x466)]);
       $("#lt-trans-quickTog").tooltip();
       _.each(RBSArray, (argument) => {
         argument[0x0] === seaPickle["userName"] &&
@@ -468,61 +470,58 @@
     colorTitleID.tooltip();
   }
   async function loadSettings() {
-    const getString = getString,
-      _0x1a5064 = $[getString(0x267)](localStorage[getString(0x366)](getString(0x2a2))),
-      _0x2414f3 = await WazeWrap[getString(0x3bf)][getString(0x33d)]("LT_Settings");
-    !_0x2414f3 && console[getString(0x32b)](getString(0x2b3));
-    const _0x483de2 = {
+    const parsedSettings = $["parseJSON"](localStorage.getItem("LT_Settings")),
+      laneToolsSettings = await WazeWrap["Remote"]["RetrieveSettings"]("LT_Settings");
+    !laneToolsSettings && console.error("LaneTools:\x20Error\x20communicating\x20with\x20WW\x20settings\x20server");
+    const settingsObject = {
       lastSaveAction: 0x0,
       ScriptEnabled: true,
       UIEnable: true,
-      AutoOpenWidth: ![],
-      AutoExpandLanes: ![],
-      AutoLanesTab: ![],
+      AutoOpenWidth: false,
+      AutoExpandLanes: false,
+      AutoLanesTab: false,
       HighlightsEnable: true,
       LabelsEnable: true,
       NodesEnable: true,
-      ABColor: getString(0x276),
-      BAColor: getString(0x3b0),
+      ABColor: "#990033",
+      BAColor: "#0033cc",
       LabelColor: "#FFAD08",
-      ErrorColor: getString(0x29b),
-      NodeColor: getString(0x425),
+      ErrorColor: "#F50E0E",
+      NodeColor: "#66ccff",
       TIOColor: "#ff9900",
-      LIOColor: getString(0x350),
-      CS1Color: getString(0x361),
-      CS2Color: getString(0x289),
-      HeurColor: getString(0x458),
-      HeurFailColor: getString(0x232),
-      CopyEnable: ![],
-      SelAllEnable: ![],
-      serverSelect: ![],
+      LIOColor: "#ff9900",
+      CS1Color: "#04E6F6",
+      CS2Color: "#8F47FA",
+      HeurColor: "#00aa00",
+      HeurFailColor: "#E804F6",
+      CopyEnable: false,
+      SelAllEnable: false,
+      serverSelect: false,
       LIOEnable: true,
       CSEnable: true,
       AutoFocusLanes: true,
-      ReverseLanesIcon: ![],
+      ReverseLanesIcon: false,
       ClickSaveEnable: true,
-      ClickSaveStraight: ![],
+      ClickSaveStraight: false,
       ClickSaveTurns: true,
       enableScript: "",
       enableHighlights: "",
       enableUIEnhancements: "",
       enableHeuristics: "",
-      LaneHeurNegHighlight: ![],
-      LaneHeurPosHighlight: ![],
-      LaneHeuristicsChecks: ![],
-      highlightCSIcons: ![],
+      LaneHeurNegHighlight: false,
+      LaneHeurPosHighlight: false,
+      LaneHeuristicsChecks: false,
+      highlightCSIcons: false,
       highlightOverride: true,
-      AddTIO: ![],
+      AddTIO: false,
       IconsEnable: true,
       IconsRotate: true,
     };
-    LtSettings = $[getString(0x3dd)]({}, _0x483de2, _0x1a5064);
-    if (_0x2414f3 && _0x2414f3["lastSaveAction"] > LtSettings[getString(0x419)]) $["extend"](LtSettings, _0x2414f3);
-    else {
-    }
-    Object[getString(0x47d)](_0x483de2)[getString(0x357)]((_0x5404e3) => {
-      const _0x51067f = getString;
-      !LtSettings[_0x51067f(0x403)](_0x5404e3) && (LtSettings[_0x5404e3] = _0x483de2[_0x5404e3]);
+    LtSettings = $["extend"]({}, settingsObject, parsedSettings);
+    if (laneToolsSettings && laneToolsSettings["lastSaveAction"] > LtSettings.lastSaveAction) {$["extend"](LtSettings, laneToolsSettings);}
+
+    Object.keys(settingsObject).forEach((propertyName) => {
+      !LtSettings.hasOwnProperty(propertyName) && (LtSettings[propertyName] = settingsObject[propertyName]);
     });
   }
   async function saveSettings() {
@@ -569,8 +568,8 @@
         IconsEnable: _0x2b4c31,
         IconsRotate: _0x3b2352,
       } = LtSettings,
-      _0x5bc4fe = {
-        lastSaveAction: Date["now"](),
+      savedLTSettings = {
+        lastSaveAction: Date.now(),
         ScriptEnabled: _0x2da5e1,
         HighlightsEnable: _0x745c7a,
         LabelsEnable: _0x36baff,
@@ -613,37 +612,37 @@
         IconsEnable: _0x2b4c31,
         IconsRotate: _0x3b2352,
       };
-    for (const _0x3c89a5 in W[getString(0x2ab)]["Actions"]) {
-      const { shortcut: _0x2783a6, group: _0x5e73d9 } = W[getString(0x2ab)][getString(0x265)][_0x3c89a5];
-      if (_0x5e73d9 === getString(0x339)) {
+    for (const action in W["accelerators"]["Actions"]) {
+      const { shortcut: _0x2783a6, group: _0x5e73d9 } = W["accelerators"]["Actions"][action];
+      if (_0x5e73d9 === "wmelt") {
         let _0x413fe0 = "";
         _0x2783a6
-          ? (_0x2783a6[getString(0x3fd)] === true && (_0x413fe0 += "A"),
-            _0x2783a6["shiftKey"] === true && (_0x413fe0 += "S"),
-            _0x2783a6[getString(0x21c)] === true && (_0x413fe0 += "C"),
+          ? (_0x2783a6.altKey === true && (_0x413fe0 += "A"),
+            _0x2783a6.shiftKey === true && (_0x413fe0 += "S"),
+            _0x2783a6.ctrlKey === true && (_0x413fe0 += "C"),
             _0x413fe0 !== "" && (_0x413fe0 += "+"),
-            _0x2783a6[getString(0x1ea)] && (_0x413fe0 += _0x2783a6[getString(0x1ea)]))
+            _0x2783a6.keyCode && (_0x413fe0 += _0x2783a6.keyCode))
           : (_0x413fe0 = "-1"),
-          (_0x5bc4fe[_0x3c89a5] = _0x413fe0);
+          (savedLTSettings[action] = _0x413fe0);
       }
     }
-    LtSettings = _0x5bc4fe;
-    localStorage && localStorage["setItem"](getString(0x2a2), JSON[getString(0x25a)](_0x5bc4fe));
-    const _0x6edf6 = await WazeWrap[getString(0x3bf)][getString(0x33c)]("LT_Settings", _0x5bc4fe);
-    _0x6edf6 === null
-      ? console[getString(0x2ae)](getString(0x302))
-      : _0x6edf6 === ![] && console["error"](getString(0x236));
+    LtSettings = savedLTSettings;
+    localStorage && localStorage.setItem("LT_Settings", JSON.stringify(savedLTSettings));
+    const ltSettingsSaveStatus = await WazeWrap.Remote.SaveSettings("LT_Settings", savedLTSettings);
+    ltSettingsSaveStatus === null
+      ? console.warn("LaneTools:\x20User\x20PIN\x20not\x20set\x20in\x20WazeWrap\x20tab")
+      : ltSettingsSaveStatus === false && console.error("LaneTools:\x20Unable\x20to\x20save\x20settings\x20to\x20server");
   }
   async function loadSpreadsheet() {
-    let _0x4d1b99 = false;
+    let spreadSheetLoadStatus = false;
     const spreadsheetID = "AIzaSyDZjmkSx5xWc-86hsAIzedgDgRgy8vB7BQ",
-      _0x2a0637 = (_0x135a7d, _0x3e3ad5, _0x5d931b) => {
-        console.error("LaneTools: Error loading settings:", _0x5d931b);
+      _0x2a0637 = (_0x135a7d, _0x3e3ad5, errorMsg) => {
+        console.error("LaneTools:\x20Error\x20loading\x20settings:", errorMsg);
       },
       _0x283eac = (_0x2d5151, _0x4e197b, _0x4cc7f4) => {
-        console[getString(0x32b)](getString(0x44c), _0x4cc7f4),
+        console.error(getString(0x44c), _0x4cc7f4),
           !RBSArray[getString(0x40a)] &&
-            (WazeWrap[getString(0x46a)][getString(0x32b)](GM_info.script[getString(0x412)], getString(0x1f3)),
+            (WazeWrap[getString(0x46a)].error(GM_info.script[getString(0x412)], getString(0x1f3)),
             (RBSArray[getString(0x40a)] = true));
       },
       _0x4f837b = (_0x4e546b, _0x559463, _0x2eb7ed) => {
@@ -654,8 +653,7 @@
       await $["getJSON"](
         "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/Translations!A2:C?key=" +
           spreadsheetID
-      )
-        ["done"](async (_0xa6fa70) => {
+      ).done(async (_0xa6fa70) => {
           _0xa6fa70[getString(0x24d)][getString(0x408)] > 0x0
             ? _[getString(0x3e2)](_0xa6fa70[getString(0x24d)], (_0x1f6053) => {
                 const _0x5ab21b = getString;
@@ -666,18 +664,18 @@
             : _0x4f837b();
         })
         ["fail"](_0x4f837b);
-    } catch (_0x20eeab) {
-      _0x4f837b(null, null, _0x20eeab);
+    } catch (ex) {
+      _0x4f837b(null, null, ex);
     }
     try {
-      await $[getString(0x28d)](getString(0x3cb) + spreadsheetID)
+      await $["getJSON"](getString(0x3cb) + spreadsheetID)
         [getString(0x47a)]((_0x27c1b9) => {
           const _0x5c0b99 = getString;
           _0x27c1b9["values"][_0x5c0b99(0x408)] > 0x0
             ? (_[_0x5c0b99(0x3e2)](_0x27c1b9["values"], (_0x1e3c4a) => {
                 !configArray[_0x1e3c4a[0x1]] && (configArray[_0x1e3c4a[0x1]] = JSON["parse"](_0x1e3c4a[0x0]));
               }),
-              (_0x4d1b99 = true))
+              (spreadSheetLoadStatus = true))
             : _0x2a0637();
         })
         [getString(0x200)](_0x2a0637);
@@ -685,24 +683,23 @@
       _0x2a0637(null, null, _0x54f45f);
     }
     try {
-      await $[getString(0x28d)](
+      await $["getJSON"](
         "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/RBS_Access!A2:C?key=" +
           spreadsheetID
-      )
-        ["done"]((_0xc4656a) => {
+      ).done((_0xc4656a) => {
           const _0x14f41f = getString;
           if (_0xc4656a["values"][_0x14f41f(0x408)] > 0x0) {
             for (let _0x1ca942 = 0x0; _0x1ca942 < _0xc4656a[_0x14f41f(0x24d)][_0x14f41f(0x408)]; _0x1ca942++) {
               RBSArray[_0x1ca942] = _0xc4656a[_0x14f41f(0x24d)][_0x1ca942];
             }
-            RBSArray[_0x14f41f(0x40a)] = ![];
+            RBSArray[_0x14f41f(0x40a)] = false;
           } else _0x283eac();
         })
         [getString(0x200)](_0x283eac);
     } catch (_0x6e77b8) {
       _0x283eac(null, null, _0x6e77b8);
     }
-    _0x4d1b99 &&
+    spreadSheetLoadStatus &&
       _["each"](configArray, (_0x28373e) => {
         const _0x324735 = getString;
         for (const _0x13fab4 in _0x28373e) {
@@ -714,7 +711,6 @@
       });
   }
   function setTranslations() {
-    const getString = getString;
     langLocality = I18n["currentLocale"]()[getString(0x467)]();
     if (TRANSLATIONS[langLocality]) strings = TRANSLATIONS[langLocality];
     else
@@ -1270,8 +1266,8 @@
         _0x3cd891[0x0][getString(0x395)]["wazeFeature"][getString(0x3db)][getString(0x478)] === getString(0x1f7)
       )
         $(getString(0x3c5))[getString(0x304)](() => {
-          (_0xc1406f = ![]),
-            (_0x4c54c4 = ![]),
+          (_0xc1406f = false),
+            (_0x4c54c4 = false),
             setTimeout(() => {
               _0x5a28b7();
             }, 0x64);
@@ -1290,8 +1286,7 @@
   }
 
   function getString(index, _0x1cdf9f) {
-    const stringArray = getStringArray();
-    let resultString = stringArray[index - 334];
+    let resultString = getStringArray()[index - 334];
     return resultString;
   }
 
@@ -2025,7 +2020,7 @@
       (_0x1d94fe["type"] === getString(0x1f7) && _0x1d94fe["attributes"]["roadType"] === LT_ROAD_TYPE["FREEWAY"])
     )
       return W.map[getString(0x2ec)]()[getString(0x3ef)](_0x1d94fe[getString(0x28f)]["getBounds"]());
-    return ![];
+    return false;
   }
   function getCardinalAngle(_0x5f13ca, _0x261fce) {
     const _0x11591c = getString;
@@ -2199,7 +2194,7 @@
       }
       return new OpenLayers[_0x2fb9cd(0x330)][_0x2fb9cd(0x3d7)](_0x3411db, {});
     }
-    function _0x43deae(_0x3291c0, _0xe37e1, _0x2d6773, _0x5e102e, _0x59dda1 = ![]) {
+    function _0x43deae(_0x3291c0, _0xe37e1, _0x2d6773, _0x5e102e, _0x59dda1 = false) {
       const _0xf9329 = getString;
       if (_0x2d6773) {
         _0x58a03b(_0x3291c0[_0xf9329(0x34c)](), "" + LtSettings["ErrorColor"], _0x3c685d["OVER_HIGHLIGHT"]);
@@ -2254,7 +2249,7 @@
     }
     LTHighlightLayer[getString(0x386)](0x1c2);
   }
-  function highlightNode(_0x468e12, _0xcc8670, _0x5c426d = ![]) {
+  function highlightNode(_0x468e12, _0xcc8670, _0x5c426d = false) {
     const _0x1a7e94 = getString,
       _0x5ee4da = _0x468e12["clone"](),
       _0x1313c1 = new OpenLayers[_0x1a7e94(0x2fc)][_0x1a7e94(0x209)](_0x5ee4da, {});
@@ -2304,7 +2299,7 @@
     if (_0x10e51f || (!_0x10e51f && !_0x1e077f)) {
       _0x122a27 &&
         (_0x583759 || _0x59b8dd) &&
-        scanSegments(W[getString(0x240)][getString(0x30e)][getString(0x3be)](), ![]);
+        scanSegments(W[getString(0x240)][getString(0x30e)][getString(0x3be)](), false);
       if (_0x122a27) {
         const _0xc4f257 = W[getString(0x281)]["getSelectedFeatures"]();
         _0xc4f257[getString(0x408)] === 0x2 && scanHeuristicsCandidates(_0xc4f257);
@@ -2341,7 +2336,7 @@
       const _0xc8be01 = getString;
       if (onScreen(_0x4e91a0, _0x5a4db6)) {
         const _0x3598ea = _0x4e91a0["getFeatureAttributes"]();
-        let _0x1b6f52 = ![],
+        let _0x1b6f52 = false,
           _0x1ca2eb = lt_segment_length(_0x4e91a0);
         _0x1b6f52 = _0x1b6f52 || _0x2ad725(_0x4e91a0, _0x3598ea, Direction[_0xc8be01(0x2df)], _0x1ca2eb, _0x1b6f52);
         if (_0x1b6f52 && lt_scanArea_recursive > 0x0) {
@@ -2371,10 +2366,10 @@
         (_0x3f1bfc = getNodeObj(_0x37e1f7[getString(0x28a)])),
         (_0x5a6ac5 = _0x310dc4),
         (_0x58763f = _0x162a18));
-      let _0x5855dd = ![],
-        _0x4d3a78 = ![],
-        _0x12606 = ![],
-        _0x58ba1e = ![],
+      let _0x5855dd = false,
+        _0x4d3a78 = false,
+        _0x12606 = false,
+        _0x58ba1e = false,
         _0x3a8c59 = 0x0,
         _0x436364 = HeuristicsCandidate[getString(0x2cf)],
         _0x53f387 = null,
@@ -2423,7 +2418,7 @@
               _0x3a8c59,
               _0x12606,
               _0x5c9960,
-              ![]
+              false
             ),
           _0x54899b &&
             getId(getString(0x34b)).checked &&
@@ -2443,11 +2438,11 @@
             highlightSegment(
               _0x6f84fd[getString(0x28f)],
               _0x17336c,
-              ![],
-              ![],
+              false,
+              false,
               0x0,
               0x0,
-              ![],
+              false,
               _0x3a8c59,
               _0x12606,
               _0x436364,
@@ -2456,13 +2451,13 @@
               highlightSegment(
                 _0x53f387["seg"][getString(0x28f)],
                 _0x53f387[getString(0x2a0)],
-                ![],
-                ![],
+                false,
+                false,
                 0x0,
                 0x0,
-                ![],
+                false,
                 0x0,
-                ![],
+                false,
                 _0x436364,
                 true
               ),
@@ -2476,10 +2471,10 @@
   }
   function checkLanesConfiguration(_0x57e44b, _0x42e6cf, _0x1d0a74, _0x4e9244) {
     const _0x4fbab6 = getString;
-    let _0x739f97 = ![],
-      _0x55ea18 = ![],
-      _0x16f110 = ![],
-      _0x161259 = ![],
+    let _0x739f97 = false,
+      _0x55ea18 = false,
+      _0x16f110 = false,
+      _0x161259 = false,
       _0x5c5507 = 0x0,
       _0x4211dc = null,
       _0x44a7d8 = [];
@@ -2509,7 +2504,7 @@
           for (let _0x382bd8 = _0x21fbe6; _0x382bd8 < _0x40bbd8 + 0x1; _0x382bd8++) {
             let _0x18e06a = true;
             for (let _0x774514 = 0x0; _0x774514 < _0x44a7d8[_0x4fbab6(0x408)]; _0x774514++) {
-              _0x44a7d8[_0x774514] === _0x382bd8 && (_0x18e06a = ![]);
+              _0x44a7d8[_0x774514] === _0x382bd8 && (_0x18e06a = false);
             }
             _0x18e06a && _0x44a7d8["push"](_0x382bd8);
           }
@@ -2542,8 +2537,8 @@
           ? "angle-90"
           : getString(0x3d2),
       _0x3541df = _0x1357ab[getString(0x2e5)](getString(0x39b)),
-      _0x16a6be = ![],
-      _0x43ae0b = ![],
+      _0x16a6be = false,
+      _0x43ae0b = false,
       _0x257aea = [][getString(0x3a7)]
         [getString(0x1db)](_0x3541df)
         [getString(0x1fc)](
@@ -2565,14 +2560,14 @@
           if (
             _0x496f7c[getString(0x2e5)](_0x3ce173)[getString(0x408)] > 0x0 &&
             _0x5c6270[0x0].checked !== undefined &&
-            _0x5c6270[0x0].checked === ![] &&
+            _0x5c6270[0x0].checked === false &&
             getId("lt-ClickSaveTurns").checked
           )
             (_0x16a6be = true), _0x5c6270[0x0].click();
           else
             _0x496f7c[getString(0x2e5)](_0x217ae4)[getString(0x408)] > 0x0 &&
               _0x5c6270[_0x5c6270["length"] - 0x1].checked !== undefined &&
-              _0x5c6270[_0x5c6270[getString(0x408)] - 0x1].checked === ![] &&
+              _0x5c6270[_0x5c6270[getString(0x408)] - 0x1].checked === false &&
               getId("lt-ClickSaveTurns").checked &&
               ((_0x43ae0b = true), _0x5c6270[_0x5c6270[getString(0x408)] - 0x1][getString(0x304)]());
         }
@@ -2582,13 +2577,13 @@
         let _0x58c806 = _0x376ec2[getString(0x349)](getString(0x2e1));
         if (_0x376ec2[getString(0x2e5)](getString(0x225))[getString(0x408)] > 0x0)
           for (let _0x17365b = 0x0; _0x17365b < _0x58c806[getString(0x408)]; _0x17365b++) {
-            if (_0x58c806[_0x17365b].checked === ![]) {
-              if (_0x17365b === 0x0 && (getId(getString(0x36b)).checked || _0x16a6be === ![]))
+            if (_0x58c806[_0x17365b].checked === false) {
+              if (_0x17365b === 0x0 && (getId(getString(0x36b)).checked || _0x16a6be === false))
                 _0x58c806[_0x17365b].click();
               else {
                 if (
                   _0x17365b === _0x58c806[getString(0x408)] - 0x1 &&
-                  (getId(getString(0x36b)).checked || _0x43ae0b === ![])
+                  (getId(getString(0x36b)).checked || _0x43ae0b === false)
                 )
                   _0x58c806[_0x17365b][getString(0x304)]();
                 else
@@ -2621,7 +2616,7 @@
                 _0x80b8a5 = _0x2cc679[0x0]["parentElement"]["className"];
               setTimeout(setTurns(_0x80b8a5), 0x32);
             },
-            ![]
+            false
           );
         }
         let _0xb4fbc1 = document[getString(0x2e5)](getString(0x1ff));
@@ -2634,7 +2629,7 @@
                 _0x24c520 = _0x45dfc7[0x0][_0x13dc18(0x22a)][_0x13dc18(0x218)];
               setTimeout(setTurns(_0x24c520), 0x32);
             },
-            ![]
+            false
           );
         }
       }
@@ -2934,8 +2929,8 @@
           _0x17bc7b[_0xddec1(0x369)](_0x85690c, _0x31445a),
         0x3
       );
-      if (!_0x31445a["isTurnAllowedBySegDirections"](_0x17bc7b, _0x85690c)) return lt_log(_0xddec1(0x2af), 0x3), ![];
-      if (!_0x17bc7b[_0xddec1(0x369)](_0x85690c, _0x31445a)) return lt_log("Other\x20restriction\x20applies", 0x3), ![];
+      if (!_0x31445a["isTurnAllowedBySegDirections"](_0x17bc7b, _0x85690c)) return lt_log(_0xddec1(0x2af), 0x3), false;
+      if (!_0x17bc7b[_0xddec1(0x369)](_0x85690c, _0x31445a)) return lt_log("Other\x20restriction\x20applies", 0x3), false;
       return true;
     }
   }
@@ -3094,7 +3089,7 @@
                 })
                 ["get"]()
             )
-          : ![],
+          : false,
       _0x154122 =
         _0x2d2ac0["attributes"][getString(0x3b7)] > 0x0
           ? _0x5694f9(
@@ -3105,7 +3100,7 @@
                 })
                 [getString(0x250)]()
             )
-          : ![];
+          : false;
     function _0x5694f9(_0x3399d1) {
       const _0x205264 = getString;
       let _0x2c1862 = {};
@@ -3125,8 +3120,8 @@
       }
       return _0x2c1862;
     }
-    let _0x5dea5f = _0x2d2a03 != ![] ? _0x4db382(_0x2d2a03) : ![],
-      _0x326722 = _0x154122 != ![] ? _0x4db382(_0x154122) : ![];
+    let _0x5dea5f = _0x2d2a03 != false ? _0x4db382(_0x2d2a03) : false,
+      _0x326722 = _0x154122 != false ? _0x4db382(_0x154122) : false;
     function _0x4db382(_0x22e6e2) {
       const _0x51d477 = getString,
         _0x16f923 = new XMLSerializer();
