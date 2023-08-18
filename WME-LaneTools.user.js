@@ -31,6 +31,14 @@
       "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/Angles!A2:B?key=",
     RBSAccessSheetBaseURL:
       "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/RBS_Access!A2:C?key=",
+    revLanesInstructions:
+      ".rev-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-from\x20>\x20div.instruction",
+    fwdLanesInstructions:
+      ".fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-from\x20>\x20div.instruction",
+    editPanelCSS:
+      "#edit-panel\x20>\x20div\x20>\x20div\x20>\x20div\x20>\x20div.segment-edit-section\x20>\x20wz-tabs\x20>\x20wz-tab.lanes-tab",
+    fwdLanesDivInstructionCSS:
+      ".fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-from\x20>\x20div.instruction",
   };
   const LANETOOLS_VERSION = "" + GM_info.script.version,
     GF_LINK = "https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js",
@@ -866,25 +874,19 @@
       _0x4c54c4 = false,
       _0xe8a45d = false;
     function _0x47ffa9() {
-      W.model.nodes.get(
-        W.selectionManager.getSegmentSelection().segments[0].attributes.toNodeID
-      ).attributes.geometry;
-        document.getElementById(
-          W.model.nodes.get(
-            W.selectionManager.getSegmentSelection().segments[0].attributes.toNodeID
-          ).attributes.geometry.id
-        );
-        console.log("hovering\x20to\x20B");
+      W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.toNodeID).attributes.geometry;
+      document.getElementById(
+        W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.toNodeID).attributes.geometry
+          .id
+      );
+      console.log("hovering\x20to\x20B");
     }
     function _0x758543() {
-      W.model.nodes.get(
-        W.selectionManager.getSegmentSelection().segments[0].attributes.fromNodeID
-      ).attributes.geometry;
-        document.getElementById(
-          W.model.nodes.get(
-            W.selectionManager.getSegmentSelection().segments[0].attributes.fromNodeID
-          ).attributes.geometry.id
-        ),
+      W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.fromNodeID).attributes.geometry;
+      document.getElementById(
+        W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.fromNodeID).attributes
+          .geometry.id
+      ),
         console.log("hovering\x20to\x20A");
     }
 
@@ -893,13 +895,21 @@
       getId("lt-highlightCSIcons").checked && _0x50c216();
       if (_pickleColor >= 0x1 || editorInfo["editableCountryIDS"].length > 0x0) {
         if (getId("li-del-opp-btn")) $("#li-del-opp-btn").remove();
-        let _0x8b5acb = $("<button\x20type=\x22button\x22\x20id=\x22li-del-fwd-btn\x22\x20style=\x22height:20px;background-color:white;border:1px\x20solid\x20grey;border-radius:8px;\x22>" + strings.delFwd + "</button>"),
+        let _0x8b5acb = $(
+            "<button\x20type=\x22button\x22\x20id=\x22li-del-fwd-btn\x22\x20style=\x22height:20px;background-color:white;border:1px\x20solid\x20grey;border-radius:8px;\x22>" +
+              strings.delFwd +
+              "</button>"
+          ),
           _0x2f9ee4 = $(
             "<button\x20type=\x22button\x22\x20id=\x22li-del-rev-btn\x22\x20style=\x22height:20px;background-color:white;border:1px\x20solid\x20grey;border-radius:8px;\x22>" +
               strings.delRev +
               "</button>"
           ),
-          _0x336aa4 = $("<button\x20type=\x22button\x22\x20id=\x22li-del-opp-btn\x22\x20style=\x22height:auto;background-color:orange;border:1px\x20solid\x20grey;border-radius:8px;\x20margin-bottom:5px;\x22>" + strings.delOpp + "</button>"),
+          _0x336aa4 = $(
+            "<button\x20type=\x22button\x22\x20id=\x22li-del-opp-btn\x22\x20style=\x22height:auto;background-color:orange;border:1px\x20solid\x20grey;border-radius:8px;\x20margin-bottom:5px;\x22>" +
+              strings.delOpp +
+              "</button>"
+          ),
           _0x52f96d = $("<div\x20style=\x22display:inline-block;position:relative;\x22\x20/>"),
           _0x52daad = $("<div\x20style=\x22display:inline-block;position:relative;\x22\x20/>"),
           _0x55302b = $("<div\x20style=\x22display:inline-block;position:relative;\x22\x20/>");
@@ -911,48 +921,48 @@
         if (
           !getId("li-del-rev-btn") &&
           !_0x4c54c4 &&
-          selectedFeatures[0x0].attributes[getString(0x23a)]._wmeObject["getRevLanes"]()[getString(0x316)] > 0x0
+          selectedFeatures[0x0].attributes.wazeFeature._wmeObject.getRevLanes().laneCount > 0x0
         ) {
-          if ($(getString(0x454)).length > 0x0)
-            _0x52daad[getString(0x3ab)](getString(0x454)),
-              $(getString(0x454)).css(getString(0x464), getString(0x42e) + LtSettings[getString(0x344)]);
+          if ($(constantStrings.revLanesInstructions).length > 0x0)
+            _0x52daad.prependTo(constantStrings.revLanesInstructions),
+              $(constantStrings.revLanesInstructions).css("border-bottom", "4px dashed " + LtSettings.BAColor);
           else
-            selectedFeatures[0x0].attributes[getString(0x23a)]._wmeObject.attributes[getString(0x223)] != true &&
-              (_0x336aa4[getString(0x36f)]("title", "rev"), _0x336aa4[getString(0x3ab)](getString(0x3fc)));
-        } else $(getString(0x454)).css(getString(0x464), "4px\x20dashed\x20" + LtSettings[getString(0x344)]);
+            selectedFeatures[0x0].attributes.wazeFeature._wmeObject.attributes.revDirection != true &&
+              (_0x336aa4.prop("title", "rev"), _0x336aa4.prependTo(constantStrings.editPanelCSS));
+        } else $(constantStrings.revLanesInstructions).css("border-bottom", "4px\x20dashed\x20" + LtSettings.BAColor);
         if (
-          !getId(getString(0x210)) &&
+          !getId("li-del-fwd-btn") &&
           !_0xc1406f &&
-          selectedFeatures[0x0].attributes[getString(0x23a)]._wmeObject["getFwdLanes"]()[getString(0x316)] > 0x0
+          selectedFeatures[0x0].attributes.wazeFeature._wmeObject.getFwdLanes().laneCount > 0x0
         ) {
-          if ($(getString(0x391)).length > 0x0)
-            _0x52f96d[getString(0x3ab)](getString(0x391)),
-              $(getString(0x391)).css("border-bottom", getString(0x42e) + LtSettings["ABColor"]);
+          if ($(constantStrings.fwdLanesDivInstructionCSS).length > 0x0)
+            _0x52f96d.prependTo(constantStrings.fwdLanesDivInstructionCSS),
+              $(constantStrings.fwdLanesDivInstructionCSS).css("border-bottom", "4px dashed " + LtSettings.ABColor);
           else
-            selectedFeatures[0x0].attributes[getString(0x23a)]._wmeObject.attributes[getString(0x2f9)] != true &&
-              (_0x336aa4[getString(0x36f)](getString(0x3f7), getString(0x374)),
-              _0x336aa4[getString(0x3ab)](getString(0x3fc)));
+            selectedFeatures[0x0].attributes.wazeFeature._wmeObject.attributes.fwdDirection != true &&
+              (_0x336aa4.prop("title", "fwd"), _0x336aa4.prependTo(constantStrings.editPanelCSS));
         } else
-          $(
-            ".fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-from\x20>\x20div.instruction"
-          ).css(getString(0x464), "4px\x20dashed\x20" + LtSettings[getString(0x20c)]);
+          $(constantStrings.fwdLanesInstructions).css(
+            "border-bottom",
+            "4px\x20dashed\x20" + LtSettings.ABColor
+          );
         $("#li-del-fwd-btn").click(function () {
-          delLanes(getString(0x374)),
+          delLanes("fwd"),
             (_0xc1406f = true),
             setTimeout(function () {
               _0x5a28b7();
             }, 0xc8);
         }),
-          $(getString(0x445)).click(function () {
+          $("#li-del-rev-btn").click(function () {
             delLanes("rev"),
               (_0x4c54c4 = true),
               setTimeout(function () {
                 _0x5a28b7();
               }, 0xc8);
           }),
-          $(getString(0x343)).click(function () {
-            let _0x535f00 = $(this)[getString(0x36f)](getString(0x3f7));
-            delLanes(_0x535f00), _0x535f00 === getString(0x3f5) ? (_0x4c54c4 = true) : (_0xc1406f = true), _0x5a28b7();
+          $("#li-del-opp-btn").click(function () {
+            let _0x535f00 = $(this).prop("title");
+            delLanes(_0x535f00), _0x535f00 === "rev" ? (_0x4c54c4 = true) : (_0xc1406f = true), _0x5a28b7();
           });
       }
       const _0x36d323 = $(getString(0x301));
@@ -960,13 +970,13 @@
         _0x36d323.click(function () {
           $(this)["parents"](".fwd-lanes").length &&
             setTimeout(function () {
-              _0x16065d(getString(0x374)), _0x414f9a(), _0x816cf7(), _0x3e0f42(), _0x1a7fee();
-              if (getId("lt-AddTIO").checked) addTIOUI(getString(0x374));
+              _0x16065d("fwd"), _0x414f9a(), _0x816cf7(), _0x3e0f42(), _0x1a7fee();
+              if (getId("lt-AddTIO").checked) addTIOUI("fwd");
             }, 0x64),
             $(this)[getString(0x219)](getString(0x2ef)).length &&
               setTimeout(function () {
-                _0x16065d(getString(0x3f5)), _0x414f9a(), _0x816cf7(), _0x3e0f42(), _0x1a7fee();
-                if (getId("lt-AddTIO").checked) addTIOUI(getString(0x3f5));
+                _0x16065d("rev"), _0x414f9a(), _0x816cf7(), _0x3e0f42(), _0x1a7fee();
+                if (getId("lt-AddTIO").checked) addTIOUI("rev");
               }, 0x64);
         }),
         !_0xc1406f && !_0x4c54c4 && _0x2308e1(),
@@ -976,25 +986,25 @@
       $(".apply-button.waze-btn.waze-btn-blue").off(), $(getString(0x246)).off();
       const _0x5ee852 = $(getString(0x351)),
         _0x3df49c = $(getString(0x2ef));
-      _0x5ee852[getString(0x46c)](getString(0x1df)).click(() => {
+      _0x5ee852.find(getString(0x1df)).click(() => {
         (_0xc1406f = true),
           setTimeout(function () {
             _0x5a28b7();
           }, 0xc8);
       }),
-        _0x3df49c[getString(0x46c)](getString(0x1df)).click(() => {
+        _0x3df49c.find(getString(0x1df)).click(() => {
           (_0x4c54c4 = true),
             setTimeout(function () {
               _0x5a28b7();
             }, 0xc8);
         }),
-        _0x5ee852[getString(0x46c)](".cancel-button").click(() => {
+        _0x5ee852.find(".cancel-button").click(() => {
           (_0xc1406f = true),
             setTimeout(function () {
               _0x5a28b7();
             }, 0xc8);
         }),
-        _0x3df49c[getString(0x46c)](getString(0x246)).click(() => {
+        _0x3df49c.find(getString(0x246)).click(() => {
           (_0x4c54c4 = true),
             setTimeout(function () {
               _0x5a28b7();
@@ -1009,8 +1019,8 @@
         }
       }
       getId(getString(0x215)).checked &&
-        (!_0xc1406f && $(getString(0x351))[getString(0x46c)](getString(0x329)).click(),
-        !_0x4c54c4 && $(getString(0x2ef))[getString(0x46c)](getString(0x329)).click());
+        (!_0xc1406f && $(getString(0x351)).find(getString(0x329)).click(),
+        !_0x4c54c4 && $(getString(0x2ef)).find(getString(0x329)).click());
     }
     function _0x816cf7() {
       $(getString(0x39e)).css({
@@ -1030,7 +1040,7 @@
     }
     function _0x414f9a() {
       if (
-        $(getString(0x351))[getString(0x46c)](getString(0x37a))[getString(0x268)]().length > 0x0 &&
+        $(getString(0x351)).find(getString(0x37a))[getString(0x268)]().length > 0x0 &&
         !getId(getString(0x2e8))
       ) {
         let _0x2b94d9 = $(getString(0x221)),
@@ -1053,7 +1063,7 @@
           _0x5490f0.appendTo(getString(0x1dd));
       }
       if (
-        $(getString(0x2ef))[getString(0x46c)](getString(0x37a))[getString(0x268)]().length > 0x0 &&
+        $(getString(0x2ef)).find(getString(0x37a))[getString(0x268)]().length > 0x0 &&
         !getId(getString(0x242))
       ) {
         let _0x57f36f = $(getString(0x2c7)),
@@ -1080,19 +1090,19 @@
         _0xa2f2b3 = Number.parseInt(_0xa2f2b3, 0xa);
         if ($(this)[getString(0x2bf)](getString(0x347))) {
           const _0x11380e = $(getString(0x351));
-          _0x11380e[getString(0x46c)](getString(0x436))["val"](_0xa2f2b3),
-            _0x11380e[getString(0x46c)](getString(0x436))["change"](),
-            _0x11380e[getString(0x46c)](getString(0x436)).focus();
+          _0x11380e.find(".form-control")["val"](_0xa2f2b3),
+            _0x11380e.find(".form-control")["change"](),
+            _0x11380e.find(".form-control").focus();
         }
         if ($(this)[getString(0x2bf)](getString(0x431))) {
           const _0x4d157 = $(getString(0x2ef));
-          _0x4d157[getString(0x46c)](getString(0x436))["val"](_0xa2f2b3),
-            _0x4d157.find(getString(0x436))["change"](),
-            _0x4d157[getString(0x46c)](getString(0x436)).focus();
+          _0x4d157.find(".form-control")["val"](_0xa2f2b3),
+            _0x4d157.find(".form-control")["change"](),
+            _0x4d157.find(".form-control").focus();
         }
       });
       if (
-        $(getString(0x351))[getString(0x46c)](getString(0x2ea))[getString(0x268)]().length > 0x0 &&
+        $(getString(0x351)).find(getString(0x2ea))[getString(0x268)]().length > 0x0 &&
         !getId(getString(0x453))
       ) {
         let _0x3bd717 = $("<div\x20class=\x22lt-add-Width\x20fwd\x22>1</div>"),
@@ -1115,7 +1125,7 @@
           _0x40723d["prependTo"](getString(0x310));
       }
       if (
-        $(getString(0x2ef))[getString(0x46c)](".lane-width-card")["children"]().length > 0x0 &&
+        $(getString(0x2ef)).find(".lane-width-card")["children"]().length > 0x0 &&
         !getId(getString(0x420))
       ) {
         let _0x358be5 = $("<div\x20class=\x22lt-add-Width\x20rev\x22>1</div>"),
@@ -1135,7 +1145,7 @@
           _0x456698.appendTo(_0x21fcce),
           _0x47b449.appendTo(_0x21fcce),
           _0x5ab690.appendTo(_0x21fcce),
-          _0x21fcce[getString(0x3ab)](getString(0x1fe));
+          _0x21fcce.prependTo(getString(0x1fe));
       }
       $(".lt-add-Width").click(function () {
         let _0xc7a72 = $(this)[getString(0x278)]();
@@ -1144,12 +1154,12 @@
           const _0x5b51d6 = $(getString(0x351));
           _0x5b51d6.find(getString(0x31a))[getString(0x432)](_0xc7a72),
             _0x5b51d6.find(getString(0x31a))["change"](),
-            _0x5b51d6[getString(0x46c)](getString(0x31a))[getString(0x3d0)]();
+            _0x5b51d6.find(getString(0x31a))[getString(0x3d0)]();
         }
         if ($(this)[getString(0x2bf)](getString(0x2aa))) {
           const _0xeed673 = $(".rev-lanes");
-          _0xeed673[getString(0x46c)](getString(0x31a))[getString(0x432)](_0xc7a72),
-            _0xeed673[getString(0x46c)](getString(0x31a))[getString(0x247)](),
+          _0xeed673.find(getString(0x31a))[getString(0x432)](_0xc7a72),
+            _0xeed673.find(getString(0x31a)).change(),
             _0xeed673.find("#number-of-lanes").focus();
         }
       });
@@ -1158,10 +1168,10 @@
       if (getId("lt-AutoFocusLanes").checked) {
         const _0x3797e1 = $(getString(0x351)),
           _0x36859d = $(getString(0x2ef));
-        if (_0x3797e1[getString(0x46c)](getString(0x39f))[getString(0x268)]().length > 0x0 && !_0xc1406f)
-          _0x3797e1[getString(0x46c)](getString(0x436))[getString(0x3d0)]();
+        if (_0x3797e1.find(getString(0x39f))[getString(0x268)]().length > 0x0 && !_0xc1406f)
+          _0x3797e1.find(".form-control")[getString(0x3d0)]();
         else
-          _0x36859d[getString(0x46c)](getString(0x39f))["children"]().length > 0x0 &&
+          _0x36859d.find(getString(0x39f))["children"]().length > 0x0 &&
             !_0x4c54c4 &&
             _0x36859d.find(".form-control")[getString(0x3d0)]();
       }
@@ -1170,17 +1180,17 @@
       if (getId(getString(0x243)).checked) {
         $(getString(0x355)).css(getString(0x397), getString(0x460));
         let _0x430051 =
-            _0x3bf55f === getString(0x374)
-              ? $(".fwd-lanes")[getString(0x46c)](getString(0x436))[0x0]
-              : $(getString(0x2ef))[getString(0x46c)](".form-control")[0x0],
+            _0x3bf55f === "fwd"
+              ? $(".fwd-lanes").find(".form-control")[0x0]
+              : $(getString(0x2ef)).find(".form-control")[0x0],
           _0x36b726 = $(_0x430051)[getString(0x432)]();
-        $(_0x430051)[getString(0x247)](function () {
+        $(_0x430051).change(function () {
           let _0x2588e2;
           if ($(this)[getString(0x219)](".fwd-lanes").length)
-            _0x2588e2 = $(".fwd-lanes")[getString(0x46c)](getString(0x2d9));
+            _0x2588e2 = $(".fwd-lanes").find(getString(0x2d9));
           else
             $(this)["parents"](getString(0x2ef)).length &&
-              (_0x2588e2 = $(getString(0x2ef))[getString(0x46c)](".controls-container.turns-region"));
+              (_0x2588e2 = $(getString(0x2ef)).find(".controls-container.turns-region"));
           _0x2588e2 = $(".street-name", _0x2588e2);
           for (let _0x542cc8 = 0x0; _0x542cc8 < _0x2588e2.length; _0x542cc8++) {
             $(_0x2588e2[_0x542cc8]).off(),
@@ -1191,28 +1201,28 @@
                 const _0x3412ed = !getId(_0xe979f1[0x0].id).checked;
                 for (let _0x5682a8 = 0x0; _0x5682a8 < _0xe979f1.length; _0x5682a8++) {
                   const _0x179ec = $("#" + _0xe979f1[_0x5682a8].id);
-                  _0x179ec[getString(0x36f)]("checked", _0x3412ed), _0x179ec[getString(0x247)]();
+                  _0x179ec.prop("checked", _0x3412ed), _0x179ec.change();
                 }
               });
           }
         }),
-          _0x36b726 > 0x0 && $(_0x430051)[getString(0x247)]();
+          _0x36b726 > 0x0 && $(_0x430051).change();
       }
     }
     function _0x50c216() {
-      const _0x1765ca = selectedFeatures[0x0].attributes[getString(0x23a)]._wmeObject,
+      const _0x1765ca = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
         _0x25cb3c = getNodeObj(_0x1765ca.attributes.toNodeID),
         _0x41ae3f = getNodeObj(_0x1765ca.attributes.fromNodeID);
       let _0x54880b = checkLanesConfiguration(
           _0x1765ca,
           _0x25cb3c,
-          _0x25cb3c.attributes[getString(0x3a6)],
-          _0x1765ca.attributes[getString(0x334)]
+          _0x25cb3c.attributes.segIDs,
+          _0x1765ca.attributes.fwdLaneCount
         ),
         _0x21c6d0 = checkLanesConfiguration(
           _0x1765ca,
           _0x41ae3f,
-          _0x41ae3f.attributes[getString(0x3a6)],
+          _0x41ae3f.attributes.segIDs,
           _0x1765ca.attributes.revLaneCount
         );
       if (_0x54880b[0x4] > 0x0) {
@@ -1221,8 +1231,7 @@
             "#segment-edit-lanes\x20>\x20div\x20>\x20div\x20>\x20div.fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.lane-arrows\x20>\x20div"
           )["children"]();
         for (i = 0x0; i < _0x1d2fa0.length; i++) {
-          _0x1d2fa0[i][getString(0x3f7)] == _0x54880b[0x5] &&
-            $(_0x1d2fa0[i]).css(getString(0x234), _0x59815e);
+          _0x1d2fa0[i]["title"] == _0x54880b[0x5] && $(_0x1d2fa0[i]).css(getString(0x234), _0x59815e);
         }
       }
       if (_0x21c6d0[0x4] > 0x0) {
@@ -1973,10 +1982,7 @@
   function displayToolbar() {
     const _0x4afd09 = W.selectionManager["getSelectedFeatures"]();
     if (_0x4afd09.length === 0x1 && getId(getString(0x262)).checked && getId("lt-ScriptEnabled").checked) {
-      if (
-        _0x4afd09[0x0].attributes[getString(0x23a)]["_wmeObject"][getString(0x478)][getString(0x467)]() ===
-        getString(0x1f7)
-      ) {
+      if (_0x4afd09[0x0].attributes.wazeFeature._wmeObject[getString(0x478)][getString(0x467)]() === getString(0x1f7)) {
         const _0x5df401 = $("#map");
         $("#lt-toolbar-container").css({
           display: getString(0x314),
@@ -2033,27 +2039,27 @@
     let _0x3f6f3a,
       _0x4297f0,
       _0x357841 = {};
-    _0x27ef3b[getString(0x3ba)](W.model);
-    if (_0x8ffe09 === getString(0x374)) {
-      (_0x357841[getString(0x334)] = 0x0),
+    _0x27ef3b.setModel(W.model);
+    if (_0x8ffe09 === "fwd") {
+      (_0x357841.fwdLaneCount = 0x0),
         (_0x3f6f3a = getNodeObj(_0xcf7dc7.attributes.toNodeID)),
         (_0x4297f0 = _0x3f6f3a["getSegmentIds"]());
       const _0xfa6629 = $(getString(0x351));
-      _0xfa6629[getString(0x46c)](getString(0x436))["val"](0x0),
-        _0xfa6629[getString(0x46c)](getString(0x436))[getString(0x247)]();
+      _0xfa6629.find(".form-control")["val"](0x0),
+        _0xfa6629.find(".form-control").change();
     }
-    if (_0x8ffe09 === getString(0x3f5)) {
+    if (_0x8ffe09 === "rev") {
       (_0x357841.revLaneCount = 0x0),
         (_0x3f6f3a = getNodeObj(_0xcf7dc7.attributes.fromNodeID)),
         (_0x4297f0 = _0x3f6f3a[getString(0x26a)]());
       const _0x5c7972 = $(getString(0x2ef));
-      _0x5c7972[getString(0x46c)](getString(0x436))[getString(0x432)](0x0),
-        _0x5c7972[getString(0x46c)](getString(0x436))["change"]();
+      _0x5c7972.find(".form-control")[getString(0x432)](0x0),
+        _0x5c7972.find(".form-control")["change"]();
     }
     _0x27ef3b[getString(0x222)](new UpdateObj(_0xcf7dc7, _0x357841));
     for (let _0x5c55d3 = 0x0; _0x5c55d3 < _0x4297f0.length; _0x5c55d3++) {
       let _0x58ea8c = _0x4c55fb[getString(0x37e)](_0x3f6f3a, _0xcf7dc7, getSegObj(_0x4297f0[_0x5c55d3])),
-        _0x5c9c0e = _0x58ea8c[getString(0x254)]();
+        _0x5c9c0e = _0x58ea8c.getTurnData();
       _0x5c9c0e["hasLanes"]() &&
         ((_0x5c9c0e = _0x5c9c0e[getString(0x2fa)]()),
         (_0x58ea8c = _0x58ea8c[getString(0x363)](_0x5c9c0e)),
@@ -2105,12 +2111,12 @@
         _0x3a7f64 = _0x114781 % 0x2 ? Math[getString(0x24c)](_0x17a8e9) + 0x1 : Math["floor"](_0x17a8e9);
       if (_0x58d6bd === Direction[getString(0x2df)]) {
         let _0x21e1e8 = _0x1c40ca(_0x1d1809, _0x5479ec, _0x114781);
-        _0x5f4375 && _0x58a03b(_0x21e1e8, "" + LtSettings[getString(0x20c)], _0x3c685d[getString(0x452)]),
+        _0x5f4375 && _0x58a03b(_0x21e1e8, "" + LtSettings.ABColor, _0x3c685d[getString(0x452)]),
           _0x43deae(_0x21e1e8, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
       } else {
         if (_0x58d6bd === Direction[getString(0x3f6)]) {
           let _0x3e6b6f = _0x1c40ca(_0x1d1809, 0x0, _0x3a7f64);
-          _0x5f4375 && _0x58a03b(_0x3e6b6f, "" + LtSettings[getString(0x344)], _0x3c685d[getString(0x452)]),
+          _0x5f4375 && _0x58a03b(_0x3e6b6f, "" + LtSettings.BAColor, _0x3c685d[getString(0x452)]),
             _0x43deae(_0x3e6b6f, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
         }
       }
@@ -2139,7 +2145,7 @@
             _0x1d1809.components[0x1][getString(0x34c)]()["y"]
           ),
           _0x13e81d = new OpenLayers[getString(0x330)]["LineString"]([_0xa8356b, _0x196538], {});
-        _0x5f4375 && _0x58a03b(_0x13e81d, "" + LtSettings["ABColor"], _0x3c685d[getString(0x452)]),
+        _0x5f4375 && _0x58a03b(_0x13e81d, "" + LtSettings.ABColor, _0x3c685d[getString(0x452)]),
           _0x43deae(_0x13e81d, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
       } else {
         if (_0x58d6bd === Direction[getString(0x3f6)]) {
@@ -2256,9 +2262,7 @@
     removeHighlights();
     if (_0x34df05 < DisplayLevels[getString(0x2dc)]) return;
     if (_0x10e51f || (!_0x10e51f && !_0x1e077f)) {
-      _0x122a27 &&
-        (_0x583759 || _0x59b8dd) &&
-        scanSegments(W.model.segments.getObjectArray(), false);
+      _0x122a27 && (_0x583759 || _0x59b8dd) && scanSegments(W.model.segments.getObjectArray(), false);
       if (_0x122a27) {
         const _0xc4f257 = W.selectionManager["getSelectedFeatures"]();
         _0xc4f257.length === 0x2 && scanHeuristicsCandidates(_0xc4f257);
@@ -2271,9 +2275,9 @@
     return (
       _[getString(0x3e2)](_0x482def, (_0x249a9b) => {
         _0x249a9b &&
-          _0x249a9b.attributes[getString(0x23a)]._wmeObject &&
-          _0x249a9b.attributes[getString(0x23a)]._wmeObject["type"] === getString(0x1f7) &&
-          (_0x232b3f = _0x4174e4[getString(0x3c0)](_0x249a9b.attributes[getString(0x23a)]._wmeObject));
+          _0x249a9b.attributes.wazeFeature._wmeObject &&
+          _0x249a9b.attributes.wazeFeature._wmeObject["type"] === getString(0x1f7) &&
+          (_0x232b3f = _0x4174e4[getString(0x3c0)](_0x249a9b.attributes.wazeFeature._wmeObject));
       }),
       scanSegments(_0x4174e4, true),
       _0x232b3f
@@ -2295,10 +2299,7 @@
           _0x1ca2eb = lt_segment_length(_0x4e91a0);
         _0x1b6f52 = _0x1b6f52 || _0x2ad725(_0x4e91a0, _0x3598ea, Direction[getString(0x2df)], _0x1ca2eb, _0x1b6f52);
         if (_0x1b6f52 && lt_scanArea_recursive > 0x0) {
-          lt_log(getString(0x2b7), 0x2),
-            removeHighlights(),
-            lt_scanArea_recursive--,
-            lt_scanArea_timer.start();
+          lt_log(getString(0x2b7), 0x2), removeHighlights(), lt_scanArea_recursive--, lt_scanArea_timer.start();
           return;
         }
         _0x1b6f52 = _0x1b6f52 || _0x2ad725(_0x4e91a0, _0x3598ea, Direction[getString(0x3f6)], _0x1ca2eb, _0x1b6f52);
@@ -2309,7 +2310,7 @@
       }
     });
     function _0x2ad725(_0x6f84fd, _0x37e1f7, _0x17336c, _0x37b92d, _0x402e4b) {
-      const _0x162a18 = _0x37e1f7[getString(0x334)],
+      const _0x162a18 = _0x37e1f7.fwdLaneCount,
         _0x310dc4 = _0x37e1f7.revLaneCount;
       let _0x405af6 = getNodeObj(_0x37e1f7.toNodeID),
         _0x3f1bfc = getNodeObj(_0x37e1f7["fromNodeID"]),
@@ -2435,7 +2436,7 @@
       _0xd63ac8 = W[getString(0x423)][getString(0x3f3)]() != null ? W[getString(0x423)]["getZoom"]() : 0x10;
     for (let _0xe3883a = 0x0; _0xe3883a < _0x1d0a74.length; _0xe3883a++) {
       const _0x124a73 = getSegObj(_0x1d0a74[_0xe3883a]),
-        _0x3f357d = _0x36da8a[getString(0x37e)](_0x42e6cf, _0x57e44b, _0x124a73)[getString(0x254)]();
+        _0x3f357d = _0x36da8a[getString(0x37e)](_0x42e6cf, _0x57e44b, _0x124a73).getTurnData();
       if (_0x3f357d[getString(0x3a5)] === 0x1) {
         _0x3f357d["hasInstructionOpcode"]() && (_0x55ea18 = true);
         if (_0x3f357d["hasLanes"]()) {
@@ -2443,17 +2444,15 @@
           _0x3f357d[getString(0x2b5)]()[getString(0x307)]() && (_0x161259 = true);
           if (_0x3f357d[getString(0x2b5)]()[getString(0x201)]() === 0x1)
             (_0x5c5507 = 0x1),
-              (_0x4211dc = W.model["streets"].getObjectById(
-                _0x124a73.attributes[getString(0x230)]
-              ).name);
+              (_0x4211dc = W.model["streets"].getObjectById(_0x124a73.attributes[getString(0x230)]).name);
           else
             _0x3f357d[getString(0x2b5)]()["getGuidanceMode"]() === 0x2 &&
               ((_0x5c5507 = 0x2),
-              (_0x4211dc = W.model[getString(0x319)].getObjectById(
-                _0x124a73.attributes[getString(0x230)]
-              )[getString(0x412)]));
-          const _0x21fbe6 = _0x3f357d[getString(0x3f9)][getString(0x2da)],
-            _0x40bbd8 = _0x3f357d[getString(0x3f9)][getString(0x206)];
+              (_0x4211dc = W.model[getString(0x319)].getObjectById(_0x124a73.attributes[getString(0x230)])[
+                getString(0x412)
+              ]));
+          const _0x21fbe6 = _0x3f357d.lanes.fromLaneIndex,
+            _0x40bbd8 = _0x3f357d.lanes.toLaneIndex;
           for (let _0x382bd8 = _0x21fbe6; _0x382bd8 < _0x40bbd8 + 0x1; _0x382bd8++) {
             let _0x18e06a = true;
             for (let _0x774514 = 0x0; _0x774514 < _0x44a7d8.length; _0x774514++) {
@@ -2532,8 +2531,7 @@
               else {
                 if (_0x17365b === _0x58c806.length - 0x1 && (getId(getString(0x36b)).checked || _0x43ae0b === false))
                   _0x58c806[_0x17365b].click();
-                else
-                  _0x17365b !== 0x0 && _0x17365b !== _0x58c806.length - 0x1 && _0x58c806[_0x17365b].click();
+                else _0x17365b !== 0x0 && _0x17365b !== _0x58c806.length - 0x1 && _0x58c806[_0x17365b].click();
               }
             }
           }
@@ -2544,8 +2542,7 @@
     let _0x324acf = new MutationObserver((_0x23b79c) => {
       if (
         W.selectionManager["getSelectedFeatures"]()[0x0] &&
-        W.selectionManager.getSelectedFeatures()[0x0].attributes[getString(0x23a)]._wmeObject["type"] ===
-          getString(0x1f7) &&
+        W.selectionManager.getSelectedFeatures()[0x0].attributes.wazeFeature._wmeObject["type"] === getString(0x1f7) &&
         getId("lt-ScriptEnabled").checked
       ) {
         let _0x21e4b9 = document[getString(0x2fd)](getString(0x316));
@@ -2646,15 +2643,15 @@
         lt_log(getString(0x3ae) + _0x4ef283, 0x2), (_0x3d1be6 = HeuristicsCandidate[getString(0x448)]);
       }
       const _0x4c0fc6 = _0x5aa7bb[getString(0x37e)](_0x1aa31e, _0x71a39c, _0x2bb3f1),
-        _0x264c0a = _0x4c0fc6[getString(0x254)]();
-      if (_0x264c0a[getString(0x3a5)] !== 0x1 || !_0x264c0a[getString(0x373)]()) {
+        _0x264c0a = _0x4c0fc6.getTurnData();
+      if (_0x264c0a[getString(0x3a5)] !== 0x1 || !_0x264c0a.hasLanes()) {
         lt_log(getString(0x3e4) + _0x31cf01[_0x44e325] + "\x20to\x20" + _0x453456, 0x3);
         continue;
       }
-      let _0x3354a1 = _0x264c0a[getString(0x3f9)]["toLaneIndex"] - _0x264c0a[getString(0x3f9)][getString(0x2da)] + 0x1;
+      let _0x3354a1 = _0x264c0a.lanes.toLaneIndex - _0x264c0a.lanes.fromLaneIndex + 0x1;
       _0x3354a1 !== _0x20557a &&
         !(_0x20557a === 0x0 && _0x3354a1 === 0x1) &&
-        (lt_log(getString(0x40d), 0x2), (_0x3d1be6 = HeuristicsCandidate[getString(0x3f0)]));
+        (lt_log("Straight\x20turn\x20lane\x20count\x20does\x20not\x20match", 0x2), (_0x3d1be6 = HeuristicsCandidate.ERROR));
       if (_0x4777ff !== null && _0x3d1be6 >= _0x4e91d5) {
         if (_0x4e91d5 === 0x0 && _0x3d1be6 === 0x0)
           return (
@@ -2681,11 +2678,7 @@
           _0x4c0fc6[getString(0x2f7)]["direction"] === "fwd" ? Direction[getString(0x2df)] : Direction["REVERSE"]);
     }
     if (_0x4777ff == null) return lt_log(getString(0x32e), 0x2), 0x0;
-    else
-      lt_log(
-        getString(0x35f) + _0x4777ff.attributes.id + "\x20" + (_0x4e91d5 === 0x0 ? "" : getString(0x3a3)),
-        0x2
-      );
+    else lt_log(getString(0x35f) + _0x4777ff.attributes.id + "\x20" + (_0x4e91d5 === 0x0 ? "" : getString(0x3a3)), 0x2);
     for (let _0x17c1e7 = 0x0; _0x17c1e7 < _0xac0e82.length; _0x17c1e7++) {
       let _0x10d7bb = 0x0;
       if (_0xac0e82[_0x17c1e7] === _0x453456) continue;
@@ -2732,10 +2725,7 @@
     if (_0x1859f0 == null) return lt_log(getString(0x3ec), 0x2), 0x0;
     else
       lt_log(
-        "Found\x20outseg2\x20candidate:\x20" +
-          _0x1859f0.attributes.id +
-          "\x20" +
-          (_0x96949d === 0x0 ? "" : "(failed)"),
+        "Found\x20outseg2\x20candidate:\x20" + _0x1859f0.attributes.id + "\x20" + (_0x96949d === 0x0 ? "" : "(failed)"),
         0x2
       );
     for (let _0x219be8 = 0x0; _0x219be8 < _0x31cf01.length; _0x219be8++) {
@@ -2743,10 +2733,8 @@
       const _0x1b9808 = getSegObj(_0x31cf01[_0x219be8]);
       let _0x3edc74 = 0x0;
       if (
-        (_0x1b9808.attributes[getString(0x2f9)] &&
-          _0x1b9808.attributes.toNodeID !== _0x1aa31e.attributes.id) ||
-        (_0x1b9808.attributes[getString(0x223)] &&
-          _0x1b9808.attributes["fromNodeID"] !== _0x1aa31e.attributes.id)
+        (_0x1b9808.attributes.fwdDirection && _0x1b9808.attributes.toNodeID !== _0x1aa31e.attributes.id) ||
+        (_0x1b9808.attributes.revDirection && _0x1b9808.attributes["fromNodeID"] !== _0x1aa31e.attributes.id)
       )
         continue;
       let _0x46ff80 = _0x43a6d2(_0x1aa31e.attributes.id, _0x1b9808),
@@ -2779,11 +2767,7 @@
       (_0x4fd61c = _0x1b9808), (_0x1c6b60 = _0x46ff80), (_0x5063e3 = _0x3edc74);
     }
     if (_0x4fd61c == null) return lt_log(getString(0x3ce), 0x2), 0x0;
-    else
-      lt_log(
-        getString(0x2c9) + _0x4fd61c.attributes.id + "\x20" + (_0x5063e3 === 0x0 ? "" : getString(0x3a3)),
-        0x2
-      );
+    else lt_log(getString(0x2c9) + _0x4fd61c.attributes.id + "\x20" + (_0x5063e3 === 0x0 ? "" : getString(0x3a3)), 0x2);
     if (_0x4e91d5 < 0x0 || _0x5063e3 < 0x0 || _0x96949d < 0x0)
       return (
         lt_log(getString(0x3e5) + _0x453456 + "\x20(\x20" + Math["min"](_0x4e91d5, _0x5063e3, _0x96949d) + ")", 0x2),
@@ -2793,10 +2777,7 @@
           ? HeuristicsCandidate["FAIL"]
           : HeuristicsCandidate["ERROR"]
       );
-    lt_log(
-      getString(0x39a) + _0x453456 + "\x20to\x20" + _0x1859f0.attributes.id + getString(0x3f2) + _0x4f9be7,
-      0x2
-    );
+    lt_log(getString(0x39a) + _0x453456 + "\x20to\x20" + _0x1859f0.attributes.id + getString(0x3f2) + _0x4f9be7, 0x2);
     return 0x1;
     function _0xca5734(_0x15149a, _0x25a1f9) {
       if (_0x15149a == null || _0x25a1f9 == null) return null;
@@ -2821,10 +2802,7 @@
         _0x228ce5 = _0x39f1a3 + 0xb4;
       return (
         _0x228ce5 >= 0xb4 && (_0x228ce5 -= 0x168),
-        lt_log(
-          getString(0x407) + _0x293709 + getString(0x3b1) + _0x3901cd.attributes.id + ":\x20" + _0x228ce5,
-          0x3
-        ),
+        lt_log(getString(0x407) + _0x293709 + getString(0x3b1) + _0x3901cd.attributes.id + ":\x20" + _0x228ce5, 0x3),
         _0x228ce5
       );
     }
@@ -2892,12 +2870,11 @@
   function copyLaneInfo(_0x4f9c8b) {
     _turnInfo = [];
     const _0x25945e = W.selectionManager.getSelectedFeatures(),
-      _0x1ba7a9 = _0x25945e[0x0].attributes[getString(0x23a)]._wmeObject,
+      _0x1ba7a9 = _0x25945e[0x0].attributes.wazeFeature._wmeObject,
       _0x4bfbf5 = _0x1ba7a9["getFeatureAttributes"](),
       _0x1a41f6 = _0x1ba7a9.geometry["components"],
       _0x12a54d = _0x4f9c8b === "A" ? _0x4bfbf5.fromNodeID : _0x4bfbf5.toNodeID;
-    (laneCount = _0x4f9c8b === "A" ? _0x4bfbf5.revLaneCount : _0x4bfbf5[getString(0x334)]),
-      console.log(laneCount);
+    (laneCount = _0x4f9c8b === "A" ? _0x4bfbf5.revLaneCount : _0x4bfbf5.fwdLaneCount), console.log(laneCount);
     const _0x41cbb8 = getNodeObj(_0x12a54d),
       _0x24af2d = _0x41cbb8[getString(0x26a)](),
       _0x29bdcc = W.model.getTurnGraph();
@@ -2909,12 +2886,12 @@
       _0x1b508f = ((_0x25f24a * 0xb4) / Math["PI"]) % 0x168;
     for (let _0x578df3 = 0x0; _0x578df3 < _0x24af2d.length; _0x578df3++) {
       const _0x53ad06 = getSegObj(_0x24af2d[_0x578df3]);
-      let _0x56f831 = _0x53ad06[getString(0x1f5)](),
+      let _0x56f831 = _0x53ad06.getFeatureAttributes(),
         _0x1830fe = _0x53ad06.geometry.components,
         _0x165d3c,
         _0x5767e7,
-        _0x207537 = _0x29bdcc[getString(0x37e)](_0x41cbb8, _0x1ba7a9, _0x53ad06)[getString(0x254)]();
-      if (_0x207537[getString(0x3a5)] === 0x1 && _0x207537[getString(0x3f9)]) {
+        _0x207537 = _0x29bdcc[getString(0x37e)](_0x41cbb8, _0x1ba7a9, _0x53ad06).getTurnData();
+      if (_0x207537[getString(0x3a5)] === 0x1 && _0x207537.lanes) {
         _0x56f831.fromNodeID === _0x12a54d ? (_0x5767e7 = "A") : (_0x5767e7 = "B");
         _0x5767e7 === "A" ? (_0x165d3c = _0x1830fe[0x1]) : (_0x165d3c = _0x1830fe[_0x1830fe.length - 0x2]);
         (_0x17c96f = _0x165d3c["x"] - _0x41cbb8.geometry["x"]),
@@ -2926,7 +2903,7 @@
         let _0x2ca8fc = _0x207537[getString(0x2b5)]();
         (_turnData.id = _0x53ad06.attributes.id),
           (_turnData[getString(0x25b)] = _0x422251),
-          (_turnData[getString(0x3f9)] = _0x2ca8fc),
+          (_turnData.lanes = _0x2ca8fc),
           _turnInfo[getString(0x3c0)](_turnData);
       }
       _turnInfo["sort"]((_0x1252aa, _0x286486) => (_0x1252aa["order"] > _0x286486[getString(0x25b)] ? 0x1 : -0x1));
@@ -2935,11 +2912,11 @@
   }
   function pasteLaneInfo(_0x448ddd) {
     const _0x1e93ec = new MultiAction();
-    _0x1e93ec[getString(0x3ba)](W.model);
+    _0x1e93ec.setModel(W.model);
     const _0x3fc5ef = W.selectionManager.getSelectedFeatures(),
-      _0x4ccb0d = _0x3fc5ef[0x0].attributes[getString(0x23a)]._wmeObject,
+      _0x4ccb0d = _0x3fc5ef[0x0].attributes.wazeFeature._wmeObject,
       _0x53af53 = _0x4ccb0d.geometry.components,
-      _0x39e642 = _0x4ccb0d[getString(0x1f5)](),
+      _0x39e642 = _0x4ccb0d.getFeatureAttributes(),
       _0xdafc0a = _0x448ddd === "A" ? _0x39e642.fromNodeID : _0x39e642.toNodeID;
     let _0x1989c7;
     const _0x32336a = getNodeObj(_0xdafc0a),
@@ -2958,7 +2935,7 @@
         _0x3619b7 = _0x3831b2.geometry.components,
         _0x3374c6 = {},
         _0x52b37f,
-        _0x4fcd04 = _0x27b04e[getString(0x37e)](_0x32336a, _0x4ccb0d, _0x3831b2)[getString(0x254)]();
+        _0x4fcd04 = _0x27b04e[getString(0x37e)](_0x32336a, _0x4ccb0d, _0x3831b2).getTurnData();
       _0x5842af.fromNodeID === _0xdafc0a ? (_0x52b37f = "A") : (_0x52b37f = "B");
       _0x52b37f === "A" ? (_0x3374c6 = _0x3619b7[0x1]) : (_0x3374c6 = _0x3619b7[_0x3619b7.length - 0x2]);
       if (_0x4fcd04["state"] === 0x1) {
@@ -2988,7 +2965,7 @@
         }
         let _0x1d44a8 = getSegObj(_0x1b740b[_0x392af3].id),
           _0x4e30d7 = _0x27b04e[getString(0x37e)](_0x32336a, _0x4ccb0d, _0x1d44a8),
-          _0x469b71 = _0x4e30d7[getString(0x254)]();
+          _0x469b71 = _0x4e30d7.getTurnData();
         (_0x469b71 = _0x469b71["withLanes"](_0x1662da[_0x392af3]["lanes"])),
           (_0x4e30d7 = _0x4e30d7[getString(0x363)](_0x469b71)),
           _0x1e93ec["doSubAction"](new SetTurn(_0x27b04e, _0x4e30d7));
@@ -2996,7 +2973,11 @@
       (_0x1e93ec[getString(0x3e9)] = getString(0x288)),
         W.model["actionManager"][getString(0x455)](_0x1e93ec),
         $(".lanes-tab").click();
-    } else WazeWrap.Alerts.warning(GM_info.script.name, "There\x20are\x20a\x20different\x20number\x20of\x20enabled\x20turns\x20on\x20this\x20segment/node");
+    } else
+      WazeWrap.Alerts.warning(
+        GM_info.script.name,
+        "There\x20are\x20a\x20different\x20number\x20of\x20enabled\x20turns\x20on\x20this\x20segment/node"
+      );
   }
   function displayLaneGraphics() {
     removeLaneGraphics();
@@ -3005,17 +2986,17 @@
       !getId(getString(0x280)).checked ||
       !getId(getString(0x3b3)).checked ||
       _0x4559f2.length !== 0x1 ||
-      _0x4559f2[0x0].attributes[getString(0x23a)]["_wmeObject"][getString(0x478)] !== "segment"
+      _0x4559f2[0x0].attributes.wazeFeature._wmeObject[getString(0x478)] !== "segment"
     )
       return;
-    const _0x2d2ac0 = _0x4559f2[0x0].attributes[getString(0x23a)]._wmeObject,
+    const _0x2d2ac0 = _0x4559f2[0x0].attributes.wazeFeature._wmeObject,
       _0x512da9 = W[getString(0x423)][getString(0x2f2)]()[getString(0x3f3)]();
     if ((_0x2d2ac0.attributes[getString(0x42f)] !== (0x3 || 0x6 || 0x7) && _0x512da9 < 0x10) || _0x512da9 < 0xf) return;
     let _0x2d2a03 =
-        _0x2d2ac0.attributes[getString(0x334)] > 0x0
+        _0x2d2ac0.attributes.fwdLaneCount > 0x0
           ? _0x5694f9(
               $(".fwd-lanes")
-                [getString(0x46c)](getString(0x2d5))
+                .find(".lane-arrow")
                 [getString(0x423)](function () {
                   return this;
                 })
@@ -3026,7 +3007,7 @@
         _0x2d2ac0.attributes.revLaneCount > 0x0
           ? _0x5694f9(
               $(getString(0x2ef))
-                [getString(0x46c)](getString(0x2d5))
+                .find(".lane-arrow")
                 [getString(0x423)](function () {
                   return this;
                 })
@@ -3038,11 +3019,11 @@
       for (let _0xa51b27 = 0x0; _0xa51b27 < _0x3399d1.length; _0xa51b27++) {
         let _0x3ce23 = {};
         (_0x3ce23[getString(0x284)] =
-          $(_0x3399d1[_0xa51b27])[getString(0x46c)](".uturn").css(getString(0x36a)) !== "none"),
+          $(_0x3399d1[_0xa51b27]).find(".uturn").css(getString(0x36a)) !== "none"),
           (_0x3ce23[getString(0x235)] =
-            $(_0x3399d1[_0xa51b27])[getString(0x46c)](".small-uturn").css(getString(0x36a)) !== getString(0x460)),
+            $(_0x3399d1[_0xa51b27]).find(".small-uturn").css(getString(0x36a)) !== getString(0x460)),
           (_0x3ce23[getString(0x2b8)] = $(_0x3399d1[_0xa51b27])
-            [getString(0x46c)](getString(0x2b8))
+            .find(getString(0x2b8))
             [getString(0x423)](function () {
               return this;
             })
@@ -3069,8 +3050,7 @@
       );
     }
     _0x2d2a03 && _0x19644c(W.model.nodes.getObjectById(_0x2d2ac0.attributes.toNodeID), _0x5dea5f);
-    _0x154122 &&
-      _0x19644c(W.model.nodes.getObjectById(_0x2d2ac0.attributes.fromNodeID), _0x326722);
+    _0x154122 && _0x19644c(W.model.nodes.getObjectById(_0x2d2ac0.attributes.fromNodeID), _0x326722);
     function _0x19644c(_0x2866d6, _0x533989) {
       let _0x55da4e = _0x24ac62(),
         _0xc7a2c4 = getCardinalAngle(_0x2866d6.attributes.id, _0x2d2ac0),
@@ -3133,9 +3113,7 @@
             else {
               if (_0x23f39e === 0x2)
                 temp = {
-                  x:
-                    _0x2866d6.geometry["x"] -
-                    (_0x55da4e.start + _0x55da4e.boxincwidth * _0x5095aa),
+                  x: _0x2866d6.geometry["x"] - (_0x55da4e.start + _0x55da4e.boxincwidth * _0x5095aa),
                   y: _0x2866d6.geometry["y"] + (_0x55da4e.start + _0x55da4e.boxheight),
                 };
               else {
@@ -3148,32 +3126,24 @@
                   if (_0x23f39e === 0x4)
                     temp = {
                       x: _0x2866d6.geometry["x"] - (_0x55da4e.start + _0x55da4e.boxheight * 1.5),
-                      y:
-                        _0x2866d6.geometry["y"] -
-                        (_0x55da4e.start + _0x55da4e.boxincwidth * _0x5095aa * 1.5),
+                      y: _0x2866d6.geometry["y"] - (_0x55da4e.start + _0x55da4e.boxincwidth * _0x5095aa * 1.5),
                     };
                   else {
                     if (_0x23f39e === 0x5)
                       temp = {
-                        x:
-                          _0x2866d6.geometry["x"] +
-                          (_0x55da4e.start + _0x55da4e.boxincwidth / 0x2),
+                        x: _0x2866d6.geometry["x"] + (_0x55da4e.start + _0x55da4e.boxincwidth / 0x2),
                         y: _0x2866d6.geometry["y"] + _0x55da4e.start / 0x2,
                       };
                     else {
                       if (_0x23f39e === 0x6)
                         temp = {
                           x: _0x2866d6.geometry["x"] - _0x55da4e.start,
-                          y:
-                            _0x2866d6.geometry["y"] -
-                            _0x55da4e.start * ((_0x55da4e.boxincwidth * _0x5095aa) / 0x2),
+                          y: _0x2866d6.geometry["y"] - _0x55da4e.start * ((_0x55da4e.boxincwidth * _0x5095aa) / 0x2),
                         };
                       else
                         _0x23f39e === 0x7 &&
                           (temp = {
-                            x:
-                              _0x2866d6.geometry["x"] -
-                              _0x55da4e.start * ((_0x55da4e.boxincwidth * _0x5095aa) / 0x2),
+                            x: _0x2866d6.geometry["x"] - _0x55da4e.start * ((_0x55da4e.boxincwidth * _0x5095aa) / 0x2),
                             y: _0x2866d6.geometry["y"] - _0x55da4e.start,
                           });
                     }
@@ -3197,51 +3167,37 @@
             else {
               if (_0x23f39e === 0x2)
                 temp = {
-                  x:
-                    _0x2866d6.geometry["x"] -
-                    (_0x55da4e.start + _0x55da4e.boxincwidth * _0x5095aa),
+                  x: _0x2866d6.geometry["x"] - (_0x55da4e.start + _0x55da4e.boxincwidth * _0x5095aa),
                   y: _0x2866d6.geometry["y"] + (_0x55da4e.start + _0x55da4e.boxheight),
                 };
               else {
                 if (_0x23f39e === 0x3)
                   temp = {
                     x: _0x2866d6.geometry["x"] + (_0x55da4e.start + _0x55da4e.boxincwidth),
-                    y:
-                      _0x2866d6.geometry["y"] -
-                      (_0x55da4e.start + _0x55da4e.boxheight * 0x2),
+                    y: _0x2866d6.geometry["y"] - (_0x55da4e.start + _0x55da4e.boxheight * 0x2),
                   };
                 else {
                   if (_0x23f39e === 0x4)
                     temp = {
-                      x:
-                        _0x2866d6.geometry["x"] -
-                        (_0x55da4e.start + _0x55da4e.boxheight * 1.5),
-                      y:
-                        _0x2866d6.geometry["y"] -
-                        (_0x55da4e.start + _0x55da4e.boxincwidth * _0x5095aa * 1.5),
+                      x: _0x2866d6.geometry["x"] - (_0x55da4e.start + _0x55da4e.boxheight * 1.5),
+                      y: _0x2866d6.geometry["y"] - (_0x55da4e.start + _0x55da4e.boxincwidth * _0x5095aa * 1.5),
                     };
                   else {
                     if (_0x23f39e === 0x5)
                       temp = {
-                        x:
-                          _0x2866d6.geometry["x"] +
-                          (_0x55da4e.start + _0x55da4e.boxincwidth / 0x2),
+                        x: _0x2866d6.geometry["x"] + (_0x55da4e.start + _0x55da4e.boxincwidth / 0x2),
                         y: _0x2866d6.geometry["y"] + _0x55da4e.start / 0x2,
                       };
                     else {
                       if (_0x23f39e === 0x6)
                         temp = {
                           x: _0x2866d6.geometry["x"] - _0x55da4e.start,
-                          y:
-                            _0x2866d6.geometry["y"] -
-                            _0x55da4e.start * ((_0x55da4e.boxincwidth * _0x5095aa) / 0x2),
+                          y: _0x2866d6.geometry["y"] - _0x55da4e.start * ((_0x55da4e.boxincwidth * _0x5095aa) / 0x2),
                         };
                       else
                         _0x23f39e === 0x7 &&
                           (temp = {
-                            x:
-                              _0x2866d6.geometry["x"] -
-                              _0x55da4e.start * ((_0x55da4e.boxincwidth * _0x5095aa) / 0x2),
+                            x: _0x2866d6.geometry["x"] - _0x55da4e.start * ((_0x55da4e.boxincwidth * _0x5095aa) / 0x2),
                             y: _0x2866d6.geometry["y"] - _0x55da4e.start,
                           });
                     }
@@ -3254,10 +3210,7 @@
         return temp;
       }
       let _0x2a17ea = _0x4b99ab(_0x1c3e29);
-      var _0xc39253 = new OpenLayers[getString(0x330)]["Point"](
-          _0x2a17ea["x"],
-          _0x2a17ea["y"] + _0x55da4e.boxheight
-        ),
+      var _0xc39253 = new OpenLayers[getString(0x330)]["Point"](_0x2a17ea["x"], _0x2a17ea["y"] + _0x55da4e.boxheight),
         _0x374f3b = new OpenLayers[getString(0x330)][getString(0x456)](
           _0x2a17ea["x"] + _0x55da4e.boxincwidth * _0x5095aa,
           _0x2a17ea["y"] + _0x55da4e.boxheight
