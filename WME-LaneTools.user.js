@@ -941,11 +941,7 @@
           else
             selectedFeatures[0x0].attributes.wazeFeature._wmeObject.attributes.fwdDirection != true &&
               (_0x336aa4.prop("title", "fwd"), _0x336aa4.prependTo(constantStrings.editPanelCSS));
-        } else
-          $(constantStrings.fwdLanesInstructions).css(
-            "border-bottom",
-            "4px\x20dashed\x20" + LtSettings.ABColor
-          );
+        } else $(constantStrings.fwdLanesInstructions).css("border-bottom", "4px\x20dashed\x20" + LtSettings.ABColor);
         $("#li-del-fwd-btn").click(function () {
           delLanes("fwd"),
             (_0xc1406f = true),
@@ -965,15 +961,15 @@
             delLanes(_0x535f00), _0x535f00 === "rev" ? (_0x4c54c4 = true) : (_0xc1406f = true), _0x5a28b7();
           });
       }
-      const _0x36d323 = $(getString(0x301));
-      _0x36d323.off(),
-        _0x36d323.click(function () {
-          $(this)["parents"](".fwd-lanes").length &&
+      const editLaneGuidance = $(".edit-lane-guidance");
+      editLaneGuidance.off(),
+        editLaneGuidance.click(function () {
+          $(this).parents(".fwd-lanes").length &&
             setTimeout(function () {
               _0x16065d("fwd"), _0x414f9a(), _0x816cf7(), _0x3e0f42(), _0x1a7fee();
               if (getId("lt-AddTIO").checked) addTIOUI("fwd");
             }, 0x64),
-            $(this)[getString(0x219)](getString(0x2ef)).length &&
+            $(this).parents(".rev-lanes").length &&
               setTimeout(function () {
                 _0x16065d("rev"), _0x414f9a(), _0x816cf7(), _0x3e0f42(), _0x1a7fee();
                 if (getId("lt-AddTIO").checked) addTIOUI("rev");
@@ -983,9 +979,9 @@
         _0x816cf7();
     }
     function _0x1a7fee() {
-      $(".apply-button.waze-btn.waze-btn-blue").off(), $(getString(0x246)).off();
+      $(".apply-button.waze-btn.waze-btn-blue").off(), $(".cancel-button").off();
       const _0x5ee852 = $(getString(0x351)),
-        _0x3df49c = $(getString(0x2ef));
+        _0x3df49c = $(".rev-lanes");
       _0x5ee852.find(getString(0x1df)).click(() => {
         (_0xc1406f = true),
           setTimeout(function () {
@@ -1004,7 +1000,7 @@
               _0x5a28b7();
             }, 0xc8);
         }),
-        _0x3df49c.find(getString(0x246)).click(() => {
+        _0x3df49c.find(".cancel-button").click(() => {
           (_0x4c54c4 = true),
             setTimeout(function () {
               _0x5a28b7();
@@ -1020,7 +1016,7 @@
       }
       getId(getString(0x215)).checked &&
         (!_0xc1406f && $(getString(0x351)).find(getString(0x329)).click(),
-        !_0x4c54c4 && $(getString(0x2ef)).find(getString(0x329)).click());
+        !_0x4c54c4 && $(".rev-lanes").find(getString(0x329)).click());
     }
     function _0x816cf7() {
       $(getString(0x39e)).css({
@@ -1039,10 +1035,7 @@
         ).css("margin-bottom", getString(0x457));
     }
     function _0x414f9a() {
-      if (
-        $(getString(0x351)).find(getString(0x37a))[getString(0x268)]().length > 0x0 &&
-        !getId(getString(0x2e8))
-      ) {
+      if ($(getString(0x351)).find(getString(0x37a))[getString(0x268)]().length > 0x0 && !getId(getString(0x2e8))) {
         let _0x2b94d9 = $(getString(0x221)),
           _0x52a43b = $(getString(0x38e)),
           _0x412e1c = $(getString(0x1f2)),
@@ -1062,10 +1055,7 @@
           _0x1f039b.appendTo(_0x5490f0),
           _0x5490f0.appendTo(getString(0x1dd));
       }
-      if (
-        $(getString(0x2ef)).find(getString(0x37a))[getString(0x268)]().length > 0x0 &&
-        !getId(getString(0x242))
-      ) {
+      if ($(".rev-lanes").find(getString(0x37a))[getString(0x268)]().length > 0x0 && !getId(getString(0x242))) {
         let _0x57f36f = $(getString(0x2c7)),
           _0x2ee8bb = $("<div\x20class=\x22lt-add-lanes\x20rev\x22>2</div>"),
           _0x3896e8 = $(getString(0x286)),
@@ -1095,16 +1085,13 @@
             _0x11380e.find(".form-control").focus();
         }
         if ($(this)[getString(0x2bf)](getString(0x431))) {
-          const _0x4d157 = $(getString(0x2ef));
+          const _0x4d157 = $(".rev-lanes");
           _0x4d157.find(".form-control")["val"](_0xa2f2b3),
             _0x4d157.find(".form-control")["change"](),
             _0x4d157.find(".form-control").focus();
         }
       });
-      if (
-        $(getString(0x351)).find(getString(0x2ea))[getString(0x268)]().length > 0x0 &&
-        !getId(getString(0x453))
-      ) {
+      if ($(getString(0x351)).find(getString(0x2ea))[getString(0x268)]().length > 0x0 && !getId(getString(0x453))) {
         let _0x3bd717 = $("<div\x20class=\x22lt-add-Width\x20fwd\x22>1</div>"),
           _0x51b664 = $(getString(0x21b)),
           _0x58e147 = $("<div\x20class=\x22lt-add-Width\x20fwd\x22>3</div>"),
@@ -1124,10 +1111,7 @@
           _0x5e983f.appendTo(_0x40723d),
           _0x40723d["prependTo"](getString(0x310));
       }
-      if (
-        $(getString(0x2ef)).find(".lane-width-card")["children"]().length > 0x0 &&
-        !getId(getString(0x420))
-      ) {
+      if ($(".rev-lanes").find(".lane-width-card")["children"]().length > 0x0 && !getId(getString(0x420))) {
         let _0x358be5 = $("<div\x20class=\x22lt-add-Width\x20rev\x22>1</div>"),
           _0x32ba32 = $(getString(0x3d5)),
           _0x1e5f13 = $(getString(0x36e)),
@@ -1167,7 +1151,7 @@
     function _0x3e0f42() {
       if (getId("lt-AutoFocusLanes").checked) {
         const _0x3797e1 = $(getString(0x351)),
-          _0x36859d = $(getString(0x2ef));
+          _0x36859d = $(".rev-lanes");
         if (_0x3797e1.find(getString(0x39f))[getString(0x268)]().length > 0x0 && !_0xc1406f)
           _0x3797e1.find(".form-control")[getString(0x3d0)]();
         else
@@ -1182,15 +1166,14 @@
         let _0x430051 =
             _0x3bf55f === "fwd"
               ? $(".fwd-lanes").find(".form-control")[0x0]
-              : $(getString(0x2ef)).find(".form-control")[0x0],
+              : $(".rev-lanes").find(".form-control")[0x0],
           _0x36b726 = $(_0x430051)[getString(0x432)]();
         $(_0x430051).change(function () {
           let _0x2588e2;
-          if ($(this)[getString(0x219)](".fwd-lanes").length)
-            _0x2588e2 = $(".fwd-lanes").find(getString(0x2d9));
+          if ($(this).parents(".fwd-lanes").length) _0x2588e2 = $(".fwd-lanes").find(getString(0x2d9));
           else
-            $(this)["parents"](getString(0x2ef)).length &&
-              (_0x2588e2 = $(getString(0x2ef)).find(".controls-container.turns-region"));
+            $(this)["parents"](".rev-lanes").length &&
+              (_0x2588e2 = $(".rev-lanes").find(".controls-container.turns-region"));
           _0x2588e2 = $(".street-name", _0x2588e2);
           for (let _0x542cc8 = 0x0; _0x542cc8 < _0x2588e2.length; _0x542cc8++) {
             $(_0x2588e2[_0x542cc8]).off(),
@@ -1244,7 +1227,7 @@
     }
 
     function _0x8ccdf2() {
-      let _0x5d59a3 = document[getString(0x2e5)](getString(0x336)),
+      let _0x5d59a3 = document.getElementsByClassName(getString(0x336)),
         _0x2b66d6 = $(getString(0x2ca)).get();
       for (let _0x1fc88e = 0x0; _0x1fc88e < _0x5d59a3.length; _0x1fc88e++) {
         if (_0x5d59a3[_0x1fc88e]["textContent"].includes(getString(0x3e7))) {
@@ -1259,7 +1242,7 @@
     if (getId("lt-UIEnable").checked && getId("lt-ScriptEnabled").checked && selectedFeatures.length > 0x0) {
       if (
         selectedFeatures.length === 0x1 &&
-        selectedFeatures[0x0].attributes.wazeFeature._wmeObject[getString(0x478)] === getString(0x1f7)
+        selectedFeatures[0x0].attributes.wazeFeature._wmeObject[getString(0x478)] === "segments"
       )
         $(getString(0x3c5)).click(() => {
           (_0xc1406f = false),
@@ -1982,7 +1965,7 @@
   function displayToolbar() {
     const _0x4afd09 = W.selectionManager["getSelectedFeatures"]();
     if (_0x4afd09.length === 0x1 && getId(getString(0x262)).checked && getId("lt-ScriptEnabled").checked) {
-      if (_0x4afd09[0x0].attributes.wazeFeature._wmeObject[getString(0x478)][getString(0x467)]() === getString(0x1f7)) {
+      if (_0x4afd09[0x0].attributes.wazeFeature._wmeObject[getString(0x478)][getString(0x467)]() === "segments") {
         const _0x5df401 = $("#map");
         $("#lt-toolbar-container").css({
           display: getString(0x314),
@@ -2001,9 +1984,9 @@
     if (!_0x1d94fe.geometry || !_0x1d94fe.attributes) return false;
     if (
       _0x4edaf4 >= DisplayLevels["MIN_ZOOM_NONFREEWAY"] ||
-      (_0x1d94fe["type"] === getString(0x1f7) && _0x1d94fe.attributes["roadType"] === LT_ROAD_TYPE["FREEWAY"])
+      (_0x1d94fe.type === "segments" && _0x1d94fe.attributes["roadType"] === LT_ROAD_TYPE.FREEWAY)
     )
-      return W.map[getString(0x2ec)]()[getString(0x3ef)](_0x1d94fe.geometry["getBounds"]());
+      return W.map.getExtent().intersectsBounds(_0x1d94fe.geometry.getBounds());
     return false;
   }
   function getCardinalAngle(_0x5f13ca, _0x261fce) {
@@ -2014,7 +1997,7 @@
         (_0x573f8b = lt_get_second_point(_0x261fce)["y"] - lt_get_first_point(_0x261fce)["y"]))
       : ((_0x529918 = lt_get_next_to_last_point(_0x261fce)["x"] - lt_get_last_point(_0x261fce)["x"]),
         (_0x573f8b = lt_get_next_to_last_point(_0x261fce)["y"] - lt_get_last_point(_0x261fce)["y"]));
-    let _0x45f593 = Math[getString(0x3ad)](_0x573f8b, _0x529918),
+    let _0x45f593 = Math.atan2(_0x573f8b, _0x529918),
       _0x1d47ac = ((_0x45f593 * 0xb4) / Math["PI"]) % 0x168;
     if (_0x1d47ac < 0x0) _0x1d47ac = _0x1d47ac + 0x168;
     return Math[getString(0x372)](_0x1d47ac);
@@ -2045,16 +2028,14 @@
         (_0x3f6f3a = getNodeObj(_0xcf7dc7.attributes.toNodeID)),
         (_0x4297f0 = _0x3f6f3a["getSegmentIds"]());
       const _0xfa6629 = $(getString(0x351));
-      _0xfa6629.find(".form-control")["val"](0x0),
-        _0xfa6629.find(".form-control").change();
+      _0xfa6629.find(".form-control")["val"](0x0), _0xfa6629.find(".form-control").change();
     }
     if (_0x8ffe09 === "rev") {
       (_0x357841.revLaneCount = 0x0),
         (_0x3f6f3a = getNodeObj(_0xcf7dc7.attributes.fromNodeID)),
         (_0x4297f0 = _0x3f6f3a[getString(0x26a)]());
-      const _0x5c7972 = $(getString(0x2ef));
-      _0x5c7972.find(".form-control")[getString(0x432)](0x0),
-        _0x5c7972.find(".form-control")["change"]();
+      const _0x5c7972 = $(".rev-lanes");
+      _0x5c7972.find(".form-control")[getString(0x432)](0x0), _0x5c7972.find(".form-control")["change"]();
     }
     _0x27ef3b[getString(0x222)](new UpdateObj(_0xcf7dc7, _0x357841));
     for (let _0x5c55d3 = 0x0; _0x5c55d3 < _0x4297f0.length; _0x5c55d3++) {
@@ -2109,23 +2090,23 @@
         _0x17a8e9 = _0x114781 / 0x2,
         _0x5479ec = _0x114781 % 0x2 ? Math[getString(0x377)](_0x17a8e9) - 0x1 : Math[getString(0x377)](_0x17a8e9),
         _0x3a7f64 = _0x114781 % 0x2 ? Math[getString(0x24c)](_0x17a8e9) + 0x1 : Math["floor"](_0x17a8e9);
-      if (_0x58d6bd === Direction[getString(0x2df)]) {
+      if (_0x58d6bd === Direction.FORWARD) {
         let _0x21e1e8 = _0x1c40ca(_0x1d1809, _0x5479ec, _0x114781);
         _0x5f4375 && _0x58a03b(_0x21e1e8, "" + LtSettings.ABColor, _0x3c685d[getString(0x452)]),
           _0x43deae(_0x21e1e8, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
       } else {
-        if (_0x58d6bd === Direction[getString(0x3f6)]) {
+        if (_0x58d6bd === Direction.REVERSE) {
           let _0x3e6b6f = _0x1c40ca(_0x1d1809, 0x0, _0x3a7f64);
           _0x5f4375 && _0x58a03b(_0x3e6b6f, "" + LtSettings.BAColor, _0x3c685d[getString(0x452)]),
             _0x43deae(_0x3e6b6f, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
         }
       }
-      if (_0x52d15e && (Direction[getString(0x2df)] || _0x126e8a === 0x0)) {
+      if (_0x52d15e && (Direction.FORWARD || _0x126e8a === 0x0)) {
         if (_0x114781 % 0x2) applyName(_0x1d1809["components"][_0x5479ec], _0x126e8a, _0x2c9162);
         else {
           let _0x3f4fb2 = _0x1d1809["components"][_0x3a7f64 - 0x1],
             _0x196425 = _0x1d1809.components[_0x5479ec],
-            _0x2daf64 = new OpenLayers[getString(0x330)]["Point"](
+            _0x2daf64 = new OpenLayers.Geometry.Point(
               (_0x3f4fb2["x"] + _0x196425["x"]) / 0x2,
               (_0x3f4fb2["y"] + _0x196425["y"]) / 0x2
             );
@@ -2135,21 +2116,21 @@
     } else {
       let _0x5b73aa = _0x1d1809.components[0x0],
         _0x3cd08d = _0x1d1809.components[0x1],
-        _0xa8356b = new OpenLayers[getString(0x330)][getString(0x456)](
+        _0xa8356b = new OpenLayers.Geometry.Point(
           (_0x5b73aa["x"] + _0x3cd08d["x"]) / 0x2,
           (_0x5b73aa["y"] + _0x3cd08d["y"]) / 0x2
         );
-      if (_0x58d6bd === Direction[getString(0x2df)]) {
-        let _0x196538 = new OpenLayers[getString(0x330)][getString(0x456)](
+      if (_0x58d6bd === Direction.FORWARD) {
+        let _0x196538 = new OpenLayers.Geometry.Point(
             _0x1d1809.components[0x1]["clone"]()["x"],
             _0x1d1809.components[0x1][getString(0x34c)]()["y"]
           ),
-          _0x13e81d = new OpenLayers[getString(0x330)]["LineString"]([_0xa8356b, _0x196538], {});
+          _0x13e81d = new OpenLayers.Geometry["LineString"]([_0xa8356b, _0x196538], {});
         _0x5f4375 && _0x58a03b(_0x13e81d, "" + LtSettings.ABColor, _0x3c685d[getString(0x452)]),
           _0x43deae(_0x13e81d, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
       } else {
-        if (_0x58d6bd === Direction[getString(0x3f6)]) {
-          let _0x4c870d = new OpenLayers[getString(0x330)][getString(0x456)](
+        if (_0x58d6bd === Direction.REVERSE) {
+          let _0x4c870d = new OpenLayers.Geometry.Point(
               _0x1d1809.components[0x0]["clone"]()["x"],
               _0x1d1809.components[0x0][getString(0x34c)]()["y"]
             ),
@@ -2158,14 +2139,14 @@
             _0x43deae(_0x598bfa, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
         }
       }
-      _0x52d15e && (Direction[getString(0x2df)] || _0x126e8a === 0x0) && applyName(_0xa8356b, _0x126e8a, _0x2c9162);
+      _0x52d15e && (Direction.FORWARD || _0x126e8a === 0x0) && applyName(_0xa8356b, _0x126e8a, _0x2c9162);
     }
     function _0x1c40ca(_0x1226a0, _0x5d1ef6, _0x2d2248) {
       let _0x3411db = [];
       for (let _0x191254 = _0x5d1ef6; _0x191254 < _0x2d2248; _0x191254++) {
         _0x3411db[_0x191254] = _0x1226a0["components"][_0x191254][getString(0x34c)]();
       }
-      return new OpenLayers[getString(0x330)][getString(0x3d7)](_0x3411db, {});
+      return new OpenLayers.Geometry[getString(0x3d7)](_0x3411db, {});
     }
     function _0x43deae(_0x3291c0, _0xe37e1, _0x2d6773, _0x5e102e, _0x59dda1 = false) {
       if (_0x2d6773) {
@@ -2251,21 +2232,21 @@
     (lt_scanArea_recursive = 0x3), scanArea_real();
   }
   function scanArea_real() {
-    const _0x122a27 = getId(getString(0x280)).checked,
-      _0x583759 = getId(getString(0x33a)).checked,
-      _0x59b8dd = getId("lt-LaneHeuristicsChecks").checked,
-      _0x34df05 = W[getString(0x423)][getString(0x3f3)]() != null ? W[getString(0x423)]["getZoom"]() : 0x10,
-      _0x1e077f = getId(getString(0x380)).checked,
-      _0x10e51f =
-        W[getString(0x438)][getString(0x256)](getString(0x27c)) ||
-        W[getString(0x438)]["getTogglerState"]("ITEM_ROAD_V2");
+    const scriptEnabled = getId("lt-ScriptEnabled").checked,
+      highlightsEnabled = getId("lt-HighlightsEnable").checked,
+      heuristicsChecksEnabled = getId("lt-LaneHeuristicsChecks").checked,
+      currentZoomLevel = W.map.getZoom() != null ? W.map["getZoom"]() : 16,
+      highlightOverridden = getId("lt-highlightOverride").checked,
+      roadLayerState =
+        W.layerSwitcherController.getTogglerState("ITEM_ROAD") ||
+        W.layerSwitcherController.getTogglerState("ITEM_ROAD_V2");
     removeHighlights();
-    if (_0x34df05 < DisplayLevels[getString(0x2dc)]) return;
-    if (_0x10e51f || (!_0x10e51f && !_0x1e077f)) {
-      _0x122a27 && (_0x583759 || _0x59b8dd) && scanSegments(W.model.segments.getObjectArray(), false);
-      if (_0x122a27) {
-        const _0xc4f257 = W.selectionManager["getSelectedFeatures"]();
-        _0xc4f257.length === 0x2 && scanHeuristicsCandidates(_0xc4f257);
+    if (currentZoomLevel < DisplayLevels.MIN_ZOOM_ALL) return;
+    if (roadLayerState || (!roadLayerState && !highlightOverridden)) {
+      scriptEnabled && (highlightsEnabled || heuristicsChecksEnabled) && scanSegments(W.model.segments.getObjectArray(), false);
+      if (scriptEnabled) {
+        const selectedFeatures = W.selectionManager.getSelectedFeatures();
+        selectedFeatures.length === 0x2 && scanHeuristicsCandidates(selectedFeatures);
       }
     }
   }
@@ -2273,10 +2254,10 @@
     let _0x4174e4 = [],
       _0x232b3f = 0x0;
     return (
-      _[getString(0x3e2)](_0x482def, (_0x249a9b) => {
+      _.each(_0x482def, (_0x249a9b) => {
         _0x249a9b &&
           _0x249a9b.attributes.wazeFeature._wmeObject &&
-          _0x249a9b.attributes.wazeFeature._wmeObject["type"] === getString(0x1f7) &&
+          _0x249a9b.attributes.wazeFeature._wmeObject.type === "segments" &&
           (_0x232b3f = _0x4174e4[getString(0x3c0)](_0x249a9b.attributes.wazeFeature._wmeObject));
       }),
       scanSegments(_0x4174e4, true),
@@ -2284,27 +2265,33 @@
     );
   }
   function scanSegments(_0x48b407, _0x553a1b) {
-    const _0x495382 = getId(getString(0x3c4)).checked,
+    const _0x495382 = getId("lt-LaneHeuristicsChecks").checked,
       _0x3a07e5 = _0x495382 && getId("lt-LaneHeurPosHighlight").checked,
       _0x1cbbb8 = _0x495382 && getId("lt-LaneHeurNegHighlight").checked,
-      _0x54899b = getId(getString(0x33a)).checked,
-      _0x4cbda1 = _0x54899b && getId(getString(0x1fa)).checked,
-      _0x1d266a = _0x54899b && getId(getString(0x43d)).checked,
-      _0x5a4db6 = W[getString(0x423)][getString(0x3f3)]() != null ? W[getString(0x423)][getString(0x3f3)]() : 0x10,
+      _0x54899b = getId("lt-HighlightsEnable").checked,
+      _0x4cbda1 = _0x54899b && getId("lt-LIOEnable").checked,
+      _0x1d266a = _0x54899b && getId("lt-LabelsEnable").checked,
+      _0x5a4db6 = W.map.getZoom() != null ? W.map.getZoom() : 0x10,
       _0x193f41 = W.model["getTurnGraph"]();
     _.each(_0x48b407, (_0x4e91a0) => {
       if (onScreen(_0x4e91a0, _0x5a4db6)) {
         const _0x3598ea = _0x4e91a0["getFeatureAttributes"]();
         let _0x1b6f52 = false,
           _0x1ca2eb = lt_segment_length(_0x4e91a0);
-        _0x1b6f52 = _0x1b6f52 || _0x2ad725(_0x4e91a0, _0x3598ea, Direction[getString(0x2df)], _0x1ca2eb, _0x1b6f52);
+        _0x1b6f52 = _0x1b6f52 || _0x2ad725(_0x4e91a0, _0x3598ea, Direction.FORWARD, _0x1ca2eb, _0x1b6f52);
         if (_0x1b6f52 && lt_scanArea_recursive > 0x0) {
-          lt_log(getString(0x2b7), 0x2), removeHighlights(), lt_scanArea_recursive--, lt_scanArea_timer.start();
+          lt_log("LT\x20errors\x20found,\x20scanning\x20again", 0x2),
+            removeHighlights(),
+            lt_scanArea_recursive--,
+            lt_scanArea_timer.start();
           return;
         }
-        _0x1b6f52 = _0x1b6f52 || _0x2ad725(_0x4e91a0, _0x3598ea, Direction[getString(0x3f6)], _0x1ca2eb, _0x1b6f52);
+        _0x1b6f52 = _0x1b6f52 || _0x2ad725(_0x4e91a0, _0x3598ea, Direction.REVERSE, _0x1ca2eb, _0x1b6f52);
         if (_0x1b6f52 && lt_scanArea_recursive > 0x0) {
-          lt_log(getString(0x2b7), 0x2), removeHighlights(), lt_scanArea_recursive--, lt_scanArea_timer.start();
+          lt_log("LT\x20errors\x20found,\x20scanning\x20again", 0x2),
+            removeHighlights(),
+            lt_scanArea_recursive--,
+            lt_scanArea_timer.start();
           return;
         }
       }
@@ -2316,7 +2303,7 @@
         _0x3f1bfc = getNodeObj(_0x37e1f7["fromNodeID"]),
         _0x5a6ac5 = _0x162a18,
         _0x58763f = _0x310dc4;
-      _0x17336c !== Direction[getString(0x2df)] &&
+      _0x17336c !== Direction.FORWARD &&
         ((_0x405af6 = getNodeObj(_0x37e1f7.fromNodeID)),
         (_0x3f1bfc = getNodeObj(_0x37e1f7.toNodeID)),
         (_0x5a6ac5 = _0x310dc4),
@@ -2326,11 +2313,11 @@
         _0x12606 = false,
         _0x58ba1e = false,
         _0x3a8c59 = 0x0,
-        _0x436364 = HeuristicsCandidate[getString(0x2cf)],
+        _0x436364 = HeuristicsCandidate.NONE,
         _0x53f387 = null,
-        _0x211d6a = { seg: 0x0, direction: Direction[getString(0x2cf)] };
+        _0x211d6a = { seg: 0x0, direction: Direction.NONE };
       if (onScreen(_0x405af6, _0x5a4db6)) {
-        const _0x3bcc17 = _0x405af6["getSegmentIds"]();
+        const _0x3bcc17 = _0x405af6.getSegmentIds();
         if (_0x5a6ac5 > 0x0) {
           let _0x30b899 = checkLanesConfiguration(_0x6f84fd, _0x405af6, _0x3bcc17, _0x5a6ac5);
           (_0x5855dd = _0x30b899[0x0]),
@@ -2352,13 +2339,13 @@
             _0x211d6a
           );
           _0x436364 === HeuristicsCandidate["ERROR"] && (_0x12606 = true);
-          if (!_0x495382) _0x436364 = HeuristicsCandidate[getString(0x2cf)];
-          else _0x436364 !== HeuristicsCandidate[getString(0x2cf)] && (_0x53f387 = { ..._0x211d6a });
+          if (!_0x495382) _0x436364 = HeuristicsCandidate.NONE;
+          else _0x436364 !== HeuristicsCandidate.NONE && (_0x53f387 = { ..._0x211d6a });
         }
       }
       if (!_0x553a1b) {
         let _0x5c9960 = null;
-        ((_0x3a07e5 && _0x436364 === HeuristicsCandidate[getString(0x244)]) ||
+        ((_0x3a07e5 && _0x436364 === HeuristicsCandidate.PASS) ||
           (_0x1cbbb8 && _0x436364 === HeuristicsCandidate[getString(0x448)])) &&
           (_0x5c9960 = _0x436364),
           (_0x5a6ac5 > 0x0 || _0x5c9960 !== null || _0x12606) &&
@@ -2377,19 +2364,14 @@
             ),
           _0x54899b &&
             getId(getString(0x34b)).checked &&
-            (_0x5855dd && highlightNode(_0x405af6.geometry, "" + LtSettings[getString(0x430)]),
-            _0x4d3a78 && highlightNode(_0x405af6.geometry, "" + LtSettings[getString(0x33f)]));
+            (_0x5855dd && highlightNode(_0x405af6.geometry, "" + LtSettings.NodeColor),
+            _0x4d3a78 && highlightNode(_0x405af6.geometry, "" + LtSettings.TIOColor));
       } else {
         lt_log("candidate(f):" + _0x436364);
-        if (_0x436364 !== HeuristicsCandidate[getString(0x2cf)]) {
-          if (
-            _0x53f387 != null &&
-            _0x48b407[getString(0x27d)]((_0x12b968) => _0x12b968 === _0x53f387[getString(0x46d)]) > -0x1
-          ) {
+        if (_0x436364 !== HeuristicsCandidate.NONE) {
+          if (_0x53f387 != null && _0x48b407[getString(0x27d)]((_0x12b968) => _0x12b968 === _0x53f387.seg) > -0x1) {
             let _0x4063ba =
-              _0x436364 === HeuristicsCandidate[getString(0x244)]
-                ? "" + LtSettings["NodeColor"]
-                : "" + LtSettings[getString(0x360)];
+              _0x436364 === HeuristicsCandidate.PASS ? "" + LtSettings.NodeColor : "" + LtSettings[getString(0x360)];
             highlightSegment(
               _0x6f84fd.geometry,
               _0x17336c,
@@ -2433,7 +2415,7 @@
       _0x4211dc = null,
       _0x44a7d8 = [];
     const _0x36da8a = W.model.getTurnGraph(),
-      _0xd63ac8 = W[getString(0x423)][getString(0x3f3)]() != null ? W[getString(0x423)]["getZoom"]() : 0x10;
+      _0xd63ac8 = W.map.getZoom() != null ? W.map["getZoom"]() : 0x10;
     for (let _0xe3883a = 0x0; _0xe3883a < _0x1d0a74.length; _0xe3883a++) {
       const _0x124a73 = getSegObj(_0x1d0a74[_0xe3883a]),
         _0x3f357d = _0x36da8a[getString(0x37e)](_0x42e6cf, _0x57e44b, _0x124a73).getTurnData();
@@ -2441,12 +2423,11 @@
         _0x3f357d["hasInstructionOpcode"]() && (_0x55ea18 = true);
         if (_0x3f357d["hasLanes"]()) {
           _0x739f97 = true;
-          _0x3f357d[getString(0x2b5)]()[getString(0x307)]() && (_0x161259 = true);
-          if (_0x3f357d[getString(0x2b5)]()[getString(0x201)]() === 0x1)
-            (_0x5c5507 = 0x1),
-              (_0x4211dc = W.model["streets"].getObjectById(_0x124a73.attributes[getString(0x230)]).name);
+          _0x3f357d.getLaneData().hasOverrideAngle() && (_0x161259 = true);
+          if (_0x3f357d.getLaneData()[getString(0x201)]() === 0x1)
+            (_0x5c5507 = 0x1), (_0x4211dc = W.model.streets.getObjectById(_0x124a73.attributes[getString(0x230)]).name);
           else
-            _0x3f357d[getString(0x2b5)]()["getGuidanceMode"]() === 0x2 &&
+            _0x3f357d.getLaneData()["getGuidanceMode"]() === 0x2 &&
               ((_0x5c5507 = 0x2),
               (_0x4211dc = W.model[getString(0x319)].getObjectById(_0x124a73.attributes[getString(0x230)])[
                 getString(0x412)
@@ -2458,14 +2439,14 @@
             for (let _0x774514 = 0x0; _0x774514 < _0x44a7d8.length; _0x774514++) {
               _0x44a7d8[_0x774514] === _0x382bd8 && (_0x18e06a = false);
             }
-            _0x18e06a && _0x44a7d8["push"](_0x382bd8);
+            _0x18e06a && _0x44a7d8.push(_0x382bd8);
           }
         }
       }
     }
-    _0x44a7d8["sort"]();
-    for (let _0x5082cd = 0x0; _0x5082cd < _0x44a7d8.length; _0x5082cd++) {
-      _0x44a7d8[_0x5082cd] !== _0x5082cd && (_0x16f110 = true);
+    _0x44a7d8.sort();
+    for (let idx = 0x0; idx < _0x44a7d8.length; idx++) {
+      _0x44a7d8[idx] !== idx && (_0x16f110 = true);
     }
     return (
       _0x44a7d8.length < _0x4e9244 && onScreen(_0x42e6cf, _0xd63ac8) && (_0x16f110 = true),
@@ -2473,8 +2454,8 @@
     );
   }
   function setTurns(_0x32e1b9) {
-    if (!getId(getString(0x211)).checked) return;
-    let _0x1357ab = document[getString(0x2e5)](_0x32e1b9)[0x0],
+    if (!getId("lt-ClickSaveEnable").checked) return;
+    let _0x1357ab = document.getElementsByClassName(_0x32e1b9)[0x0],
       _0x3ce173 =
         _0x1357ab["getElementsByClassName"](getString(0x358)).length > 0x0
           ? getString(0x358)
@@ -2482,22 +2463,22 @@
           ? getString(0x2a9)
           : getString(0x39d),
       _0x217ae4 =
-        _0x1357ab[getString(0x2e5)](getString(0x290)).length > 0x0
-          ? getString(0x290)
-          : _0x1357ab[getString(0x2e5)](getString(0x30d)).length > 0x0
+        _0x1357ab.getElementsByClassName("angle-135").length > 0x0
+          ? "angle-135"
+          : _0x1357ab.getElementsByClassName("angle-90").length > 0x0
           ? "angle-90"
           : getString(0x3d2),
-      _0x3541df = _0x1357ab[getString(0x2e5)](getString(0x39b)),
+      _0x3541df = _0x1357ab.getElementsByClassName("turn-lane-edit-top"),
       _0x16a6be = false,
       _0x43ae0b = false,
-      _0x257aea = [][getString(0x3a7)]
-        [getString(0x1db)](_0x3541df)
-        [getString(0x1fc)](
+      _0x257aea = [].slice
+        .call(_0x3541df)
+        .reduce(
           (_0x4861b3, _0x2010bf) =>
             _0x4861b3 +
-            [][getString(0x3a7)]
-              ["call"](_0x2010bf.getElementsByTagName(getString(0x441)))
-              ["reduce"]((_0x58c1c4, _0x4afea1) => (_0x4afea1.checked === true ? _0x58c1c4 + 0x1 : _0x58c1c4), 0x0),
+            [].slice
+              .call(_0x2010bf.getElementsByTagName(getString(0x441)))
+              .reduce((_0x58c1c4, _0x4afea1) => (_0x4afea1.checked === true ? _0x58c1c4 + 0x1 : _0x58c1c4), 0x0),
           0x0
         );
     if (_0x257aea === 0x0) {
@@ -2506,14 +2487,14 @@
         let _0x5c6270 = _0x496f7c["getElementsByTagName"](getString(0x2e1));
         if (_0x5c6270 && _0x5c6270.length > 0x0) {
           if (
-            _0x496f7c[getString(0x2e5)](_0x3ce173).length > 0x0 &&
+            _0x496f7c.getElementsByClassName(_0x3ce173).length > 0x0 &&
             _0x5c6270[0x0].checked !== undefined &&
             _0x5c6270[0x0].checked === false &&
             getId("lt-ClickSaveTurns").checked
           )
             (_0x16a6be = true), _0x5c6270[0x0].click();
           else
-            _0x496f7c[getString(0x2e5)](_0x217ae4).length > 0x0 &&
+            _0x496f7c.getElementsByClassName(_0x217ae4).length > 0x0 &&
               _0x5c6270[_0x5c6270.length - 0x1].checked !== undefined &&
               _0x5c6270[_0x5c6270.length - 0x1].checked === false &&
               getId("lt-ClickSaveTurns").checked &&
@@ -2523,7 +2504,7 @@
       for (let _0x4bc51f = 0x0; _0x4bc51f < _0x3541df.length; _0x4bc51f++) {
         const _0x376ec2 = _0x3541df[_0x4bc51f];
         let _0x58c806 = _0x376ec2.getElementsByTagName(getString(0x2e1));
-        if (_0x376ec2[getString(0x2e5)](getString(0x225)).length > 0x0)
+        if (_0x376ec2.getElementsByClassName(getString(0x225)).length > 0x0)
           for (let _0x17365b = 0x0; _0x17365b < _0x58c806.length; _0x17365b++) {
             if (_0x58c806[_0x17365b].checked === false) {
               if (_0x17365b === 0x0 && (getId(getString(0x36b)).checked || _0x16a6be === false))
@@ -2542,7 +2523,7 @@
     let _0x324acf = new MutationObserver((_0x23b79c) => {
       if (
         W.selectionManager["getSelectedFeatures"]()[0x0] &&
-        W.selectionManager.getSelectedFeatures()[0x0].attributes.wazeFeature._wmeObject["type"] === getString(0x1f7) &&
+        W.selectionManager.getSelectedFeatures()[0x0].attributes.wazeFeature._wmeObject.type === "segments" &&
         getId("lt-ScriptEnabled").checked
       ) {
         let _0x21e4b9 = document[getString(0x2fd)](getString(0x316));
@@ -2550,19 +2531,19 @@
           _0x21e4b9[_0x1dd303][getString(0x35d)](
             "change",
             function () {
-              let _0x2cc679 = $(this)[getString(0x219)]()["eq"](0x9),
+              let _0x2cc679 = $(this).parents().eq(0x9),
                 _0x80b8a5 = _0x2cc679[0x0]["parentElement"]["className"];
               setTimeout(setTurns(_0x80b8a5), 0x32);
             },
             false
           );
         }
-        let _0xb4fbc1 = document[getString(0x2e5)](getString(0x1ff));
+        let _0xb4fbc1 = document.getElementsByClassName(getString(0x1ff));
         for (let _0x278b52 = 0x0; _0x278b52 < _0xb4fbc1.length; _0x278b52++) {
           _0xb4fbc1[_0x278b52]["addEventListener"](
             "click",
             function () {
-              let _0x45dfc7 = $(this)[getString(0x219)]()["eq"](0x9),
+              let _0x45dfc7 = $(this).parents().eq(0x9),
                 _0x24c520 = _0x45dfc7[0x0][getString(0x22a)][getString(0x218)];
               setTimeout(setTurns(_0x24c520), 0x32);
             },
@@ -2651,7 +2632,8 @@
       let _0x3354a1 = _0x264c0a.lanes.toLaneIndex - _0x264c0a.lanes.fromLaneIndex + 0x1;
       _0x3354a1 !== _0x20557a &&
         !(_0x20557a === 0x0 && _0x3354a1 === 0x1) &&
-        (lt_log("Straight\x20turn\x20lane\x20count\x20does\x20not\x20match", 0x2), (_0x3d1be6 = HeuristicsCandidate.ERROR));
+        (lt_log("Straight\x20turn\x20lane\x20count\x20does\x20not\x20match", 0x2),
+        (_0x3d1be6 = HeuristicsCandidate.ERROR));
       if (_0x4777ff !== null && _0x3d1be6 >= _0x4e91d5) {
         if (_0x4e91d5 === 0x0 && _0x3d1be6 === 0x0)
           return (
@@ -2675,7 +2657,7 @@
         (_0x4e91d5 = _0x3d1be6),
         (_0x1a610d[getString(0x406)] = _0x4777ff),
         (_0x1a610d[getString(0x40b)] =
-          _0x4c0fc6[getString(0x2f7)]["direction"] === "fwd" ? Direction[getString(0x2df)] : Direction["REVERSE"]);
+          _0x4c0fc6[getString(0x2f7)]["direction"] === "fwd" ? Direction.FORWARD : Direction["REVERSE"]);
     }
     if (_0x4777ff == null) return lt_log(getString(0x32e), 0x2), 0x0;
     else lt_log(getString(0x35f) + _0x4777ff.attributes.id + "\x20" + (_0x4e91d5 === 0x0 ? "" : getString(0x3a3)), 0x2);
@@ -2882,7 +2864,7 @@
     _0x4f9c8b === "A" ? (_0x21c177 = _0x1a41f6[0x1]) : (_0x21c177 = _0x1a41f6[_0x1a41f6.length - 0x2]);
     let _0x17c96f = _0x21c177["x"] - _0x41cbb8.geometry["x"],
       _0x3b764f = _0x21c177["y"] - _0x41cbb8.geometry["y"],
-      _0x25f24a = Math[getString(0x3ad)](_0x3b764f, _0x17c96f),
+      _0x25f24a = Math.atan2(_0x3b764f, _0x17c96f),
       _0x1b508f = ((_0x25f24a * 0xb4) / Math["PI"]) % 0x168;
     for (let _0x578df3 = 0x0; _0x578df3 < _0x24af2d.length; _0x578df3++) {
       const _0x53ad06 = getSegObj(_0x24af2d[_0x578df3]);
@@ -2896,17 +2878,17 @@
         _0x5767e7 === "A" ? (_0x165d3c = _0x1830fe[0x1]) : (_0x165d3c = _0x1830fe[_0x1830fe.length - 0x2]);
         (_0x17c96f = _0x165d3c["x"] - _0x41cbb8.geometry["x"]),
           (_0x3b764f = _0x165d3c["y"] - _0x41cbb8.geometry["y"]),
-          (_0x25f24a = Math[getString(0x3ad)](_0x3b764f, _0x17c96f));
-        let _0x422251 = ((_0x25f24a * 0xb4) / Math["PI"]) % 0x168;
+          (_0x25f24a = Math.atan2(_0x3b764f, _0x17c96f));
+        let _0x422251 = ((_0x25f24a * 0xb4) / Math["PI"]) % 360;
         if (_0x1b508f < 0x0) _0x422251 = _0x1b508f - _0x422251;
         _turnData = {};
-        let _0x2ca8fc = _0x207537[getString(0x2b5)]();
+        let _0x2ca8fc = _0x207537.getLaneData();
         (_turnData.id = _0x53ad06.attributes.id),
-          (_turnData[getString(0x25b)] = _0x422251),
+          (_turnData.order = _0x422251),
           (_turnData.lanes = _0x2ca8fc),
           _turnInfo[getString(0x3c0)](_turnData);
       }
-      _turnInfo["sort"]((_0x1252aa, _0x286486) => (_0x1252aa["order"] > _0x286486[getString(0x25b)] ? 0x1 : -0x1));
+      _turnInfo["sort"]((_0x1252aa, _0x286486) => (_0x1252aa.order > _0x286486.order ? 0x1 : -0x1));
     }
     console.log(_turnInfo);
   }
@@ -2942,16 +2924,12 @@
         (_0x44e9fd = {}),
           (_0x2362eb = _0x3374c6["x"] - _0x32336a.geometry["x"]),
           (_0x480d3d = _0x3374c6["y"] - _0x32336a.geometry["y"]),
-          (_0x33018e = Math[getString(0x3ad)](_0x480d3d, _0x2362eb));
+          (_0x33018e = Math.atan2(_0x480d3d, _0x2362eb));
         let _0x528fbb = ((_0x33018e * 0xb4) / Math["PI"]) % 0x168;
         if (_0xf2c260 < 0x0) _0x528fbb = _0xf2c260 - _0x528fbb;
-        (_0x44e9fd.id = _0x5842af.id),
-          (_0x44e9fd[getString(0x25b)] = _0x528fbb),
-          _0x1b740b[getString(0x3c0)](_0x44e9fd);
+        (_0x44e9fd.id = _0x5842af.id), (_0x44e9fd.order = _0x528fbb), _0x1b740b[getString(0x3c0)](_0x44e9fd);
       }
-      _0x1b740b[getString(0x388)]((_0x42b904, _0xb23157) =>
-        _0x42b904[getString(0x25b)] > _0xb23157[getString(0x25b)] ? 0x1 : -0x1
-      );
+      _0x1b740b[getString(0x388)]((_0x42b904, _0xb23157) => (_0x42b904.order > _0xb23157.order ? 0x1 : -0x1));
     }
     console.log(_0x1b740b);
     if (_turnInfo.length === _0x1b740b.length) {
@@ -2983,32 +2961,29 @@
     removeLaneGraphics();
     const _0x4559f2 = W.selectionManager.getSelectedFeatures();
     if (
-      !getId(getString(0x280)).checked ||
+      !getId("lt-ScriptEnabled").checked ||
       !getId(getString(0x3b3)).checked ||
       _0x4559f2.length !== 0x1 ||
       _0x4559f2[0x0].attributes.wazeFeature._wmeObject[getString(0x478)] !== "segment"
     )
       return;
     const _0x2d2ac0 = _0x4559f2[0x0].attributes.wazeFeature._wmeObject,
-      _0x512da9 = W[getString(0x423)][getString(0x2f2)]()[getString(0x3f3)]();
+      _0x512da9 = W.map[getString(0x2f2)]().getZoom();
     if ((_0x2d2ac0.attributes[getString(0x42f)] !== (0x3 || 0x6 || 0x7) && _0x512da9 < 0x10) || _0x512da9 < 0xf) return;
     let _0x2d2a03 =
         _0x2d2ac0.attributes.fwdLaneCount > 0x0
           ? _0x5694f9(
               $(".fwd-lanes")
                 .find(".lane-arrow")
-                [getString(0x423)](function () {
-                  return this;
-                })
-                ["get"]()
+                .map(function () { return this; }).get()
             )
           : false,
       _0x154122 =
         _0x2d2ac0.attributes.revLaneCount > 0x0
           ? _0x5694f9(
-              $(getString(0x2ef))
+              $(".rev-lanes")
                 .find(".lane-arrow")
-                [getString(0x423)](function () {
+                .map(function () {
                   return this;
                 })
                 .get()
@@ -3018,13 +2993,12 @@
       let _0x2c1862 = {};
       for (let _0xa51b27 = 0x0; _0xa51b27 < _0x3399d1.length; _0xa51b27++) {
         let _0x3ce23 = {};
-        (_0x3ce23[getString(0x284)] =
-          $(_0x3399d1[_0xa51b27]).find(".uturn").css(getString(0x36a)) !== "none"),
+        (_0x3ce23[getString(0x284)] = $(_0x3399d1[_0xa51b27]).find(".uturn").css(getString(0x36a)) !== "none"),
           (_0x3ce23[getString(0x235)] =
             $(_0x3399d1[_0xa51b27]).find(".small-uturn").css(getString(0x36a)) !== getString(0x460)),
           (_0x3ce23[getString(0x2b8)] = $(_0x3399d1[_0xa51b27])
             .find(getString(0x2b8))
-            [getString(0x423)](function () {
+            .map(function () {
               return this;
             })
             .get()),
@@ -3037,7 +3011,7 @@
     function _0x4db382(_0x22e6e2) {
       const _0x16f923 = new XMLSerializer();
       return (
-        _[getString(0x3e2)](_0x22e6e2, (_0xa929da) => {
+        _.each(_0x22e6e2, (_0xa929da) => {
           try {
             let _0x1b9e83 = _0xa929da["svg"][0x0],
               _0x2e4457 = _0x16f923[getString(0x404)](_0x1b9e83);
@@ -3210,59 +3184,56 @@
         return temp;
       }
       let _0x2a17ea = _0x4b99ab(_0x1c3e29);
-      var _0xc39253 = new OpenLayers[getString(0x330)]["Point"](_0x2a17ea["x"], _0x2a17ea["y"] + _0x55da4e.boxheight),
-        _0x374f3b = new OpenLayers[getString(0x330)][getString(0x456)](
+      var _0xc39253 = new OpenLayers.Geometry.Point(_0x2a17ea["x"], _0x2a17ea["y"] + _0x55da4e.boxheight),
+        _0x374f3b = new OpenLayers.Geometry.Point(
           _0x2a17ea["x"] + _0x55da4e.boxincwidth * _0x5095aa,
           _0x2a17ea["y"] + _0x55da4e.boxheight
         ),
-        _0x3d568a = new OpenLayers[getString(0x330)]["Point"](
-          _0x2a17ea["x"] + _0x55da4e.boxincwidth * _0x5095aa,
-          _0x2a17ea["y"]
-        ),
-        _0x12cbe6 = new OpenLayers[getString(0x330)][getString(0x456)](_0x2a17ea["x"], _0x2a17ea["y"]);
-      _0x55c2d7["push"](_0xc39253, _0x374f3b, _0x3d568a, _0x12cbe6);
+        _0x3d568a = new OpenLayers.Geometry.Point(_0x2a17ea["x"] + _0x55da4e.boxincwidth * _0x5095aa, _0x2a17ea["y"]),
+        _0x12cbe6 = new OpenLayers.Geometry.Point(_0x2a17ea["x"], _0x2a17ea["y"]);
+      _0x55c2d7.push(_0xc39253, _0x374f3b, _0x3d568a, _0x12cbe6);
       var _0x5b7230 = {
-        strokeColor: getString(0x2c6),
+        strokeColor: "#ffffff",
         strokeOpacity: 0x1,
         strokeWidth: 0x8,
-        fillColor: getString(0x2c6),
+        fillColor: "#ffffff",
       };
-      let _0x548ba5 = new OpenLayers.geometry["LinearRing"](_0x55c2d7);
+      let _0x548ba5 = new OpenLayers.geometry.LinearRing(_0x55c2d7);
       (_0x1d852d = _0x548ba5[getString(0x214)]()), _0x548ba5[getString(0x2cc)](_0x2fcc96, _0x1d852d);
       let _0x79291a = new OpenLayers[getString(0x2fc)][getString(0x209)](_0x548ba5, null, _0x5b7230);
       LTLaneGraphics["addFeatures"]([_0x79291a]);
       let _0xe41aaa = 0x0;
-      _[getString(0x3e2)](_0x533989, (_0x25119b) => {
+      _.each(_0x533989, (_0x25119b) => {
         let _0x4731ea = [];
-        var _0x1bd240 = new OpenLayers[getString(0x330)]["Point"](
-            _0x2a17ea["x"] + _0x55da4e.boxincwidth * _0xe41aaa + _0x55da4e["iconbordermargin"],
-            _0x2a17ea["y"] + _0x55da4e[getString(0x345)]
+        var _0x1bd240 = new OpenLayers.Geometry.Point(
+            _0x2a17ea["x"] + _0x55da4e.boxincwidth * _0xe41aaa + _0x55da4e.iconbordermargin,
+            _0x2a17ea["y"] + _0x55da4e.iconborderheight
           ),
-          _0x47bfb1 = new OpenLayers[getString(0x330)][getString(0x456)](
-            _0x2a17ea["x"] + _0x55da4e.boxincwidth * _0xe41aaa + _0x55da4e["iconborderwidth"],
-            _0x2a17ea["y"] + _0x55da4e[getString(0x345)]
+          _0x47bfb1 = new OpenLayers.Geometry.Point(
+            _0x2a17ea["x"] + _0x55da4e.boxincwidth * _0xe41aaa + _0x55da4e.iconborderwidth,
+            _0x2a17ea["y"] + _0x55da4e.iconborderheight
           ),
-          _0x2d1e17 = new OpenLayers[getString(0x330)][getString(0x456)](
-            _0x2a17ea["x"] + _0x55da4e.boxincwidth * _0xe41aaa + _0x55da4e[getString(0x3ea)],
-            _0x2a17ea["y"] + _0x55da4e[getString(0x3d4)]
+          _0x2d1e17 = new OpenLayers.Geometry.Point(
+            _0x2a17ea["x"] + _0x55da4e.boxincwidth * _0xe41aaa + _0x55da4e.iconborderwidth,
+            _0x2a17ea["y"] + _0x55da4e.iconbordermargin
           ),
-          _0x42e795 = new OpenLayers[getString(0x330)][getString(0x456)](
-            _0x2a17ea["x"] + _0x55da4e.boxincwidth * _0xe41aaa + _0x55da4e[getString(0x3d4)],
-            _0x2a17ea["y"] + _0x55da4e["iconbordermargin"]
+          _0x42e795 = new OpenLayers.Geometry.Point(
+            _0x2a17ea["x"] + _0x55da4e.boxincwidth * _0xe41aaa + _0x55da4e.iconbordermargin,
+            _0x2a17ea["y"] + _0x55da4e.iconbordermargin
           );
-        _0x4731ea["push"](_0x1bd240, _0x47bfb1, _0x2d1e17, _0x42e795);
+        _0x4731ea.push(_0x1bd240, _0x47bfb1, _0x2d1e17, _0x42e795);
         var _0x2c762f = {
           strokeColor: "#000000",
           strokeOpacity: 0x1,
           strokeWidth: 0x1,
           fillColor: getString(0x424),
         };
-        let _0x30718d = new OpenLayers[getString(0x330)][getString(0x277)](_0x4731ea);
+        let _0x30718d = new OpenLayers.Geometry[getString(0x277)](_0x4731ea);
         _0x30718d["rotate"](_0x2fcc96, _0x1d852d);
         let _0x5f23a1 = new OpenLayers[getString(0x2fc)]["Vector"](_0x30718d, null, _0x2c762f);
         LTLaneGraphics[getString(0x38b)]([_0x5f23a1]);
         let _0x305721 = _0x30718d["getCentroid"](),
-          _0x5001ff = new OpenLayers[getString(0x330)][getString(0x456)](_0x305721["x"], _0x305721["y"]),
+          _0x5001ff = new OpenLayers.Geometry.Point(_0x305721["x"], _0x305721["y"]),
           _0x543941 = "",
           _0x4e547b = { x: 0x0, y: 0x0 },
           _0x43b459 = { x: 0x0, y: 0x0 };
@@ -3280,15 +3251,15 @@
           (_0x43b459["y"] = 0x4));
         let _0x140285 = {
             externalGraphic: _0x25119b[getString(0x2b8)],
-            graphicHeight: _0x55da4e["graphicHeight"],
-            graphicWidth: _0x55da4e[getString(0x2b9)],
+            graphicHeight: _0x55da4e.graphicHeight,
+            graphicWidth: _0x55da4e.graphicWidth,
             fillColor: "#26bae8",
             bgcolor: "#26bae8",
             color: "#26bae8",
             rotation: _0x3b5791,
             backgroundGraphic: _0x543941,
-            backgroundHeight: _0x55da4e[getString(0x422)] * _0x4e547b["y"],
-            backgroundWidth: _0x55da4e[getString(0x2b9)] * _0x4e547b["x"],
+            backgroundHeight: _0x55da4e.graphicHeight * _0x4e547b["y"],
+            backgroundWidth: _0x55da4e.graphicWidth * _0x4e547b["x"],
             backgroundXOffset: _0x43b459["x"],
             backgroundYOffset: _0x43b459["y"],
           },
@@ -3301,199 +3272,199 @@
     function _0x24ac62() {
       var _0x1776ce = {};
       if (UPDATEDZOOM)
-        switch (W[getString(0x423)][getString(0x2f2)]()["getZoom"]()) {
+        switch (W.map[getString(0x2f2)]()["getZoom"]()) {
           case 0x16:
             (_0x1776ce.start = 0.5),
               (_0x1776ce.boxheight = 1.7),
               (_0x1776ce.boxincwidth = 1.1),
-              (_0x1776ce[getString(0x3d4)] = 0.1),
-              (_0x1776ce[getString(0x345)] = 1.6),
-              (_0x1776ce[getString(0x3ea)] = 0x1),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0.1),
+              (_0x1776ce.iconborderheight = 1.6),
+              (_0x1776ce.iconborderwidth = 0x1),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0x15:
             (_0x1776ce.start = 0x1),
               (_0x1776ce.boxheight = 3.2),
               (_0x1776ce.boxincwidth = 2.2),
-              (_0x1776ce[getString(0x3d4)] = 0.2),
-              (_0x1776ce[getString(0x345)] = 0x3),
-              (_0x1776ce["iconborderwidth"] = 0x2),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0.2),
+              (_0x1776ce.iconborderheight = 0x3),
+              (_0x1776ce.iconborderwidth = 0x2),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0x14:
             (_0x1776ce.start = 0x2),
               (_0x1776ce.boxheight = 5.2),
               (_0x1776ce.boxincwidth = 3.8),
-              (_0x1776ce[getString(0x3d4)] = 0.3),
+              (_0x1776ce.iconbordermargin = 0.3),
               (_0x1776ce["iconborderheight"] = 4.9),
-              (_0x1776ce["iconborderwidth"] = 3.5),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconborderwidth = 3.5),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0x13:
             (_0x1776ce.start = 0x3),
               (_0x1776ce.boxheight = 0xa),
               (_0x1776ce.boxincwidth = 7.2),
-              (_0x1776ce[getString(0x3d4)] = 0.4),
-              (_0x1776ce[getString(0x345)] = 9.6),
-              (_0x1776ce[getString(0x3ea)] = 6.8),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0.4),
+              (_0x1776ce.iconborderheight = 9.6),
+              (_0x1776ce.iconborderwidth = 6.8),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0x12:
             (_0x1776ce.start = 0x6),
               (_0x1776ce.boxheight = 0x14),
               (_0x1776ce.boxincwidth = 0xe),
-              (_0x1776ce[getString(0x3d4)] = 0.5),
+              (_0x1776ce.iconbordermargin = 0.5),
               (_0x1776ce["iconborderheight"] = 19.5),
-              (_0x1776ce["iconborderwidth"] = 13.5),
-              (_0x1776ce["graphicHeight"] = 0x2a),
+              (_0x1776ce.iconborderwidth = 13.5),
+              (_0x1776ce.graphicHeight = 0x2a),
               (_0x1776ce["graphicWidth"] = 0x19);
             break;
           case 0x11:
             (_0x1776ce.start = 0xa),
               (_0x1776ce.boxheight = 0x27),
               (_0x1776ce.boxincwidth = 0x1c),
-              (_0x1776ce[getString(0x3d4)] = 0x1),
-              (_0x1776ce[getString(0x345)] = 0x26),
-              (_0x1776ce["iconborderwidth"] = 0x1b),
-              (_0x1776ce["graphicHeight"] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0x1),
+              (_0x1776ce.iconborderheight = 0x26),
+              (_0x1776ce.iconborderwidth = 0x1b),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0x10:
             (_0x1776ce.start = 0xf),
               (_0x1776ce.boxheight = 0x50),
               (_0x1776ce.boxincwidth = 0x37),
-              (_0x1776ce[getString(0x3d4)] = 0x2),
+              (_0x1776ce.iconbordermargin = 0x2),
               (_0x1776ce["iconborderheight"] = 0x4e),
-              (_0x1776ce[getString(0x3ea)] = 0x35),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconborderwidth = 0x35),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0xf:
             (_0x1776ce.start = 0x2),
               (_0x1776ce.boxheight = 0x78),
               (_0x1776ce.boxincwidth = 0x5a),
-              (_0x1776ce[getString(0x3d4)] = 0x3),
-              (_0x1776ce[getString(0x345)] = 0x75),
-              (_0x1776ce[getString(0x3ea)] = 0x57),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0x3),
+              (_0x1776ce.iconborderheight = 0x75),
+              (_0x1776ce.iconborderwidth = 0x57),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0xe:
             (_0x1776ce.start = 0x2),
               (_0x1776ce.boxheight = 5.2),
               (_0x1776ce.boxincwidth = 3.8),
-              (_0x1776ce[getString(0x3d4)] = 0.3),
-              (_0x1776ce[getString(0x345)] = 4.9),
-              (_0x1776ce[getString(0x3ea)] = 3.5),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0.3),
+              (_0x1776ce.iconborderheight = 4.9),
+              (_0x1776ce.iconborderwidth = 3.5),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
         }
       else
-        switch (W[getString(0x423)][getString(0x2f2)]()[getString(0x3f3)]()) {
+        switch (W.map[getString(0x2f2)]().getZoom()) {
           case 0xa:
             (_0x1776ce.start = 0.5),
               (_0x1776ce.boxheight = 1.7),
               (_0x1776ce.boxincwidth = 1.1),
-              (_0x1776ce[getString(0x3d4)] = 0.1),
-              (_0x1776ce[getString(0x345)] = 1.6),
-              (_0x1776ce[getString(0x3ea)] = 0x1),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0.1),
+              (_0x1776ce.iconborderheight = 1.6),
+              (_0x1776ce.iconborderwidth = 0x1),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0x9:
             (_0x1776ce.start = 0x1),
               (_0x1776ce.boxheight = 3.2),
               (_0x1776ce.boxincwidth = 2.2),
-              (_0x1776ce[getString(0x3d4)] = 0.2),
-              (_0x1776ce[getString(0x345)] = 0x3),
-              (_0x1776ce[getString(0x3ea)] = 0x2),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0.2),
+              (_0x1776ce.iconborderheight = 0x3),
+              (_0x1776ce.iconborderwidth = 0x2),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0x8:
             (_0x1776ce.start = 0x2),
               (_0x1776ce.boxheight = 5.2),
               (_0x1776ce.boxincwidth = 3.8),
-              (_0x1776ce[getString(0x3d4)] = 0.3),
-              (_0x1776ce[getString(0x345)] = 4.9),
-              (_0x1776ce["iconborderwidth"] = 3.5),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0.3),
+              (_0x1776ce.iconborderheight = 4.9),
+              (_0x1776ce.iconborderwidth = 3.5),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0x7:
             (_0x1776ce.start = 0x3),
               (_0x1776ce.boxheight = 0xa),
               (_0x1776ce.boxincwidth = 7.2),
-              (_0x1776ce["iconbordermargin"] = 0.4),
-              (_0x1776ce[getString(0x345)] = 9.6),
-              (_0x1776ce[getString(0x3ea)] = 6.8),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0.4),
+              (_0x1776ce.iconborderheight = 9.6),
+              (_0x1776ce.iconborderwidth = 6.8),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0x6:
             (_0x1776ce.start = 0x6),
               (_0x1776ce.boxheight = 0x14),
               (_0x1776ce.boxincwidth = 0xe),
-              (_0x1776ce[getString(0x3d4)] = 0.5),
-              (_0x1776ce[getString(0x345)] = 19.5),
-              (_0x1776ce[getString(0x3ea)] = 13.5),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0.5),
+              (_0x1776ce.iconborderheight = 19.5),
+              (_0x1776ce.iconborderwidth = 13.5),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0x5:
             (_0x1776ce.start = 0xa),
               (_0x1776ce.boxheight = 0x28),
               (_0x1776ce.boxincwidth = 0x1d),
-              (_0x1776ce[getString(0x3d4)] = 0x1),
-              (_0x1776ce[getString(0x345)] = 0x26),
-              (_0x1776ce[getString(0x3ea)] = 0x1b),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0x1),
+              (_0x1776ce.iconborderheight = 0x26),
+              (_0x1776ce.iconborderwidth = 0x1b),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0x4:
             (_0x1776ce.start = 0xf),
               (_0x1776ce.boxheight = 0x50),
               (_0x1776ce.boxincwidth = 0x37),
-              (_0x1776ce["iconbordermargin"] = 0x2),
+              (_0x1776ce.iconbordermargin = 0x2),
               (_0x1776ce["iconborderheight"] = 0x4e),
-              (_0x1776ce[getString(0x3ea)] = 0x35),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconborderwidth = 0x35),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0x3:
             (_0x1776ce.start = 0x2),
               (_0x1776ce.boxheight = 0x78),
               (_0x1776ce.boxincwidth = 0x5a),
-              (_0x1776ce["iconbordermargin"] = 0x3),
-              (_0x1776ce[getString(0x345)] = 0x75),
-              (_0x1776ce[getString(0x3ea)] = 0x57),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0x3),
+              (_0x1776ce.iconborderheight = 0x75),
+              (_0x1776ce.iconborderwidth = 0x57),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0x2:
             (_0x1776ce.start = 0x2),
               (_0x1776ce.boxheight = 5.2),
               (_0x1776ce.boxincwidth = 3.8),
-              (_0x1776ce[getString(0x3d4)] = 0.3),
-              (_0x1776ce[getString(0x345)] = 4.9),
-              (_0x1776ce[getString(0x3ea)] = 3.5),
-              (_0x1776ce[getString(0x422)] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0.3),
+              (_0x1776ce.iconborderheight = 4.9),
+              (_0x1776ce.iconborderwidth = 3.5),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
           case 0x1:
             (_0x1776ce.start = 0x2),
               (_0x1776ce.boxheight = 5.2),
               (_0x1776ce.boxincwidth = 3.8),
-              (_0x1776ce[getString(0x3d4)] = 0.3),
-              (_0x1776ce[getString(0x345)] = 4.9),
-              (_0x1776ce[getString(0x3ea)] = 3.5),
-              (_0x1776ce["graphicHeight"] = 0x2a),
-              (_0x1776ce[getString(0x2b9)] = 0x19);
+              (_0x1776ce.iconbordermargin = 0.3),
+              (_0x1776ce.iconborderheight = 4.9),
+              (_0x1776ce.iconborderwidth = 3.5),
+              (_0x1776ce.graphicHeight = 0x2a),
+              (_0x1776ce.graphicWidth = 0x19);
             break;
         }
       return _0x1776ce;
@@ -3502,17 +3473,17 @@
   laneToolsBootstrap();
   while (true) {
     try {
-      const _0x4fe049 =
-        -parseInt(getStringFunction(0x269)) / 0x1 +
-        -parseInt(getStringFunction(0x443)) / 0x2 +
-        (-parseInt(getStringFunction(0x293)) / 0x3) * (parseInt(getStringFunction(0x1ef)) / 0x4) +
-        -parseInt(getStringFunction(0x477)) / 0x5 +
-        (parseInt(getStringFunction(0x31e)) / 0x6) * (-parseInt(getStringFunction(0x21a)) / 0x7) +
-        (parseInt(getStringFunction(0x2fe)) / 0x8) * (-parseInt(getStringFunction(0x46f)) / 0x9) +
-        parseInt(getStringFunction(0x28b)) / 0xa;
-      if (_0x4fe049 === _0x1fd245) break;
+      const exitCode =
+        -parseInt("116729CFFamr") / 0x1 +
+        -parseInt("1006486hQNMjC") / 0x2 +
+        (-parseInt("21lOwPjv") / 0x3) * (parseInt("246188fslQvy") / 0x4) +
+        -parseInt("2546485hRBZxR") / 0x5 +
+        (parseInt("695094iWfXcp") / 0x6) * (-parseInt("7CccpnK") / 0x7) +
+        (parseInt("155432OeGIQS") / 0x8) * (-parseInt("396CKTurr") / 0x9) +
+        parseInt("30770070DOGVeo") / 0xa;
+      if (exitCode === _0x1fd245) break;
       else push(shift());
-    } catch (_0x415ba0) {
+    } catch (ex) {
       push(shift());
     }
   }
