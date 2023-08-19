@@ -1,0 +1,15 @@
+{
+  "name": "wme-lanetools",
+  "version": "1.0.0",
+  "description": "Script that supplements lane edits in the WME",
+  "main": "WME-LaneTools.user.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ol": "^7.5.1"
+  }
+}
