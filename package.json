@@ -10,6 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "eslint-config-greasemonkey": "^1.0.1",
     "ol": "^7.5.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mveygman/WME-LaneTools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mveygman/WME-LaneTools/issues"
+  },
+  "homepage": "https://github.com/mveygman/WME-LaneTools#readme"
 }
