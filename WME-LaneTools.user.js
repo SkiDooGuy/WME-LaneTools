@@ -725,7 +725,7 @@
         spreadSheetLoadStatus &&
             _.each(configArray, (configValueJSON) => {
                 for (const configValue in configValueJSON) {
-                    if (configValueJSON["hasOwnProperty"](configValue)) {
+                    if (configValueJSON.hasOwnProperty(configValue)) {
                         let value = configValueJSON[configValue];
                         configValueJSON[configValue] = Number.parseFloat(value);
                     }
@@ -851,9 +851,9 @@
             keyboardKey >= 96 && keyboardKey <= 105 && ((keyboardKey -= 48), (shortCutValue += "[num\x20pad]")),
                 (shortCutValue += String.fromCharCode(keyboardKey));
         } else {
-            let _0x1a8cd3 = Number.parseInt(keyboardShortCut, 10);
-            _0x1a8cd3 >= 0x60 && _0x1a8cd3 <= 0x69 && ((_0x1a8cd3 -= 0x30), (shortCutValue += "[num\x20pad]")),
-                (shortCutValue += String.fromCharCode(_0x1a8cd3));
+            let keyboardKey = Number.parseInt(keyboardShortCut, 10);
+            keyboardKey >= 0x60 && keyboardKey <= 0x69 && ((keyboardKey -= 48), (shortCutValue += "[num\x20pad]")),
+                (shortCutValue += String.fromCharCode(keyboardKey));
         }
         return shortCutValue;
     }
@@ -973,14 +973,14 @@
                         (fwdLanesEnabled = true),
                         setTimeout(function () {
                             _0x5a28b7();
-                        }, 0xc8);
+                        }, 200);
                 }),
                     $("#li-del-rev-btn").click(function () {
                         delLanes("rev"),
                             (revLanesEnabled = true),
                             setTimeout(function () {
                                 _0x5a28b7();
-                            }, 0xc8);
+                            }, 200);
                     }),
                     $("#li-del-opp-btn").click(function () {
                         let _0x535f00 = $(this).prop("title");
@@ -1014,25 +1014,25 @@
                 (fwdLanesEnabled = true),
                     setTimeout(function () {
                         _0x5a28b7();
-                    }, 0xc8);
+                    }, 200);
             }),
                 _0x3df49c.find(".apply-button.waze-btn.waze-btn-blue").click(() => {
                     (revLanesEnabled = true),
                         setTimeout(function () {
                             _0x5a28b7();
-                        }, 0xc8);
+                        }, 200);
                 }),
                 _0x5ee852.find(".cancel-button").click(() => {
                     (fwdLanesEnabled = true),
                         setTimeout(function () {
                             _0x5a28b7();
-                        }, 0xc8);
+                        }, 200);
                 }),
                 _0x3df49c.find(".cancel-button").click(() => {
                     (revLanesEnabled = true),
                         setTimeout(function () {
                             _0x5a28b7();
-                        }, 0xc8);
+                        }, 200);
                 });
         }
         function _0x2308e1() {
@@ -1126,7 +1126,7 @@
                         _0x4d157.find(".form-control").focus();
                 }
             });
-            if ($(".fwd-lanes").find(getString(0x2ea)).children().length > 0x0 && !getId(getString(0x453))) {
+            if ($(".fwd-lanes").find(".lane-width-card").children().length > 0x0 && !getId("lt-fwd-add-Width")) {
                 let add1MoreLane = $("<div\x20class=\x22lt-add-Width\x20fwd\x22>1</div>"),
                     add2MoreLanes = $("<div\x20class=\x22lt-add-Width\x20fwd\x22>2</div>"),
                     add3MoreLanes = $("<div\x20class=\x22lt-add-Width\x20fwd\x22>3</div>"),
@@ -2101,9 +2101,9 @@
     }
     function highlightSegment(
         segGeom,
-        _0x58d6bd,
-        _0x5f4375,
-        _0x52d15e,
+        segDirection,
+        highlightEnabled,
+        highlightLabelsEnabled,
         _0x126e8a,
         _0x2c9162,
         _0x147e33,
@@ -2125,21 +2125,21 @@
                 _0x17a8e9 = _0x114781 / 0x2,
                 _0x5479ec = _0x114781 % 0x2 ? Math.ceil(_0x17a8e9) - 0x1 : Math.ceil(_0x17a8e9),
                 _0x3a7f64 = _0x114781 % 0x2 ? Math.floor(_0x17a8e9) + 0x1 : Math.floor(_0x17a8e9);
-            if (_0x58d6bd === Direction.FORWARD) {
+            if (segDirection === Direction.FORWARD) {
                 let _0x21e1e8 = _0x1c40ca(_0x1d1809, _0x5479ec, _0x114781);
-                _0x5f4375 && _0x58a03b(_0x21e1e8, "" + LtSettings.ABColor, _0x3c685d.DASH_THIN),
+                highlightEnabled && _0x58a03b(_0x21e1e8, "" + LtSettings.ABColor, _0x3c685d.DASH_THIN),
                     _0x43deae(_0x21e1e8, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
             } else {
-                if (_0x58d6bd === Direction.REVERSE) {
+                if (segDirection === Direction.REVERSE) {
                     let _0x3e6b6f = _0x1c40ca(_0x1d1809, 0x0, _0x3a7f64);
-                    _0x5f4375 && _0x58a03b(_0x3e6b6f, "" + LtSettings.BAColor, _0x3c685d.DASH_THIN),
+                    highlightEnabled && _0x58a03b(_0x3e6b6f, "" + LtSettings.BAColor, _0x3c685d.DASH_THIN),
                         _0x43deae(_0x3e6b6f, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
                 }
             }
-            if (_0x52d15e && (Direction.FORWARD || _0x126e8a === 0x0)) {
-                if (_0x114781 % 0x2) applyName(_0x1d1809["components"][_0x5479ec], _0x126e8a, _0x2c9162);
+            if (highlightLabelsEnabled && (Direction.FORWARD || _0x126e8a === 0x0)) {
+                if (_0x114781 % 0x2) applyName(_0x1d1809.components[_0x5479ec], _0x126e8a, _0x2c9162);
                 else {
-                    let _0x3f4fb2 = _0x1d1809["components"][_0x3a7f64 - 0x1],
+                    let _0x3f4fb2 = _0x1d1809.components[_0x3a7f64 - 0x1],
                         _0x196425 = _0x1d1809.components[_0x5479ec],
                         _0x2daf64 = new OpenLayers.Geometry.Point(
                             (_0x3f4fb2.x + _0x196425.x) / 0x2,
@@ -2155,31 +2155,31 @@
                     (_0x5b73aa.x + _0x3cd08d.x) / 0x2,
                     (_0x5b73aa.y + _0x3cd08d.y) / 0x2
                 );
-            if (_0x58d6bd === Direction.FORWARD) {
+            if (segDirection === Direction.FORWARD) {
                 let _0x196538 = new OpenLayers.Geometry.Point(
                         _0x1d1809.components[0x1].clone().x,
                         _0x1d1809.components[0x1].clone().y
                     ),
                     _0x13e81d = new OpenLayers.Geometry["LineString"]([_0xa8356b, _0x196538], {});
-                _0x5f4375 && _0x58a03b(_0x13e81d, "" + LtSettings.ABColor, _0x3c685d.DASH_THIN),
+                highlightEnabled && _0x58a03b(_0x13e81d, "" + LtSettings.ABColor, _0x3c685d.DASH_THIN),
                     _0x43deae(_0x13e81d, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
             } else {
-                if (_0x58d6bd === Direction.REVERSE) {
+                if (segDirection === Direction.REVERSE) {
                     let _0x4c870d = new OpenLayers.Geometry.Point(
                             _0x1d1809.components[0x0].clone().x,
                             _0x1d1809.components[0x0].clone().y
                         ),
                         _0x598bfa = new OpenLayers.geometry.LineString([_0xa8356b, _0x4c870d], {});
-                    _0x5f4375 && _0x58a03b(_0x598bfa, "" + LtSettings["BAColor"], _0x3c685d["DASH_THIN"]),
+                    highlightEnabled && _0x58a03b(_0x598bfa, "" + LtSettings["BAColor"], _0x3c685d["DASH_THIN"]),
                         _0x43deae(_0x598bfa, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
                 }
             }
-            _0x52d15e && (Direction.FORWARD || _0x126e8a === 0x0) && applyName(_0xa8356b, _0x126e8a, _0x2c9162);
+            highlightLabelsEnabled && (Direction.FORWARD || _0x126e8a === 0x0) && applyName(_0xa8356b, _0x126e8a, _0x2c9162);
         }
         function _0x1c40ca(_0x1226a0, _0x5d1ef6, _0x2d2248) {
             let _0x3411db = [];
             for (let _0x191254 = _0x5d1ef6; _0x191254 < _0x2d2248; _0x191254++) {
-                _0x3411db[_0x191254] = _0x1226a0["components"][_0x191254].clone();
+                _0x3411db[_0x191254] = _0x1226a0.components[_0x191254].clone();
             }
             return new OpenLayers.Geometry.LineString(_0x3411db, {});
         }
@@ -2238,7 +2238,7 @@
     function highlightNode(_0x468e12, _0xcc8670, _0x5c426d = false) {
         const _0x5ee4da = _0x468e12.clone(),
             _0x1313c1 = new OpenLayers.Feature.Vector(_0x5ee4da, {});
-        LTHighlightLayer[getString(0x38b)]([_0x1313c1]);
+        LTHighlightLayer.addFeatures([_0x1313c1]);
         const _0x2bd47a = document.getElementById(_0x5ee4da.id);
         _0x2bd47a &&
             (_0x2bd47a.setAttribute("fill", _0xcc8670),
@@ -2336,30 +2336,30 @@
                 }
             }
         });
-        function _0x2ad725(_0x6f84fd, _0x37e1f7, _0x17336c, _0x37b92d, _0x402e4b) {
-            const _0x162a18 = _0x37e1f7.fwdLaneCount,
-                _0x310dc4 = _0x37e1f7.revLaneCount;
-            let _0x405af6 = getNodeObj(_0x37e1f7.toNodeID),
-                _0x3f1bfc = getNodeObj(_0x37e1f7.fromNodeID),
-                _0x5a6ac5 = _0x162a18,
-                _0x58763f = _0x310dc4;
+        function _0x2ad725(_0x6f84fd, segmentObj, _0x17336c, _0x37b92d, _0x402e4b) {
+            const fwdLaneCount = segmentObj.fwdLaneCount,
+                revLaneCount = segmentObj.revLaneCount;
+            let toNode = getNodeObj(segmentObj.toNodeID),
+                fromNode = getNodeObj(segmentObj.fromNodeID),
+                fLaneCount = fwdLaneCount,
+                rLaneCount = revLaneCount;
             _0x17336c !== Direction.FORWARD &&
-                ((_0x405af6 = getNodeObj(_0x37e1f7.fromNodeID)),
-                (_0x3f1bfc = getNodeObj(_0x37e1f7.toNodeID)),
-                (_0x5a6ac5 = _0x310dc4),
-                (_0x58763f = _0x162a18));
+                ((toNode = getNodeObj(segmentObj.fromNodeID)),
+                (fromNode = getNodeObj(segmentObj.toNodeID)),
+                (fLaneCount = revLaneCount),
+                (rLaneCount = fwdLaneCount));
             let _0x5855dd = false,
                 _0x4d3a78 = false,
                 _0x12606 = false,
                 _0x58ba1e = false,
                 _0x3a8c59 = 0x0,
-                _0x436364 = HeuristicsCandidate.NONE,
+                heurCandidate = HeuristicsCandidate.NONE,
                 _0x53f387 = null,
                 _0x211d6a = { seg: 0x0, direction: Direction.NONE };
-            if (onScreen(_0x405af6, minZoomLevel)) {
-                const _0x3bcc17 = _0x405af6.getSegmentIds();
-                if (_0x5a6ac5 > 0x0) {
-                    let _0x30b899 = checkLanesConfiguration(_0x6f84fd, _0x405af6, _0x3bcc17, _0x5a6ac5);
+            if (onScreen(toNode, minZoomLevel)) {
+                const toNodeAttachedSegmentIDs = toNode.getSegmentIds();
+                if (fLaneCount > 0x0) {
+                    let _0x30b899 = checkLanesConfiguration(_0x6f84fd, toNode, toNodeAttachedSegmentIDs, fLaneCount);
                     (_0x5855dd = _0x30b899[0x0]),
                         (_0x4d3a78 = _0x30b899[0x1]),
                         (_0x58ba1e = _0x30b899[0x2]),
@@ -2368,34 +2368,34 @@
                         (_0x402e4b = _0x12606 || _0x402e4b);
                 }
                 if (_0x37b92d <= MAX_LEN_HEUR) {
-                    _0x436364 = isHeuristicsCandidate(
+                    heurCandidate = isHeuristicsCandidate(
                         _0x6f84fd,
-                        _0x405af6,
-                        _0x3bcc17,
-                        _0x3f1bfc,
-                        _0x5a6ac5,
+                        toNode,
+                        toNodeAttachedSegmentIDs,
+                        fromNode,
+                        fLaneCount,
                         _0x37b92d,
                         turnGraph,
                         _0x211d6a
                     );
-                    _0x436364 === HeuristicsCandidate["ERROR"] && (_0x12606 = true);
-                    if (!checkHeuristics) _0x436364 = HeuristicsCandidate.NONE;
-                    else _0x436364 !== HeuristicsCandidate.NONE && (_0x53f387 = { ..._0x211d6a });
+                    heurCandidate === HeuristicsCandidate["ERROR"] && (_0x12606 = true);
+                    if (!checkHeuristics) heurCandidate = HeuristicsCandidate.NONE;
+                    else heurCandidate !== HeuristicsCandidate.NONE && (_0x53f387 = { ..._0x211d6a });
                 }
             }
             if (!_0x553a1b) {
                 let _0x5c9960 = null;
-                ((heurPosHighlightEnabled && _0x436364 === HeuristicsCandidate.PASS) ||
-                    (heurNegHighlightEnabled && _0x436364 === HeuristicsCandidate.FAIL)) &&
-                    (_0x5c9960 = _0x436364),
-                    (_0x5a6ac5 > 0x0 || _0x5c9960 !== null || _0x12606) &&
+                ((heurPosHighlightEnabled && heurCandidate === HeuristicsCandidate.PASS) ||
+                    (heurNegHighlightEnabled && heurCandidate === HeuristicsCandidate.FAIL)) &&
+                    (_0x5c9960 = heurCandidate),
+                    (fLaneCount > 0x0 || _0x5c9960 !== null || _0x12606) &&
                         highlightSegment(
                             _0x6f84fd.geometry,
                             _0x17336c,
                             highlightEnabled,
                             highlightLabelsEnabled,
-                            _0x162a18,
-                            _0x310dc4,
+                            fwdLaneCount,
+                            revLaneCount,
                             _0x58ba1e && highlightLIOEnabled,
                             _0x3a8c59,
                             _0x12606,
@@ -2403,18 +2403,18 @@
                             false
                         ),
                     highlightEnabled &&
-                        getId(getString(0x34b)).checked &&
-                        (_0x5855dd && highlightNode(_0x405af6.geometry, "" + LtSettings.NodeColor),
-                        _0x4d3a78 && highlightNode(_0x405af6.geometry, "" + LtSettings.TIOColor));
+                        getId("lt-NodesEnable").checked &&
+                        (_0x5855dd && highlightNode(toNode.geometry, "" + LtSettings.NodeColor),
+                        _0x4d3a78 && highlightNode(toNode.geometry, "" + LtSettings.TIOColor));
             } else {
-                lt_log("candidate(f):" + _0x436364);
-                if (_0x436364 !== HeuristicsCandidate.NONE) {
+                lt_log("candidate(f):" + heurCandidate);
+                if (heurCandidate !== HeuristicsCandidate.NONE) {
                     if (
                         _0x53f387 != null &&
-                        _0x48b407[getString(0x27d)]((_0x12b968) => _0x12b968 === _0x53f387.seg) > -0x1
+                        _0x48b407["findIndex"]((_0x12b968) => _0x12b968 === _0x53f387.seg) > -0x1
                     ) {
                         let _0x4063ba =
-                            _0x436364 === HeuristicsCandidate.PASS
+                            heurCandidate === HeuristicsCandidate.PASS
                                 ? "" + LtSettings.NodeColor
                                 : "" + LtSettings.HeurFailColor;
                         highlightSegment(
@@ -2427,12 +2427,12 @@
                             false,
                             _0x3a8c59,
                             _0x12606,
-                            _0x436364,
+                            heurCandidate,
                             true
                         ),
                             highlightSegment(
                                 _0x53f387["seg"].geometry,
-                                _0x53f387[getString(0x2a0)],
+                                _0x53f387.direction,
                                 false,
                                 false,
                                 0x0,
@@ -2440,11 +2440,11 @@
                                 false,
                                 0x0,
                                 false,
-                                _0x436364,
+                                heurCandidate,
                                 true
                             ),
-                            highlightNode(_0x405af6.geometry, _0x4063ba, true),
-                            highlightNode(_0x3f1bfc.geometry, _0x4063ba, true);
+                            highlightNode(toNode.geometry, _0x4063ba, true),
+                            highlightNode(fromNode.geometry, _0x4063ba, true);
                     }
                 }
             }
@@ -2469,7 +2469,7 @@
                 if (turnData["hasLanes"]()) {
                     _0x739f97 = true;
                     turnData.getLaneData().hasOverrideAngle() && (_0x161259 = true);
-                    if (turnData.getLaneData()[getString(0x201)]() === 0x1)
+                    if (turnData.getLaneData().getGuidanceMode() === 0x1)
                         (_0x5c5507 = 0x1),
                             (_0x4211dc = W.model.streets.getObjectById(
                                 attachedSegment.attributes.primaryStreetID
@@ -2477,17 +2477,15 @@
                     else
                         turnData.getLaneData().getGuidanceMode() === 0x2 &&
                             ((_0x5c5507 = 0x2),
-                            (_0x4211dc = W.model.streets.getObjectById(attachedSegment.attributes.primaryStreetID)[
-                                getString(0x412)
-                            ]));
-                    const _0x21fbe6 = turnData.lanes.fromLaneIndex,
-                        _0x40bbd8 = turnData.lanes.toLaneIndex;
-                    for (let _0x382bd8 = _0x21fbe6; _0x382bd8 < _0x40bbd8 + 0x1; _0x382bd8++) {
+                            (_0x4211dc = W.model.streets.getObjectById(attachedSegment.attributes.primaryStreetID).name));
+                    const frmLnIdx = turnData.lanes.fromLaneIndex,
+                        toLnIdx = turnData.lanes.toLaneIndex;
+                    for (let cnt = frmLnIdx; cnt < toLnIdx + 0x1; cnt++) {
                         let _0x18e06a = true;
-                        for (let _0x774514 = 0x0; _0x774514 < _0x44a7d8.length; _0x774514++) {
-                            _0x44a7d8[_0x774514] === _0x382bd8 && (_0x18e06a = false);
+                        for (let idx = 0x0; idx < _0x44a7d8.length; idx++) {
+                            _0x44a7d8[idx] === cnt && (_0x18e06a = false);
                         }
-                        _0x18e06a && _0x44a7d8.push(_0x382bd8);
+                        _0x18e06a && _0x44a7d8.push(cnt);
                     }
                 }
             }
@@ -2505,17 +2503,17 @@
         if (!getId("lt-ClickSaveEnable").checked) return;
         let _0x1357ab = document.getElementsByClassName(_0x32e1b9)[0x0],
             _0x3ce173 =
-                _0x1357ab["getElementsByClassName"](getString(0x358)).length > 0x0
-                    ? getString(0x358)
+                _0x1357ab["getElementsByClassName"]("angle--135").length > 0x0
+                    ? "angle--135"
                     : _0x1357ab["getElementsByClassName"]("angle--90").length > 0x0
-                    ? getString(0x2a9)
-                    : getString(0x39d),
+                    ? "angle--90"
+                    : "angle--45";
             _0x217ae4 =
                 _0x1357ab.getElementsByClassName("angle-135").length > 0x0
                     ? "angle-135"
                     : _0x1357ab.getElementsByClassName("angle-90").length > 0x0
                     ? "angle-90"
-                    : getString(0x3d2),
+                    : "angle-45",
             _0x3541df = _0x1357ab.getElementsByClassName("turn-lane-edit-top"),
             _0x16a6be = false,
             _0x43ae0b = false,
@@ -2525,7 +2523,7 @@
                     (_0x4861b3, _0x2010bf) =>
                         _0x4861b3 +
                         [].slice
-                            .call(_0x2010bf.getElementsByTagName(getString(0x441)))
+                            .call(_0x2010bf.getElementsByTagName("input"))
                             .reduce(
                                 (_0x58c1c4, _0x4afea1) => (_0x4afea1.checked === true ? _0x58c1c4 + 0x1 : _0x58c1c4),
                                 0x0
@@ -2533,8 +2531,8 @@
                     0x0
                 );
         if (_0x257aea === 0x0) {
-            for (let _0x1a1b6e = 0x0; _0x1a1b6e < _0x3541df.length; _0x1a1b6e++) {
-                const _0x496f7c = _0x3541df[_0x1a1b6e];
+            for (let idx = 0x0; idx < _0x3541df.length; idx++) {
+                const _0x496f7c = _0x3541df[idx];
                 let _0x5c6270 = _0x496f7c["getElementsByTagName"](getString(0x2e1));
                 if (_0x5c6270 && _0x5c6270.length > 0x0) {
                     if (
@@ -2552,8 +2550,8 @@
                             ((_0x43ae0b = true), _0x5c6270[_0x5c6270.length - 0x1].click());
                 }
             }
-            for (let _0x4bc51f = 0x0; _0x4bc51f < _0x3541df.length; _0x4bc51f++) {
-                const _0x376ec2 = _0x3541df[_0x4bc51f];
+            for (let idx = 0x0; idx < _0x3541df.length; idx++) {
+                const _0x376ec2 = _0x3541df[idx];
                 let _0x58c806 = _0x376ec2.getElementsByTagName(getString(0x2e1));
                 if (_0x376ec2.getElementsByClassName(getString(0x225)).length > 0x0)
                     for (let _0x17365b = 0x0; _0x17365b < _0x58c806.length; _0x17365b++) {
@@ -2583,9 +2581,9 @@
                 W.selectionManager.getSelectedFeatures()[0x0].attributes.wazeFeature._wmeObject.type === "segments" &&
                 getId("lt-ScriptEnabled").checked
             ) {
-                let _0x21e4b9 = document[getString(0x2fd)](getString(0x316));
-                for (let _0x1dd303 = 0x0; _0x1dd303 < _0x21e4b9.length; _0x1dd303++) {
-                    _0x21e4b9[_0x1dd303][getString(0x35d)](
+                let _0x21e4b9 = document.getElementsByName("laneCount");
+                for (let idx = 0x0; idx < _0x21e4b9.length; idx++) {
+                    _0x21e4b9[idx].addEventListener(
                         "change",
                         function () {
                             let _0x2cc679 = $(this).parents().eq(0x9),
@@ -2595,13 +2593,13 @@
                         false
                     );
                 }
-                let _0xb4fbc1 = document.getElementsByClassName(getString(0x1ff));
-                for (let _0x278b52 = 0x0; _0x278b52 < _0xb4fbc1.length; _0x278b52++) {
-                    _0xb4fbc1[_0x278b52]["addEventListener"](
+                let _0xb4fbc1 = document.getElementsByClassName("lt-add-lanes");
+                for (let idx = 0x0; idx < _0xb4fbc1.length; idx++) {
+                    _0xb4fbc1[idx]["addEventListener"](
                         "click",
                         function () {
                             let _0x45dfc7 = $(this).parents().eq(0x9),
-                                _0x24c520 = _0x45dfc7[0x0][getString(0x22a)][getString(0x218)];
+                                _0x24c520 = _0x45dfc7[0x0].parentElement.className;
                             setTimeout(setTurns(_0x24c520), 0x32);
                         },
                         false
@@ -2609,31 +2607,31 @@
                 }
             }
         });
-        _0x324acf[getString(0x2a8)](document["getElementById"]("edit-panel"), {
+        _0x324acf[getString(0x2a8)](document.getElementById("edit-panel"), {
             childList: true,
             subtree: true,
         });
     }
     function isHeuristicsCandidate(
         _0x2bb3f1,
-        _0x5d08e4,
-        _0xac0e82,
-        _0x1aa31e,
-        _0x20557a,
+        toNodeObj,
+        attachedSegmentIDs,
+        fromNodeObj,
+        fwdLaneCount,
         _0x25826c,
         _0x5aa7bb,
         _0x1a610d
     ) {
         if (
             _0x2bb3f1 == null ||
-            _0x5d08e4 == null ||
-            _0xac0e82 == null ||
-            _0x1aa31e == null ||
-            _0x20557a == null ||
+            toNodeObj == null ||
+            attachedSegmentIDs == null ||
+            fromNodeObj == null ||
+            fwdLaneCount == null ||
             _0x5aa7bb == null ||
             _0x1a610d == null
         )
-            return lt_log(getString(0x27a), 0x1), 0x0;
+            return lt_log("isHeuristicsCandidate\x20received\x20bad\x20argument\x20(null)", 0x1), 0x0;
         let _0x1859f0 = null,
             _0x4f9be7 = null,
             _0x96949d = 0x0,
@@ -2647,48 +2645,48 @@
             _0x296190 = 0x0;
         if (_0x25826c > MAX_LEN_HEUR) return 0x0;
         const _0x453456 = _0x2bb3f1.attributes.id;
-        let _0x11d184 = _0x43a6d2(_0x5d08e4.attributes.id, _0x2bb3f1),
-            _0x5349e1 = _0xca5734(_0x1aa31e.attributes.id, _0x2bb3f1),
-            _0x18525c = -0x5a,
-            _0x26651c = 0x5a;
-        W.model[getString(0x375)] && ((_0x18525c = 0x5a), (_0x26651c = -0x5a));
+        let _0x11d184 = _0x43a6d2(toNodeObj.attributes.id, _0x2bb3f1),
+            _0x5349e1 = _0xca5734(fromNodeObj.attributes.id, _0x2bb3f1),
+            _0x18525c = -90,
+            _0x26651c = 90;
+        W.model.isLeftHand && ((_0x18525c = 90), (_0x26651c = -90));
         lt_log("==================================================================================", 0x2),
             lt_log(
-                getString(0x332) +
+                "Checking\x20heuristics\x20candidate:\x20seg" +
                     _0x453456 +
-                    getString(0x20e) +
-                    _0x5d08e4.attributes.id +
+                    "node" +
+                    toNodeObj.attributes.id +
                     "\x20azm\x20" +
                     _0x11d184 +
                     getString(0x33b) +
-                    _0xac0e82.length,
+                    attachedSegmentIDs.length,
                 0x2
             );
-        let _0x31cf01 = _0x1aa31e.getSegmentIds();
+        let _0x31cf01 = fromNodeObj.getSegmentIds();
         for (let _0x44e325 = 0x0; _0x44e325 < _0x31cf01.length; _0x44e325++) {
             let _0x3d1be6 = 0x0;
             if (_0x31cf01[_0x44e325] === _0x453456) continue;
             const _0x71a39c = getSegObj(_0x31cf01[_0x44e325]);
-            if (!_0x493643(_0x71a39c, _0x1aa31e, _0x2bb3f1)) continue;
-            let _0x3c6b23 = _0x43a6d2(_0x1aa31e.attributes.id, _0x71a39c),
+            if (!_0x493643(_0x71a39c, fromNodeObj, _0x2bb3f1)) continue;
+            let _0x3c6b23 = _0x43a6d2(fromNodeObj.attributes.id, _0x71a39c),
                 _0x4ef283 = _0xcd5d5b(_0x3c6b23, _0x5349e1);
             lt_log(
-                getString(0x282) + _0x31cf01[_0x44e325] + ":\x20" + _0x4ef283 + "(" + _0x3c6b23 + "," + _0x5349e1 + ")",
+                "Turn\x20angle\x20from\x20inseg\x20" + _0x31cf01[_0x44e325] + ":\x20" + _0x4ef283 + "(" + _0x3c6b23 + "," + _0x5349e1 + ")",
                 0x3
             );
-            if (Math["abs"](_0x4ef283) > MAX_STRAIGHT_DIF) {
-                if (Math[getString(0x2c3)](_0x4ef283) > MAX_STRAIGHT_TO_CONSIDER) continue;
+            if (Math.abs(_0x4ef283) > MAX_STRAIGHT_DIF) {
+                if (Math.abs(_0x4ef283) > MAX_STRAIGHT_TO_CONSIDER) continue;
                 lt_log(getString(0x3ae) + _0x4ef283, 0x2), (_0x3d1be6 = HeuristicsCandidate.FAIL);
             }
-            const _0x4c0fc6 = _0x5aa7bb.getTurnThroughNode(_0x1aa31e, _0x71a39c, _0x2bb3f1),
+            const _0x4c0fc6 = _0x5aa7bb.getTurnThroughNode(fromNodeObj, _0x71a39c, _0x2bb3f1),
                 _0x264c0a = _0x4c0fc6.getTurnData();
             if (_0x264c0a.state !== 0x1 || !_0x264c0a.hasLanes()) {
                 lt_log(getString(0x3e4) + _0x31cf01[_0x44e325] + "\x20to\x20" + _0x453456, 0x3);
                 continue;
             }
             let _0x3354a1 = _0x264c0a.lanes.toLaneIndex - _0x264c0a.lanes.fromLaneIndex + 0x1;
-            _0x3354a1 !== _0x20557a &&
-                !(_0x20557a === 0x0 && _0x3354a1 === 0x1) &&
+            _0x3354a1 !== fwdLaneCount &&
+                !(fwdLaneCount === 0x0 && _0x3354a1 === 0x1) &&
                 (lt_log("Straight\x20turn\x20lane\x20count\x20does\x20not\x20match", 0x2),
                 (_0x3d1be6 = HeuristicsCandidate.ERROR));
             if (_0x4777ff !== null && _0x3d1be6 >= _0x4e91d5) {
@@ -2725,16 +2723,16 @@
                 getString(0x35f) + _0x4777ff.attributes.id + "\x20" + (_0x4e91d5 === 0x0 ? "" : getString(0x3a3)),
                 0x2
             );
-        for (let _0x17c1e7 = 0x0; _0x17c1e7 < _0xac0e82.length; _0x17c1e7++) {
+        for (let _0x17c1e7 = 0x0; _0x17c1e7 < attachedSegmentIDs.length; _0x17c1e7++) {
             let _0x10d7bb = 0x0;
-            if (_0xac0e82[_0x17c1e7] === _0x453456) continue;
-            const _0x3e085f = getSegObj(_0xac0e82[_0x17c1e7]);
-            if (!_0x493643(_0x2bb3f1, _0x5d08e4, _0x3e085f)) continue;
-            let _0xff74b4 = _0xca5734(_0x5d08e4.attributes.id, _0x3e085f),
+            if (attachedSegmentIDs[_0x17c1e7] === _0x453456) continue;
+            const _0x3e085f = getSegObj(attachedSegmentIDs[_0x17c1e7]);
+            if (!_0x493643(_0x2bb3f1, toNodeObj, _0x3e085f)) continue;
+            let _0xff74b4 = _0xca5734(toNodeObj.attributes.id, _0x3e085f),
                 _0x1bf6a7 = _0xcd5d5b(_0x11d184, _0xff74b4);
             lt_log(
                 "Turn\x20angle\x20to\x20outseg2\x20" +
-                    _0xac0e82[_0x17c1e7] +
+                    attachedSegmentIDs[_0x17c1e7] +
                     ":\x20" +
                     _0x1bf6a7 +
                     "(" +
@@ -2745,7 +2743,7 @@
                 0x2
             );
             if (Math["abs"](_0x18525c - _0x1bf6a7) < MAX_PERP_TO_CONSIDER) return 0x0;
-            if (Math[getString(0x2c3)](_0x26651c - _0x1bf6a7) > MAX_PERP_DIF) {
+            if (Math.abs(_0x26651c - _0x1bf6a7) > MAX_PERP_DIF) {
                 if (Math["abs"](_0x26651c - _0x1bf6a7) > MAX_PERP_TO_CONSIDER) continue;
                 lt_log("\x20\x20\x20Not\x20eligible\x20as\x20outseg2:\x20" + _0x1bf6a7, 0x2),
                     (_0x10d7bb = HeuristicsCandidate.FAIL);
@@ -2785,18 +2783,18 @@
             const _0x1b9808 = getSegObj(_0x31cf01[_0x219be8]);
             let _0x3edc74 = 0x0;
             if (
-                (_0x1b9808.attributes.fwdDirection && _0x1b9808.attributes.toNodeID !== _0x1aa31e.attributes.id) ||
-                (_0x1b9808.attributes.revDirection && _0x1b9808.attributes.fromNodeID !== _0x1aa31e.attributes.id)
+                (_0x1b9808.attributes.fwdDirection && _0x1b9808.attributes.toNodeID !== fromNodeObj.attributes.id) ||
+                (_0x1b9808.attributes.revDirection && _0x1b9808.attributes.fromNodeID !== fromNodeObj.attributes.id)
             )
                 continue;
-            let _0x46ff80 = _0x43a6d2(_0x1aa31e.attributes.id, _0x1b9808),
+            let _0x46ff80 = _0x43a6d2(fromNodeObj.attributes.id, _0x1b9808),
                 _0x58b38d = _0xcd5d5b(_0x28857a, _0x46ff80);
             lt_log(
                 getString(0x2f8) + _0x31cf01[_0x219be8] + ":\x20" + _0x58b38d + "(" + _0x28857a + "," + _0x46ff80 + ")",
                 0x3
             );
-            if (Math[getString(0x2c3)](_0x18525c - _0x58b38d) > MAX_PERP_DIF_ALT) {
-                if (Math[getString(0x2c3)](_0x18525c - _0x58b38d) > MAX_PERP_TO_CONSIDER) continue;
+            if (Math.abs(_0x18525c - _0x58b38d) > MAX_PERP_DIF_ALT) {
+                if (Math.abs(_0x18525c - _0x58b38d) > MAX_PERP_TO_CONSIDER) continue;
                 lt_log(getString(0x1fb) + _0x58b38d, 0x3), (_0x3edc74 = HeuristicsCandidate.FAIL);
             }
             if (_0x4fd61c !== null) {
@@ -3130,28 +3128,28 @@
                 _0x55c2d7 = [],
                 _0x1c3e29 = 0x0,
                 _0x5095aa = Object[getString(0x3bb)](_0x533989).length;
-            if (!getId("lt-IconsRotate").checked) _0xc7a2c4 = -0x5a;
+            if (!getId("lt-IconsRotate").checked) _0xc7a2c4 = -90;
             if (_0xc7a2c4 === 0x0) (_0xc7a2c4 += 0xb4), (_0x1c3e29 = 0x1);
             else {
-                if (_0xc7a2c4 > 0x0 && _0xc7a2c4 <= 0x1e) (_0xc7a2c4 += 0x2 * (0x5a - _0xc7a2c4)), (_0x1c3e29 = 0x1);
+                if (_0xc7a2c4 > 0x0 && _0xc7a2c4 <= 0x1e) (_0xc7a2c4 += 0x2 * (90 - _0xc7a2c4)), (_0x1c3e29 = 0x1);
                 else {
                     if (_0xc7a2c4 >= 0x14a && _0xc7a2c4 <= 360)
                         (_0xc7a2c4 -= 0xb4 - 0x2 * (360 - _0xc7a2c4)), (_0x1c3e29 = 0x1);
                     else {
                         if (_0xc7a2c4 > 0x1e && _0xc7a2c4 < 0x3c)
-                            (_0xc7a2c4 -= 0x5a - 0x2 * (360 - _0xc7a2c4)), (_0x1c3e29 = 0x2);
+                            (_0xc7a2c4 -= 90 - 0x2 * (360 - _0xc7a2c4)), (_0x1c3e29 = 0x2);
                         else {
                             if (_0xc7a2c4 >= 0x3c && _0xc7a2c4 <= 0x78)
-                                (_0xc7a2c4 -= 0x5a - 0x2 * (360 - _0xc7a2c4)), (_0x1c3e29 = 0x2);
+                                (_0xc7a2c4 -= 90 - 0x2 * (360 - _0xc7a2c4)), (_0x1c3e29 = 0x2);
                             else {
                                 if (_0xc7a2c4 > 0x78 && _0xc7a2c4 < 0x96)
-                                    (_0xc7a2c4 -= 0x5a - 0x2 * (360 - _0xc7a2c4)), (_0x1c3e29 = 0x7);
+                                    (_0xc7a2c4 -= 90 - 0x2 * (360 - _0xc7a2c4)), (_0x1c3e29 = 0x7);
                                 else {
                                     if (_0xc7a2c4 >= 0x96 && _0xc7a2c4 <= 0xd2)
                                         (_0xc7a2c4 = 0xb4 - _0xc7a2c4), (_0x1c3e29 = 0x4);
                                     else {
                                         if (_0xc7a2c4 > 0xd2 && _0xc7a2c4 < 0xf0)
-                                            (_0xc7a2c4 -= 0x5a - 0x2 * (360 - _0xc7a2c4)), (_0x1c3e29 = 0x6);
+                                            (_0xc7a2c4 -= 90 - 0x2 * (360 - _0xc7a2c4)), (_0x1c3e29 = 0x6);
                                         else {
                                             if (_0xc7a2c4 >= 0xf0 && _0xc7a2c4 <= 0x12c)
                                                 (_0xc7a2c4 -= 0xb4 - 0x2 * (360 - _0xc7a2c4)), (_0x1c3e29 = 0x3);
@@ -3167,7 +3165,7 @@
                     }
                 }
             }
-            let _0x3b5791 = _0xc7a2c4 > 0x13b ? _0xc7a2c4 : _0xc7a2c4 + 0x5a,
+            let _0x3b5791 = _0xc7a2c4 > 0x13b ? _0xc7a2c4 : _0xc7a2c4 + 90,
                 _0x2fcc96 = 360 - _0x3b5791;
             function _0x4b99ab(_0x23f39e) {
                 temp = {};
@@ -3463,7 +3461,7 @@
                     case 0xf:
                         (_0x1776ce.start = 0x2),
                             (_0x1776ce.boxheight = 0x78),
-                            (_0x1776ce.boxincwidth = 0x5a),
+                            (_0x1776ce.boxincwidth = 90),
                             (_0x1776ce.iconbordermargin = 0x3),
                             (_0x1776ce.iconborderheight = 0x75),
                             (_0x1776ce.iconborderwidth = 0x57),
@@ -3556,7 +3554,7 @@
                     case 0x3:
                         (_0x1776ce.start = 0x2),
                             (_0x1776ce.boxheight = 0x78),
-                            (_0x1776ce.boxincwidth = 0x5a),
+                            (_0x1776ce.boxincwidth = 90),
                             (_0x1776ce.iconbordermargin = 0x3),
                             (_0x1776ce.iconborderheight = 0x75),
                             (_0x1776ce.iconborderwidth = 0x57),
