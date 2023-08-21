@@ -20,10 +20,11 @@
 // ==/UserScript==
 
 /* global W */
+/* global OpenLayers */
+/* jshint esversion:6 */
+/* eslint-disable */
 
-(
-    function
-        main() {
+(function main() {
           "use strict";
           // const stringArrayRef = getStringArray();
 
@@ -214,66 +215,64 @@
             ].join("\x20"));
             seaPickle = W.loginManager.user;
             _pickleColor = seaPickle["rank"];
-            _pickleColor >= 0x0
-                ? (WazeWrap.Interface.LtSettings("LT", initMsg.html,
-                                                 setupOptions, "LT"),
-                   $("<style>" + ltCSSClasses +
-                     "</style>")
-                       .appendTo("head"),
-                   $(constantStrings.mapTag).append(message.html()),
+            if(_pickleColor >= 0x0) {
+                WazeWrap.Interface.LtSettings("LT", initMsg.html, setupOptions, "LT");
+                   $("<style>" + ltCSSClasses + "</style>").appendTo("head");
+                   $(constantStrings.mapTag).append(message.html());
                    WazeWrap.Interface.ShowScriptUpdate(
                        GM_info.script.name, GM_info.script.version,
-                       LI_UPDATE_NOTES, GF_LINK, FORUM_LINK),
-                   console.log("LaneTools:\x20Loaded"))
-                : console.error("LaneTools:\x20loading\x20error....");
+                       LI_UPDATE_NOTES, GF_LINK, FORUM_LINK);
+                   console.log("LaneTools:\x20Loaded");
+            }
+            else  console.error("LaneTools:\x20loading\x20error....");
           }
 
           async function setupOptions() {
             function processOptionSettings() {
-              setSetting("lt-ScriptEnabled", LtSettings.ScriptEnabled),
-                  setSetting("lt-UIEnable", LtSettings.UIEnable),
-                  setSetting("lt-AutoOpenWidth", LtSettings.AutoOpenWidth),
-                  setSetting("lt-AutoExpandLanes", LtSettings.AutoExpandLanes),
-                  setSetting("lt-AutoLanesTab", LtSettings.AutoLanesTab),
+              setSetting("lt-ScriptEnabled", LtSettings.ScriptEnabled);
+                  setSetting("lt-UIEnable", LtSettings.UIEnable);
+                  setSetting("lt-AutoOpenWidth", LtSettings.AutoOpenWidth);
+                  setSetting("lt-AutoExpandLanes", LtSettings.AutoExpandLanes);
+                  setSetting("lt-AutoLanesTab", LtSettings.AutoLanesTab);
                   setSetting("lt-HighlightsEnable",
-                             LtSettings.HighlightsEnable),
-                  setSetting("lt-LabelsEnable", LtSettings.LabelsEnable),
-                  setSetting("lt-NodesEnable", LtSettings.NodesEnable),
-                  setSetting("lt-LIOEnable", LtSettings.LIOEnable),
-                  setSetting("lt-CSEnable", LtSettings.CSEnable),
+                             LtSettings.HighlightsEnable);
+                  setSetting("lt-LabelsEnable", LtSettings.LabelsEnable);
+                  setSetting("lt-NodesEnable", LtSettings.NodesEnable);
+                  setSetting("lt-LIOEnable", LtSettings.LIOEnable);
+                  setSetting("lt-CSEnable", LtSettings.CSEnable);
                   setSetting("lt-highlightOverride",
-                             LtSettings.highlightOverride),
-                  setSetting("lt-CopyEnable", LtSettings.CopyEnable),
-                  setSetting("lt-SelAllEnable", LtSettings.SelAllEnable),
-                  setSetting("lt-serverSelect", LtSettings.serverSelect),
-                  setSetting("lt-AutoFocusLanes", LtSettings.AutoFocusLanes),
+                             LtSettings.highlightOverride);
+                  setSetting("lt-CopyEnable", LtSettings.CopyEnable);
+                  setSetting("lt-SelAllEnable", LtSettings.SelAllEnable);
+                  setSetting("lt-serverSelect", LtSettings.serverSelect);
+                  setSetting("lt-AutoFocusLanes", LtSettings.AutoFocusLanes);
                   setSetting("lt-ReverseLanesIcon",
-                             LtSettings.ReverseLanesIcon),
-                  setSetting("lt-ClickSaveEnable", LtSettings.ClickSaveEnable),
+                             LtSettings.ReverseLanesIcon);
+                  setSetting("lt-ClickSaveEnable", LtSettings.ClickSaveEnable);
                   setSetting("lt-ClickSaveStraight",
-                             LtSettings.ClickSaveStraight),
-                  setSetting("lt-ClickSaveTurns", LtSettings.ClickSaveTurns),
+                             LtSettings.ClickSaveStraight);
+                  setSetting("lt-ClickSaveTurns", LtSettings.ClickSaveTurns);
                   setSetting("lt-LaneHeurPosHighlight",
-                             LtSettings.LaneHeurPosHighlight),
+                             LtSettings.LaneHeurPosHighlight);
                   setSetting("lt-LaneHeurNegHighlight",
-                             LtSettings.LaneHeurNegHighlight),
+                             LtSettings.LaneHeurNegHighlight);
                   setSetting("lt-LaneHeuristicsChecks",
-                             LtSettings.LaneHeuristicsChecks),
+                             LtSettings.LaneHeuristicsChecks);
                   setSetting("lt-highlightCSIcons",
-                             LtSettings.highlightCSIcons),
-                  setSetting("lt-AddTIO", LtSettings.addTIO),
-                  setSetting("lt-IconsEnable", LtSettings.IconsEnable),
-                  setSetting("lt-IconsRotate", LtSettings.IconsRotate),
-                  setCSSBorder("lt-ABColor", LtSettings.ABColor),
-                  setCSSBorder("lt-BAColor", LtSettings.BAColor),
-                  setCSSBorder("lt-LabelColor", LtSettings.LabelColor),
-                  setCSSBorder("lt-ErrorColor", LtSettings.ErrorColor),
-                  setCSSBorder("lt-NodeColor", LtSettings.NodeColor),
-                  setCSSBorder("lt-TIOColor", LtSettings.TIOColor),
-                  setCSSBorder("lt-LIOColor", LtSettings.LIOColor),
-                  setCSSBorder("lt-CS1Color", LtSettings.CS1Color),
-                  setCSSBorder("lt-CS2Color", LtSettings.CS2Color),
-                  setCSSBorder("lt-HeurColor", LtSettings.HeurColor),
+                             LtSettings.highlightCSIcons);
+                  setSetting("lt-AddTIO", LtSettings.addTIO);
+                  setSetting("lt-IconsEnable", LtSettings.IconsEnable);
+                  setSetting("lt-IconsRotate", LtSettings.IconsRotate);
+                  setCSSBorder("lt-ABColor", LtSettings.ABColor);
+                  setCSSBorder("lt-BAColor", LtSettings.BAColor);
+                  setCSSBorder("lt-LabelColor", LtSettings.LabelColor);
+                  setCSSBorder("lt-ErrorColor", LtSettings.ErrorColor);
+                  setCSSBorder("lt-NodeColor", LtSettings.NodeColor);
+                  setCSSBorder("lt-TIOColor", LtSettings.TIOColor);
+                  setCSSBorder("lt-LIOColor", LtSettings.LIOColor);
+                  setCSSBorder("lt-CS1Color", LtSettings.CS1Color);
+                  setCSSBorder("lt-CS2Color", LtSettings.CS2Color);
+                  setCSSBorder("lt-HeurColor", LtSettings.HeurColor);
                   setCSSBorder("lt-HeurFailColor", LtSettings.HeurFailColor);
               !getId("lt-ClickSaveEnable").checked &&
                   $("#lt-ClickSaveEnable").hide();
@@ -406,14 +405,14 @@
                      "text-decoration" : "none",
                    }),
                    $("#lt-sheet-link\x20>\x20a")
-                       .hover(
+                       .on("mouseenter",
                            function() {
                              $(this).css("background-color", "orange");
-                           },
+                           }).on("mouseleave",
                            function() {
                              $(this).css("background-color", "#eeeeee");
                            }),
-                   $(".lt-toolbar-button").click(function() {
+                   $(".lt-toolbar-button").on("click",function() {
                      $(this)[0x0].id === "copyA-button" && copyLaneInfo("A"),
                          $(this)[0x0].id === "copyB-button" &&
                              copyLaneInfo("B"),
@@ -960,20 +959,20 @@
                       .attributes.geometry.id);
               console.log("hovering\x20to\x20B");
             }
-            function _0x758543() {
-              W.model.nodes
-                  .get(W.selectionManager.getSegmentSelection()
-                           .segments[0]
-                           .attributes.fromNodeID)
-                  .attributes.geometry;
-              document.getElementById(
-                  W.model.nodes
-                      .get(W.selectionManager.getSegmentSelection()
-                               .segments[0]
-                               .attributes.fromNodeID)
-                      .attributes.geometry.id),
-                  console.log("hovering\x20to\x20A");
-            }
+            // function _0x758543() {
+            //   W.model.nodes
+            //       .get(W.selectionManager.getSegmentSelection()
+            //                .segments[0]
+            //                .attributes.fromNodeID)
+            //       .attributes.geometry;
+            //   document.getElementById(
+            //       W.model.nodes
+            //           .get(W.selectionManager.getSegmentSelection()
+            //                    .segments[0]
+            //                    .attributes.fromNodeID)
+            //           .attributes.geometry.id),
+            //       console.log("hovering\x20to\x20A");
+            // }
 
             function _0x5a28b7() {
               getId("lt-ReverseLanesIcon").checked && !rotateDisplayLanes &&
@@ -1045,15 +1044,16 @@
                   $(constantStrings.fwdLanesInstructionsFromCSS)
                       .css("border-bottom",
                            "4px\x20dashed\x20" + LtSettings.ABColor);
-                $("#li-del-fwd-btn").click(function() {
-                  delLanes("fwd"), (fwdLanesEnabled = true),
-                      setTimeout(function() { _0x5a28b7(); }, 200);
-                }),
-                    $("#li-del-rev-btn").click(function() {
+                $("#li-del-fwd-btn").on("click",function() {
+                  delLanes("fwd");
+                  fwdLanesEnabled = true;
+                setTimeout(function() { _0x5a28b7(); }, 200);
+                });
+                    $("#li-del-rev-btn").on("click",function() {
                       delLanes("rev"), (revLanesEnabled = true),
                           setTimeout(function() { _0x5a28b7(); }, 200);
                     }),
-                    $("#li-del-opp-btn").click(function() {
+                    $("#li-del-opp-btn").on("click",function() {
                       let _0x535f00 = $(this).prop("title");
                       delLanes(_0x535f00),
                           _0x535f00 === "rev" ? (revLanesEnabled = true)
@@ -1084,24 +1084,24 @@
                   _0x816cf7();
             }
             function _0x1a7fee() {
-              $(".apply-button.waze-btn.waze-btn-blue").off(),
+              $(".apply-button.waze-btn.waze-btn-blue").off();
                   $(".cancel-button").off();
-              const _0x5ee852 = $(".fwd-lanes"), _0x3df49c = $(".rev-lanes");
-              _0x5ee852.find(".apply-button.waze-btn.waze-btn-blue")
-                  .click(() => {
+              const fwdLanesSelector = $(".fwd-lanes"), revLanesSelector = $(".rev-lanes");
+              fwdLanesSelector.find(".apply-button.waze-btn.waze-btn-blue")
+                  .on("click",() => {
                     (fwdLanesEnabled = true),
                         setTimeout(function() { _0x5a28b7(); }, 200);
                   }),
-                  _0x3df49c.find(".apply-button.waze-btn.waze-btn-blue")
+                  revLanesSelector.find(".apply-button.waze-btn.waze-btn-blue")
                       .click(() => {
                         (revLanesEnabled = true),
                             setTimeout(function() { _0x5a28b7(); }, 200);
                       }),
-                  _0x5ee852.find(".cancel-button").click(() => {
+                  fwdLanesSelector.find(".cancel-button").click(() => {
                     (fwdLanesEnabled = true),
                         setTimeout(function() { _0x5a28b7(); }, 200);
                   }),
-                  _0x3df49c.find(".cancel-button").click(() => {
+                  revLanesSelector.find(".cancel-button").click(() => {
                     (revLanesEnabled = true),
                         setTimeout(function() { _0x5a28b7(); }, 200);
                   });
@@ -3186,20 +3186,20 @@
 
             function _0x5694f9(_0x3399d1) {
               let _0x2c1862 = {};
-              for (let _0xa51b27 = 0x0; _0xa51b27 < _0x3399d1.length;
-                   _0xa51b27++) {
+              for (let idx = 0x0; idx < _0x3399d1.length;
+                   idx++) {
                 let _0x3ce23 = {};
                 (_0x3ce23.uturn =
-                     $(_0x3399d1[_0xa51b27]).find(".uturn").css("display") !==
+                     $(_0x3399d1[idx]).find(".uturn").css("display") !==
                      "none"),
-                    (_0x3ce23.miniuturn = $(_0x3399d1[_0xa51b27])
+                    (_0x3ce23.miniuturn = $(_0x3399d1[idx])
                                               .find(".small-uturn")
                                               .css("display") !== "none"),
-                    (_0x3ce23.svg = $(_0x3399d1[_0xa51b27])
+                    (_0x3ce23.svg = $(_0x3399d1[idx])
                                         .find("svg")
                                         .map(function() { return this; })
                                         .get()),
-                    (_0x2c1862[_0xa51b27] = _0x3ce23);
+                    (_0x2c1862[idx] = _0x3ce23);
               }
               return _0x2c1862;
             }
@@ -3207,17 +3207,14 @@
                 _0x326722 = _0x154122 != false ? _0x4db382(_0x154122) : false;
             function _0x4db382(_0x22e6e2) {
               const _0x16f923 = new XMLSerializer();
-              _.each(_0x22e6e2, (_0xa929da) => {
+              return (_.each(_0x22e6e2, (_0xa929da) => {
                 try {
                   let _0x1b9e83 = _0xa929da["svg"][0x0],
                       _0x2e4457 = _0x16f923.serializeToString(_0x1b9e83);
                   _0xa929da["svg"] =
                       "data:image/svg+xml;base64," + window.btoa(_0x2e4457);
-                } catch (_0x4dcd47) {
-
-                }
-              }
-              return _0x22e6e2;
+                } catch (_0x4dcd47) {}
+              }, _0x22e6e2));
             }
             _0x2d2a03 && _0x19644c(W.model.nodes.getObjectById(
                                        wmeObject.attributes.toNodeID),
@@ -3227,52 +3224,52 @@
                                    _0x326722);
             function _0x19644c(nodeObj, _0x533989) {
               let _0x55da4e = _0x24ac62(),
-                  _0xc7a2c4 =
+                  cardinalAngle =
                       getCardinalAngle(nodeObj.attributes.id, wmeObject),
                   _0x1d852d, _0x55c2d7 = [], _0x1c3e29 = 0x0,
                   _0x5095aa = Object[getString(0x3bb)](_0x533989).length;
               if (!getId("lt-IconsRotate").checked)
-                _0xc7a2c4 = -90;
-              if (_0xc7a2c4 === 0x0) {
-                  _0xc7a2c4 += 0xb4;
+                cardinalAngle = -90;
+              if (cardinalAngle === 0x0) {
+                  cardinalAngle += 0xb4;
                   _0x1c3e29 = 0x1;
               }
               else {
-                if (_0xc7a2c4 > 0x0 && _0xc7a2c4 <= 0x1e) {
-                    _0xc7a2c4 += 0x2 * (90 - _0xc7a2c4);
+                if (cardinalAngle > 0x0 && cardinalAngle <= 0x1e) {
+                    cardinalAngle += 0x2 * (90 - cardinalAngle);
                     _0x1c3e29 = 0x1;
                 }
                 else {
-                  if (_0xc7a2c4 >= 0x14a && _0xc7a2c4 <= 360)
-                    (_0xc7a2c4 -= 0xb4 - 0x2 * (360 - _0xc7a2c4)),
+                  if (cardinalAngle >= 0x14a && cardinalAngle <= 360)
+                    (cardinalAngle -= 0xb4 - 0x2 * (360 - cardinalAngle)),
                         (_0x1c3e29 = 0x1);
                   else {
-                    if (_0xc7a2c4 > 0x1e && _0xc7a2c4 < 0x3c)
-                      (_0xc7a2c4 -= 90 - 0x2 * (360 - _0xc7a2c4)),
+                    if (cardinalAngle > 0x1e && cardinalAngle < 0x3c)
+                      (cardinalAngle -= 90 - 0x2 * (360 - cardinalAngle)),
                           (_0x1c3e29 = 0x2);
                     else {
-                      if (_0xc7a2c4 >= 0x3c && _0xc7a2c4 <= 0x78)
-                        (_0xc7a2c4 -= 90 - 0x2 * (360 - _0xc7a2c4)),
+                      if (cardinalAngle >= 0x3c && cardinalAngle <= 0x78)
+                        (cardinalAngle -= 90 - 0x2 * (360 - cardinalAngle)),
                             (_0x1c3e29 = 0x2);
                       else {
-                        if (_0xc7a2c4 > 0x78 && _0xc7a2c4 < 0x96)
-                          (_0xc7a2c4 -= 90 - 0x2 * (360 - _0xc7a2c4)),
+                        if (cardinalAngle > 0x78 && cardinalAngle < 0x96)
+                          (cardinalAngle -= 90 - 0x2 * (360 - cardinalAngle)),
                               (_0x1c3e29 = 0x7);
                         else {
-                          if (_0xc7a2c4 >= 0x96 && _0xc7a2c4 <= 0xd2)
-                            (_0xc7a2c4 = 0xb4 - _0xc7a2c4), (_0x1c3e29 = 0x4);
+                          if (cardinalAngle >= 0x96 && cardinalAngle <= 0xd2)
+                            (cardinalAngle = 0xb4 - cardinalAngle), (_0x1c3e29 = 0x4);
                           else {
-                            if (_0xc7a2c4 > 0xd2 && _0xc7a2c4 < 0xf0)
-                              (_0xc7a2c4 -= 90 - 0x2 * (360 - _0xc7a2c4)),
+                            if (cardinalAngle > 0xd2 && cardinalAngle < 0xf0)
+                              (cardinalAngle -= 90 - 0x2 * (360 - cardinalAngle)),
                                   (_0x1c3e29 = 0x6);
                             else {
-                              if (_0xc7a2c4 >= 0xf0 && _0xc7a2c4 <= 0x12c)
-                                (_0xc7a2c4 -= 0xb4 - 0x2 * (360 - _0xc7a2c4)),
+                              if (cardinalAngle >= 0xf0 && cardinalAngle <= 0x12c)
+                                (cardinalAngle -= 0xb4 - 0x2 * (360 - cardinalAngle)),
                                     (_0x1c3e29 = 0x3);
                               else
-                                _0xc7a2c4 > 0x12c && _0xc7a2c4 < 0x14a
-                                    ? ((_0xc7a2c4 -=
-                                        0xb4 - 0x2 * (360 - _0xc7a2c4)),
+                                cardinalAngle > 0x12c && cardinalAngle < 0x14a
+                                    ? ((cardinalAngle -=
+                                        0xb4 - 0x2 * (360 - cardinalAngle)),
                                        (_0x1c3e29 = 0x5))
                                     : console.log(
                                           "LT:\x20icon\x20angle\x20is\x20out\x20of\x20bounds");
@@ -3284,7 +3281,7 @@
                   }
                 }
               }
-              let _0x3b5791 = _0xc7a2c4 > 0x13b ? _0xc7a2c4 : _0xc7a2c4 + 90,
+              let _0x3b5791 = cardinalAngle > 315 ? cardinalAngle : cardinalAngle + 90,
                   _0x2fcc96 = 360 - _0x3b5791;
               function _0x4b99ab(_0x23f39e) {
                 let temp = {};
@@ -3441,17 +3438,17 @@
                 return temp;
               }
               let _0x2a17ea = _0x4b99ab(_0x1c3e29);
-              var _0xc39253 = new OpenLayers.Geometry.Point(
+              var topLeftVtx = new OpenLayers.Geometry.Point(
                       _0x2a17ea.x, _0x2a17ea.y + _0x55da4e.boxheight),
-                  _0x374f3b = new OpenLayers.Geometry.Point(
+                  topRightVtx = new OpenLayers.Geometry.Point(
                       _0x2a17ea.x + _0x55da4e.boxincwidth * _0x5095aa,
                       _0x2a17ea.y + _0x55da4e.boxheight),
-                  _0x3d568a = new OpenLayers.Geometry.Point(
+                  bottomRightVtx = new OpenLayers.Geometry.Point(
                       _0x2a17ea.x + _0x55da4e.boxincwidth * _0x5095aa,
                       _0x2a17ea.y),
-                  _0x12cbe6 =
+                  topRightVTX =
                       new OpenLayers.Geometry.Point(_0x2a17ea.x, _0x2a17ea.y);
-              _0x55c2d7.push(_0xc39253, _0x374f3b, _0x3d568a, _0x12cbe6);
+              _0x55c2d7.push(topLeftVtx, topRightVtx, bottomRightVtx, topRightVTX);
               var _0x5b7230 = {
                 strokeColor : "#ffffff",
                 strokeOpacity : 0x1,
@@ -3529,191 +3526,191 @@
             }
 
             function _0x24ac62() {
-              var _0x1776ce = {};
+              var boxDisplayObject = {};
               if (UPDATEDZOOM)
                 switch (W.map.getOLMap().getZoom()) {
-                case 0x16:
-                  (_0x1776ce.start = 0.5), (_0x1776ce.boxheight = 1.7),
-                      (_0x1776ce.boxincwidth = 1.1),
-                      (_0x1776ce.iconbordermargin = 0.1),
-                      (_0x1776ce.iconborderheight = 1.6),
-                      (_0x1776ce.iconborderwidth = 0x1),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                case 22:
+                  (boxDisplayObject.start = 0.5), (boxDisplayObject.boxheight = 1.7),
+                      (boxDisplayObject.boxincwidth = 1.1),
+                      (boxDisplayObject.iconbordermargin = 0.1),
+                      (boxDisplayObject.iconborderheight = 1.6),
+                      (boxDisplayObject.iconborderwidth = 0x1),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
-                case 0x15:
-                  (_0x1776ce.start = 0x1), (_0x1776ce.boxheight = 3.2),
-                      (_0x1776ce.boxincwidth = 2.2),
-                      (_0x1776ce.iconbordermargin = 0.2),
-                      (_0x1776ce.iconborderheight = 0x3),
-                      (_0x1776ce.iconborderwidth = 0x2),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                case 21:
+                  (boxDisplayObject.start = 0x1), (boxDisplayObject.boxheight = 3.2),
+                      (boxDisplayObject.boxincwidth = 2.2),
+                      (boxDisplayObject.iconbordermargin = 0.2),
+                      (boxDisplayObject.iconborderheight = 0x3),
+                      (boxDisplayObject.iconborderwidth = 0x2),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
-                case 0x14:
-                  (_0x1776ce.start = 0x2), (_0x1776ce.boxheight = 5.2),
-                      (_0x1776ce.boxincwidth = 3.8),
-                      (_0x1776ce.iconbordermargin = 0.3),
-                      (_0x1776ce["iconborderheight"] = 4.9),
-                      (_0x1776ce.iconborderwidth = 3.5),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                case 20:
+                  (boxDisplayObject.start = 0x2), (boxDisplayObject.boxheight = 5.2),
+                      (boxDisplayObject.boxincwidth = 3.8),
+                      (boxDisplayObject.iconbordermargin = 0.3),
+                      (boxDisplayObject["iconborderheight"] = 4.9),
+                      (boxDisplayObject.iconborderwidth = 3.5),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
-                case 0x13:
-                  (_0x1776ce.start = 0x3), (_0x1776ce.boxheight = 0xa),
-                      (_0x1776ce.boxincwidth = 7.2),
-                      (_0x1776ce.iconbordermargin = 0.4),
-                      (_0x1776ce.iconborderheight = 9.6),
-                      (_0x1776ce.iconborderwidth = 6.8),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                case 19:
+                  (boxDisplayObject.start = 0x3), (boxDisplayObject.boxheight = 0xa),
+                      (boxDisplayObject.boxincwidth = 7.2),
+                      (boxDisplayObject.iconbordermargin = 0.4),
+                      (boxDisplayObject.iconborderheight = 9.6),
+                      (boxDisplayObject.iconborderwidth = 6.8),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
-                case 0x12:
-                  (_0x1776ce.start = 0x6), (_0x1776ce.boxheight = 0x14),
-                      (_0x1776ce.boxincwidth = 0xe),
-                      (_0x1776ce.iconbordermargin = 0.5),
-                      (_0x1776ce["iconborderheight"] = 19.5),
-                      (_0x1776ce.iconborderwidth = 13.5),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce["graphicWidth"] = 0x19);
+                case 18:
+                  (boxDisplayObject.start = 0x6), (boxDisplayObject.boxheight = 0x14),
+                      (boxDisplayObject.boxincwidth = 0xe),
+                      (boxDisplayObject.iconbordermargin = 0.5),
+                      (boxDisplayObject["iconborderheight"] = 19.5),
+                      (boxDisplayObject.iconborderwidth = 13.5),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject["graphicWidth"] = 0x19);
                   break;
-                case 0x11:
-                  (_0x1776ce.start = 0xa), (_0x1776ce.boxheight = 0x27),
-                      (_0x1776ce.boxincwidth = 0x1c),
-                      (_0x1776ce.iconbordermargin = 0x1),
-                      (_0x1776ce.iconborderheight = 0x26),
-                      (_0x1776ce.iconborderwidth = 0x1b),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                case 17:
+                  (boxDisplayObject.start = 0xa), (boxDisplayObject.boxheight = 0x27),
+                      (boxDisplayObject.boxincwidth = 0x1c),
+                      (boxDisplayObject.iconbordermargin = 0x1),
+                      (boxDisplayObject.iconborderheight = 0x26),
+                      (boxDisplayObject.iconborderwidth = 0x1b),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
-                case 0x10:
-                  (_0x1776ce.start = 0xf), (_0x1776ce.boxheight = 0x50),
-                      (_0x1776ce.boxincwidth = 0x37),
-                      (_0x1776ce.iconbordermargin = 0x2),
-                      (_0x1776ce["iconborderheight"] = 0x4e),
-                      (_0x1776ce.iconborderwidth = 0x35),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                case 16:
+                  (boxDisplayObject.start = 0xf), (boxDisplayObject.boxheight = 0x50),
+                      (boxDisplayObject.boxincwidth = 0x37),
+                      (boxDisplayObject.iconbordermargin = 0x2),
+                      (boxDisplayObject["iconborderheight"] = 0x4e),
+                      (boxDisplayObject.iconborderwidth = 0x35),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
-                case 0xf:
-                  (_0x1776ce.start = 0x2), (_0x1776ce.boxheight = 0x78),
-                      (_0x1776ce.boxincwidth = 90),
-                      (_0x1776ce.iconbordermargin = 0x3),
-                      (_0x1776ce.iconborderheight = 0x75),
-                      (_0x1776ce.iconborderwidth = 0x57),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                case 15:
+                  (boxDisplayObject.start = 0x2), (boxDisplayObject.boxheight = 0x78),
+                      (boxDisplayObject.boxincwidth = 90),
+                      (boxDisplayObject.iconbordermargin = 0x3),
+                      (boxDisplayObject.iconborderheight = 117),
+                      (boxDisplayObject.iconborderwidth = 0x57),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
-                case 0xe:
-                  (_0x1776ce.start = 0x2), (_0x1776ce.boxheight = 5.2),
-                      (_0x1776ce.boxincwidth = 3.8),
-                      (_0x1776ce.iconbordermargin = 0.3),
-                      (_0x1776ce.iconborderheight = 4.9),
-                      (_0x1776ce.iconborderwidth = 3.5),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                case 14:
+                  (boxDisplayObject.start = 0x2), (boxDisplayObject.boxheight = 5.2),
+                      (boxDisplayObject.boxincwidth = 3.8),
+                      (boxDisplayObject.iconbordermargin = 0.3),
+                      (boxDisplayObject.iconborderheight = 4.9),
+                      (boxDisplayObject.iconborderwidth = 3.5),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
                 }
               else
                 switch (W.map.getOLMap().getZoom()) {
                 case 0xa:
-                  (_0x1776ce.start = 0.5), (_0x1776ce.boxheight = 1.7),
-                      (_0x1776ce.boxincwidth = 1.1),
-                      (_0x1776ce.iconbordermargin = 0.1),
-                      (_0x1776ce.iconborderheight = 1.6),
-                      (_0x1776ce.iconborderwidth = 0x1),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                  (boxDisplayObject.start = 0.5), (boxDisplayObject.boxheight = 1.7),
+                      (boxDisplayObject.boxincwidth = 1.1),
+                      (boxDisplayObject.iconbordermargin = 0.1),
+                      (boxDisplayObject.iconborderheight = 1.6),
+                      (boxDisplayObject.iconborderwidth = 0x1),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
                 case 0x9:
-                  (_0x1776ce.start = 0x1), (_0x1776ce.boxheight = 3.2),
-                      (_0x1776ce.boxincwidth = 2.2),
-                      (_0x1776ce.iconbordermargin = 0.2),
-                      (_0x1776ce.iconborderheight = 0x3),
-                      (_0x1776ce.iconborderwidth = 0x2),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                  (boxDisplayObject.start = 0x1), (boxDisplayObject.boxheight = 3.2),
+                      (boxDisplayObject.boxincwidth = 2.2),
+                      (boxDisplayObject.iconbordermargin = 0.2),
+                      (boxDisplayObject.iconborderheight = 0x3),
+                      (boxDisplayObject.iconborderwidth = 0x2),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
                 case 0x8:
-                  (_0x1776ce.start = 0x2), (_0x1776ce.boxheight = 5.2),
-                      (_0x1776ce.boxincwidth = 3.8),
-                      (_0x1776ce.iconbordermargin = 0.3),
-                      (_0x1776ce.iconborderheight = 4.9),
-                      (_0x1776ce.iconborderwidth = 3.5),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                  (boxDisplayObject.start = 0x2), (boxDisplayObject.boxheight = 5.2),
+                      (boxDisplayObject.boxincwidth = 3.8),
+                      (boxDisplayObject.iconbordermargin = 0.3),
+                      (boxDisplayObject.iconborderheight = 4.9),
+                      (boxDisplayObject.iconborderwidth = 3.5),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
                 case 0x7:
-                  (_0x1776ce.start = 0x3), (_0x1776ce.boxheight = 0xa),
-                      (_0x1776ce.boxincwidth = 7.2),
-                      (_0x1776ce.iconbordermargin = 0.4),
-                      (_0x1776ce.iconborderheight = 9.6),
-                      (_0x1776ce.iconborderwidth = 6.8),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                  (boxDisplayObject.start = 0x3), (boxDisplayObject.boxheight = 0xa),
+                      (boxDisplayObject.boxincwidth = 7.2),
+                      (boxDisplayObject.iconbordermargin = 0.4),
+                      (boxDisplayObject.iconborderheight = 9.6),
+                      (boxDisplayObject.iconborderwidth = 6.8),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
                 case 0x6:
-                  (_0x1776ce.start = 0x6), (_0x1776ce.boxheight = 0x14),
-                      (_0x1776ce.boxincwidth = 0xe),
-                      (_0x1776ce.iconbordermargin = 0.5),
-                      (_0x1776ce.iconborderheight = 19.5),
-                      (_0x1776ce.iconborderwidth = 13.5),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                  (boxDisplayObject.start = 0x6), (boxDisplayObject.boxheight = 0x14),
+                      (boxDisplayObject.boxincwidth = 0xe),
+                      (boxDisplayObject.iconbordermargin = 0.5),
+                      (boxDisplayObject.iconborderheight = 19.5),
+                      (boxDisplayObject.iconborderwidth = 13.5),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
                 case 0x5:
-                  (_0x1776ce.start = 0xa), (_0x1776ce.boxheight = 0x28),
-                      (_0x1776ce.boxincwidth = 0x1d),
-                      (_0x1776ce.iconbordermargin = 0x1),
-                      (_0x1776ce.iconborderheight = 0x26),
-                      (_0x1776ce.iconborderwidth = 0x1b),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                  (boxDisplayObject.start = 0xa), (boxDisplayObject.boxheight = 0x28),
+                      (boxDisplayObject.boxincwidth = 0x1d),
+                      (boxDisplayObject.iconbordermargin = 0x1),
+                      (boxDisplayObject.iconborderheight = 0x26),
+                      (boxDisplayObject.iconborderwidth = 0x1b),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
                 case 0x4:
-                  (_0x1776ce.start = 0xf), (_0x1776ce.boxheight = 0x50),
-                      (_0x1776ce.boxincwidth = 0x37),
-                      (_0x1776ce.iconbordermargin = 0x2),
-                      (_0x1776ce["iconborderheight"] = 0x4e),
-                      (_0x1776ce.iconborderwidth = 0x35),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                  (boxDisplayObject.start = 0xf), (boxDisplayObject.boxheight = 0x50),
+                      (boxDisplayObject.boxincwidth = 0x37),
+                      (boxDisplayObject.iconbordermargin = 0x2),
+                      (boxDisplayObject.iconborderheight = 0x4e),
+                      (boxDisplayObject.iconborderwidth = 0x35),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
                 case 0x3:
-                  (_0x1776ce.start = 0x2), (_0x1776ce.boxheight = 0x78),
-                      (_0x1776ce.boxincwidth = 90),
-                      (_0x1776ce.iconbordermargin = 0x3),
-                      (_0x1776ce.iconborderheight = 0x75),
-                      (_0x1776ce.iconborderwidth = 0x57),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                  (boxDisplayObject.start = 0x2), (boxDisplayObject.boxheight = 0x78),
+                      (boxDisplayObject.boxincwidth = 90),
+                      (boxDisplayObject.iconbordermargin = 0x3),
+                      (boxDisplayObject.iconborderheight = 0x75),
+                      (boxDisplayObject.iconborderwidth = 0x57),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
                 case 0x2:
-                  (_0x1776ce.start = 0x2), (_0x1776ce.boxheight = 5.2),
-                      (_0x1776ce.boxincwidth = 3.8),
-                      (_0x1776ce.iconbordermargin = 0.3),
-                      (_0x1776ce.iconborderheight = 4.9),
-                      (_0x1776ce.iconborderwidth = 3.5),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                  (boxDisplayObject.start = 0x2), (boxDisplayObject.boxheight = 5.2),
+                      (boxDisplayObject.boxincwidth = 3.8),
+                      (boxDisplayObject.iconbordermargin = 0.3),
+                      (boxDisplayObject.iconborderheight = 4.9),
+                      (boxDisplayObject.iconborderwidth = 3.5),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
                 case 0x1:
-                  (_0x1776ce.start = 0x2), (_0x1776ce.boxheight = 5.2),
-                      (_0x1776ce.boxincwidth = 3.8),
-                      (_0x1776ce.iconbordermargin = 0.3),
-                      (_0x1776ce.iconborderheight = 4.9),
-                      (_0x1776ce.iconborderwidth = 3.5),
-                      (_0x1776ce.graphicHeight = 0x2a),
-                      (_0x1776ce.graphicWidth = 0x19);
+                  (boxDisplayObject.start = 0x2), (boxDisplayObject.boxheight = 5.2),
+                      (boxDisplayObject.boxincwidth = 3.8),
+                      (boxDisplayObject.iconbordermargin = 0.3),
+                      (boxDisplayObject.iconborderheight = 4.9),
+                      (boxDisplayObject.iconborderwidth = 3.5),
+                      (boxDisplayObject.graphicHeight = 0x2a),
+                      (boxDisplayObject.graphicWidth = 0x19);
                   break;
                 }
-              return _0x1776ce;
+              return boxDisplayObject;
             }
           }
           laneToolsBootstrap();
           while (true) {
             try {
-              const exitCode = -parseInt("116729CFFamr") / 0x1 +
+              const exitCode = -parseInt("116729CFFamr") +
                                -parseInt("1006486hQNMjC") / 0x2 +
                                (-parseInt("21lOwPjv") / 0x3) *
                                    (parseInt("246188fslQvy") / 0x4) +
