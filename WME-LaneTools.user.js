@@ -195,7 +195,7 @@
     message.html([
       "<div class=\x27lt-Toolbar-Container\x27 id=\x22lt-toolbar-container\x22>\x0a            <div class=\x27lt-Toolbar-Wrapper\x27>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27copyA-button\x27>Copy A</button>\x0a                </div>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27copyB-button\x27>Copy B</button>\x0a                </div>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27pasteA-button\x27>Paste A</button>\x0a                </div>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27pasteB-button\x27>Paste B</button>\x0a                </div>\x0a            </div>\x0a        </div>",
     ].join(" "));
-    _pickleColor = seaPickle["rank"];
+    _pickleColor = seaPickle.attributes.rank;
     if (_pickleColor >= 0x0) {
       WazeWrap.Interface.LtSettings("LT", initMsg.html, setupOptions, "LT");
       $("<style>" + ltCSSClasses + "</style>").appendTo("head");
