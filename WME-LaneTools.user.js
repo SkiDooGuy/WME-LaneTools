@@ -40,21 +40,21 @@
     RBSAccessSheetBaseURL :
         "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/RBS_Access!A2:C?key=",
     revLanesInstructionsFromCSS :
-        ".rev-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-from\x20>\x20div.instruction",
+        ".rev-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
     fwdLanesInstructionsFromCSS :
-        ".fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-from\x20>\x20div.instruction",
+        ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
     editPanelCSS :
-        "#edit-panel\x20>\x20div\x20>\x20div\x20>\x20div\x20>\x20div.segment-edit-section\x20>\x20wz-tabs\x20>\x20wz-tab.lanes-tab",
+        "#edit-panel > div > div > div > div.segment-edit-section > wz-tabs > wz-tab.lanes-tab",
     fwdLanesDivInstructionCSS :
-        ".fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-from\x20>\x20div.instruction",
+        ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
     fwdLanesNthChild :
-        ".fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.edit-region\x20>\x20div\x20>\x20div\x20>\x20div:nth-child(1)\x20>\x20div",
+        ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1) > div",
     fwdLanesDirectionControlEditCSS :
-        ".fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20.lane-instruction.lane-instruction-to\x20>\x20.instruction\x20>\x20.lane-edit\x20>\x20.edit-region\x20>\x20div\x20>\x20.controls.direction-lanes-edit",
+        ".fwd-lanes > div > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit",
     fwdLanesLaneInstrunctionToCSS :
-        ".fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.edit-region\x20>\x20div\x20>\x20div\x20>\x20div:nth-child(1)",
+        ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1)",
     revLanesInstructionsToCSS :
-        ".rev-lanes\x20>\x20div\x20>\x20div\x20>\x20.lane-instruction.lane-instruction-to\x20>\x20.instruction\x20>\x20.lane-edit\x20>\x20.edit-region\x20>\x20div\x20>\x20.controls.direction-lanes-edit",
+        ".rev-lanes > div > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit",
     wazeFontLink : "https://editor-assets.waze.com/production/font/aae5ed152758cb6a9191b91e6cedf322.svg",
   };
   const
@@ -66,60 +66,60 @@
         default : {
           enabled : "Enabled",
           disabled : "Disabled",
-          toggleShortcut : "Toggle\x20Shortcut",
-          UIEnhance : "Tab\x20UI\x20Enhancements",
-          autoWidth : "Auto-open\x20road\x20width",
-          autoOpen : "Auto-open\x20lanes\x20tab",
-          autoExpand : "Auto-expand\x20lane\x20editor",
-          autoFocus : "Auto-focus\x20lane\x20input",
-          reOrient : "Re-orient\x20lane\x20icons",
-          enClick : "Enable\x20ClickSaver",
-          clickStraight : "All\x20straight\x20lanes",
+          toggleShortcut : "Toggle Shortcut",
+          UIEnhance : "Tab UI Enhancements",
+          autoWidth : "Auto-open road width",
+          autoOpen : "Auto-open lanes tab",
+          autoExpand : "Auto-expand lane editor",
+          autoFocus : "Auto-focus lane input",
+          reOrient : "Re-orient lane icons",
+          enClick : "Enable ClickSaver",
+          clickStraight : "All straight lanes",
           clickTurn : "default",
-          mapHighlight : "Map\x20Highlights",
-          laneLabel : "Lane\x20labels",
-          nodeHigh : "Node\x20Highlights",
-          LAOHigh : "Lane\x20angle\x20overrides",
-          CSOHigh : "Continue\x20straight\x20overrides",
-          heuristics : "Lane\x20heuristics\x20candidates",
-          posHeur : "Positive\x20heuristics\x20candidate",
-          negHeur : "Negative\x20heuristics\x20candidate",
-          highColor : "Highlight\x20Colors",
-          colTooltip : "Click\x20to\x20toggle\x20color\x20inputs",
-          selAllTooltip : "Click\x20on\x20turn\x20name\x20to\x20toggle\x20all\x20lane\x20associations",
-          fwdCol : "Fwd\x20(A>B)",
-          revCol : "Rev\x20(B>A)",
+          mapHighlight : "Map Highlights",
+          laneLabel : "Lane labels",
+          nodeHigh : "Node Highlights",
+          LAOHigh : "Lane angle overrides",
+          CSOHigh : "Continue straight overrides",
+          heuristics : "Lane heuristics candidates",
+          posHeur : "Positive heuristics candidate",
+          negHeur : "Negative heuristics candidate",
+          highColor : "Highlight Colors",
+          colTooltip : "Click to toggle color inputs",
+          selAllTooltip : "Click on turn name to toggle all lane associations",
+          fwdCol : "Fwd (A>B)",
+          revCol : "Rev (B>A)",
           labelCol : "Labels",
-          errorCol : "Lane\x20errors",
-          laneNodeCol : "Nodes\x20with\x20lanes",
-          nodeTIOCol : "Nodes\x20with\x20TIOs",
-          LAOCol : "Segs\x20with\x20TIOs",
-          viewCSCol : "View\x20only\x20CS",
-          hearCSCol : "View\x20and\x20hear\x20CS",
-          heurPosCol : "Lane\x20heuristics\x20likely",
-          heurNegCol : "Lane\x20heuristics\x20-\x20not\x20qualified",
-          advTools : "Advance\x20Tools",
-          quickTog : "Quick\x20toggle\x20all\x20lanes",
-          showRBS : "Use\x20RBS\x20heuristics",
-          delFwd : "Delete\x20FWD\x20Lanes",
-          delRev : "Delete\x20Rev\x20Lanes",
+          errorCol : "Lane errors",
+          laneNodeCol : "Nodes with lanes",
+          nodeTIOCol : "Nodes with TIOs",
+          LAOCol : "Segs with TIOs",
+          viewCSCol : "View only CS",
+          hearCSCol : "View and hear CS",
+          heurPosCol : "Lane heuristics likely",
+          heurNegCol : "Lane heuristics - not qualified",
+          advTools : "Advance Tools",
+          quickTog : "Quick toggle all lanes",
+          showRBS : "Use RBS heuristics",
+          delFwd : "Delete FWD Lanes",
+          delRev : "Delete Rev Lanes",
           delOpp :
-              "This\x20segment\x20is\x20one-way\x20but\x20has\x20lanes\x20set\x20in\x20the\x20opposite\x20direction.\x20Click\x20here\x20to\x20delete\x20them",
-          csIcons : "Highlight\x20CS\x20Icons",
-          highlightOverride : "Only\x20highlight\x20if\x20segment\x20layer\x20active",
-          addTIO : "Include\x20TIO\x20in\x20lanes\x20tab",
+              "This segment is one-way but has lanes set in the opposite direction. Click here to delete them",
+          csIcons : "Highlight CS Icons",
+          highlightOverride : "Only highlight if segment layer active",
+          addTIO : "Include TIO in lanes tab",
           labelTIO : "TIO",
-          defaultTIO : "Waze\x20Selected",
+          defaultTIO : "Waze Selected",
           noneTIO : "None",
-          tlTIO : "Turn\x20Left",
-          trTIO : "Turn\x20Right",
-          klTIO : "Keep\x20Left",
-          krTIO : "Keep\x20Right",
+          tlTIO : "Turn Left",
+          trTIO : "Turn Right",
+          klTIO : "Keep Left",
+          krTIO : "Keep Right",
           conTIO : "Continue",
-          elTIO : "Exit\x20Left",
-          erTIO : "Exit\x20Right",
+          elTIO : "Exit Left",
+          erTIO : "Exit Right",
           uturnTIO : "U-Turn",
-          enIcons : "Display\x20lane\x20icons\x20on\x20map",
+          enIcons : "Display lane icons on map",
           IconsRotate : "IconsRotate",
         },
       },
@@ -147,14 +147,14 @@
       lt_scanArea_recursive = 0x0, LtSettings = {}, strings = {}, _turnInfo = [], _turnData = {}, laneCount,
       LTHighlightLayer, LTNamesLayer, LTLaneGraphics, _pickleColor, seaPickle, UpdateObj, MultiAction, SetTurn,
       shortcutsDisabled = false, isRBS = false, allowCpyPst = false, langLocality = "default", UPDATEDZOOM;
-  console.log("LaneTools:\x20initializing...");
+  console.log("LaneTools: initializing...");
 
   function laneToolsBootstrap(bootStrapAttempt = 0x0) {
     if (W && W.map && W.model && W.loginManager.user && $ && WazeWrap.Ready)
       initLaneTools();
     else
       bootStrapAttempt < 500 ? setTimeout(() => { laneToolsBootstrap(bootStrapAttempt++); }, 200)
-                             : console.error("LaneTools:\x20Failed\x20to\x20load");
+                             : console.error("LaneTools: Failed to load");
   }
 
   function initLaneTools() {
@@ -166,39 +166,39 @@
     const
         ltCSSClasses =
             [
-              ".lt-wrapper\x20{position:relative;width:100%;font-size:12px;font-family:\x22Rubik\x22,\x20\x22Boing-light\x22, sans-serif;user-select:none;}",
-              ".lt-section-wrapper\x20{display:block;width:100%;padding:4px;",
-              ".lt-section-wrapper.border\x20{border-bottom:1px\x20solid\x20grey;margin-bottom:5px;}",
-              ".lt-option-container\x20{padding:3px;}",
-              ".lt-option-container.color\x20{text-decoration:none;}",
-              "input[type=\x22checkbox\x22].lt-checkbox\x20{position:relative;top:3px;vertical-align:top;margin:0;}",
-              "input[type=\x22text\x22].lt-color-input\x20{position:relative;width:70px;padding:3px;border:2px\x20solid black;border-radius:6px;}",
-              "input[type=\x22text\x22].lt-color-input:focus\x20{outline-width:0;}",
-              "label.lt-label\x20{position:relative;max-width:90%;font-weight:normal;padding-left:5px}",
-              ".lt-Toolbar-Container\x20{display:none;position:absolute;background-color:orange;border-radius:6px;border:1.5px solid;box-size:border-box;z-index:1050;}",
-              ".lt-Toolbar-Wrapper\x20{position:relative;padding:3px;",
-              ".lt-toolbar-button-container\x20{display:inline-block;padding:5px;}",
-              ".lt-toolbar-button\x20{position:relative;display:block;width:60px;height:25px;border-radius:6px;font-size:12px;}",
-              ".lt-add-Width\x20{display:inline-block;width:15px;height:15px;border:1px\x20solid\x20black;border-radius:8px;margin:0\x203px\x200\x203px;line-height:\x201.5;text-align:center;font-size:10px;}",
-              ".lt-add-Width:hover\x20{border:1px solid #26bae8;background-color:#26bae8;cursor:pointer;}",
-              ".lt-add-lanes {display:inline-block;width:15px;height:15px;border:1px\x20solid black;border-radius:8px;margin:0\x203px 0 3px;line-height: 1.5;text-align:center;font-size:10px;}",
-              ".lt-add-lanes:hover\x20{border:1px\x20solid\x20#26bae8;background-color:#26bae8;cursor:pointer;}",
-              ".lt-chkAll-lns\x20{display:inline-block;width:20px;height:20px;text-decoration:underline;font-weight:bold;font-size:10px;padding-left:3px;cursor:pointer;}",
+              ".lt-wrapper {position:relative;width:100%;font-size:12px;font-family:\x22Rubik\x22, \x22Boing-light\x22, sans-serif;user-select:none;}",
+              ".lt-section-wrapper {display:block;width:100%;padding:4px;",
+              ".lt-section-wrapper.border {border-bottom:1px solid grey;margin-bottom:5px;}",
+              ".lt-option-container {padding:3px;}",
+              ".lt-option-container.color {text-decoration:none;}",
+              "input[type=\x22checkbox\x22].lt-checkbox {position:relative;top:3px;vertical-align:top;margin:0;}",
+              "input[type=\x22text\x22].lt-color-input {position:relative;width:70px;padding:3px;border:2px solid black;border-radius:6px;}",
+              "input[type=\x22text\x22].lt-color-input:focus {outline-width:0;}",
+              "label.lt-label {position:relative;max-width:90%;font-weight:normal;padding-left:5px}",
+              ".lt-Toolbar-Container {display:none;position:absolute;background-color:orange;border-radius:6px;border:1.5px solid;box-size:border-box;z-index:1050;}",
+              ".lt-Toolbar-Wrapper {position:relative;padding:3px;",
+              ".lt-toolbar-button-container {display:inline-block;padding:5px;}",
+              ".lt-toolbar-button {position:relative;display:block;width:60px;height:25px;border-radius:6px;font-size:12px;}",
+              ".lt-add-Width {display:inline-block;width:15px;height:15px;border:1px solid black;border-radius:8px;margin:0 3px 0 3px;line-height: 1.5;text-align:center;font-size:10px;}",
+              ".lt-add-Width:hover {border:1px solid #26bae8;background-color:#26bae8;cursor:pointer;}",
+              ".lt-add-lanes {display:inline-block;width:15px;height:15px;border:1px solid black;border-radius:8px;margin:0 3px 0 3px;line-height: 1.5;text-align:center;font-size:10px;}",
+              ".lt-add-lanes:hover {border:1px solid #26bae8;background-color:#26bae8;cursor:pointer;}",
+              ".lt-chkAll-lns {display:inline-block;width:20px;height:20px;text-decoration:underline;font-weight:bold;font-size:10px;padding-left:3px;cursor:pointer;}",
               ".lt-tio-select {max-width:80%;color:rgb(32, 33, 36);background-color:rgb(242, 243, 244);border:0px;border-radius:6px;padding:0 16px 0 10px;cursor:pointer;}",
               "#lt-color-title {display:block;width:100%;padding:5px 0 5px 0;font-weight:bold;text-decoration:underline;cursor:pointer;}",
-            ].join("\x20"),
+            ].join(" "),
         initMsg = $(constantStrings.divStr);
     initMsg.html = [
-      "<div\x20class=\x27lt-wrapper\x27\x20id=\x27lt-tab-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27\x20id=\x27lt-tab-body\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x20border\x27\x20style=\x27border-bottom:2px\x20double\x20grey;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x27https://www.waze.com/forum/viewtopic.php?f=819&t=301158\x27\x20style=\x27font-weight:bold;font-size:12px;text-decoration:underline;\x27\x20\x20target=\x27_blank\x27>LaneTools\x20-\x20v" +
+      "<div class=\x27lt-wrapper\x27 id=\x27lt-tab-wrapper\x27>\x0a            <div class=\x27lt-section-wrapper\x27 id=\x27lt-tab-body\x27>\x0a                <div class=\x27lt-section-wrapper border\x27 style=\x27border-bottom:2px double grey;\x27>\x0a                    <a href=\x27https://www.waze.com/forum/viewtopic.php?f=819&t=301158\x27 style=\x27font-weight:bold;font-size:12px;text-decoration:underline;\x27  target=\x27_blank\x27>LaneTools - v" +
           LANETOOLS_VERSION +
-          "</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x27display:inline-block;\x27><span\x20class=\x27lt-trans-tglshcut\x27></span>:<span\x20id=\x27lt-EnableShortcut\x27\x20style=\x27padding-left:10px;\x27></span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27float:right;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ScriptEnabled\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ScriptEnabled\x27><span\x20class=\x27lt-trans-enabled\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27\x20id=\x27lt-LaneTabFeatures\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x20border\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x27font-weight:bold;\x27><span\x20id=\x27lt-trans-uiEnhance\x27></span></span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27float:right;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-UIEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-UIEnable\x27><span\x20class=\x27lt-trans-enabled\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-UI-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27margin-bottom:5px;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x27display:inline-block;\x27><span\x20class=\x27lt-trans-tglshcut\x27></span>:<span\x20id=\x27lt-UIEnhanceShortcut\x27\x20style=\x27padding-left:10px;\x27></span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AutoOpenWidth\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AutoOpenWidth\x27><span\x20id=\x27lt-trans-autoWidth\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AutoLanesTab\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AutoLanesTab\x27><span\x20id=\x27lt-trans-autoTab\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AutoExpandLanes\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AutoExpandLanes\x27><span\x20title=\x22Feature\x20disabled\x20as\x20of\x20Aug\x2027,\x202022\x20to\x20prevent\x20flickering\x20issue\x22\x20id=\x27lt-trans-autoExpand\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AutoFocusLanes\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AutoFocusLanes\x27><span\x20id=\x27lt-trans-autoFocus\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-highlightCSIcons\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-highlightCSIcons\x27><span\x20id=\x27lt-trans-csIcons\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ReverseLanesIcon\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ReverseLanesIcon\x27><span\x20id=\x27lt-trans-orient\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27display:none;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AddTIO\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AddTIO\x27><span\x20id=\x27lt-trans-AddTIO\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ClickSaveEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ClickSaveEnable\x27><span\x20id=\x27lt-trans-enClick\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20clk-svr\x27\x20style=\x27padding-left:10%;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ClickSaveStraight\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ClickSaveStraight\x27><span\x20id=\x27lt-trans-straClick\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20clk-svr\x27\x20style=\x27padding-left:10%;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ClickSaveTurns\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ClickSaveTurns\x27><span\x20id=\x27lt-trans-turnClick\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x20border\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x27font-weight:bold;\x27><span\x20id=\x27lt-trans-mapHigh\x27></span></span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27float:right;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-HighlightsEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-HighlightsEnable\x27><span\x20class=\x27lt-trans-enabled\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-highlights-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27margin-bottom:5px;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x27display:inline-block;\x27><span\x20class=\x27lt-trans-tglshcut\x27></span>:<span\x20id=\x27lt-HighlightShortcut\x27\x20style=\x27padding-left:10px;\x27></span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-IconsEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-IconsEnable\x27><span\x20id=\x27lt-trans-enIcons\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-IconsRotate\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-IconsRotate\x27><span\x20id=\x27lt-trans-IconsRotate\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LabelsEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LabelsEnable\x27><span\x20id=\x27lt-trans-lnLabel\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-NodesEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-NodesEnable\x27><span\x20id=\x27lt-trans-nodeHigh\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LIOEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LIOEnable\x27><span\x20id=\x27lt-trans-laOver\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-CSEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-CSEnable\x27><span\x20id=\x27lt-trans-csOver\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-highlightOverride\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-highlightOverride\x27><span\x20id=\x27lt-trans-highOver\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x20border\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x27font-weight:bold;\x27><span\x20id=\x27lt-trans-heurCan\x27></span></span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27float:right;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LaneHeuristicsChecks\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LaneHeuristicsChecks\x27><span\x20class=\x27lt-trans-enabled\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-heur-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27margin-bottom:5px;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x27display:inline-block;\x27><span\x20class=\x27lt-trans-tglshcut\x27></span>:<span\x20id=\x27lt-LaneHeurChecksShortcut\x27\x20style=\x27padding-left:10px;\x27></span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LaneHeurPosHighlight\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LaneHeurPosHighlight\x27><span\x20id=\x27lt-trans-heurPos\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LaneHeurNegHighlight\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LaneHeurNegHighlight\x27><span\x20id=\x27lt-trans-heurNeg\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20id=\x27lt-color-title\x27\x20data-original-title=\x27" +
+          "</a>\x0a                    <div>\x0a                        <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-EnableShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ScriptEnabled\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ScriptEnabled\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27 id=\x27lt-LaneTabFeatures\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-uiEnhance\x27></span></span>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-UIEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-UIEnable\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                    <div id=\x27lt-UI-wrapper\x27>\x0a                        <div class=\x27lt-option-container\x27 style=\x27margin-bottom:5px;\x27>\x0a                            <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-UIEnhanceShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoOpenWidth\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoOpenWidth\x27><span id=\x27lt-trans-autoWidth\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoLanesTab\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoLanesTab\x27><span id=\x27lt-trans-autoTab\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoExpandLanes\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoExpandLanes\x27><span title=\x22Feature disabled as of Aug 27, 2022 to prevent flickering issue\x22 id=\x27lt-trans-autoExpand\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoFocusLanes\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoFocusLanes\x27><span id=\x27lt-trans-autoFocus\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-highlightCSIcons\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-highlightCSIcons\x27><span id=\x27lt-trans-csIcons\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ReverseLanesIcon\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ReverseLanesIcon\x27><span id=\x27lt-trans-orient\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27 style=\x27display:none;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AddTIO\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AddTIO\x27><span id=\x27lt-trans-AddTIO\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ClickSaveEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ClickSaveEnable\x27><span id=\x27lt-trans-enClick\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container clk-svr\x27 style=\x27padding-left:10%;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ClickSaveStraight\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ClickSaveStraight\x27><span id=\x27lt-trans-straClick\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container clk-svr\x27 style=\x27padding-left:10%;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ClickSaveTurns\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ClickSaveTurns\x27><span id=\x27lt-trans-turnClick\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-mapHigh\x27></span></span>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-HighlightsEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-HighlightsEnable\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                    <div id=\x27lt-highlights-wrapper\x27>\x0a                        <div class=\x27lt-option-container\x27 style=\x27margin-bottom:5px;\x27>\x0a                            <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-HighlightShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-IconsEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-IconsEnable\x27><span id=\x27lt-trans-enIcons\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-IconsRotate\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-IconsRotate\x27><span id=\x27lt-trans-IconsRotate\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LabelsEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LabelsEnable\x27><span id=\x27lt-trans-lnLabel\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-NodesEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-NodesEnable\x27><span id=\x27lt-trans-nodeHigh\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LIOEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LIOEnable\x27><span id=\x27lt-trans-laOver\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-CSEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-CSEnable\x27><span id=\x27lt-trans-csOver\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-highlightOverride\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-highlightOverride\x27><span id=\x27lt-trans-highOver\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-heurCan\x27></span></span>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LaneHeuristicsChecks\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LaneHeuristicsChecks\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                    <div id=\x27lt-heur-wrapper\x27>\x0a                        <div class=\x27lt-option-container\x27 style=\x27margin-bottom:5px;\x27>\x0a                            <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-LaneHeurChecksShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LaneHeurPosHighlight\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LaneHeurPosHighlight\x27><span id=\x27lt-trans-heurPos\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LaneHeurNegHighlight\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LaneHeurNegHighlight\x27><span id=\x27lt-trans-heurNeg\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27>\x0a                    <div class=\x27lt-section-wrapper\x27>\x0a                        <span id=\x27lt-color-title\x27 data-original-title=\x27" +
           TRANSLATIONS.langLocality.colTooltip +
-          "\x27><span\x20id=\x27lt-trans-highCol\x27></span>:</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-color-inputs\x27\x20style=\x27display:none;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20color\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-ABColor\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ABColor\x27\x20id=\x27lt-ABColorLabel\x27><span\x20id=\x27lt-trans-fwdCol\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20color\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-BAColor\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-BAColor\x27\x20id=\x27lt-BAColorLabel\x27><span\x20id=\x27lt-trans-revCol\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20color\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-LabelColor\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LabelColor\x27\x20id=\x27lt-LabelColorLabel\x27><span\x20id=\x27lt-trans-labelCol\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20color\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-ErrorColor\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ErrorColor\x27\x20id=\x27lt-ErrorColorLabel\x27><span\x20id=\x27lt-trans-errorCol\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20color\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-NodeColor\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-NodeColor\x27\x20id=\x27lt-NodeColorLabel\x27><span\x20id=\x27lt-trans-nodeCol\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20color\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-TIOColor\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-TIOColor\x27\x20id=\x27lt-TIOColorLabel\x27><span\x20id=\x27lt-trans-tioCol\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20color\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-LIOColor\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-TIOColor\x27\x20id=\x27lt-LIOColorLabel\x27><span\x20id=\x27lt-trans-laoCol\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20color\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-CS1Color\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-CS1Color\x27\x20id=\x27lt-CS1ColorLabel\x27><span\x20id=\x27lt-trans-viewCol\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20color\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-CS2Color\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-CS2Color\x27\x20id=\x27lt-CS2ColorLabel\x27><span\x20id=\x27lt-trans-hearCol\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20color\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-HeurColor\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-HeurColor\x27\x20id=\x27lt-HeurColorLabel\x27><span\x20id=\x27lt-trans-posCol\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20color\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-HeurFailColor\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-HeurFailColor\x27\x20id=\x27lt-HeurFailColorLabel\x27><span\x20id=\x27lt-trans-negCol\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27\x20id=\x27lt-adv-tools\x27\x20style=\x27display:none;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x20border\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x27font-weight:bold;\x27><span\x20id=\x27lt-trans-advTools\x27>></span></span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-SelAllEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-SelAllEnable\x27\x20><span\x20id=\x27lt-trans-quickTog\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20id=\x27lt-serverSelectContainer\x27\x20style=\x27display:none;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-serverSelect\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-serverSelect\x27><span\x20id=\x27lt-trans-heurRBS\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20id=\x27lt-cpy-pst\x27\x20style=\x27display:none;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-CopyEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-CopyEnable\x27>Copy/Paste\x20Lanes</label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x27font-weight:\x20bold;\x27>(**Caution**\x20-\x20double\x20check\x20results,\x20feature\x20still\x20in\x20Dev)</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-sheet-link\x27\x20style=\x27display:none;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x27https://docs.google.com/spreadsheets/d/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/edit?usp=sharing\x27\x20target=\x27_blank\x27>LT\x20Config\x20Sheet</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>",
-    ].join("\x20");
+          "\x27><span id=\x27lt-trans-highCol\x27></span>:</span>\x0a                        <div id=\x27lt-color-inputs\x27 style=\x27display:none;\x27>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-ABColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-ABColor\x27 id=\x27lt-ABColorLabel\x27><span id=\x27lt-trans-fwdCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-BAColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-BAColor\x27 id=\x27lt-BAColorLabel\x27><span id=\x27lt-trans-revCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-LabelColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-LabelColor\x27 id=\x27lt-LabelColorLabel\x27><span id=\x27lt-trans-labelCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-ErrorColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-ErrorColor\x27 id=\x27lt-ErrorColorLabel\x27><span id=\x27lt-trans-errorCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-NodeColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-NodeColor\x27 id=\x27lt-NodeColorLabel\x27><span id=\x27lt-trans-nodeCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-TIOColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-TIOColor\x27 id=\x27lt-TIOColorLabel\x27><span id=\x27lt-trans-tioCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-LIOColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-TIOColor\x27 id=\x27lt-LIOColorLabel\x27><span id=\x27lt-trans-laoCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-CS1Color\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-CS1Color\x27 id=\x27lt-CS1ColorLabel\x27><span id=\x27lt-trans-viewCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-CS2Color\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-CS2Color\x27 id=\x27lt-CS2ColorLabel\x27><span id=\x27lt-trans-hearCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-HeurColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-HeurColor\x27 id=\x27lt-HeurColorLabel\x27><span id=\x27lt-trans-posCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-HeurFailColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-HeurFailColor\x27 id=\x27lt-HeurFailColorLabel\x27><span id=\x27lt-trans-negCol\x27></span></label>\x0a                            </div>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27 id=\x27lt-adv-tools\x27 style=\x27display:none;\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-advTools\x27>></span></span>\x0a                    </div>\x0a                    <div class=\x27lt-option-container\x27>\x0a                        <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-SelAllEnable\x27 />\x0a                        <label class=\x27lt-label\x27 for=\x27lt-SelAllEnable\x27 ><span id=\x27lt-trans-quickTog\x27></span></label>\x0a                    </div>\x0a                    <div class=\x27lt-option-container\x27 id=\x27lt-serverSelectContainer\x27 style=\x27display:none;\x27>\x0a                        <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-serverSelect\x27 />\x0a                        <label class=\x27lt-label\x27 for=\x27lt-serverSelect\x27><span id=\x27lt-trans-heurRBS\x27></span></label>\x0a                    </div>\x0a                    <div class=\x27lt-option-container\x27 id=\x27lt-cpy-pst\x27 style=\x27display:none;\x27>\x0a                        <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-CopyEnable\x27 />\x0a                        <label class=\x27lt-label\x27 for=\x27lt-CopyEnable\x27>Copy/Paste Lanes</label>\x0a                        <span style=\x27font-weight: bold;\x27>(**Caution** - double check results, feature still in Dev)</span>\x0a                    </div>\x0a                    <div id=\x27lt-sheet-link\x27 style=\x27display:none;\x27>\x0a                        <a href=\x27https://docs.google.com/spreadsheets/d/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/edit?usp=sharing\x27 target=\x27_blank\x27>LT Config Sheet</a>\x0a                    </div>\x0a                </div>\x0a            </div>\x0a        </div>",
+    ].join(" ");
     const message = $(constantStrings.divStr);
     message.html([
-      "<div\x20class=\x27lt-Toolbar-Container\x27\x20id=\x22lt-toolbar-container\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-Toolbar-Wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-toolbar-button-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x27button\x27\x20class=\x27lt-toolbar-button\x27\x20id=\x27copyA-button\x27>Copy\x20A</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-toolbar-button-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x27button\x27\x20class=\x27lt-toolbar-button\x27\x20id=\x27copyB-button\x27>Copy\x20B</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-toolbar-button-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x27button\x27\x20class=\x27lt-toolbar-button\x27\x20id=\x27pasteA-button\x27>Paste\x20A</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-toolbar-button-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x27button\x27\x20class=\x27lt-toolbar-button\x27\x20id=\x27pasteB-button\x27>Paste\x20B</button>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20</div>",
-    ].join("\x20"));
+      "<div class=\x27lt-Toolbar-Container\x27 id=\x22lt-toolbar-container\x22>\x0a            <div class=\x27lt-Toolbar-Wrapper\x27>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27copyA-button\x27>Copy A</button>\x0a                </div>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27copyB-button\x27>Copy B</button>\x0a                </div>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27pasteA-button\x27>Paste A</button>\x0a                </div>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27pasteB-button\x27>Paste B</button>\x0a                </div>\x0a            </div>\x0a        </div>",
+    ].join(" "));
     seaPickle = W.loginManager.user;
     _pickleColor = seaPickle["rank"];
     if (_pickleColor >= 0x0) {
@@ -207,9 +207,9 @@
       $(constantStrings.mapTag).append(message.html());
       WazeWrap.Interface.ShowScriptUpdate(GM_info.script.name, GM_info.script.version, LI_UPDATE_NOTES, GF_LINK,
                                           FORUM_LINK);
-      console.log("LaneTools:\x20Loaded");
+      console.log("LaneTools: Loaded");
     } else
-      console.error("LaneTools:\x20loading\x20error....");
+      console.error("LaneTools: loading error....");
   }
 
   async function setupOptions() {
@@ -259,7 +259,7 @@
       function setCSSBorder(idName, value) {
         const idSelector = $("#" + idName);
         idSelector.attr("value", value);
-        idSelector.css("border", "2px\x20solid" + value);
+        idSelector.css("border", "2px solid" + value);
       }
     }
 
@@ -308,28 +308,28 @@
     WazeWrap.Events.register("changelayer", null, scanArea);
     try {
       new WazeWrap.Interface
-          .Shortcut("enableHighlights", "Toggle\x20lane\x20highlights", "wmelt", "Lane\x20Tools",
+          .Shortcut("enableHighlights", "Toggle lane highlights", "wmelt", "Lane Tools",
                     LtSettings.enableHighlights, toggleHighlights, null)
           .add();
       new WazeWrap.Interface
-          .Shortcut("enableUIEnhancements", "Toggle\x20UI\x20enhancements", "wmelt", "Lane\x20Tools",
+          .Shortcut("enableUIEnhancements", "Toggle UI enhancements", "wmelt", "Lane Tools",
                     LtSettings.enableUIEnhancements, toggleUIEnhancements, null)
           .add();
       new WazeWrap.Interface
-          .Shortcut("enableHeuristics", "Toggle\x20heuristic\x20highlights", "wmelt", "Lane\x20Tools",
+          .Shortcut("enableHeuristics", "Toggle heuristic highlights", "wmelt", "Lane Tools",
                     LtSettings.enableHeuristics, toggleLaneHeuristicsChecks, null)
           .add();
       new WazeWrap.Interface
-          .Shortcut("enableScript", "Toggle\x20script", "wmelt", "Lane\x20Tools", LtSettings.enableScript, toggleScript,
+          .Shortcut("enableScript", "Toggle script", "wmelt", "Lane Tools", LtSettings.enableScript, toggleScript,
                     null)
           .add();
     } catch (err) {
-      console.log("LT\x20Error\x20creating\x20shortcuts.\x20This\x20feature\x20will\x20be\x20disabled.");
-          $("#lt-EnableShortcut").text("" + TRANSLATIONS.default.disabled);
-          $("#lt-HighlightShortcut").text("" + TRANSLATIONS.default.disabled);
-          $("#lt-UIEnhanceShortcut").text("" + TRANSLATIONS.default.disabled);
-          $("#lt-LaneHeurChecksShortcut").text("" + TRANSLATIONS.default.disabled);
-          shortcutsDisabled = true
+      console.log("LT Error creating shortcuts. This feature will be disabled.");
+      $("#lt-EnableShortcut").text("" + TRANSLATIONS.default.disabled);
+      $("#lt-HighlightShortcut").text("" + TRANSLATIONS.default.disabled);
+      $("#lt-UIEnhanceShortcut").text("" + TRANSLATIONS.default.disabled);
+      $("#lt-LaneHeurChecksShortcut").text("" + TRANSLATIONS.default.disabled);
+      shortcutsDisabled = true
     }
     const highlightsEnabledID = $("#lt-HighlightsEnable"), colorTitleID = $("#lt-color-title"),
           laneHeuristicsChecksID = $("#lt-LaneHeuristicsChecks");
@@ -339,36 +339,38 @@
     setTranslations();
     if (_pickleColor > 0x1) {
       let jqQuickTog = $("#lt-trans-quickTog");
-      let ltEnabledFeatures = "LaneTools:\x20The\x20following\x20special\x20access\x20features\x20are\x20enabled:\x20";
+      let ltEnabledFeatures = "LaneTools: The following special access features are enabled: ";
       $("#lt-adv-tools").css("display", "block");
       jqQuickTog.attr("data-original-title", "" + strings["selAllTooltip"]);
       jqQuickTog.tooltip();
       _.each(RBSArray, (argument) => {
-        argument[0x0] === seaPickle.userName &&
-            (argument[0x1] === "1" && (isRBS = true), argument[0x2] === "1" && (allowCpyPst = true));
+        if (argument[0x0] === seaPickle.userName) {
+          argument[0x1] === "1" && (isRBS = true);
+          argument[0x2] === "1" && (allowCpyPst = true);
+        }
       });
       if (isRBS) {
         $("#lt-serverSelectContainer").css("display", "block");
-        ltEnabledFeatures += "RBS\x20Heuristics";
+        ltEnabledFeatures += "RBS Heuristics";
       }
       if (allowCpyPst) {
         $("#lt-sheet-link").css({display : "block", margin : "2px"});
         $("#lt-sheet-link > a").css({
           padding : "2px",
-          border : "2px\x20solid\x20black",
+          border : "2px solid black",
           "border-radius" : "6px",
           "text-decoration" : "none",
         });
-        $("#lt-sheet-link\x20>\x20a")
+        $("#lt-sheet-link > a")
             .on("mouseenter", function() { $(this).css("background-color", "orange"); })
             .on("mouseleave", function() { $(this).css("background-color", "#eeeeee"); });
         $(".lt-toolbar-button").on("click", function() {
-          $(this)[0x0].id === "copyA-button" && copyLaneInfo("A"),
-              $(this)[0x0].id === "copyB-button" && copyLaneInfo("B"),
-              $(this)[0x0].id === "pasteA-button" && pasteLaneInfo("A"),
-              $(this)[0x0].id === "pasteB-button" && pasteLaneInfo("B");
+          $(this)[0x0].id === "copyA-button" && copyLaneInfo("A");
+          $(this)[0x0].id === "copyB-button" && copyLaneInfo("B");
+          $(this)[0x0].id === "pasteA-button" && pasteLaneInfo("A");
+          $(this)[0x0].id === "pasteB-button" && pasteLaneInfo("B");
         });
-        ltEnabledFeatures = isRBS ? ltEnabledFeatures + ",\x20Copy/Paste" : ltEnabledFeatures + "Copy/Paste";
+        ltEnabledFeatures = isRBS ? ltEnabledFeatures + ", Copy/Paste" : ltEnabledFeatures + "Copy/Paste";
       }
       if (isRBS || allowCpyPst) {
         console.log(ltEnabledFeatures);
@@ -377,35 +379,59 @@
       $("#lt-LaneTabFeatures").css("display", "none");
     }
     $(".lt-checkbox").on("click", function() {
-      let settingName = $(this)[0x0].id.substr(0x3);
-      (LtSettings[settingName] = this.checked), saveSettings();
+      let settingName = $(this)[0x0].id.substring(3);
+      LtSettings[settingName] = this.checked;
+      saveSettings();
     })
-    $(".lt-color-input").change(function() {
-      let color_input = $(this)[0].id.substr(3);
+    $(".lt-color-input").on("change", function() {
+      let color_input = $(this)[0].id.substring(3);
       LtSettings[color_input] = this["value"];
       saveSettings();
-      $("#lt-" + color_input).css("border", "2px\x20solid" + this["value"]);
+      $("#lt-" + color_input).css("border", "2px solid" + this["value"]);
       removeHighlights();
       scanArea();
     });
-    $("#lt-ScriptEnabled")
-        .on("click",
-            () => { getId("lt-ScriptEnabled").checked ? scanArea() : (removeHighlights(), removeLaneGraphics()); });
-    highlightsEnabledID.on(
-        "click", () => { if(!getId("lt-HighlightsEnable").checked) removeHighlights(); scanArea(); });
-    $("#lt-LabelsEnable")
-        .on("click", () => { getId("lt-LabelsEnable").checked ? scanArea() : (removeHighlights(), scanArea()); });
-    $("#lt-NodesEnable")
-        .on("click", () => { getId("lt-NodesEnable").checked ? scanArea() : (removeHighlights(), scanArea()); });
-    $("#lt-LIOEnable")
-        .on("click", () => { getId("lt-LIOEnable").checked ? scanArea() : (removeHighlights(), scanArea()); });
+    $("#lt-ScriptEnabled").on("click", () => {
+      if (getId("lt-ScriptEnabled").checked)
+        scanArea();
+      else {
+        removeHighlights();
+        removeLaneGraphics();
+      }
+    });
+    highlightsEnabledID.on("click", () => {
+      if (!getId("lt-HighlightsEnable").checked)
+        removeHighlights();
+      scanArea();
+    });
+    $("#lt-LabelsEnable").on("click", () => {
+      if (!getId("lt-LabelsEnable").checked)
+        removeHighlights();
+      scanArea();
+    });
+    $("#lt-NodesEnable").on("click", () => {
+      if (!getId("lt-NodesEnable").checked)
+        removeHighlights();
+      scanArea();
+    });
+    $("#lt-LIOEnable").on("click", () => {
+      if (!getId("lt-LIOEnable").checked)
+        removeHighlights();
+      scanArea();
+    });
     $("#lt-IconsEnable")
         .on("click", () => { getId("lt-IconsEnable").checked ? displayLaneGraphics() : removeLaneGraphics(); });
-    $("#lt-highlightOverride")
-        .on("click", () => { getId("lt-highlightOverride").checked ? scanArea() : (removeHighlights(), scanArea()); });
+    $("#lt-highlightOverride").on("click", () => {
+      if (!getId("lt-highlightOverride").checked)
+        removeHighlights();
+      scanArea();
+    });
     colorTitleID.on("click", () => { $("#lt-color-inputs").toggle(); });
     $("#lt-ClickSaveEnable").on("click", () => { $(".lt-option-container.clk-svr").toggle(); });
-    $("#lt-UIEnable").on("click", () => { $("#lt-UI-wrapper").toggle(), removeLaneGraphics(); });
+    $("#lt-UIEnable").on("click", () => {
+      $("#lt-UI-wrapper").toggle();
+      removeLaneGraphics();
+    });
     highlightsEnabledID.on("click", () => { $("#lt-highlights-wrapper").toggle(); });
     laneHeuristicsChecksID.on("click", () => { $("#lt-heur-wrapper").toggle(); });
     laneHeuristicsChecksID.on("click", () => {
@@ -413,12 +439,16 @@
         removeHighlights();
       scanArea();
     });
-    $("#lt-LaneHeurPosHighlight")
-        .on("click",
-            () => { getId("lt-LaneHeurPosHighlight").checked ? scanArea() : (removeHighlights(), scanArea()); });
-    $("#lt-LaneHeurNegHighlight")
-        .on("click",
-            () => { getId("lt-LaneHeurNegHighlight").checked ? scanArea() : (removeHighlights(), scanArea()); });
+    $("#lt-LaneHeurPosHighlight").on("click", () => {
+      if (!getId("lt-LaneHeurPosHighlight").checked)
+        removeHighlights();
+      scanArea();
+    });
+    $("#lt-LaneHeurNegHighlight").on("click", () => {
+      if (!getId("lt-LaneHeurNegHighlight").checked)
+        removeHighlights();
+      scanArea();
+    });
     $("#lt-serverSelect").on("click", () => {
       setHeuristics();
       removeHighlights();
@@ -428,13 +458,13 @@
       this["trigger"]("hide");
       return $.fn.hide.apply(this, arguments);
     };
-    $("#keyboard-dialog")["on"]("hide", () => { checkShortcutsChanged(); });
+    $("#keyboard-dialog").on("hide", () => { checkShortcutsChanged(); });
     colorTitleID.tooltip();
   }
   async function loadSettings() {
     const parsedSettings = JSON.parse(localStorage.getItem("LT_Settings")),
           laneToolsSettings = await WazeWrap.Remote.RetrieveSettings("LT_Settings");
-    !laneToolsSettings && console.error("LaneTools:\x20Error\x20communicating\x20with\x20WW\x20settings\x20server");
+    !laneToolsSettings && console.error("LaneTools: Error communicating with WW settings server");
     const settingsObject = {
       lastSaveAction : 0x0,
       ScriptEnabled : true,
@@ -594,24 +624,24 @@
     LtSettings = savedLTSettings;
     localStorage && localStorage.setItem("LT_Settings", JSON.stringify(savedLTSettings));
     const ltSettingsSaveStatus = await WazeWrap.Remote.SaveSettings("LT_Settings", savedLTSettings);
-    ltSettingsSaveStatus === null ? console.warn("LaneTools:\x20User\x20PIN\x20not\x20set\x20in\x20WazeWrap\x20tab")
+    ltSettingsSaveStatus === null ? console.warn("LaneTools: User PIN not set in WazeWrap tab")
                                   : ltSettingsSaveStatus === false &&
-                                        console.error("LaneTools:\x20Unable\x20to\x20save\x20settings\x20to\x20server");
+                                        console.error("LaneTools: Unable to save settings to server");
   }
   async function loadSpreadsheet() {
     let spreadSheetLoadStatus = false;
     const spreadsheetID = "AIzaSyDZjmkSx5xWc-86hsAIzedgDgRgy8vB7BQ", angleFail = (_0x135a7d, _0x3e3ad5, errorMsg) => {
-      console.error("LaneTools:\x20Error\x20loading\x20settings:", errorMsg);
+      console.error("LaneTools: Error loading settings:", errorMsg);
     }, rbsFail = (_0x2d5151, _0x4e197b, reason) => {
-      console.error("LaneTools:\x20Error\x20loading\x20RBS:\x20", reason);
+      console.error("LaneTools: Error loading RBS: ", reason);
       if (!RBSArray.failed) {
         WazeWrap.Alerts.error(
             GM_info.script.name,
-            "Unable\x20to\x20load\x20heuristics\x20data\x20for\x20LG.\x20This\x20feature\x20will\x20not\x20be\x20available");
+            "Unable to load heuristics data for LG. This feature will not be available");
         RBSArray.failed = true
       }
     }, translationFailedToLoad = (_0x4e546b, _0x559463, err) => {
-      console.error("LaneTools:\x20Error\x20loading\x20trans:\x20", err);
+      console.error("LaneTools: Error loading trans: ", err);
     };
     try {
       await $.getJSON(constantStrings.translationSpreadSheetBaseURL + spreadsheetID)
@@ -630,9 +660,12 @@
     try {
       await $.getJSON(constantStrings.angleSpreadSheetBaseURL + spreadsheetID)
           .done((angleValueJSON) => {
-            angleValueJSON.values.length > 0x0 ? (_.each(angleValueJSON.values, (angleValue) => {
-              !configArray[angleValue[1]] && (configArray[angleValue[1]] = JSON.parse(angleValue[0]));
-            }), (spreadSheetLoadStatus = true)) : angleFail();
+            if (angleValueJSON.values.length > 0x0) {
+              _.each(angleValueJSON.values, (angleValue) => {
+                !configArray[angleValue[1]] && (configArray[angleValue[1]] = JSON.parse(angleValue[0]));
+              }), (spreadSheetLoadStatus = true)
+            } else
+              angleFail();
           })
           .fail(angleFail);
     } catch (angleException) {
@@ -735,15 +768,17 @@
       const {shortcut : shortCutValue, group : groupValue} = W.accelerators.Actions[actionValue];
       if (groupValue === "wmelt") {
         let shortCutString = "";
-        shortCutValue ? (shortCutValue["altKey"] === true && (shortCutString += "A"),
-                         shortCutValue["shiftKey"] === true && (shortCutString += "S"),
-                         shortCutValue["ctrlKey"] === true && (shortCutString += "C"),
-                         shortCutString !== "" && (shortCutString += "+"),
-                         shortCutValue["keyCode"] && (shortCutString += shortCutValue["keyCode"]))
-                      : (shortCutString = "-1");
+        if (shortCutValue) {
+          shortCutValue["altKey"] === true && (shortCutString += "A");
+          shortCutValue["shiftKey"] === true && (shortCutString += "S");
+          shortCutValue["ctrlKey"] === true && (shortCutString += "C");
+          shortCutString !== "" && (shortCutString += "+");
+          shortCutValue["keyCode"] && (shortCutString += shortCutValue["keyCode"]);
+        } else
+          shortCutString = "-1";
         if (LtSettings[actionValue] !== shortCutString) {
-          (shortCutInvoked = true), console.log("LaneTools:\x20Stored\x20shortcut\x20" + actionValue + ":\x20" +
-                                                LtSettings[actionValue] + "changed\x20to\x20" + shortCutString);
+          (shortCutInvoked = true), console.log("LaneTools: Stored shortcut " + actionValue + ": " +
+                                                LtSettings[actionValue] + "changed to " + shortCutString);
           break;
         }
       }
@@ -757,21 +792,23 @@
     if (keyboardShortCut.indexOf("+") > -0x1) {
       const keyboardKeyValue = keyboardShortCut["split"]("+")[0x0];
       for (let index = 0x0; index < keyboardKeyValue.length; index++) {
-        shortCutValue.length > 0x0 && (shortCutValue += "+"),
-            keyboardKeyValue[index] === "C" && (shortCutValue += "Ctrl"),
-            keyboardKeyValue[index] === "S" && (shortCutValue += "Shift"),
-            keyboardKeyValue[index] === "A" && (shortCutValue += "Alt");
+        shortCutValue.length > 0x0 && (shortCutValue += "+");
+        keyboardKeyValue[index] === "C" && (shortCutValue += "Ctrl");
+        keyboardKeyValue[index] === "S" && (shortCutValue += "Shift");
+        keyboardKeyValue[index] === "A" && (shortCutValue += "Alt");
       }
       shortCutValue.length > 0x0 && (shortCutValue += "+");
       let keyboardKey = keyboardShortCut.split("+")[0x1];
-      if(keyboardKey >= 96 && keyboardKey <= 105) {
-          keyboardKey -= 48; shortCutValue += "[num\x20pad]";
+      if (keyboardKey >= 96 && keyboardKey <= 105) {
+        keyboardKey -= 48;
+        shortCutValue += "[num pad]";
       }
       shortCutValue += String.fromCharCode(keyboardKey);
     } else {
       let keyboardKey = Number.parseInt(keyboardShortCut, 10);
-      if(keyboardKey >= 0x60 && keyboardKey <= 0x69) {
-          keyboardKey -= 48; shortCutValue += "[num\x20pad]";
+      if (keyboardKey >= 0x60 && keyboardKey <= 0x69) {
+        keyboardKey -= 48;
+        shortCutValue += "[num pad]";
       }
       shortCutValue += String.fromCharCode(keyboardKey);
     }
@@ -791,7 +828,7 @@
   function lanesTabSetup() {
     if (getId("edit-panel").getElementsByTagName("wz-tabs").length === 0x0) {
       setTimeout(lanesTabSetup, 8000);
-      console.log("Edit\x20panel\x20not\x20yet\x20loaded.");
+      console.log("Edit panel not yet loaded.");
       return;
     }
     const selectedFeatures = W.selectionManager.getSelectedFeatures();
@@ -801,7 +838,7 @@
       document.getElementById(
           W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.toNodeID)
               .attributes.geometry.id);
-      console.log("hovering\x20to\x20B");
+      console.log("hovering to B");
     }
     // function _0x758543() {
     //   W.model.nodes
@@ -815,7 +852,7 @@
     //                    .segments[0]
     //                    .attributes.fromNodeID)
     //           .attributes.geometry.id),
-    //       console.log("hovering\x20to\x20A");
+    //       console.log("hovering to A");
     // }
 
     function _0x5a28b7() {
@@ -824,21 +861,21 @@
       if (_pickleColor >= 0x1 || editorInfo["editableCountryIDS"].length > 0x0) {
         if (getId("li-del-opp-btn"))
           $("#li-del-opp-btn").remove();
-        let _0x8b5acb = $(
-                "<button\x20type=\x22button\x22\x20id=\x22li-del-fwd-btn\x22\x20style=\x22height:20px;background-color:white;border:1px\x20solid\x20grey;border-radius:8px;\x22>" +
+        let delForwardButton = $(
+                "<button type=\"button\" id=\"li-del-fwd-btn\" style=\"height:20px;background-color:white;border:1px solid grey;border-radius:8px;\">" +
                 strings.delFwd + "</button>"),
-            _0x2f9ee4 = $(
-                "<button\x20type=\x22button\x22\x20id=\x22li-del-rev-btn\x22\x20style=\x22height:20px;background-color:white;border:1px\x20solid\x20grey;border-radius:8px;\x22>" +
+            deleteRefButton = $(
+                "<button type=\"button\" id=\"li-del-rev-btn\" style=\"height:20px;background-color:white;border:1px solid grey;border-radius:8px;\">" +
                 strings.delRev + "</button>"),
-            _0x336aa4 = $(
-                "<button\x20type=\x22button\x22\x20id=\x22li-del-opp-btn\x22\x20style=\x22height:auto;background-color:orange;border:1px\x20solid\x20grey;border-radius:8px;\x20margin-bottom:5px;\x22>" +
+            deleteOppButton = $(
+                "<button type=\"button\" id=\"li-del-opp-btn\" style=\"height:auto;background-color:orange;border:1px solid grey;border-radius:8px; margin-bottom:5px;\">" +
                 strings.delOpp + "</button>"),
-            _0x52f96d = $("<div\x20style=\x22display:inline-block;position:relative;\x22\x20/>"),
-            _0x52daad = $("<div\x20style=\x22display:inline-block;position:relative;\x22\x20/>"),
-            _0x55302b = $("<div\x20style=\x22display:inline-block;position:relative;\x22\x20/>");
-        _0x8b5acb.appendTo(_0x52f96d), _0x2f9ee4.appendTo(_0x52daad), _0x336aa4.appendTo(_0x55302b);
-        const _0x26df67 = $("#li-del-fwd-btn"), _0x24898c = $("#li-del-rev-btn"), _0xf4d645 = $("#li-del-opp-btn");
-        _0x26df67.off(), _0x24898c.off(), _0xf4d645.off();
+            _0x52f96d = $("<div style=\"display:inline-block;position:relative;\" />"),
+            _0x52daad = $("<div style=\"display:inline-block;position:relative;\" />"),
+            _0x55302b = $("<div style=\"display:inline-block;position:relative;\" />");
+        delForwardButton.appendTo(_0x52f96d), deleteRefButton.appendTo(_0x52daad), deleteOppButton.appendTo(_0x55302b);
+        const liDeleteFwdButtonSelector = $("#li-del-fwd-btn"), _0x24898c = $("#li-del-rev-btn"), _0xf4d645 = $("#li-del-opp-btn");
+        liDeleteFwdButtonSelector.off(), _0x24898c.off(), _0xf4d645.off();
         if (!getId("li-del-rev-btn") && !revLanesEnabled &&
             selectedFeatures[0x0].attributes.wazeFeature._wmeObject.getRevLanes().laneCount > 0x0) {
           if ($(constantStrings.revLanesInstructionsFromCSS).length > 0x0)
@@ -846,9 +883,9 @@
                 $(constantStrings.revLanesInstructionsFromCSS).css("border-bottom", "4px dashed " + LtSettings.BAColor);
           else
             selectedFeatures[0x0].attributes.wazeFeature._wmeObject.attributes.revDirection != true &&
-                (_0x336aa4.prop("title", "rev"), _0x336aa4.prependTo(constantStrings.editPanelCSS));
+                (deleteOppButton.prop("title", "rev"), deleteOppButton.prependTo(constantStrings.editPanelCSS));
         } else
-          $(constantStrings.revLanesInstructionsFromCSS).css("border-bottom", "4px\x20dashed\x20" + LtSettings.BAColor);
+          $(constantStrings.revLanesInstructionsFromCSS).css("border-bottom", "4px dashed " + LtSettings.BAColor);
         if (!getId("li-del-fwd-btn") && !fwdLanesEnabled &&
             selectedFeatures[0x0].attributes.wazeFeature._wmeObject.getFwdLanes().laneCount > 0x0) {
           if ($(constantStrings.fwdLanesDivInstructionCSS).length > 0x0)
@@ -856,9 +893,9 @@
                 $(constantStrings.fwdLanesDivInstructionCSS).css("border-bottom", "4px dashed " + LtSettings.ABColor);
           else
             selectedFeatures[0x0].attributes.wazeFeature._wmeObject.attributes.fwdDirection != true &&
-                (_0x336aa4.prop("title", "fwd"), _0x336aa4.prependTo(constantStrings.editPanelCSS));
+                (deleteOppButton.prop("title", "fwd"), deleteOppButton.prependTo(constantStrings.editPanelCSS));
         } else
-          $(constantStrings.fwdLanesInstructionsFromCSS).css("border-bottom", "4px\x20dashed\x20" + LtSettings.ABColor);
+          $(constantStrings.fwdLanesInstructionsFromCSS).css("border-bottom", "4px dashed " + LtSettings.ABColor);
         $("#li-del-fwd-btn").on("click", function() {
           delLanes("fwd");
           fwdLanesEnabled = true;
@@ -906,119 +943,119 @@
         }
       }
       getId("lt-AutoOpenWidth").checked &&
-          (!fwdLanesEnabled && $(".fwd-lanes").find(".set-road-width\x20>\x20wz-button").click(),
-           !revLanesEnabled && $(".rev-lanes").find(".set-road-width\x20>\x20wz-button").click());
+          (!fwdLanesEnabled && $(".fwd-lanes").find(".set-road-width > wz-button").click(),
+           !revLanesEnabled && $(".rev-lanes").find(".set-road-width > wz-button").click());
     }
 
     function _0x816cf7() {
-      $(".fwd-lanes\x20>\x20div\x20>\x20.direction-lanes").css({
-        padding : "5px\x205px\x2010px",
+      $(".fwd-lanes > div > .direction-lanes").css({
+        padding : "5px 5px 10px",
         "margin-bottom" : "10px",
       }),
-          $("<div\x20class=\x22lt-add-Width\x20fwd\x22>2</div>").css({
-            padding : "5px\x205px\x2010px",
+          $("<div class=\x22lt-add-Width fwd\x22>2</div>").css({
+            padding : "5px 5px 10px",
             margin : "0px",
           }),
           $(constantStrings.fwdLanesDirectionControlEditCSS).css("padding-top", "10px"),
           $(constantStrings.revLanesInstructionsToCSS).css("padding-top", "10px"),
           $(constantStrings.fwdLanesLaneInstrunctionToCSS).css("margin-bottom", "4px"),
-          $(".rev-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.edit-region\x20>\x20div\x20>\x20div\x20>\x20div:nth-child(1)")
+          $(".rev-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1)")
               .css("margin-bottom", "4px");
     }
     function _0x414f9a() {
       if ($(".fwd-lanes").find(".direction-lanes").children().length > 0x0 && !getId("lt-fwd-add-lanes")) {
-        let add1Lane = $("<div\x20class=\x22lt-add-lanes\x20fwd\x22>1</div>"),
-            add2Lanes = $("<div\x20class=\x20lt-add-lanes\x20fwd\x22>2</div>"),
-            add3Lanes = $("<div\x20class=\x22t-add-lanes\x20fwd\x22>3</div>"),
-            add4Lanes = $("<div\x20class=\x22lt-add-lanes\x20fwd\x22>4</div>"),
-            add5Lanes = $("<div\x20class=\x22lt-add-lanes\x20fwd\x22>5</div>"),
-            add6Lanes = $("<div\x20class=\x22lt-add-lanes\x20fwd\x22>6</div>"),
-            add7Lanes = $("<div\x20class=\x22lt-add-lanes\x20fwd\x22>7</div>"),
-            add8Lanes = $("<div\x20class=\x22lt-add-lanes\x20fwd\x22>8</div>"),
+        let add1Lane = $("<div class=\x22lt-add-lanes fwd\x22>1</div>"),
+            add2Lanes = $("<div class= lt-add-lanes fwd\x22>2</div>"),
+            add3Lanes = $("<div class=\x22t-add-lanes fwd\x22>3</div>"),
+            add4Lanes = $("<div class=\x22lt-add-lanes fwd\x22>4</div>"),
+            add5Lanes = $("<div class=\x22lt-add-lanes fwd\x22>5</div>"),
+            add6Lanes = $("<div class=\x22lt-add-lanes fwd\x22>6</div>"),
+            add7Lanes = $("<div class=\x22lt-add-lanes fwd\x22>7</div>"),
+            add8Lanes = $("<div class=\x22lt-add-lanes fwd\x22>8</div>"),
             addLanesItem = $(
-                "<div\x20style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22\x20id=\x22lt-fwd-add-lanes\x22\x20/>");
+                "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22 id=\x22lt-fwd-add-lanes\x22 />");
         add1Lane.appendTo(addLanesItem), add2Lanes.appendTo(addLanesItem), add3Lanes.appendTo(addLanesItem),
             add4Lanes.appendTo(addLanesItem), add5Lanes.appendTo(addLanesItem), add6Lanes.appendTo(addLanesItem),
             add7Lanes.appendTo(addLanesItem), add8Lanes.appendTo(addLanesItem),
             addLanesItem.appendTo(constantStrings.fwdLanesNthChild);
       }
       if ($(".rev-lanes").find(".direction-lanes").children().length > 0x0 && !getId("lt-rev-add-lanes")) {
-        let add1ReverseLane = $("<div\x20class=\x22lt-add-lanes\x20rev\x22>1</div>"),
-            add2ReverseLanes = $("<div\x20class=\x22lt-add-lanes\x20rev\x22>2</div>"),
-            add3ReverseLanes = $("<div\x20class=\x22lt-add-lanes\x20rev\x22>3</div>"),
-            add4ReverseLanes = $("<div\x20class=\x22lt-add-lanes\x20rev\x22>4</div>"),
-            add5ReverseLanes = $("<div\x20class=\x22lt-add-lanes\x20rev\x22>5</div>"),
-            add6ReverseLanes = $("<div\x20class=\x22lt-add-lanes\x20rev\x22>6</div>"),
-            add7ReverseLanes = $("<div\x20class=\x22lt-add-lanes\x20rev\x22>7</div>"),
-            add8ReverseLanes = $("<div\x20class=\x22lt-add-lanes\x20rev\x22>8</div>"),
+        let add1ReverseLane = $("<div class=\x22lt-add-lanes rev\x22>1</div>"),
+            add2ReverseLanes = $("<div class=\x22lt-add-lanes rev\x22>2</div>"),
+            add3ReverseLanes = $("<div class=\x22lt-add-lanes rev\x22>3</div>"),
+            add4ReverseLanes = $("<div class=\x22lt-add-lanes rev\x22>4</div>"),
+            add5ReverseLanes = $("<div class=\x22lt-add-lanes rev\x22>5</div>"),
+            add6ReverseLanes = $("<div class=\x22lt-add-lanes rev\x22>6</div>"),
+            add7ReverseLanes = $("<div class=\x22lt-add-lanes rev\x22>7</div>"),
+            add8ReverseLanes = $("<div class=\x22lt-add-lanes rev\x22>8</div>"),
             reversLanesDiv = $(
-                "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22\x20id=\x22lt-rev-add-lanes\x22\x20/>");
+                "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22 id=\x22lt-rev-add-lanes\x22 />");
         add1ReverseLane.appendTo(reversLanesDiv), add2ReverseLanes.appendTo(reversLanesDiv),
             add3ReverseLanes.appendTo(reversLanesDiv), add4ReverseLanes.appendTo(reversLanesDiv),
             add5ReverseLanes.appendTo(reversLanesDiv), add6ReverseLanes.appendTo(reversLanesDiv),
             add7ReverseLanes.appendTo(reversLanesDiv), add8ReverseLanes.appendTo(reversLanesDiv),
             reversLanesDiv.appendTo(
-                ".rev-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.edit-region\x20>\x20div\x20>\x20div\x20>\x20div:nth-child(1)\x20>\x20div");
+                ".rev-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1) > div");
       }
       $(".lt-add-lanes").click(function() {
         let _0xa2f2b3 = $(this).text();
         _0xa2f2b3 = Number.parseInt(_0xa2f2b3, 0xa);
-        if ($(this).hasClass("lt-add-lanes\x20fwd")) {
+        if ($(this).hasClass("lt-add-lanes fwd")) {
           const _0x11380e = $(".fwd-lanes");
           _0x11380e.find(".form-control").val(_0xa2f2b3), _0x11380e.find(".form-control").change(),
               _0x11380e.find(".form-control").focus();
         }
-        if ($(this).hasClass("lt-add-lanes\x20rev")) {
+        if ($(this).hasClass("lt-add-lanes rev")) {
           const _0x4d157 = $(".rev-lanes");
           _0x4d157.find(".form-control").val(_0xa2f2b3), _0x4d157.find(".form-control").change(),
               _0x4d157.find(".form-control").focus();
         }
       });
       if ($(".fwd-lanes").find(".lane-width-card").children().length > 0x0 && !getId("lt-fwd-add-Width")) {
-        let add1MoreLane = $("<div\x20class=\x22lt-add-Width\x20fwd\x22>1</div>"),
-            add2MoreLanes = $("<div\x20class=\x22lt-add-Width\x20fwd\x22>2</div>"),
-            add3MoreLanes = $("<div\x20class=\x22lt-add-Width\x20fwd\x22>3</div>"),
-            add4MoreLanes = $("<div\x20class=\x22lt-add-Width\x20fwd\x22>4</div>"),
-            add5MoreLanes = $("<div\x20class=\x22lt-add-Width\x20fwd\x22>5</div>"),
-            add6MoreLanes = $("<div\x20class=\x22lt-add-Width\x20fwd\x22>6</div>"),
-            add7MoreLanes = $("<div\x20class=\x22lt-add-Width\x20fwd\x22>7</div>"),
-            add8MoreLanes = $("<div\x20class=\x22lt-add-Width\x20fwd\x22>8</div>"),
+        let add1MoreLane = $("<div class=\x22lt-add-Width fwd\x22>1</div>"),
+            add2MoreLanes = $("<div class=\x22lt-add-Width fwd\x22>2</div>"),
+            add3MoreLanes = $("<div class=\x22lt-add-Width fwd\x22>3</div>"),
+            add4MoreLanes = $("<div class=\x22lt-add-Width fwd\x22>4</div>"),
+            add5MoreLanes = $("<div class=\x22lt-add-Width fwd\x22>5</div>"),
+            add6MoreLanes = $("<div class=\x22lt-add-Width fwd\x22>6</div>"),
+            add7MoreLanes = $("<div class=\x22lt-add-Width fwd\x22>7</div>"),
+            add8MoreLanes = $("<div class=\x22lt-add-Width fwd\x22>8</div>"),
             addMoreLanes = $(
-                "<div\x20style=\x22position:relative;display:block;width:100%;\x22\x20id=\x22lt-fwd-add-Width\x22\x20/>");
+                "<div style=\x22position:relative;display:block;width:100%;\x22 id=\x22lt-fwd-add-Width\x22 />");
         add1MoreLane.appendTo(addMoreLanes), add2MoreLanes.appendTo(addMoreLanes), add3MoreLanes.appendTo(addMoreLanes),
             add4MoreLanes.appendTo(addMoreLanes), add5MoreLanes.appendTo(addMoreLanes),
             add6MoreLanes.appendTo(addMoreLanes), add7MoreLanes.appendTo(addMoreLanes),
             add8MoreLanes.appendTo(addMoreLanes),
             addMoreLanes.prependTo(
-                ".fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20.lane-instruction.lane-instruction-from\x20>\x20.instruction\x20>\x20.road-width-edit\x20>\x20div\x20>\x20div\x20>\x20div\x20>\x20.lane-width-card");
+                ".fwd-lanes > div > div > .lane-instruction.lane-instruction-from > .instruction > .road-width-edit > div > div > div > .lane-width-card");
       }
       if ($(".rev-lanes").find(".lane-width-card").children().length > 0x0 && !getId("lt-rev-add-Width")) {
-        let append1Lane = $("<div\x20class=\x22lt-add-Width\x20rev\x22>1</div>"),
-            append2Lanes = $("<div\x20class=\x22lt-add-Width\x20rev\x22>2</div>"),
-            append3Lanes = $("<div\x20class=\x22lt-add-Width\x20rev\x22>3</div>"),
-            append4Lanes = $("<div\x20class=\x22lt-add-Width\x20rev\x22>4</div>"),
-            append5Lanes = $("<div\x20class=\x22lt-add-Width\x20rev\x22>5</div>"),
-            append6Lanes = $("<div\x20class=\x22lt-add-Width\x20rev\x22>6</div>"),
-            append7Lanes = $("<div\x20class=\x22lt-add-Width\x20rev\x22>8</div>"),
-            append8Lanes = $("<div\x20class=\x22lt-add-Width\x20rev\x22>8</div>"),
+        let append1Lane = $("<div class=\x22lt-add-Width rev\x22>1</div>"),
+            append2Lanes = $("<div class=\x22lt-add-Width rev\x22>2</div>"),
+            append3Lanes = $("<div class=\x22lt-add-Width rev\x22>3</div>"),
+            append4Lanes = $("<div class=\x22lt-add-Width rev\x22>4</div>"),
+            append5Lanes = $("<div class=\x22lt-add-Width rev\x22>5</div>"),
+            append6Lanes = $("<div class=\x22lt-add-Width rev\x22>6</div>"),
+            append7Lanes = $("<div class=\x22lt-add-Width rev\x22>8</div>"),
+            append8Lanes = $("<div class=\x22lt-add-Width rev\x22>8</div>"),
             appendRevLanes = $(
-                "<div\x20style=\x22position:relative;display:block;width:100%;\x22\x20id=\x22lt-rev-add-Width\x22\x20/>");
+                "<div style=\x22position:relative;display:block;width:100%;\x22 id=\x22lt-rev-add-Width\x22 />");
         append1Lane.appendTo(appendRevLanes), append2Lanes.appendTo(appendRevLanes),
             append3Lanes.appendTo(appendRevLanes), append4Lanes.appendTo(appendRevLanes),
             append5Lanes.appendTo(appendRevLanes), append6Lanes.appendTo(appendRevLanes),
             append7Lanes.appendTo(appendRevLanes), append8Lanes.appendTo(appendRevLanes),
             appendRevLanes.prependTo(
-                ".rev-lanes\x20>\x20div\x20>\x20div\x20>\x20.lane-instruction.lane-instruction-from\x20>\x20.instruction\x20>\x20.road-width-edit\x20>\x20div\x20>\x20div\x20>\x20div\x20>\x20.lane-width-card");
+                ".rev-lanes > div > div > .lane-instruction.lane-instruction-from > .instruction > .road-width-edit > div > div > div > .lane-width-card");
       }
       $(".lt-add-Width").click(function() {
         let numLanesToAdd = $(this).text();
         numLanesToAdd = Number.parseInt(numLanesToAdd, 0xa);
-        if ($(this).hasClass("lt-add-Width\x20fwd")) {
+        if ($(this).hasClass("lt-add-Width fwd")) {
           const fwdLanes = $(".fwd-lanes");
           fwdLanes.find("#number-of-lanes").val(numLanesToAdd), fwdLanes.find("#number-of-lanes").change(),
               fwdLanes.find("#number-of-lanes").focus();
         }
-        if ($(this).hasClass("lt-add-Width\x20rev")) {
+        if ($(this).hasClass("lt-add-Width rev")) {
           const revLanes = $(".rev-lanes");
           revLanes.find("#number-of-lanes").val(numLanesToAdd), revLanes.find("#number-of-lanes").change(),
               revLanes.find("#number-of-lanes").focus();
@@ -1075,7 +1112,7 @@
       if (_0x54880b[0x4] > 0x0) {
         let _0x59815e = _0x54880b[0x4] === 0x1 ? LtSettings.CS1Color : LtSettings.CS2Color,
             _0x1d2fa0 =
-                $("#segment-edit-lanes\x20>\x20div\x20>\x20div\x20>\x20div.fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.lane-arrows\x20>\x20div")
+                $("#segment-edit-lanes > div > div > div.fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-arrows > div")
                     .children();
         for (let i = 0x0; i < _0x1d2fa0.length; i++) {
           _0x1d2fa0[i]["title"] == _0x54880b[0x5] && $(_0x1d2fa0[i]).css("background-color", _0x59815e);
@@ -1091,7 +1128,7 @@
     }
 
     function _0x8ccdf2() {
-      let headingElement = document.getElementsByClassName("heading"), _0x2b66d6 = $(".lane-arrows\x20>\x20div").get();
+      let headingElement = document.getElementsByClassName("heading"), _0x2b66d6 = $(".lane-arrows > div").get();
       for (let idx = 0x0; idx < headingElement.length; idx++) {
         if (headingElement[idx].textContent.includes("south")) {
           let kids = $(_0x2b66d6[idx]).children();
@@ -1119,7 +1156,7 @@
   // function getStringArray() {
   //   const predefinedStrings =
   //       [
-  //         "\x20at\x20",
+  //         " at ",
   //         "getZoom",
   //         "data-original-title",
   //         "rev",
@@ -1128,8 +1165,8 @@
   //         "Tab",
   //         "lanes",
   //         "lt-NodeColor",
-  //         "input[type=\x22checkbox\x22].lt-checkbox\x20{position:relative;top:3px;vertical-align:top;margin:0;}",
-  //         "#edit-panel\x20>\x20div\x20>\x20div\x20>\x20div\x20>\x20div.segment-edit-section\x20>\x20wz-tabs\x20>\x20wz-tab.lanes-tab",
+  //         "input[type=\x22checkbox\x22].lt-checkbox {position:relative;top:3px;vertical-align:top;margin:0;}",
+  //         "#edit-panel > div > div > div > div.segment-edit-section > wz-tabs > wz-tab.lanes-tab",
   //         "altKey",
   //         "getSegmentSelection",
   //         "RPS",
@@ -1140,14 +1177,14 @@
   //         "serializeToString",
   //         "HIGHLIGHT",
   //         "inSeg",
-  //         "Azm\x20to\x20node\x20",
+  //         "Azm to node ",
   //         "length",
   //         "ClickSaveTurns",
   //         "failed",
   //         "inSegDir",
-  //         "Turn\x20lanes",
-  //         "Straight\x20turn\x20lane\x20count\x20does\x20not\x20match",
-  //         ".fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.edit-region\x20>\x20div\x20>\x20div\x20>\x20div:nth-child(1)",
+  //         "Turn lanes",
+  //         "Straight turn lane count does not match",
+  //         ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1)",
   //         "posHeur",
   //         "includes",
   //         "LTLaneGraphics",
@@ -1155,14 +1192,14 @@
   //         "#lt-LabelsEnable",
   //         "changelayer",
   //         "join",
-  //         "<div\x20style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22\x20id=\x22lt-fwd-add-lanes\x22\x20/>",
+  //         "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22 id=\x22lt-fwd-add-lanes\x22 />",
   //         "data:image/svg+xml;base64,",
   //         "0px",
   //         "lastSaveAction",
-  //         "Keep\x20Right",
+  //         "Keep Right",
   //         "components",
-  //         "Rev\x20(B>A)",
-  //         "lt-add-Width\x20fwd",
+  //         "Rev (B>A)",
+  //         "lt-add-Width fwd",
   //         "https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js",
   //         "removeAllFeatures",
   //         "lt-rev-add-Width",
@@ -1173,16 +1210,16 @@
   //         "#66ccff",
   //         "Shortcut",
   //         "lt-IconsRotate",
-  //         "\x20changed\x20to\x20",
-  //         "Turn\x20Right",
+  //         " changed to ",
+  //         "Turn Right",
   //         "IconsRotate",
   //         "nodeTIOCol",
-  //         "label.lt-label\x20{position:relative;max-width:90%;font-weight:normal;padding-left:5px}",
-  //         "LaneTools:\x20initializing...",
-  //         "4px\x20dashed\x20",
+  //         "label.lt-label {position:relative;max-width:90%;font-weight:normal;padding-left:5px}",
+  //         "LaneTools: initializing...",
+  //         "4px dashed ",
   //         "roadType",
   //         "NodeColor",
-  //         "lt-add-lanes\x20rev",
+  //         "lt-add-lanes rev",
   //         "val",
   //         "#lt-trans-negCol",
   //         "#lt-highlightOverride",
@@ -1195,7 +1232,7 @@
   //         "lt-highlightCSIcons",
   //         "_LTHighlightLayer",
   //         "lt-LabelsEnable",
-  //         "Highlight\x20CS\x20Icons",
+  //         "Highlight CS Icons",
   //         "li-del-opp-btn",
   //         "#lt-LaneHeurChecksShortcut",
   //         "input",
@@ -1208,8 +1245,8 @@
   //         "FAIL",
   //         "LaneHeurNegHighlight",
   //         "${labelColor}",
-  //         "Rotate\x20map\x20icons\x20with\x20segment\x20direction",
-  //         "LaneTools:\x20Error\x20loading\x20RBS:",
+  //         "Rotate map icons with segment direction",
+  //         "LaneTools: Error loading RBS:",
   //         "lt-ErrorColor",
   //         "10px",
   //         "#lt-trans-hearCol",
@@ -1217,7 +1254,7 @@
   //         ".85",
   //         "DASH_THIN",
   //         "lt-fwd-add-Width",
-  //         ".rev-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-from\x20>\x20div.instruction",
+  //         ".rev-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
   //         "add",
   //         "Point",
   //         "4px",
@@ -1225,13 +1262,13 @@
   //         "LaneHeurPosHighlight",
   //         ".lt-color-input",
   //         "Ready",
-  //         "<div\x20class=\x22lt-add-lanes\x20rev\x22>7</div>",
-  //         "LaneTools\x20Dev\x20Msg:\x20",
+  //         "<div class=\x22lt-add-lanes rev\x22>7</div>",
+  //         "LaneTools Dev Msg: ",
   //         "ReverseLanesIcon",
   //         "clickStraight",
   //         "none",
   //         "toggle",
-  //         ".lt-option-container.color\x20{text-decoration:none;}",
+  //         ".lt-option-container.color {text-decoration:none;}",
   //         "number",
   //         "border-bottom",
   //         "setAttribute",
@@ -1240,12 +1277,12 @@
   //         "#lt-EnableShortcut",
   //         "NodesEnable",
   //         "Alerts",
-  //         "Toggle\x20UI\x20enhancements",
+  //         "Toggle UI enhancements",
   //         "find",
   //         "seg",
   //         "beta.waze.com",
   //         "396CKTurr",
-  //         "Enable\x20ClickSaver",
+  //         "Enable ClickSaver",
   //         "start",
   //         "ErrorColor",
   //         "#lt-trans-autoTab",
@@ -1257,34 +1294,34 @@
   //         "highlightCSIcons",
   //         "done",
   //         "fill",
-  //         "<div\x20class=\x22lt-add-Width\x20fwd\x22>4</div>",
+  //         "<div class=\x22lt-add-Width fwd\x22>4</div>",
   //         "keys",
   //         "negHeur",
   //         "call",
   //         "#lt-trans-nodeHigh",
-  //         ".fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.edit-region\x20>\x20div\x20>\x20div\x20>\x20div:nth-child(1)\x20>\x20div",
-  //         "Edit\x20panel\x20not\x20yet\x20loaded.",
+  //         ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1) > div",
+  //         "Edit panel not yet loaded.",
   //         ".apply-button.waze-btn.waze-btn-blue",
   //         "zoomend",
   //         "#lt-UIEnable",
   //         "hide",
   //         "#lt-highlights-wrapper",
-  //         "Open\x20Sans,\x20Alef,\x20helvetica,\x20sans-serif,\x20monospace",
+  //         "Open Sans, Alef, helvetica, sans-serif, monospace",
   //         "trigger",
-  //         "Waze\x20Selected",
-  //         "<div\x20class=\x22lt-add-Width\x20rev\x22>7</div>",
-  //         "?\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20",
+  //         "Waze Selected",
+  //         "<div class=\x22lt-add-Width rev\x22>7</div>",
+  //         "? \x0a            ",
   //         "css",
   //         "keyCode",
   //         "delFwd",
   //         "lt-CSEnable",
-  //         "2px\x20solid\x20black",
+  //         "2px solid black",
   //         "CS1Color",
   //         "246188fslQvy",
-  //         "Turn\x20Left",
+  //         "Turn Left",
   //         "LaneHeuristicsChecks",
-  //         "<div\x20class=\x22lt-add-lanes\x20fwd\x22>3</div>",
-  //         "Unable\x20to\x20load\x20heuristics\x20data\x20for\x20LG.\x20This\x20feature\x20will\x20not\x20be\x20available",
+  //         "<div class=\x22lt-add-lanes fwd\x22>3</div>",
+  //         "Unable to load heuristics data for LG. This feature will not be available",
   //         "Continue",
   //         "getFeatureAttributes",
   //         "highColor",
@@ -1292,17 +1329,17 @@
   //         "pasteB-button",
   //         "#lt-LaneTabFeatures",
   //         "lt-LIOEnable",
-  //         "\x20\x20\x20Not\x20eligible\x20as\x20altIn1:\x20",
+  //         "   Not eligible as altIn1: ",
   //         "reduce",
   //         "CopyEnable",
-  //         ".rev-lanes\x20>\x20div\x20>\x20div\x20>\x20.lane-instruction.lane-instruction-from\x20>\x20.instruction\x20>\x20.road-width-edit\x20>\x20div\x20>\x20div\x20>\x20div\x20>\x20.lane-width-card",
+  //         ".rev-lanes > div > div > .lane-instruction.lane-instruction-from > .instruction > .road-width-edit > div > div > div > .lane-width-card",
   //         "lt-add-lanes",
   //         "fail",
   //         "getGuidanceMode",
   //         "split",
-  //         ".lt-section-wrapper\x20{display:block;width:100%;padding:4px;}",
-  //         "Click\x20on\x20turn\x20name\x20to\x20toggle\x20all\x20lane\x20associations",
-  //         "Use\x20RBS\x20heuristics",
+  //         ".lt-section-wrapper {display:block;width:100%;padding:4px;}",
+  //         "Click on turn name to toggle all lane associations",
+  //         "Use RBS heuristics",
   //         "toLaneIndex",
   //         "Enabled",
   //         "projection",
@@ -1310,8 +1347,8 @@
   //         "lt-CS1Color",
   //         "#lt-trans-heurCan",
   //         "ABColor",
-  //         "Exit\x20Left",
-  //         "\x20node\x20",
+  //         "Exit Left",
+  //         " node ",
   //         "https://www.waze.com/forum/viewtopic.php?f=819&t=301158",
   //         "li-del-fwd-btn",
   //         "lt-ClickSaveEnable",
@@ -1324,13 +1361,13 @@
   //         "className",
   //         "parents",
   //         "7CccpnK",
-  //         "<div\x20class=\x22lt-add-Width\x20fwd\x22>2</div>",
+  //         "<div class=\x22lt-add-Width fwd\x22>2</div>",
   //         "ctrlKey",
   //         "register",
   //         "Layer",
   //         "OVER_HIGHLIGHT",
   //         "version",
-  //         "<div\x20class=\x22lt-add-lanes\x20fwd\x22>1</div>",
+  //         "<div class=\x22lt-add-lanes fwd\x22>1</div>",
   //         "doSubAction",
   //         "revDirection",
   //         "AutoExpandLanes",
@@ -1340,60 +1377,60 @@
   //         "#lt-trans-fwdCol",
   //         "HighlightsEnable",
   //         "parentElement",
-  //         "#lt-color-title\x20{display:block;width:100%;padding:5px\x200\x205px\x200;font-weight:bold;text-decoration:underline;cursor:pointer;}",
+  //         "#lt-color-title {display:block;width:100%;padding:5px 0 5px 0;font-weight:bold;text-decoration:underline;cursor:pointer;}",
   //         "border",
   //         "fill-opacity",
   //         "autoOpen",
-  //         "<div\x20class=\x22lt-add-lanes\x20fwd\x22>5</div>",
+  //         "<div class=\x22lt-add-lanes fwd\x22>5</div>",
   //         "primaryStreetID",
   //         "errorCol",
   //         "#E804F6",
   //         "LabelColor",
   //         "background-color",
   //         "miniuturn",
-  //         "LaneTools:\x20Unable\x20to\x20save\x20settings\x20to\x20server",
+  //         "LaneTools: Unable to save settings to server",
   //         "rank",
-  //         "Auto-focus\x20lane\x20input",
-  //         "<div\x20class=\x22lt-add-Width\x20fwd\x22>5</div>",
+  //         "Auto-focus lane input",
+  //         "<div class=\x22lt-add-Width fwd\x22>5</div>",
   //         "wazeFeature",
   //         "lt-CS2Color",
-  //         "<div\x20class=\x22lt-add-Width\x20rev\x22>6</div>",
-  //         "<div\x20class=\x22lt-add-Width\x20fwd\x22>6</div>",
+  //         "<div class=\x22lt-add-Width rev\x22>6</div>",
+  //         "<div class=\x22lt-add-Width fwd\x22>6</div>",
   //         "clickTurn",
   //         "AutoFocusLanes",
   //         "model",
-  //         "<div\x20class=\x22lt-add-lanes\x20fwd\x22>7</div>",
+  //         "<div class=\x22lt-add-lanes fwd\x22>7</div>",
   //         "lt-rev-add-lanes",
   //         "lt-SelAllEnable",
   //         "PASS",
   //         "lt-AddTIO",
   //         ".cancel-button",
   //         "change",
-  //         "<button\x20type=\x22button\x22\x20id=\x22li-del-opp-btn\x22\x20style=\x22height:auto;background-color:orange;border:1px\x20solid\x20grey;border-radius:8px;\x20margin-bottom:5px;\x22>",
-  //         "Advanced\x20Tools",
+  //         "<button type=\x22button\x22 id=\x22li-del-opp-btn\x22 style=\x22height:auto;background-color:orange;border:1px solid grey;border-radius:8px; margin-bottom:5px;\x22>",
+  //         "Advanced Tools",
   //         "CSOHigh",
-  //         ".rev-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.edit-region\x20>\x20div\x20>\x20div\x20>\x20div:nth-child(1)\x20>\x20div",
+  //         ".rev-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1) > div",
   //         "floor",
   //         "values",
   //         "0.9",
   //         "hearCSCol",
   //         "get",
   //         "orange",
-  //         "<style\x20type=\x22text/css\x22>",
+  //         "<style type=\x22text/css\x22>",
   //         "laneNodeCol",
   //         "getTurnData",
   //         "MAX_PERP_DIF_ALT",
   //         "getTogglerState",
   //         "href",
-  //         "segment:\x20",
+  //         "segment: ",
   //         "timeoutID",
   //         "stringify",
   //         "order",
-  //         "\x20attrs\x20len:\x20",
+  //         " attrs len: ",
   //         "viewCSCol",
-  //         "Only\x20highlight\x20if\x20segment\x20layer\x20active",
-  //         "Lane\x20heuristics\x20-\x20not\x20qualified",
-  //         "Display\x20lane\x20icons\x20on\x20map",
+  //         "Only highlight if segment layer active",
+  //         "Lane heuristics - not qualified",
+  //         "Display lane icons on map",
   //         "MAX_STRAIGHT_TO_CONSIDER",
   //         "lt-CopyEnable",
   //         "<b>NEW:</b><br>\x0a<b>FIXES:</b><br><br>\x0a",
@@ -1404,7 +1441,7 @@
   //         "children",
   //         "116729CFFamr",
   //         "getSegmentIds",
-  //         "All\x20straight\x20lanes",
+  //         "All straight lanes",
   //         "#lt-ClickSaveEnable",
   //         "#lt-LaneHeurPosHighlight",
   //         ".lt-add-lanes",
@@ -1418,32 +1455,32 @@
   //         "#990033",
   //         "LinearRing",
   //         "text",
-  //         ".lt-wrapper\x20{position:relative;width:100%;font-size:12px;font-family:\x22Rubik\x22,\x20\x22Boing-light\x22,\x20sans-serif;user-select:none;}",
-  //         "isHeuristicsCandidate\x20received\x20bad\x20argument\x20(null)",
+  //         ".lt-wrapper {position:relative;width:100%;font-size:12px;font-family:\x22Rubik\x22, \x22Boing-light\x22, sans-serif;user-select:none;}",
+  //         "isHeuristicsCandidate received bad argument (null)",
   //         "head",
   //         "ITEM_ROAD",
   //         "findIndex",
   //         "autoFocus",
-  //         "Lane\x20heuristics\x20likely",
+  //         "Lane heuristics likely",
   //         "lt-ScriptEnabled",
   //         "selectionManager",
-  //         "Turn\x20angle\x20from\x20inseg\x20",
+  //         "Turn angle from inseg ",
   //         "enableUIEnhancements",
   //         "uturn",
   //         "#lt-ScriptEnabled",
-  //         "<div\x20class=\x22lt-add-lanes\x20rev\x22>3</div>",
-  //         "<div\x20class=\x22lt-add-Width\x20fwd\x22>8</div>",
-  //         "Pasted\x20some\x20lane\x20stuff",
+  //         "<div class=\x22lt-add-lanes rev\x22>3</div>",
+  //         "<div class=\x22lt-add-Width fwd\x22>8</div>",
+  //         "Pasted some lane stuff",
   //         "#8F47FA",
   //         "toNodeID",
   //         "30770070DOGVeo",
   //         "#lt-UIEnhanceShortcut",
   //         "getJSON",
-  //         ".lt-tio-select\x20{max-width:80%;color:rgb(32,\x2033,\x2036);background-color:rgb(242,\x20243,\x20244);border:0px;border-radius:6px;padding:0\x2016px\x200\x2010px;cursor:pointer;}",
+  //         ".lt-tio-select {max-width:80%;color:rgb(32, 33, 36);background-color:rgb(242, 243, 244);border:0px;border-radius:6px;padding:0 16px 0 10px;cursor:pointer;}",
   //         "geometry",
   //         "angle-135",
   //         "edit-panel",
-  //         "Nodes\x20with\x20lanes",
+  //         "Nodes with lanes",
   //         "21lOwPjv",
   //         "enableHeuristics",
   //         "lt-AutoLanesTab",
@@ -1455,38 +1492,38 @@
   //         "#F50E0E",
   //         "enableScript",
   //         "delOpp",
-  //         "Lane\x20Tools",
+  //         "Lane Tools",
   //         "#lt-trans-laOver",
   //         "direction",
   //         "#lt-adv-tools",
   //         "LT_Settings",
   //         "heurNegCol",
   //         "#lt-trans-lnLabel",
-  //         "<div\x20class=\x27lt-wrapper\x27\x20id=\x27lt-tab-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27\x20id=\x27lt-tab-body\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x20border\x27\x20style=\x27border-bottom:2px\x20double\x20grey;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x27https://www.waze.com/forum/viewtopic.php?f=819&t=301158\x27\x20style=\x27font-weight:bold;font-size:12px;text-decoration:underline;\x27\x20\x20target=\x27_blank\x27>LaneTools\x20-\x20v",
+  //         "<div class=\x27lt-wrapper\x27 id=\x27lt-tab-wrapper\x27>\x0a            <div class=\x27lt-section-wrapper\x27 id=\x27lt-tab-body\x27>\x0a                <div class=\x27lt-section-wrapper border\x27 style=\x27border-bottom:2px double grey;\x27>\x0a                    <a href=\x27https://www.waze.com/forum/viewtopic.php?f=819&t=301158\x27 style=\x27font-weight:bold;font-size:12px;text-decoration:underline;\x27  target=\x27_blank\x27>LaneTools - v",
   //         "setVisibility",
   //         "lt-LIOColor",
   //         "observe",
   //         "angle--90",
-  //         "lt-add-Width\x20rev",
+  //         "lt-add-Width rev",
   //         "accelerators",
-  //         "#lt-sheet-link\x20>\x20a",
+  //         "#lt-sheet-link > a",
   //         "afterundoaction",
   //         "warn",
-  //         "Driving\x20direction\x20restriction\x20applies",
+  //         "Driving direction restriction applies",
   //         "#eeeeee",
   //         "Shift",
-  //         "<div\x20style=\x22position:relative;display:block;width:100%;\x22\x20id=\x22lt-fwd-add-Width\x22\x20/>",
-  //         "LaneTools:\x20Error\x20communicating\x20with\x20WW\x20settings\x20server",
-  //         "Lane\x20angle\x20overrides",
+  //         "<div style=\x22position:relative;display:block;width:100%;\x22 id=\x22lt-fwd-add-Width\x22 />",
+  //         "LaneTools: Error communicating with WW settings server",
+  //         "Lane angle overrides",
   //         "getLaneData",
   //         "#lt-trans-IconsRotate",
-  //         "LT\x20errors\x20found,\x20scanning\x20again",
+  //         "LT errors found, scanning again",
   //         "svg",
   //         "graphicWidth",
-  //         "Error:\x20>1\x20qualifying\x20entry\x20segment\x20for\x20",
-  //         ".fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20.lane-instruction.lane-instruction-to\x20>\x20.instruction\x20>\x20.lane-edit\x20>\x20.edit-region\x20>\x20div\x20>\x20.controls.direction-lanes-edit",
-  //         "Node\x20highlights",
-  //         "Error:\x20>1\x20qualifying\x20segment\x20for\x20",
+  //         "Error: >1 qualifying entry segment for ",
+  //         ".fwd-lanes > div > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit",
+  //         "Node highlights",
+  //         "Error: >1 qualifying segment for ",
   //         "stroke-opacity",
   //         "hasClass",
   //         "SelAllEnable",
@@ -1496,16 +1533,16 @@
   //         "#keyboard-dialog",
   //         "off",
   //         "#ffffff",
-  //         "<div\x20class=\x22lt-add-lanes\x20rev\x22>1</div>",
-  //         "5px\x205px\x2010px",
-  //         "Alt\x20incoming-1\x20segment\x20found:\x20",
-  //         ".lane-arrows\x20>\x20div",
+  //         "<div class=\x22lt-add-lanes rev\x22>1</div>",
+  //         "5px 5px 10px",
+  //         "Alt incoming-1 segment found: ",
+  //         ".lane-arrows > div",
   //         "#lt-",
   //         "rotate",
-  //         "Auto-open\x20road\x20width",
+  //         "Auto-open road width",
   //         "UIEnable",
   //         "NONE",
-  //         "[num\x20pad]",
+  //         "[num pad]",
   //         "2px",
   //         "LIOColor",
   //         "lt-TIOColor",
@@ -1516,50 +1553,50 @@
   //         "copyA-button",
   //         ".controls-container.turns-region",
   //         "fromLaneIndex",
-  //         "Toggle\x20lane\x20highlights",
+  //         "Toggle lane highlights",
   //         "MIN_ZOOM_ALL",
-  //         ".lt-Toolbar-Container\x20{display:none;position:absolute;background-color:orange;border-radius:6px;border:1.5px\x20solid;box-size:border-box;z-index:1050;}",
+  //         ".lt-Toolbar-Container {display:none;position:absolute;background-color:orange;border-radius:6px;border:1.5px solid;box-size:border-box;z-index:1050;}",
   //         "Disabled",
   //         "FORWARD",
   //         "#lt-trans-tioCol",
   //         "wz-checkbox",
-  //         "Negative\x20heuristics\x20candidate",
+  //         "Negative heuristics candidate",
   //         "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/Translations!A2:C?key=",
-  //         "<div\x20style=\x22display:inline-block;position:relative;\x22\x20/>",
+  //         "<div style=\x22display:inline-block;position:relative;\x22 />",
   //         "getElementsByClassName",
   //         "stroke-dasharray",
   //         "#lt-color-title",
   //         "lt-fwd-add-lanes",
-  //         "10\x2010",
+  //         "10 10",
   //         ".lane-width-card",
   //         "Waze/Action/UpdateObject",
   //         "getExtent",
-  //         "<button\x20type=\x22button\x22\x20id=\x22li-del-fwd-btn\x22\x20style=\x22height:20px;background-color:white;border:1px\x20solid\x20grey;border-radius:8px;\x22>",
+  //         "<button type=\x22button\x22 id=\x22li-del-fwd-btn\x22 style=\x22height:20px;background-color:white;border:1px solid grey;border-radius:8px;\x22>",
   //         "AutoOpenWidth",
   //         ".rev-lanes",
   //         "parse",
-  //         "LaneTools:\x20Error\x20loading\x20trans:",
+  //         "LaneTools: Error loading trans:",
   //         "getOLMap",
   //         "lt-HeurColor",
   //         "lt-ClickSaveTurns",
   //         "MAX_STRAIGHT_DIF",
-  //         "<div\x20class=\x22lt-add-Width\x20rev\x22>5</div>",
+  //         "<div class=\x22lt-add-Width rev\x22>5</div>",
   //         "fromVertex",
-  //         "Turn\x20angle\x20from\x20inseg\x20(supplementary)\x20",
+  //         "Turn angle from inseg (supplementary) ",
   //         "fwdDirection",
   //         "withLanes",
   //         "#lt-trans-nodeCol",
   //         "Feature",
   //         "getElementsByName",
   //         "155432OeGIQS",
-  //         ".lt-add-lanes\x20{display:inline-block;width:15px;height:15px;border:1px\x20solid\x20black;border-radius:8px;margin:0\x203px\x200\x203px;line-height:\x201.5;text-align:center;font-size:10px;}",
-  //         ".lt-option-container\x20{padding:3px;}",
+  //         ".lt-add-lanes {display:inline-block;width:15px;height:15px;border:1px solid black;border-radius:8px;margin:0 3px 0 3px;line-height: 1.5;text-align:center;font-size:10px;}",
+  //         ".lt-option-container {padding:3px;}",
   //         ".edit-lane-guidance",
-  //         "LaneTools:\x20User\x20PIN\x20not\x20set\x20in\x20WazeWrap\x20tab",
+  //         "LaneTools: User PIN not set in WazeWrap tab",
   //         "getGeodesicLength",
   //         "click",
-  //         "Auto-expand\x20lane\x20editor",
-  //         ".rev-lanes\x20>\x20div\x20>\x20.direction-lanes",
+  //         "Auto-expand lane editor",
+  //         ".rev-lanes > div > .direction-lanes",
   //         "hasOverrideAngle",
   //         "Waze/Model/Graph/Actions/SetTurn",
   //         "script",
@@ -1569,74 +1606,74 @@
   //         "angle-90",
   //         "segments",
   //         "enableHighlights",
-  //         ".fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20.lane-instruction.lane-instruction-from\x20>\x20.instruction\x20>\x20.road-width-edit\x20>\x20div\x20>\x20div\x20>\x20div\x20>\x20.lane-width-card",
+  //         ".fwd-lanes > div > div > .lane-instruction.lane-instruction-from > .instruction > .road-width-edit > div > div > div > .lane-width-card",
   //         "MAX_PERP_DIF",
-  //         "LT:\x20Error\x20creating\x20shortcuts.\x20This\x20feature\x20will\x20be\x20disabled.",
-  //         "LaneTools:\x20The\x20following\x20special\x20access\x20features\x20are\x20enabled:\x20",
+  //         "LT: Error creating shortcuts. This feature will be disabled.",
+  //         "LaneTools: The following special access features are enabled: ",
   //         "block",
   //         "#lt-sheet-link",
   //         "laneCount",
   //         "btoa",
-  //         ".lt-add-Width:hover\x20{border:1px\x20solid\x20#26bae8;background-color:#26bae8;cursor:pointer;}",
+  //         ".lt-add-Width:hover {border:1px solid #26bae8;background-color:#26bae8;cursor:pointer;}",
   //         "streets",
   //         "#number-of-lanes",
   //         "Interface",
   //         "DASH_THICK",
-  //         "8\x2010",
+  //         "8 10",
   //         "695094iWfXcp",
   //         "addTIO",
   //         "parseInt",
   //         "delRev",
-  //         "Nodes\x20with\x20TIOs",
-  //         ".lt-Toolbar-Wrapper\x20{position:relative;padding:3px;}",
-  //         "\x20|\x20",
+  //         "Nodes with TIOs",
+  //         ".lt-Toolbar-Wrapper {position:relative;padding:3px;}",
+  //         " | ",
   //         "fwdCol",
   //         ".lt-option-container.clk-svr",
   //         "lt-AutoFocusLanes",
-  //         "LT:\x20icon\x20angle\x20is\x20out\x20of\x20bounds",
-  //         ".set-road-width\x20>\x20wz-button",
+  //         "LT: icon angle is out of bounds",
+  //         ".set-road-width > wz-button",
   //         "checked",
   //         "error",
   //         "quickTog",
   //         "Events",
-  //         "==\x20No\x20inseg\x20found\x20==================================================================",
+  //         "== No inseg found ==================================================================",
   //         "#lt-heur-wrapper",
   //         "Geometry",
   //         "UIEnhance",
-  //         "Checking\x20heuristics\x20candidate:\x20seg\x20",
-  //         "<div\x20class=\x22lt-add-Width\x20rev\x22>8</div>",
+  //         "Checking heuristics candidate: seg ",
+  //         "<div class=\x22lt-add-Width rev\x22>8</div>",
   //         "fwdLaneCount",
   //         "toggleShortcut",
   //         "heading",
-  //         "Delete\x20FWD\x20Lanes",
-  //         "Allow\x20from\x20",
+  //         "Delete FWD Lanes",
+  //         "Allow from ",
   //         "wmelt",
   //         "lt-HighlightsEnable",
-  //         "\x20nodeExitSegIds:",
+  //         " nodeExitSegIds:",
   //         "SaveSettings",
   //         "RetrieveSettings",
   //         ".checkbox-large.checkbox-white",
   //         "TIOColor",
-  //         ".rev-lanes\x20>\x20div\x20>\x20div\x20>\x20.lane-instruction.lane-instruction-to\x20>\x20.instruction\x20>\x20.lane-edit\x20>\x20.edit-region\x20>\x20div\x20>\x20.controls.direction-lanes-edit",
+  //         ".rev-lanes > div > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit",
   //         "lt-LaneHeurPosHighlight",
   //         "pasteA-button",
   //         "#li-del-opp-btn",
   //         "BAColor",
   //         "iconborderheight",
   //         "boxincwidth",
-  //         "lt-add-lanes\x20fwd",
+  //         "lt-add-lanes fwd",
   //         "enIcons",
   //         "getElementsByTagName",
-  //         "LaneTools:\x20Failed\x20to\x20load",
+  //         "LaneTools: Failed to load",
   //         "lt-NodesEnable",
   //         "clone",
   //         "labelCol",
-  //         "Toggle\x20Shortcut",
-  //         "View\x20and\x20hear\x20CS",
+  //         "Toggle Shortcut",
+  //         "View and hear CS",
   //         "#ff9900",
   //         ".fwd-lanes",
-  //         "LaneTools:\x20loaded",
-  //         "Positive\x20heuristics\x20candidate",
+  //         "LaneTools: loaded",
+  //         "Positive heuristics candidate",
   //         "#lt-trans-enClick",
   //         ".street-name",
   //         ".lt-trans-enabled",
@@ -1645,25 +1682,25 @@
   //         "#lt-trans-heurPos",
   //         "LAOHigh",
   //         "advTools",
-  //         "<div\x20class=\x22lt-add-lanes\x20rev\x22>6</div>",
+  //         "<div class=\x22lt-add-lanes rev\x22>6</div>",
   //         "addEventListener",
-  //         "<div\x20style=\x22position:relative;display:block;width:100%;\x22\x20id=\x22lt-rev-add-Width\x22\x20/>",
-  //         "Found\x20inseg\x20candidate:\x20",
+  //         "<div style=\x22position:relative;display:block;width:100%;\x22 id=\x22lt-rev-add-Width\x22 />",
+  //         "Found inseg candidate: ",
   //         "HeurFailColor",
   //         "#04E6F6",
-  //         "Turn\x20",
+  //         "Turn ",
   //         "withTurnData",
-  //         "LaneTools:\x20Error\x20loading\x20settings:",
-  //         "\x20to\x20",
+  //         "LaneTools: Error loading settings:",
+  //         " to ",
   //         "getItem",
-  //         "Lane\x20heuristics\x20candidates",
+  //         "Lane heuristics candidates",
   //         "#lt-serverSelect",
   //         "isTurnAllowed",
   //         "display",
   //         "lt-ClickSaveStraight",
-  //         ".lt-toolbar-button-container\x20{display:inline-block;padding:5px;}",
-  //         "Exit\x20Right",
-  //         "<div\x20class=\x22lt-add-Width\x20rev\x22>3</div>",
+  //         ".lt-toolbar-button-container {display:inline-block;padding:5px;}",
+  //         "Exit Right",
+  //         "<div class=\x22lt-add-Width rev\x22>3</div>",
   //         "prop",
   //         "#lt-HighlightShortcut",
   //         "afterclearactions",
@@ -1674,31 +1711,31 @@
   //         "LTNamesLayer",
   //         "ceil",
   //         "lt-serverSelect",
-  //         "hovering\x20to\x20A",
+  //         "hovering to A",
   //         ".direction-lanes",
   //         "#lt-trans-autoWidth",
   //         "value",
-  //         "<div\x20class=\x22lt-add-lanes\x20fwd\x22>6</div>",
+  //         "<div class=\x22lt-add-lanes fwd\x22>6</div>",
   //         "getTurnThroughNode",
   //         "setTimeout",
   //         "lt-highlightOverride",
   //         "boxheight",
   //         "stroke-width",
-  //         "Keep\x20Left",
+  //         "Keep Left",
   //         "#lt-LaneHeuristicsChecks",
-  //         "Error:\x20>1\x20qualifying\x20exit2\x20segment\x20for\x20",
+  //         "Error: >1 qualifying exit2 segment for ",
   //         "setZIndex",
   //         "log",
   //         "sort",
-  //         "View\x20only\x20CS",
-  //         "#segment-edit-lanes\x20>\x20div\x20>\x20div\x20>\x20div.rev-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.lane-arrows\x20>\x20div",
+  //         "View only CS",
+  //         "#segment-edit-lanes > div > div > div.rev-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-arrows > div",
   //         "addFeatures",
-  //         "input[type=\x22text\x22].lt-color-input\x20{position:relative;width:70px;padding:3px;border:2px\x20solid\x20black;border-radius:6px;}",
+  //         "input[type=\x22text\x22].lt-color-input {position:relative;width:70px;padding:3px;border:2px solid black;border-radius:6px;}",
   //         "CS2Color",
-  //         "<div\x20class=\x22lt-add-lanes\x20fwd\x22>2</div>",
+  //         "<div class=\x22lt-add-lanes fwd\x22>2</div>",
   //         "IconsEnable",
   //         "lt-ReverseLanesIcon",
-  //         ".fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-from\x20>\x20div.instruction",
+  //         ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
   //         "StyleMap",
   //         "getObjectById",
   //         "append",
@@ -1707,17 +1744,17 @@
   //         "user-select",
   //         "attr",
   //         "autoWidth",
-  //         "Found\x20a\x20heuristics\x20candidate!\x20",
+  //         "Found a heuristics candidate! ",
   //         "turn-lane-edit-top",
   //         "isTurnAllowedBySegDirections",
   //         "angle--45",
-  //         ".fwd-lanes\x20>\x20div\x20>\x20.direction-lanes",
+  //         ".fwd-lanes > div > .direction-lanes",
   //         ".edit-region",
   //         "lt-HeurFailColor",
   //         "html",
   //         "#lt-trans-revCol",
   //         "(failed)",
-  //         "2px\x20solid\x20",
+  //         "2px solid ",
   //         "state",
   //         "segIDs",
   //         "slice",
@@ -1725,15 +1762,15 @@
   //         "#lt-trans-viewCol",
   //         "U-Turn",
   //         "prependTo",
-  //         "<div\x20style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22\x20id=\x22lt-rev-add-lanes\x22\x20/>",
+  //         "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22 id=\x22lt-rev-add-lanes\x22 />",
   //         "atan2",
-  //         "\x20\x20\x20Not\x20eligible\x20as\x20inseg:\x20",
+  //         "   Not eligible as inseg: ",
   //         "getTurnGraph",
   //         "#0033cc",
-  //         "\x20/\x20",
+  //         " / ",
   //         "nodeHigh",
   //         "lt-IconsEnable",
-  //         "</a>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x27display:inline-block;\x27><span\x20class=\x27lt-trans-tglshcut\x27></span>:<span\x20id=\x27lt-EnableShortcut\x27\x20style=\x27padding-left:10px;\x27></span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27float:right;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ScriptEnabled\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ScriptEnabled\x27><span\x20class=\x27lt-trans-enabled\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27\x20id=\x27lt-LaneTabFeatures\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x20border\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x27font-weight:bold;\x27><span\x20id=\x27lt-trans-uiEnhance\x27></span></span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27float:right;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-UIEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-UIEnable\x27><span\x20class=\x27lt-trans-enabled\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-UI-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27margin-bottom:5px;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x27display:inline-block;\x27><span\x20class=\x27lt-trans-tglshcut\x27></span>:<span\x20id=\x27lt-UIEnhanceShortcut\x27\x20style=\x27padding-left:10px;\x27></span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AutoOpenWidth\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AutoOpenWidth\x27><span\x20id=\x27lt-trans-autoWidth\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AutoLanesTab\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AutoLanesTab\x27><span\x20id=\x27lt-trans-autoTab\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AutoExpandLanes\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AutoExpandLanes\x27><span\x20title=\x22Feature\x20disabled\x20as\x20of\x20Aug\x2027,\x202022\x20to\x20prevent\x20flickering\x20issue\x22\x20id=\x27lt-trans-autoExpand\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AutoFocusLanes\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AutoFocusLanes\x27><span\x20id=\x27lt-trans-autoFocus\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-highlightCSIcons\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-highlightCSIcons\x27><span\x20id=\x27lt-trans-csIcons\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ReverseLanesIcon\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ReverseLanesIcon\x27><span\x20id=\x27lt-trans-orient\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27display:none;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AddTIO\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AddTIO\x27><span\x20id=\x27lt-trans-AddTIO\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ClickSaveEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ClickSaveEnable\x27><span\x20id=\x27lt-trans-enClick\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20clk-svr\x27\x20style=\x27padding-left:10%;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ClickSaveStraight\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ClickSaveStraight\x27><span\x20id=\x27lt-trans-straClick\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20clk-svr\x27\x20style=\x27padding-left:10%;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ClickSaveTurns\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ClickSaveTurns\x27><span\x20id=\x27lt-trans-turnClick\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x20border\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x27font-weight:bold;\x27><span\x20id=\x27lt-trans-mapHigh\x27></span></span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27float:right;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-HighlightsEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-HighlightsEnable\x27><span\x20class=\x27lt-trans-enabled\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-highlights-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27margin-bottom:5px;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x27display:inline-block;\x27><span\x20class=\x27lt-trans-tglshcut\x27></span>:<span\x20id=\x27lt-HighlightShortcut\x27\x20style=\x27padding-left:10px;\x27></span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-IconsEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-IconsEnable\x27><span\x20id=\x27lt-trans-enIcons\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-IconsRotate\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-IconsRotate\x27><span\x20id=\x27lt-trans-IconsRotate\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LabelsEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LabelsEnable\x27><span\x20id=\x27lt-trans-lnLabel\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-NodesEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-NodesEnable\x27><span\x20id=\x27lt-trans-nodeHigh\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LIOEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LIOEnable\x27><span\x20id=\x27lt-trans-laOver\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-CSEnable\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-CSEnable\x27><span\x20id=\x27lt-trans-csOver\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-highlightOverride\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-highlightOverride\x27><span\x20id=\x27lt-trans-highOver\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x20border\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x27font-weight:bold;\x27><span\x20id=\x27lt-trans-heurCan\x27></span></span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27float:right;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LaneHeuristicsChecks\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LaneHeuristicsChecks\x27><span\x20class=\x27lt-trans-enabled\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-heur-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27margin-bottom:5px;\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x27display:inline-block;\x27><span\x20class=\x27lt-trans-tglshcut\x27></span>:<span\x20id=\x27lt-LaneHeurChecksShortcut\x27\x20style=\x27padding-left:10px;\x27></span></div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LaneHeurPosHighlight\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LaneHeurPosHighlight\x27><span\x20id=\x27lt-trans-heurPos\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LaneHeurNegHighlight\x27\x20/>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LaneHeurNegHighlight\x27><span\x20id=\x27lt-trans-heurNeg\x27></span></label>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20id=\x27lt-color-title\x27\x20data-original-title=\x27",
+  //         "</a>\x0a                    <div>\x0a                        <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-EnableShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ScriptEnabled\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ScriptEnabled\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27 id=\x27lt-LaneTabFeatures\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-uiEnhance\x27></span></span>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-UIEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-UIEnable\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                    <div id=\x27lt-UI-wrapper\x27>\x0a                        <div class=\x27lt-option-container\x27 style=\x27margin-bottom:5px;\x27>\x0a                            <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-UIEnhanceShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoOpenWidth\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoOpenWidth\x27><span id=\x27lt-trans-autoWidth\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoLanesTab\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoLanesTab\x27><span id=\x27lt-trans-autoTab\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoExpandLanes\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoExpandLanes\x27><span title=\x22Feature disabled as of Aug 27, 2022 to prevent flickering issue\x22 id=\x27lt-trans-autoExpand\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoFocusLanes\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoFocusLanes\x27><span id=\x27lt-trans-autoFocus\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-highlightCSIcons\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-highlightCSIcons\x27><span id=\x27lt-trans-csIcons\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ReverseLanesIcon\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ReverseLanesIcon\x27><span id=\x27lt-trans-orient\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27 style=\x27display:none;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AddTIO\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AddTIO\x27><span id=\x27lt-trans-AddTIO\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ClickSaveEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ClickSaveEnable\x27><span id=\x27lt-trans-enClick\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container clk-svr\x27 style=\x27padding-left:10%;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ClickSaveStraight\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ClickSaveStraight\x27><span id=\x27lt-trans-straClick\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container clk-svr\x27 style=\x27padding-left:10%;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ClickSaveTurns\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ClickSaveTurns\x27><span id=\x27lt-trans-turnClick\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-mapHigh\x27></span></span>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-HighlightsEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-HighlightsEnable\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                    <div id=\x27lt-highlights-wrapper\x27>\x0a                        <div class=\x27lt-option-container\x27 style=\x27margin-bottom:5px;\x27>\x0a                            <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-HighlightShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-IconsEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-IconsEnable\x27><span id=\x27lt-trans-enIcons\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-IconsRotate\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-IconsRotate\x27><span id=\x27lt-trans-IconsRotate\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LabelsEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LabelsEnable\x27><span id=\x27lt-trans-lnLabel\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-NodesEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-NodesEnable\x27><span id=\x27lt-trans-nodeHigh\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LIOEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LIOEnable\x27><span id=\x27lt-trans-laOver\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-CSEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-CSEnable\x27><span id=\x27lt-trans-csOver\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-highlightOverride\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-highlightOverride\x27><span id=\x27lt-trans-highOver\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-heurCan\x27></span></span>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LaneHeuristicsChecks\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LaneHeuristicsChecks\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                    <div id=\x27lt-heur-wrapper\x27>\x0a                        <div class=\x27lt-option-container\x27 style=\x27margin-bottom:5px;\x27>\x0a                            <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-LaneHeurChecksShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LaneHeurPosHighlight\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LaneHeurPosHighlight\x27><span id=\x27lt-trans-heurPos\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LaneHeurNegHighlight\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LaneHeurNegHighlight\x27><span id=\x27lt-trans-heurNeg\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27>\x0a                    <div class=\x27lt-section-wrapper\x27>\x0a                        <span id=\x27lt-color-title\x27 data-original-title=\x27",
   //         "getElementById",
   //         "afteraction",
   //         "revLaneCount",
@@ -1748,26 +1785,26 @@
   //         "push",
   //         "#lt-trans-posCol",
   //         "colTooltip",
-  //         "<div\x20class=\x22lt-add-lanes\x20rev\x22>4</div>",
+  //         "<div class=\x22lt-add-lanes rev\x22>4</div>",
   //         "lt-LaneHeuristicsChecks",
   //         ".lanes-tab",
   //         "#map",
   //         "==================================================================================",
   //         "lt-UIEnable",
-  //         "\x20computed\x20len:\x20",
+  //         " computed len: ",
   //         "stroke",
   //         "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/Angles!A2:B?key=",
   //         ".lt-trans-tglshcut",
   //         "#lt-trans-quickTog",
-  //         "==\x20No\x20alt\x20incoming-1\x20segment\x20found\x20==================================================================",
+  //         "== No alt incoming-1 segment found ==================================================================",
   //         "#lt-NodesEnable",
   //         "focus",
   //         "#lt-trans-highOver",
   //         "angle-45",
-  //         "Continue\x20straight\x20overrides",
+  //         "Continue straight overrides",
   //         "iconbordermargin",
-  //         "<div\x20class=\x22lt-add-Width\x20rev\x22>2</div>",
-  //         "Highlight\x20Colors",
+  //         "<div class=\x22lt-add-Width rev\x22>2</div>",
+  //         "Highlight Colors",
   //         "LineString",
   //         "Alt",
   //         "wz-tabs",
@@ -1775,26 +1812,26 @@
   //         "_wmeObject",
   //         "appendTo",
   //         "extend",
-  //         "hovering\x20to\x20B",
-  //         "Delete\x20Rev\x20Lanes",
+  //         "hovering to B",
+  //         "Delete Rev Lanes",
   //         "AddTIO",
   //         "<div>",
   //         "each",
   //         "loginManager",
-  //         "Straight\x20turn\x20has\x20no\x20lanes:",
-  //         "Found\x20a\x20failed\x20candidate\x20for\x20",
+  //         "Straight turn has no lanes:",
+  //         "Found a failed candidate for ",
   //         "calculate",
   //         "south",
-  //         "Toggle\x20script",
+  //         "Toggle script",
   //         "_description",
   //         "iconborderwidth",
   //         "disabled",
-  //         "==\x20No\x20Outseg2\x20found\x20==================================================================",
-  //         "There\x20are\x20a\x20different\x20number\x20of\x20enabled\x20turns\x20on\x20this\x20segment/node",
+  //         "== No Outseg2 found ==================================================================",
+  //         "There are a different number of enabled turns on this segment/node",
   //         "#lt-HighlightsEnable",
   //         "intersectsBounds",
   //         "ERROR",
-  //         "<div\x20class=\x22lt-add-lanes\x20fwd\x22>8</div>",
+  //         "<div class=\x22lt-add-lanes fwd\x22>8</div>",
   //       ];
   //   getStringArray = function() { return predefinedStrings; };
   //   return getStringArray();
@@ -1876,7 +1913,7 @@
       _0x5c9c0e.hasLanes() && ((_0x5c9c0e = _0x5c9c0e.withLanes()), (_0x58ea8c = _0x58ea8c.withTurnData(_0x5c9c0e)),
                                mAction["doSubAction"](new SetTurn(turnGraph, _0x58ea8c)));
     }
-    (mAction._description = "Deleted\x20lanes\x20and\x20turn\x20associations"), W.model.actionManager.add(mAction);
+    (mAction._description = "Deleted lanes and turn associations"), W.model.actionManager.add(mAction);
   }
   function removeHighlights() {
     LTHighlightLayer.removeAllFeatures();
@@ -1884,7 +1921,7 @@
   }
   function removeLaneGraphics() { LTLaneGraphics.removeAllFeatures(); }
   function applyName(_0x27e648, _0x2d5f66, _0x3e4f08) {
-    let _0x2e0a0c = _0x27e648.clone(), _0x58bfcc = _0x2d5f66 + "\x20/\x20" + _0x3e4f08,
+    let _0x2e0a0c = _0x27e648.clone(), _0x58bfcc = _0x2d5f66 + " / " + _0x3e4f08,
         _0x118707 = new OpenLayers.Feature.Vector(_0x2e0a0c, {
           labelText : _0x58bfcc,
           labelColor : LtSettings.LabelColor,
@@ -1987,10 +2024,10 @@
           else {
             _0x5501de.setAttribute("stroke-opacity", "1");
             if (_0x1d2584 === segmentHighlightTypes.DASH_THICK)
-              _0x5501de.setAttribute("stroke-width", "8"), _0x5501de.setAttribute("stroke-dasharray", "8\x2010");
+              _0x5501de.setAttribute("stroke-width", "8"), _0x5501de.setAttribute("stroke-dasharray", "8 10");
             else
               _0x1d2584 === segmentHighlightTypes.DASH_THIN &&
-                  (_0x5501de.setAttribute("stroke-width", "4"), _0x5501de.setAttribute("stroke-dasharray", "10\x2010"));
+                  (_0x5501de.setAttribute("stroke-width", "4"), _0x5501de.setAttribute("stroke-dasharray", "10 10"));
           }
         }
       }
@@ -2058,13 +2095,13 @@
         let _0x1b6f52 = false, _0x1ca2eb = lt_segment_length(_0x4e91a0);
         _0x1b6f52 = _0x1b6f52 || _0x2ad725(_0x4e91a0, featureAttributes, Direction.FORWARD, _0x1ca2eb, _0x1b6f52);
         if (_0x1b6f52 && lt_scanArea_recursive > 0x0) {
-          lt_log("LT\x20errors\x20found,\x20scanning\x20again", 0x2), removeHighlights(), lt_scanArea_recursive--,
+          lt_log("LT errors found, scanning again", 0x2), removeHighlights(), lt_scanArea_recursive--,
               lt_scanArea_timer.start();
           return;
         }
         _0x1b6f52 = _0x1b6f52 || _0x2ad725(_0x4e91a0, featureAttributes, Direction.REVERSE, _0x1ca2eb, _0x1b6f52);
         if (_0x1b6f52 && lt_scanArea_recursive > 0x0) {
-          lt_log("LT\x20errors\x20found,\x20scanning\x20again", 0x2), removeHighlights(), lt_scanArea_recursive--,
+          lt_log("LT errors found, scanning again", 0x2), removeHighlights(), lt_scanArea_recursive--,
               lt_scanArea_timer.start();
         }
       }
@@ -2243,7 +2280,7 @@
                                  _0x5aa7bb, _0x1a610d) {
     if (_0x2bb3f1 == null || toNodeObj == null || attachedSegmentIDs == null || fromNodeObj == null ||
         fwdLaneCount == null || _0x5aa7bb == null || _0x1a610d == null) {
-      lt_log("isHeuristicsCandidate\x20received\x20bad\x20argument\x20(null)", 0x1);
+      lt_log("isHeuristicsCandidate received bad argument (null)", 0x1);
       return 0x0;
     }
     let _0x1859f0 = null, _0x4f9be7 = null, _0x96949d = 0x0, _0x4777ff = null, _0x28857a = null, _0x96fad4 = null,
@@ -2255,8 +2292,8 @@
         _0x5349e1 = _0xca5734(fromNodeObj.attributes.id, _0x2bb3f1), _0x18525c = -90, _0x26651c = 90;
     W.model.isLeftHand && ((_0x18525c = 90), (_0x26651c = -90));
     lt_log("==================================================================================", 0x2);
-    lt_log("Checking\x20heuristics\x20candidate:\x20seg" + _0x453456 + "node" + toNodeObj.attributes.id +
-               "\x20azm\x20" + _0x11d184 + "nodeExitSegIds:" + attachedSegmentIDs.length,
+    lt_log("Checking heuristics candidate: seg" + _0x453456 + "node" + toNodeObj.attributes.id +
+               " azm " + _0x11d184 + "nodeExitSegIds:" + attachedSegmentIDs.length,
            0x2);
     let segmentIDs = fromNodeObj.getSegmentIds();
     for (let idx = 0x0; idx < segmentIDs.length; idx++) {
@@ -2267,28 +2304,28 @@
       if (!_0x493643(_0x71a39c, fromNodeObj, _0x2bb3f1))
         continue;
       let _0x3c6b23 = _0x43a6d2(fromNodeObj.attributes.id, _0x71a39c), _0x4ef283 = _0xcd5d5b(_0x3c6b23, _0x5349e1);
-      lt_log("Turn\x20angle\x20from\x20inseg\x20" + segmentIDs[idx] + ":\x20" + _0x4ef283 + "(" + _0x3c6b23 + "," +
+      lt_log("Turn angle from inseg " + segmentIDs[idx] + ": " + _0x4ef283 + "(" + _0x3c6b23 + "," +
                  _0x5349e1 + ")",
              0x3);
       if (Math.abs(_0x4ef283) > MAX_STRAIGHT_DIF) {
         if (Math.abs(_0x4ef283) > MAX_STRAIGHT_TO_CONSIDER)
           continue;
-        lt_log("Not\x20eligible\x20as\x20inseg:\x20" + _0x4ef283, 0x2), (heurState = HeuristicsCandidate.FAIL);
+        lt_log("Not eligible as inseg: " + _0x4ef283, 0x2), (heurState = HeuristicsCandidate.FAIL);
       }
       const _0x4c0fc6 = _0x5aa7bb.getTurnThroughNode(fromNodeObj, _0x71a39c, _0x2bb3f1),
             _0x264c0a = _0x4c0fc6.getTurnData();
       if (_0x264c0a.state !== 0x1 || !_0x264c0a.hasLanes()) {
-        lt_log("Straight\x20turn\x20has\x20no\x20lanes:" + segmentIDs[idx] + "\x20to\x20" + _0x453456, 0x3);
+        lt_log("Straight turn has no lanes:" + segmentIDs[idx] + " to " + _0x453456, 0x3);
         continue;
       }
       let idxDiff = _0x264c0a.lanes.toLaneIndex - _0x264c0a.lanes.fromLaneIndex + 0x1;
       idxDiff !== fwdLaneCount && !(fwdLaneCount === 0x0 && idxDiff === 0x1) &&
-          (lt_log("Straight\x20turn\x20lane\x20count\x20does\x20not\x20match", 0x2),
+          (lt_log("Straight turn lane count does not match", 0x2),
            (heurState = HeuristicsCandidate.ERROR));
       if (_0x4777ff !== null && heurState >= _0x4e91d5) {
         if (_0x4e91d5 === 0x0 && heurState === 0x0)
-          return (lt_log("Error:\x20>1\x20qualifying\x20entry\x20segment\x20for\x20" + _0x2bb3f1.attributes.id +
-                             ":\x20" + _0x4777ff.attributes.id + "," + _0x71a39c.attributes.id,
+          return (lt_log("Error: >1 qualifying entry segment for " + _0x2bb3f1.attributes.id +
+                             ": " + _0x4777ff.attributes.id + "," + _0x71a39c.attributes.id,
                          0x2),
                   lt_log("==================================================================================", 0x2),
                   0x0);
@@ -2298,11 +2335,11 @@
           (_0x1a610d.inSegDir = _0x4c0fc6.fromVertex["direction"] === "fwd" ? Direction.FORWARD : Direction["REVERSE"]);
     }
     if (_0x4777ff == null)
-      return lt_log("==\x20No\x20inseg\x20found\x20==================================================================",
+      return lt_log("== No inseg found ==================================================================",
                     0x2),
              0x0;
     else
-      lt_log("Found\x20inseg\x20candidate:\x20" + _0x4777ff.attributes.id + "\x20" +
+      lt_log("Found inseg candidate: " + _0x4777ff.attributes.id + " " +
                  (_0x4e91d5 === 0x0 ? "" : "(failed)"),
              0x2);
     for (let idx = 0x0; idx < attachedSegmentIDs.length; idx++) {
@@ -2313,7 +2350,7 @@
       if (!_0x493643(_0x2bb3f1, toNodeObj, _0x3e085f))
         continue;
       let _0xff74b4 = _0xca5734(toNodeObj.attributes.id, _0x3e085f), _0x1bf6a7 = _0xcd5d5b(_0x11d184, _0xff74b4);
-      lt_log("Turn\x20angle\x20to\x20outseg2\x20" + attachedSegmentIDs[idx] + ":\x20" + _0x1bf6a7 + "(" + _0x11d184 +
+      lt_log("Turn angle to outseg2 " + attachedSegmentIDs[idx] + ": " + _0x1bf6a7 + "(" + _0x11d184 +
                  "," + _0xff74b4 + ")",
              0x2);
       if (Math.abs(_0x18525c - _0x1bf6a7) < MAX_PERP_TO_CONSIDER)
@@ -2321,12 +2358,12 @@
       if (Math.abs(_0x26651c - _0x1bf6a7) > MAX_PERP_DIF) {
         if (Math.abs(_0x26651c - _0x1bf6a7) > MAX_PERP_TO_CONSIDER)
           continue;
-        lt_log("\x20\x20\x20Not\x20eligible\x20as\x20outseg2:\x20" + _0x1bf6a7, 0x2),
+        lt_log("   Not eligible as outseg2: " + _0x1bf6a7, 0x2),
             (_0x10d7bb = HeuristicsCandidate.FAIL);
       }
       if (_0x1859f0 !== null && _0x10d7bb >= _0x96949d) {
         if (_0x96949d === 0x0 && _0x10d7bb === 0x0) {
-          lt_log("Error:\x20>1\x20qualifying\x20exit2\x20segment\x20for\x20" + _0x2bb3f1.attributes.id + ":\x20" +
+          lt_log("Error: >1 qualifying exit2 segment for " + _0x2bb3f1.attributes.id + ": " +
                      _0x1859f0.attributes.id + "," + _0x3e085f.attributes.id,
                  0x2);
           lt_log("==================================================================================", 0x2);
@@ -2336,10 +2373,10 @@
       (_0x1859f0 = _0x3e085f), (_0x4f9be7 = _0x1bf6a7), (_0x96949d = _0x10d7bb);
     }
     if (_0x1859f0 == null) {
-      lt_log("==\x20No\x20Outseg2\x20found\x20==================================================================", 0x2);
+      lt_log("== No Outseg2 found ==================================================================", 0x2);
       return 0x0;
     } else
-      lt_log("Found\x20outseg2\x20candidate:\x20" + _0x1859f0.attributes.id + "\x20" +
+      lt_log("Found outseg2 candidate: " + _0x1859f0.attributes.id + " " +
                  (_0x96949d === 0x0 ? "" : "(failed)"),
              0x2);
     for (let idx = 0x0; idx < segmentIDs.length; idx++) {
@@ -2351,20 +2388,20 @@
           (_0x1b9808.attributes.revDirection && _0x1b9808.attributes.fromNodeID !== fromNodeObj.attributes.id))
         continue;
       let _0x46ff80 = _0x43a6d2(fromNodeObj.attributes.id, _0x1b9808), _0x58b38d = _0xcd5d5b(_0x28857a, _0x46ff80);
-      lt_log("Turn\x20angle\x20from\x20inseg\x20(supplementary)\x20" + segmentIDs[idx] + ":\x20" + _0x58b38d + "(" +
+      lt_log("Turn angle from inseg (supplementary) " + segmentIDs[idx] + ": " + _0x58b38d + "(" +
                  _0x28857a + "," + _0x46ff80 + ")",
              0x3);
       if (Math.abs(_0x18525c - _0x58b38d) > MAX_PERP_DIF_ALT) {
         if (Math.abs(_0x18525c - _0x58b38d) > MAX_PERP_TO_CONSIDER)
           continue;
-        lt_log("Not\x20eligible\x20as\x20altIn1:\x20" + _0x58b38d, 0x3);
+        lt_log("Not eligible as altIn1: " + _0x58b38d, 0x3);
         (_0x3edc74 = HeuristicsCandidate.FAIL);
       }
       if (_0x4fd61c !== null) {
         if (_0x3edc74 < _0x5063e3)
           continue;
         if (_0x5063e3 === 0x0 && _0x3edc74 === 0x0)
-          lt_log("Error:\x20>1\x20qualifying\x20segment\x20for\x20" + _0x2bb3f1.attributes.id + ":\x20" +
+          lt_log("Error: >1 qualifying segment for " + _0x2bb3f1.attributes.id + ": " +
                      _0x4fd61c.attributes.id + "," + _0x1b9808.attributes.id,
                  0x2);
         lt_log("==================================================================================", 0x2);
@@ -2379,11 +2416,11 @@
              0x2);
       return 0;
     } else
-      lt_log("Alt\x20incoming-1\x20segment\x20found:\x20" + _0x4fd61c.attributes.id + "\x20" +
+      lt_log("Alt incoming-1 segment found: " + _0x4fd61c.attributes.id + " " +
                  (_0x5063e3 === 0x0 ? "" : "(failed)"),
              0x2);
     if (_0x4e91d5 < 0x0 || _0x5063e3 < 0x0 || _0x96949d < 0x0) {
-      lt_log("Found\x20a\x20failed\x20candidate\x20for\x20" + _0x453456 + "\x20(\x20" +
+      lt_log("Found a failed candidate for " + _0x453456 + " ( " +
                  Math.min(_0x4e91d5, _0x5063e3, _0x96949d) + ")",
              0x2);
       return (_0x4e91d5 === HeuristicsCandidate.FAIL || _0x5063e3 === HeuristicsCandidate.FAIL ||
@@ -2391,7 +2428,7 @@
                   ? HeuristicsCandidate.FAIL
                   : HeuristicsCandidate.ERROR);
     }
-    lt_log("Found\x20a\x20heuristics\x20candidate!\x20" + _0x453456 + "\x20to\x20" + _0x1859f0.attributes.id + "at" +
+    lt_log("Found a heuristics candidate! " + _0x453456 + " to " + _0x1859f0.attributes.id + "at" +
                _0x4f9be7,
            0x2);
     return 0x1;
@@ -2406,7 +2443,7 @@
              (_0x3934e8 = lt_get_next_to_last_point(_0x25a1f9).y - lt_get_last_point(_0x25a1f9).y));
       let _0x21c597 = Math.atan2(_0x3934e8, _0x1fef83), _0x232509 = ((_0x21c597 * 0xb4) / Math.PI) % 360;
       return (
-          lt_log("Azm\x20from\x20node\x20" + _0x15149a + "\x20/\x20" + _0x25a1f9.attributes.id + ":\x20" + _0x232509,
+          lt_log("Azm from node " + _0x15149a + " / " + _0x25a1f9.attributes.id + ": " + _0x232509,
                  0x3),
           _0x232509);
     }
@@ -2414,7 +2451,7 @@
       let _0x39f1a3 = _0xca5734(_0x293709, _0x3901cd), _0x228ce5 = _0x39f1a3 + 0xb4;
       return (
           _0x228ce5 >= 0xb4 && (_0x228ce5 -= 360),
-          lt_log("Azm\x20to\x20node\x20" + _0x293709 + "/\x20" + _0x3901cd.attributes.id + ":\x20" + _0x228ce5, 0x3),
+          lt_log("Azm to node " + _0x293709 + "/ " + _0x3901cd.attributes.id + ": " + _0x228ce5, 0x3),
           _0x228ce5);
     }
     function _0xcd5d5b(_0x362a09, _0xd93a20) {
@@ -2435,19 +2472,19 @@
       return ((_0x1eb39a += _0x1eb39a > 0xb4    ? -360
                             : _0x1eb39a < -0xb4 ? 360
                                                 : 0x0),
-              lt_log("Turn\x20" + _0x240602 + "," + _0x56fa6c + ":\x20" + _0x1eb39a, 0x3), _0x1eb39a);
+              lt_log("Turn " + _0x240602 + "," + _0x56fa6c + ": " + _0x1eb39a, 0x3), _0x1eb39a);
     }
     function _0x493643(_0x17bc7b, _0x31445a, _0x85690c) {
-      lt_log(getString(0x338) + _0x17bc7b.attributes.id + getString(0x365) + _0x85690c.attributes.id + "\x20via\x20" +
+      lt_log(getString(0x338) + _0x17bc7b.attributes.id + getString(0x365) + _0x85690c.attributes.id + " via " +
                  _0x31445a.attributes.id + getString(0x1e8) + _0x31445a[getString(0x39c)](_0x17bc7b, _0x85690c) +
                  getString(0x324) + _0x17bc7b[getString(0x369)](_0x85690c, _0x31445a),
              0x3);
       if (!_0x31445a.isTurnAllowedBySegDirections(_0x17bc7b, _0x85690c)) {
-        lt_log("Driving\x20direction\x20restriction\x20applies", 3);
+        lt_log("Driving direction restriction applies", 3);
         return false;
       }
       if (!_0x17bc7b[getString(0x369)](_0x85690c, _0x31445a)) {
-        lt_log("Other\x20restriction\x20applies", 0x3);
+        lt_log("Other restriction applies", 0x3);
         return false;
       }
       return true;
@@ -2456,7 +2493,7 @@
 
   function lt_segment_length(segment) {
     let segmentLength = segment.geometry.getGeodesicLength(W.map.olMap.projection);
-    lt_log("segment:" + segment.attributes.id + "computed\x20len:\x20" + segmentLength + "attrs\x20len:\x20" +
+    lt_log("segment:" + segment.attributes.id + "computed len: " + segmentLength + "attrs len: " +
                segment.attributes.length,
            0x3);
     return segmentLength;
@@ -2550,12 +2587,12 @@
         (_0x469b71 = _0x469b71.withLanes(_0x1662da[_0x392af3].lanes)), (_0x4e30d7 = _0x4e30d7.withTurnData(_0x469b71)),
             mAction.doSubAction(new SetTurn(turnGraph, _0x4e30d7));
       }
-      (mAction._description = "Pasted\x20some\x20lane\x20stuff"), W.model.actionManager.add(mAction),
+      (mAction._description = "Pasted some lane stuff"), W.model.actionManager.add(mAction),
           $(".lanes-tab").click();
     } else
       WazeWrap.Alerts.warning(
           GM_info.script.name,
-          "There\x20are\x20a\x20different\x20number\x20of\x20enabled\x20turns\x20on\x20this\x20segment/node");
+          "There are a different number of enabled turns on this segment/node");
   }
   function displayLaneGraphics() {
     removeLaneGraphics();
@@ -2635,7 +2672,7 @@
                       else
                         cardinalAngle > 0x12c && cardinalAngle < 0x14a
                             ? ((cardinalAngle -= 0xb4 - 0x2 * (360 - cardinalAngle)), (_0x1c3e29 = 0x5))
-                            : console.log("LT:\x20icon\x20angle\x20is\x20out\x20of\x20bounds");
+                            : console.log("LT: icon angle is out of bounds");
                     }
                   }
                 }
