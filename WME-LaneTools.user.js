@@ -392,7 +392,7 @@
         .on("click",
             () => { getId("lt-ScriptEnabled").checked ? scanArea() : (removeHighlights(), removeLaneGraphics()); });
     highlightsEnabledID.on(
-        "click", () => { getId("lt-HighlightsEnable").checked ? scanArea() : removeHighlights(), scanArea(); });
+        "click", () => { if(!getId("lt-HighlightsEnable").checked) removeHighlights(); scanArea(); });
     $("#lt-LabelsEnable")
         .on("click", () => { getId("lt-LabelsEnable").checked ? scanArea() : (removeHighlights(), scanArea()); });
     $("#lt-NodesEnable")
