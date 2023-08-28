@@ -197,7 +197,7 @@
     ].join(" "));
     _pickleColor = seaPickle.attributes.rank;
     if (_pickleColor >= 0x0) {
-      WazeWrap.Interface.LtSettings("LT", initMsg.html, setupOptions, "LT");
+      WazeWrap.Interface.Tab("LT", initMsg.html, setupOptions, "LT");
       $("<style>" + ltCSSClasses + "</style>").appendTo("head");
       $(constantStrings.mapTag).append(message.html());
       WazeWrap.Interface.ShowScriptUpdate(GM_info.script.name, GM_info.script.version, LI_UPDATE_NOTES, GF_LINK,
@@ -957,13 +957,13 @@
       $(".cancel-button").off();
       const fwdLanesSelector = $(".fwd-lanes"), revLanesSelector = $(".rev-lanes");
       fwdLanesSelector.find(".apply-button.waze-btn.waze-btn-blue")
-          .on("click", () => { (fwdLanesEnabled = true), setTimeout(function() { _0x5a28b7(); }, 200); });
+          .on("click", () => { (fwdLanesEnabled = true); setTimeout(function() { _0x5a28b7(); }, 200); });
       revLanesSelector.find(".apply-button.waze-btn.waze-btn-blue")
-          .on("click", () => { (revLanesEnabled = true), setTimeout(function() { _0x5a28b7(); }, 200); });
+          .on("click", () => { (revLanesEnabled = true); setTimeout(function() { _0x5a28b7(); }, 200); });
       fwdLanesSelector.find(".cancel-button")
-          .on("click", () => { (fwdLanesEnabled = true), setTimeout(function() { _0x5a28b7(); }, 200); });
+          .on("click", () => { (fwdLanesEnabled = true); setTimeout(function() { _0x5a28b7(); }, 200); });
       revLanesSelector.find(".cancel-button")
-          .on("click", () => { (revLanesEnabled = true), setTimeout(function() { _0x5a28b7(); }, 200); });
+          .on("click", () => { (revLanesEnabled = true); setTimeout(function() { _0x5a28b7(); }, 200); });
     }
     function _0x2308e1() {
       if (getId("lt-AutoExpandLanes").checked) {
@@ -1990,12 +1990,12 @@
 
   function getId(elementId) { return document.getElementById(elementId); }
 
-  function onScreen(_0x1d94fe, _0x4edaf4) {
-    if (!_0x1d94fe.geometry || !_0x1d94fe.attributes)
+  function onScreen(wmeObject, zoomLevel) {
+    if (!wmeObject.geometry || !wmeObject.attributes)
       return false;
-    if (_0x4edaf4 >= DisplayLevels["MIN_ZOOM_NONFREEWAY"] ||
-        (_0x1d94fe.type === "segments" && _0x1d94fe.attributes["roadType"] === LT_ROAD_TYPE.FREEWAY))
-      return W.map.getExtent().intersectsBounds(_0x1d94fe.geometry.getBounds());
+    if (zoomLevel >= DisplayLevels["MIN_ZOOM_NONFREEWAY"] ||
+        (wmeObject.type === "segments" && wmeObject.attributes["roadType"] === LT_ROAD_TYPE.FREEWAY))
+      return W.map.getExtent().intersectsBounds(wmeObject.geometry.getBounds());
     return false;
   }
   function getCardinalAngle(_0x5f13ca, _0x261fce) {
@@ -2190,7 +2190,7 @@
   function scanArea_real() {
     const scriptEnabled = getId("lt-ScriptEnabled").checked, highlightsEnabled = getId("lt-HighlightsEnable").checked,
           heuristicsChecksEnabled = getId("lt-LaneHeuristicsChecks").checked,
-          currentZoomLevel = W.map.getZoom() != null ? W.map["getZoom"]() : 16,
+          currentZoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16,
           highlightOverridden = getId("lt-highlightOverride").checked,
           roadLayerState = W.layerSwitcherController.getTogglerState("ITEM_ROAD") ||
                            W.layerSwitcherController.getTogglerState("ITEM_ROAD_V2");
@@ -2206,15 +2206,15 @@
       }
     }
   }
-  function scanHeuristicsCandidates(_0x482def) {
+  function scanHeuristicsCandidates(features) {
     let _0x4174e4 = [], _0x232b3f = 0x0;
-    return (_.each(_0x482def, (_0x249a9b) => {
-      _0x249a9b && _0x249a9b.attributes.wazeFeature._wmeObject &&
-          _0x249a9b.attributes.wazeFeature._wmeObject.type === "segments" &&
-          (_0x232b3f = _0x4174e4.push(_0x249a9b.attributes.wazeFeature._wmeObject));
+    return (_.each(features, (feature) => {
+      feature && feature.attributes.wazeFeature._wmeObject &&
+          feature.attributes.wazeFeature._wmeObject.type === "segments" &&
+          (_0x232b3f = _0x4174e4.push(feature.attributes.wazeFeature._wmeObject));
     }), scanSegments(_0x4174e4, true), _0x232b3f);
   }
-  function scanSegments(_0x48b407, _0x553a1b) {
+  function scanSegments(segmentArray, performHeuristicsCheck) {
     const checkHeuristics = getId("lt-LaneHeuristicsChecks").checked,
           heurPosHighlightEnabled = checkHeuristics && getId("lt-LaneHeurPosHighlight").checked,
           heurNegHighlightEnabled = checkHeuristics && getId("lt-LaneHeurNegHighlight").checked,
@@ -2222,29 +2222,29 @@
           highlightLIOEnabled = highlightEnabled && getId("lt-LIOEnable").checked,
           highlightLabelsEnabled = highlightEnabled && getId("lt-LabelsEnable").checked,
           minZoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16, turnGraph = W.model.getTurnGraph();
-    _.each(_0x48b407, (_0x4e91a0) => {
-      if (onScreen(_0x4e91a0, minZoomLevel)) {
-        const featureAttributes = _0x4e91a0.getFeatureAttributes();
-        let _0x1b6f52 = false, _0x1ca2eb = lt_segment_length(_0x4e91a0);
-        _0x1b6f52 = _0x1b6f52 || _0x2ad725(_0x4e91a0, featureAttributes, Direction.FORWARD, _0x1ca2eb, _0x1b6f52);
+    _.each(segmentArray, (segmentObj) => {
+      if (onScreen(segmentObj, minZoomLevel)) {
+        const featureAttributes = segmentObj.getFeatureAttributes();
+        let _0x1b6f52 = false, segmentLength = lt_segment_length(segmentObj);
+        _0x1b6f52 = _0x1b6f52 || _0x2ad725(segmentObj, featureAttributes, Direction.FORWARD, segment, _0x1b6f52);
         if (_0x1b6f52 && lt_scanArea_recursive > 0x0) {
           lt_log("LT errors found, scanning again", 0x2), removeHighlights(), lt_scanArea_recursive--,
               lt_scanArea_timer.start();
           return;
         }
-        _0x1b6f52 = _0x1b6f52 || _0x2ad725(_0x4e91a0, featureAttributes, Direction.REVERSE, _0x1ca2eb, _0x1b6f52);
+        _0x1b6f52 = _0x1b6f52 || _0x2ad725(segmentObj, featureAttributes, Direction.REVERSE, segment, _0x1b6f52);
         if (_0x1b6f52 && lt_scanArea_recursive > 0x0) {
           lt_log("LT errors found, scanning again", 0x2), removeHighlights(), lt_scanArea_recursive--,
               lt_scanArea_timer.start();
         }
       }
     });
-    function _0x2ad725(_0x6f84fd, segmentObj, segmentDirection, _0x37b92d, _0x402e4b) {
-      const fwdLaneCount = segmentObj.fwdLaneCount, revLaneCount = segmentObj.revLaneCount;
-      let toNode = getNodeObj(segmentObj.toNodeID), fromNode = getNodeObj(segmentObj.fromNodeID),
+    function _0x2ad725(segmentObj, segmentAttributes, segmentDirection, _0x37b92d, _0x402e4b) {
+      const fwdLaneCount = segmentAttributes.fwdLaneCount, revLaneCount = segmentAttributes.revLaneCount;
+      let toNode = getNodeObj(segmentAttributes.toNodeID), fromNode = getNodeObj(segmentAttributes.fromNodeID),
           fLaneCount = fwdLaneCount, rLaneCount = revLaneCount;
       segmentDirection !== Direction.FORWARD &&
-          ((toNode = getNodeObj(segmentObj.fromNodeID)), (fromNode = getNodeObj(segmentObj.toNodeID)),
+          ((toNode = getNodeObj(segmentAttributes.fromNodeID)), (fromNode = getNodeObj(segmentAttributes.toNodeID)),
            (fLaneCount = revLaneCount), (rLaneCount = fwdLaneCount));
       let _0x5855dd = false, _0x4d3a78 = false, _0x12606 = false, _0x58ba1e = false, _0x3a8c59 = 0x0,
           heurCandidate = HeuristicsCandidate.NONE, _0x53f387 = null,
@@ -2252,12 +2252,12 @@
       if (onScreen(toNode, minZoomLevel)) {
         const toNodeAttachedSegmentIDs = toNode.getSegmentIds();
         if (fLaneCount > 0x0) {
-          let _0x30b899 = getLanesConfig(_0x6f84fd, toNode, toNodeAttachedSegmentIDs, fLaneCount);
+          let _0x30b899 = getLanesConfig(segmentObj, toNode, toNodeAttachedSegmentIDs, fLaneCount);
           (_0x5855dd = _0x30b899[0x0]), (_0x4d3a78 = _0x30b899[0x1]), (_0x58ba1e = _0x30b899[0x2]),
               (_0x12606 = _0x30b899[0x3]), (_0x3a8c59 = _0x30b899[0x4]), (_0x402e4b = _0x12606 || _0x402e4b);
         }
         if (_0x37b92d <= MAX_LEN_HEUR) {
-          heurCandidate = isHeuristicsCandidate(_0x6f84fd, toNode, toNodeAttachedSegmentIDs, fromNode, fLaneCount,
+          heurCandidate = isHeuristicsCandidate(segmentObj, toNode, toNodeAttachedSegmentIDs, fromNode, fLaneCount,
                                                 _0x37b92d, turnGraph, _0x211d6a);
           heurCandidate === HeuristicsCandidate["ERROR"] && (_0x12606 = true);
           if (!checkHeuristics)
@@ -2266,13 +2266,13 @@
             heurCandidate !== HeuristicsCandidate.NONE && (_0x53f387 = {..._0x211d6a});
         }
       }
-      if (!_0x553a1b) {
+      if (!performHeuristicsCheck) {
         let _0x5c9960 = null;
         ((heurPosHighlightEnabled && heurCandidate === HeuristicsCandidate.PASS) ||
          (heurNegHighlightEnabled && heurCandidate === HeuristicsCandidate.FAIL)) &&
             (_0x5c9960 = heurCandidate),
             (fLaneCount > 0x0 || _0x5c9960 !== null || _0x12606) &&
-                highlightSegment(_0x6f84fd.geometry, segmentDirection, highlightEnabled, highlightLabelsEnabled,
+                highlightSegment(segmentObj.geometry, segmentDirection, highlightEnabled, highlightLabelsEnabled,
                                  fwdLaneCount, revLaneCount, _0x58ba1e && highlightLIOEnabled, _0x3a8c59, _0x12606,
                                  _0x5c9960, false),
             highlightEnabled && getId("lt-NodesEnable").checked &&
@@ -2281,10 +2281,10 @@
       } else {
         lt_log("candidate(f):" + heurCandidate);
         if (heurCandidate !== HeuristicsCandidate.NONE) {
-          if (_0x53f387 != null && _0x48b407["findIndex"]((_0x12b968) => _0x12b968 === _0x53f387.seg) > -0x1) {
+          if (_0x53f387 != null && segmentArray["findIndex"]((_0x12b968) => _0x12b968 === _0x53f387.seg) > -0x1) {
             let _0x4063ba =
                 heurCandidate === HeuristicsCandidate.PASS ? "" + LtSettings.NodeColor : "" + LtSettings.HeurFailColor;
-            highlightSegment(_0x6f84fd.geometry, segmentDirection, false, false, 0x0, 0x0, false, _0x3a8c59, _0x12606,
+            highlightSegment(segmentObj.geometry, segmentDirection, false, false, 0x0, 0x0, false, _0x3a8c59, _0x12606,
                              heurCandidate, true),
                 highlightSegment(_0x53f387["seg"].geometry, _0x53f387.direction, false, false, 0x0, 0x0, false, 0x0,
                                  false, heurCandidate, true),
@@ -2399,7 +2399,7 @@
         for (let idx = 0x0; idx < _0xb4fbc1.length; idx++) {
           _0xb4fbc1[idx]["addEventListener"]("click", function() {
             let _0x45dfc7 = $(this).parents().eq(0x9), _0x24c520 = _0x45dfc7[0x0].parentElement.className;
-            setTimeout(setTurns(_0x24c520), 0x32);
+            setTimeout(setTurns(_0x24c520), 50);
           }, false);
         }
       }
