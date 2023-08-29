@@ -1585,13 +1585,13 @@
         if (onScreen(segmentObj, minZoomLevel)) {
           const featureAttributes = segmentObj.getFeatureAttributes();
           let _0x1b6f52 = false, segmentLength = lt_segment_length(segmentObj);
-          _0x1b6f52 = _0x1b6f52 || _0x2ad725(segmentObj, featureAttributes, Direction.FORWARD, segment, _0x1b6f52);
+          _0x1b6f52 ||=  _0x2ad725(segmentObj, featureAttributes, Direction.FORWARD, segment, _0x1b6f52);
           if (_0x1b6f52 && lt_scanArea_recursive > 0x0) {
             lt_log("LT errors found, scanning again", 0x2), removeHighlights(), lt_scanArea_recursive--,
                 lt_scanArea_timer.start();
             return;
           }
-          _0x1b6f52 = _0x1b6f52 || _0x2ad725(segmentObj, featureAttributes, Direction.REVERSE, segment, _0x1b6f52);
+          _0x1b6f52 ||= _0x2ad725(segmentObj, featureAttributes, Direction.REVERSE, segment, _0x1b6f52);
           if (_0x1b6f52 && lt_scanArea_recursive > 0x0) {
             lt_log("LT errors found, scanning again", 0x2), removeHighlights(), lt_scanArea_recursive--,
                 lt_scanArea_timer.start();
