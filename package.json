@@ -1,0 +1,23 @@
+{
+  "name": "wme-lanetools",
+  "version": "1.0.0",
+  "description": "Script that supplements lane edits in the WME",
+  "main": "WME-LaneTools.user.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mveygman/WME-LaneTools.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mveygman/WME-LaneTools/issues"
+  },
+  "homepage": "https://github.com/mveygman/WME-LaneTools#readme",
+  "dependencies": {
+    "@types/firemonkey-browser": "^2.62.0",
+    "prettier": "^3.0.2"
+  }
+}

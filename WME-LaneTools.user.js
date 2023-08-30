@@ -1370,13 +1370,13 @@
       }
       if (highlightLabelsEnabled && (Direction.FORWARD || forwardLaneCount === 0x0)) {
         if (_0x114781 % 0x2)
-          applyName(newSegmentGeometry.components[_0x5479ec], forwardLaneCount, _0x2c9162);
+          applyName(newSegmentGeometry.components[_0x5479ec], forwardLaneCount, reverseLaneCount);
         else {
           let _0x3f4fb2 = newSegmentGeometry.components[_0x3a7f64 - 0x1],
               _0x196425 = newSegmentGeometry.components[_0x5479ec],
               _0x2daf64 =
                   new OpenLayers.Geometry.Point((_0x3f4fb2.x + _0x196425.x) / 0x2, (_0x3f4fb2.y + _0x196425.y) / 0x2);
-          applyName(_0x2daf64, forwardLaneCount, _0x2c9162);
+          applyName(_0x2daf64, forwardLaneCount, reverseLaneCount);
         }
       }
     } else {
@@ -1399,7 +1399,7 @@
         }
       }
       highlightLabelsEnabled && (Direction.FORWARD || forwardLaneCount === 0x0) &&
-          applyName(_0xa8356b, forwardLaneCount, _0x2c9162);
+          applyName(_0xa8356b, forwardLaneCount, reverseLaneCount);
     }
 
     function _0x1c40ca(_0x1226a0, _0x5d1ef6, _0x2d2248) {
@@ -2044,35 +2044,35 @@
     }
     return _0x2c1862;
   }
-  function _0x4b99ab(_0x23f39e) {
+  function getOpposingVertexCoordinates(departureAngleID, nodeObj, laneDisplayBoxConfiguration) {
     let temp = {};
     if (UPDATEDZOOM) {
-      if (_0x23f39e === 0x0)
+      if (departureAngleID === 0x0)
         temp = {
           x : nodeObj.geometry.x + laneDisplayBoxConfiguration.start * 0x2,
           y : nodeObj.geometry.y + laneDisplayBoxConfiguration.boxheight,
         };
       else {
-        if (_0x23f39e === 0x1)
+        if (departureAngleID === 0x1)
           temp = {
             x : nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
             y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * _0x5095aa) / 1.8,
           };
         else {
-          if (_0x23f39e === 0x2)
+          if (departureAngleID === 0x2)
             temp = {
               x : nodeObj.geometry.x -
                       (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth * _0x5095aa),
               y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
             };
           else {
-            if (_0x23f39e === 0x3)
+            if (departureAngleID === 0x3)
               temp = {
                 x : nodeObj.geometry.x + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth),
                 y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
               };
             else {
-              if (_0x23f39e === 0x4)
+              if (departureAngleID === 0x4)
                 temp = {
                   x : nodeObj.geometry.x -
                           (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 1.5),
@@ -2080,21 +2080,21 @@
                                             laneDisplayBoxConfiguration.boxincwidth * _0x5095aa * 1.5),
                 };
               else {
-                if (_0x23f39e === 0x5)
+                if (departureAngleID === 0x5)
                   temp = {
                     x : nodeObj.geometry.x +
                             (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth / 0x2),
                     y : nodeObj.geometry.y + laneDisplayBoxConfiguration.start / 0x2,
                   };
                 else {
-                  if (_0x23f39e === 0x6)
+                  if (departureAngleID === 0x6)
                     temp = {
                       x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start,
                       y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start *
                                                    ((laneDisplayBoxConfiguration.boxincwidth * _0x5095aa) / 0x2),
                     };
                   else
-                    _0x23f39e === 0x7 && (temp = {
+                    departureAngleID === 0x7 && (temp = {
                       x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start *
                                                    ((laneDisplayBoxConfiguration.boxincwidth * _0x5095aa) / 0x2),
                       y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start,
@@ -2106,33 +2106,33 @@
         }
       }
     } else {
-      if (_0x23f39e === 0x0)
+      if (departureAngleID === 0x0)
         temp = {
           x : nodeObj.geometry.x + laneDisplayBoxConfiguration.start * 0x2,
           y : nodeObj.geometry.y + laneDisplayBoxConfiguration.boxheight,
         };
       else {
-        if (_0x23f39e === 0x1)
+        if (departureAngleID === 0x1)
           temp = {
             x : nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
             y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * _0x5095aa) / 1.8,
           };
         else {
-          if (_0x23f39e === 0x2)
+          if (departureAngleID === 0x2)
             temp = {
               x : nodeObj.geometry.x -
                       (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth * _0x5095aa),
               y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
             };
           else {
-            if (_0x23f39e === 0x3)
+            if (departureAngleID === 0x3)
               temp = {
                 x : nodeObj.geometry.x + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth),
                 y : nodeObj.geometry.y -
                         (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 0x2),
               };
             else {
-              if (_0x23f39e === 0x4)
+              if (departureAngleID === 0x4)
                 temp = {
                   x : nodeObj.geometry.x -
                           (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 1.5),
@@ -2140,21 +2140,21 @@
                                             laneDisplayBoxConfiguration.boxincwidth * _0x5095aa * 1.5),
                 };
               else {
-                if (_0x23f39e === 0x5)
+                if (departureAngleID === 0x5)
                   temp = {
                     x : nodeObj.geometry.x +
                             (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth / 0x2),
                     y : nodeObj.geometry.y + laneDisplayBoxConfiguration.start / 0x2,
                   };
                 else {
-                  if (_0x23f39e === 0x6)
+                  if (departureAngleID === 0x6)
                     temp = {
                       x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start,
                       y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start *
                                                    ((laneDisplayBoxConfiguration.boxincwidth * _0x5095aa) / 0x2),
                     };
                   else
-                    _0x23f39e === 0x7 && (temp = {
+                    departureAngleID === 0x7 && (temp = {
                       x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start *
                                                    ((laneDisplayBoxConfiguration.boxincwidth * _0x5095aa) / 0x2),
                       y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start,
@@ -2171,48 +2171,48 @@
 
   function _0x19644c(nodeObj, segmentObject, _0x533989) {
     let laneDisplayBoxConfiguration = getLaneDisplayBoxObjectConfig(),
-        cardinalAngle = getCardinalAngle(nodeObj.attributes.id, segmentObject), centroid, _0x55c2d7 = [],
-        _0x1c3e29 = 0x0, _0x5095aa = Object.getOwnPropertyNames(_0x533989).length;
+        departureAngle = getCardinalAngle(nodeObj.attributes.id, segmentObject), centroid, _0x55c2d7 = [],
+        departureAngleID = 0x0, _0x5095aa = Object.getOwnPropertyNames(_0x533989).length;
     if (!getId("lt-IconsRotate").checked)
-      cardinalAngle = -90;
-    if (cardinalAngle === 0x0) {
-      cardinalAngle += 0xb4;
-      _0x1c3e29 = 0x1;
+      departureAngle = -90;
+    if (departureAngle === 0x0) {
+      departureAngle += 180;
+      departureAngleID = 0x1;
     } else {
-      if (cardinalAngle > 0x0 && cardinalAngle <= 0x1e) {
-        cardinalAngle += 0x2 * (90 - cardinalAngle);
-        _0x1c3e29 = 0x1;
+      if (departureAngle > 0 && departureAngle <= 30) {
+        departureAngle += (2 * (90 - departureAngle));
+        departureAngleID = 0x1;
       } else {
-        if (cardinalAngle >= 0x14a && cardinalAngle <= 360) {
-          (cardinalAngle -= 0xb4 - 0x2 * (360 - cardinalAngle));
-          (_0x1c3e29 = 0x1);
+        if (departureAngle >= 330 && departureAngle <= 360) {
+          departureAngle -= (180 - 0x2 * (360 - departureAngle));
+          departureAngleID = 0x1;
         } else {
-          if (cardinalAngle > 0x1e && cardinalAngle < 0x3c) {
-            (cardinalAngle -= 90 - 0x2 * (360 - cardinalAngle));
-            (_0x1c3e29 = 0x2);
+          if (departureAngle > 30 && departureAngle < 60) {
+            departureAngle -= (90 - 2 * (360 - departureAngle));
+            departureAngleID = 0x2;
           } else {
-            if (cardinalAngle >= 0x3c && cardinalAngle <= 0x78) {
-              (cardinalAngle -= 90 - 0x2 * (360 - cardinalAngle));
-              (_0x1c3e29 = 0x2);
+            if (departureAngle >= 60 && departureAngle <= 120) {
+              departureAngle -= (90 - 0x2 * (360 - departureAngle));
+              departureAngleID = 0x2;
             } else {
-              if (cardinalAngle > 0x78 && cardinalAngle < 0x96) {
-                (cardinalAngle -= 90 - 0x2 * (360 - cardinalAngle));
-                (_0x1c3e29 = 0x7);
+              if (departureAngle > 120 && departureAngle < 150) {
+                departureAngle -= (90 - 2 * (360 - departureAngle));
+                departureAngleID = 0x7;
               } else {
-                if (cardinalAngle >= 0x96 && cardinalAngle <= 0xd2) {
-                  (cardinalAngle = 0xb4 - cardinalAngle);
-                  (_0x1c3e29 = 0x4);
+                if (departureAngle >= 150 && departureAngle <= 210) {
+                  departureAngle = 180 - departureAngle;
+                  departureAngleID = 0x4;
                 } else {
-                  if (cardinalAngle > 0xd2 && cardinalAngle < 0xf0) {
-                    (cardinalAngle -= 90 - 0x2 * (360 - cardinalAngle));
-                    _0x1c3e29 = 0x6;
+                  if (departureAngle > 210 && departureAngle < 240) {
+                    departureAngle -= (90 - 0x2 * (360 - departureAngle));
+                    departureAngleID = 0x6;
                   } else {
-                    if (cardinalAngle >= 0xf0 && cardinalAngle <= 0x12c) {
-                      (cardinalAngle -= 0xb4 - 0x2 * (360 - cardinalAngle));
-                      (_0x1c3e29 = 0x3);
-                    } else if (cardinalAngle > 0x12c && cardinalAngle < 0x14a) {
-                      (cardinalAngle -= 0xb4 - 0x2 * (360 - cardinalAngle));
-                      (_0x1c3e29 = 0x5)
+                    if (departureAngle >= 240 && departureAngle <= 300) {
+                      departureAngle -= (180 - 0x2 * (360 - departureAngle));
+                      departureAngleID = 0x3;
+                    } else if (departureAngle > 300 && departureAngle < 330) {
+                      departureAngle -= (180 - 2 * (360 - departureAngle));
+                      departureAngleID = 0x5
                     } else
                       console.log("LT: icon angle is out of bounds");
                   }
@@ -2223,9 +2223,9 @@
         }
       }
     }
-    let turnAngle = cardinalAngle > 315 ? cardinalAngle : cardinalAngle + 90, reciprocalTurnAngle = 360 - turnAngle;
+    let turnAngle = departureAngle > 315 ? departureAngle : departureAngle + 90, reciprocalTurnAngle = 360 - turnAngle;
 
-    let _0x2a17ea = _0x4b99ab(_0x1c3e29);
+    let _0x2a17ea = getOpposingVertexCoordinates(departureAngleID, nodeObj, laneDisplayBoxConfiguration);
     var topLeftVtx = new OpenLayers.Geometry.Point(_0x2a17ea.x, _0x2a17ea.y + laneDisplayBoxConfiguration.boxheight),
         topRightVtx = new OpenLayers.Geometry.Point(_0x2a17ea.x + laneDisplayBoxConfiguration.boxincwidth * _0x5095aa,
                                                     _0x2a17ea.y + laneDisplayBoxConfiguration.boxheight),
