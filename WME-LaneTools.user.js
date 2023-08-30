@@ -450,10 +450,10 @@
       removeHighlights();
       scanArea();
     });
-    $.fn.hide = function() {
-      this["trigger"]("hide");
-      return $.fn.hide.apply(this, arguments);
-    };
+    // $.fn.hide = function() {
+    //   this.trigger("hide");
+    //   $.fn.hide.apply(this, arguments);
+    // };
     $("#keyboard-dialog").on("hide", () => { checkShortcutsChanged(); });
     colorTitleID.tooltip();
   }
