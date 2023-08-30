@@ -1514,8 +1514,16 @@
     }), scanSegments(_0x4174e4, true), _0x232b3f);
   }
 
-    function _0x2ad725(segmentObj, segmentAttributes, segmentDirection, _0x37b92d, _0x402e4b) {
-        const fwdLaneCount = segmentAttributes.fwdLaneCount, revLaneCount = segmentAttributes.revLaneCount;
+    function _0x2ad725(segmentObj, segmentAttributes, segmentDirection, segmentLength, minZoomLevel, performHeuristicsCheck, errorsFound) {
+        const fwdLaneCount = segmentAttributes.fwdLaneCount, revLaneCount = segmentAttributes.revLaneCount,
+            highlightEnabled = getId("lt-HighlightsEnable").checked,
+            checkHeuristics = getId("lt-LaneHeuristicsChecks").checked,
+            heurPosHighlightEnabled = checkHeuristics && getId("lt-LaneHeurPosHighlight").checked,
+            heurNegHighlightEnabled = checkHeuristics && getId("lt-LaneHeurNegHighlight").checked,
+            highlightLIOEnabled = highlightEnabled && getId("lt-LIOEnable").checked,
+            highlightLabelsEnabled = highlightEnabled && getId("lt-LabelsEnable").checked,
+            turnGraph = W.model.getTurnGraph();
+
         let toNode = getNodeObj(segmentAttributes.toNodeID), fromNode = getNodeObj(segmentAttributes.fromNodeID),
             fLaneCount = fwdLaneCount, rLaneCount = revLaneCount;
         if(segmentDirection !== Direction.FORWARD) {
@@ -1530,13 +1538,17 @@
         if (onScreen(toNode, minZoomLevel)) {
             const toNodeAttachedSegmentIDs = toNode.getSegmentIds();
             if (fLaneCount > 0x0) {
-                let _0x30b899 = getLanesConfig(segmentObj, toNode, toNodeAttachedSegmentIDs, fLaneCount);
-                (_0x5855dd = _0x30b899[0x0]), (_0x4d3a78 = _0x30b899[0x1]), (_0x58ba1e = _0x30b899[0x2]),
-                    (_0x12606 = _0x30b899[0x3]), (_0x3a8c59 = _0x30b899[0x4]), (_0x402e4b = _0x12606 || _0x402e4b);
+                let segmentLanesConfig = getLanesConfig(segmentObj, toNode, toNodeAttachedSegmentIDs, fLaneCount);
+                _0x5855dd = segmentLanesConfig[0x0];
+                _0x4d3a78 = segmentLanesConfig[0x1];
+                _0x58ba1e = segmentLanesConfig[0x2];
+                _0x12606 = segmentLanesConfig[0x3];
+                _0x3a8c59 = segmentLanesConfig[0x4];
+                errorsFound = (_0x12606 || errorsFound);
             }
-            if (_0x37b92d <= MAX_LEN_HEUR) {
+            if (segmentLength <= MAX_LEN_HEUR) {
                 heurCandidate = isHeuristicsCandidate(segmentObj, toNode, toNodeAttachedSegmentIDs, fromNode, fLaneCount,
-                    _0x37b92d, turnGraph, _0x211d6a);
+                    segmentLength, turnGraph, _0x211d6a);
                 heurCandidate === HeuristicsCandidate["ERROR"] && (_0x12606 = true);
                 if (!checkHeuristics)
                     heurCandidate = HeuristicsCandidate.NONE;
@@ -1570,31 +1582,29 @@
                 }
             }
         }
-        return _0x402e4b;
+        return errorsFound;
     }
 
     function scanSegments(segmentArray, performHeuristicsCheck) {
-      const checkHeuristics = getId("lt-LaneHeuristicsChecks").checked,
-            heurPosHighlightEnabled = checkHeuristics && getId("lt-LaneHeurPosHighlight").checked,
-            heurNegHighlightEnabled = checkHeuristics && getId("lt-LaneHeurNegHighlight").checked,
-            highlightEnabled = getId("lt-HighlightsEnable").checked,
-            highlightLIOEnabled = highlightEnabled && getId("lt-LIOEnable").checked,
-            highlightLabelsEnabled = highlightEnabled && getId("lt-LabelsEnable").checked,
-            minZoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16, turnGraph = W.model.getTurnGraph();
+      const minZoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16; //
       _.each(segmentArray, (segmentObj) => {
         if (onScreen(segmentObj, minZoomLevel)) {
           const featureAttributes = segmentObj.getFeatureAttributes();
-          let _0x1b6f52 = false, segmentLength = lt_segment_length(segmentObj);
-          _0x1b6f52 ||=  _0x2ad725(segmentObj, featureAttributes, Direction.FORWARD, segment, _0x1b6f52);
-          if (_0x1b6f52 && lt_scanArea_recursive > 0x0) {
-            lt_log("LT errors found, scanning again", 0x2), removeHighlights(), lt_scanArea_recursive--,
-                lt_scanArea_timer.start();
+          let errorsFound = false, segmentLength = lt_segment_length(segmentObj);
+          errorsFound ||=  _0x2ad725(segmentObj, featureAttributes, Direction.FORWARD, segmentLength, minZoomLevel, performHeuristicsCheck, errorsFound);
+          if (errorsFound && lt_scanArea_recursive > 0x0) {
+            lt_log("LT errors found, scanning again", 0x2);
+            removeHighlights();
+            lt_scanArea_recursive--;
+            lt_scanArea_timer.start();
             return;
           }
-          _0x1b6f52 ||= _0x2ad725(segmentObj, featureAttributes, Direction.REVERSE, segment, _0x1b6f52);
-          if (_0x1b6f52 && lt_scanArea_recursive > 0x0) {
-            lt_log("LT errors found, scanning again", 0x2), removeHighlights(), lt_scanArea_recursive--,
-                lt_scanArea_timer.start();
+          errorsFound ||= _0x2ad725(segmentObj, featureAttributes, Direction.REVERSE, segmentLength, minZoomLevel, performHeuristicsCheck, errorsFound);
+          if (errorsFound && lt_scanArea_recursive > 0x0) {
+            lt_log("LT errors found, scanning again", 0x2);
+            removeHighlights();
+            lt_scanArea_recursive--;
+            lt_scanArea_timer.start();
           }
         }
       });
@@ -1981,7 +1991,7 @@
           _0xdafc0a = _0x448ddd === "A" ? featureAttributes.fromNodeID : featureAttributes.toNodeID;
     let _0x1989c7;
     const _0x32336a = getNodeObj(_0xdafc0a), segmentIDs = _0x32336a["getSegmentIds"](),
-          turnGraph = W.model["getTurnGraph"]();
+          turnGraph = W.model.getTurnGraph();
     let _0x44e9fd = {}, _0x1b740b = [];
     _0x448ddd === "A" ? (_0x1989c7 = components[0x1]) : (_0x1989c7 = components[components.length - 0x2]);
     let _0x2362eb = _0x1989c7.x - _0x32336a.geometry.x, _0x480d3d = _0x1989c7.y - _0x32336a.geometry.y,
