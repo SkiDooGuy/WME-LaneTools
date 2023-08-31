@@ -21,6 +21,7 @@
 /* global WazeWrap */
 /* global OpenLayers */
 /* global I18n */
+/* global _ */
 /* jshint esversion:6 */
 /* eslint-disable */
 
@@ -983,7 +984,7 @@
     let fwdLanesSelector = $(".fwd-lanes"), revLanesSelector = $(".rev-lanes");
     if (fwdLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-fwd-add-lanes")) {
       let add1Lane = $("<div class=\x22lt-add-lanes fwd\x22>1</div>"),
-          add2Lanes = $("<div class= lt-add-lanes fwd\x22>2</div>"),
+          add2Lanes = $("<div class=\x22lt-add-lanes fwd\x22>2</div>"),
           add3Lanes = $("<div class=\x22t-add-lanes fwd\x22>3</div>"),
           add4Lanes = $("<div class=\x22lt-add-lanes fwd\x22>4</div>"),
           add5Lanes = $("<div class=\x22lt-add-lanes fwd\x22>5</div>"),
@@ -1381,31 +1382,31 @@
       }
     } else {
       let _0x5b73aa = newSegmentGeometry.components[0x0], _0x3cd08d = newSegmentGeometry.components[0x1],
-          _0xa8356b =
+          startPoint =
               new OpenLayers.Geometry.Point((_0x5b73aa.x + _0x3cd08d.x) / 0x2, (_0x5b73aa.y + _0x3cd08d.y) / 0x2);
       if (segDirection === Direction.FORWARD) {
-        let _0x196538 = new OpenLayers.Geometry.Point(newSegmentGeometry.components[0x1].clone().x,
+        let fwdEndPoint = new OpenLayers.Geometry.Point(newSegmentGeometry.components[0x1].clone().x,
                                                       newSegmentGeometry.components[0x1].clone().y),
-            _0x13e81d = new OpenLayers.Geometry["LineString"]([ _0xa8356b, _0x196538 ], {});
-        highlightEnabled && _0x58a03b(_0x13e81d, "" + LtSettings.ABColor, segmentHighlightTypes.DASH_THIN),
-            _0x43deae(_0x13e81d, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
+            _0x13e81d = new OpenLayers.Geometry.LineString([ startPoint, fwdEndPoint ], {});
+        highlightEnabled && _0x58a03b(_0x13e81d, "" + LtSettings.ABColor, segmentHighlightTypes.DASH_THIN);
+        _0x43deae(_0x13e81d, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
       } else {
         if (segDirection === Direction.REVERSE) {
-          let _0x4c870d = new OpenLayers.Geometry.Point(newSegmentGeometry.components[0x0].clone().x,
+          let revEndPoint = new OpenLayers.Geometry.Point(newSegmentGeometry.components[0x0].clone().x,
                                                         newSegmentGeometry.components[0x0].clone().y),
-              _0x598bfa = new OpenLayers.geometry.LineString([ _0xa8356b, _0x4c870d ], {});
-          highlightEnabled && _0x58a03b(_0x598bfa, "" + LtSettings["BAColor"], segmentHighlightTypes["DASH_THIN"]),
-              _0x43deae(_0x598bfa, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
+              _0x598bfa = new OpenLayers.Geometry.LineString([ startPoint, revEndPoint ], {});
+          highlightEnabled && _0x58a03b(_0x598bfa, "" + LtSettings["BAColor"], segmentHighlightTypes["DASH_THIN"]);
+          _0x43deae(_0x598bfa, _0x147e33, _0x42e2ed, _0x701156, _0x2a289c);
         }
       }
       highlightLabelsEnabled && (Direction.FORWARD || forwardLaneCount === 0x0) &&
-          applyName(_0xa8356b, forwardLaneCount, reverseLaneCount);
+          applyName(startPoint, forwardLaneCount, reverseLaneCount);
     }
 
     function _0x1c40ca(_0x1226a0, _0x5d1ef6, _0x2d2248) {
       let _0x3411db = [];
-      for (let _0x191254 = _0x5d1ef6; _0x191254 < _0x2d2248; _0x191254++) {
-        _0x3411db[_0x191254] = _0x1226a0.components[_0x191254].clone();
+      for (let idx = _0x5d1ef6; idx < _0x2d2248; idx++) {
+        _0x3411db[idx] = _0x1226a0.components[idx].clone();
       }
       return new OpenLayers.Geometry.LineString(_0x3411db, {});
     }
@@ -1558,13 +1559,13 @@
         }
         if (!performHeuristicsCheck) {
             let _0x5c9960 = null;
-            ((heurPosHighlightEnabled && heurCandidate === HeuristicsCandidate.PASS) ||
-                (heurNegHighlightEnabled && heurCandidate === HeuristicsCandidate.FAIL)) &&
-            (_0x5c9960 = heurCandidate),
-            (fLaneCount > 0x0 || _0x5c9960 !== null || _0x12606) &&
-            highlightSegment(segmentObj.geometry, segmentDirection, highlightEnabled, highlightLabelsEnabled,
-                fwdLaneCount, revLaneCount, _0x58ba1e && highlightLIOEnabled, _0x3a8c59, _0x12606,
-                _0x5c9960, false),
+            if((heurPosHighlightEnabled && heurCandidate === HeuristicsCandidate.PASS) ||
+                (heurNegHighlightEnabled && heurCandidate === HeuristicsCandidate.FAIL)) _0x5c9960 = heurCandidate;
+            if(fLaneCount > 0x0 || _0x5c9960 !== null || _0x12606) {
+              highlightSegment(segmentObj.geometry, segmentDirection, highlightEnabled, highlightLabelsEnabled,
+                  fwdLaneCount, revLaneCount, _0x58ba1e && highlightLIOEnabled, _0x3a8c59, _0x12606,
+                  _0x5c9960, false)
+            }
             highlightEnabled && getId("lt-NodesEnable").checked &&
             (_0x5855dd && highlightNode(toNode.geometry, "" + LtSettings.NodeColor),
             _0x4d3a78 && highlightNode(toNode.geometry, "" + LtSettings.TIOColor));
@@ -1727,20 +1728,20 @@
     });
   }
 
-  function isHeuristicsCandidate(_0x2bb3f1, toNodeObj, attachedSegmentIDs, fromNodeObj, fwdLaneCount, _0x25826c,
-                                 _0x5aa7bb, _0x1a610d) {
-    if (_0x2bb3f1 == null || toNodeObj == null || attachedSegmentIDs == null || fromNodeObj == null ||
-        fwdLaneCount == null || _0x5aa7bb == null || _0x1a610d == null) {
+  function isHeuristicsCandidate(segmentObj, toNodeObj, attachedSegmentIDs, fromNodeObj, fwdLaneCount, segmentlength,
+                                 turnGraph, _0x1a610d) {
+    if (segmentObj == null || toNodeObj == null || attachedSegmentIDs == null || fromNodeObj == null ||
+        fwdLaneCount == null || turnGraph == null || _0x1a610d == null) {
       lt_log("isHeuristicsCandidate received bad argument (null)", 0x1);
       return 0x0;
     }
     let _0x1859f0 = null, _0x4f9be7 = null, _0x96949d = 0x0, _0x4777ff = null, _0x28857a = null, _0x96fad4 = null,
         _0x4e91d5 = 0x0, _0x4fd61c = null, _0x1c6b60 = null, _0x5063e3 = 0x0, _0x296190 = 0x0;
-    if (_0x25826c > MAX_LEN_HEUR)
+    if (segmentlength > MAX_LEN_HEUR)
       return 0x0;
-    const _0x453456 = _0x2bb3f1.attributes.id;
-    let _0x11d184 = _0x43a6d2(toNodeObj.attributes.id, _0x2bb3f1),
-        _0x5349e1 = _0xca5734(fromNodeObj.attributes.id, _0x2bb3f1), _0x18525c = -90, _0x26651c = 90;
+    const _0x453456 = segmentObj.attributes.id;
+    let _0x11d184 = _0x43a6d2(toNodeObj.attributes.id, segmentObj),
+        _0x5349e1 = _0xca5734(fromNodeObj.attributes.id, segmentObj), _0x18525c = -90, _0x26651c = 90;
     W.model.isLeftHand && ((_0x18525c = 90), (_0x26651c = -90));
     lt_log("==================================================================================", 0x2);
     lt_log("Checking heuristics candidate: seg" + _0x453456 + "node" + toNodeObj.attributes.id + " azm " + _0x11d184 +
@@ -1752,7 +1753,7 @@
       if (segmentIDs[idx] === _0x453456)
         continue;
       const _0x71a39c = getSegObj(segmentIDs[idx]);
-      if (!_0x493643(_0x71a39c, fromNodeObj, _0x2bb3f1))
+      if (!_0x493643(_0x71a39c, fromNodeObj, segmentObj))
         continue;
       let _0x3c6b23 = _0x43a6d2(fromNodeObj.attributes.id, _0x71a39c), _0x4ef283 = _0xcd5d5b(_0x3c6b23, _0x5349e1);
       lt_log("Turn angle from inseg " + segmentIDs[idx] + ": " + _0x4ef283 + "(" + _0x3c6b23 + "," + _0x5349e1 + ")",
@@ -1760,9 +1761,10 @@
       if (Math.abs(_0x4ef283) > MAX_STRAIGHT_DIF) {
         if (Math.abs(_0x4ef283) > MAX_STRAIGHT_TO_CONSIDER)
           continue;
-        lt_log("Not eligible as inseg: " + _0x4ef283, 0x2), (heurState = HeuristicsCandidate.FAIL);
+        lt_log("Not eligible as inseg: " + _0x4ef283, 0x2);
+        heurState = HeuristicsCandidate.FAIL;
       }
-      const _0x4c0fc6 = _0x5aa7bb.getTurnThroughNode(fromNodeObj, _0x71a39c, _0x2bb3f1),
+      const _0x4c0fc6 = turnGraph.getTurnThroughNode(fromNodeObj, _0x71a39c, segmentObj),
             _0x264c0a = _0x4c0fc6.getTurnData();
       if (_0x264c0a.state !== 0x1 || !_0x264c0a.hasLanes()) {
         lt_log("Straight turn has no lanes:" + segmentIDs[idx] + " to " + _0x453456, 0x3);
@@ -1773,7 +1775,7 @@
           (lt_log("Straight turn lane count does not match", 0x2), (heurState = HeuristicsCandidate.ERROR));
       if (_0x4777ff !== null && heurState >= _0x4e91d5) {
         if (_0x4e91d5 === 0x0 && heurState === 0x0)
-          return (lt_log("Error: >1 qualifying entry segment for " + _0x2bb3f1.attributes.id + ": " +
+          return (lt_log("Error: >1 qualifying entry segment for " + segmentObj.attributes.id + ": " +
                              _0x4777ff.attributes.id + "," + _0x71a39c.attributes.id,
                          0x2),
                   lt_log("==================================================================================", 0x2),
@@ -1792,7 +1794,7 @@
       if (attachedSegmentIDs[idx] === _0x453456)
         continue;
       const _0x3e085f = getSegObj(attachedSegmentIDs[idx]);
-      if (!_0x493643(_0x2bb3f1, toNodeObj, _0x3e085f))
+      if (!_0x493643(segmentObj, toNodeObj, _0x3e085f))
         continue;
       let _0xff74b4 = _0xca5734(toNodeObj.attributes.id, _0x3e085f), _0x1bf6a7 = _0xcd5d5b(_0x11d184, _0xff74b4);
       lt_log("Turn angle to outseg2 " + attachedSegmentIDs[idx] + ": " + _0x1bf6a7 + "(" + _0x11d184 + "," + _0xff74b4 +
@@ -1807,7 +1809,7 @@
       }
       if (_0x1859f0 !== null && _0x10d7bb >= _0x96949d) {
         if (_0x96949d === 0x0 && _0x10d7bb === 0x0) {
-          lt_log("Error: >1 qualifying exit2 segment for " + _0x2bb3f1.attributes.id + ": " + _0x1859f0.attributes.id +
+          lt_log("Error: >1 qualifying exit2 segment for " + segmentObj.attributes.id + ": " + _0x1859f0.attributes.id +
                      "," + _0x3e085f.attributes.id,
                  0x2);
           lt_log("==================================================================================", 0x2);
@@ -1843,7 +1845,7 @@
         if (_0x3edc74 < _0x5063e3)
           continue;
         if (_0x5063e3 === 0x0 && _0x3edc74 === 0x0)
-          lt_log("Error: >1 qualifying segment for " + _0x2bb3f1.attributes.id + ": " + _0x4fd61c.attributes.id + "," +
+          lt_log("Error: >1 qualifying segment for " + segmentObj.attributes.id + ": " + _0x4fd61c.attributes.id + "," +
                      _0x1b9808.attributes.id,
                  0x2);
         lt_log("==================================================================================", 0x2);
@@ -2239,7 +2241,7 @@
       strokeWidth : 0x8,
       fillColor : "#ffffff",
     };
-    let linearRing = new OpenLayers.geometry.LinearRing(boxCoordinates);
+    let linearRing = new OpenLayers.Geometry.LinearRing(boxCoordinates);
     centroid = linearRing.getCentroid();
     linearRing.rotate(reciprocalTurnAngle, centroid);
     let featureVector = new OpenLayers.Feature.Vector(linearRing, null, _0x5b7230);
