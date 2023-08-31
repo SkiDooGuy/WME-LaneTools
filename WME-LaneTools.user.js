@@ -1956,294 +1956,239 @@
     }
     return true;
   }
-  }
 
   function lt_segment_length(segment) {
-  let segmentLength = segment.geometry.getGeodesicLength(W.map.olMap.projection);
-  lt_log("segment:" + segment.attributes.id + "computed len: " + segmentLength +
-             "attrs len: " + segment.attributes.length,
-         3);
-  return segmentLength;
+    let segmentLength = segment.geometry.getGeodesicLength(W.map.olMap.projection);
+    lt_log("segment:" + segment.attributes.id + "computed len: " + segmentLength +
+               "attrs len: " + segment.attributes.length,
+           3);
+    return segmentLength;
   }
 
   function lt_log(devMsg, debugLevel = 0x1) {
-  return debugLevel <= LANETOOLS_DEBUG_LEVEL && console.log("LaneTools Dev Msg: ", devMsg);
+    return debugLevel <= LANETOOLS_DEBUG_LEVEL && console.log("LaneTools Dev Msg: ", devMsg);
   }
 
   function copyLaneInfo(nodeName) {
-  _turnInfo = [];
-  const selectedFeatures = W.selectionManager.getSelectedFeatures(),
-        featureObject = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
-        featureAttributes = featureObject.getFeatureAttributes(),
-        featureGeometryComponents = featureObject.geometry.components,
-        nodeID = nodeName === "A" ? featureAttributes.fromNodeID : featureAttributes.toNodeID,
-        laneCount = nodeName === "A" ? featureAttributes.revLaneCount : featureAttributes.fwdLaneCount;
-  console.log(laneCount);
-  const nodeObj = getNodeObj(nodeID), attachedSegmentIDs = nodeObj.getSegmentIds(), turnGraph = W.model.getTurnGraph();
-  let _0x21c177;
-  nodeName === "A" ? (_0x21c177 = featureGeometryComponents[0x1])
-                   : (_0x21c177 = featureGeometryComponents[featureGeometryComponents.length - 0x2]);
-  let _0x17c96f = _0x21c177.x - nodeObj.geometry.x, _0x3b764f = _0x21c177.y - nodeObj.geometry.y,
-      _0x25f24a = Math.atan2(_0x3b764f, _0x17c96f), _0x1b508f = ((_0x25f24a * 0xb4) / Math.PI) % 360;
-  for (let segIdx = 0x0; segIdx < attachedSegmentIDs.length; segIdx++) {
-    const segmentObject = getSegObj(attachedSegmentIDs[segIdx]);
-    let _0x56f831 = segmentObject.getFeatureAttributes(), geometryComponents = segmentObject.geometry.components,
-        _0x165d3c, selectedNodeName,
-        turnData = turnGraph.getTurnThroughNode(nodeObj, featureObject, segmentObject).getTurnData();
-    if (turnData.state === 0x1 && turnData.lanes) {
-      _0x56f831.fromNodeID === nodeID ? (selectedNodeName = "A") : (selectedNodeName = "B");
-      selectedNodeName === "A" ? (_0x165d3c = geometryComponents[0x1])
-                               : (_0x165d3c = geometryComponents[geometryComponents.length - 0x2]);
-      (_0x17c96f = _0x165d3c.x - nodeObj.geometry.x), (_0x3b764f = _0x165d3c.y - nodeObj.geometry.y),
-          (_0x25f24a = Math.atan2(_0x3b764f, _0x17c96f));
-      let _0x422251 = ((_0x25f24a * 0xb4) / Math.PI) % 360;
-      if (_0x1b508f < 0x0)
-        _0x422251 = _0x1b508f - _0x422251;
-      _turnData = {};
-      let _0x2ca8fc = turnData.getLaneData();
-      (_turnData.id = segmentObject.attributes.id), (_turnData.order = _0x422251), (_turnData.lanes = _0x2ca8fc),
-          _turnInfo.push(_turnData);
+    _turnInfo = [];
+    const selectedFeatures = W.selectionManager.getSelectedFeatures(),
+          featureObject = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
+          featureAttributes = featureObject.getFeatureAttributes(),
+          featureGeometryComponents = featureObject.geometry.components,
+          nodeID = nodeName === "A" ? featureAttributes.fromNodeID : featureAttributes.toNodeID,
+          laneCount = nodeName === "A" ? featureAttributes.revLaneCount : featureAttributes.fwdLaneCount;
+    console.log(laneCount);
+    const nodeObj = getNodeObj(nodeID), attachedSegmentIDs = nodeObj.getSegmentIds(),
+          turnGraph = W.model.getTurnGraph();
+    let _0x21c177;
+    nodeName === "A" ? (_0x21c177 = featureGeometryComponents[0x1])
+                     : (_0x21c177 = featureGeometryComponents[featureGeometryComponents.length - 0x2]);
+    let _0x17c96f = _0x21c177.x - nodeObj.geometry.x, _0x3b764f = _0x21c177.y - nodeObj.geometry.y,
+        _0x25f24a = Math.atan2(_0x3b764f, _0x17c96f), _0x1b508f = ((_0x25f24a * 0xb4) / Math.PI) % 360;
+    for (let segIdx = 0x0; segIdx < attachedSegmentIDs.length; segIdx++) {
+      const segmentObject = getSegObj(attachedSegmentIDs[segIdx]);
+      let _0x56f831 = segmentObject.getFeatureAttributes(), geometryComponents = segmentObject.geometry.components,
+          _0x165d3c, selectedNodeName,
+          turnData = turnGraph.getTurnThroughNode(nodeObj, featureObject, segmentObject).getTurnData();
+      if (turnData.state === 0x1 && turnData.lanes) {
+        _0x56f831.fromNodeID === nodeID ? (selectedNodeName = "A") : (selectedNodeName = "B");
+        selectedNodeName === "A" ? (_0x165d3c = geometryComponents[0x1])
+                                 : (_0x165d3c = geometryComponents[geometryComponents.length - 0x2]);
+        (_0x17c96f = _0x165d3c.x - nodeObj.geometry.x), (_0x3b764f = _0x165d3c.y - nodeObj.geometry.y),
+            (_0x25f24a = Math.atan2(_0x3b764f, _0x17c96f));
+        let _0x422251 = ((_0x25f24a * 0xb4) / Math.PI) % 360;
+        if (_0x1b508f < 0x0)
+          _0x422251 = _0x1b508f - _0x422251;
+        _turnData = {};
+        let _0x2ca8fc = turnData.getLaneData();
+        (_turnData.id = segmentObject.attributes.id), (_turnData.order = _0x422251), (_turnData.lanes = _0x2ca8fc),
+            _turnInfo.push(_turnData);
+      }
+      _turnInfo["sort"]((_0x1252aa, _0x286486) => (_0x1252aa.order > _0x286486.order ? 0x1 : -0x1));
     }
-    _turnInfo["sort"]((_0x1252aa, _0x286486) => (_0x1252aa.order > _0x286486.order ? 0x1 : -0x1));
-  }
-  console.log(_turnInfo);
+    console.log(_turnInfo);
   }
 
   function pasteLaneInfo(_0x448ddd) {
-  const mAction = new MultiAction();
-  mAction.setModel(W.model);
-  const selectedFeatures = W.selectionManager.getSelectedFeatures(),
-        featureObject = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
-        components = featureObject.geometry.components, featureAttributes = featureObject.getFeatureAttributes(),
-        _0xdafc0a = _0x448ddd === "A" ? featureAttributes.fromNodeID : featureAttributes.toNodeID;
-  let _0x1989c7;
-  const _0x32336a = getNodeObj(_0xdafc0a), segmentIDs = _0x32336a["getSegmentIds"](),
-        turnGraph = W.model.getTurnGraph();
-  let _0x44e9fd = {}, _0x1b740b = [];
-  _0x448ddd === "A" ? (_0x1989c7 = components[0x1]) : (_0x1989c7 = components[components.length - 0x2]);
-  let _0x2362eb = _0x1989c7.x - _0x32336a.geometry.x, _0x480d3d = _0x1989c7.y - _0x32336a.geometry.y,
-      _0x33018e = Math.atan2(_0x480d3d, _0x2362eb), _0xf2c260 = ((_0x33018e * 0xb4) / Math.PI) % 360;
-  for (let idx = 0x0; idx < segmentIDs.length; idx++) {
-    let _0x3831b2 = getSegObj(segmentIDs[idx]), _0x5842af = _0x3831b2.attributes,
-        _0x3619b7 = _0x3831b2.geometry.components, _0x3374c6 = {}, _0x52b37f,
-        turnData = turnGraph.getTurnThroughNode(_0x32336a, featureObject, _0x3831b2).getTurnData();
-    _0x5842af.fromNodeID === _0xdafc0a ? (_0x52b37f = "A") : (_0x52b37f = "B");
-    _0x52b37f === "A" ? (_0x3374c6 = _0x3619b7[0x1]) : (_0x3374c6 = _0x3619b7[_0x3619b7.length - 0x2]);
-    if (turnData.state === 0x1) {
-      (_0x44e9fd = {}), (_0x2362eb = _0x3374c6.x - _0x32336a.geometry.x),
-          (_0x480d3d = _0x3374c6.y - _0x32336a.geometry.y), (_0x33018e = Math.atan2(_0x480d3d, _0x2362eb));
-      let _0x528fbb = ((_0x33018e * 180) / Math.PI) % 360;
-      if (_0xf2c260 < 0x0)
-        _0x528fbb = _0xf2c260 - _0x528fbb;
-      (_0x44e9fd.id = _0x5842af.id), (_0x44e9fd.order = _0x528fbb), _0x1b740b.push(_0x44e9fd);
-    }
-    _0x1b740b.sort((_0x42b904, _0xb23157) => (_0x42b904.order > _0xb23157.order ? 0x1 : -0x1));
-  }
-  console.log(_0x1b740b);
-  if (_turnInfo.length === _0x1b740b.length) {
-    _0x448ddd === "A" ? mAction.doSubAction(new UpdateObj(featureObject, {revLaneCount : laneCount}))
-                      : mAction.doSubAction(new UpdateObj(featureObject, {fwdLaneCount : laneCount}));
-    for (let idx = 0x0; idx < _0x1b740b.length; idx++) {
-      let _0x1662da = {};
-      for (let j = 0x0; j < _turnInfo.length; j++) {
-        _0x1662da[j] = _turnInfo[j];
+    const mAction = new MultiAction();
+    mAction.setModel(W.model);
+    const selectedFeatures = W.selectionManager.getSelectedFeatures(),
+          featureObject = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
+          components = featureObject.geometry.components, featureAttributes = featureObject.getFeatureAttributes(),
+          _0xdafc0a = _0x448ddd === "A" ? featureAttributes.fromNodeID : featureAttributes.toNodeID;
+    let _0x1989c7;
+    const _0x32336a = getNodeObj(_0xdafc0a), segmentIDs = _0x32336a["getSegmentIds"](),
+          turnGraph = W.model.getTurnGraph();
+    let _0x44e9fd = {}, _0x1b740b = [];
+    _0x448ddd === "A" ? (_0x1989c7 = components[0x1]) : (_0x1989c7 = components[components.length - 0x2]);
+    let _0x2362eb = _0x1989c7.x - _0x32336a.geometry.x, _0x480d3d = _0x1989c7.y - _0x32336a.geometry.y,
+        _0x33018e = Math.atan2(_0x480d3d, _0x2362eb), _0xf2c260 = ((_0x33018e * 0xb4) / Math.PI) % 360;
+    for (let idx = 0x0; idx < segmentIDs.length; idx++) {
+      let _0x3831b2 = getSegObj(segmentIDs[idx]), _0x5842af = _0x3831b2.attributes,
+          _0x3619b7 = _0x3831b2.geometry.components, _0x3374c6 = {}, _0x52b37f,
+          turnData = turnGraph.getTurnThroughNode(_0x32336a, featureObject, _0x3831b2).getTurnData();
+      _0x5842af.fromNodeID === _0xdafc0a ? (_0x52b37f = "A") : (_0x52b37f = "B");
+      _0x52b37f === "A" ? (_0x3374c6 = _0x3619b7[0x1]) : (_0x3374c6 = _0x3619b7[_0x3619b7.length - 0x2]);
+      if (turnData.state === 0x1) {
+        (_0x44e9fd = {}), (_0x2362eb = _0x3374c6.x - _0x32336a.geometry.x),
+            (_0x480d3d = _0x3374c6.y - _0x32336a.geometry.y), (_0x33018e = Math.atan2(_0x480d3d, _0x2362eb));
+        let _0x528fbb = ((_0x33018e * 180) / Math.PI) % 360;
+        if (_0xf2c260 < 0x0)
+          _0x528fbb = _0xf2c260 - _0x528fbb;
+        (_0x44e9fd.id = _0x5842af.id), (_0x44e9fd.order = _0x528fbb), _0x1b740b.push(_0x44e9fd);
       }
-      let _0x1d44a8 = getSegObj(_0x1b740b[idx].id),
-          _0x4e30d7 = turnGraph.getTurnThroughNode(_0x32336a, featureObject, _0x1d44a8),
-          _0x469b71 = _0x4e30d7.getTurnData();
-      _0x469b71 = _0x469b71.withLanes(_0x1662da[idx].lanes);
-      _0x4e30d7 = _0x4e30d7.withTurnData(_0x469b71);
-      mAction.doSubAction(new SetTurn(turnGraph, _0x4e30d7));
+      _0x1b740b.sort((_0x42b904, _0xb23157) => (_0x42b904.order > _0xb23157.order ? 0x1 : -0x1));
     }
-    mAction._description = "Pasted some lane stuff";
-    W.model.actionManager.add(mAction);
-    $(".lanes-tab").trigger("click");
-  } else
-    WazeWrap.Alerts.warning(GM_info.script.name, "There are a different number of enabled turns on this segment/node");
+    console.log(_0x1b740b);
+    if (_turnInfo.length === _0x1b740b.length) {
+      _0x448ddd === "A" ? mAction.doSubAction(new UpdateObj(featureObject, {revLaneCount : laneCount}))
+                        : mAction.doSubAction(new UpdateObj(featureObject, {fwdLaneCount : laneCount}));
+      for (let idx = 0x0; idx < _0x1b740b.length; idx++) {
+        let _0x1662da = {};
+        for (let j = 0x0; j < _turnInfo.length; j++) {
+          _0x1662da[j] = _turnInfo[j];
+        }
+        let _0x1d44a8 = getSegObj(_0x1b740b[idx].id),
+            _0x4e30d7 = turnGraph.getTurnThroughNode(_0x32336a, featureObject, _0x1d44a8),
+            _0x469b71 = _0x4e30d7.getTurnData();
+        _0x469b71 = _0x469b71.withLanes(_0x1662da[idx].lanes);
+        _0x4e30d7 = _0x4e30d7.withTurnData(_0x469b71);
+        mAction.doSubAction(new SetTurn(turnGraph, _0x4e30d7));
+      }
+      mAction._description = "Pasted some lane stuff";
+      W.model.actionManager.add(mAction);
+      $(".lanes-tab").trigger("click");
+    } else
+      WazeWrap.Alerts.warning(GM_info.script.name,
+                              "There are a different number of enabled turns on this segment/node");
   }
 
   function _0x5694f9(_0x3399d1) {
-  let _0x2c1862 = {};
-  for (let idx = 0x0; idx < _0x3399d1.length; idx++) {
-    let uturnObject = {};
-    (uturnObject.uturn = $(_0x3399d1[idx]).find(".uturn").css("display") !== "none");
-    (uturnObject.miniuturn = $(_0x3399d1[idx]).find(".small-uturn").css("display") !== "none");
-    (uturnObject.svg = $(_0x3399d1[idx]).find("svg").map(function() { return this; }).get());
-    (_0x2c1862[idx] = uturnObject);
-  }
-  return _0x2c1862;
+    let _0x2c1862 = {};
+    for (let idx = 0x0; idx < _0x3399d1.length; idx++) {
+      let uturnObject = {};
+      (uturnObject.uturn = $(_0x3399d1[idx]).find(".uturn").css("display") !== "none");
+      (uturnObject.miniuturn = $(_0x3399d1[idx]).find(".small-uturn").css("display") !== "none");
+      (uturnObject.svg = $(_0x3399d1[idx]).find("svg").map(function() { return this; }).get());
+      (_0x2c1862[idx] = uturnObject);
+    }
+    return _0x2c1862;
   }
   function getOpposingVertexCoordinates(departureAngleID, nodeObj, laneDisplayBoxConfiguration, segmentLength) {
-  let temp = {};
-  if (UPDATEDZOOM) {
-    if (departureAngleID === 0x0)
-      temp = {
-        x : nodeObj.geometry.x + laneDisplayBoxConfiguration.start * 0x2,
-        y : nodeObj.geometry.y + laneDisplayBoxConfiguration.boxheight,
-      };
-    else {
-      if (departureAngleID === 0x1)
+    let temp = {};
+    if (UPDATEDZOOM) {
+      if (departureAngleID === 0x0)
         temp = {
-          x : nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
-          y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 1.8,
+          x : nodeObj.geometry.x + laneDisplayBoxConfiguration.start * 0x2,
+          y : nodeObj.geometry.y + laneDisplayBoxConfiguration.boxheight,
         };
       else {
-        if (departureAngleID === 0x2)
+        if (departureAngleID === 0x1)
           temp = {
-            x : nodeObj.geometry.x -
-                    (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth * segmentLength),
-            y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
+            x : nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
+            y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 1.8,
           };
         else {
-          if (departureAngleID === 0x3)
+          if (departureAngleID === 0x2)
             temp = {
-              x : nodeObj.geometry.x + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth),
-              y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
+              x : nodeObj.geometry.x -
+                      (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth * segmentLength),
+              y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
             };
           else {
-            if (departureAngleID === 0x4)
+            if (departureAngleID === 0x3)
               temp = {
-                x : nodeObj.geometry.x -
-                        (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 1.5),
-                y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start +
-                                          laneDisplayBoxConfiguration.boxincwidth * segmentLength * 1.5),
+                x : nodeObj.geometry.x + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth),
+                y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
               };
             else {
-              if (departureAngleID === 0x5)
+              if (departureAngleID === 0x4)
                 temp = {
-                  x : nodeObj.geometry.x +
-                          (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth / 0x2),
-                  y : nodeObj.geometry.y + laneDisplayBoxConfiguration.start / 0x2,
+                  x : nodeObj.geometry.x -
+                          (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 1.5),
+                  y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start +
+                                            laneDisplayBoxConfiguration.boxincwidth * segmentLength * 1.5),
                 };
               else {
-                if (departureAngleID === 0x6)
+                if (departureAngleID === 0x5)
                   temp = {
-                    x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start,
-                    y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start *
-                                                 ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
+                    x : nodeObj.geometry.x +
+                            (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth / 0x2),
+                    y : nodeObj.geometry.y + laneDisplayBoxConfiguration.start / 0x2,
                   };
-                else
-                  departureAngleID === 0x7 && (temp = {
-                    x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start *
-                                                 ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
-                    y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start,
-                  });
+                else {
+                  if (departureAngleID === 0x6)
+                    temp = {
+                      x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start,
+                      y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start *
+                                                   ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
+                    };
+                  else
+                    departureAngleID === 0x7 && (temp = {
+                      x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start *
+                                                   ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
+                      y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start,
+                    });
+                }
               }
             }
           }
         }
       }
-    }
-  } else {
-    if (departureAngleID === 0x0)
-      temp = {
-        x : nodeObj.geometry.x + laneDisplayBoxConfiguration.start * 0x2,
-        y : nodeObj.geometry.y + laneDisplayBoxConfiguration.boxheight,
-      };
-    else {
-      if (departureAngleID === 0x1)
-        temp = {
-          x : nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
-          y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 1.8,
-        };
-      else {
-        if (departureAngleID === 0x2)
-          temp = {
-            x : nodeObj.geometry.x -
-                    (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth * segmentLength),
-            y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
-          };
-        else {
-          if (departureAngleID === 0x3)
-            temp = {
-              x : nodeObj.geometry.x + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth),
-              y : nodeObj.geometry.y -
-                      (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 0x2),
-            };
-          else {
-            if (departureAngleID === 0x4)
-              temp = {
-                x : nodeObj.geometry.x -
-                        (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 1.5),
-                y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start +
-                                          laneDisplayBoxConfiguration.boxincwidth * segmentLength * 1.5),
-              };
-            else {
-              if (departureAngleID === 0x5)
-                temp = {
-                  x : nodeObj.geometry.x +
-                          (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth / 0x2),
-                  y : nodeObj.geometry.y + laneDisplayBoxConfiguration.start / 0x2,
-                };
-              else {
-                if (departureAngleID === 0x6)
-                  temp = {
-                    x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start,
-                    y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start *
-                                                 ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
-                  };
-                else
-                  departureAngleID === 0x7 && (temp = {
-                    x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start *
-                                                 ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
-                    y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start,
-                  });
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  return temp;
-  }
-
-  function _0x19644c(nodeObj, segmentObject, _0x533989) {
-  let laneDisplayBoxConfiguration = getLaneDisplayBoxObjectConfig(),
-      departureAngle = getCardinalAngle(nodeObj.attributes.id, segmentObject), centroid, boxCoordinates = [],
-      departureAngleID = 0x0, segmentLength = Object.getOwnPropertyNames(_0x533989).length;
-  if (!getId("lt-IconsRotate").checked)
-    departureAngle = -90;
-  if (departureAngle === 0x0) {
-    departureAngle += 180;
-    departureAngleID = 0x1;
-  } else {
-    if (departureAngle > 0 && departureAngle <= 30) {
-      departureAngle += (2 * (90 - departureAngle));
-      departureAngleID = 0x1;
     } else {
-      if (departureAngle >= 330 && departureAngle <= 360) {
-        departureAngle -= (180 - 0x2 * (360 - departureAngle));
-        departureAngleID = 0x1;
-      } else {
-        if (departureAngle > 30 && departureAngle < 60) {
-          departureAngle -= (90 - 2 * (360 - departureAngle));
-          departureAngleID = 0x2;
-        } else {
-          if (departureAngle >= 60 && departureAngle <= 120) {
-            departureAngle -= (90 - 0x2 * (360 - departureAngle));
-            departureAngleID = 0x2;
-          } else {
-            if (departureAngle > 120 && departureAngle < 150) {
-              departureAngle -= (90 - 2 * (360 - departureAngle));
-              departureAngleID = 0x7;
-            } else {
-              if (departureAngle >= 150 && departureAngle <= 210) {
-                departureAngle = 180 - departureAngle;
-                departureAngleID = 0x4;
-              } else {
-                if (departureAngle > 210 && departureAngle < 240) {
-                  departureAngle -= (90 - 0x2 * (360 - departureAngle));
-                  departureAngleID = 0x6;
-                } else {
-                  if (departureAngle >= 240 && departureAngle <= 300) {
-                    departureAngle -= (180 - 0x2 * (360 - departureAngle));
-                    departureAngleID = 0x3;
-                  } else if (departureAngle > 300 && departureAngle < 330) {
-                    departureAngle -= (180 - 2 * (360 - departureAngle));
-                    departureAngleID = 0x5
-                  } else
-                    console.log("LT: icon angle is out of bounds");
+      if (departureAngleID === 0x0)
+        temp = {
+          x : nodeObj.geometry.x + laneDisplayBoxConfiguration.start * 0x2,
+          y : nodeObj.geometry.y + laneDisplayBoxConfiguration.boxheight,
+        };
+      else {
+        if (departureAngleID === 0x1)
+          temp = {
+            x : nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
+            y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 1.8,
+          };
+        else {
+          if (departureAngleID === 0x2)
+            temp = {
+              x : nodeObj.geometry.x -
+                      (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth * segmentLength),
+              y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
+            };
+          else {
+            if (departureAngleID === 0x3)
+              temp = {
+                x : nodeObj.geometry.x + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth),
+                y : nodeObj.geometry.y -
+                        (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 0x2),
+              };
+            else {
+              if (departureAngleID === 0x4)
+                temp = {
+                  x : nodeObj.geometry.x -
+                          (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 1.5),
+                  y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start +
+                                            laneDisplayBoxConfiguration.boxincwidth * segmentLength * 1.5),
+                };
+              else {
+                if (departureAngleID === 0x5)
+                  temp = {
+                    x : nodeObj.geometry.x +
+                            (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth / 0x2),
+                    y : nodeObj.geometry.y + laneDisplayBoxConfiguration.start / 0x2,
+                  };
+                else {
+                  if (departureAngleID === 0x6)
+                    temp = {
+                      x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start,
+                      y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start *
+                                                   ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
+                    };
+                  else
+                    departureAngleID === 0x7 && (temp = {
+                      x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start *
+                                                   ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
+                      y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start,
+                    });
                 }
               }
             }
@@ -2251,338 +2196,395 @@
         }
       }
     }
+    return temp;
   }
-  let turnAngle = departureAngle > 315 ? departureAngle : departureAngle + 90, reciprocalTurnAngle = 360 - turnAngle;
 
-  let _0x2a17ea = getOpposingVertexCoordinates(departureAngleID, nodeObj, laneDisplayBoxConfiguration, segmentLength);
-  var topLeftVtx = new OpenLayers.Geometry.Point(_0x2a17ea.x, _0x2a17ea.y + laneDisplayBoxConfiguration.boxheight),
-      topRightVtx = new OpenLayers.Geometry.Point(_0x2a17ea.x + laneDisplayBoxConfiguration.boxincwidth * segmentLength,
-                                                  _0x2a17ea.y + laneDisplayBoxConfiguration.boxheight),
-      bottomRightVtx = new OpenLayers.Geometry.Point(
-          _0x2a17ea.x + laneDisplayBoxConfiguration.boxincwidth * segmentLength, _0x2a17ea.y),
-      topRightVTX = new OpenLayers.Geometry.Point(_0x2a17ea.x, _0x2a17ea.y);
-  boxCoordinates.push(topLeftVtx, topRightVtx, bottomRightVtx, topRightVTX);
-  let _0x5b7230 = {
-    strokeColor : "#ffffff",
-    strokeOpacity : 0x1,
-    strokeWidth : 0x8,
-    fillColor : "#ffffff",
-  };
-  let linearRing = new OpenLayers.Geometry.LinearRing(boxCoordinates);
-  centroid = linearRing.getCentroid();
-  linearRing.rotate(reciprocalTurnAngle, centroid);
-  let featureVector = new OpenLayers.Feature.Vector(linearRing, null, _0x5b7230);
-  LTLaneGraphics.addFeatures([ featureVector ]);
-  let _0xe41aaa = 0x0;
-  _.each(_0x533989, (_0x25119b) => {
-    let _0x4731ea = [];
-    var _0x1bd240 = new OpenLayers.Geometry.Point(_0x2a17ea.x + laneDisplayBoxConfiguration.boxincwidth * _0xe41aaa +
-                                                      laneDisplayBoxConfiguration.iconbordermargin,
-                                                  _0x2a17ea.y + laneDisplayBoxConfiguration.iconborderheight),
-        _0x47bfb1 = new OpenLayers.Geometry.Point(_0x2a17ea.x + laneDisplayBoxConfiguration.boxincwidth * _0xe41aaa +
-                                                      laneDisplayBoxConfiguration.iconborderwidth,
-                                                  _0x2a17ea.y + laneDisplayBoxConfiguration.iconborderheight),
-        _0x2d1e17 = new OpenLayers.Geometry.Point(_0x2a17ea.x + laneDisplayBoxConfiguration.boxincwidth * _0xe41aaa +
-                                                      laneDisplayBoxConfiguration.iconborderwidth,
-                                                  _0x2a17ea.y + laneDisplayBoxConfiguration.iconbordermargin),
-        _0x42e795 = new OpenLayers.Geometry.Point(_0x2a17ea.x + laneDisplayBoxConfiguration.boxincwidth * _0xe41aaa +
-                                                      laneDisplayBoxConfiguration.iconbordermargin,
-                                                  _0x2a17ea.y + laneDisplayBoxConfiguration.iconbordermargin);
-    _0x4731ea.push(_0x1bd240, _0x47bfb1, _0x2d1e17, _0x42e795);
-    var _0x2c762f = {
-      strokeColor : "#000000",
+  function _0x19644c(nodeObj, segmentObject, _0x533989) {
+    let laneDisplayBoxConfiguration = getLaneDisplayBoxObjectConfig(),
+        departureAngle = getCardinalAngle(nodeObj.attributes.id, segmentObject), centroid, boxCoordinates = [],
+        departureAngleID = 0x0, segmentLength = Object.getOwnPropertyNames(_0x533989).length;
+    if (!getId("lt-IconsRotate").checked)
+      departureAngle = -90;
+    if (departureAngle === 0x0) {
+      departureAngle += 180;
+      departureAngleID = 0x1;
+    } else {
+      if (departureAngle > 0 && departureAngle <= 30) {
+        departureAngle += (2 * (90 - departureAngle));
+        departureAngleID = 0x1;
+      } else {
+        if (departureAngle >= 330 && departureAngle <= 360) {
+          departureAngle -= (180 - 0x2 * (360 - departureAngle));
+          departureAngleID = 0x1;
+        } else {
+          if (departureAngle > 30 && departureAngle < 60) {
+            departureAngle -= (90 - 2 * (360 - departureAngle));
+            departureAngleID = 0x2;
+          } else {
+            if (departureAngle >= 60 && departureAngle <= 120) {
+              departureAngle -= (90 - 0x2 * (360 - departureAngle));
+              departureAngleID = 0x2;
+            } else {
+              if (departureAngle > 120 && departureAngle < 150) {
+                departureAngle -= (90 - 2 * (360 - departureAngle));
+                departureAngleID = 0x7;
+              } else {
+                if (departureAngle >= 150 && departureAngle <= 210) {
+                  departureAngle = 180 - departureAngle;
+                  departureAngleID = 0x4;
+                } else {
+                  if (departureAngle > 210 && departureAngle < 240) {
+                    departureAngle -= (90 - 0x2 * (360 - departureAngle));
+                    departureAngleID = 0x6;
+                  } else {
+                    if (departureAngle >= 240 && departureAngle <= 300) {
+                      departureAngle -= (180 - 0x2 * (360 - departureAngle));
+                      departureAngleID = 0x3;
+                    } else if (departureAngle > 300 && departureAngle < 330) {
+                      departureAngle -= (180 - 2 * (360 - departureAngle));
+                      departureAngleID = 0x5
+                    } else
+                      console.log("LT: icon angle is out of bounds");
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    let turnAngle = departureAngle > 315 ? departureAngle : departureAngle + 90, reciprocalTurnAngle = 360 - turnAngle;
+
+    let _0x2a17ea = getOpposingVertexCoordinates(departureAngleID, nodeObj, laneDisplayBoxConfiguration, segmentLength);
+    var topLeftVtx = new OpenLayers.Geometry.Point(_0x2a17ea.x, _0x2a17ea.y + laneDisplayBoxConfiguration.boxheight),
+        topRightVtx =
+            new OpenLayers.Geometry.Point(_0x2a17ea.x + laneDisplayBoxConfiguration.boxincwidth * segmentLength,
+                                          _0x2a17ea.y + laneDisplayBoxConfiguration.boxheight),
+        bottomRightVtx = new OpenLayers.Geometry.Point(
+            _0x2a17ea.x + laneDisplayBoxConfiguration.boxincwidth * segmentLength, _0x2a17ea.y),
+        topRightVTX = new OpenLayers.Geometry.Point(_0x2a17ea.x, _0x2a17ea.y);
+    boxCoordinates.push(topLeftVtx, topRightVtx, bottomRightVtx, topRightVTX);
+    let _0x5b7230 = {
+      strokeColor : "#ffffff",
       strokeOpacity : 0x1,
-      strokeWidth : 0x1,
-      fillColor : "#26bae8",
+      strokeWidth : 0x8,
+      fillColor : "#ffffff",
     };
-    let _0x30718d = new OpenLayers.Geometry.LinearRing(_0x4731ea);
-    _0x30718d["rotate"](reciprocalTurnAngle, centroid);
-    let _0x5f23a1 = new OpenLayers.Feature.Vector(_0x30718d, null, _0x2c762f);
-    LTLaneGraphics.addFeatures([ _0x5f23a1 ]);
-    let _0x305721 = _0x30718d.getCentroid(), _0x5001ff = new OpenLayers.Geometry.Point(_0x305721.x, _0x305721.y),
-        wazeFont = "", _0x4e547b = {x : 0x0, y : 0x0}, _0x43b459 = {x : 0x0, y : 0x0};
-    if (_0x25119b["uturn"] === true) {
-      wazeFont = constantStrings.wazeFontLink;
-      _0x4e547b.x = 0.6;
-      _0x4e547b.y = 0.6;
-      _0x43b459.x = -0x7;
-      _0x43b459.y = -0xc
-    }
-    if (_0x25119b["miniuturn"] === true) {
-      wazeFont = constantStrings.wazeFontLink;
-      _0x4e547b.x = 0.3;
-      _0x4e547b.y = 0.25;
-      _0x43b459.x = -0x8;
-      _0x43b459.y = 0x4
-    }
-    let _0x140285 = {
-      externalGraphic : _0x25119b.svg,
-      graphicHeight : laneDisplayBoxConfiguration.graphicHeight,
-      graphicWidth : laneDisplayBoxConfiguration.graphicWidth,
-      fillColor : "#26bae8",
-      bgcolor : "#26bae8",
-      color : "#26bae8",
-      rotation : turnAngle,
-      backgroundGraphic : wazeFont,
-      backgroundHeight : laneDisplayBoxConfiguration.graphicHeight * _0x4e547b.y,
-      backgroundWidth : laneDisplayBoxConfiguration.graphicWidth * _0x4e547b.x,
-      backgroundXOffset : _0x43b459.x,
-      backgroundYOffset : _0x43b459.y,
-    },
-        _0x3f212b = new OpenLayers.Feature.Vector(_0x5001ff, null, _0x140285);
-    LTLaneGraphics.addFeatures([ _0x3f212b ]);
-    _0xe41aaa++;
-  });
-  LTLaneGraphics.setZIndex(600);
+    let linearRing = new OpenLayers.Geometry.LinearRing(boxCoordinates);
+    centroid = linearRing.getCentroid();
+    linearRing.rotate(reciprocalTurnAngle, centroid);
+    let featureVector = new OpenLayers.Feature.Vector(linearRing, null, _0x5b7230);
+    LTLaneGraphics.addFeatures([ featureVector ]);
+    let _0xe41aaa = 0x0;
+    _.each(_0x533989, (_0x25119b) => {
+      let _0x4731ea = [];
+      var _0x1bd240 = new OpenLayers.Geometry.Point(_0x2a17ea.x + laneDisplayBoxConfiguration.boxincwidth * _0xe41aaa +
+                                                        laneDisplayBoxConfiguration.iconbordermargin,
+                                                    _0x2a17ea.y + laneDisplayBoxConfiguration.iconborderheight),
+          _0x47bfb1 = new OpenLayers.Geometry.Point(_0x2a17ea.x + laneDisplayBoxConfiguration.boxincwidth * _0xe41aaa +
+                                                        laneDisplayBoxConfiguration.iconborderwidth,
+                                                    _0x2a17ea.y + laneDisplayBoxConfiguration.iconborderheight),
+          _0x2d1e17 = new OpenLayers.Geometry.Point(_0x2a17ea.x + laneDisplayBoxConfiguration.boxincwidth * _0xe41aaa +
+                                                        laneDisplayBoxConfiguration.iconborderwidth,
+                                                    _0x2a17ea.y + laneDisplayBoxConfiguration.iconbordermargin),
+          _0x42e795 = new OpenLayers.Geometry.Point(_0x2a17ea.x + laneDisplayBoxConfiguration.boxincwidth * _0xe41aaa +
+                                                        laneDisplayBoxConfiguration.iconbordermargin,
+                                                    _0x2a17ea.y + laneDisplayBoxConfiguration.iconbordermargin);
+      _0x4731ea.push(_0x1bd240, _0x47bfb1, _0x2d1e17, _0x42e795);
+      var _0x2c762f = {
+        strokeColor : "#000000",
+        strokeOpacity : 0x1,
+        strokeWidth : 0x1,
+        fillColor : "#26bae8",
+      };
+      let _0x30718d = new OpenLayers.Geometry.LinearRing(_0x4731ea);
+      _0x30718d["rotate"](reciprocalTurnAngle, centroid);
+      let _0x5f23a1 = new OpenLayers.Feature.Vector(_0x30718d, null, _0x2c762f);
+      LTLaneGraphics.addFeatures([ _0x5f23a1 ]);
+      let _0x305721 = _0x30718d.getCentroid(), _0x5001ff = new OpenLayers.Geometry.Point(_0x305721.x, _0x305721.y),
+          wazeFont = "", _0x4e547b = {x : 0x0, y : 0x0}, _0x43b459 = {x : 0x0, y : 0x0};
+      if (_0x25119b["uturn"] === true) {
+        wazeFont = constantStrings.wazeFontLink;
+        _0x4e547b.x = 0.6;
+        _0x4e547b.y = 0.6;
+        _0x43b459.x = -0x7;
+        _0x43b459.y = -0xc
+      }
+      if (_0x25119b["miniuturn"] === true) {
+        wazeFont = constantStrings.wazeFontLink;
+        _0x4e547b.x = 0.3;
+        _0x4e547b.y = 0.25;
+        _0x43b459.x = -0x8;
+        _0x43b459.y = 0x4
+      }
+      let _0x140285 = {
+        externalGraphic : _0x25119b.svg,
+        graphicHeight : laneDisplayBoxConfiguration.graphicHeight,
+        graphicWidth : laneDisplayBoxConfiguration.graphicWidth,
+        fillColor : "#26bae8",
+        bgcolor : "#26bae8",
+        color : "#26bae8",
+        rotation : turnAngle,
+        backgroundGraphic : wazeFont,
+        backgroundHeight : laneDisplayBoxConfiguration.graphicHeight * _0x4e547b.y,
+        backgroundWidth : laneDisplayBoxConfiguration.graphicWidth * _0x4e547b.x,
+        backgroundXOffset : _0x43b459.x,
+        backgroundYOffset : _0x43b459.y,
+      },
+          _0x3f212b = new OpenLayers.Feature.Vector(_0x5001ff, null, _0x140285);
+      LTLaneGraphics.addFeatures([ _0x3f212b ]);
+      _0xe41aaa++;
+    });
+    LTLaneGraphics.setZIndex(600);
   }
 
   function getLaneDisplayBoxObjectConfig() {
-  var boxDisplayObject = {};
-  if (UPDATEDZOOM)
-    switch (W.map.getOLMap().getZoom()) {
-    case 22:
-      boxDisplayObject.start = 0.5;
-      boxDisplayObject.boxheight = 1.7;
-      boxDisplayObject.boxincwidth = 1.1;
-      boxDisplayObject.iconbordermargin = 0.1;
-      boxDisplayObject.iconborderheight = 1.6;
-      boxDisplayObject.iconborderwidth = 1;
-      boxDisplayObject.graphicHeight = 42;
-      boxDisplayObject.graphicWidth = 25;
-      break;
-    case 21:
-      (boxDisplayObject.start = 0x1);
-      (boxDisplayObject.boxheight = 3.2);
-      (boxDisplayObject.boxincwidth = 2.2);
-      (boxDisplayObject.iconbordermargin = 0.2);
-      (boxDisplayObject.iconborderheight = 3);
-      (boxDisplayObject.iconborderwidth = 2);
-      (boxDisplayObject.graphicHeight = 42);
-      (boxDisplayObject.graphicWidth = 25);
-      break;
-    case 20:
-      (boxDisplayObject.start = 0x2);
-      (boxDisplayObject.boxheight = 5.2);
-      (boxDisplayObject.boxincwidth = 3.8);
-      (boxDisplayObject.iconbordermargin = 0.3);
-      (boxDisplayObject.iconborderheight = 4.9);
-      (boxDisplayObject.iconborderwidth = 3.5);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      (boxDisplayObject.graphicWidth = 0x19);
-      break;
-    case 19:
-      (boxDisplayObject.start = 0x3);
-      (boxDisplayObject.boxheight = 0xa);
-      (boxDisplayObject.boxincwidth = 7.2);
-      (boxDisplayObject.iconbordermargin = 0.4);
-      (boxDisplayObject.iconborderheight = 9.6);
-      (boxDisplayObject.iconborderwidth = 6.8);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      (boxDisplayObject.graphicWidth = 0x19);
-      break;
-    case 18:
-      (boxDisplayObject.start = 6);
-      (boxDisplayObject.boxheight = 20);
-      (boxDisplayObject.boxincwidth = 14);
-      boxDisplayObject.iconbordermargin = 0.5;
-      boxDisplayObject.iconborderheight = 19.5;
-      boxDisplayObject.iconborderwidth = 13.5;
-      boxDisplayObject.graphicHeight = 42;
-      boxDisplayObject.graphicWidth = 25;
-      break;
-    case 17:
-      (boxDisplayObject.start = 0xa);
-      (boxDisplayObject.boxheight = 0x27);
-      (boxDisplayObject.boxincwidth = 0x1c);
-      (boxDisplayObject.iconbordermargin = 0x1);
-      (boxDisplayObject.iconborderheight = 0x26);
-      (boxDisplayObject.iconborderwidth = 0x1b);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      (boxDisplayObject.graphicWidth = 0x19);
-      break;
-    case 16:
-      (boxDisplayObject.start = 0xf);
-      (boxDisplayObject.boxheight = 0x50);
-      (boxDisplayObject.boxincwidth = 0x37);
-      (boxDisplayObject.iconbordermargin = 0x2);
-      (boxDisplayObject.iconborderheight = 0x4e);
-      (boxDisplayObject.iconborderwidth = 0x35);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      (boxDisplayObject.graphicWidth = 0x19);
-      break;
-    case 15:
-      (boxDisplayObject.start = 0x2);
-      (boxDisplayObject.boxheight = 0x78);
-      (boxDisplayObject.boxincwidth = 90);
-      (boxDisplayObject.iconbordermargin = 0x3);
-      (boxDisplayObject.iconborderheight = 117);
-      (boxDisplayObject.iconborderwidth = 0x57);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      boxDisplayObject.graphicWidth = 0x19;
-      break;
-    case 14:
-      (boxDisplayObject.start = 0x2);
-      (boxDisplayObject.boxheight = 5.2);
-      (boxDisplayObject.boxincwidth = 3.8);
-      (boxDisplayObject.iconbordermargin = 0.3);
-      (boxDisplayObject.iconborderheight = 4.9);
-      (boxDisplayObject.iconborderwidth = 3.5);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      (boxDisplayObject.graphicWidth = 0x19);
-      break;
-    }
-  else
-    switch (W.map.getOLMap().getZoom()) {
-    case 0xa:
-      (boxDisplayObject.start = 0.5);
-      (boxDisplayObject.boxheight = 1.7);
-      (boxDisplayObject.boxincwidth = 1.1);
-      (boxDisplayObject.iconbordermargin = 0.1);
-      (boxDisplayObject.iconborderheight = 1.6);
-      (boxDisplayObject.iconborderwidth = 0x1);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      (boxDisplayObject.graphicWidth = 0x19);
-      break;
-    case 0x9:
-      (boxDisplayObject.start = 0x1);
-      (boxDisplayObject.boxheight = 3.2);
-      (boxDisplayObject.boxincwidth = 2.2);
-      (boxDisplayObject.iconbordermargin = 0.2);
-      (boxDisplayObject.iconborderheight = 0x3);
-      (boxDisplayObject.iconborderwidth = 0x2);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      (boxDisplayObject.graphicWidth = 0x19);
-      break;
-    case 0x8:
-      (boxDisplayObject.start = 0x2);
-      (boxDisplayObject.boxheight = 5.2);
-      (boxDisplayObject.boxincwidth = 3.8);
-      (boxDisplayObject.iconbordermargin = 0.3);
-      (boxDisplayObject.iconborderheight = 4.9);
-      (boxDisplayObject.iconborderwidth = 3.5);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      (boxDisplayObject.graphicWidth = 0x19);
-      break;
-    case 0x7:
-      (boxDisplayObject.start = 0x3);
-      (boxDisplayObject.boxheight = 0xa);
-      (boxDisplayObject.boxincwidth = 7.2);
-      (boxDisplayObject.iconbordermargin = 0.4);
-      (boxDisplayObject.iconborderheight = 9.6);
-      (boxDisplayObject.iconborderwidth = 6.8);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      (boxDisplayObject.graphicWidth = 0x19);
-      break;
-    case 0x6:
-      (boxDisplayObject.start = 0x6);
-      (boxDisplayObject.boxheight = 0x14);
-      (boxDisplayObject.boxincwidth = 0xe);
-      (boxDisplayObject.iconbordermargin = 0.5);
-      (boxDisplayObject.iconborderheight = 19.5);
-      (boxDisplayObject.iconborderwidth = 13.5);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      (boxDisplayObject.graphicWidth = 0x19);
-      break;
-    case 0x5:
-      (boxDisplayObject.start = 0xa);
-      (boxDisplayObject.boxheight = 0x28);
-      (boxDisplayObject.boxincwidth = 0x1d);
-      (boxDisplayObject.iconbordermargin = 0x1);
-      (boxDisplayObject.iconborderheight = 0x26);
-      (boxDisplayObject.iconborderwidth = 0x1b);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      (boxDisplayObject.graphicWidth = 0x19);
-      break;
-    case 0x4:
-      (boxDisplayObject.start = 0xf);
-      (boxDisplayObject.boxheight = 0x50);
-      (boxDisplayObject.boxincwidth = 0x37);
-      (boxDisplayObject.iconbordermargin = 0x2);
-      (boxDisplayObject.iconborderheight = 0x4e);
-      (boxDisplayObject.iconborderwidth = 0x35);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      (boxDisplayObject.graphicWidth = 0x19);
-      break;
-    case 0x3:
-      (boxDisplayObject.start = 0x2);
-      (boxDisplayObject.boxheight = 0x78);
-      (boxDisplayObject.boxincwidth = 90);
-      (boxDisplayObject.iconbordermargin = 0x3);
-      (boxDisplayObject.iconborderheight = 0x75);
-      (boxDisplayObject.iconborderwidth = 0x57);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      (boxDisplayObject.graphicWidth = 0x19);
-      break;
-    case 0x2:
-      (boxDisplayObject.start = 0x2);
-      (boxDisplayObject.boxheight = 5.2);
-      (boxDisplayObject.boxincwidth = 3.8);
-      (boxDisplayObject.iconbordermargin = 0.3);
-      (boxDisplayObject.iconborderheight = 4.9);
-      (boxDisplayObject.iconborderwidth = 3.5);
-      (boxDisplayObject.graphicHeight = 0x2a);
-      (boxDisplayObject.graphicWidth = 0x19);
-      break;
-    case 0x1: {
-      boxDisplayObject.start = 0x2;
-      boxDisplayObject.boxheight = 5.2;
-      boxDisplayObject.boxincwidth = 3.8;
-      boxDisplayObject.iconbordermargin = 0.3;
-      boxDisplayObject.iconborderheight = 4.9;
-      boxDisplayObject.iconborderwidth = 3.5;
-      boxDisplayObject.graphicHeight = 0x2a;
-      boxDisplayObject.graphicWidth = 0x19;
-    } break;
-    }
-  return boxDisplayObject;
+    var boxDisplayObject = {};
+    if (UPDATEDZOOM)
+      switch (W.map.getOLMap().getZoom()) {
+      case 22:
+        boxDisplayObject.start = 0.5;
+        boxDisplayObject.boxheight = 1.7;
+        boxDisplayObject.boxincwidth = 1.1;
+        boxDisplayObject.iconbordermargin = 0.1;
+        boxDisplayObject.iconborderheight = 1.6;
+        boxDisplayObject.iconborderwidth = 1;
+        boxDisplayObject.graphicHeight = 42;
+        boxDisplayObject.graphicWidth = 25;
+        break;
+      case 21:
+        (boxDisplayObject.start = 0x1);
+        (boxDisplayObject.boxheight = 3.2);
+        (boxDisplayObject.boxincwidth = 2.2);
+        (boxDisplayObject.iconbordermargin = 0.2);
+        (boxDisplayObject.iconborderheight = 3);
+        (boxDisplayObject.iconborderwidth = 2);
+        (boxDisplayObject.graphicHeight = 42);
+        (boxDisplayObject.graphicWidth = 25);
+        break;
+      case 20:
+        (boxDisplayObject.start = 0x2);
+        (boxDisplayObject.boxheight = 5.2);
+        (boxDisplayObject.boxincwidth = 3.8);
+        (boxDisplayObject.iconbordermargin = 0.3);
+        (boxDisplayObject.iconborderheight = 4.9);
+        (boxDisplayObject.iconborderwidth = 3.5);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        (boxDisplayObject.graphicWidth = 0x19);
+        break;
+      case 19:
+        (boxDisplayObject.start = 0x3);
+        (boxDisplayObject.boxheight = 0xa);
+        (boxDisplayObject.boxincwidth = 7.2);
+        (boxDisplayObject.iconbordermargin = 0.4);
+        (boxDisplayObject.iconborderheight = 9.6);
+        (boxDisplayObject.iconborderwidth = 6.8);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        (boxDisplayObject.graphicWidth = 0x19);
+        break;
+      case 18:
+        (boxDisplayObject.start = 6);
+        (boxDisplayObject.boxheight = 20);
+        (boxDisplayObject.boxincwidth = 14);
+        boxDisplayObject.iconbordermargin = 0.5;
+        boxDisplayObject.iconborderheight = 19.5;
+        boxDisplayObject.iconborderwidth = 13.5;
+        boxDisplayObject.graphicHeight = 42;
+        boxDisplayObject.graphicWidth = 25;
+        break;
+      case 17:
+        (boxDisplayObject.start = 0xa);
+        (boxDisplayObject.boxheight = 0x27);
+        (boxDisplayObject.boxincwidth = 0x1c);
+        (boxDisplayObject.iconbordermargin = 0x1);
+        (boxDisplayObject.iconborderheight = 0x26);
+        (boxDisplayObject.iconborderwidth = 0x1b);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        (boxDisplayObject.graphicWidth = 0x19);
+        break;
+      case 16:
+        (boxDisplayObject.start = 0xf);
+        (boxDisplayObject.boxheight = 0x50);
+        (boxDisplayObject.boxincwidth = 0x37);
+        (boxDisplayObject.iconbordermargin = 0x2);
+        (boxDisplayObject.iconborderheight = 0x4e);
+        (boxDisplayObject.iconborderwidth = 0x35);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        (boxDisplayObject.graphicWidth = 0x19);
+        break;
+      case 15:
+        (boxDisplayObject.start = 0x2);
+        (boxDisplayObject.boxheight = 0x78);
+        (boxDisplayObject.boxincwidth = 90);
+        (boxDisplayObject.iconbordermargin = 0x3);
+        (boxDisplayObject.iconborderheight = 117);
+        (boxDisplayObject.iconborderwidth = 0x57);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        boxDisplayObject.graphicWidth = 0x19;
+        break;
+      case 14:
+        (boxDisplayObject.start = 0x2);
+        (boxDisplayObject.boxheight = 5.2);
+        (boxDisplayObject.boxincwidth = 3.8);
+        (boxDisplayObject.iconbordermargin = 0.3);
+        (boxDisplayObject.iconborderheight = 4.9);
+        (boxDisplayObject.iconborderwidth = 3.5);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        (boxDisplayObject.graphicWidth = 0x19);
+        break;
+      }
+    else
+      switch (W.map.getOLMap().getZoom()) {
+      case 0xa:
+        (boxDisplayObject.start = 0.5);
+        (boxDisplayObject.boxheight = 1.7);
+        (boxDisplayObject.boxincwidth = 1.1);
+        (boxDisplayObject.iconbordermargin = 0.1);
+        (boxDisplayObject.iconborderheight = 1.6);
+        (boxDisplayObject.iconborderwidth = 0x1);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        (boxDisplayObject.graphicWidth = 0x19);
+        break;
+      case 0x9:
+        (boxDisplayObject.start = 0x1);
+        (boxDisplayObject.boxheight = 3.2);
+        (boxDisplayObject.boxincwidth = 2.2);
+        (boxDisplayObject.iconbordermargin = 0.2);
+        (boxDisplayObject.iconborderheight = 0x3);
+        (boxDisplayObject.iconborderwidth = 0x2);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        (boxDisplayObject.graphicWidth = 0x19);
+        break;
+      case 0x8:
+        (boxDisplayObject.start = 0x2);
+        (boxDisplayObject.boxheight = 5.2);
+        (boxDisplayObject.boxincwidth = 3.8);
+        (boxDisplayObject.iconbordermargin = 0.3);
+        (boxDisplayObject.iconborderheight = 4.9);
+        (boxDisplayObject.iconborderwidth = 3.5);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        (boxDisplayObject.graphicWidth = 0x19);
+        break;
+      case 0x7:
+        (boxDisplayObject.start = 0x3);
+        (boxDisplayObject.boxheight = 0xa);
+        (boxDisplayObject.boxincwidth = 7.2);
+        (boxDisplayObject.iconbordermargin = 0.4);
+        (boxDisplayObject.iconborderheight = 9.6);
+        (boxDisplayObject.iconborderwidth = 6.8);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        (boxDisplayObject.graphicWidth = 0x19);
+        break;
+      case 0x6:
+        (boxDisplayObject.start = 0x6);
+        (boxDisplayObject.boxheight = 0x14);
+        (boxDisplayObject.boxincwidth = 0xe);
+        (boxDisplayObject.iconbordermargin = 0.5);
+        (boxDisplayObject.iconborderheight = 19.5);
+        (boxDisplayObject.iconborderwidth = 13.5);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        (boxDisplayObject.graphicWidth = 0x19);
+        break;
+      case 0x5:
+        (boxDisplayObject.start = 0xa);
+        (boxDisplayObject.boxheight = 0x28);
+        (boxDisplayObject.boxincwidth = 0x1d);
+        (boxDisplayObject.iconbordermargin = 0x1);
+        (boxDisplayObject.iconborderheight = 0x26);
+        (boxDisplayObject.iconborderwidth = 0x1b);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        (boxDisplayObject.graphicWidth = 0x19);
+        break;
+      case 0x4:
+        (boxDisplayObject.start = 0xf);
+        (boxDisplayObject.boxheight = 0x50);
+        (boxDisplayObject.boxincwidth = 0x37);
+        (boxDisplayObject.iconbordermargin = 0x2);
+        (boxDisplayObject.iconborderheight = 0x4e);
+        (boxDisplayObject.iconborderwidth = 0x35);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        (boxDisplayObject.graphicWidth = 0x19);
+        break;
+      case 0x3:
+        (boxDisplayObject.start = 0x2);
+        (boxDisplayObject.boxheight = 0x78);
+        (boxDisplayObject.boxincwidth = 90);
+        (boxDisplayObject.iconbordermargin = 0x3);
+        (boxDisplayObject.iconborderheight = 0x75);
+        (boxDisplayObject.iconborderwidth = 0x57);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        (boxDisplayObject.graphicWidth = 0x19);
+        break;
+      case 0x2:
+        (boxDisplayObject.start = 0x2);
+        (boxDisplayObject.boxheight = 5.2);
+        (boxDisplayObject.boxincwidth = 3.8);
+        (boxDisplayObject.iconbordermargin = 0.3);
+        (boxDisplayObject.iconborderheight = 4.9);
+        (boxDisplayObject.iconborderwidth = 3.5);
+        (boxDisplayObject.graphicHeight = 0x2a);
+        (boxDisplayObject.graphicWidth = 0x19);
+        break;
+      case 0x1: {
+        boxDisplayObject.start = 0x2;
+        boxDisplayObject.boxheight = 5.2;
+        boxDisplayObject.boxincwidth = 3.8;
+        boxDisplayObject.iconbordermargin = 0.3;
+        boxDisplayObject.iconborderheight = 4.9;
+        boxDisplayObject.iconborderwidth = 3.5;
+        boxDisplayObject.graphicHeight = 0x2a;
+        boxDisplayObject.graphicWidth = 0x19;
+      } break;
+      }
+    return boxDisplayObject;
   }
 
   function _0x4db382(_0x22e6e2) {
-  const serializer = new XMLSerializer();
-  return (_.each(_0x22e6e2, (_0xa929da) => {
-    try {
-      let _0x1b9e83 = _0xa929da["svg"][0x0], _0x2e4457 = serializer.serializeToString(_0x1b9e83);
-      _0xa929da["svg"] = "data:image/svg+xml;base64," + window.btoa(_0x2e4457);
-    } catch (ex) {
-    }
-  }, _0x22e6e2));
+    const serializer = new XMLSerializer();
+    return (_.each(_0x22e6e2, (_0xa929da) => {
+      try {
+        let _0x1b9e83 = _0xa929da["svg"][0x0], _0x2e4457 = serializer.serializeToString(_0x1b9e83);
+        _0xa929da["svg"] = "data:image/svg+xml;base64," + window.btoa(_0x2e4457);
+      } catch (ex) {
+      }
+    }, _0x22e6e2));
   }
 
   function displayLaneGraphics() {
-  removeLaneGraphics();
-  const features = W.selectionManager.getSelectedFeatures();
-  if (!getId("lt-ScriptEnabled").checked || !getId("lt-IconsEnable").checked || features.length !== 0x1 ||
-      features[0x0].attributes.wazeFeature._wmeObject.type !== "segment")
-    return;
-  const wmeObject = features[0x0].attributes.wazeFeature._wmeObject, currentZoomLevel = W.map.getOLMap().getZoom();
-  if ((wmeObject.attributes.roadType !== 0x3 && wmeObject.attributes.roadType !== 0x6 &&
-       wmeObject.attributes.roadType !== 0x7 && currentZoomLevel < 0x10) ||
-      currentZoomLevel < 0xf)
-    return;
-  let _0x2d2a03 = wmeObject.attributes.fwdLaneCount > 0x0
-                      ? _0x5694f9($(".fwd-lanes").find(".lane-arrow").map(function() { return this; }).get())
-                      : false,
-      _0x154122 = wmeObject.attributes.revLaneCount > 0x0
-                      ? _0x5694f9($(".rev-lanes").find(".lane-arrow").map(function() { return this; }).get())
-                      : false;
+    removeLaneGraphics();
+    const features = W.selectionManager.getSelectedFeatures();
+    if (!getId("lt-ScriptEnabled").checked || !getId("lt-IconsEnable").checked || features.length !== 0x1 ||
+        features[0x0].attributes.wazeFeature._wmeObject.type !== "segment")
+      return;
+    const wmeObject = features[0x0].attributes.wazeFeature._wmeObject, currentZoomLevel = W.map.getOLMap().getZoom();
+    if ((wmeObject.attributes.roadType !== 0x3 && wmeObject.attributes.roadType !== 0x6 &&
+         wmeObject.attributes.roadType !== 0x7 && currentZoomLevel < 0x10) ||
+        currentZoomLevel < 0xf)
+      return;
+    let _0x2d2a03 = wmeObject.attributes.fwdLaneCount > 0x0
+                        ? _0x5694f9($(".fwd-lanes").find(".lane-arrow").map(function() { return this; }).get())
+                        : false,
+        _0x154122 = wmeObject.attributes.revLaneCount > 0x0
+                        ? _0x5694f9($(".rev-lanes").find(".lane-arrow").map(function() { return this; }).get())
+                        : false;
 
-  let _0x5dea5f = _0x2d2a03 !== false ? _0x4db382(_0x2d2a03) : false,
-      _0x326722 = _0x154122 !== false ? _0x4db382(_0x154122) : false;
-  _0x2d2a03 && _0x19644c(W.model.nodes.getObjectById(wmeObject.attributes.toNodeID), wmeObject, _0x5dea5f);
-  _0x154122 && _0x19644c(W.model.nodes.getObjectById(wmeObject.attributes.fromNodeID), wmeObject, _0x326722);
+    let _0x5dea5f = _0x2d2a03 !== false ? _0x4db382(_0x2d2a03) : false,
+        _0x326722 = _0x154122 !== false ? _0x4db382(_0x154122) : false;
+    _0x2d2a03 && _0x19644c(W.model.nodes.getObjectById(wmeObject.attributes.toNodeID), wmeObject, _0x5dea5f);
+    _0x154122 && _0x19644c(W.model.nodes.getObjectById(wmeObject.attributes.fromNodeID), wmeObject, _0x326722);
   }
 
   laneToolsBootstrap();
   while (true) {
-  try {
-    const exitCode =
-        -parseInt("116729CFFamr") + -parseInt("1006486hQNMjC") / 0x2 +
-        (-parseInt("21lOwPjv") / 0x3) * (parseInt("246188fslQvy") / 0x4) + -parseInt("2546485hRBZxR") / 0x5 +
-        (parseInt("695094iWfXcp") / 0x6) * (-parseInt("7CccpnK") / 0x7) +
-        (parseInt("155432OeGIQS") / 0x8) * (-parseInt("396CKTurr") / 0x9) + parseInt("30770070DOGVeo") / 0xa;
-    if (exitCode === 546184)
-      break;
-  } catch (ex) {
-  }
+    try {
+      const exitCode =
+          -parseInt("116729CFFamr") + -parseInt("1006486hQNMjC") / 0x2 +
+          (-parseInt("21lOwPjv") / 0x3) * (parseInt("246188fslQvy") / 0x4) + -parseInt("2546485hRBZxR") / 0x5 +
+          (parseInt("695094iWfXcp") / 0x6) * (-parseInt("7CccpnK") / 0x7) +
+          (parseInt("155432OeGIQS") / 0x8) * (-parseInt("396CKTurr") / 0x9) + parseInt("30770070DOGVeo") / 0xa;
+      if (exitCode === 546184)
+        break;
+    } catch (ex) {
+    }
   }
 })();
