@@ -1804,8 +1804,8 @@
         continue;
       }
       let idxDiff = _0x264c0a.lanes.toLaneIndex - _0x264c0a.lanes.fromLaneIndex + 0x1;
-      idxDiff !== fwdLaneCount && !(fwdLaneCount === 0x0 && idxDiff === 0x1) &&
-          (lt_log("Straight turn lane count does not match", 0x2), (heurState = HeuristicsCandidate.ERROR));
+      if (idxDiff !== fwdLaneCount && !(fwdLaneCount === 0x0 && idxDiff === 0x1)) {
+          (lt_log("Straight turn lane count does not match", 0x2); (heurState = HeuristicsCandidate.ERROR));}
       if (_0x4777ff !== null && heurState >= _0x4e91d5) {
         if (_0x4e91d5 === 0x0 && heurState === 0x0) {
           lt_log("Error: >1 qualifying entry segment for " + segmentObj.attributes.id + ": " + _0x4777ff.attributes.id +
@@ -1844,7 +1844,8 @@
       if (Math.abs(_0x26651c - _0x1bf6a7) > MAX_PERP_DIF) {
         if (Math.abs(_0x26651c - _0x1bf6a7) > MAX_PERP_TO_CONSIDER)
           continue;
-        lt_log("   Not eligible as outseg2: " + _0x1bf6a7, 0x2), (_0x10d7bb = HeuristicsCandidate.FAIL);
+        lt_log("   Not eligible as outseg2: " + _0x1bf6a7, 0x2);
+        _0x10d7bb = HeuristicsCandidate.FAIL;
       }
       if (_0x1859f0 !== null && _0x10d7bb >= _0x96949d) {
         if (_0x96949d === 0x0 && _0x10d7bb === 0x0) {
@@ -1855,7 +1856,9 @@
           return 0x0;
         }
       }
-      (_0x1859f0 = _0x3e085f), (_0x4f9be7 = _0x1bf6a7), (_0x96949d = _0x10d7bb);
+      _0x1859f0 = _0x3e085f;
+      _0x4f9be7 = _0x1bf6a7;
+      _0x96949d = _0x10d7bb;
     }
     if (_0x1859f0 == null) {
       lt_log("== No Outseg2 found ==================================================================", 0x2);
@@ -1915,8 +1918,9 @@
 
   function _0x43a6d2(objectId, segment) {
     let _0x39f1a3 = _0xca5734(objectId, segment), _0x228ce5 = _0x39f1a3 + 180;
-    return (_0x228ce5 >= 180 && (_0x228ce5 -= 360),
-            lt_log("Azm to node " + objectId + "/ " + segment.attributes.id + ": " + _0x228ce5, 0x3), _0x228ce5);
+    _0x228ce5 >= 180 && (_0x228ce5 -= 360);
+            lt_log("Azm to node " + objectId + "/ " + segment.attributes.id + ": " + _0x228ce5, 0x3);
+            return _0x228ce5;
   }
 
   function _0xcd5d5b(_0x362a09, _0xd93a20) {
@@ -2340,8 +2344,9 @@
 
   function getLaneDisplayBoxObjectConfig() {
     var boxDisplayObject = {};
+    let zoomLevel = W.map.getOLMap().getZoom();
     if (UPDATEDZOOM)
-      switch (W.map.getOLMap().getZoom()) {
+      switch (zoomLevel) {
       case 22:
         boxDisplayObject.start = 0.5;
         boxDisplayObject.boxheight = 1.7;
@@ -2434,8 +2439,8 @@
         break;
       }
     else
-      switch (W.map.getOLMap().getZoom()) {
-      case 0xa:
+      switch (zoomLevel) {
+      case 10:
         (boxDisplayObject.start = 0.5);
         (boxDisplayObject.boxheight = 1.7);
         (boxDisplayObject.boxincwidth = 1.1);
@@ -2445,8 +2450,8 @@
         (boxDisplayObject.graphicHeight = 0x2a);
         (boxDisplayObject.graphicWidth = 0x19);
         break;
-      case 0x9:
-        (boxDisplayObject.start = 0x1);
+      case 9:
+        (boxDisplayObject.start = 1);
         (boxDisplayObject.boxheight = 3.2);
         (boxDisplayObject.boxincwidth = 2.2);
         (boxDisplayObject.iconbordermargin = 0.2);
@@ -2455,7 +2460,7 @@
         (boxDisplayObject.graphicHeight = 0x2a);
         (boxDisplayObject.graphicWidth = 0x19);
         break;
-      case 0x8:
+      case 8:
         (boxDisplayObject.start = 0x2);
         (boxDisplayObject.boxheight = 5.2);
         (boxDisplayObject.boxincwidth = 3.8);
@@ -2465,7 +2470,7 @@
         (boxDisplayObject.graphicHeight = 0x2a);
         (boxDisplayObject.graphicWidth = 0x19);
         break;
-      case 0x7:
+      case 7:
         (boxDisplayObject.start = 0x3);
         (boxDisplayObject.boxheight = 0xa);
         (boxDisplayObject.boxincwidth = 7.2);
@@ -2475,7 +2480,7 @@
         (boxDisplayObject.graphicHeight = 0x2a);
         (boxDisplayObject.graphicWidth = 0x19);
         break;
-      case 0x6:
+      case 6:
         (boxDisplayObject.start = 0x6);
         (boxDisplayObject.boxheight = 0x14);
         (boxDisplayObject.boxincwidth = 0xe);
@@ -2485,7 +2490,7 @@
         (boxDisplayObject.graphicHeight = 0x2a);
         (boxDisplayObject.graphicWidth = 0x19);
         break;
-      case 0x5:
+      case 5:
         (boxDisplayObject.start = 0xa);
         (boxDisplayObject.boxheight = 0x28);
         (boxDisplayObject.boxincwidth = 0x1d);
@@ -2495,7 +2500,7 @@
         (boxDisplayObject.graphicHeight = 0x2a);
         (boxDisplayObject.graphicWidth = 0x19);
         break;
-      case 0x4:
+      case 4:
         (boxDisplayObject.start = 0xf);
         (boxDisplayObject.boxheight = 0x50);
         (boxDisplayObject.boxincwidth = 0x37);
@@ -2505,7 +2510,7 @@
         (boxDisplayObject.graphicHeight = 0x2a);
         (boxDisplayObject.graphicWidth = 0x19);
         break;
-      case 0x3:
+      case 3:
         (boxDisplayObject.start = 0x2);
         (boxDisplayObject.boxheight = 0x78);
         (boxDisplayObject.boxincwidth = 90);
@@ -2515,7 +2520,7 @@
         (boxDisplayObject.graphicHeight = 0x2a);
         (boxDisplayObject.graphicWidth = 0x19);
         break;
-      case 0x2:
+      case 2:
         (boxDisplayObject.start = 0x2);
         (boxDisplayObject.boxheight = 5.2);
         (boxDisplayObject.boxincwidth = 3.8);
@@ -2525,7 +2530,7 @@
         (boxDisplayObject.graphicHeight = 0x2a);
         (boxDisplayObject.graphicWidth = 0x19);
         break;
-      case 0x1: {
+      case 1:
         boxDisplayObject.start = 0x2;
         boxDisplayObject.boxheight = 5.2;
         boxDisplayObject.boxincwidth = 3.8;
@@ -2534,7 +2539,7 @@
         boxDisplayObject.iconborderwidth = 3.5;
         boxDisplayObject.graphicHeight = 0x2a;
         boxDisplayObject.graphicWidth = 0x19;
-      } break;
+      break;
       }
     return boxDisplayObject;
   }
