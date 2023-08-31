@@ -1238,20 +1238,20 @@
 
   function toggleLaneHeuristicsChecks() { $("#lt-LaneHeuristicsChecks").click(); }
 
-  function displayToolbar() {
-    const _0x4afd09 = W.selectionManager["getSelectedFeatures"]();
-    if (_0x4afd09.length === 0x1 && getId("lt-CopyEnable").checked && getId("lt-ScriptEnabled").checked) {
-      if (_0x4afd09[0x0].attributes.wazeFeature._wmeObject.type.toLowerCase() === "segments") {
-        const _0x5df401 = $("#map");
-        $("#lt-toolbar-container").css({
-          display : "block",
-          left : _0x5df401.width() * 0.1,
-          top : _0x5df401.height() * 0.1,
-        });
-      }
-    } else
-      $("#lt-toolbar-container").css("display", "none");
-  }
+  // function displayToolbar() {
+  //   const _0x4afd09 = W.selectionManager["getSelectedFeatures"]();
+  //   if (_0x4afd09.length === 0x1 && getId("lt-CopyEnable").checked && getId("lt-ScriptEnabled").checked) {
+  //     if (_0x4afd09[0x0].attributes.wazeFeature._wmeObject.type.toLowerCase() === "segments") {
+  //       const _0x5df401 = $("#map");
+  //       $("#lt-toolbar-container").css({
+  //         display : "block",
+  //         left : _0x5df401.width() * 0.1,
+  //         top : _0x5df401.height() * 0.1,
+  //       });
+  //     }
+  //   } else
+  //     $("#lt-toolbar-container").css("display", "none");
+  // }
 
   function getId(elementId) { return document.getElementById(elementId); }
 
@@ -1463,12 +1463,16 @@
     LTHighlightLayer.setZIndex(450);
   }
 
-  function highlightNode(_0x468e12, _0xcc8670, _0x5c426d = false) {
-    const _0x5ee4da = _0x468e12.clone(), _0x1313c1 = new OpenLayers.Feature.Vector(_0x5ee4da, {});
+  function highlightNode(nodeGeometry, highLightColor, indicateHeuristics = false) {
+    const clonedNodeGeometry = nodeGeometry.clone(), _0x1313c1 = new OpenLayers.Feature.Vector(clonedNodeGeometry, {});
     LTHighlightLayer.addFeatures([ _0x1313c1 ]);
-    const _0x2bd47a = document.getElementById(_0x5ee4da.id);
-    _0x2bd47a && (_0x2bd47a.setAttribute("fill", _0xcc8670), _0x2bd47a.setAttribute("r", _0x5c426d ? "18" : "10"),
-                  _0x2bd47a.setAttribute("fill-opacity", "0.9"), _0x2bd47a.setAttribute("stroke-width", "0"));
+    const nodeElement = document.getElementById(clonedNodeGeometry.id);
+    if(nodeElement !== null) {
+      nodeElement.setAttribute("fill", highLightColor);
+      nodeElement.setAttribute("r", indicateHeuristics ? "18" : "10");
+      nodeElement.setAttribute("fill-opacity", "0.9");
+      nodeElement.setAttribute("stroke-width", "0");
+    }
   }
 
   let lt_scanArea_timer = {
@@ -1477,14 +1481,17 @@
       let _0x150ba4 = this;
       this["timeoutID"] = window.setTimeout(function() { _0x150ba4.calculate(); }, 500);
     },
-    calculate : function() { scanArea_real(), delete this.timeoutID; },
+    calculate : function() { scanArea_real(); delete this.timeoutID; },
     cancel : function() {
-      typeof this.timeoutID === "number" &&
-          (window.clearTimeout(this.timeoutID), delete this.timeoutID, (lt_scanArea_recursive = 0x0));
+      if(typeof this.timeoutID === "number") {
+        window.clearTimeout(this.timeoutID);
+        delete this.timeoutID;
+        lt_scanArea_recursive = 0x0;
+      }
     },
   };
 
-  function scanArea() { (lt_scanArea_recursive = 0x3), scanArea_real(); }
+  function scanArea() { lt_scanArea_recursive = 0x3; scanArea_real(); }
 
   function scanArea_real() {
     const scriptEnabled = getId("lt-ScriptEnabled").checked, highlightsEnabled = getId("lt-HighlightsEnable").checked,
@@ -1507,12 +1514,14 @@
   }
 
   function scanHeuristicsCandidates(features) {
-    let _0x4174e4 = [], _0x232b3f = 0x0;
-    return (_.each(features, (feature) => {
+    let segmentList = [], numSegments = 0x0;
+    _.each(features, (feature) => {
       feature && feature.attributes.wazeFeature._wmeObject &&
           feature.attributes.wazeFeature._wmeObject.type === "segments" &&
-          (_0x232b3f = _0x4174e4.push(feature.attributes.wazeFeature._wmeObject));
-    }), scanSegments(_0x4174e4, true), _0x232b3f);
+          (numSegments = segmentList.push(feature.attributes.wazeFeature._wmeObject));
+    });
+    scanSegments(segmentList, true);
+    return numSegments
   }
 
     function _0x2ad725(segmentObj, segmentAttributes, segmentDirection, segmentLength, minZoomLevel, performHeuristicsCheck, errorsFound) {
@@ -1566,29 +1575,31 @@
                   fwdLaneCount, revLaneCount, _0x58ba1e && highlightLIOEnabled, _0x3a8c59, _0x12606,
                   _0x5c9960, false)
             }
-            highlightEnabled && getId("lt-NodesEnable").checked &&
-            (_0x5855dd && highlightNode(toNode.geometry, "" + LtSettings.NodeColor),
-            _0x4d3a78 && highlightNode(toNode.geometry, "" + LtSettings.TIOColor));
+            if (highlightEnabled && getId("lt-NodesEnable").checked) {
+              _0x5855dd && highlightNode(toNode.geometry, "" + LtSettings.NodeColor);
+              _0x4d3a78 && highlightNode(toNode.geometry, "" + LtSettings.TIOColor);
+            }
         } else {
             lt_log("candidate(f):" + heurCandidate);
             if (heurCandidate !== HeuristicsCandidate.NONE) {
-                if (_0x53f387 != null && segmentArray["findIndex"]((_0x12b968) => _0x12b968 === _0x53f387.seg) > -0x1) {
-                    let _0x4063ba =
-                        heurCandidate === HeuristicsCandidate.PASS ? "" + LtSettings.NodeColor : "" + LtSettings.HeurFailColor;
-                    highlightSegment(segmentObj.geometry, segmentDirection, false, false, 0x0, 0x0, false, _0x3a8c59, _0x12606,
-                        heurCandidate, true),
-                        highlightSegment(_0x53f387["seg"].geometry, _0x53f387.direction, false, false, 0x0, 0x0, false, 0x0,
-                            false, heurCandidate, true),
-                        highlightNode(toNode.geometry, _0x4063ba, true), highlightNode(fromNode.geometry, _0x4063ba, true);
-                }
+              if (_0x53f387 != null && segmentArray.findIndex((_0x12b968) => _0x12b968 === _0x53f387.seg) > -0x1) {
+                let heurColor = (heurCandidate === HeuristicsCandidate.PASS ? "" + LtSettings.NodeColor
+                                                                           : "" + LtSettings.HeurFailColor);
+                highlightSegment(segmentObj.geometry, segmentDirection, false, false, 0x0, 0x0, false, _0x3a8c59,
+                                 _0x12606, heurCandidate, true);
+                highlightSegment(_0x53f387["seg"].geometry, _0x53f387.direction, false, false, 0x0, 0x0, false, 0x0,
+                                 false, heurCandidate, true);
+                highlightNode(toNode.geometry, heurColor, true);
+                highlightNode(fromNode.geometry, heurColor, true);
+              }
             }
         }
         return errorsFound;
     }
 
-    function scanSegments(segmentArray, performHeuristicsCheck) {
+    function scanSegments(segmentList, performHeuristicsCheck) {
       const minZoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16; //
-      _.each(segmentArray, (segmentObj) => {
+      _.each(segmentList, (segmentObj) => {
         if (onScreen(segmentObj, minZoomLevel)) {
           const featureAttributes = segmentObj.getFeatureAttributes();
           let errorsFound = false, segmentLength = lt_segment_length(segmentObj);
