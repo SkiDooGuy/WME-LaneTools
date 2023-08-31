@@ -1634,13 +1634,14 @@
         if (turnData["hasLanes"]()) {
           _0x739f97 = true;
           turnData.getLaneData().hasOverrideAngle() && (_0x161259 = true);
-          if (turnData.getLaneData().getGuidanceMode() === 0x1)
-            (_0x5c5507 = 0x1),
-                (_0x4211dc = W.model.streets.getObjectById(attachedSegment.attributes.primaryStreetID).name);
-          else
-            turnData.getLaneData().getGuidanceMode() === 0x2 &&
-                ((_0x5c5507 = 0x2),
-                 (_0x4211dc = W.model.streets.getObjectById(attachedSegment.attributes.primaryStreetID).name));
+          if (turnData.getLaneData().getGuidanceMode() === 0x1) {
+            _0x5c5507 = 0x1;
+            _0x4211dc = W.model.streets.getObjectById(attachedSegment.attributes.primaryStreetID).name;
+          }
+          else if (turnData.getLaneData().getGuidanceMode() === 0x2) {
+            _0x5c5507 = 0x2;
+            _0x4211dc = W.model.streets.getObjectById(attachedSegment.attributes.primaryStreetID).name;
+          }
           const frmLnIdx = turnData.lanes.fromLaneIndex, toLnIdx = turnData.lanes.toLaneIndex;
           for (let cnt = frmLnIdx; cnt < toLnIdx + 0x1; cnt++) {
             let _0x18e06a = true;
@@ -1656,8 +1657,8 @@
     for (let idx = 0x0; idx < _0x44a7d8.length; idx++) {
       _0x44a7d8[idx] !== idx && (_0x16f110 = true);
     }
-    return (_0x44a7d8.length < laneCount && onScreen(node, zoomLevel) && (_0x16f110 = true),
-            [ _0x739f97, _0x55ea18, _0x161259, _0x16f110, _0x5c5507, _0x4211dc ]);
+    if(_0x44a7d8.length < laneCount && onScreen(node, zoomLevel)) (_0x16f110 = true);
+    return [ _0x739f97, _0x55ea18, _0x161259, _0x16f110, _0x5c5507, _0x4211dc ]
   }
 
   function setTurns(_0x32e1b9) {
