@@ -27,7 +27,6 @@
 
 (function main() {
   "use strict";
-  // const stringArrayRef = getStringArray();
 
   const constantStrings = {
     divStr : "<div>",
@@ -207,59 +206,59 @@
     } else
       console.error("LaneTools: loading error....");
   }
+  function processOptionSettings() {
+    setSetting("lt-ScriptEnabled", LtSettings.ScriptEnabled);
+    setSetting("lt-UIEnable", LtSettings.UIEnable);
+    setSetting("lt-AutoOpenWidth", LtSettings.AutoOpenWidth);
+    setSetting("lt-AutoExpandLanes", LtSettings.AutoExpandLanes);
+    setSetting("lt-AutoLanesTab", LtSettings.AutoLanesTab);
+    setSetting("lt-HighlightsEnable", LtSettings.HighlightsEnable);
+    setSetting("lt-LabelsEnable", LtSettings.LabelsEnable);
+    setSetting("lt-NodesEnable", LtSettings.NodesEnable);
+    setSetting("lt-LIOEnable", LtSettings.LIOEnable);
+    setSetting("lt-CSEnable", LtSettings.CSEnable);
+    setSetting("lt-highlightOverride", LtSettings.highlightOverride);
+    setSetting("lt-CopyEnable", LtSettings.CopyEnable);
+    setSetting("lt-SelAllEnable", LtSettings.SelAllEnable);
+    setSetting("lt-serverSelect", LtSettings.serverSelect);
+    setSetting("lt-AutoFocusLanes", LtSettings.AutoFocusLanes);
+    setSetting("lt-ReverseLanesIcon", LtSettings.ReverseLanesIcon);
+    setSetting("lt-ClickSaveEnable", LtSettings.ClickSaveEnable);
+    setSetting("lt-ClickSaveStraight", LtSettings.ClickSaveStraight);
+    setSetting("lt-ClickSaveTurns", LtSettings.ClickSaveTurns);
+    setSetting("lt-LaneHeurPosHighlight", LtSettings.LaneHeurPosHighlight);
+    setSetting("lt-LaneHeurNegHighlight", LtSettings.LaneHeurNegHighlight);
+    setSetting("lt-LaneHeuristicsChecks", LtSettings.LaneHeuristicsChecks);
+    setSetting("lt-highlightCSIcons", LtSettings.highlightCSIcons);
+    setSetting("lt-AddTIO", LtSettings.addTIO);
+    setSetting("lt-IconsEnable", LtSettings.IconsEnable);
+    setSetting("lt-IconsRotate", LtSettings.IconsRotate);
+    setCSSBorder("lt-ABColor", LtSettings.ABColor);
+    setCSSBorder("lt-BAColor", LtSettings.BAColor);
+    setCSSBorder("lt-LabelColor", LtSettings.LabelColor);
+    setCSSBorder("lt-ErrorColor", LtSettings.ErrorColor);
+    setCSSBorder("lt-NodeColor", LtSettings.NodeColor);
+    setCSSBorder("lt-TIOColor", LtSettings.TIOColor);
+    setCSSBorder("lt-LIOColor", LtSettings.LIOColor);
+    setCSSBorder("lt-CS1Color", LtSettings.CS1Color);
+    setCSSBorder("lt-CS2Color", LtSettings.CS2Color);
+    setCSSBorder("lt-HeurColor", LtSettings.HeurColor);
+    setCSSBorder("lt-HeurFailColor", LtSettings.HeurFailColor);
+    !getId("lt-ClickSaveEnable").checked && $("#lt-ClickSaveEnable").hide();
+    !getId("lt-UIEnable").checked && $("#lt-UI-wrapper").hide();
+    !getId("lt-HighlightsEnable").checked && $("#lt-highlights-wrapper").hide();
+    !getId("lt-LaneHeuristicsChecks").checked && $("#lt-heur-wrapper").hide();
+
+    function setSetting(propertyID, propertyValue) { $("#" + propertyID).prop("checked", propertyValue); }
+
+    function setCSSBorder(idName, value) {
+      const idSelector = $("#" + idName);
+      idSelector.attr("value", value);
+      idSelector.css("border", "2px solid" + value);
+    }
+  }
 
   async function setupOptions() {
-    function processOptionSettings() {
-      setSetting("lt-ScriptEnabled", LtSettings.ScriptEnabled);
-      setSetting("lt-UIEnable", LtSettings.UIEnable);
-      setSetting("lt-AutoOpenWidth", LtSettings.AutoOpenWidth);
-      setSetting("lt-AutoExpandLanes", LtSettings.AutoExpandLanes);
-      setSetting("lt-AutoLanesTab", LtSettings.AutoLanesTab);
-      setSetting("lt-HighlightsEnable", LtSettings.HighlightsEnable);
-      setSetting("lt-LabelsEnable", LtSettings.LabelsEnable);
-      setSetting("lt-NodesEnable", LtSettings.NodesEnable);
-      setSetting("lt-LIOEnable", LtSettings.LIOEnable);
-      setSetting("lt-CSEnable", LtSettings.CSEnable);
-      setSetting("lt-highlightOverride", LtSettings.highlightOverride);
-      setSetting("lt-CopyEnable", LtSettings.CopyEnable);
-      setSetting("lt-SelAllEnable", LtSettings.SelAllEnable);
-      setSetting("lt-serverSelect", LtSettings.serverSelect);
-      setSetting("lt-AutoFocusLanes", LtSettings.AutoFocusLanes);
-      setSetting("lt-ReverseLanesIcon", LtSettings.ReverseLanesIcon);
-      setSetting("lt-ClickSaveEnable", LtSettings.ClickSaveEnable);
-      setSetting("lt-ClickSaveStraight", LtSettings.ClickSaveStraight);
-      setSetting("lt-ClickSaveTurns", LtSettings.ClickSaveTurns);
-      setSetting("lt-LaneHeurPosHighlight", LtSettings.LaneHeurPosHighlight);
-      setSetting("lt-LaneHeurNegHighlight", LtSettings.LaneHeurNegHighlight);
-      setSetting("lt-LaneHeuristicsChecks", LtSettings.LaneHeuristicsChecks);
-      setSetting("lt-highlightCSIcons", LtSettings.highlightCSIcons);
-      setSetting("lt-AddTIO", LtSettings.addTIO);
-      setSetting("lt-IconsEnable", LtSettings.IconsEnable);
-      setSetting("lt-IconsRotate", LtSettings.IconsRotate);
-      setCSSBorder("lt-ABColor", LtSettings.ABColor);
-      setCSSBorder("lt-BAColor", LtSettings.BAColor);
-      setCSSBorder("lt-LabelColor", LtSettings.LabelColor);
-      setCSSBorder("lt-ErrorColor", LtSettings.ErrorColor);
-      setCSSBorder("lt-NodeColor", LtSettings.NodeColor);
-      setCSSBorder("lt-TIOColor", LtSettings.TIOColor);
-      setCSSBorder("lt-LIOColor", LtSettings.LIOColor);
-      setCSSBorder("lt-CS1Color", LtSettings.CS1Color);
-      setCSSBorder("lt-CS2Color", LtSettings.CS2Color);
-      setCSSBorder("lt-HeurColor", LtSettings.HeurColor);
-      setCSSBorder("lt-HeurFailColor", LtSettings.HeurFailColor);
-      !getId("lt-ClickSaveEnable").checked && $("#lt-ClickSaveEnable").hide();
-      !getId("lt-UIEnable").checked && $("#lt-UI-wrapper").hide();
-      !getId("lt-HighlightsEnable").checked && $("#lt-highlights-wrapper").hide();
-      !getId("lt-LaneHeuristicsChecks").checked && $("#lt-heur-wrapper").hide();
-
-      function setSetting(propertyID, propertyValue) { $("#" + propertyID).prop("checked", propertyValue); }
-
-      function setCSSBorder(idName, value) {
-        const idSelector = $("#" + idName);
-        idSelector.attr("value", value);
-        idSelector.css("border", "2px solid" + value);
-      }
-    }
 
     await loadSettings();
     await loadSpreadsheet();
@@ -519,96 +518,96 @@
 
   async function saveSettings() {
     const {
-      ScriptEnabled : _0x2da5e1,
-      HighlightsEnable : _0x745c7a,
-      LabelsEnable : _0x36baff,
-      NodesEnable : _0x3e8deb,
-      UIEnable : _0x5e8779,
-      AutoLanesTab : _0x223b60,
-      AutoOpenWidth : _0x43ad59,
-      AutoExpandLanes : _0x5951ee,
-      ABColor : _0x20a7e4,
-      BAColor : _0x37127d,
-      LabelColor : _0x178529,
-      ErrorColor : _0x4b7321,
-      NodeColor : _0x36f178,
-      TIOColor : _0x211d6c,
-      LIOColor : _0xa024a4,
-      CS1Color : _0x270556,
-      CS2Color : _0x526320,
-      CopyEnable : _0x34b214,
-      SelAllEnable : _0xb763db,
-      serverSelect : _0x1af807,
-      LIOEnable : _0x22a8dc,
-      CSEnable : _0x127a42,
-      AutoFocusLanes : _0x12cefc,
-      ReverseLanesIcon : _0x55ecb0,
-      ClickSaveEnable : _0x282cb6,
-      ClickSaveStraight : _0x258aa9,
-      ClickSaveTurns : _0xd8d0f0,
-      enableScript : _0x1becb4,
-      enableHighlights : _0x814add,
-      enableUIEnhancements : _0x198071,
-      enableHeuristics : _0x210674,
-      HeurColor : _0x325a53,
-      HeurFailColor : _0x2d11e5,
-      LaneHeurPosHighlight : _0x3b18b7,
-      LaneHeurNegHighlight : _0x5560e4,
-      LaneHeuristicsChecks : _0x5f21ec,
-      highlightCSIcons : _0x430a83,
-      highlightOverride : _0x175645,
-      AddTIO : _0x3cc839,
-      IconsEnable : _0x2b4c31,
-      IconsRotate : _0x3b2352,
+      ScriptEnabled : scriptEnabledValue,
+      HighlightsEnable : highlightsEnabledValue,
+      LabelsEnable : labelsEnabledValue,
+      NodesEnable : nodesEnabledValue,
+      UIEnable : uiEnabledValue,
+      AutoLanesTab : autoLanesTab,
+      AutoOpenWidth : autoOpenWidth,
+      AutoExpandLanes : autoExpandLanes,
+      ABColor : abColorValue,
+      BAColor : baColor,
+      LabelColor : labelColorValue,
+      ErrorColor : errorColorValue,
+      NodeColor : nodeColorValue,
+      TIOColor : tioColorValue,
+      LIOColor : lioColorValue,
+      CS1Color : cs1ColorValue,
+      CS2Color : cs2ColorValue,
+      CopyEnable : copyEnable,
+      SelAllEnable : setEallEnable,
+      serverSelect : serverSelectValue,
+      LIOEnable : lioEnableValue,
+      CSEnable : csEnableValue,
+      AutoFocusLanes : autoFocusLanesValue,
+      ReverseLanesIcon : revLanesIcon,
+      ClickSaveEnable : clickSaveEnable,
+      ClickSaveStraight : clickSaveStraightValue,
+      ClickSaveTurns : clickSaveTurns,
+      enableScript : enableScriptValue,
+      enableHighlights : enableHighlightsValue,
+      enableUIEnhancements : enableUIEnhancementsValue,
+      enableHeuristics : enableHeuristicsValue,
+      HeurColor : heurColorValue,
+      HeurFailColor : heurFailColorValue,
+      LaneHeurPosHighlight : laneHeurPosHighlightValue,
+      LaneHeurNegHighlight : laneHeurNegHighlightValue,
+      LaneHeuristicsChecks : laneHeuristicsChecksValue,
+      highlightCSIcons : highlightCSIconsValue,
+      highlightOverride : highlightOverrideValue,
+      AddTIO : addTIOValue,
+      IconsEnable : iconsEnableValue,
+      IconsRotate : iconsRotateValue,
     } = LtSettings,
     savedLTSettings = {
       lastSaveAction : Date.now(),
-      ScriptEnabled : _0x2da5e1,
-      HighlightsEnable : _0x745c7a,
-      LabelsEnable : _0x36baff,
-      NodesEnable : _0x3e8deb,
-      UIEnable : _0x5e8779,
-      AutoOpenWidth : _0x43ad59,
-      AutoLanesTab : _0x223b60,
-      AutoExpandLanes : _0x5951ee,
-      ABColor : _0x20a7e4,
-      BAColor : _0x37127d,
-      LabelColor : _0x178529,
-      ErrorColor : _0x4b7321,
-      NodeColor : _0x36f178,
-      TIOColor : _0x211d6c,
-      LIOColor : _0xa024a4,
-      CS1Color : _0x270556,
-      CS2Color : _0x526320,
-      CopyEnable : _0x34b214,
-      SelAllEnable : _0xb763db,
-      serverSelect : _0x1af807,
-      LIOEnable : _0x22a8dc,
-      CSEnable : _0x127a42,
-      AutoFocusLanes : _0x12cefc,
-      ReverseLanesIcon : _0x55ecb0,
-      ClickSaveEnable : _0x282cb6,
-      ClickSaveStraight : _0x258aa9,
-      ClickSaveTurns : _0xd8d0f0,
-      enableScript : _0x1becb4,
-      enableHighlights : _0x814add,
-      enableUIEnhancements : _0x198071,
-      enableHeuristics : _0x210674,
-      HeurColor : _0x325a53,
-      HeurFailColor : _0x2d11e5,
-      LaneHeurPosHighlight : _0x3b18b7,
-      LaneHeurNegHighlight : _0x5560e4,
-      LaneHeuristicsChecks : _0x5f21ec,
-      highlightCSIcons : _0x430a83,
-      highlightOverride : _0x175645,
-      AddTIO : _0x3cc839,
-      IconsEnable : _0x2b4c31,
-      IconsRotate : _0x3b2352,
+      ScriptEnabled : scriptEnabledValue,
+      HighlightsEnable : highlightsEnabledValue,
+      LabelsEnable : labelsEnabledValue,
+      NodesEnable : nodesEnabledValue,
+      UIEnable : uiEnabledValue,
+      AutoOpenWidth : autoOpenWidth,
+      AutoLanesTab : autoLanesTab,
+      AutoExpandLanes : autoExpandLanes,
+      ABColor : abColorValue,
+      BAColor : baColor,
+      LabelColor : labelColorValue,
+      ErrorColor : errorColorValue,
+      NodeColor : nodeColorValue,
+      TIOColor : tioColorValue,
+      LIOColor : lioColorValue,
+      CS1Color : cs1ColorValue,
+      CS2Color : cs2ColorValue,
+      CopyEnable : copyEnable,
+      SelAllEnable : setEallEnable,
+      serverSelect : serverSelectValue,
+      LIOEnable : lioEnableValue,
+      CSEnable : csEnableValue,
+      AutoFocusLanes : autoFocusLanesValue,
+      ReverseLanesIcon : revLanesIcon,
+      ClickSaveEnable : clickSaveEnable,
+      ClickSaveStraight : clickSaveStraightValue,
+      ClickSaveTurns : clickSaveTurns,
+      enableScript : enableScriptValue,
+      enableHighlights : enableHighlightsValue,
+      enableUIEnhancements : enableUIEnhancementsValue,
+      enableHeuristics : enableHeuristicsValue,
+      HeurColor : heurColorValue,
+      HeurFailColor : heurFailColorValue,
+      LaneHeurPosHighlight : laneHeurPosHighlightValue,
+      LaneHeurNegHighlight : laneHeurNegHighlightValue,
+      LaneHeuristicsChecks : laneHeuristicsChecksValue,
+      highlightCSIcons : highlightCSIconsValue,
+      highlightOverride : highlightOverrideValue,
+      AddTIO : addTIOValue,
+      IconsEnable : iconsEnableValue,
+      IconsRotate : iconsRotateValue,
     };
     for (const action in W.accelerators.Actions) {
       const {shortcut : keyboardShortcut, group : keyboardActionGroup} = W.accelerators.Actions[action];
+      let keyPressed = "";
       if (keyboardActionGroup === "wmelt") {
-        let keyPressed = "-1";
         if (keyboardShortcut) {
           keyboardShortcut.altKey === true && (keyPressed += "A");
           keyboardShortcut.shiftKey === true && (keyPressed += "S");
@@ -616,15 +615,21 @@
           keyPressed !== "" && (keyPressed += "+");
           keyboardShortcut.keyCode && (keyPressed += keyboardShortcut.keyCode);
         }
+        else {
+          keyPressed = "-1";
+        }
         savedLTSettings[action] = keyPressed
       }
     }
     LtSettings = savedLTSettings;
     localStorage && localStorage.setItem("LT_Settings", JSON.stringify(savedLTSettings));
     const ltSettingsSaveStatus = await WazeWrap.Remote.SaveSettings("LT_Settings", savedLTSettings);
-    ltSettingsSaveStatus === null
-        ? console.warn("LaneTools: User PIN not set in WazeWrap tab")
-        : ltSettingsSaveStatus === false && console.error("LaneTools: Unable to save settings to server");
+    if (ltSettingsSaveStatus === null)
+      console.warn("LaneTools: User PIN not set in WazeWrap tab");
+    else {
+      if(ltSettingsSaveStatus === false) console.error("LaneTools: Unable to save settings to server");
+      else console.log("LaneTools: Saved Settings to the Server")
+    }
   }
 
   async function loadSpreadsheet() {
@@ -800,30 +805,31 @@
   function getKeyboardShortcut(settingValue) {
     const keyboardShortCut = LtSettings[settingValue];
     let shortCutValue = "";
-    if (keyboardShortCut.indexOf("+") > -0x1) {
-      const keyboardKeyValue = keyboardShortCut["split"]("+")[0x0];
-      for (let index = 0x0; index < keyboardKeyValue.length; index++) {
+    if(keyboardShortCut !== "-1") {
+      if (keyboardShortCut.indexOf("+") > -1) {
+        const keyboardKeyValue = keyboardShortCut.split("+")[0x0];
+        for (let index = 0x0; index < keyboardKeyValue.length; index++) {
+          shortCutValue.length > 0x0 && (shortCutValue += "+");
+          keyboardKeyValue[index] === "C" && (shortCutValue += "Ctrl");
+          keyboardKeyValue[index] === "S" && (shortCutValue += "Shift");
+          keyboardKeyValue[index] === "A" && (shortCutValue += "Alt");
+        }
         shortCutValue.length > 0x0 && (shortCutValue += "+");
-        keyboardKeyValue[index] === "C" && (shortCutValue += "Ctrl");
-        keyboardKeyValue[index] === "S" && (shortCutValue += "Shift");
-        keyboardKeyValue[index] === "A" && (shortCutValue += "Alt");
+        let keyboardKey = keyboardShortCut.split("+")[0x1];
+        if (keyboardKey >= 96 && keyboardKey <= 105) {
+          keyboardKey -= 48;
+          shortCutValue += "[num pad]";
+        }
+        shortCutValue += String.fromCharCode(keyboardKey);
+      } else {
+        let keyboardKey = Number.parseInt(keyboardShortCut, 10);
+        if (keyboardKey >= 96 && keyboardKey <= 105) {
+          keyboardKey -= 48;
+          shortCutValue += "[num pad]";
+        }
+        shortCutValue += String.fromCharCode(keyboardKey);
       }
-      shortCutValue.length > 0x0 && (shortCutValue += "+");
-      let keyboardKey = keyboardShortCut.split("+")[0x1];
-      if (keyboardKey >= 96 && keyboardKey <= 105) {
-        keyboardKey -= 48;
-        shortCutValue += "[num pad]";
-      }
-      shortCutValue += String.fromCharCode(keyboardKey);
-    } else {
-      let keyboardKey = Number.parseInt(keyboardShortCut, 10);
-      if (keyboardKey >= 0x60 && keyboardKey <= 0x69) {
-        keyboardKey -= 48;
-        shortCutValue += "[num pad]";
-      }
-      shortCutValue += String.fromCharCode(keyboardKey);
-    }
-    return shortCutValue;
+    }    return shortCutValue;
   }
 
   function updateShortcutLabels() {
@@ -838,9 +844,9 @@
   function getSegObj(objectID) { return W.model.segments.getObjectById(objectID); }
 
   function getNodeObj(objectID) { return W.model.nodes.getObjectById(objectID); }
-  function _0x5a28b7(flagsObject) {
-    getId("lt-ReverseLanesIcon").checked && !rotateDisplayLanes && rotateDisplay(flagsObject);
-    getId("lt-highlightCSIcons").checked && _0x50c216();
+  function _0x5a28b7(flagsObject, selectedFeatures) {
+    getId("lt-ReverseLanesIcon").checked && !flagsObject.rotateDisplayLanes && rotateDisplay(flagsObject);
+    getId("lt-highlightCSIcons").checked && _0x50c216(selectedFeatures);
     if (_pickleColor >= 0x1 || editorInfo["editableCountryIDS"].length > 0x0) {
       if (getId("li-del-opp-btn"))
         $("#li-del-opp-btn").remove();
@@ -934,19 +940,19 @@
     const fwdLanesSelector = $(".fwd-lanes"), revLanesSelector = $(".rev-lanes");
     fwdLanesSelector.find(".apply-button.waze-btn.waze-btn-blue").on("click", () => {
       flagsObject.fwdLanesEnabled = true;
-      setTimeout(function() { _0x5a28b7(); }, 200);
+      setTimeout(function() { _0x5a28b7(flagsObject); }, 200);
     });
     revLanesSelector.find(".apply-button.waze-btn.waze-btn-blue").on("click", () => {
       flagsObject.revLanesEnabled = true;
-      setTimeout(function() { _0x5a28b7(); }, 200);
+      setTimeout(function() { _0x5a28b7(flagsObject); }, 200);
     });
     fwdLanesSelector.find(".cancel-button").on("click", () => {
       flagsObject.fwdLanesEnabled = true;
-      setTimeout(function() { _0x5a28b7(); }, 200);
+      setTimeout(function() { _0x5a28b7(flagsObject); }, 200);
     });
     revLanesSelector.find(".cancel-button").on("click", () => {
       flagsObject.revLanesEnabled = true;
-      setTimeout(function() { _0x5a28b7(); }, 200);
+      setTimeout(function() { _0x5a28b7(flagsObject); }, 200);
     });
   }
   function _0x2308e1(flagsObject) {
@@ -1145,7 +1151,7 @@
       _0x36b726 > 0x0 && $(_0x430051).trigger("change");
     }
   }
-  function _0x50c216() {
+  function _0x50c216(selectedFeatures) {
     const segmentRef = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
           bNodeRef = getNodeObj(segmentRef.attributes.toNodeID),
           aNodeRef = getNodeObj(segmentRef.attributes.fromNodeID);
@@ -1218,11 +1224,11 @@
 
     if (getId("lt-UIEnable").checked && getId("lt-ScriptEnabled").checked && selectedFeatures.length > 0x0) {
       if (selectedFeatures.length === 0x1 &&
-          selectedFeatures[0x0].attributes.wazeFeature._wmeObject.type === "segments") {
+          selectedFeatures[0x0].attributes.wazeFeature._wmeObject.type === "segment") {
         $(".lanes-tab").on("click", () => {
           (flagsObject.fwdLanesEnabled = false);
           (flagsObject.revLanesEnabled = false);
-          setTimeout(() => { _0x5a28b7(flagsObject); }, 100);
+          setTimeout(() => { _0x5a28b7(flagsObject, selectedFeatures); }, 100);
         });
         getId("lt-AutoLanesTab").checked && setTimeout(() => { $(".lanes-tab").trigger("click"); }, 100);
       } else
@@ -1805,7 +1811,9 @@
       }
       let idxDiff = _0x264c0a.lanes.toLaneIndex - _0x264c0a.lanes.fromLaneIndex + 0x1;
       if (idxDiff !== fwdLaneCount && !(fwdLaneCount === 0x0 && idxDiff === 0x1)) {
-          (lt_log("Straight turn lane count does not match", 0x2); (heurState = HeuristicsCandidate.ERROR));}
+        lt_log("Straight turn lane count does not match", 0x2);
+        heurState = HeuristicsCandidate.ERROR
+      }
       if (_0x4777ff !== null && heurState >= _0x4e91d5) {
         if (_0x4e91d5 === 0x0 && heurState === 0x0) {
           lt_log("Error: >1 qualifying entry segment for " + segmentObj.attributes.id + ": " + _0x4777ff.attributes.id +
@@ -2005,26 +2013,28 @@
           _0x422251 = _0x1b508f - _0x422251;
         _turnData = {};
         let _0x2ca8fc = turnData.getLaneData();
-        (_turnData.id = segmentObject.attributes.id), (_turnData.order = _0x422251), (_turnData.lanes = _0x2ca8fc),
+        _turnData.id = segmentObject.attributes.id;
+        _turnData.order = _0x422251;
+        _turnData.lanes = _0x2ca8fc;
             _turnInfo.push(_turnData);
       }
-      _turnInfo["sort"]((_0x1252aa, _0x286486) => (_0x1252aa.order > _0x286486.order ? 0x1 : -0x1));
+      _turnInfo.sort((lhs, rhs) => (lhs.order > rhs.order ? 0x1 : -0x1));
     }
     console.log(_turnInfo);
   }
 
-  function pasteLaneInfo(_0x448ddd) {
+  function pasteLaneInfo(nodeName) {
     const mAction = new MultiAction();
     mAction.setModel(W.model);
     const selectedFeatures = W.selectionManager.getSelectedFeatures(),
           featureObject = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
           components = featureObject.geometry.components, featureAttributes = featureObject.getFeatureAttributes(),
-          _0xdafc0a = _0x448ddd === "A" ? featureAttributes.fromNodeID : featureAttributes.toNodeID;
+          _0xdafc0a = nodeName === "A" ? featureAttributes.fromNodeID : featureAttributes.toNodeID;
     let _0x1989c7;
     const _0x32336a = getNodeObj(_0xdafc0a), segmentIDs = _0x32336a["getSegmentIds"](),
           turnGraph = W.model.getTurnGraph();
     let _0x44e9fd = {}, _0x1b740b = [];
-    _0x448ddd === "A" ? (_0x1989c7 = components[0x1]) : (_0x1989c7 = components[components.length - 0x2]);
+    nodeName === "A" ? (_0x1989c7 = components[0x1]) : (_0x1989c7 = components[components.length - 0x2]);
     let _0x2362eb = _0x1989c7.x - _0x32336a.geometry.x, _0x480d3d = _0x1989c7.y - _0x32336a.geometry.y,
         _0x33018e = Math.atan2(_0x480d3d, _0x2362eb), _0xf2c260 = ((_0x33018e * 0xb4) / Math.PI) % 360;
     for (let idx = 0x0; idx < segmentIDs.length; idx++) {
@@ -2039,13 +2049,15 @@
         let _0x528fbb = ((_0x33018e * 180) / Math.PI) % 360;
         if (_0xf2c260 < 0x0)
           _0x528fbb = _0xf2c260 - _0x528fbb;
-        (_0x44e9fd.id = _0x5842af.id), (_0x44e9fd.order = _0x528fbb), _0x1b740b.push(_0x44e9fd);
+        _0x44e9fd.id = _0x5842af.id;
+        _0x44e9fd.order = _0x528fbb;
+        _0x1b740b.push(_0x44e9fd);
       }
       _0x1b740b.sort((_0x42b904, _0xb23157) => (_0x42b904.order > _0xb23157.order ? 0x1 : -0x1));
     }
     console.log(_0x1b740b);
     if (_turnInfo.length === _0x1b740b.length) {
-      _0x448ddd === "A" ? mAction.doSubAction(new UpdateObj(featureObject, {revLaneCount : laneCount}))
+      nodeName === "A" ? mAction.doSubAction(new UpdateObj(featureObject, {revLaneCount : laneCount}))
                         : mAction.doSubAction(new UpdateObj(featureObject, {fwdLaneCount : laneCount}));
       for (let idx = 0x0; idx < _0x1b740b.length; idx++) {
         let _0x1662da = {};
