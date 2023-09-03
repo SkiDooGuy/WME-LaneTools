@@ -54,6 +54,7 @@
     revLanesInstructionsToCSS :
         ".rev-lanes > div > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit",
     wazeFontLink : "https://editor-assets.waze.com/production/font/aae5ed152758cb6a9191b91e6cedf322.svg",
+    segmentEditLanes : "#segment-edit-lanes > div > div > div.fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-arrows > div"
   };
   const LANETOOLS_VERSION = "" + GM_info.script.version,
         GF_LINK = "https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js",
@@ -870,7 +871,7 @@
       liDeleteFwdButtonSelector.off();
       liDeleteReverseButtonSelector.off();
       liDeleteOppositeButtonSelector.off();
-      if (!getId("li-del-rev-btn") && !revLanesEnabled &&
+      if (!getId("li-del-rev-btn") && !flagsObject.revLanesEnabled &&
           selectedFeatures[0x0].attributes.wazeFeature._wmeObject.getRevLanes().laneCount > 0x0) {
         if ($(constantStrings.revLanesInstructionsFromCSS).length > 0x0) {
           revDisplayRelativeSelector.prependTo(constantStrings.revLanesInstructionsFromCSS);
@@ -881,7 +882,7 @@
         }
       } else
         $(constantStrings.revLanesInstructionsFromCSS).css("border-bottom", "4px dashed " + LtSettings.BAColor);
-      if (!getId("li-del-fwd-btn") && !fwdLanesEnabled &&
+      if (!getId("li-del-fwd-btn") && !flagsObject.fwdLanesEnabled &&
           selectedFeatures[0x0].attributes.wazeFeature._wmeObject.getFwdLanes().laneCount > 0x0) {
         if ($(constantStrings.fwdLanesDivInstructionCSS).length > 0x0) {
           fwdDisplayRelative.prependTo(constantStrings.fwdLanesDivInstructionCSS);
@@ -895,12 +896,12 @@
       liDeleteFwdButtonSelector.on("click", function() {
         delLanes("fwd");
         flagsObject.fwdLanesEnabled = true;
-        setTimeout(function() { _0x5a28b7(); }, 200);
+        setTimeout(function() { _0x5a28b7(flagsObject, selectedFeatures); }, 200);
       });
       liDeleteReverseButtonSelector.on("click", function() {
         delLanes("rev");
         flagsObject.revLanesEnabled = true;
-        setTimeout(function() { _0x5a28b7(); }, 200);
+        setTimeout(function() { _0x5a28b7(flagsObject, selectedFeatures); }, 200);
       });
       liDeleteOppositeButtonSelector.on("click", function() {
         let laneDirection = $(this).prop("title");
@@ -931,7 +932,7 @@
           addTIOUI("rev");
       }, 0x64);
     });
-    !flagsObject.fwdLanesEnabled && !flagsObject.revLanesEnabled && _0x2308e1();
+    !flagsObject.fwdLanesEnabled && !flagsObject.revLanesEnabled && _0x2308e1(flagsObject);
     configureDirectionLanesHTML();
   }
   function setUpActionButtons(flagsObject) {
@@ -1131,14 +1132,14 @@
         if ($(this).parents(".fwd-lanes").length)
           turnsRegion = $(".fwd-lanes").find(".controls-container.turns-region");
         else
-          $(this).parents(".rev-lanes").length &&
-              (turnsRegion = $(".rev-lanes").find(".controls-container.turns-region"));
+          if($(this).parents(".rev-lanes").length)
+              turnsRegion = $(".rev-lanes").find(".controls-container.turns-region");
         turnsRegion = $(".street-name", turnsRegion);
         for (let idx = 0x0; idx < turnsRegion.length; idx++) {
           $(turnsRegion[idx]).off();
           $(turnsRegion[idx]).on("click", function() {
-            let _0x3d91bf = $(this).get(0x0), _0x569f4 = _0x3d91bf["parentElement"],
-                htmlElements = $(".checkbox-large.checkbox-white", _0x569f4);
+            let _0x3d91bf = $(this).get(0x0), parentElement = _0x3d91bf["parentElement"],
+                htmlElements = $(".checkbox-large.checkbox-white", parentElement);
             const elementDisabled = !getId(htmlElements[0x0].id).checked;
             for (let idx = 0x0; idx < htmlElements.length; idx++) {
               const idElement = $("#" + htmlElements[idx].id);
@@ -1161,9 +1162,7 @@
             getLanesConfig(segmentRef, aNodeRef, aNodeRef.attributes.segIDs, segmentRef.attributes.revLaneCount);
     if (toLanesConfig[0x4] > 0x0) {
       let _0x59815e = toLanesConfig[4] === 0x1 ? LtSettings.CS1Color : LtSettings.CS2Color,
-          _0x1d2fa0 =
-              $("#segment-edit-lanes > div > div > div.fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-arrows > div")
-                  .children();
+          _0x1d2fa0 = $(constantStrings.segmentEditLanes).children();
       for (let i = 0x0; i < _0x1d2fa0.length; i++) {
         _0x1d2fa0[i]["title"] === toLanesConfig[5] && $(_0x1d2fa0[i]).css("background-color", _0x59815e);
       }
@@ -2006,8 +2005,9 @@
         _0x56f831.fromNodeID === nodeID ? (selectedNodeName = "A") : (selectedNodeName = "B");
         selectedNodeName === "A" ? (_0x165d3c = geometryComponents[0x1])
                                  : (_0x165d3c = geometryComponents[geometryComponents.length - 0x2]);
-        (_0x17c96f = _0x165d3c.x - nodeObj.geometry.x), (_0x3b764f = _0x165d3c.y - nodeObj.geometry.y),
-            (_0x25f24a = Math.atan2(_0x3b764f, _0x17c96f));
+        _0x17c96f = _0x165d3c.x - nodeObj.geometry.x;
+        _0x3b764f = _0x165d3c.y - nodeObj.geometry.y;
+        _0x25f24a = Math.atan2(_0x3b764f, _0x17c96f);
         let _0x422251 = ((_0x25f24a * 0xb4) / Math.PI) % 360;
         if (_0x1b508f < 0x0)
           _0x422251 = _0x1b508f - _0x422251;
@@ -2044,8 +2044,7 @@
       _0x5842af.fromNodeID === _0xdafc0a ? (_0x52b37f = "A") : (_0x52b37f = "B");
       _0x52b37f === "A" ? (_0x3374c6 = _0x3619b7[0x1]) : (_0x3374c6 = _0x3619b7[_0x3619b7.length - 0x2]);
       if (turnData.state === 0x1) {
-        (_0x44e9fd = {}), (_0x2362eb = _0x3374c6.x - _0x32336a.geometry.x),
-            (_0x480d3d = _0x3374c6.y - _0x32336a.geometry.y), (_0x33018e = Math.atan2(_0x480d3d, _0x2362eb));
+        _0x44e9fd = {};_0x2362eb = _0x3374c6.x - _0x32336a.geometry.x;_0x480d3d = _0x3374c6.y - _0x32336a.geometry.y;_0x33018e = Math.atan2(_0x480d3d, _0x2362eb);
         let _0x528fbb = ((_0x33018e * 180) / Math.PI) % 360;
         if (_0xf2c260 < 0x0)
           _0x528fbb = _0xf2c260 - _0x528fbb;
