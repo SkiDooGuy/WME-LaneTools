@@ -47,6 +47,8 @@
     fwdLanesDivInstructionCSS : ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
     fwdLanesNthChild :
         ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1) > div",
+    revLanesNthChild :
+        ".rev-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1) > div",
     fwdLanesDirectionControlEditCSS :
         ".fwd-lanes > div > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit",
     fwdLanesLaneInstrunctionToCSS :
@@ -54,7 +56,8 @@
     revLanesInstructionsToCSS :
         ".rev-lanes > div > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit",
     wazeFontLink : "https://editor-assets.waze.com/production/font/aae5ed152758cb6a9191b91e6cedf322.svg",
-    segmentEditLanes : "#segment-edit-lanes > div > div > div.fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-arrows > div"
+    segmentEditLanes :
+        "#segment-edit-lanes > div > div > div.fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-arrows > div"
   };
   const LANETOOLS_VERSION = "" + GM_info.script.version,
         GF_LINK = "https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js",
@@ -260,7 +263,6 @@
   }
 
   async function setupOptions() {
-
     await loadSettings();
     await loadSpreadsheet();
     initLaneGuidanceClickSaver();
@@ -457,6 +459,8 @@
     // };
     $("#keyboard-dialog").on("hide", () => { checkShortcutsChanged(); });
     colorTitleID.tooltip();
+    scanArea();
+    displayLaneGraphics();
   }
 
   async function loadSettings() {
@@ -615,8 +619,7 @@
           keyboardShortcut.ctrlKey === true && (keyPressed += "C");
           keyPressed !== "" && (keyPressed += "+");
           keyboardShortcut.keyCode && (keyPressed += keyboardShortcut.keyCode);
-        }
-        else {
+        } else {
           keyPressed = "-1";
         }
         savedLTSettings[action] = keyPressed
@@ -628,8 +631,10 @@
     if (ltSettingsSaveStatus === null)
       console.warn("LaneTools: User PIN not set in WazeWrap tab");
     else {
-      if(ltSettingsSaveStatus === false) console.error("LaneTools: Unable to save settings to server");
-      else console.log("LaneTools: Saved Settings to the Server")
+      if (ltSettingsSaveStatus === false)
+        console.error("LaneTools: Unable to save settings to server");
+      else
+        console.log("LaneTools: Saved Settings to the Server")
     }
   }
 
@@ -805,7 +810,7 @@
   function getKeyboardShortcut(settingValue) {
     const keyboardShortCut = LtSettings[settingValue];
     let shortCutValue = "";
-    if(keyboardShortCut !== "-1") {
+    if (keyboardShortCut !== "-1") {
       if (keyboardShortCut.indexOf("+") > -1) {
         const keyboardKeyValue = keyboardShortCut.split("+")[0x0];
         for (let index = 0x0; index < keyboardKeyValue.length; index++) {
@@ -829,7 +834,8 @@
         }
         shortCutValue += String.fromCharCode(keyboardKey);
       }
-    }    return shortCutValue;
+    }
+    return shortCutValue;
   }
 
   function updateShortcutLabels() {
@@ -845,11 +851,11 @@
 
   function getNodeObj(objectID) { return W.model.nodes.getObjectById(objectID); }
   function decorateSegments(flagsObject, selectedFeatures, eventInfo = null) {
-    if(eventInfo !== null) {
+    if (eventInfo !== null) {
       eventInfo.stopPropagation();
     }
     getId("lt-ReverseLanesIcon").checked && !flagsObject.rotateDisplayLanes && rotateDisplay(flagsObject);
-    getId("lt-highlightCSIcons").checked && _0x50c216(selectedFeatures);
+    getId("lt-highlightCSIcons").checked && decorateCSIcons(selectedFeatures);
     if (_pickleColor >= 0x1 || editorInfo["editableCountryIDS"].length > 0x0) {
       if (getId("li-del-opp-btn"))
         $("#li-del-opp-btn").remove();
@@ -916,7 +922,7 @@
     editLaneGuidanceSelector.off();
     editLaneGuidanceSelector.on("click", function() {
       $(this).parents(".fwd-lanes").length && setTimeout(function() {
-        _0x16065d("fwd");
+        setupTurnLanesForDirection("fwd");
         populateNumberOfLanes();
         configureDirectionLanesHTML();
         setupAutoFocusLanes(flagsObject);
@@ -925,7 +931,7 @@
           addTIOUI("fwd");
       }, 100);
       $(this).parents(".rev-lanes").length && setTimeout(function() {
-        _0x16065d("rev");
+        setupTurnLanesForDirection("rev");
         populateNumberOfLanes();
         configureDirectionLanesHTML();
         setupAutoFocusLanes(flagsObject);
@@ -934,7 +940,7 @@
           addTIOUI("rev");
       }, 100);
     });
-    if (!flagsObject.fwdLanesEnabled && !flagsObject.revLanesEnabled && !flagsObject.triggerAutoOpen)
+    if (!flagsObject.fwdLanesEnabled && !flagsObject.revLanesEnabled && !flagsObject.autoOpenTriggered)
       triggerAutoFunctions(flagsObject);
     configureDirectionLanesHTML();
   }
@@ -960,7 +966,7 @@
     });
   }
   function triggerAutoFunctions(flagsObject) {
-    flagsObject.triggerAutoOpen = true;
+    flagsObject.autoOpenTriggered = true;
     if (getId("lt-AutoExpandLanes").checked) {
       if (!flagsObject.fwdLanesEnabled) {
       }
@@ -994,51 +1000,53 @@
         .css("margin-bottom", "4px");
   }
 
+  function getLaneItems(count, class_names_list) {
+    let itemsList = [],
+        classString = class_names_list.join(" "),
+        idStringBase = class_names_list.join("-");
+    for (let i = 1; i <= count; ++i) {
+      let idString = idStringBase + "-" + i.toString();
+      let selectorString = "<div class=\"" + classString + "\" id=\"" + idString + "\">" + i.toString() + "</div>";
+      let newItem = $(selectorString).css("margin", "2px 5px 2px 5px");
+      itemsList.push(newItem)
+    }
+    return itemsList;
+  }
+
+  function setupLaneCountControls(parentSelector, classNamesList) {
+    const jqueryClassSelector = "." + classNamesList.join(".");
+    $(jqueryClassSelector).on("click", function() {
+      $(jqueryClassSelector).css({"background-color":"transparent", "color": "black"});
+      $(this).css({"background-color" : "navy", "color" : "white"});
+    });
+    let numLanesSelector = parentSelector.find(".form-control");
+    let idString = "#" + classNamesList.join("-") + "-" + numLanesSelector.val();
+    $(idString).css({"background-color" : "navy", "color" : "white"});
+
+  }
   function populateNumberOfLanes() {
     let fwdLanesSelector = $(".fwd-lanes"), revLanesSelector = $(".rev-lanes");
     if (fwdLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-fwd-add-lanes")) {
-      let add1Lane = $("<div class=\x22lt-add-lanes fwd\x22>1 </div>"),
-          add2Lanes = $("<div class=\x22lt-add-lanes fwd\x22>2 </div>"),
-          add3Lanes = $("<div class=\x22lt-add-lanes fwd\x22>3 </div>"),
-          add4Lanes = $("<div class=\x22lt-add-lanes fwd\x22>4 </div>"),
-          add5Lanes = $("<div class=\x22lt-add-lanes fwd\x22>5 </div>"),
-          add6Lanes = $("<div class=\x22lt-add-lanes fwd\x22>6 </div>"),
-          add7Lanes = $("<div class=\x22lt-add-lanes fwd\x22>7 </div>"),
-          add8Lanes = $("<div class=\x22lt-add-lanes fwd\x22>8 </div>"),
-          addLanesItem = $(
-              "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22 id=\x22lt-fwd-add-lanes\x22 />");
-      add1Lane.appendTo(addLanesItem);
-      add2Lanes.appendTo(addLanesItem);
-      add3Lanes.appendTo(addLanesItem);
-      add4Lanes.appendTo(addLanesItem);
-      add5Lanes.appendTo(addLanesItem);
-      add6Lanes.appendTo(addLanesItem);
-      add7Lanes.appendTo(addLanesItem);
-      add8Lanes.appendTo(addLanesItem);
+      let addLanesItem = $(
+              "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22 id=\x22lt-fwd-add-lanes\x22 />"),
+          classNamesList = [ "lt-add-lanes", "fwd" ], laneCountsToAppend = getLaneItems(8, classNamesList);
+      for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
+        addLanesItem.append(laneCountsToAppend[idx]);
+      }
       addLanesItem.appendTo(constantStrings.fwdLanesNthChild);
+      setupLaneCountControls(fwdLanesSelector, classNamesList);
     }
     if (revLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-rev-add-lanes")) {
-      let add1ReverseLane = $("<div class=\x22lt-add-lanes rev\x22>1 </div>"),
-          add2ReverseLanes = $("<div class=\x22lt-add-lanes rev\x22>2 </div>"),
-          add3ReverseLanes = $("<div class=\x22lt-add-lanes rev\x22>3 </div>"),
-          add4ReverseLanes = $("<div class=\x22lt-add-lanes rev\x22>4 </div>"),
-          add5ReverseLanes = $("<div class=\x22lt-add-lanes rev\x22>5 </div>"),
-          add6ReverseLanes = $("<div class=\x22lt-add-lanes rev\x22>6 </div>"),
-          add7ReverseLanes = $("<div class=\x22lt-add-lanes rev\x22>7 </div>"),
-          add8ReverseLanes = $("<div class=\x22lt-add-lanes rev\x22>8</div>"),
-          reversLanesDiv = $(
-              "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22 id=\x22lt-rev-add-lanes\x22 />");
-      add1ReverseLane.appendTo(reversLanesDiv);
-      add2ReverseLanes.appendTo(reversLanesDiv);
-      add3ReverseLanes.appendTo(reversLanesDiv);
-      add4ReverseLanes.appendTo(reversLanesDiv);
-      add5ReverseLanes.appendTo(reversLanesDiv);
-      add6ReverseLanes.appendTo(reversLanesDiv);
-      add7ReverseLanes.appendTo(reversLanesDiv);
-      add8ReverseLanes.appendTo(reversLanesDiv);
-      reversLanesDiv.appendTo(
-          ".rev-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1) > div");
+      let reverseLaneDiv = $(
+              "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22 id=\x22lt-rev-add-lanes\x22 />"),
+          classNamesList = [ "lt-add-lanes", "rev" ], laneCountsToAppend = getLaneItems(8, classNamesList);
+      for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
+        reverseLaneDiv.append(laneCountsToAppend[idx]);
+      }
+      reverseLaneDiv.appendTo(constantStrings.revLanesNthChild);
+      setupLaneCountControls(revLanesSelector, classNamesList);
     }
+
     $(".lt-add-lanes").on("click", function() {
       let addLanesText = $(this).text(), formControlSelector = $(".form-control");
       addLanesText = Number.parseInt(addLanesText, 10);
@@ -1056,48 +1064,34 @@
       }
     });
     if (fwdLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-fwd-add-Width")) {
-      let add1MoreLane = $("<div class=\x22lt-add-Width fwd\x22>1 </div>"),
-          add2MoreLanes = $("<div class=\x22lt-add-Width fwd\x22>2 </div>"),
-          add3MoreLanes = $("<div class=\x22lt-add-Width fwd\x22>3 </div>"),
-          add4MoreLanes = $("<div class=\x22lt-add-Width fwd\x22>4 </div>"),
-          add5MoreLanes = $("<div class=\x22lt-add-Width fwd\x22>5 </div>"),
-          add6MoreLanes = $("<div class=\x22lt-add-Width fwd\x22>6 </div>"),
-          add7MoreLanes = $("<div class=\x22lt-add-Width fwd\x22>7 </div>"),
-          add8MoreLanes = $("<div class=\x22lt-add-Width fwd\x22>8</div>"),
-          addMoreLanes =
-              $("<div style=\x22position:relative;display:block;width:100%;\x22 id=\x22lt-fwd-add-Width\x22 />");
-      add1MoreLane.appendTo(addMoreLanes);
-      add2MoreLanes.appendTo(addMoreLanes);
-      add3MoreLanes.appendTo(addMoreLanes);
-      add4MoreLanes.appendTo(addMoreLanes);
-      add5MoreLanes.appendTo(addMoreLanes);
-      add6MoreLanes.appendTo(addMoreLanes);
-      add7MoreLanes.appendTo(addMoreLanes);
-      add8MoreLanes.appendTo(addMoreLanes);
-      addMoreLanes.prependTo(
+      let addFwdLanes =
+              $("<div style=\x22display:inline-flex;flex-direction:row;width:100%;\x22 id=\x22lt-fwd-add-Width\x22 />"),
+          classNamesList = [ "lt-add-Width", "fwd" ], laneCountsToAppend = getLaneItems(8, classNamesList);
+      for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
+        addFwdLanes.append(laneCountsToAppend[idx]);
+      }
+      addFwdLanes.prependTo(
           ".fwd-lanes > div > div > .lane-instruction.lane-instruction-from > .instruction > .road-width-edit > div > div > div > .lane-width-card");
+      const jqueryClassSelector = "." + classNamesList.join(".");
+      $(jqueryClassSelector).on("click", function() {
+        $(jqueryClassSelector).css({"background-color":"transparent", "color": "black"});
+        $(this).css({"background-color" : "navy", "color" : "white"});
+      });
     }
     if (revLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-rev-add-Width")) {
-      let append1Lane = $("<div class=\x22lt-add-Width rev\x22>1 </div>"),
-          append2Lanes = $("<div class=\x22lt-add-Width rev\x22>2 </div>"),
-          append3Lanes = $("<div class=\x22lt-add-Width rev\x22>3 </div>"),
-          append4Lanes = $("<div class=\x22lt-add-Width rev\x22>4 </div>"),
-          append5Lanes = $("<div class=\x22lt-add-Width rev\x22>5 </div>"),
-          append6Lanes = $("<div class=\x22lt-add-Width rev\x22>6 </div>"),
-          append7Lanes = $("<div class=\x22lt-add-Width rev\x22>7 </div>"),
-          append8Lanes = $("<div class=\x22lt-add-Width rev\x22>8 </div>"),
-          appendRevLanes =
-              $("<div style=\x22position:relative;display:block;width:100%;\x22 id=\x22lt-rev-add-Width\x22 />");
-      append1Lane.appendTo(appendRevLanes);
-      append2Lanes.appendTo(appendRevLanes);
-      append3Lanes.appendTo(appendRevLanes);
-      append4Lanes.appendTo(appendRevLanes);
-      append5Lanes.appendTo(appendRevLanes);
-      append6Lanes.appendTo(appendRevLanes);
-      append7Lanes.appendTo(appendRevLanes);
-      append8Lanes.appendTo(appendRevLanes);
+      let appendRevLanes =
+              $("<div style=\x22display:inline-flex;flex-direction:row;width:100%;\x22 id=\x22lt-rev-add-Width\x22 />"),
+          classNamesList = [ "lt-add-Width", "rev" ], laneCountsToAppend = getLaneItems(8, classNamesList);
+      for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
+        appendRevLanes.append(laneCountsToAppend[idx]);
+      }
       appendRevLanes.prependTo(
           ".rev-lanes > div > div > .lane-instruction.lane-instruction-from > .instruction > .road-width-edit > div > div > div > .lane-width-card");
+      const jqueryClassSelector = "." + classNamesList.join(".");
+      $(jqueryClassSelector).on("click", function() {
+        $(jqueryClassSelector).css({"background-color":"transparent", "color": "black"});
+        $(this).css({"background-color" : "navy", "color" : "white"});
+      });
     }
     $(".lt-add-Width").on("click", function() {
       let numLanesToAdd = $(this).text();
@@ -1129,57 +1123,60 @@
     }
   }
 
-  function _0x16065d(laneDirection) {
+  function setupTurnLanesForDirection(laneDirection) {
     if (getId("lt-SelAllEnable").checked) {
       $(".street-name").css("user-select", "none");
       let formControlSelector = laneDirection === "fwd" ? $(".fwd-lanes").find(".form-control")[0x0]
-                                              : $(".rev-lanes").find(".form-control")[0x0],
-          _0x36b726 = $(formControlSelector).val();
+                                                        : $(".rev-lanes").find(".form-control")[0x0],
+          numOfLanesForGuidance = $(formControlSelector).val();
       $(formControlSelector).on("change", function() {
         let turnsRegion;
         if ($(this).parents(".fwd-lanes").length)
           turnsRegion = $(".fwd-lanes").find(".controls-container.turns-region");
-        else
-          if($(this).parents(".rev-lanes").length)
-              turnsRegion = $(".rev-lanes").find(".controls-container.turns-region");
+        else if ($(this).parents(".rev-lanes").length)
+          turnsRegion = $(".rev-lanes").find(".controls-container.turns-region");
         turnsRegion = $(".street-name", turnsRegion);
         for (let idx = 0x0; idx < turnsRegion.length; idx++) {
           $(turnsRegion[idx]).off();
           $(turnsRegion[idx]).on("click", function() {
-            let _0x3d91bf = $(this).get(0x0), parentElement = _0x3d91bf["parentElement"],
+            let turnDirection = $(this).get(0x0), parentElement = turnDirection["parentElement"],
                 htmlElements = $(".checkbox-large.checkbox-white", parentElement);
-            const elementDisabled = !getId(htmlElements[0x0].id).checked;
-            for (let idx = 0x0; idx < htmlElements.length; idx++) {
-              const idElement = $("#" + htmlElements[idx].id);
-              idElement.prop("checked", elementDisabled);
-              idElement.trigger("change");
+            if(htmlElements.length > 0) {
+              const elementDisabled = !getId(htmlElements[0x0].id).checked;
+              for (let idx = 0x0; idx < htmlElements.length; idx++) {
+                const idElement = $("#" + htmlElements[idx].id);
+                idElement.prop("checked", elementDisabled);
+                idElement.trigger("change");
+              }
             }
           });
         }
       });
-      _0x36b726 > 0x0 && $(formControlSelector).trigger("change");
+      numOfLanesForGuidance > 0x0 && $(formControlSelector).trigger("change");
     }
   }
-  function _0x50c216(selectedFeatures) {
+  function decorateCSIcons(selectedFeatures) {
     const segmentRef = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
           bNodeRef = getNodeObj(segmentRef.attributes.toNodeID),
           aNodeRef = getNodeObj(segmentRef.attributes.fromNodeID);
-    let toLanesConfig =
+    let fwdLanesConfig =
             getLanesConfig(segmentRef, bNodeRef, bNodeRef.attributes.segIDs, segmentRef.attributes.fwdLaneCount),
-        fromLanesConfig =
-            getLanesConfig(segmentRef, aNodeRef, aNodeRef.attributes.segIDs, segmentRef.attributes.revLaneCount);
-    if (toLanesConfig[0x4] > 0x0) {
-      let _0x59815e = toLanesConfig[4] === 0x1 ? LtSettings.CS1Color : LtSettings.CS2Color,
+        numFwdGuidedLanes = fwdLanesConfig[4],
+        revLanesConfig =
+            getLanesConfig(segmentRef, aNodeRef, aNodeRef.attributes.segIDs, segmentRef.attributes.revLaneCount),
+        numRevGuidedLanes = revLanesConfig[4];
+    if (numFwdGuidedLanes > 0) {
+      let fwdCSIconColor = (numFwdGuidedLanes === 0x1 ? LtSettings.CS1Color : LtSettings.CS2Color),
           _0x1d2fa0 = $(constantStrings.segmentEditLanes).children();
       for (let i = 0x0; i < _0x1d2fa0.length; i++) {
-        _0x1d2fa0[i]["title"] === toLanesConfig[5] && $(_0x1d2fa0[i]).css("background-color", _0x59815e);
+        _0x1d2fa0[i]["title"] === fwdLanesConfig[5] && $(_0x1d2fa0[i]).css("background-color", fwdCSIconColor);
       }
     }
-    if (fromLanesConfig[4] > 0x0) {
-      let csColor = (fromLanesConfig[4] === 0x1 ? LtSettings.CS1Color : LtSettings.CS2Color),
+    if (numRevGuidedLanes > 0x0) {
+      let revCSIconColor = (numRevGuidedLanes === 0x1 ? LtSettings.CS1Color : LtSettings.CS2Color),
           _0x37b735 = $(constantStrings.segmentEditLanes).children();
       for (let i = 0x0; i < _0x37b735.length; i++) {
-        _0x37b735[i]["title"] === fromLanesConfig[0x5] && $(_0x37b735[i]).css("background-color", csColor);
+        _0x37b735[i]["title"] === revLanesConfig[0x5] && $(_0x37b735[i]).css("background-color", revCSIconColor);
       }
     }
   }
@@ -1207,7 +1204,7 @@
     flagsObject.fwdLanesEnabled = false;
     flagsObject.revLanesEnabled = false;
     flagsObject.rotateDisplayLanes = false;
-    flagsObject.triggerAutoOpen = false;
+    flagsObject.autoOpenTriggered = false;
     // function _0x47ffa9() {
     //   W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.toNodeID).attributes.geometry;
     //   document.getElementById(
@@ -1233,9 +1230,7 @@
     if (getId("lt-UIEnable").checked && getId("lt-ScriptEnabled").checked && selectedFeatures.length > 0x0) {
       if (selectedFeatures.length === 0x1 &&
           selectedFeatures[0x0].attributes.wazeFeature._wmeObject.type === "segment") {
-        $(".lanes-tab").on("click",(event) => {
-          decorateSegments(flagsObject, selectedFeatures, event);
-        });
+        $(".lanes-tab").on("click", (event) => { decorateSegments(flagsObject, selectedFeatures, event); });
         getId("lt-AutoLanesTab").checked && setTimeout(() => { $(".lanes-tab").trigger("click"); }, 100);
       } else
         selectedFeatures.length === 0x2 && scanHeuristicsCandidates(selectedFeatures);
@@ -1295,9 +1290,7 @@
 
   function lt_get_first_point(segment) { return segment.geometry.components[0x0]; }
 
-  function lt_get_last_point(segment) {
-    return segment.geometry.components[segment.geometry.components.length - 0x1];
-  }
+  function lt_get_last_point(segment) { return segment.geometry.components[segment.geometry.components.length - 0x1]; }
 
   function lt_get_second_point(segment) { return segment.geometry.components[0x1]; }
 
@@ -1358,7 +1351,7 @@
   }
 
   function highlightSegment(segGeom, segDirection, highlightEnabled, highlightLabelsEnabled, forwardLaneCount,
-                            reverseLaneCount, _0x147e33, _0x40fe5d, _0x42e2ed, _0x701156, applyHeuristics) {
+                            reverseLaneCount, _0x147e33, _0x40fe5d, _0x42e2ed, heurCandidate, applyHeuristics) {
     const segmentHighlightTypes = {
       DASH_THIN : 0x1,
       DASH_THICK : 0x2,
@@ -1368,17 +1361,19 @@
           newSegmentGeometry = segGeom.clone(), csEnabled = getId("lt-CSEnable").checked;
     if (newSegmentGeometry.components.length > 0x2) {
       let numComponents = newSegmentGeometry.components.length, oneDirectionNumComponents = numComponents / 2,
-          fwdNumComponents = numComponents % 0x2 ? Math.ceil(oneDirectionNumComponents) - 0x1 : Math.ceil(oneDirectionNumComponents),
-          revNumComponents = numComponents % 0x2 ? Math.floor(oneDirectionNumComponents) + 0x1 : Math.floor(oneDirectionNumComponents);
+          fwdNumComponents =
+              numComponents % 0x2 ? Math.ceil(oneDirectionNumComponents) - 0x1 : Math.ceil(oneDirectionNumComponents),
+          revNumComponents =
+              numComponents % 0x2 ? Math.floor(oneDirectionNumComponents) + 0x1 : Math.floor(oneDirectionNumComponents);
       if (segDirection === Direction.FORWARD) {
         let _0x21e1e8 = getModifiableComponents(newSegmentGeometry, fwdNumComponents, numComponents);
         highlightEnabled && _0x58a03b(_0x21e1e8, "" + LtSettings.ABColor, segmentHighlightTypes.DASH_THIN);
-        _0x43deae(_0x21e1e8, _0x147e33, _0x42e2ed, _0x701156, applyHeuristics);
+        _0x43deae(_0x21e1e8, _0x147e33, _0x42e2ed, heurCandidate, applyHeuristics);
       } else {
         if (segDirection === Direction.REVERSE) {
           let _0x3e6b6f = getModifiableComponents(newSegmentGeometry, 0x0, revNumComponents);
           highlightEnabled && _0x58a03b(_0x3e6b6f, "" + LtSettings.BAColor, segmentHighlightTypes.DASH_THIN);
-          _0x43deae(_0x3e6b6f, _0x147e33, _0x42e2ed, _0x701156, applyHeuristics);
+          _0x43deae(_0x3e6b6f, _0x147e33, _0x42e2ed, heurCandidate, applyHeuristics);
         }
       }
       if (highlightLabelsEnabled && (Direction.FORWARD || forwardLaneCount === 0x0)) {
@@ -1401,14 +1396,14 @@
                                                         newSegmentGeometry.components[0x1].clone().y),
             _0x13e81d = new OpenLayers.Geometry.LineString([ startPoint, fwdEndPoint ], {});
         highlightEnabled && _0x58a03b(_0x13e81d, "" + LtSettings.ABColor, segmentHighlightTypes.DASH_THIN);
-        _0x43deae(_0x13e81d, _0x147e33, _0x42e2ed, _0x701156, applyHeuristics);
+        _0x43deae(_0x13e81d, _0x147e33, _0x42e2ed, heurCandidate, applyHeuristics);
       } else {
         if (segDirection === Direction.REVERSE) {
           let revEndPoint = new OpenLayers.Geometry.Point(newSegmentGeometry.components[0x0].clone().x,
                                                           newSegmentGeometry.components[0x0].clone().y),
               _0x598bfa = new OpenLayers.Geometry.LineString([ startPoint, revEndPoint ], {});
           highlightEnabled && _0x58a03b(_0x598bfa, "" + LtSettings["BAColor"], segmentHighlightTypes["DASH_THIN"]);
-          _0x43deae(_0x598bfa, _0x147e33, _0x42e2ed, _0x701156, applyHeuristics);
+          _0x43deae(_0x598bfa, _0x147e33, _0x42e2ed, heurCandidate, applyHeuristics);
         }
       }
       highlightLabelsEnabled && (Direction.FORWARD || forwardLaneCount === 0x0) &&
@@ -1487,8 +1482,8 @@
   let lt_scanArea_timer = {
     start : function() {
       this.cancel();
-      let _0x150ba4 = this;
-      this["timeoutID"] = window.setTimeout(function() { _0x150ba4.calculate(); }, 500);
+      let timerObject = this;
+      this["timeoutID"] = window.setTimeout(function() { timerObject.calculate(); }, 500);
     },
     calculate : function() {
       scanArea_real();
@@ -1504,11 +1499,14 @@
   };
 
   function scanArea() {
-    lt_scanArea_recursive = 0x3;
+    if(lt_scanArea_recursive === 0) lt_scanArea_recursive = 0x3;
+    else lt_scanArea_recursive--;
+    if(lt_scanArea_recursive === 0) return;
     scanArea_real();
   }
 
   function scanArea_real() {
+    if(lt_scanArea_recursive === 0) return;
     const scriptEnabled = getId("lt-ScriptEnabled").checked, highlightsEnabled = getId("lt-HighlightsEnable").checked,
           heuristicsChecksEnabled = getId("lt-LaneHeuristicsChecks").checked,
           currentZoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16,
@@ -1539,7 +1537,7 @@
     return numSegments
   }
 
-  function _0x2ad725(segmentObj, segmentAttributes, segmentDirection, segmentLength, minZoomLevel,
+  function processOneSegment(segmentObj, segmentAttributes, segmentDirection, segmentLength, minZoomLevel,
                      performHeuristicsCheck, errorsFound) {
     const fwdLaneCount = segmentAttributes.fwdLaneCount, revLaneCount = segmentAttributes.revLaneCount,
           highlightEnabled = getId("lt-HighlightsEnable").checked,
@@ -1551,12 +1549,11 @@
           turnGraph = W.model.getTurnGraph();
 
     let toNode = getNodeObj(segmentAttributes.toNodeID), fromNode = getNodeObj(segmentAttributes.fromNodeID),
-        fLaneCount = fwdLaneCount, rLaneCount = revLaneCount;
+        fLaneCount = fwdLaneCount;
     if (segmentDirection !== Direction.FORWARD) {
       toNode = getNodeObj(segmentAttributes.fromNodeID);
       fromNode = getNodeObj(segmentAttributes.toNodeID);
       fLaneCount = revLaneCount;
-      rLaneCount = fwdLaneCount;
     }
     let _0x5855dd = false, _0x4d3a78 = false, _0x12606 = false, _0x58ba1e = false, _0x3a8c59 = 0x0,
         heurCandidate = HeuristicsCandidate.NONE, _0x53f387 = null, _0x211d6a = {seg : 0x0, direction : Direction.NONE};
@@ -1582,13 +1579,13 @@
       }
     }
     if (!performHeuristicsCheck) {
-      let _0x5c9960 = null;
+      let mutableHeurCandidate = null;
       if ((heurPosHighlightEnabled && heurCandidate === HeuristicsCandidate.PASS) ||
           (heurNegHighlightEnabled && heurCandidate === HeuristicsCandidate.FAIL))
-        _0x5c9960 = heurCandidate;
-      if (fLaneCount > 0x0 || _0x5c9960 !== null || _0x12606) {
+        mutableHeurCandidate = heurCandidate;
+      if (fLaneCount > 0x0 || mutableHeurCandidate !== null || _0x12606) {
         highlightSegment(segmentObj.geometry, segmentDirection, highlightEnabled, highlightLabelsEnabled, fwdLaneCount,
-                         revLaneCount, _0x58ba1e && highlightLIOEnabled, _0x3a8c59, _0x12606, _0x5c9960, false)
+                         revLaneCount, _0x58ba1e && highlightLIOEnabled, _0x3a8c59, _0x12606, mutableHeurCandidate, false)
       }
       if (highlightEnabled && getId("lt-NodesEnable").checked) {
         _0x5855dd && highlightNode(toNode.geometry, "" + LtSettings.NodeColor);
@@ -1618,7 +1615,7 @@
       if (onScreen(segmentObj, minZoomLevel)) {
         const featureAttributes = segmentObj.getFeatureAttributes();
         let errorsFound = false, segmentLength = lt_segment_length(segmentObj);
-        errorsFound ||= _0x2ad725(segmentObj, featureAttributes, Direction.FORWARD, segmentLength, minZoomLevel,
+        errorsFound ||= processOneSegment(segmentObj, featureAttributes, Direction.FORWARD, segmentLength, minZoomLevel,
                                   performHeuristicsCheck, errorsFound);
         if (errorsFound && lt_scanArea_recursive > 0x0) {
           lt_log("LT errors found, scanning again", 0x2);
@@ -1627,10 +1624,10 @@
           lt_scanArea_timer.start();
           return;
         }
-        errorsFound ||= _0x2ad725(segmentObj, featureAttributes, Direction.REVERSE, segmentLength, minZoomLevel,
+        errorsFound ||= processOneSegment(segmentObj, featureAttributes, Direction.REVERSE, segmentLength, minZoomLevel,
                                   performHeuristicsCheck, errorsFound);
         if (errorsFound && lt_scanArea_recursive > 0x0) {
-          lt_log("LT errors found, scanning again", 0x2);
+          lt_log("LT errors found, scanning again", 2);
           removeHighlights();
           lt_scanArea_recursive--;
           lt_scanArea_timer.start();
@@ -1640,23 +1637,23 @@
   }
 
   function getLanesConfig(segment, node, attachedSegments, laneCount) {
-    let _0x739f97 = false, _0x55ea18 = false, _0x16f110 = false, _0x161259 = false, _0x5c5507 = 0x0, _0x4211dc = null,
-        _0x44a7d8 = [];
-    const turnGraph = W.model.getTurnGraph(), zoomLevel = W.map.getZoom() != null ? W.map["getZoom"]() : 0x10;
+    let turnLanesExist = false, turnDataInstructionOpcodeExists = false, _0x16f110 = false, turnAngleOverridden = false,
+        turnGuidanceMode = 0x0, streetName = null, _0x44a7d8 = [];
+    const turnGraph = W.model.getTurnGraph(), zoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16;
     for (let idx = 0x0; idx < attachedSegments.length; idx++) {
       const attachedSegment = getSegObj(attachedSegments[idx]),
             turnData = turnGraph.getTurnThroughNode(node, segment, attachedSegment).getTurnData();
       if (turnData.state === 0x1) {
-        turnData["hasInstructionOpcode"]() && (_0x55ea18 = true);
+        turnData.hasInstructionOpcode() && (turnDataInstructionOpcodeExists = true);
         if (turnData.hasLanes()) {
-          _0x739f97 = true;
-          turnData.getLaneData().hasOverrideAngle() && (_0x161259 = true);
+          turnLanesExist = true;
+          turnData.getLaneData().hasOverrideAngle() && (turnAngleOverridden = true);
           if (turnData.getLaneData().getGuidanceMode() === 0x1) {
-            _0x5c5507 = 0x1;
-            _0x4211dc = W.model.streets.getObjectById(attachedSegment.attributes.primaryStreetID).name;
+            turnGuidanceMode = 0x1;
+            streetName = W.model.streets.getObjectById(attachedSegment.attributes.primaryStreetID).name;
           } else if (turnData.getLaneData().getGuidanceMode() === 0x2) {
-            _0x5c5507 = 0x2;
-            _0x4211dc = W.model.streets.getObjectById(attachedSegment.attributes.primaryStreetID).name;
+            turnGuidanceMode = 0x2;
+            streetName = W.model.streets.getObjectById(attachedSegment.attributes.primaryStreetID).name;
           }
           const frmLnIdx = turnData.lanes.fromLaneIndex, toLnIdx = turnData.lanes.toLaneIndex;
           for (let cnt = frmLnIdx; cnt < toLnIdx + 0x1; cnt++) {
@@ -1675,33 +1672,38 @@
     }
     if (_0x44a7d8.length < laneCount && onScreen(node, zoomLevel))
       (_0x16f110 = true);
-    return [ _0x739f97, _0x55ea18, _0x161259, _0x16f110, _0x5c5507, _0x4211dc ]
+    return [ turnLanesExist, turnDataInstructionOpcodeExists, turnAngleOverridden, _0x16f110, turnGuidanceMode, streetName ]
   }
 
   function setTurns(directionClass) {
     if (!getId("lt-ClickSaveEnable").checked)
       return;
     let directionElement = document.getElementsByClassName(directionClass)[0x0],
-        reverseDirectionCardinalAngle = directionElement.getElementsByClassName("angle--135").length > 0x0  ? "angle--135"
-                    : directionElement.getElementsByClassName("angle--90").length > 0x0 ? "angle--90"
-                                                                                 : "angle--45",
+        reverseDirectionCardinalAngle =
+            directionElement.getElementsByClassName("angle--135").length > 0x0  ? "angle--135"
+            : directionElement.getElementsByClassName("angle--90").length > 0x0 ? "angle--90"
+                                                                                : "angle--45",
         forwardDirectionCardinalAngle = directionElement.getElementsByClassName("angle-135").length > 0x0  ? "angle-135"
-                    : directionElement.getElementsByClassName("angle-90").length > 0x0 ? "angle-90"
-                                                                                : "angle-45",
-        turnLaneEditTop = directionElement.getElementsByClassName("turn-lane-edit-top"), _0x16a6be = false, _0x43ae0b = false,
-        _0x257aea = [].slice.call(turnLaneEditTop).reduce(
-            (_0x4861b3, _0x2010bf) =>
-                _0x4861b3 +
-                [].slice.call(_0x2010bf.getElementsByTagName("input"))
-                    .reduce((_0x58c1c4, _0x4afea1) => (_0x4afea1.checked === true ? _0x58c1c4 + 0x1 : _0x58c1c4), 0x0),
-            0x0);
+                                        : directionElement.getElementsByClassName("angle-90").length > 0x0 ? "angle-90"
+                                                                                                           : "angle-45",
+        turnLaneEditTop = directionElement.getElementsByClassName("turn-lane-edit-top"), _0x16a6be = false,
+        _0x43ae0b = false,
+        _0x257aea =
+            [].slice.call(turnLaneEditTop)
+                .reduce((_0x4861b3, _0x2010bf) =>
+                            _0x4861b3 + [].slice.call(_0x2010bf.getElementsByTagName("input"))
+                                            .reduce((_0x58c1c4, _0x4afea1) =>
+                                                        (_0x4afea1.checked === true ? _0x58c1c4 + 0x1 : _0x58c1c4),
+                                                    0x0),
+                        0x0);
     if (_0x257aea === 0x0) {
       for (let idx = 0x0; idx < turnLaneEditTop.length; idx++) {
         const _0x496f7c = turnLaneEditTop[idx];
         let _0x5c6270 = _0x496f7c.getElementsByTagName("wz-checkbox");
         if (_0x5c6270 && _0x5c6270.length > 0x0) {
-          if (_0x496f7c.getElementsByClassName(reverseDirectionCardinalAngle).length > 0x0 && _0x5c6270[0x0].checked !== undefined &&
-              _0x5c6270[0x0].checked === false && getId("lt-ClickSaveTurns").checked)
+          if (_0x496f7c.getElementsByClassName(reverseDirectionCardinalAngle).length > 0x0 &&
+              _0x5c6270[0x0].checked !== undefined && _0x5c6270[0x0].checked === false &&
+              getId("lt-ClickSaveTurns").checked)
             (_0x16a6be = true), _0x5c6270[0x0].click();
           else
             _0x496f7c.getElementsByClassName(forwardDirectionCardinalAngle).length > 0x0 &&
@@ -1719,7 +1721,8 @@
               if (idx === 0x0 && (getId("lt-ClickSaveStraight").checked || _0x16a6be === false))
                 directionCheckBoxes[idx].click();
               else {
-                if (idx === directionCheckBoxes.length - 0x1 && (getId("lt-ClickSaveStraight").checked || _0x43ae0b === false))
+                if (idx === directionCheckBoxes.length - 0x1 &&
+                    (getId("lt-ClickSaveStraight").checked || _0x43ae0b === false))
                   directionCheckBoxes[idx].click();
                 else
                   idx !== 0x0 && idx !== directionCheckBoxes.length - 0x1 && directionCheckBoxes[idx].click();
@@ -1787,7 +1790,7 @@
     const segmentId = segmentObj.attributes.id;
     let _0x11d184 = _0x43a6d2(toNodeObj.attributes.id, segmentObj),
         _0x5349e1 = _0xca5734(fromNodeObj.attributes.id, segmentObj), _0x18525c = -90, _0x26651c = 90;
-    if(W.model.isLeftHand) {
+    if (W.model.isLeftHand) {
       _0x18525c = 90;
       _0x26651c = -90;
     }
@@ -1936,8 +1939,8 @@
   function _0x43a6d2(objectId, segment) {
     let _0x39f1a3 = _0xca5734(objectId, segment), _0x228ce5 = _0x39f1a3 + 180;
     _0x228ce5 >= 180 && (_0x228ce5 -= 360);
-            lt_log("Azm to node " + objectId + "/ " + segment.attributes.id + ": " + _0x228ce5, 0x3);
-            return _0x228ce5;
+    lt_log("Azm to node " + objectId + "/ " + segment.attributes.id + ": " + _0x228ce5, 0x3);
+    return _0x228ce5;
   }
 
   function _0xcd5d5b(_0x362a09, _0xd93a20) {
@@ -2026,7 +2029,7 @@
         _turnData.id = segmentObject.attributes.id;
         _turnData.order = _0x422251;
         _turnData.lanes = _0x2ca8fc;
-            _turnInfo.push(_turnData);
+        _turnInfo.push(_turnData);
       }
       _turnInfo.sort((lhs, rhs) => (lhs.order > rhs.order ? 0x1 : -0x1));
     }
@@ -2054,7 +2057,10 @@
       _0x5842af.fromNodeID === _0xdafc0a ? (_0x52b37f = "A") : (_0x52b37f = "B");
       _0x52b37f === "A" ? (_0x3374c6 = _0x3619b7[0x1]) : (_0x3374c6 = _0x3619b7[_0x3619b7.length - 0x2]);
       if (turnData.state === 0x1) {
-        _0x44e9fd = {};_0x2362eb = _0x3374c6.x - _0x32336a.geometry.x;_0x480d3d = _0x3374c6.y - _0x32336a.geometry.y;_0x33018e = Math.atan2(_0x480d3d, _0x2362eb);
+        _0x44e9fd = {};
+        _0x2362eb = _0x3374c6.x - _0x32336a.geometry.x;
+        _0x480d3d = _0x3374c6.y - _0x32336a.geometry.y;
+        _0x33018e = Math.atan2(_0x480d3d, _0x2362eb);
         let _0x528fbb = ((_0x33018e * 180) / Math.PI) % 360;
         if (_0xf2c260 < 0x0)
           _0x528fbb = _0xf2c260 - _0x528fbb;
@@ -2067,7 +2073,7 @@
     console.log(_0x1b740b);
     if (_turnInfo.length === _0x1b740b.length) {
       nodeName === "A" ? mAction.doSubAction(new UpdateObj(featureObject, {revLaneCount : laneCount}))
-                        : mAction.doSubAction(new UpdateObj(featureObject, {fwdLaneCount : laneCount}));
+                       : mAction.doSubAction(new UpdateObj(featureObject, {fwdLaneCount : laneCount}));
       for (let idx = 0x0; idx < _0x1b740b.length; idx++) {
         let _0x1662da = {};
         for (let j = 0x0; j < _turnInfo.length; j++) {
@@ -2227,9 +2233,12 @@
   }
 
   function displayGuidanceBox(nodeObj, segmentObject, guidanceObject) {
+    const numberOfTurnLanes = Object.getOwnPropertyNames(guidanceObject).length;
+    if (numberOfTurnLanes === 0)
+      return;
     let laneDisplayBoxConfiguration = getLaneDisplayBoxObjectConfig(),
         segmentDisplayCardinalAngle = getCardinalAngle(nodeObj.attributes.id, segmentObject), centroid,
-        guidanceBoxCoordinates = [], departureAngleID = 0, numberOfTurnLanes = Object.getOwnPropertyNames(guidanceObject).length;
+        guidanceBoxCoordinates = [], departureAngleID = 0;
     if (!getId("lt-IconsRotate").checked)
       segmentDisplayCardinalAngle = -90;
     if (segmentDisplayCardinalAngle === 0x0) {
@@ -2284,15 +2293,19 @@
             segmentDisplayCardinalAngle > 315 ? segmentDisplayCardinalAngle : segmentDisplayCardinalAngle + 90,
         reciprocalDisplayAngle = 360 - displayAngle;
 
-    let guidanceBoxTopLeftCoord = getLaneBoxTopLeftVertex(departureAngleID, nodeObj, laneDisplayBoxConfiguration, numberOfTurnLanes);
-    const guidanceBoxBottomLeftVtx = new OpenLayers.Geometry.Point(guidanceBoxTopLeftCoord.x, guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.boxheight),
-        guidanceBoxTopRightPointVtx =
-            new OpenLayers.Geometry.Point(guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * numberOfTurnLanes,
-                guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.boxheight),
-        guidanceBoxBottomRightVtx = new OpenLayers.Geometry.Point(
-            guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * numberOfTurnLanes, guidanceBoxTopLeftCoord.y),
-        guidanceBoxTopLeftVtx = new OpenLayers.Geometry.Point(guidanceBoxTopLeftCoord.x, guidanceBoxTopLeftCoord.y);
-    guidanceBoxCoordinates.push(guidanceBoxBottomLeftVtx, guidanceBoxTopRightPointVtx, guidanceBoxBottomRightVtx, guidanceBoxTopLeftVtx);
+    let guidanceBoxTopLeftCoord =
+        getLaneBoxTopLeftVertex(departureAngleID, nodeObj, laneDisplayBoxConfiguration, numberOfTurnLanes);
+    const guidanceBoxBottomLeftVtx = new OpenLayers.Geometry.Point(
+              guidanceBoxTopLeftCoord.x, guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.boxheight),
+          guidanceBoxTopRightPointVtx = new OpenLayers.Geometry.Point(
+              guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * numberOfTurnLanes,
+              guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.boxheight),
+          guidanceBoxBottomRightVtx = new OpenLayers.Geometry.Point(
+              guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * numberOfTurnLanes,
+              guidanceBoxTopLeftCoord.y),
+          guidanceBoxTopLeftVtx = new OpenLayers.Geometry.Point(guidanceBoxTopLeftCoord.x, guidanceBoxTopLeftCoord.y);
+    guidanceBoxCoordinates.push(guidanceBoxBottomLeftVtx, guidanceBoxTopRightPointVtx, guidanceBoxBottomRightVtx,
+                                guidanceBoxTopLeftVtx);
     let guidanceBoxColors = {
       strokeColor : "#ffffff",
       strokeOpacity : 0x1,
@@ -2307,24 +2320,29 @@
     let boxWidthThickness = 0;
     _.each(guidanceObject, (lg) => {
       let displayBoxVertices = [];
-      var _0x1bd240 = new OpenLayers.Geometry.Point(guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
-                                                        laneDisplayBoxConfiguration.iconbordermargin,
-                                                    guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconborderheight),
-          _0x47bfb1 = new OpenLayers.Geometry.Point(guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
-                                                        laneDisplayBoxConfiguration.iconborderwidth,
-                                                    guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconborderheight),
-          _0x2d1e17 = new OpenLayers.Geometry.Point(guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
-                                                        laneDisplayBoxConfiguration.iconborderwidth,
-                                                    guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconbordermargin),
-          _0x42e795 = new OpenLayers.Geometry.Point(guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
-                                                        laneDisplayBoxConfiguration.iconbordermargin,
-                                                    guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconbordermargin);
-      displayBoxVertices.push(_0x1bd240, _0x47bfb1, _0x2d1e17, _0x42e795);
+      var displayBoxLeftTopPoint = new OpenLayers.Geometry.Point(
+              guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
+                  laneDisplayBoxConfiguration.iconbordermargin,
+              guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconborderheight),
+          displayBoxLeftBottomPoint = new OpenLayers.Geometry.Point(
+              guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
+                  laneDisplayBoxConfiguration.iconborderwidth,
+              guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconborderheight),
+          displayBoxRightTopPoint = new OpenLayers.Geometry.Point(
+              guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
+                  laneDisplayBoxConfiguration.iconborderwidth,
+              guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconbordermargin),
+          displayBoxRightBottomPoint = new OpenLayers.Geometry.Point(
+              guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
+                  laneDisplayBoxConfiguration.iconbordermargin,
+              guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconbordermargin);
+      displayBoxVertices.push(displayBoxLeftTopPoint, displayBoxLeftBottomPoint, displayBoxRightTopPoint,
+                              displayBoxRightBottomPoint);
       const displayBoxColors = {
-        strokeColor: "#000000",
-        strokeOpacity: 0x1,
-        strokeWidth: 0x1,
-        fillColor: "#26bae8",
+        strokeColor : "#000000",
+        strokeOpacity : 0x1,
+        strokeWidth : 0x1,
+        fillColor : "#26bae8",
       };
       let displayBoxLinearRing = new OpenLayers.Geometry.LinearRing(displayBoxVertices);
       displayBoxLinearRing.rotate(reciprocalDisplayAngle, centroid);
@@ -2566,7 +2584,7 @@
         boxDisplayObject.iconborderwidth = 3.5;
         boxDisplayObject.graphicHeight = 0x2a;
         boxDisplayObject.graphicWidth = 0x19;
-      break;
+        break;
       }
     return boxDisplayObject;
   }
@@ -2589,21 +2607,24 @@
         features[0x0].attributes.wazeFeature._wmeObject.type !== "segment")
       return;
     const wmeObject = features[0x0].attributes.wazeFeature._wmeObject, currentZoomLevel = W.map.getOLMap().getZoom();
-    if ((wmeObject.attributes.roadType !== 0x3 && wmeObject.attributes.roadType !== 0x6 &&
-         wmeObject.attributes.roadType !== 0x7 && currentZoomLevel < 0x10) ||
-        currentZoomLevel < 0xf)
+    if ((currentZoomLevel < 15) ||
+        (wmeObject.attributes.roadType !== LT_ROAD_TYPE.FREEWAY &&
+         wmeObject.attributes.roadType !== LT_ROAD_TYPE.MAJOR_HIGHWAY &&
+         wmeObject.attributes.roadType !== LT_ROAD_TYPE.MAJOR_HIGHWAY && currentZoomLevel < 16))
       return;
     let fwdTurnsObject = wmeObject.attributes.fwdLaneCount > 0x0
-                        ? addUturn($(".fwd-lanes").find(".lane-arrow").map(function() { return this; }).get())
-                        : false,
+                             ? addUturn($(".fwd-lanes").find(".lane-arrow").map(function() { return this; }).get())
+                             : false,
         revTurnsObject = wmeObject.attributes.revLaneCount > 0x0
-                        ? addUturn($(".rev-lanes").find(".lane-arrow").map(function() { return this; }).get())
-                        : false;
+                             ? addUturn($(".rev-lanes").find(".lane-arrow").map(function() { return this; }).get())
+                             : false;
 
     let fwdGuidance = fwdTurnsObject !== false ? serializeTurns(fwdTurnsObject) : false,
         revGuidance = revTurnsObject !== false ? serializeTurns(revTurnsObject) : false;
-    fwdTurnsObject && displayGuidanceBox(W.model.nodes.getObjectById(wmeObject.attributes.toNodeID), wmeObject, fwdGuidance);
-    revTurnsObject && displayGuidanceBox(W.model.nodes.getObjectById(wmeObject.attributes.fromNodeID), wmeObject, revGuidance);
+    fwdTurnsObject &&
+        displayGuidanceBox(W.model.nodes.getObjectById(wmeObject.attributes.toNodeID), wmeObject, fwdGuidance);
+    revTurnsObject &&
+        displayGuidanceBox(W.model.nodes.getObjectById(wmeObject.attributes.fromNodeID), wmeObject, revGuidance);
   }
 
   laneToolsBootstrap();
