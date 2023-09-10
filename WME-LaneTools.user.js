@@ -364,10 +364,10 @@
         sheetLinkSelector.on("mouseenter", function() { $(this).css("background-color", "orange"); })
             .on("mouseleave", function() { $(this).css("background-color", "#eeeeee"); });
         $(".lt-toolbar-button").on("click", function() {
-          $(this)[0x0].id === "copyA-button" && copyLaneInfo("A");
-          $(this)[0x0].id === "copyB-button" && copyLaneInfo("B");
-          $(this)[0x0].id === "pasteA-button" && pasteLaneInfo("A");
-          $(this)[0x0].id === "pasteB-button" && pasteLaneInfo("B");
+          $(this)[0].id === "copyA-button" && copyLaneInfo("A");
+          $(this)[0].id === "copyB-button" && copyLaneInfo("B");
+          $(this)[0].id === "pasteA-button" && pasteLaneInfo("A");
+          $(this)[0].id === "pasteB-button" && pasteLaneInfo("B");
         });
         ltEnabledFeatures = isRBS ? ltEnabledFeatures + ", Copy/Paste" : ltEnabledFeatures + "Copy/Paste";
       }
@@ -1001,13 +1001,11 @@
   }
 
   function getLaneItems(count, class_names_list) {
-    let itemsList = [],
-        classString = class_names_list.join(" "),
-        idStringBase = class_names_list.join("-");
+    let itemsList = [], classString = class_names_list.join(" "), idStringBase = class_names_list.join("-");
     for (let i = 1; i <= count; ++i) {
       let idString = idStringBase + "-" + i.toString();
       let selectorString = "<div class=\"" + classString + "\" id=\"" + idString + "\">" + i.toString() + "</div>";
-      let newItem = $(selectorString).css("margin", "2px 5px 2px 5px");
+      let newItem = $(selectorString).css({"padding" : "2px 2px 2px 2px", "margin" : "2px 5px 2px 5px"});
       itemsList.push(newItem)
     }
     return itemsList;
@@ -1016,13 +1014,12 @@
   function setupLaneCountControls(parentSelector, classNamesList) {
     const jqueryClassSelector = "." + classNamesList.join(".");
     $(jqueryClassSelector).on("click", function() {
-      $(jqueryClassSelector).css({"background-color":"transparent", "color": "black"});
+      $(jqueryClassSelector).css({"background-color" : "transparent", "color" : "black"});
       $(this).css({"background-color" : "navy", "color" : "white"});
     });
     let numLanesSelector = parentSelector.find(".form-control");
     let idString = "#" + classNamesList.join("-") + "-" + numLanesSelector.val();
     $(idString).css({"background-color" : "navy", "color" : "white"});
-
   }
   function populateNumberOfLanes() {
     let fwdLanesSelector = $(".fwd-lanes"), revLanesSelector = $(".rev-lanes");
@@ -1074,7 +1071,7 @@
           ".fwd-lanes > div > div > .lane-instruction.lane-instruction-from > .instruction > .road-width-edit > div > div > div > .lane-width-card");
       const jqueryClassSelector = "." + classNamesList.join(".");
       $(jqueryClassSelector).on("click", function() {
-        $(jqueryClassSelector).css({"background-color":"transparent", "color": "black"});
+        $(jqueryClassSelector).css({"background-color" : "transparent", "color" : "black"});
         $(this).css({"background-color" : "navy", "color" : "white"});
       });
     }
@@ -1089,7 +1086,7 @@
           ".rev-lanes > div > div > .lane-instruction.lane-instruction-from > .instruction > .road-width-edit > div > div > div > .lane-width-card");
       const jqueryClassSelector = "." + classNamesList.join(".");
       $(jqueryClassSelector).on("click", function() {
-        $(jqueryClassSelector).css({"background-color":"transparent", "color": "black"});
+        $(jqueryClassSelector).css({"background-color" : "transparent", "color" : "black"});
         $(this).css({"background-color" : "navy", "color" : "white"});
       });
     }
@@ -1141,7 +1138,7 @@
           $(turnsRegion[idx]).on("click", function() {
             let turnDirection = $(this).get(0x0), parentElement = turnDirection["parentElement"],
                 htmlElements = $(".checkbox-large.checkbox-white", parentElement);
-            if(htmlElements.length > 0) {
+            if (htmlElements.length > 0) {
               const elementDisabled = !getId(htmlElements[0x0].id).checked;
               for (let idx = 0x0; idx < htmlElements.length; idx++) {
                 const idElement = $("#" + htmlElements[idx].id);
@@ -1499,14 +1496,18 @@
   };
 
   function scanArea() {
-    if(lt_scanArea_recursive === 0) lt_scanArea_recursive = 0x3;
-    else lt_scanArea_recursive--;
-    if(lt_scanArea_recursive === 0) return;
+    if (lt_scanArea_recursive === 0)
+      lt_scanArea_recursive = 0x3;
+    else
+      lt_scanArea_recursive--;
+    if (lt_scanArea_recursive === 0)
+      return;
     scanArea_real();
   }
 
   function scanArea_real() {
-    if(lt_scanArea_recursive === 0) return;
+    if (lt_scanArea_recursive === 0)
+      return;
     const scriptEnabled = getId("lt-ScriptEnabled").checked, highlightsEnabled = getId("lt-HighlightsEnable").checked,
           heuristicsChecksEnabled = getId("lt-LaneHeuristicsChecks").checked,
           currentZoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16,
@@ -1538,7 +1539,7 @@
   }
 
   function processOneSegment(segmentObj, segmentAttributes, segmentDirection, segmentLength, minZoomLevel,
-                     performHeuristicsCheck, errorsFound) {
+                             performHeuristicsCheck, errorsFound) {
     const fwdLaneCount = segmentAttributes.fwdLaneCount, revLaneCount = segmentAttributes.revLaneCount,
           highlightEnabled = getId("lt-HighlightsEnable").checked,
           checkHeuristics = getId("lt-LaneHeuristicsChecks").checked,
@@ -1585,7 +1586,8 @@
         mutableHeurCandidate = heurCandidate;
       if (fLaneCount > 0x0 || mutableHeurCandidate !== null || _0x12606) {
         highlightSegment(segmentObj.geometry, segmentDirection, highlightEnabled, highlightLabelsEnabled, fwdLaneCount,
-                         revLaneCount, _0x58ba1e && highlightLIOEnabled, _0x3a8c59, _0x12606, mutableHeurCandidate, false)
+                         revLaneCount, _0x58ba1e && highlightLIOEnabled, _0x3a8c59, _0x12606, mutableHeurCandidate,
+                         false)
       }
       if (highlightEnabled && getId("lt-NodesEnable").checked) {
         _0x5855dd && highlightNode(toNode.geometry, "" + LtSettings.NodeColor);
@@ -1616,7 +1618,7 @@
         const featureAttributes = segmentObj.getFeatureAttributes();
         let errorsFound = false, segmentLength = lt_segment_length(segmentObj);
         errorsFound ||= processOneSegment(segmentObj, featureAttributes, Direction.FORWARD, segmentLength, minZoomLevel,
-                                  performHeuristicsCheck, errorsFound);
+                                          performHeuristicsCheck, errorsFound);
         if (errorsFound && lt_scanArea_recursive > 0x0) {
           lt_log("LT errors found, scanning again", 0x2);
           removeHighlights();
@@ -1625,7 +1627,7 @@
           return;
         }
         errorsFound ||= processOneSegment(segmentObj, featureAttributes, Direction.REVERSE, segmentLength, minZoomLevel,
-                                  performHeuristicsCheck, errorsFound);
+                                          performHeuristicsCheck, errorsFound);
         if (errorsFound && lt_scanArea_recursive > 0x0) {
           lt_log("LT errors found, scanning again", 2);
           removeHighlights();
@@ -1672,60 +1674,74 @@
     }
     if (_0x44a7d8.length < laneCount && onScreen(node, zoomLevel))
       (_0x16f110 = true);
-    return [ turnLanesExist, turnDataInstructionOpcodeExists, turnAngleOverridden, _0x16f110, turnGuidanceMode, streetName ]
+    return [
+      turnLanesExist, turnDataInstructionOpcodeExists, turnAngleOverridden, _0x16f110, turnGuidanceMode, streetName
+    ]
   }
 
-  function setTurns(directionClass) {
+  function setTurns(directionClass, numLanes) {
     if (!getId("lt-ClickSaveEnable").checked)
       return;
     let directionElement = document.getElementsByClassName(directionClass)[0x0],
-        reverseDirectionCardinalAngle =
+        leftTurnAngleClass =
             directionElement.getElementsByClassName("angle--135").length > 0x0  ? "angle--135"
             : directionElement.getElementsByClassName("angle--90").length > 0x0 ? "angle--90"
                                                                                 : "angle--45",
-        forwardDirectionCardinalAngle = directionElement.getElementsByClassName("angle-135").length > 0x0  ? "angle-135"
-                                        : directionElement.getElementsByClassName("angle-90").length > 0x0 ? "angle-90"
-                                                                                                           : "angle-45",
-        turnLaneEditTop = directionElement.getElementsByClassName("turn-lane-edit-top"), _0x16a6be = false,
-        _0x43ae0b = false,
-        _0x257aea =
-            [].slice.call(turnLaneEditTop)
-                .reduce((_0x4861b3, _0x2010bf) =>
-                            _0x4861b3 + [].slice.call(_0x2010bf.getElementsByTagName("input"))
-                                            .reduce((_0x58c1c4, _0x4afea1) =>
-                                                        (_0x4afea1.checked === true ? _0x58c1c4 + 0x1 : _0x58c1c4),
-                                                    0x0),
-                        0x0);
-    if (_0x257aea === 0x0) {
+        rightTurnAngleClass = directionElement.getElementsByClassName("angle-135").length > 0x0 ? "angle-135"
+                                         : directionElement.getElementsByClassName("angle-90").length > 0x0
+                                             ? "angle-90"
+                                             : "angle-45",
+        turnLaneEditTop = directionElement.getElementsByClassName("turn-lane-edit-top"),
+        numGuidedLanes = [].slice.call(turnLaneEditTop)
+                             .reduce((turnGuidanceEnabledCounter, editElement) =>
+                                         turnGuidanceEnabledCounter +
+                                         [].slice.call(editElement.getElementsByTagName("wz-checkbox"))
+                                             .reduce((turnAppliedCounter, turnCheckBox) =>
+                                                         (turnCheckBox.checked === true ? turnAppliedCounter + 1
+                                                                                        : turnAppliedCounter),
+                                                     0),
+                                     0);
+    if (numGuidedLanes < numLanes) {
+      let isLeftHand = W.model.isLeftHand, leftTurnEnabled = false, rightTurnEnabled = false;
       for (let idx = 0x0; idx < turnLaneEditTop.length; idx++) {
-        const _0x496f7c = turnLaneEditTop[idx];
-        let _0x5c6270 = _0x496f7c.getElementsByTagName("wz-checkbox");
-        if (_0x5c6270 && _0x5c6270.length > 0x0) {
-          if (_0x496f7c.getElementsByClassName(reverseDirectionCardinalAngle).length > 0x0 &&
-              _0x5c6270[0x0].checked !== undefined && _0x5c6270[0x0].checked === false &&
-              getId("lt-ClickSaveTurns").checked)
-            (_0x16a6be = true), _0x5c6270[0x0].click();
-          else
-            _0x496f7c.getElementsByClassName(forwardDirectionCardinalAngle).length > 0x0 &&
-                _0x5c6270[_0x5c6270.length - 0x1].checked !== undefined &&
-                _0x5c6270[_0x5c6270.length - 0x1].checked === false && getId("lt-ClickSaveTurns").checked &&
-                ((_0x43ae0b = true), _0x5c6270[_0x5c6270.length - 0x1].click());
+        const turnLaneEditTopContainer = turnLaneEditTop[idx];
+        let turnCheckBoxes = turnLaneEditTopContainer.getElementsByTagName("wz-checkbox");
+        if (turnCheckBoxes && turnCheckBoxes.length > 0x0) {
+          if (turnLaneEditTopContainer.getElementsByClassName(leftTurnAngleClass).length > 0x0 &&
+              turnCheckBoxes[0].checked !== undefined) {
+            if (turnCheckBoxes[0].checked === true)
+              leftTurnEnabled = true;
+            if (getId("lt-ClickSaveTurns").checked && turnCheckBoxes[0] === false) {
+              turnCheckBoxes[0].click();
+              leftTurnEnabled = true;
+            }
+          } else if (turnLaneEditTopContainer.getElementsByClassName(rightTurnAngleClass).length > 0x0 &&
+                     turnCheckBoxes[turnCheckBoxes.length - 1].checked !== undefined) {
+            if (turnCheckBoxes[turnCheckBoxes.length - 1].checked === true)
+              rightTurnEnabled = true;
+            if (getId("lt-ClickSaveTurns").checked && turnCheckBoxes[turnCheckBoxes.length - 1].checked === false) {
+              rightTurnEnabled = true;
+              turnCheckBoxes[turnCheckBoxes.length - 0x1].click();
+            }
+          }
         }
       }
       for (let idx = 0x0; idx < turnLaneEditTop.length; idx++) {
-        const _0x376ec2 = turnLaneEditTop[idx];
-        let directionCheckBoxes = _0x376ec2.getElementsByTagName("wz-checkbox");
-        if (_0x376ec2.getElementsByClassName("angle-0").length > 0x0)
+        const turnLanesContainer = turnLaneEditTop[idx];
+        let directionCheckBoxes = turnLanesContainer.getElementsByTagName("wz-checkbox");
+        if (turnLanesContainer.getElementsByClassName("angle-0").length > 0x0)
           for (let idx = 0x0; idx < directionCheckBoxes.length; idx++) {
             if (directionCheckBoxes[idx].checked === false) {
-              if (idx === 0x0 && (getId("lt-ClickSaveStraight").checked || _0x16a6be === false))
+              if (idx === 0x0 && (getId("lt-ClickSaveStraight").checked &&
+                                  ((!isLeftHand && !leftTurnEnabled) || (isLeftHand && !rightTurnEnabled))))
                 directionCheckBoxes[idx].click();
               else {
                 if (idx === directionCheckBoxes.length - 0x1 &&
-                    (getId("lt-ClickSaveStraight").checked || _0x43ae0b === false))
+                    (getId("lt-ClickSaveStraight").checked &&
+                     ((!rightTurnEnabled && !isLeftHand) || (isLeftHand && !leftTurnEnabled))))
                   directionCheckBoxes[idx].click();
-                else
-                  idx !== 0x0 && idx !== directionCheckBoxes.length - 0x1 && directionCheckBoxes[idx].click();
+                else if (idx !== 0x0 && idx !== directionCheckBoxes.length - 0x1)
+                  directionCheckBoxes[idx].click();
               }
             }
           }
@@ -1739,17 +1755,24 @@
       if (selectedFeatures[0x0] && selectedFeatures[0x0].attributes.wazeFeature._wmeObject.type === "segment" &&
           getId("lt-ScriptEnabled").checked) {
         let laneCountElement = document.getElementsByName("laneCount");
-        for (let idx = 0x0; idx < laneCountElement.length; idx++) {
+        for (let idx = 0; idx < laneCountElement.length; idx++) {
           laneCountElement[idx].addEventListener("change", function() {
-            let ninthElement = $(this).parents().eq(9), className = ninthElement[0x0].parentElement.className;
-            setTimeout(setTurns, 50, className);
+            let ninthElement = $(this).parents().eq(9), elem = ninthElement[0], className = elem.className,
+                numLanes = parseInt($(this).val(), 10);
+            setTurns(className, numLanes);
+            let laneCountNums = $(this).parents().find(".lt-add-lanes"),
+                counterClassName = laneCountNums[0].className,
+                selectorClassName = "." + counterClassName.replace(" ", ".");
+            let counterClassToSelectName = "#" + counterClassName.replace(" ", "-") + "-" + numLanes.toString();
+            $(selectorClassName).css({"background-color" : "transparent", "color" : "black"});
+            $(counterClassToSelectName).css({"background-color" : "navy", "color" : "white"});
           }, false);
         }
         let addLanesElement = document.getElementsByClassName("lt-add-lanes");
-        for (let idx = 0x0; idx < addLanesElement.length; idx++) {
+        for (let idx = 0; idx < addLanesElement.length; idx++) {
           addLanesElement[idx].addEventListener("click", function() {
-            let ninthElement = $(this).parents().eq(9), className = ninthElement[0x0].parentElement.className;
-            setTimeout(setTurns, 50, className);
+            let ninthElement = $(this).parents().eq(9), className = ninthElement[0x0].className;
+            setTurns(className);
           }, false);
         }
       }
