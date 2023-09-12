@@ -1691,8 +1691,9 @@
                                          : directionElement.getElementsByClassName("angle-90").length > 0x0
                                              ? "angle-90"
                                              : "angle-45",
-        turnLaneEditTop = directionElement.getElementsByClassName("turn-lane-edit-top"),
-        numGuidedLanes = [].slice.call(turnLaneEditTop)
+        turnLaneEditTop = directionElement.getElementsByClassName("turn-lane-edit-top");
+    if(turnLaneEditTop.length !== numLanes) return;
+    let numGuidedLanes = [].slice.call(turnLaneEditTop)
                              .reduce((turnGuidanceEnabledCounter, editElement) =>
                                          turnGuidanceEnabledCounter +
                                          [].slice.call(editElement.getElementsByTagName("wz-checkbox"))
@@ -1711,7 +1712,7 @@
               turnCheckBoxes[0].checked !== undefined) {
             if (turnCheckBoxes[0].checked === true)
               leftTurnEnabled = true;
-            if (getId("lt-ClickSaveTurns").checked && turnCheckBoxes[0] === false) {
+            if (getId("lt-ClickSaveTurns").checked && turnCheckBoxes[0].checked === false) {
               turnCheckBoxes[0].click();
               leftTurnEnabled = true;
             }
@@ -1757,9 +1758,8 @@
         let laneCountElement = document.getElementsByName("laneCount");
         for (let idx = 0; idx < laneCountElement.length; idx++) {
           laneCountElement[idx].addEventListener("change", function() {
-            let ninthElement = $(this).parents().eq(9), elem = ninthElement[0], className = elem.className,
+            let parent9LevelsUp = $(this).parents().eq(9), elem = parent9LevelsUp[0], className = elem.className,
                 numLanes = parseInt($(this).val(), 10);
-            setTurns(className, numLanes);
             let laneCountNums = $(this).parents().find(".lt-add-lanes"),
                 counterClassName = laneCountNums[0].className,
                 selectorClassName = "." + counterClassName.replace(" ", ".");
@@ -1768,13 +1768,14 @@
             $(counterClassToSelectName).css({"background-color" : "navy", "color" : "white"});
           }, false);
         }
-        let addLanesElement = document.getElementsByClassName("lt-add-lanes");
-        for (let idx = 0; idx < addLanesElement.length; idx++) {
-          addLanesElement[idx].addEventListener("click", function() {
-            let ninthElement = $(this).parents().eq(9), className = ninthElement[0x0].className;
-            setTurns(className);
-          }, false);
-        }
+        // let addLanesElement = document.getElementsByClassName("lt-add-lanes");
+        // for (let idx = 0; idx < addLanesElement.length; idx++) {
+        //   addLanesElement[idx].addEventListener("click", function() {
+        //     let parents9LevelsUp = $(this).parents().eq(9), className = parents9LevelsUp[0x0].className,
+        //         numLanes = parseInt($(this).val(), 10);
+        //       setTurns(className, numLanes);
+        //   }, false);
+        // }
       }
     });
     mutationObserver.observe(document.getElementById("edit-panel"), {
