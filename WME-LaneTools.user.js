@@ -29,132 +29,166 @@
   "use strict";
 
   const constantStrings = {
-    divStr : "<div>",
-    checkedStr : "checked",
-    mapTag : "#map",
-    htmlStr : "html",
-    translationSpreadSheetBaseURL :
-        "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/Translations!A2:C?key=",
-    angleSpreadSheetBaseURL :
-        "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/Angles!A2:B?key=",
-    RBSAccessSheetBaseURL :
-        "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/RBS_Access!A2:C?key=",
-    revLanesInstructionsFromCSS :
-        ".rev-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
-    fwdLanesInstructionsFromCSS :
-        ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
-    editPanelCSS : "#edit-panel > div > div > div > div.segment-edit-section > wz-tabs > wz-tab.lanes-tab",
-    fwdLanesDivInstructionCSS : ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
-    fwdLanesNthChild :
-        ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1) > div",
-    revLanesNthChild :
-        ".rev-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1) > div",
-    fwdLanesDirectionControlEditCSS :
-        ".fwd-lanes > div > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit",
-    fwdLanesLaneInstrunctionToCSS :
-        ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1)",
-    revLanesInstructionsToCSS :
-        ".rev-lanes > div > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit",
-    wazeFontLink : "https://editor-assets.waze.com/production/font/aae5ed152758cb6a9191b91e6cedf322.svg",
-    segmentEditLanes :
-        "#segment-edit-lanes > div > div > div.fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-arrows > div"
+    divStr: "<div>",
+    checkedStr: "checked",
+    mapTag: "#map",
+    htmlStr: "html",
+    translationSpreadSheetBaseURL:
+      "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/Translations!A2:C?key=",
+    angleSpreadSheetBaseURL:
+      "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/Angles!A2:B?key=",
+    RBSAccessSheetBaseURL:
+      "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/RBS_Access!A2:C?key=",
+    revLanesInstructionsFromCSS:
+      ".rev-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
+    fwdLanesInstructionsFromCSS:
+      ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
+    editPanelCSS:
+      "#edit-panel > div > div > div > div.segment-edit-section > wz-tabs > wz-tab.lanes-tab",
+    fwdLanesDivInstructionCSS:
+      ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
+    fwdLanesNthChild:
+      ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1) > div",
+    revLanesNthChild:
+      ".rev-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1) > div",
+    fwdLanesDirectionControlEditCSS:
+      ".fwd-lanes > div > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit",
+    fwdLanesLaneInstrunctionToCSS:
+      ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1)",
+    revLanesInstructionsToCSS:
+      ".rev-lanes > div > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit",
+    wazeFontLink:
+      "https://editor-assets.waze.com/production/font/aae5ed152758cb6a9191b91e6cedf322.svg",
+    segmentEditLanes:
+      "#segment-edit-lanes > div > div > div.fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-arrows > div",
   };
   const LANETOOLS_VERSION = "" + GM_info.script.version,
-        GF_LINK = "https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js",
-        FORUM_LINK = "https://www.waze.com/forum/viewtopic.php?f=819&t=30115",
-        LI_UPDATE_NOTES = "<b>NEW:</b><br>\x0a<b>FIXES:</b><br><br>\x0a", LANETOOLS_DEBUG_LEVEL = 0x1, configArray = {},
-        RBSArray = {failed : false}, IsBeta = location.href.indexOf("beta.waze.com") !== -0x1, TRANSLATIONS = {
-          default : {
-            enabled : "Enabled",
-            disabled : "Disabled",
-            toggleShortcut : "Toggle Shortcut",
-            UIEnhance : "Tab UI Enhancements",
-            autoWidth : "Auto-open road width",
-            autoOpen : "Auto-open lanes tab",
-            autoExpand : "Auto-expand lane editor",
-            autoFocus : "Auto-focus lane input",
-            reOrient : "Re-orient lane icons",
-            enClick : "Enable ClickSaver",
-            clickStraight : "All straight lanes",
-            clickTurn : "default",
-            mapHighlight : "Map Highlights",
-            laneLabel : "Lane labels",
-            nodeHigh : "Node Highlights",
-            LAOHigh : "Lane angle overrides",
-            CSOHigh : "Continue straight overrides",
-            heuristics : "Lane heuristics candidates",
-            posHeur : "Positive heuristics candidate",
-            negHeur : "Negative heuristics candidate",
-            highColor : "Highlight Colors",
-            colTooltip : "Click to toggle color inputs",
-            selAllTooltip : "Click on turn name to toggle all lane associations",
-            fwdCol : "Fwd (A>B)",
-            revCol : "Rev (B>A)",
-            labelCol : "Labels",
-            errorCol : "Lane errors",
-            laneNodeCol : "Nodes with lanes",
-            nodeTIOCol : "Nodes with TIOs",
-            LAOCol : "Segs with TIOs",
-            viewCSCol : "View only CS",
-            hearCSCol : "View and hear CS",
-            heurPosCol : "Lane heuristics likely",
-            heurNegCol : "Lane heuristics - not qualified",
-            advTools : "Advance Tools",
-            quickTog : "Quick toggle all lanes",
-            showRBS : "Use RBS heuristics",
-            delFwd : "Delete FWD Lanes",
-            delRev : "Delete Rev Lanes",
-            delOpp : "This segment is one-way but has lanes set in the opposite direction. Click here to delete them",
-            csIcons : "Highlight CS Icons",
-            highlightOverride : "Only highlight if segment layer active",
-            addTIO : "Include TIO in lanes tab",
-            labelTIO : "TIO",
-            defaultTIO : "Waze Selected",
-            noneTIO : "None",
-            tlTIO : "Turn Left",
-            trTIO : "Turn Right",
-            klTIO : "Keep Left",
-            krTIO : "Keep Right",
-            conTIO : "Continue",
-            elTIO : "Exit Left",
-            erTIO : "Exit Right",
-            uturnTIO : "U-Turn",
-            enIcons : "Display lane icons on map",
-            IconsRotate : "IconsRotate",
-          },
-        },
-        Direction = {REVERSE : -1, ANY : 0, FORWARD : 1}, LT_ROAD_TYPE = {
-          NARROW_STREET : 22,
-          STREET : 1,
-          PRIMARY_STREET : 2,
-          RAMP : 4,
-          FREEWAY : 3,
-          MAJOR_HIGHWAY : 6,
-          MINOR_HIGHWAY : 7,
-          DIRT_ROAD : 8,
-          FERRY : 14,
-          PRIVATE_ROAD : 17,
-          PARKING_LOT_ROAD : 20,
-          WALKING_TRAIL : 5,
-          PEDESTRIAN_BOARDWALK : 10,
-          STAIRWAY : 16,
-          RAILROAD : 18,
-          RUNWAY : 19,
-        },
-        DisplayLevels = {MIN_ZOOM_ALL : 14, MIN_ZOOM_NONFREEWAY : 17},
-        HeuristicsCandidate = {ERROR : -2, FAIL : -1, NONE : 0, PASS : 1};
-  let MAX_LEN_HEUR, MAX_PERP_DIF, MAX_PERP_DIF_ALT, MAX_PERP_TO_CONSIDER, MAX_STRAIGHT_TO_CONSIDER, MAX_STRAIGHT_DIF,
-      lt_scanArea_recursive = 0x0, LtSettings = {}, strings = {}, _turnInfo = [], _turnData = {}, laneCount,
-      LTHighlightLayer, LTNamesLayer, LTLaneGraphics, _pickleColor, seaPickle, UpdateObj, MultiAction, SetTurn,
-      shortcutsDisabled = false, isRBS = false, allowCpyPst = false, langLocality = "default", NEWZOOMLEVELS;
+    GF_LINK =
+      "https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js",
+    FORUM_LINK = "https://www.waze.com/forum/viewtopic.php?f=819&t=30115",
+    LI_UPDATE_NOTES = "<b>NEW:</b><br>\x0a<b>FIXES:</b><br><br>\x0a",
+    LANETOOLS_DEBUG_LEVEL = 0x1,
+    configArray = {},
+    RBSArray = { failed: false },
+    IsBeta = location.href.indexOf("beta.waze.com") !== -0x1,
+    TRANSLATIONS = {
+      default: {
+        enabled: "Enabled",
+        disabled: "Disabled",
+        toggleShortcut: "Toggle Shortcut",
+        UIEnhance: "Tab UI Enhancements",
+        autoWidth: "Auto-open road width",
+        autoOpen: "Auto-open lanes tab",
+        autoExpand: "Auto-expand lane editor",
+        autoFocus: "Auto-focus lane input",
+        reOrient: "Re-orient lane icons",
+        enClick: "Enable ClickSaver",
+        clickStraight: "All straight lanes",
+        clickTurn: "default",
+        mapHighlight: "Map Highlights",
+        laneLabel: "Lane labels",
+        nodeHigh: "Node Highlights",
+        LAOHigh: "Lane angle overrides",
+        CSOHigh: "Continue straight overrides",
+        heuristics: "Lane heuristics candidates",
+        posHeur: "Positive heuristics candidate",
+        negHeur: "Negative heuristics candidate",
+        highColor: "Highlight Colors",
+        colTooltip: "Click to toggle color inputs",
+        selAllTooltip: "Click on turn name to toggle all lane associations",
+        fwdCol: "Fwd (A>B)",
+        revCol: "Rev (B>A)",
+        labelCol: "Labels",
+        errorCol: "Lane errors",
+        laneNodeCol: "Nodes with lanes",
+        nodeTIOCol: "Nodes with TIOs",
+        LAOCol: "Segs with TIOs",
+        viewCSCol: "View only CS",
+        hearCSCol: "View and hear CS",
+        heurPosCol: "Lane heuristics likely",
+        heurNegCol: "Lane heuristics - not qualified",
+        advTools: "Advance Tools",
+        quickTog: "Quick toggle all lanes",
+        showRBS: "Use RBS heuristics",
+        delFwd: "Delete FWD Lanes",
+        delRev: "Delete Rev Lanes",
+        delOpp:
+          "This segment is one-way but has lanes set in the opposite direction. Click here to delete them",
+        csIcons: "Highlight CS Icons",
+        highlightOverride: "Only highlight if segment layer active",
+        addTIO: "Include TIO in lanes tab",
+        labelTIO: "TIO",
+        defaultTIO: "Waze Selected",
+        noneTIO: "None",
+        tlTIO: "Turn Left",
+        trTIO: "Turn Right",
+        klTIO: "Keep Left",
+        krTIO: "Keep Right",
+        conTIO: "Continue",
+        elTIO: "Exit Left",
+        erTIO: "Exit Right",
+        uturnTIO: "U-Turn",
+        enIcons: "Display lane icons on map",
+        IconsRotate: "IconsRotate",
+      },
+    },
+    Direction = { REVERSE: -1, ANY: 0, FORWARD: 1 },
+    LT_ROAD_TYPE = {
+      NARROW_STREET: 22,
+      STREET: 1,
+      PRIMARY_STREET: 2,
+      RAMP: 4,
+      FREEWAY: 3,
+      MAJOR_HIGHWAY: 6,
+      MINOR_HIGHWAY: 7,
+      DIRT_ROAD: 8,
+      FERRY: 14,
+      PRIVATE_ROAD: 17,
+      PARKING_LOT_ROAD: 20,
+      WALKING_TRAIL: 5,
+      PEDESTRIAN_BOARDWALK: 10,
+      STAIRWAY: 16,
+      RAILROAD: 18,
+      RUNWAY: 19,
+    },
+    DisplayLevels = { MIN_ZOOM_ALL: 14, MIN_ZOOM_NONFREEWAY: 17 },
+    HeuristicsCandidate = { ERROR: -2, FAIL: -1, NONE: 0, PASS: 1 };
+  let MAX_LEN_HEUR,
+    MAX_PERP_DIF,
+    MAX_PERP_DIF_ALT,
+    MAX_PERP_TO_CONSIDER,
+    MAX_STRAIGHT_TO_CONSIDER,
+    MAX_STRAIGHT_DIF,
+    lt_scanArea_recursive = 0x0,
+    LtSettings = {},
+    strings = {},
+    _turnInfo = [],
+    _turnData = {},
+    laneCount,
+    LTHighlightLayer,
+    LTNamesLayer,
+    LTLaneGraphics,
+    _pickleColor,
+    seaPickle,
+    UpdateObj,
+    MultiAction,
+    SetTurn,
+    shortcutsDisabled = false,
+    isRBS = false,
+    allowCpyPst = false,
+    langLocality = "default",
+    NEWZOOMLEVELS;
   console.log("LaneTools: initializing...");
 
   function laneToolsBootstrap(bootStrapAttempt = 0x0) {
     if (W && W.map && W.model && W.loginManager.user && $ && WazeWrap.Ready)
       initLaneTools();
     else
-      bootStrapAttempt < 500 ? setTimeout(() => { laneToolsBootstrap(bootStrapAttempt++); }, 200)
-                             : console.error("LaneTools: Failed to load");
+      bootStrapAttempt < 500
+        ? setTimeout(() => {
+            laneToolsBootstrap(bootStrapAttempt++);
+          }, 200)
+        : console.error("LaneTools: Failed to load");
   }
 
   function initLaneTools() {
@@ -163,52 +197,56 @@
     MultiAction = require("Waze/Action/MultiAction");
     SetTurn = require("Waze/Model/Graph/Actions/SetTurn");
     NEWZOOMLEVELS = W.map.getOLMap().getNumZoomLevels() === 23;
-    const
-        ltCSSClasses =
-            [
-              ".lt-wrapper {position:relative;width:100%;font-size:12px;font-family:\x22Rubik\x22, \x22Boing-light\x22, sans-serif;user-select:none;}",
-              ".lt-section-wrapper {display:block;width:100%;padding:4px;",
-              ".lt-section-wrapper.border {border-bottom:1px solid grey;margin-bottom:5px;}",
-              ".lt-option-container {padding:3px;}",
-              ".lt-option-container.color {text-decoration:none;}",
-              "input[type=\x22checkbox\x22].lt-checkbox {position:relative;top:3px;vertical-align:top;margin:0;}",
-              "input[type=\x22text\x22].lt-color-input {position:relative;width:70px;padding:3px;border:2px solid black;border-radius:6px;}",
-              "input[type=\x22text\x22].lt-color-input:focus {outline-width:0;}",
-              "label.lt-label {position:relative;max-width:90%;font-weight:normal;padding-left:5px}",
-              ".lt-Toolbar-Container {display:none;position:absolute;background-color:orange;border-radius:6px;border:1.5px solid;box-size:border-box;z-index:1050;}",
-              ".lt-Toolbar-Wrapper {position:relative;padding:3px;",
-              ".lt-toolbar-button-container {display:inline-block;padding:5px;}",
-              ".lt-toolbar-button {position:relative;display:block;width:60px;height:25px;border-radius:6px;font-size:12px;}",
-              ".lt-add-Width {display:inline-block;width:15px;height:15px;border:1px solid black;border-radius:8px;margin:0 3px 0 3px;line-height: 1.5;text-align:center;font-size:10px;}",
-              ".lt-add-Width:hover {border:1px solid #26bae8;background-color:#26bae8;cursor:pointer;}",
-              ".lt-add-lanes {display:inline-block;width:15px;height:15px;border:1px solid black;border-radius:8px;margin:0 3px 0 3px;line-height: 1.5;text-align:center;font-size:10px;}",
-              ".lt-add-lanes:hover {border:1px solid #26bae8;background-color:#26bae8;cursor:pointer;}",
-              ".lt-chkAll-lns {display:inline-block;width:20px;height:20px;text-decoration:underline;font-weight:bold;font-size:10px;padding-left:3px;cursor:pointer;}",
-              ".lt-tio-select {max-width:80%;color:rgb(32, 33, 36);background-color:rgb(242, 243, 244);border:0px;border-radius:6px;padding:0 16px 0 10px;cursor:pointer;}",
-              "#lt-color-title {display:block;width:100%;padding:5px 0 5px 0;font-weight:bold;text-decoration:underline;cursor:pointer;}",
-            ].join(" "),
-        initMsg = $(constantStrings.divStr);
+    const ltCSSClasses = [
+        ".lt-wrapper {position:relative;width:100%;font-size:12px;font-family:\x22Rubik\x22, \x22Boing-light\x22, sans-serif;user-select:none;}",
+        ".lt-section-wrapper {display:block;width:100%;padding:4px;",
+        ".lt-section-wrapper.border {border-bottom:1px solid grey;margin-bottom:5px;}",
+        ".lt-option-container {padding:3px;}",
+        ".lt-option-container.color {text-decoration:none;}",
+        "input[type=\x22checkbox\x22].lt-checkbox {position:relative;top:3px;vertical-align:top;margin:0;}",
+        "input[type=\x22text\x22].lt-color-input {position:relative;width:70px;padding:3px;border:2px solid black;border-radius:6px;}",
+        "input[type=\x22text\x22].lt-color-input:focus {outline-width:0;}",
+        "label.lt-label {position:relative;max-width:90%;font-weight:normal;padding-left:5px}",
+        ".lt-Toolbar-Container {display:none;position:absolute;background-color:orange;border-radius:6px;border:1.5px solid;box-size:border-box;z-index:1050;}",
+        ".lt-Toolbar-Wrapper {position:relative;padding:3px;",
+        ".lt-toolbar-button-container {display:inline-block;padding:5px;}",
+        ".lt-toolbar-button {position:relative;display:block;width:60px;height:25px;border-radius:6px;font-size:12px;}",
+        ".lt-add-Width {display:inline-block;width:15px;height:15px;border:1px solid black;border-radius:8px;margin:0 3px 0 3px;line-height: 1.5;text-align:center;font-size:10px;}",
+        ".lt-add-Width:hover {border:1px solid #26bae8;background-color:#26bae8;cursor:pointer;}",
+        ".lt-add-lanes {display:inline-block;width:15px;height:15px;border:1px solid black;border-radius:8px;margin:0 3px 0 3px;line-height: 1.5;text-align:center;font-size:10px;}",
+        ".lt-add-lanes:hover {border:1px solid #26bae8;background-color:#26bae8;cursor:pointer;}",
+        ".lt-chkAll-lns {display:inline-block;width:20px;height:20px;text-decoration:underline;font-weight:bold;font-size:10px;padding-left:3px;cursor:pointer;}",
+        ".lt-tio-select {max-width:80%;color:rgb(32, 33, 36);background-color:rgb(242, 243, 244);border:0px;border-radius:6px;padding:0 16px 0 10px;cursor:pointer;}",
+        "#lt-color-title {display:block;width:100%;padding:5px 0 5px 0;font-weight:bold;text-decoration:underline;cursor:pointer;}",
+      ].join(" "),
+      initMsg = $(constantStrings.divStr);
     initMsg.html = [
       "<div class=\x27lt-wrapper\x27 id=\x27lt-tab-wrapper\x27>\x0a            <div class=\x27lt-section-wrapper\x27 id=\x27lt-tab-body\x27>\x0a                <div class=\x27lt-section-wrapper border\x27 style=\x27border-bottom:2px double grey;\x27>\x0a                    <a href=\x27https://www.waze.com/forum/viewtopic.php?f=819&t=301158\x27 style=\x27font-weight:bold;font-size:12px;text-decoration:underline;\x27  target=\x27_blank\x27>LaneTools - v" +
-          LANETOOLS_VERSION +
-          "</a>\x0a                    <div>\x0a                        <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-EnableShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ScriptEnabled\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ScriptEnabled\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27 id=\x27lt-LaneTabFeatures\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-uiEnhance\x27></span></span>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-UIEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-UIEnable\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                    <div id=\x27lt-UI-wrapper\x27>\x0a                        <div class=\x27lt-option-container\x27 style=\x27margin-bottom:5px;\x27>\x0a                            <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-UIEnhanceShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoOpenWidth\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoOpenWidth\x27><span id=\x27lt-trans-autoWidth\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoLanesTab\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoLanesTab\x27><span id=\x27lt-trans-autoTab\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoExpandLanes\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoExpandLanes\x27><span title=\x22Feature disabled as of Aug 27, 2022 to prevent flickering issue\x22 id=\x27lt-trans-autoExpand\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoFocusLanes\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoFocusLanes\x27><span id=\x27lt-trans-autoFocus\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-highlightCSIcons\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-highlightCSIcons\x27><span id=\x27lt-trans-csIcons\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ReverseLanesIcon\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ReverseLanesIcon\x27><span id=\x27lt-trans-orient\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27 style=\x27display:none;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AddTIO\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AddTIO\x27><span id=\x27lt-trans-AddTIO\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ClickSaveEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ClickSaveEnable\x27><span id=\x27lt-trans-enClick\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container clk-svr\x27 style=\x27padding-left:10%;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ClickSaveStraight\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ClickSaveStraight\x27><span id=\x27lt-trans-straClick\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container clk-svr\x27 style=\x27padding-left:10%;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ClickSaveTurns\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ClickSaveTurns\x27><span id=\x27lt-trans-turnClick\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-mapHigh\x27></span></span>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-HighlightsEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-HighlightsEnable\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                    <div id=\x27lt-highlights-wrapper\x27>\x0a                        <div class=\x27lt-option-container\x27 style=\x27margin-bottom:5px;\x27>\x0a                            <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-HighlightShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-IconsEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-IconsEnable\x27><span id=\x27lt-trans-enIcons\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-IconsRotate\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-IconsRotate\x27><span id=\x27lt-trans-IconsRotate\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LabelsEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LabelsEnable\x27><span id=\x27lt-trans-lnLabel\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-NodesEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-NodesEnable\x27><span id=\x27lt-trans-nodeHigh\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LIOEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LIOEnable\x27><span id=\x27lt-trans-laOver\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-CSEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-CSEnable\x27><span id=\x27lt-trans-csOver\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-highlightOverride\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-highlightOverride\x27><span id=\x27lt-trans-highOver\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-heurCan\x27></span></span>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LaneHeuristicsChecks\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LaneHeuristicsChecks\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                    <div id=\x27lt-heur-wrapper\x27>\x0a                        <div class=\x27lt-option-container\x27 style=\x27margin-bottom:5px;\x27>\x0a                            <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-LaneHeurChecksShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LaneHeurPosHighlight\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LaneHeurPosHighlight\x27><span id=\x27lt-trans-heurPos\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LaneHeurNegHighlight\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LaneHeurNegHighlight\x27><span id=\x27lt-trans-heurNeg\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27>\x0a                    <div class=\x27lt-section-wrapper\x27>\x0a                        <span id=\x27lt-color-title\x27 data-original-title=\x27" +
-          TRANSLATIONS[langLocality].colTooltip +
-          "\x27><span id=\x27lt-trans-highCol\x27></span>:</span>\x0a                        <div id=\x27lt-color-inputs\x27 style=\x27display:none;\x27>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-ABColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-ABColor\x27 id=\x27lt-ABColorLabel\x27><span id=\x27lt-trans-fwdCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-BAColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-BAColor\x27 id=\x27lt-BAColorLabel\x27><span id=\x27lt-trans-revCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-LabelColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-LabelColor\x27 id=\x27lt-LabelColorLabel\x27><span id=\x27lt-trans-labelCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-ErrorColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-ErrorColor\x27 id=\x27lt-ErrorColorLabel\x27><span id=\x27lt-trans-errorCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-NodeColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-NodeColor\x27 id=\x27lt-NodeColorLabel\x27><span id=\x27lt-trans-nodeCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-TIOColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-TIOColor\x27 id=\x27lt-TIOColorLabel\x27><span id=\x27lt-trans-tioCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-LIOColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-TIOColor\x27 id=\x27lt-LIOColorLabel\x27><span id=\x27lt-trans-laoCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-CS1Color\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-CS1Color\x27 id=\x27lt-CS1ColorLabel\x27><span id=\x27lt-trans-viewCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-CS2Color\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-CS2Color\x27 id=\x27lt-CS2ColorLabel\x27><span id=\x27lt-trans-hearCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-HeurColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-HeurColor\x27 id=\x27lt-HeurColorLabel\x27><span id=\x27lt-trans-posCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-HeurFailColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-HeurFailColor\x27 id=\x27lt-HeurFailColorLabel\x27><span id=\x27lt-trans-negCol\x27></span></label>\x0a                            </div>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27 id=\x27lt-adv-tools\x27 style=\x27display:none;\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-advTools\x27>></span></span>\x0a                    </div>\x0a                    <div class=\x27lt-option-container\x27>\x0a                        <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-SelAllEnable\x27 />\x0a                        <label class=\x27lt-label\x27 for=\x27lt-SelAllEnable\x27 ><span id=\x27lt-trans-quickTog\x27></span></label>\x0a                    </div>\x0a                    <div class=\x27lt-option-container\x27 id=\x27lt-serverSelectContainer\x27 style=\x27display:none;\x27>\x0a                        <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-serverSelect\x27 />\x0a                        <label class=\x27lt-label\x27 for=\x27lt-serverSelect\x27><span id=\x27lt-trans-heurRBS\x27></span></label>\x0a                    </div>\x0a                    <div class=\x27lt-option-container\x27 id=\x27lt-cpy-pst\x27 style=\x27display:none;\x27>\x0a                        <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-CopyEnable\x27 />\x0a                        <label class=\x27lt-label\x27 for=\x27lt-CopyEnable\x27>Copy/Paste Lanes</label>\x0a                        <span style=\x27font-weight: bold;\x27>(**Caution** - double check results, feature still in Dev)</span>\x0a                    </div>\x0a                    <div id=\x27lt-sheet-link\x27 style=\x27display:none;\x27>\x0a                        <a href=\x27https://docs.google.com/spreadsheets/d/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/edit?usp=sharing\x27 target=\x27_blank\x27>LT Config Sheet</a>\x0a                    </div>\x0a                </div>\x0a            </div>\x0a        </div>",
+        LANETOOLS_VERSION +
+        "</a>\x0a                    <div>\x0a                        <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-EnableShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ScriptEnabled\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ScriptEnabled\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27 id=\x27lt-LaneTabFeatures\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-uiEnhance\x27></span></span>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-UIEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-UIEnable\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                    <div id=\x27lt-UI-wrapper\x27>\x0a                        <div class=\x27lt-option-container\x27 style=\x27margin-bottom:5px;\x27>\x0a                            <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-UIEnhanceShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoOpenWidth\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoOpenWidth\x27><span id=\x27lt-trans-autoWidth\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoLanesTab\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoLanesTab\x27><span id=\x27lt-trans-autoTab\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoExpandLanes\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoExpandLanes\x27><span title=\x22Feature disabled as of Aug 27, 2022 to prevent flickering issue\x22 id=\x27lt-trans-autoExpand\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AutoFocusLanes\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AutoFocusLanes\x27><span id=\x27lt-trans-autoFocus\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-highlightCSIcons\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-highlightCSIcons\x27><span id=\x27lt-trans-csIcons\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ReverseLanesIcon\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ReverseLanesIcon\x27><span id=\x27lt-trans-orient\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27 style=\x27display:none;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-AddTIO\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-AddTIO\x27><span id=\x27lt-trans-AddTIO\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ClickSaveEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ClickSaveEnable\x27><span id=\x27lt-trans-enClick\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container clk-svr\x27 style=\x27padding-left:10%;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ClickSaveStraight\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ClickSaveStraight\x27><span id=\x27lt-trans-straClick\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container clk-svr\x27 style=\x27padding-left:10%;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-ClickSaveTurns\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-ClickSaveTurns\x27><span id=\x27lt-trans-turnClick\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-mapHigh\x27></span></span>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-HighlightsEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-HighlightsEnable\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                    <div id=\x27lt-highlights-wrapper\x27>\x0a                        <div class=\x27lt-option-container\x27 style=\x27margin-bottom:5px;\x27>\x0a                            <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-HighlightShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-IconsEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-IconsEnable\x27><span id=\x27lt-trans-enIcons\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-IconsRotate\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-IconsRotate\x27><span id=\x27lt-trans-IconsRotate\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LabelsEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LabelsEnable\x27><span id=\x27lt-trans-lnLabel\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-NodesEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-NodesEnable\x27><span id=\x27lt-trans-nodeHigh\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LIOEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LIOEnable\x27><span id=\x27lt-trans-laOver\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-CSEnable\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-CSEnable\x27><span id=\x27lt-trans-csOver\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-highlightOverride\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-highlightOverride\x27><span id=\x27lt-trans-highOver\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-heurCan\x27></span></span>\x0a                        <div class=\x27lt-option-container\x27 style=\x27float:right;\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LaneHeuristicsChecks\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LaneHeuristicsChecks\x27><span class=\x27lt-trans-enabled\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                    <div id=\x27lt-heur-wrapper\x27>\x0a                        <div class=\x27lt-option-container\x27 style=\x27margin-bottom:5px;\x27>\x0a                            <div style=\x27display:inline-block;\x27><span class=\x27lt-trans-tglshcut\x27></span>:<span id=\x27lt-LaneHeurChecksShortcut\x27 style=\x27padding-left:10px;\x27></span></div>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LaneHeurPosHighlight\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LaneHeurPosHighlight\x27><span id=\x27lt-trans-heurPos\x27></span></label>\x0a                        </div>\x0a                        <div class=\x27lt-option-container\x27>\x0a                            <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-LaneHeurNegHighlight\x27 />\x0a                            <label class=\x27lt-label\x27 for=\x27lt-LaneHeurNegHighlight\x27><span id=\x27lt-trans-heurNeg\x27></span></label>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27>\x0a                    <div class=\x27lt-section-wrapper\x27>\x0a                        <span id=\x27lt-color-title\x27 data-original-title=\x27" +
+        TRANSLATIONS[langLocality].colTooltip +
+        "\x27><span id=\x27lt-trans-highCol\x27></span>:</span>\x0a                        <div id=\x27lt-color-inputs\x27 style=\x27display:none;\x27>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-ABColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-ABColor\x27 id=\x27lt-ABColorLabel\x27><span id=\x27lt-trans-fwdCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-BAColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-BAColor\x27 id=\x27lt-BAColorLabel\x27><span id=\x27lt-trans-revCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-LabelColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-LabelColor\x27 id=\x27lt-LabelColorLabel\x27><span id=\x27lt-trans-labelCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-ErrorColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-ErrorColor\x27 id=\x27lt-ErrorColorLabel\x27><span id=\x27lt-trans-errorCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-NodeColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-NodeColor\x27 id=\x27lt-NodeColorLabel\x27><span id=\x27lt-trans-nodeCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-TIOColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-TIOColor\x27 id=\x27lt-TIOColorLabel\x27><span id=\x27lt-trans-tioCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-LIOColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-TIOColor\x27 id=\x27lt-LIOColorLabel\x27><span id=\x27lt-trans-laoCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-CS1Color\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-CS1Color\x27 id=\x27lt-CS1ColorLabel\x27><span id=\x27lt-trans-viewCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-CS2Color\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-CS2Color\x27 id=\x27lt-CS2ColorLabel\x27><span id=\x27lt-trans-hearCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-HeurColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-HeurColor\x27 id=\x27lt-HeurColorLabel\x27><span id=\x27lt-trans-posCol\x27></span></label>\x0a                            </div>\x0a                            <div class=\x27lt-option-container color\x27>\x0a                                <input type=color class=\x27lt-color-input\x27 id=\x27lt-HeurFailColor\x27 />\x0a                                <label class=\x27lt-label\x27 for=\x27lt-HeurFailColor\x27 id=\x27lt-HeurFailColorLabel\x27><span id=\x27lt-trans-negCol\x27></span></label>\x0a                            </div>\x0a                        </div>\x0a                    </div>\x0a                </div>\x0a                <div class=\x27lt-section-wrapper\x27 id=\x27lt-adv-tools\x27 style=\x27display:none;\x27>\x0a                    <div class=\x27lt-section-wrapper border\x27>\x0a                        <span style=\x27font-weight:bold;\x27><span id=\x27lt-trans-advTools\x27>></span></span>\x0a                    </div>\x0a                    <div class=\x27lt-option-container\x27>\x0a                        <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-SelAllEnable\x27 />\x0a                        <label class=\x27lt-label\x27 for=\x27lt-SelAllEnable\x27 ><span id=\x27lt-trans-quickTog\x27></span></label>\x0a                    </div>\x0a                    <div class=\x27lt-option-container\x27 id=\x27lt-serverSelectContainer\x27 style=\x27display:none;\x27>\x0a                        <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-serverSelect\x27 />\x0a                        <label class=\x27lt-label\x27 for=\x27lt-serverSelect\x27><span id=\x27lt-trans-heurRBS\x27></span></label>\x0a                    </div>\x0a                    <div class=\x27lt-option-container\x27 id=\x27lt-cpy-pst\x27 style=\x27display:none;\x27>\x0a                        <input type=checkbox class=\x27lt-checkbox\x27 id=\x27lt-CopyEnable\x27 />\x0a                        <label class=\x27lt-label\x27 for=\x27lt-CopyEnable\x27>Copy/Paste Lanes</label>\x0a                        <span style=\x27font-weight: bold;\x27>(**Caution** - double check results, feature still in Dev)</span>\x0a                    </div>\x0a                    <div id=\x27lt-sheet-link\x27 style=\x27display:none;\x27>\x0a                        <a href=\x27https://docs.google.com/spreadsheets/d/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/edit?usp=sharing\x27 target=\x27_blank\x27>LT Config Sheet</a>\x0a                    </div>\x0a                </div>\x0a            </div>\x0a        </div>",
     ].join(" ");
     const message = $(constantStrings.divStr);
-    message.html([
-      "<div class=\x27lt-Toolbar-Container\x27 id=\x22lt-toolbar-container\x22>\x0a            <div class=\x27lt-Toolbar-Wrapper\x27>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27copyA-button\x27>Copy A</button>\x0a                </div>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27copyB-button\x27>Copy B</button>\x0a                </div>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27pasteA-button\x27>Paste A</button>\x0a                </div>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27pasteB-button\x27>Paste B</button>\x0a                </div>\x0a            </div>\x0a        </div>",
-    ].join(" "));
+    message.html(
+      [
+        "<div class=\x27lt-Toolbar-Container\x27 id=\x22lt-toolbar-container\x22>\x0a            <div class=\x27lt-Toolbar-Wrapper\x27>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27copyA-button\x27>Copy A</button>\x0a                </div>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27copyB-button\x27>Copy B</button>\x0a                </div>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27pasteA-button\x27>Paste A</button>\x0a                </div>\x0a                <div class=\x27lt-toolbar-button-container\x27>\x0a                    <button type=\x27button\x27 class=\x27lt-toolbar-button\x27 id=\x27pasteB-button\x27>Paste B</button>\x0a                </div>\x0a            </div>\x0a        </div>",
+      ].join(" "),
+    );
     _pickleColor = seaPickle.attributes.rank;
     if (_pickleColor >= 0x0) {
       WazeWrap.Interface.Tab("LT", initMsg.html, setupOptions, "LT");
       $("<style>" + ltCSSClasses + "</style>").appendTo("head");
       $(constantStrings.mapTag).append(message.html());
-      WazeWrap.Interface.ShowScriptUpdate(GM_info.script.name, GM_info.script.version, LI_UPDATE_NOTES, GF_LINK,
-                                          FORUM_LINK);
+      WazeWrap.Interface.ShowScriptUpdate(
+        GM_info.script.name,
+        GM_info.script.version,
+        LI_UPDATE_NOTES,
+        GF_LINK,
+        FORUM_LINK,
+      );
       console.log("LaneTools: Loaded");
-    } else
-      console.error("LaneTools: loading error....");
+    } else console.error("LaneTools: loading error....");
   }
   function processOptionSettings() {
     setSetting("lt-ScriptEnabled", LtSettings.ScriptEnabled);
@@ -253,7 +291,9 @@
     !getId("lt-HighlightsEnable").checked && $("#lt-highlights-wrapper").hide();
     !getId("lt-LaneHeuristicsChecks").checked && $("#lt-heur-wrapper").hide();
 
-    function setSetting(propertyID, propertyValue) { $("#" + propertyID).prop("checked", propertyValue); }
+    function setSetting(propertyID, propertyValue) {
+      $("#" + propertyID).prop("checked", propertyValue);
+    }
 
     function setCSSBorder(idName, value) {
       const idSelector = $("#" + idName);
@@ -266,32 +306,36 @@
     await loadSettings();
     await loadSpreadsheet();
     initLaneGuidanceClickSaver();
-    LTHighlightLayer = new OpenLayers.Layer.Vector("LTHighlightLayer", {uniqueName : "_LTHighlightLayer"});
+    LTHighlightLayer = new OpenLayers.Layer.Vector("LTHighlightLayer", {
+      uniqueName: "_LTHighlightLayer",
+    });
     W.map.addLayer(LTHighlightLayer);
     LTHighlightLayer.setVisibility(true);
-    LTLaneGraphics = new OpenLayers.Layer.Vector("LTLaneGraphics", {uniqueName : "LTLaneGraphics"});
+    LTLaneGraphics = new OpenLayers.Layer.Vector("LTLaneGraphics", {
+      uniqueName: "LTLaneGraphics",
+    });
     W.map.addLayer(LTLaneGraphics);
     LTLaneGraphics.setVisibility(true);
     const style_map = new OpenLayers.Style({
-      fontFamily : "Open Sans, Alef, helvetica, sans-serif, monospace",
-      labelOutlineColor : "black",
-      fontColor : "${labelColor}",
-      fontSize : "16",
-      labelXOffset : 0xf,
-      labelYOffset : -0xf,
-      labelOutlineWidth : "3",
-      label : "${labelText}",
-      angle : "",
-      labelAlign : "cm",
-      "stroke-width" : "0",
+      fontFamily: "Open Sans, Alef, helvetica, sans-serif, monospace",
+      labelOutlineColor: "black",
+      fontColor: "${labelColor}",
+      fontSize: "16",
+      labelXOffset: 0xf,
+      labelYOffset: -0xf,
+      labelOutlineWidth: "3",
+      label: "${labelText}",
+      angle: "",
+      labelAlign: "cm",
+      "stroke-width": "0",
     });
     LTNamesLayer = new OpenLayers.Layer.Vector("LTNamesLayer", {
-      uniqueName : "LTNamesLayer",
-      styleMap : new OpenLayers.StyleMap(style_map),
+      uniqueName: "LTNamesLayer",
+      styleMap: new OpenLayers.StyleMap(style_map),
     });
     W.map.addLayer(LTNamesLayer);
     LTNamesLayer.setVisibility(true);
-    WazeWrap.Events.register("moveend", null, scanArea)
+    WazeWrap.Events.register("moveend", null, scanArea);
     WazeWrap.Events.register("moveend", null, displayLaneGraphics);
     WazeWrap.Events.register("zoomend", null, scanArea);
     WazeWrap.Events.register("zoomend", null, displayLaneGraphics);
@@ -307,38 +351,65 @@
     WazeWrap.Events.register("selectionchanged", null, displayLaneGraphics);
     WazeWrap.Events.register("changelayer", null, scanArea);
     try {
-      new WazeWrap.Interface
-          .Shortcut("enableHighlights", "Toggle lane highlights", "wmelt", "Lane Tools", LtSettings.enableHighlights,
-                    toggleHighlights, null)
-          .add();
-      new WazeWrap.Interface
-          .Shortcut("enableUIEnhancements", "Toggle UI enhancements", "wmelt", "Lane Tools",
-                    LtSettings.enableUIEnhancements, toggleUIEnhancements, null)
-          .add();
-      new WazeWrap.Interface
-          .Shortcut("enableHeuristics", "Toggle heuristic highlights", "wmelt", "Lane Tools",
-                    LtSettings.enableHeuristics, toggleLaneHeuristicsChecks, null)
-          .add();
-      new WazeWrap.Interface
-          .Shortcut("enableScript", "Toggle script", "wmelt", "Lane Tools", LtSettings.enableScript, toggleScript, null)
-          .add();
+      new WazeWrap.Interface.Shortcut(
+        "enableHighlights",
+        "Toggle lane highlights",
+        "wmelt",
+        "Lane Tools",
+        LtSettings.enableHighlights,
+        toggleHighlights,
+        null,
+      ).add();
+      new WazeWrap.Interface.Shortcut(
+        "enableUIEnhancements",
+        "Toggle UI enhancements",
+        "wmelt",
+        "Lane Tools",
+        LtSettings.enableUIEnhancements,
+        toggleUIEnhancements,
+        null,
+      ).add();
+      new WazeWrap.Interface.Shortcut(
+        "enableHeuristics",
+        "Toggle heuristic highlights",
+        "wmelt",
+        "Lane Tools",
+        LtSettings.enableHeuristics,
+        toggleLaneHeuristicsChecks,
+        null,
+      ).add();
+      new WazeWrap.Interface.Shortcut(
+        "enableScript",
+        "Toggle script",
+        "wmelt",
+        "Lane Tools",
+        LtSettings.enableScript,
+        toggleScript,
+        null,
+      ).add();
     } catch (err) {
-      console.log("LT Error creating shortcuts. This feature will be disabled.");
+      console.log(
+        "LT Error creating shortcuts. This feature will be disabled.",
+      );
       $("#lt-EnableShortcut").text("" + TRANSLATIONS.default.disabled);
       $("#lt-HighlightShortcut").text("" + TRANSLATIONS.default.disabled);
       $("#lt-UIEnhanceShortcut").text("" + TRANSLATIONS.default.disabled);
       $("#lt-LaneHeurChecksShortcut").text("" + TRANSLATIONS.default.disabled);
-      shortcutsDisabled = true
+      shortcutsDisabled = true;
     }
-    const highlightsEnabledID = $("#lt-HighlightsEnable"), colorTitleID = $("#lt-color-title"),
-          laneHeuristicsChecksID = $("#lt-LaneHeuristicsChecks");
+    const highlightsEnabledID = $("#lt-HighlightsEnable"),
+      colorTitleID = $("#lt-color-title"),
+      laneHeuristicsChecksID = $("#lt-LaneHeuristicsChecks");
     processOptionSettings();
-    setTimeout(() => { updateShortcutLabels(); }, 50);
+    setTimeout(() => {
+      updateShortcutLabels();
+    }, 50);
     setHeuristics();
     setTranslations();
     if (_pickleColor > 0x1) {
       let jqQuickTog = $("#lt-trans-quickTog");
-      let ltEnabledFeatures = "LaneTools: The following special access features are enabled: ";
+      let ltEnabledFeatures =
+        "LaneTools: The following special access features are enabled: ";
       $("#lt-adv-tools").css("display", "block");
       jqQuickTog.attr("data-original-title", "" + strings["selAllTooltip"]);
       jqQuickTog.tooltip();
@@ -353,23 +424,30 @@
         ltEnabledFeatures += "RBS Heuristics";
       }
       if (allowCpyPst) {
-        $("#lt-sheet-link").css({display : "block", margin : "2px"});
+        $("#lt-sheet-link").css({ display: "block", margin: "2px" });
         let sheetLinkSelector = $("#lt-sheet-link > a");
         sheetLinkSelector.css({
-          padding : "2px",
-          border : "2px solid black",
-          "border-radius" : "6px",
-          "text-decoration" : "none",
+          padding: "2px",
+          border: "2px solid black",
+          "border-radius": "6px",
+          "text-decoration": "none",
         });
-        sheetLinkSelector.on("mouseenter", function() { $(this).css("background-color", "orange"); })
-            .on("mouseleave", function() { $(this).css("background-color", "#eeeeee"); });
-        $(".lt-toolbar-button").on("click", function() {
+        sheetLinkSelector
+          .on("mouseenter", function () {
+            $(this).css("background-color", "orange");
+          })
+          .on("mouseleave", function () {
+            $(this).css("background-color", "#eeeeee");
+          });
+        $(".lt-toolbar-button").on("click", function () {
           $(this)[0].id === "copyA-button" && copyLaneInfo("A");
           $(this)[0].id === "copyB-button" && copyLaneInfo("B");
           $(this)[0].id === "pasteA-button" && pasteLaneInfo("A");
           $(this)[0].id === "pasteB-button" && pasteLaneInfo("B");
         });
-        ltEnabledFeatures = isRBS ? ltEnabledFeatures + ", Copy/Paste" : ltEnabledFeatures + "Copy/Paste";
+        ltEnabledFeatures = isRBS
+          ? ltEnabledFeatures + ", Copy/Paste"
+          : ltEnabledFeatures + "Copy/Paste";
       }
       if (isRBS || allowCpyPst) {
         console.log(ltEnabledFeatures);
@@ -377,12 +455,12 @@
     } else {
       $("#lt-LaneTabFeatures").css("display", "none");
     }
-    $(".lt-checkbox").on("click", function() {
+    $(".lt-checkbox").on("click", function () {
       let settingName = $(this)[0x0].id.substring(3);
       LtSettings[settingName] = this.checked;
       saveSettings();
-    })
-    $(".lt-color-input").on("change", function() {
+    });
+    $(".lt-color-input").on("change", function () {
       let color_input = $(this)[0].id.substring(3);
       LtSettings[color_input] = this["value"];
       saveSettings();
@@ -391,61 +469,63 @@
       scanArea();
     });
     $("#lt-ScriptEnabled").on("click", () => {
-      if (getId("lt-ScriptEnabled").checked)
-        scanArea();
+      if (getId("lt-ScriptEnabled").checked) scanArea();
       else {
         removeHighlights();
         removeLaneGraphics();
       }
     });
     highlightsEnabledID.on("click", () => {
-      if (!getId("lt-HighlightsEnable").checked)
-        removeHighlights();
+      if (!getId("lt-HighlightsEnable").checked) removeHighlights();
       scanArea();
     });
     $("#lt-LabelsEnable").on("click", () => {
-      if (!getId("lt-LabelsEnable").checked)
-        removeHighlights();
+      if (!getId("lt-LabelsEnable").checked) removeHighlights();
       scanArea();
     });
     $("#lt-NodesEnable").on("click", () => {
-      if (!getId("lt-NodesEnable").checked)
-        removeHighlights();
+      if (!getId("lt-NodesEnable").checked) removeHighlights();
       scanArea();
     });
     $("#lt-LIOEnable").on("click", () => {
-      if (!getId("lt-LIOEnable").checked)
-        removeHighlights();
+      if (!getId("lt-LIOEnable").checked) removeHighlights();
       scanArea();
     });
-    $("#lt-IconsEnable")
-        .on("click", () => { getId("lt-IconsEnable").checked ? displayLaneGraphics() : removeLaneGraphics(); });
+    $("#lt-IconsEnable").on("click", () => {
+      getId("lt-IconsEnable").checked
+        ? displayLaneGraphics()
+        : removeLaneGraphics();
+    });
     $("#lt-highlightOverride").on("click", () => {
-      if (!getId("lt-highlightOverride").checked)
-        removeHighlights();
+      if (!getId("lt-highlightOverride").checked) removeHighlights();
       scanArea();
     });
-    colorTitleID.on("click", () => { $("#lt-color-inputs").toggle(); });
-    $("#lt-ClickSaveEnable").on("click", () => { $(".lt-option-container.clk-svr").toggle(); });
+    colorTitleID.on("click", () => {
+      $("#lt-color-inputs").toggle();
+    });
+    $("#lt-ClickSaveEnable").on("click", () => {
+      $(".lt-option-container.clk-svr").toggle();
+    });
     $("#lt-UIEnable").on("click", () => {
       $("#lt-UI-wrapper").toggle();
       removeLaneGraphics();
     });
-    highlightsEnabledID.on("click", () => { $("#lt-highlights-wrapper").toggle(); });
-    laneHeuristicsChecksID.on("click", () => { $("#lt-heur-wrapper").toggle(); });
+    highlightsEnabledID.on("click", () => {
+      $("#lt-highlights-wrapper").toggle();
+    });
     laneHeuristicsChecksID.on("click", () => {
-      if (!getId("lt-LaneHeuristicsChecks").checked)
-        removeHighlights();
+      $("#lt-heur-wrapper").toggle();
+    });
+    laneHeuristicsChecksID.on("click", () => {
+      if (!getId("lt-LaneHeuristicsChecks").checked) removeHighlights();
       scanArea();
     });
     $("#lt-LaneHeurPosHighlight").on("click", () => {
-      if (!getId("lt-LaneHeurPosHighlight").checked)
-        removeHighlights();
+      if (!getId("lt-LaneHeurPosHighlight").checked) removeHighlights();
       scanArea();
     });
     $("#lt-LaneHeurNegHighlight").on("click", () => {
-      if (!getId("lt-LaneHeurNegHighlight").checked)
-        removeHighlights();
+      if (!getId("lt-LaneHeurNegHighlight").checked) removeHighlights();
       scanArea();
     });
     $("#lt-serverSelect").on("click", () => {
@@ -457,7 +537,9 @@
     //   this.trigger("hide");
     //   $.fn.hide.apply(this, arguments);
     // };
-    $("#keyboard-dialog").on("hide", () => { checkShortcutsChanged(); });
+    $("#keyboard-dialog").on("hide", () => {
+      checkShortcutsChanged();
+    });
     colorTitleID.tooltip();
     scanArea();
     displayLaneGraphics();
@@ -465,152 +547,158 @@
 
   async function loadSettings() {
     const parsedSettings = JSON.parse(localStorage.getItem("LT_Settings")),
-          laneToolsSettings = await WazeWrap.Remote.RetrieveSettings("LT_Settings");
-    !laneToolsSettings && console.error("LaneTools: Error communicating with WW settings server");
+      laneToolsSettings = await WazeWrap.Remote.RetrieveSettings("LT_Settings");
+    !laneToolsSettings &&
+      console.error("LaneTools: Error communicating with WW settings server");
     const settingsObject = {
-      lastSaveAction : 0x0,
-      ScriptEnabled : true,
-      UIEnable : true,
-      AutoOpenWidth : false,
-      AutoExpandLanes : false,
-      AutoLanesTab : false,
-      HighlightsEnable : true,
-      LabelsEnable : true,
-      NodesEnable : true,
-      ABColor : "#990033",
-      BAColor : "#0033cc",
-      LabelColor : "#FFAD08",
-      ErrorColor : "#F50E0E",
-      NodeColor : "#66ccff",
-      TIOColor : "#ff9900",
-      LIOColor : "#ff9900",
-      CS1Color : "#04E6F6",
-      CS2Color : "#8F47FA",
-      HeurColor : "#00aa00",
-      HeurFailColor : "#E804F6",
-      CopyEnable : false,
-      SelAllEnable : false,
-      serverSelect : false,
-      LIOEnable : true,
-      CSEnable : true,
-      AutoFocusLanes : true,
-      ReverseLanesIcon : false,
-      ClickSaveEnable : true,
-      ClickSaveStraight : false,
-      ClickSaveTurns : true,
-      enableScript : "",
-      enableHighlights : "",
-      enableUIEnhancements : "",
-      enableHeuristics : "",
-      LaneHeurNegHighlight : false,
-      LaneHeurPosHighlight : false,
-      LaneHeuristicsChecks : false,
-      highlightCSIcons : false,
-      highlightOverride : true,
-      AddTIO : false,
-      IconsEnable : true,
-      IconsRotate : true,
+      lastSaveAction: 0x0,
+      ScriptEnabled: true,
+      UIEnable: true,
+      AutoOpenWidth: false,
+      AutoExpandLanes: false,
+      AutoLanesTab: false,
+      HighlightsEnable: true,
+      LabelsEnable: true,
+      NodesEnable: true,
+      ABColor: "#990033",
+      BAColor: "#0033cc",
+      LabelColor: "#FFAD08",
+      ErrorColor: "#F50E0E",
+      NodeColor: "#66ccff",
+      TIOColor: "#ff9900",
+      LIOColor: "#ff9900",
+      CS1Color: "#04E6F6",
+      CS2Color: "#8F47FA",
+      HeurColor: "#00aa00",
+      HeurFailColor: "#E804F6",
+      CopyEnable: false,
+      SelAllEnable: false,
+      serverSelect: false,
+      LIOEnable: true,
+      CSEnable: true,
+      AutoFocusLanes: true,
+      ReverseLanesIcon: false,
+      ClickSaveEnable: true,
+      ClickSaveStraight: false,
+      ClickSaveTurns: true,
+      enableScript: "",
+      enableHighlights: "",
+      enableUIEnhancements: "",
+      enableHeuristics: "",
+      LaneHeurNegHighlight: false,
+      LaneHeurPosHighlight: false,
+      LaneHeuristicsChecks: false,
+      highlightCSIcons: false,
+      highlightOverride: true,
+      AddTIO: false,
+      IconsEnable: true,
+      IconsRotate: true,
     };
     LtSettings = $.extend({}, settingsObject, parsedSettings);
-    if (laneToolsSettings && laneToolsSettings["lastSaveAction"] > LtSettings.lastSaveAction) {
+    if (
+      laneToolsSettings &&
+      laneToolsSettings["lastSaveAction"] > LtSettings.lastSaveAction
+    ) {
       $.extend(LtSettings, laneToolsSettings);
     }
 
     Object.keys(settingsObject).forEach((propertyName) => {
-      !LtSettings.hasOwnProperty(propertyName) && (LtSettings[propertyName] = settingsObject[propertyName]);
+      !LtSettings.hasOwnProperty(propertyName) &&
+        (LtSettings[propertyName] = settingsObject[propertyName]);
     });
   }
 
   async function saveSettings() {
     const {
-      ScriptEnabled : scriptEnabledValue,
-      HighlightsEnable : highlightsEnabledValue,
-      LabelsEnable : labelsEnabledValue,
-      NodesEnable : nodesEnabledValue,
-      UIEnable : uiEnabledValue,
-      AutoLanesTab : autoLanesTab,
-      AutoOpenWidth : autoOpenWidth,
-      AutoExpandLanes : autoExpandLanes,
-      ABColor : abColorValue,
-      BAColor : baColor,
-      LabelColor : labelColorValue,
-      ErrorColor : errorColorValue,
-      NodeColor : nodeColorValue,
-      TIOColor : tioColorValue,
-      LIOColor : lioColorValue,
-      CS1Color : cs1ColorValue,
-      CS2Color : cs2ColorValue,
-      CopyEnable : copyEnable,
-      SelAllEnable : setEallEnable,
-      serverSelect : serverSelectValue,
-      LIOEnable : lioEnableValue,
-      CSEnable : csEnableValue,
-      AutoFocusLanes : autoFocusLanesValue,
-      ReverseLanesIcon : revLanesIcon,
-      ClickSaveEnable : clickSaveEnable,
-      ClickSaveStraight : clickSaveStraightValue,
-      ClickSaveTurns : clickSaveTurns,
-      enableScript : enableScriptValue,
-      enableHighlights : enableHighlightsValue,
-      enableUIEnhancements : enableUIEnhancementsValue,
-      enableHeuristics : enableHeuristicsValue,
-      HeurColor : heurColorValue,
-      HeurFailColor : heurFailColorValue,
-      LaneHeurPosHighlight : laneHeurPosHighlightValue,
-      LaneHeurNegHighlight : laneHeurNegHighlightValue,
-      LaneHeuristicsChecks : laneHeuristicsChecksValue,
-      highlightCSIcons : highlightCSIconsValue,
-      highlightOverride : highlightOverrideValue,
-      AddTIO : addTIOValue,
-      IconsEnable : iconsEnableValue,
-      IconsRotate : iconsRotateValue,
-    } = LtSettings,
-    savedLTSettings = {
-      lastSaveAction : Date.now(),
-      ScriptEnabled : scriptEnabledValue,
-      HighlightsEnable : highlightsEnabledValue,
-      LabelsEnable : labelsEnabledValue,
-      NodesEnable : nodesEnabledValue,
-      UIEnable : uiEnabledValue,
-      AutoOpenWidth : autoOpenWidth,
-      AutoLanesTab : autoLanesTab,
-      AutoExpandLanes : autoExpandLanes,
-      ABColor : abColorValue,
-      BAColor : baColor,
-      LabelColor : labelColorValue,
-      ErrorColor : errorColorValue,
-      NodeColor : nodeColorValue,
-      TIOColor : tioColorValue,
-      LIOColor : lioColorValue,
-      CS1Color : cs1ColorValue,
-      CS2Color : cs2ColorValue,
-      CopyEnable : copyEnable,
-      SelAllEnable : setEallEnable,
-      serverSelect : serverSelectValue,
-      LIOEnable : lioEnableValue,
-      CSEnable : csEnableValue,
-      AutoFocusLanes : autoFocusLanesValue,
-      ReverseLanesIcon : revLanesIcon,
-      ClickSaveEnable : clickSaveEnable,
-      ClickSaveStraight : clickSaveStraightValue,
-      ClickSaveTurns : clickSaveTurns,
-      enableScript : enableScriptValue,
-      enableHighlights : enableHighlightsValue,
-      enableUIEnhancements : enableUIEnhancementsValue,
-      enableHeuristics : enableHeuristicsValue,
-      HeurColor : heurColorValue,
-      HeurFailColor : heurFailColorValue,
-      LaneHeurPosHighlight : laneHeurPosHighlightValue,
-      LaneHeurNegHighlight : laneHeurNegHighlightValue,
-      LaneHeuristicsChecks : laneHeuristicsChecksValue,
-      highlightCSIcons : highlightCSIconsValue,
-      highlightOverride : highlightOverrideValue,
-      AddTIO : addTIOValue,
-      IconsEnable : iconsEnableValue,
-      IconsRotate : iconsRotateValue,
-    };
+        ScriptEnabled: scriptEnabledValue,
+        HighlightsEnable: highlightsEnabledValue,
+        LabelsEnable: labelsEnabledValue,
+        NodesEnable: nodesEnabledValue,
+        UIEnable: uiEnabledValue,
+        AutoLanesTab: autoLanesTab,
+        AutoOpenWidth: autoOpenWidth,
+        AutoExpandLanes: autoExpandLanes,
+        ABColor: abColorValue,
+        BAColor: baColor,
+        LabelColor: labelColorValue,
+        ErrorColor: errorColorValue,
+        NodeColor: nodeColorValue,
+        TIOColor: tioColorValue,
+        LIOColor: lioColorValue,
+        CS1Color: cs1ColorValue,
+        CS2Color: cs2ColorValue,
+        CopyEnable: copyEnable,
+        SelAllEnable: setEallEnable,
+        serverSelect: serverSelectValue,
+        LIOEnable: lioEnableValue,
+        CSEnable: csEnableValue,
+        AutoFocusLanes: autoFocusLanesValue,
+        ReverseLanesIcon: revLanesIcon,
+        ClickSaveEnable: clickSaveEnable,
+        ClickSaveStraight: clickSaveStraightValue,
+        ClickSaveTurns: clickSaveTurns,
+        enableScript: enableScriptValue,
+        enableHighlights: enableHighlightsValue,
+        enableUIEnhancements: enableUIEnhancementsValue,
+        enableHeuristics: enableHeuristicsValue,
+        HeurColor: heurColorValue,
+        HeurFailColor: heurFailColorValue,
+        LaneHeurPosHighlight: laneHeurPosHighlightValue,
+        LaneHeurNegHighlight: laneHeurNegHighlightValue,
+        LaneHeuristicsChecks: laneHeuristicsChecksValue,
+        highlightCSIcons: highlightCSIconsValue,
+        highlightOverride: highlightOverrideValue,
+        AddTIO: addTIOValue,
+        IconsEnable: iconsEnableValue,
+        IconsRotate: iconsRotateValue,
+      } = LtSettings,
+      savedLTSettings = {
+        lastSaveAction: Date.now(),
+        ScriptEnabled: scriptEnabledValue,
+        HighlightsEnable: highlightsEnabledValue,
+        LabelsEnable: labelsEnabledValue,
+        NodesEnable: nodesEnabledValue,
+        UIEnable: uiEnabledValue,
+        AutoOpenWidth: autoOpenWidth,
+        AutoLanesTab: autoLanesTab,
+        AutoExpandLanes: autoExpandLanes,
+        ABColor: abColorValue,
+        BAColor: baColor,
+        LabelColor: labelColorValue,
+        ErrorColor: errorColorValue,
+        NodeColor: nodeColorValue,
+        TIOColor: tioColorValue,
+        LIOColor: lioColorValue,
+        CS1Color: cs1ColorValue,
+        CS2Color: cs2ColorValue,
+        CopyEnable: copyEnable,
+        SelAllEnable: setEallEnable,
+        serverSelect: serverSelectValue,
+        LIOEnable: lioEnableValue,
+        CSEnable: csEnableValue,
+        AutoFocusLanes: autoFocusLanesValue,
+        ReverseLanesIcon: revLanesIcon,
+        ClickSaveEnable: clickSaveEnable,
+        ClickSaveStraight: clickSaveStraightValue,
+        ClickSaveTurns: clickSaveTurns,
+        enableScript: enableScriptValue,
+        enableHighlights: enableHighlightsValue,
+        enableUIEnhancements: enableUIEnhancementsValue,
+        enableHeuristics: enableHeuristicsValue,
+        HeurColor: heurColorValue,
+        HeurFailColor: heurFailColorValue,
+        LaneHeurPosHighlight: laneHeurPosHighlightValue,
+        LaneHeurNegHighlight: laneHeurNegHighlightValue,
+        LaneHeuristicsChecks: laneHeuristicsChecksValue,
+        highlightCSIcons: highlightCSIconsValue,
+        highlightOverride: highlightOverrideValue,
+        AddTIO: addTIOValue,
+        IconsEnable: iconsEnableValue,
+        IconsRotate: iconsRotateValue,
+      };
     for (const action in W.accelerators.Actions) {
-      const {shortcut : keyboardShortcut, group : keyboardActionGroup} = W.accelerators.Actions[action];
+      const { shortcut: keyboardShortcut, group: keyboardActionGroup } =
+        W.accelerators.Actions[action];
       let keyPressed = "";
       if (keyboardActionGroup === "wmelt") {
         if (keyboardShortcut) {
@@ -622,103 +710,114 @@
         } else {
           keyPressed = "-1";
         }
-        savedLTSettings[action] = keyPressed
+        savedLTSettings[action] = keyPressed;
       }
     }
     LtSettings = savedLTSettings;
-    localStorage && localStorage.setItem("LT_Settings", JSON.stringify(savedLTSettings));
-    const ltSettingsSaveStatus = await WazeWrap.Remote.SaveSettings("LT_Settings", savedLTSettings);
+    localStorage &&
+      localStorage.setItem("LT_Settings", JSON.stringify(savedLTSettings));
+    const ltSettingsSaveStatus = await WazeWrap.Remote.SaveSettings(
+      "LT_Settings",
+      savedLTSettings,
+    );
     if (ltSettingsSaveStatus === null)
       console.warn("LaneTools: User PIN not set in WazeWrap tab");
     else {
       if (ltSettingsSaveStatus === false)
         console.error("LaneTools: Unable to save settings to server");
-      else
-        console.log("LaneTools: Saved Settings to the Server")
+      else console.log("LaneTools: Saved Settings to the Server");
     }
   }
 
   async function loadSpreadsheet() {
     let spreadSheetLoadStatus = false;
     const spreadsheetID = "AIzaSyDZjmkSx5xWc-86hsAIzedgDgRgy8vB7BQ",
-          angleFail =
-              (_0x135a7d, _0x3e3ad5, errorMsg) => { console.error("LaneTools: Error loading settings:", errorMsg); },
-          rbsFail =
-              (_0x2d5151, _0x4e197b, reason) => {
-                console.error("LaneTools: Error loading RBS: ", reason);
-                if (!RBSArray.failed) {
-                  WazeWrap.Alerts.error(GM_info.script.name,
-                                        "Unable to load heuristics data for LG. This feature will not be available");
-                  RBSArray.failed = true
-                }
-              },
-          translationFailedToLoad =
-              (_0x4e546b, _0x559463, err) => { console.error("LaneTools: Error loading trans: ", err); };
+      angleFail = (_0x135a7d, _0x3e3ad5, errorMsg) => {
+        console.error("LaneTools: Error loading settings:", errorMsg);
+      },
+      rbsFail = (_0x2d5151, _0x4e197b, reason) => {
+        console.error("LaneTools: Error loading RBS: ", reason);
+        if (!RBSArray.failed) {
+          WazeWrap.Alerts.error(
+            GM_info.script.name,
+            "Unable to load heuristics data for LG. This feature will not be available",
+          );
+          RBSArray.failed = true;
+        }
+      },
+      translationFailedToLoad = (_0x4e546b, _0x559463, err) => {
+        console.error("LaneTools: Error loading trans: ", err);
+      };
     try {
-      await $.getJSON(constantStrings.translationSpreadSheetBaseURL + spreadsheetID)
-          .done(async (spreadSheetData) => {
-            spreadSheetData.values.length > 0x0 ? _.each(spreadSheetData.values, (translationValue) => {
-              let localeName = translationValue[1];
-              let translationsAvailable = Number.parseInt(translationValue[2], 10) === 1;
-              !TRANSLATIONS[localeName] && translationsAvailable &&
+      await $.getJSON(
+        constantStrings.translationSpreadSheetBaseURL + spreadsheetID,
+      )
+        .done(async (spreadSheetData) => {
+          spreadSheetData.values.length > 0x0
+            ? _.each(spreadSheetData.values, (translationValue) => {
+                let localeName = translationValue[1];
+                let translationsAvailable =
+                  Number.parseInt(translationValue[2], 10) === 1;
+                !TRANSLATIONS[localeName] &&
+                  translationsAvailable &&
                   (TRANSLATIONS[localeName] = JSON.parse(translationValue[0]));
-            }) : translationFailedToLoad();
-          })
-          .fail(translationFailedToLoad);
+              })
+            : translationFailedToLoad();
+        })
+        .fail(translationFailedToLoad);
     } catch (ex) {
       translationFailedToLoad(null, null, ex);
     }
     try {
       await $.getJSON(constantStrings.angleSpreadSheetBaseURL + spreadsheetID)
-          .done((angleValueJSON) => {
-            if (angleValueJSON.values.length > 0x0) {
-              _.each(angleValueJSON.values, (angleValue) => {
-                !configArray[angleValue[1]] && (configArray[angleValue[1]] = JSON.parse(angleValue[0]));
-              });
-              spreadSheetLoadStatus = true
-            } else
-              angleFail();
-          })
-          .fail(angleFail);
+        .done((angleValueJSON) => {
+          if (angleValueJSON.values.length > 0x0) {
+            _.each(angleValueJSON.values, (angleValue) => {
+              !configArray[angleValue[1]] &&
+                (configArray[angleValue[1]] = JSON.parse(angleValue[0]));
+            });
+            spreadSheetLoadStatus = true;
+          } else angleFail();
+        })
+        .fail(angleFail);
     } catch (angleException) {
       angleFail(null, null, angleException);
     }
     try {
       await $.getJSON(constantStrings.RBSAccessSheetBaseURL + spreadsheetID)
-          .done((rbsValueJSON) => {
-            if (rbsValueJSON.values.length > 0x0) {
-              for (let idx = 0x0; idx < rbsValueJSON.values.length; idx++) {
-                RBSArray[idx] = rbsValueJSON.values[idx];
-              }
-              RBSArray.failed = false;
-            } else
-              rbsFail();
-          })
-          .fail(rbsFail);
+        .done((rbsValueJSON) => {
+          if (rbsValueJSON.values.length > 0x0) {
+            for (let idx = 0x0; idx < rbsValueJSON.values.length; idx++) {
+              RBSArray[idx] = rbsValueJSON.values[idx];
+            }
+            RBSArray.failed = false;
+          } else rbsFail();
+        })
+        .fail(rbsFail);
     } catch (rbsException) {
       rbsFail(null, null, rbsException);
     }
-    spreadSheetLoadStatus && _.each(configArray, (configValueJSON) => {
-      for (const configValue in configValueJSON) {
-        if (configValueJSON.hasOwnProperty(configValue)) {
-          let value = configValueJSON[configValue];
-          configValueJSON[configValue] = Number.parseFloat(value);
+    spreadSheetLoadStatus &&
+      _.each(configArray, (configValueJSON) => {
+        for (const configValue in configValueJSON) {
+          if (configValueJSON.hasOwnProperty(configValue)) {
+            let value = configValueJSON[configValue];
+            configValueJSON[configValue] = Number.parseFloat(value);
+          }
         }
-      }
-    });
+      });
   }
 
   function setTranslations() {
     langLocality = I18n.currentLocale().toLowerCase();
-    if (TRANSLATIONS[langLocality])
-      strings = TRANSLATIONS[langLocality];
+    if (TRANSLATIONS[langLocality]) strings = TRANSLATIONS[langLocality];
     else
       langLocality.includes("-") && TRANSLATIONS[langLocality.split("-")[0x0]]
-          ? (strings = TRANSLATIONS[langLocality.split("-")[0x0]])
-          : (strings = TRANSLATIONS["default"]);
+        ? (strings = TRANSLATIONS[langLocality.split("-")[0x0]])
+        : (strings = TRANSLATIONS["default"]);
     Object.keys(TRANSLATIONS.default).forEach((propertyName) => {
       (!strings.hasOwnProperty(propertyName) || strings[propertyName] === "") &&
-          (strings[propertyName] = TRANSLATIONS.default[ propertyName ]);
+        (strings[propertyName] = TRANSLATIONS.default[propertyName]);
     });
     $(".lt-trans-enabled").text(strings.enabled);
     $(".lt-trans-tglshcut").text(strings["toggleShortcut"]);
@@ -764,26 +863,29 @@
       $("#lt-EnableShortcut").text("" + strings["disabled"]);
       $("#lt-HighlightShortcut").text("" + strings["disabled"]);
       $("#lt-UIEnhanceShortcut").text("" + strings["disabled"]);
-      $("#lt-LaneHeurChecksShortcut").text("" + strings["disabled"])
+      $("#lt-LaneHeurChecksShortcut").text("" + strings["disabled"]);
     }
   }
 
   function setHeuristics() {
-    if (RBSArray.failed)
-      return;
-    let config = isRBS && getId("lt-serverSelect").checked ? configArray.RBS : configArray.RPS;
+    if (RBSArray.failed) return;
+    let config =
+      isRBS && getId("lt-serverSelect").checked
+        ? configArray.RBS
+        : configArray.RPS;
     MAX_LEN_HEUR = config.MAX_LEN_HEUR;
-    (MAX_PERP_DIF = config.MAX_PERP_DIF);
-    (MAX_PERP_DIF_ALT = config.MAX_PERP_DIF_ALT);
-    (MAX_PERP_TO_CONSIDER = config.MAX_PERP_TO_CONSIDER);
-    (MAX_STRAIGHT_TO_CONSIDER = config.MAX_STRAIGHT_TO_CONSIDER);
-    (MAX_STRAIGHT_DIF = config.MAX_STRAIGHT_DIF);
+    MAX_PERP_DIF = config.MAX_PERP_DIF;
+    MAX_PERP_DIF_ALT = config.MAX_PERP_DIF_ALT;
+    MAX_PERP_TO_CONSIDER = config.MAX_PERP_TO_CONSIDER;
+    MAX_STRAIGHT_TO_CONSIDER = config.MAX_STRAIGHT_TO_CONSIDER;
+    MAX_STRAIGHT_DIF = config.MAX_STRAIGHT_DIF;
   }
 
   function checkShortcutsChanged() {
     let shortCutInvoked = false;
     for (const actionValue in W.accelerators.Actions) {
-      const {shortcut : shortCutValue, group : groupValue} = W.accelerators.Actions[actionValue];
+      const { shortcut: shortCutValue, group: groupValue } =
+        W.accelerators.Actions[actionValue];
       if (groupValue === "wmelt") {
         let shortCutString = "";
         if (shortCutValue) {
@@ -791,19 +893,29 @@
           shortCutValue["shiftKey"] === true && (shortCutString += "S");
           shortCutValue["ctrlKey"] === true && (shortCutString += "C");
           shortCutString !== "" && (shortCutString += "+");
-          shortCutValue["keyCode"] && (shortCutString += shortCutValue["keyCode"]);
-        } else
-          shortCutString = "-1";
+          shortCutValue["keyCode"] &&
+            (shortCutString += shortCutValue["keyCode"]);
+        } else shortCutString = "-1";
         if (LtSettings[actionValue] !== shortCutString) {
-          (shortCutInvoked = true);
-          console.log("LaneTools: Stored shortcut " + actionValue + ": " + LtSettings[actionValue] + "changed to " +
-                      shortCutString);
+          shortCutInvoked = true;
+          console.log(
+            "LaneTools: Stored shortcut " +
+              actionValue +
+              ": " +
+              LtSettings[actionValue] +
+              "changed to " +
+              shortCutString,
+          );
           break;
         }
       }
     }
     if (shortCutInvoked) {
-      saveSettings().then(r => setTimeout(() => { updateShortcutLabels(); }, 200));
+      saveSettings().then((r) =>
+        setTimeout(() => {
+          updateShortcutLabels();
+        }, 200),
+      );
     }
   }
 
@@ -842,127 +954,202 @@
     if (!shortcutsDisabled) {
       $("#lt-EnableShortcut").text(getKeyboardShortcut("enableScript"));
       $("#lt-HighlightShortcut").text(getKeyboardShortcut("enableHighlights"));
-      $("#lt-UIEnhanceShortcut").text(getKeyboardShortcut("enableUIEnhancements"));
-      $("#lt-LaneHeurChecksShortcut").text(getKeyboardShortcut("enableHeuristics"))
+      $("#lt-UIEnhanceShortcut").text(
+        getKeyboardShortcut("enableUIEnhancements"),
+      );
+      $("#lt-LaneHeurChecksShortcut").text(
+        getKeyboardShortcut("enableHeuristics"),
+      );
     }
   }
 
-  function getSegObj(objectID) { return W.model.segments.getObjectById(objectID); }
+  function getSegObj(objectID) {
+    return W.model.segments.getObjectById(objectID);
+  }
 
-  function getNodeObj(objectID) { return W.model.nodes.getObjectById(objectID); }
+  function getNodeObj(objectID) {
+    return W.model.nodes.getObjectById(objectID);
+  }
   function decorateSegments(flagsObject, selectedFeatures, eventInfo = null) {
     if (eventInfo !== null) {
       eventInfo.stopPropagation();
     }
-    getId("lt-ReverseLanesIcon").checked && !flagsObject.rotateDisplayLanes && rotateDisplay(flagsObject);
+    getId("lt-ReverseLanesIcon").checked &&
+      !flagsObject.rotateDisplayLanes &&
+      rotateDisplay(flagsObject);
     getId("lt-highlightCSIcons").checked && decorateCSIcons(selectedFeatures);
     if (_pickleColor >= 0x1 || editorInfo["editableCountryIDS"].length > 0x0) {
-      if (getId("li-del-opp-btn"))
-        $("#li-del-opp-btn").remove();
+      if (getId("li-del-opp-btn")) $("#li-del-opp-btn").remove();
       let delForwardButton = $(
-              "<button type=\"button\" id=\"li-del-fwd-btn\" style=\"height:20px;background-color:white;border:1px solid grey;border-radius:8px;\">" +
-              strings.delFwd + "</button>"),
-          deleteRefButton = $(
-              "<button type=\"button\" id=\"li-del-rev-btn\" style=\"height:20px;background-color:white;border:1px solid grey;border-radius:8px;\">" +
-              strings.delRev + "</button>"),
-          deleteOppButton = $(
-              "<button type=\"button\" id=\"li-del-opp-btn\" style=\"height:auto;background-color:orange;border:1px solid grey;border-radius:8px; margin-bottom:5px;\">" +
-              strings.delOpp + "</button>"),
-          fwdDisplayRelative = $("<div style=\"display:inline-block;position:relative;\" />"),
-          revDisplayRelativeSelector = $("<div style=\"display:inline-block;position:relative;\" />"),
-          oppDisplayRelativeSelector = $("<div style=\"display:inline-block;position:relative;\" />");
+          '<button type="button" id="li-del-fwd-btn" style="height:20px;background-color:white;border:1px solid grey;border-radius:8px;">' +
+            strings.delFwd +
+            "</button>",
+        ),
+        deleteRefButton = $(
+          '<button type="button" id="li-del-rev-btn" style="height:20px;background-color:white;border:1px solid grey;border-radius:8px;">' +
+            strings.delRev +
+            "</button>",
+        ),
+        deleteOppButton = $(
+          '<button type="button" id="li-del-opp-btn" style="height:auto;background-color:orange;border:1px solid grey;border-radius:8px; margin-bottom:5px;">' +
+            strings.delOpp +
+            "</button>",
+        ),
+        fwdDisplayRelative = $(
+          '<div style="display:inline-block;position:relative;" />',
+        ),
+        revDisplayRelativeSelector = $(
+          '<div style="display:inline-block;position:relative;" />',
+        ),
+        oppDisplayRelativeSelector = $(
+          '<div style="display:inline-block;position:relative;" />',
+        );
       delForwardButton.appendTo(fwdDisplayRelative);
       deleteRefButton.appendTo(revDisplayRelativeSelector);
       deleteOppButton.appendTo(oppDisplayRelativeSelector);
-      const liDeleteFwdButtonSelector = $("#li-del-fwd-btn"), liDeleteReverseButtonSelector = $("#li-del-rev-btn"),
-            liDeleteOppositeButtonSelector = $("#li-del-opp-btn");
+      const liDeleteFwdButtonSelector = $("#li-del-fwd-btn"),
+        liDeleteReverseButtonSelector = $("#li-del-rev-btn"),
+        liDeleteOppositeButtonSelector = $("#li-del-opp-btn");
       liDeleteFwdButtonSelector.off();
       liDeleteReverseButtonSelector.off();
       liDeleteOppositeButtonSelector.off();
-      if (!getId("li-del-rev-btn") && !flagsObject.revLanesEnabled &&
-          selectedFeatures[0x0].attributes.wazeFeature._wmeObject.getRevLanes().laneCount > 0x0) {
+      if (
+        !getId("li-del-rev-btn") &&
+        !flagsObject.revLanesEnabled &&
+        selectedFeatures[0x0].attributes.wazeFeature._wmeObject.getRevLanes()
+          .laneCount > 0x0
+      ) {
         if ($(constantStrings.revLanesInstructionsFromCSS).length > 0x0) {
-          revDisplayRelativeSelector.prependTo(constantStrings.revLanesInstructionsFromCSS);
-          $(constantStrings.revLanesInstructionsFromCSS).css("border-bottom", "4px dashed " + LtSettings.BAColor);
-        } else if (selectedFeatures[0x0].attributes.wazeFeature._wmeObject.attributes.revDirection !== true) {
+          revDisplayRelativeSelector.prependTo(
+            constantStrings.revLanesInstructionsFromCSS,
+          );
+          $(constantStrings.revLanesInstructionsFromCSS).css(
+            "border-bottom",
+            "4px dashed " + LtSettings.BAColor,
+          );
+        } else if (
+          selectedFeatures[0x0].attributes.wazeFeature._wmeObject.attributes
+            .revDirection !== true
+        ) {
           deleteOppButton.prop("title", "rev");
           deleteOppButton.prependTo(constantStrings.editPanelCSS);
         }
       } else
-        $(constantStrings.revLanesInstructionsFromCSS).css("border-bottom", "4px dashed " + LtSettings.BAColor);
-      if (!getId("li-del-fwd-btn") && !flagsObject.fwdLanesEnabled &&
-          selectedFeatures[0x0].attributes.wazeFeature._wmeObject.getFwdLanes().laneCount > 0x0) {
+        $(constantStrings.revLanesInstructionsFromCSS).css(
+          "border-bottom",
+          "4px dashed " + LtSettings.BAColor,
+        );
+      if (
+        !getId("li-del-fwd-btn") &&
+        !flagsObject.fwdLanesEnabled &&
+        selectedFeatures[0x0].attributes.wazeFeature._wmeObject.getFwdLanes()
+          .laneCount > 0x0
+      ) {
         if ($(constantStrings.fwdLanesDivInstructionCSS).length > 0x0) {
-          fwdDisplayRelative.prependTo(constantStrings.fwdLanesDivInstructionCSS);
-          $(constantStrings.fwdLanesDivInstructionCSS).css("border-bottom", "4px dashed " + LtSettings.ABColor);
-        } else if (selectedFeatures[0x0].attributes.wazeFeature._wmeObject.attributes.fwdDirection !== true) {
+          fwdDisplayRelative.prependTo(
+            constantStrings.fwdLanesDivInstructionCSS,
+          );
+          $(constantStrings.fwdLanesDivInstructionCSS).css(
+            "border-bottom",
+            "4px dashed " + LtSettings.ABColor,
+          );
+        } else if (
+          selectedFeatures[0x0].attributes.wazeFeature._wmeObject.attributes
+            .fwdDirection !== true
+        ) {
           deleteOppButton.prop("title", "fwd");
           deleteOppButton.prependTo(constantStrings.editPanelCSS);
         }
       } else
-        $(constantStrings.fwdLanesInstructionsFromCSS).css("border-bottom", "4px dashed " + LtSettings.ABColor);
-      liDeleteFwdButtonSelector.on("click", function() {
+        $(constantStrings.fwdLanesInstructionsFromCSS).css(
+          "border-bottom",
+          "4px dashed " + LtSettings.ABColor,
+        );
+      liDeleteFwdButtonSelector.on("click", function () {
         delLanes("fwd");
         flagsObject.fwdLanesEnabled = true;
-        setTimeout(function() { decorateSegments(flagsObject, selectedFeatures); }, 200);
+        setTimeout(function () {
+          decorateSegments(flagsObject, selectedFeatures);
+        }, 200);
       });
-      liDeleteReverseButtonSelector.on("click", function() {
+      liDeleteReverseButtonSelector.on("click", function () {
         delLanes("rev");
         flagsObject.revLanesEnabled = true;
-        setTimeout(function() { decorateSegments(flagsObject, selectedFeatures); }, 200);
+        setTimeout(function () {
+          decorateSegments(flagsObject, selectedFeatures);
+        }, 200);
       });
-      liDeleteOppositeButtonSelector.on("click", function() {
+      liDeleteOppositeButtonSelector.on("click", function () {
         let laneDirection = $(this).prop("title");
         delLanes(laneDirection);
-        laneDirection === "rev" ? (flagsObject.revLanesEnabled = true) : (flagsObject.fwdLanesEnabled = true);
+        laneDirection === "rev"
+          ? (flagsObject.revLanesEnabled = true)
+          : (flagsObject.fwdLanesEnabled = true);
         decorateSegments(flagsObject, selectedFeatures);
       });
     }
     const editLaneGuidanceSelector = $(".edit-lane-guidance");
     editLaneGuidanceSelector.off();
-    editLaneGuidanceSelector.on("click", function() {
-      $(this).parents(".fwd-lanes").length && setTimeout(function() {
-        setupTurnLanesForDirection("fwd");
-        populateNumberOfLanes();
-        configureDirectionLanesHTML();
-        setupAutoFocusLanes(flagsObject);
-        setUpActionButtons(flagsObject, selectedFeatures);
-        if (getId("lt-AddTIO").checked)
-          addTIOUI("fwd");
-      }, 100);
-      $(this).parents(".rev-lanes").length && setTimeout(function() {
-        setupTurnLanesForDirection("rev");
-        populateNumberOfLanes();
-        configureDirectionLanesHTML();
-        setupAutoFocusLanes(flagsObject);
-        setUpActionButtons(flagsObject, selectedFeatures);
-        if (getId("lt-AddTIO").checked)
-          addTIOUI("rev");
-      }, 100);
+    editLaneGuidanceSelector.on("click", function () {
+      $(this).parents(".fwd-lanes").length &&
+        setTimeout(function () {
+          setupTurnLanesForDirection("fwd");
+          populateNumberOfLanes();
+          configureDirectionLanesHTML();
+          setupAutoFocusLanes(flagsObject);
+          setUpActionButtons(flagsObject, selectedFeatures);
+          if (getId("lt-AddTIO").checked) addTIOUI("fwd");
+        }, 100);
+      $(this).parents(".rev-lanes").length &&
+        setTimeout(function () {
+          setupTurnLanesForDirection("rev");
+          populateNumberOfLanes();
+          configureDirectionLanesHTML();
+          setupAutoFocusLanes(flagsObject);
+          setUpActionButtons(flagsObject, selectedFeatures);
+          if (getId("lt-AddTIO").checked) addTIOUI("rev");
+        }, 100);
     });
-    if (!flagsObject.fwdLanesEnabled && !flagsObject.revLanesEnabled && !flagsObject.autoOpenTriggered)
+    if (
+      !flagsObject.fwdLanesEnabled &&
+      !flagsObject.revLanesEnabled &&
+      !flagsObject.autoOpenTriggered
+    )
       triggerAutoFunctions(flagsObject);
     configureDirectionLanesHTML();
   }
   function setUpActionButtons(flagsObject, selectedFeatures) {
     $(".apply-button.waze-btn.waze-btn-blue").off();
     $(".cancel-button").off();
-    const fwdLanesSelector = $(".fwd-lanes"), revLanesSelector = $(".rev-lanes");
-    fwdLanesSelector.find(".apply-button.waze-btn.waze-btn-blue").on("click", () => {
-      flagsObject.fwdLanesEnabled = true;
-      setTimeout(function() { decorateSegments(flagsObject, selectedFeatures); }, 200);
-    });
-    revLanesSelector.find(".apply-button.waze-btn.waze-btn-blue").on("click", () => {
-      flagsObject.revLanesEnabled = true;
-      setTimeout(function() { decorateSegments(flagsObject, selectedFeatures); }, 200);
-    });
+    const fwdLanesSelector = $(".fwd-lanes"),
+      revLanesSelector = $(".rev-lanes");
+    fwdLanesSelector
+      .find(".apply-button.waze-btn.waze-btn-blue")
+      .on("click", () => {
+        flagsObject.fwdLanesEnabled = true;
+        setTimeout(function () {
+          decorateSegments(flagsObject, selectedFeatures);
+        }, 200);
+      });
+    revLanesSelector
+      .find(".apply-button.waze-btn.waze-btn-blue")
+      .on("click", () => {
+        flagsObject.revLanesEnabled = true;
+        setTimeout(function () {
+          decorateSegments(flagsObject, selectedFeatures);
+        }, 200);
+      });
     fwdLanesSelector.find(".cancel-button").on("click", () => {
       flagsObject.fwdLanesEnabled = true;
-      setTimeout(function() { decorateSegments(flagsObject, selectedFeatures); }, 200);
+      setTimeout(function () {
+        decorateSegments(flagsObject, selectedFeatures);
+      }, 200);
     });
     revLanesSelector.find(".cancel-button").on("click", () => {
       flagsObject.revLanesEnabled = true;
-      setTimeout(function() { decorateSegments(flagsObject, selectedFeatures); }, 200);
+      setTimeout(function () {
+        decorateSegments(flagsObject, selectedFeatures);
+      }, 200);
     });
   }
   function triggerAutoFunctions(flagsObject) {
@@ -986,57 +1173,91 @@
 
   function configureDirectionLanesHTML() {
     $(".fwd-lanes > div > .direction-lanes").css({
-      padding : "5px 5px 10px",
-      "margin-bottom" : "10px",
+      padding: "5px 5px 10px",
+      "margin-bottom": "10px",
     });
     $("<div class=\x22lt-add-Width fwd\x22>2</div>").css({
-      padding : "5px 5px 10px",
-      margin : "0px",
+      padding: "5px 5px 10px",
+      margin: "0px",
     });
-    $(constantStrings.fwdLanesDirectionControlEditCSS).css("padding-top", "10px");
+    $(constantStrings.fwdLanesDirectionControlEditCSS).css(
+      "padding-top",
+      "10px",
+    );
     $(constantStrings.revLanesInstructionsToCSS).css("padding-top", "10px");
-    $(constantStrings.fwdLanesLaneInstrunctionToCSS).css("margin-bottom", "4px");
-    $(".rev-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1)")
-        .css("margin-bottom", "4px");
+    $(constantStrings.fwdLanesLaneInstrunctionToCSS).css(
+      "margin-bottom",
+      "4px",
+    );
+    $(
+      ".rev-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1)",
+    ).css("margin-bottom", "4px");
   }
 
   function getLaneItems(count, class_names_list) {
-    let itemsList = [], classString = class_names_list.join(" "), idStringBase = class_names_list.join("-");
+    let itemsList = [],
+      classString = class_names_list.join(" "),
+      idStringBase = class_names_list.join("-");
     for (let i = 1; i <= count; ++i) {
       let idString = idStringBase + "-" + i.toString();
-      let selectorString = "<div class=\"" + classString + "\" id=\"" + idString + "\">" + i.toString() + "</div>";
-      let newItem = $(selectorString).css({"padding" : "2px 2px 2px 2px", "margin" : "2px 5px 2px 5px"});
-      itemsList.push(newItem)
+      let selectorString =
+        '<div class="' +
+        classString +
+        '" id="' +
+        idString +
+        '">' +
+        i.toString() +
+        "</div>";
+      let newItem = $(selectorString).css({
+        padding: "2px 2px 2px 2px",
+        margin: "2px 5px 2px 5px",
+      });
+      itemsList.push(newItem);
     }
     return itemsList;
   }
 
   function setupLaneCountControls(parentSelector, classNamesList) {
     const jqueryClassSelector = "." + classNamesList.join(".");
-    $(jqueryClassSelector).on("click", function() {
-      $(jqueryClassSelector).css({"background-color" : "transparent", "color" : "black"});
-      $(this).css({"background-color" : "navy", "color" : "white"});
+    $(jqueryClassSelector).on("click", function () {
+      $(jqueryClassSelector).css({
+        "background-color": "transparent",
+        color: "black",
+      });
+      $(this).css({ "background-color": "navy", color: "white" });
     });
     let numLanesSelector = parentSelector.find(".form-control");
-    let idString = "#" + classNamesList.join("-") + "-" + numLanesSelector.val();
-    $(idString).css({"background-color" : "navy", "color" : "white"});
+    let idString =
+      "#" + classNamesList.join("-") + "-" + numLanesSelector.val();
+    $(idString).css({ "background-color": "navy", color: "white" });
   }
   function populateNumberOfLanes() {
-    let fwdLanesSelector = $(".fwd-lanes"), revLanesSelector = $(".rev-lanes");
-    if (fwdLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-fwd-add-lanes")) {
+    let fwdLanesSelector = $(".fwd-lanes"),
+      revLanesSelector = $(".rev-lanes");
+    if (
+      fwdLanesSelector.find(".direction-lanes").children().length > 0x0 &&
+      !getId("lt-fwd-add-lanes")
+    ) {
       let addLanesItem = $(
-              "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22 id=\x22lt-fwd-add-lanes\x22 />"),
-          classNamesList = [ "lt-add-lanes", "fwd" ], laneCountsToAppend = getLaneItems(8, classNamesList);
+          "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22 id=\x22lt-fwd-add-lanes\x22 />",
+        ),
+        classNamesList = ["lt-add-lanes", "fwd"],
+        laneCountsToAppend = getLaneItems(8, classNamesList);
       for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
         addLanesItem.append(laneCountsToAppend[idx]);
       }
       addLanesItem.appendTo(constantStrings.fwdLanesNthChild);
       setupLaneCountControls(fwdLanesSelector, classNamesList);
     }
-    if (revLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-rev-add-lanes")) {
+    if (
+      revLanesSelector.find(".direction-lanes").children().length > 0x0 &&
+      !getId("lt-rev-add-lanes")
+    ) {
       let reverseLaneDiv = $(
-              "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22 id=\x22lt-rev-add-lanes\x22 />"),
-          classNamesList = [ "lt-add-lanes", "rev" ], laneCountsToAppend = getLaneItems(8, classNamesList);
+          "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22 id=\x22lt-rev-add-lanes\x22 />",
+        ),
+        classNamesList = ["lt-add-lanes", "rev"],
+        laneCountsToAppend = getLaneItems(8, classNamesList);
       for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
         reverseLaneDiv.append(laneCountsToAppend[idx]);
       }
@@ -1044,8 +1265,9 @@
       setupLaneCountControls(revLanesSelector, classNamesList);
     }
 
-    $(".lt-add-lanes").on("click", function() {
-      let addLanesText = $(this).text(), formControlSelector = $(".form-control");
+    $(".lt-add-lanes").on("click", function () {
+      let addLanesText = $(this).text(),
+        formControlSelector = $(".form-control");
       addLanesText = Number.parseInt(addLanesText, 10);
       if ($(this).hasClass("lt-add-lanes fwd")) {
         // const fwdLanesSelector = $(".fwd-lanes");
@@ -1060,37 +1282,55 @@
         revLanesSelector.find(formControlSelector).trigger("change");
       }
     });
-    if (fwdLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-fwd-add-Width")) {
-      let addFwdLanes =
-              $("<div style=\x22display:inline-flex;flex-direction:row;width:100%;\x22 id=\x22lt-fwd-add-Width\x22 />"),
-          classNamesList = [ "lt-add-Width", "fwd" ], laneCountsToAppend = getLaneItems(8, classNamesList);
+    if (
+      fwdLanesSelector.find(".direction-lanes").children().length > 0x0 &&
+      !getId("lt-fwd-add-Width")
+    ) {
+      let addFwdLanes = $(
+          "<div style=\x22display:inline-flex;flex-direction:row;width:100%;\x22 id=\x22lt-fwd-add-Width\x22 />",
+        ),
+        classNamesList = ["lt-add-Width", "fwd"],
+        laneCountsToAppend = getLaneItems(8, classNamesList);
       for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
         addFwdLanes.append(laneCountsToAppend[idx]);
       }
       addFwdLanes.prependTo(
-          ".fwd-lanes > div > div > .lane-instruction.lane-instruction-from > .instruction > .road-width-edit > div > div > div > .lane-width-card");
+        ".fwd-lanes > div > div > .lane-instruction.lane-instruction-from > .instruction > .road-width-edit > div > div > div > .lane-width-card",
+      );
       const jqueryClassSelector = "." + classNamesList.join(".");
-      $(jqueryClassSelector).on("click", function() {
-        $(jqueryClassSelector).css({"background-color" : "transparent", "color" : "black"});
-        $(this).css({"background-color" : "navy", "color" : "white"});
+      $(jqueryClassSelector).on("click", function () {
+        $(jqueryClassSelector).css({
+          "background-color": "transparent",
+          color: "black",
+        });
+        $(this).css({ "background-color": "navy", color: "white" });
       });
     }
-    if (revLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-rev-add-Width")) {
-      let appendRevLanes =
-              $("<div style=\x22display:inline-flex;flex-direction:row;width:100%;\x22 id=\x22lt-rev-add-Width\x22 />"),
-          classNamesList = [ "lt-add-Width", "rev" ], laneCountsToAppend = getLaneItems(8, classNamesList);
+    if (
+      revLanesSelector.find(".direction-lanes").children().length > 0x0 &&
+      !getId("lt-rev-add-Width")
+    ) {
+      let appendRevLanes = $(
+          "<div style=\x22display:inline-flex;flex-direction:row;width:100%;\x22 id=\x22lt-rev-add-Width\x22 />",
+        ),
+        classNamesList = ["lt-add-Width", "rev"],
+        laneCountsToAppend = getLaneItems(8, classNamesList);
       for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
         appendRevLanes.append(laneCountsToAppend[idx]);
       }
       appendRevLanes.prependTo(
-          ".rev-lanes > div > div > .lane-instruction.lane-instruction-from > .instruction > .road-width-edit > div > div > div > .lane-width-card");
+        ".rev-lanes > div > div > .lane-instruction.lane-instruction-from > .instruction > .road-width-edit > div > div > div > .lane-width-card",
+      );
       const jqueryClassSelector = "." + classNamesList.join(".");
-      $(jqueryClassSelector).on("click", function() {
-        $(jqueryClassSelector).css({"background-color" : "transparent", "color" : "black"});
-        $(this).css({"background-color" : "navy", "color" : "white"});
+      $(jqueryClassSelector).on("click", function () {
+        $(jqueryClassSelector).css({
+          "background-color": "transparent",
+          color: "black",
+        });
+        $(this).css({ "background-color": "navy", color: "white" });
       });
     }
-    $(".lt-add-Width").on("click", function() {
+    $(".lt-add-Width").on("click", function () {
       let numLanesToAdd = $(this).text();
       numLanesToAdd = Number.parseInt(numLanesToAdd, 10);
       if ($(this).hasClass("lt-add-Width fwd")) {
@@ -1110,11 +1350,19 @@
 
   function setupAutoFocusLanes(flagsObject) {
     if (getId("lt-AutoFocusLanes").checked) {
-      const fwdLanesSelector = $(".fwd-lanes"), revLanesSelector = $(".rev-lanes"),
-            editRegionSelectors = $(".edit-region"), formControlSelectors = $(".form-control");
-      if (fwdLanesSelector.find(editRegionSelectors).children().length > 0x0 && !flagsObject.fwdLanesEnabled)
+      const fwdLanesSelector = $(".fwd-lanes"),
+        revLanesSelector = $(".rev-lanes"),
+        editRegionSelectors = $(".edit-region"),
+        formControlSelectors = $(".form-control");
+      if (
+        fwdLanesSelector.find(editRegionSelectors).children().length > 0x0 &&
+        !flagsObject.fwdLanesEnabled
+      )
         fwdLanesSelector.find(formControlSelectors).trigger("focus");
-      else if (revLanesSelector.find(editRegionSelectors).children().length > 0x0 && !flagsObject.revLanesEnabled) {
+      else if (
+        revLanesSelector.find(editRegionSelectors).children().length > 0x0 &&
+        !flagsObject.revLanesEnabled
+      ) {
         revLanesSelector.find(formControlSelectors).trigger("focus");
       }
     }
@@ -1123,21 +1371,28 @@
   function setupTurnLanesForDirection(laneDirection) {
     if (getId("lt-SelAllEnable").checked) {
       $(".street-name").css("user-select", "none");
-      let formControlSelector = laneDirection === "fwd" ? $(".fwd-lanes").find(".form-control")[0x0]
-                                                        : $(".rev-lanes").find(".form-control")[0x0],
-          numOfLanesForGuidance = $(formControlSelector).val();
-      $(formControlSelector).on("change", function() {
+      let formControlSelector =
+          laneDirection === "fwd"
+            ? $(".fwd-lanes").find(".form-control")[0x0]
+            : $(".rev-lanes").find(".form-control")[0x0],
+        numOfLanesForGuidance = $(formControlSelector).val();
+      $(formControlSelector).on("change", function () {
         let turnsRegion;
         if ($(this).parents(".fwd-lanes").length)
-          turnsRegion = $(".fwd-lanes").find(".controls-container.turns-region");
+          turnsRegion = $(".fwd-lanes").find(
+            ".controls-container.turns-region",
+          );
         else if ($(this).parents(".rev-lanes").length)
-          turnsRegion = $(".rev-lanes").find(".controls-container.turns-region");
+          turnsRegion = $(".rev-lanes").find(
+            ".controls-container.turns-region",
+          );
         turnsRegion = $(".street-name", turnsRegion);
         for (let idx = 0x0; idx < turnsRegion.length; idx++) {
           $(turnsRegion[idx]).off();
-          $(turnsRegion[idx]).on("click", function() {
-            let turnDirection = $(this).get(0x0), parentElement = turnDirection["parentElement"],
-                htmlElements = $(".checkbox-large.checkbox-white", parentElement);
+          $(turnsRegion[idx]).on("click", function () {
+            let turnDirection = $(this).get(0x0),
+              parentElement = turnDirection["parentElement"],
+              htmlElements = $(".checkbox-large.checkbox-white", parentElement);
             if (htmlElements.length > 0) {
               const elementDisabled = !getId(htmlElements[0x0].id).checked;
               for (let idx = 0x0; idx < htmlElements.length; idx++) {
@@ -1154,32 +1409,45 @@
   }
   function decorateCSIcons(selectedFeatures) {
     const segmentRef = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
-          bNodeRef = getNodeObj(segmentRef.attributes.toNodeID),
-          aNodeRef = getNodeObj(segmentRef.attributes.fromNodeID);
-    let fwdLanesConfig =
-            getLanesConfig(segmentRef, bNodeRef, bNodeRef.attributes.segIDs, segmentRef.attributes.fwdLaneCount),
-        numFwdGuidedLanes = fwdLanesConfig[4],
-        revLanesConfig =
-            getLanesConfig(segmentRef, aNodeRef, aNodeRef.attributes.segIDs, segmentRef.attributes.revLaneCount),
-        numRevGuidedLanes = revLanesConfig[4];
+      bNodeRef = getNodeObj(segmentRef.attributes.toNodeID),
+      aNodeRef = getNodeObj(segmentRef.attributes.fromNodeID);
+    let fwdLanesConfig = getLanesConfig(
+        segmentRef,
+        bNodeRef,
+        bNodeRef.attributes.segIDs,
+        segmentRef.attributes.fwdLaneCount,
+      ),
+      numFwdGuidedLanes = fwdLanesConfig[4],
+      revLanesConfig = getLanesConfig(
+        segmentRef,
+        aNodeRef,
+        aNodeRef.attributes.segIDs,
+        segmentRef.attributes.revLaneCount,
+      ),
+      numRevGuidedLanes = revLanesConfig[4];
     if (numFwdGuidedLanes > 0) {
-      let fwdCSIconColor = (numFwdGuidedLanes === 0x1 ? LtSettings.CS1Color : LtSettings.CS2Color),
-          _0x1d2fa0 = $(constantStrings.segmentEditLanes).children();
+      let fwdCSIconColor =
+          numFwdGuidedLanes === 0x1 ? LtSettings.CS1Color : LtSettings.CS2Color,
+        _0x1d2fa0 = $(constantStrings.segmentEditLanes).children();
       for (let i = 0x0; i < _0x1d2fa0.length; i++) {
-        _0x1d2fa0[i]["title"] === fwdLanesConfig[5] && $(_0x1d2fa0[i]).css("background-color", fwdCSIconColor);
+        _0x1d2fa0[i]["title"] === fwdLanesConfig[5] &&
+          $(_0x1d2fa0[i]).css("background-color", fwdCSIconColor);
       }
     }
     if (numRevGuidedLanes > 0x0) {
-      let revCSIconColor = (numRevGuidedLanes === 0x1 ? LtSettings.CS1Color : LtSettings.CS2Color),
-          _0x37b735 = $(constantStrings.segmentEditLanes).children();
+      let revCSIconColor =
+          numRevGuidedLanes === 0x1 ? LtSettings.CS1Color : LtSettings.CS2Color,
+        _0x37b735 = $(constantStrings.segmentEditLanes).children();
       for (let i = 0x0; i < _0x37b735.length; i++) {
-        _0x37b735[i]["title"] === revLanesConfig[0x5] && $(_0x37b735[i]).css("background-color", revCSIconColor);
+        _0x37b735[i]["title"] === revLanesConfig[0x5] &&
+          $(_0x37b735[i]).css("background-color", revCSIconColor);
       }
     }
   }
 
   function rotateDisplay(flagsObject) {
-    let headingElement = document.getElementsByClassName("heading"), laneArrows = $(".lane-arrows > div").get();
+    let headingElement = document.getElementsByClassName("heading"),
+      laneArrows = $(".lane-arrows > div").get();
     for (let idx = 0x0; idx < headingElement.length; idx++) {
       if (headingElement[idx].textContent.includes("south")) {
         let kids = $(laneArrows[idx]).children();
@@ -1224,23 +1492,44 @@
     //       console.log("hovering to A");
     // }
 
-    if (getId("lt-UIEnable").checked && getId("lt-ScriptEnabled").checked && selectedFeatures.length > 0x0) {
-      if (selectedFeatures.length === 0x1 &&
-          selectedFeatures[0x0].attributes.wazeFeature._wmeObject.type === "segment") {
-        $(".lanes-tab").on("click", (event) => { decorateSegments(flagsObject, selectedFeatures, event); });
-        getId("lt-AutoLanesTab").checked && setTimeout(() => { $(".lanes-tab").trigger("click"); }, 100);
+    if (
+      getId("lt-UIEnable").checked &&
+      getId("lt-ScriptEnabled").checked &&
+      selectedFeatures.length > 0x0
+    ) {
+      if (
+        selectedFeatures.length === 0x1 &&
+        selectedFeatures[0x0].attributes.wazeFeature._wmeObject.type ===
+          "segment"
+      ) {
+        $(".lanes-tab").on("click", (event) => {
+          decorateSegments(flagsObject, selectedFeatures, event);
+        });
+        getId("lt-AutoLanesTab").checked &&
+          setTimeout(() => {
+            $(".lanes-tab").trigger("click");
+          }, 100);
       } else
-        selectedFeatures.length === 0x2 && scanHeuristicsCandidates(selectedFeatures);
+        selectedFeatures.length === 0x2 &&
+          scanHeuristicsCandidates(selectedFeatures);
     }
   }
 
-  function toggleScript() { $("#lt-ScriptEnabled").trigger("click"); }
+  function toggleScript() {
+    $("#lt-ScriptEnabled").trigger("click");
+  }
 
-  function toggleHighlights() { $("#lt-HighlightsEnable").trigger("click"); }
+  function toggleHighlights() {
+    $("#lt-HighlightsEnable").trigger("click");
+  }
 
-  function toggleUIEnhancements() { $("#lt-UIEnable").click(); }
+  function toggleUIEnhancements() {
+    $("#lt-UIEnable").click();
+  }
 
-  function toggleLaneHeuristicsChecks() { $("#lt-LaneHeuristicsChecks").click(); }
+  function toggleLaneHeuristicsChecks() {
+    $("#lt-LaneHeuristicsChecks").click();
+  }
 
   // function displayToolbar() {
   //   const _0x4afd09 = W.selectionManager["getSelectedFeatures"]();
@@ -1257,49 +1546,68 @@
   //     $("#lt-toolbar-container").css("display", "none");
   // }
 
-  function getId(elementId) { return document.getElementById(elementId); }
+  function getId(elementId) {
+    return document.getElementById(elementId);
+  }
 
   function onScreen(wmeObject, zoomLevel) {
     if (!wmeObject || !wmeObject.geometry || !wmeObject.attributes)
       return false;
-    if (zoomLevel >= DisplayLevels["MIN_ZOOM_NONFREEWAY"] ||
-        (wmeObject.type === "segments" && wmeObject.attributes["roadType"] === LT_ROAD_TYPE.FREEWAY))
+    if (
+      zoomLevel >= DisplayLevels["MIN_ZOOM_NONFREEWAY"] ||
+      (wmeObject.type === "segments" &&
+        wmeObject.attributes["roadType"] === LT_ROAD_TYPE.FREEWAY)
+    )
       return W.map.getExtent().intersectsBounds(wmeObject.geometry.getBounds());
     return false;
   }
 
   function getCardinalAngle(nodeId, segment) {
-    if (nodeId == null || segment == null)
-      return null;
+    if (nodeId == null || segment == null) return null;
     let xDiff, yDiff;
     if (segment.attributes.fromNodeID === nodeId) {
       xDiff = lt_get_second_point(segment).x - lt_get_first_point(segment).x;
       yDiff = lt_get_second_point(segment).y - lt_get_first_point(segment).y;
     } else {
-      xDiff = lt_get_next_to_last_point(segment).x - lt_get_last_point(segment).x;
-      yDiff = lt_get_next_to_last_point(segment).y - lt_get_last_point(segment).y;
+      xDiff =
+        lt_get_next_to_last_point(segment).x - lt_get_last_point(segment).x;
+      yDiff =
+        lt_get_next_to_last_point(segment).y - lt_get_last_point(segment).y;
     }
-    let angleRad = Math.atan2(yDiff, xDiff), angleDegrees = ((angleRad * 180) / Math.PI) % 360;
-    if (angleDegrees < 0x0)
-      angleDegrees = angleDegrees + 360;
+    let angleRad = Math.atan2(yDiff, xDiff),
+      angleDegrees = ((angleRad * 180) / Math.PI) % 360;
+    if (angleDegrees < 0x0) angleDegrees = angleDegrees + 360;
     return Math.round(angleDegrees);
   }
 
-  function lt_get_first_point(segment) { return segment.geometry.components[0x0]; }
+  function lt_get_first_point(segment) {
+    return segment.geometry.components[0x0];
+  }
 
-  function lt_get_last_point(segment) { return segment.geometry.components[segment.geometry.components.length - 0x1]; }
+  function lt_get_last_point(segment) {
+    return segment.geometry.components[
+      segment.geometry.components.length - 0x1
+    ];
+  }
 
-  function lt_get_second_point(segment) { return segment.geometry.components[0x1]; }
+  function lt_get_second_point(segment) {
+    return segment.geometry.components[0x1];
+  }
 
   function lt_get_next_to_last_point(segment) {
-    return segment.geometry.components[segment.geometry.components.length - 0x2];
+    return segment.geometry.components[
+      segment.geometry.components.length - 0x2
+    ];
   }
 
   function delLanes(laneDirection) {
     const selectedFeatures = W.selectionManager.getSelectedFeatures(),
-          wmeObject = selectedFeatures[0x0].attributes.wazeFeature._wmeObject, turnGraph = W.model.getTurnGraph(),
-          mAction = new MultiAction();
-    let nodeObject, attachedSegmentIDs, lanesObject = {};
+      wmeObject = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
+      turnGraph = W.model.getTurnGraph(),
+      mAction = new MultiAction();
+    let nodeObject,
+      attachedSegmentIDs,
+      lanesObject = {};
     mAction.setModel(W.model);
     if (laneDirection === "fwd") {
       lanesObject.fwdLaneCount = 0x0;
@@ -1319,8 +1627,12 @@
     }
     mAction.doSubAction(new UpdateObj(wmeObject, lanesObject));
     for (let idx = 0x0; idx < attachedSegmentIDs.length; idx++) {
-      let _0x58ea8c = turnGraph.getTurnThroughNode(nodeObject, wmeObject, getSegObj(attachedSegmentIDs[idx])),
-          _0x5c9c0e = _0x58ea8c.getTurnData();
+      let _0x58ea8c = turnGraph.getTurnThroughNode(
+          nodeObject,
+          wmeObject,
+          getSegObj(attachedSegmentIDs[idx]),
+        ),
+        _0x5c9c0e = _0x58ea8c.getTurnData();
       if (_0x5c9c0e.hasLanes()) {
         _0x5c9c0e = _0x5c9c0e.withLanes();
         _0x58ea8c = _0x58ea8c.withTurnData(_0x5c9c0e);
@@ -1336,75 +1648,170 @@
     LTNamesLayer.removeAllFeatures();
   }
 
-  function removeLaneGraphics() { LTLaneGraphics.removeAllFeatures(); }
-
-  function applyName(_0x27e648, fwdSegmentLaneCount, revSegmentLaneCount) {
-    let _0x2e0a0c = _0x27e648.clone(), _0x58bfcc = fwdSegmentLaneCount + " / " + revSegmentLaneCount,
-        _0x118707 = new OpenLayers.Feature.Vector(_0x2e0a0c, {
-          labelText : _0x58bfcc,
-          labelColor : LtSettings.LabelColor,
-        });
-    LTNamesLayer.addFeatures([ _0x118707 ]);
+  function removeLaneGraphics() {
+    LTLaneGraphics.removeAllFeatures();
   }
 
-  function highlightSegment(segGeom, segDirection, highlightEnabled, highlightLabelsEnabled, forwardLaneCount,
-                            reverseLaneCount, _0x147e33, _0x40fe5d, _0x42e2ed, heurCandidate, applyHeuristics) {
+  function applyName(_0x27e648, fwdSegmentLaneCount, revSegmentLaneCount) {
+    let _0x2e0a0c = _0x27e648.clone(),
+      _0x58bfcc = fwdSegmentLaneCount + " / " + revSegmentLaneCount,
+      _0x118707 = new OpenLayers.Feature.Vector(_0x2e0a0c, {
+        labelText: _0x58bfcc,
+        labelColor: LtSettings.LabelColor,
+      });
+    LTNamesLayer.addFeatures([_0x118707]);
+  }
+
+  function highlightSegment(
+    segGeom,
+    segDirection,
+    highlightEnabled,
+    highlightLabelsEnabled,
+    forwardLaneCount,
+    reverseLaneCount,
+    _0x147e33,
+    _0x40fe5d,
+    _0x42e2ed,
+    heurCandidate,
+    applyHeuristics,
+  ) {
     const segmentHighlightTypes = {
-      DASH_THIN : 0x1,
-      DASH_THICK : 0x2,
-      HIGHLIGHT : 0xa,
-      OVER_HIGHLIGHT : 0x14,
-    },
-          newSegmentGeometry = segGeom.clone(), csEnabled = getId("lt-CSEnable").checked;
+        DASH_THIN: 0x1,
+        DASH_THICK: 0x2,
+        HIGHLIGHT: 0xa,
+        OVER_HIGHLIGHT: 0x14,
+      },
+      newSegmentGeometry = segGeom.clone(),
+      csEnabled = getId("lt-CSEnable").checked;
     if (newSegmentGeometry.components.length > 0x2) {
-      let numComponents = newSegmentGeometry.components.length, oneDirectionNumComponents = numComponents / 2,
-          fwdNumComponents =
-              numComponents % 0x2 ? Math.ceil(oneDirectionNumComponents) - 0x1 : Math.ceil(oneDirectionNumComponents),
-          revNumComponents =
-              numComponents % 0x2 ? Math.floor(oneDirectionNumComponents) + 0x1 : Math.floor(oneDirectionNumComponents);
+      let numComponents = newSegmentGeometry.components.length,
+        oneDirectionNumComponents = numComponents / 2,
+        fwdNumComponents =
+          numComponents % 0x2
+            ? Math.ceil(oneDirectionNumComponents) - 0x1
+            : Math.ceil(oneDirectionNumComponents),
+        revNumComponents =
+          numComponents % 0x2
+            ? Math.floor(oneDirectionNumComponents) + 0x1
+            : Math.floor(oneDirectionNumComponents);
       if (segDirection === Direction.FORWARD) {
-        let _0x21e1e8 = getModifiableComponents(newSegmentGeometry, fwdNumComponents, numComponents);
-        highlightEnabled && _0x58a03b(_0x21e1e8, "" + LtSettings.ABColor, segmentHighlightTypes.DASH_THIN);
-        _0x43deae(_0x21e1e8, _0x147e33, _0x42e2ed, heurCandidate, applyHeuristics);
+        let _0x21e1e8 = getModifiableComponents(
+          newSegmentGeometry,
+          fwdNumComponents,
+          numComponents,
+        );
+        highlightEnabled &&
+          applyHighlight(
+            _0x21e1e8,
+            "" + LtSettings.ABColor,
+            segmentHighlightTypes.DASH_THIN,
+          );
+        _0x43deae(
+          _0x21e1e8,
+          _0x147e33,
+          _0x42e2ed,
+          heurCandidate,
+          applyHeuristics,
+        );
       } else {
         if (segDirection === Direction.REVERSE) {
-          let _0x3e6b6f = getModifiableComponents(newSegmentGeometry, 0x0, revNumComponents);
-          highlightEnabled && _0x58a03b(_0x3e6b6f, "" + LtSettings.BAColor, segmentHighlightTypes.DASH_THIN);
-          _0x43deae(_0x3e6b6f, _0x147e33, _0x42e2ed, heurCandidate, applyHeuristics);
+          let _0x3e6b6f = getModifiableComponents(
+            newSegmentGeometry,
+            0x0,
+            revNumComponents,
+          );
+          highlightEnabled &&
+            applyHighlight(
+              _0x3e6b6f,
+              "" + LtSettings.BAColor,
+              segmentHighlightTypes.DASH_THIN,
+            );
+          _0x43deae(
+            _0x3e6b6f,
+            _0x147e33,
+            _0x42e2ed,
+            heurCandidate,
+            applyHeuristics,
+          );
         }
       }
-      if (highlightLabelsEnabled && (Direction.FORWARD || forwardLaneCount === 0x0)) {
+      if (
+        highlightLabelsEnabled &&
+        (Direction.FORWARD || forwardLaneCount === 0x0)
+      ) {
         if (numComponents % 0x2)
-          applyName(newSegmentGeometry.components[fwdNumComponents], forwardLaneCount, reverseLaneCount);
+          applyName(
+            newSegmentGeometry.components[fwdNumComponents],
+            forwardLaneCount,
+            reverseLaneCount,
+          );
         else {
           let _0x3f4fb2 = newSegmentGeometry.components[revNumComponents - 0x1],
-              _0x196425 = newSegmentGeometry.components[fwdNumComponents],
-              _0x2daf64 =
-                  new OpenLayers.Geometry.Point((_0x3f4fb2.x + _0x196425.x) / 0x2, (_0x3f4fb2.y + _0x196425.y) / 0x2);
+            _0x196425 = newSegmentGeometry.components[fwdNumComponents],
+            _0x2daf64 = new OpenLayers.Geometry.Point(
+              (_0x3f4fb2.x + _0x196425.x) / 0x2,
+              (_0x3f4fb2.y + _0x196425.y) / 0x2,
+            );
           applyName(_0x2daf64, forwardLaneCount, reverseLaneCount);
         }
       }
     } else {
-      let _0x5b73aa = newSegmentGeometry.components[0x0], _0x3cd08d = newSegmentGeometry.components[0x1],
-          startPoint =
-              new OpenLayers.Geometry.Point((_0x5b73aa.x + _0x3cd08d.x) / 0x2, (_0x5b73aa.y + _0x3cd08d.y) / 0x2);
+      let _0x5b73aa = newSegmentGeometry.components[0x0],
+        _0x3cd08d = newSegmentGeometry.components[0x1],
+        startPoint = new OpenLayers.Geometry.Point(
+          (_0x5b73aa.x + _0x3cd08d.x) / 0x2,
+          (_0x5b73aa.y + _0x3cd08d.y) / 0x2,
+        );
       if (segDirection === Direction.FORWARD) {
-        let fwdEndPoint = new OpenLayers.Geometry.Point(newSegmentGeometry.components[0x1].clone().x,
-                                                        newSegmentGeometry.components[0x1].clone().y),
-            _0x13e81d = new OpenLayers.Geometry.LineString([ startPoint, fwdEndPoint ], {});
-        highlightEnabled && _0x58a03b(_0x13e81d, "" + LtSettings.ABColor, segmentHighlightTypes.DASH_THIN);
-        _0x43deae(_0x13e81d, _0x147e33, _0x42e2ed, heurCandidate, applyHeuristics);
+        let fwdEndPoint = new OpenLayers.Geometry.Point(
+            newSegmentGeometry.components[0x1].clone().x,
+            newSegmentGeometry.components[0x1].clone().y,
+          ),
+          _0x13e81d = new OpenLayers.Geometry.LineString(
+            [startPoint, fwdEndPoint],
+            {},
+          );
+        highlightEnabled &&
+          applyHighlight(
+            _0x13e81d,
+            "" + LtSettings.ABColor,
+            segmentHighlightTypes.DASH_THIN,
+          );
+        _0x43deae(
+          _0x13e81d,
+          _0x147e33,
+          _0x42e2ed,
+          heurCandidate,
+          applyHeuristics,
+        );
       } else {
         if (segDirection === Direction.REVERSE) {
-          let revEndPoint = new OpenLayers.Geometry.Point(newSegmentGeometry.components[0x0].clone().x,
-                                                          newSegmentGeometry.components[0x0].clone().y),
-              _0x598bfa = new OpenLayers.Geometry.LineString([ startPoint, revEndPoint ], {});
-          highlightEnabled && _0x58a03b(_0x598bfa, "" + LtSettings["BAColor"], segmentHighlightTypes["DASH_THIN"]);
-          _0x43deae(_0x598bfa, _0x147e33, _0x42e2ed, heurCandidate, applyHeuristics);
+          let revEndPoint = new OpenLayers.Geometry.Point(
+              newSegmentGeometry.components[0x0].clone().x,
+              newSegmentGeometry.components[0x0].clone().y,
+            ),
+            _0x598bfa = new OpenLayers.Geometry.LineString(
+              [startPoint, revEndPoint],
+              {},
+            );
+          highlightEnabled &&
+            applyHighlight(
+              _0x598bfa,
+              "" + LtSettings["BAColor"],
+              segmentHighlightTypes["DASH_THIN"],
+            );
+          _0x43deae(
+            _0x598bfa,
+            _0x147e33,
+            _0x42e2ed,
+            heurCandidate,
+            applyHeuristics,
+          );
         }
       }
-      highlightLabelsEnabled && (Direction.FORWARD || forwardLaneCount === 0x0) &&
-          applyName(startPoint, forwardLaneCount, reverseLaneCount);
+      highlightLabelsEnabled &&
+        (Direction.FORWARD || forwardLaneCount === 0x0) &&
+        applyName(startPoint, forwardLaneCount, reverseLaneCount);
     }
 
     function getModifiableComponents(_0x1226a0, _0x5d1ef6, _0x2d2248) {
@@ -1415,46 +1822,81 @@
       return new OpenLayers.Geometry.LineString(_0x3411db, {});
     }
 
-    function _0x43deae(_0x3291c0, _0xe37e1, _0x2d6773, _0x5e102e, _0x59dda1 = false) {
+    function _0x43deae(
+      _0x3291c0,
+      _0xe37e1,
+      _0x2d6773,
+      _0x5e102e,
+      _0x59dda1 = false,
+    ) {
       if (_0x2d6773) {
-        _0x58a03b(_0x3291c0.clone(), "" + LtSettings["ErrorColor"], segmentHighlightTypes.OVER_HIGHLIGHT);
+        applyHighlight(
+          _0x3291c0.clone(),
+          "" + LtSettings["ErrorColor"],
+          segmentHighlightTypes.OVER_HIGHLIGHT,
+        );
         return;
       }
-      _0xe37e1 && _0x58a03b(_0x3291c0.clone(), "" + LtSettings.LIOColor, segmentHighlightTypes.HIGHLIGHT);
-      _0x40fe5d === 0x1 && csEnabled &&
-          _0x58a03b(_0x3291c0.clone(), "" + LtSettings.CS1Color, segmentHighlightTypes.HIGHLIGHT);
-      _0x40fe5d === 0x2 && csEnabled &&
-          _0x58a03b(_0x3291c0.clone(), "" + LtSettings.CS2Color, segmentHighlightTypes["HIGHLIGHT"]);
+      _0xe37e1 &&
+        applyHighlight(
+          _0x3291c0.clone(),
+          "" + LtSettings.LIOColor,
+          segmentHighlightTypes.HIGHLIGHT,
+        );
+      _0x40fe5d === 0x1 &&
+        csEnabled &&
+        applyHighlight(
+          _0x3291c0.clone(),
+          "" + LtSettings.CS1Color,
+          segmentHighlightTypes.HIGHLIGHT,
+        );
+      _0x40fe5d === 0x2 &&
+        csEnabled &&
+        applyHighlight(
+          _0x3291c0.clone(),
+          "" + LtSettings.CS2Color,
+          segmentHighlightTypes.HIGHLIGHT,
+        );
       if (_0x5e102e === HeuristicsCandidate["PASS"])
-        _0x58a03b(_0x3291c0.clone(), "" + LtSettings.HeurColor,
-                  _0x59dda1 ? segmentHighlightTypes.OVER_HIGHLIGHT : segmentHighlightTypes["HIGHLIGHT"]);
+        applyHighlight(
+          _0x3291c0.clone(),
+          "" + LtSettings.HeurColor,
+          _0x59dda1
+            ? segmentHighlightTypes.OVER_HIGHLIGHT
+            : segmentHighlightTypes.HIGHLIGHT,
+        );
       else
         _0x5e102e === HeuristicsCandidate.FAIL &&
-            _0x58a03b(_0x3291c0.clone(), "" + LtSettings.HeurFailColor,
-                      _0x59dda1 ? segmentHighlightTypes.OVER_HIGHLIGHT : segmentHighlightTypes.HIGHLIGHT);
+          applyHighlight(
+            _0x3291c0.clone(),
+            "" + LtSettings.HeurFailColor,
+            _0x59dda1
+              ? segmentHighlightTypes.OVER_HIGHLIGHT
+              : segmentHighlightTypes.HIGHLIGHT,
+          );
     }
 
-    function _0x58a03b(_0x4e223c, _0x4b1ac8, _0x1d2584) {
-      let _0x3bdb58 = new OpenLayers.Feature.Vector(_0x4e223c, {}, {});
-      LTHighlightLayer.addFeatures([ _0x3bdb58 ]);
-      const _0x5501de = document.getElementById(_0x4e223c.id);
+    function applyHighlight(highlightLine, colorString, highlighType) {
+      let _0x3bdb58 = new OpenLayers.Feature.Vector(highlightLine, {}, {});
+      LTHighlightLayer.addFeatures([_0x3bdb58]);
+      const _0x5501de = document.getElementById(highlightLine.id);
       if (_0x5501de) {
-        _0x5501de.setAttribute("stroke", "" + _0x4b1ac8);
-        if (_0x1d2584 === segmentHighlightTypes.HIGHLIGHT) {
+        _0x5501de.setAttribute("stroke", "" + colorString);
+        if (highlighType === segmentHighlightTypes.HIGHLIGHT) {
           _0x5501de.setAttribute("stroke-width", "15");
           _0x5501de.setAttribute("stroke-opacity", ".6");
         } else {
-          if (_0x1d2584 === segmentHighlightTypes.OVER_HIGHLIGHT) {
+          if (highlighType === segmentHighlightTypes.OVER_HIGHLIGHT) {
             _0x5501de.setAttribute("stroke-width", "18");
             _0x5501de.setAttribute("stroke-opacity", ".85");
           } else {
             _0x5501de.setAttribute("stroke-opacity", "1");
-            if (_0x1d2584 === segmentHighlightTypes.DASH_THICK) {
+            if (highlighType === segmentHighlightTypes.DASH_THICK) {
               _0x5501de.setAttribute("stroke-width", "8");
               _0x5501de.setAttribute("stroke-dasharray", "8 10");
-            } else if (_0x1d2584 === segmentHighlightTypes.DASH_THIN) {
+            } else if (highlighType === segmentHighlightTypes.DASH_THIN) {
               _0x5501de.setAttribute("stroke-width", "4");
-              _0x5501de.setAttribute("stroke-dasharray", "10 10")
+              _0x5501de.setAttribute("stroke-dasharray", "10 10");
             }
           }
         }
@@ -1464,9 +1906,14 @@
     LTHighlightLayer.setZIndex(450);
   }
 
-  function highlightNode(nodeGeometry, highLightColor, indicateHeuristics = false) {
-    const clonedNodeGeometry = nodeGeometry.clone(), _0x1313c1 = new OpenLayers.Feature.Vector(clonedNodeGeometry, {});
-    LTHighlightLayer.addFeatures([ _0x1313c1 ]);
+  function highlightNode(
+    nodeGeometry,
+    highLightColor,
+    indicateHeuristics = false,
+  ) {
+    const clonedNodeGeometry = nodeGeometry.clone(),
+      _0x1313c1 = new OpenLayers.Feature.Vector(clonedNodeGeometry, {});
+    LTHighlightLayer.addFeatures([_0x1313c1]);
     const nodeElement = document.getElementById(clonedNodeGeometry.id);
     if (nodeElement !== null) {
       nodeElement.setAttribute("fill", highLightColor);
@@ -1477,16 +1924,18 @@
   }
 
   let lt_scanArea_timer = {
-    start : function() {
+    start: function () {
       this.cancel();
       let timerObject = this;
-      this["timeoutID"] = window.setTimeout(function() { timerObject.calculate(); }, 500);
+      this["timeoutID"] = window.setTimeout(function () {
+        timerObject.calculate();
+      }, 500);
     },
-    calculate : function() {
+    calculate: function () {
       scanArea_real();
       delete this.timeoutID;
     },
-    cancel : function() {
+    cancel: function () {
       if (typeof this.timeoutID === "number") {
         window.clearTimeout(this.timeoutID);
         delete this.timeoutID;
@@ -1496,98 +1945,145 @@
   };
 
   function scanArea() {
-    if (lt_scanArea_recursive === 0)
-      lt_scanArea_recursive = 0x3;
-    else
-      lt_scanArea_recursive--;
-    if (lt_scanArea_recursive === 0)
-      return;
+    if (lt_scanArea_recursive === 0) lt_scanArea_recursive = 0x3;
+    else lt_scanArea_recursive--;
+    if (lt_scanArea_recursive === 0) return;
     scanArea_real();
   }
 
   function scanArea_real() {
-    if (lt_scanArea_recursive === 0)
-      return;
-    const scriptEnabled = getId("lt-ScriptEnabled").checked, highlightsEnabled = getId("lt-HighlightsEnable").checked,
-          heuristicsChecksEnabled = getId("lt-LaneHeuristicsChecks").checked,
-          currentZoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16,
-          highlightOverridden = getId("lt-highlightOverride").checked,
-          roadLayerState = W.layerSwitcherController.getTogglerState("ITEM_ROAD") ||
-                           W.layerSwitcherController.getTogglerState("ITEM_ROAD_V2");
+    if (lt_scanArea_recursive === 0) return;
+    const scriptEnabled = getId("lt-ScriptEnabled").checked,
+      highlightsEnabled = getId("lt-HighlightsEnable").checked,
+      heuristicsChecksEnabled = getId("lt-LaneHeuristicsChecks").checked,
+      currentZoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16,
+      highlightOverridden = getId("lt-highlightOverride").checked,
+      roadLayerState =
+        W.layerSwitcherController.getTogglerState("ITEM_ROAD") ||
+        W.layerSwitcherController.getTogglerState("ITEM_ROAD_V2");
     removeHighlights();
-    if (currentZoomLevel < DisplayLevels.MIN_ZOOM_ALL)
-      return;
+    if (currentZoomLevel < DisplayLevels.MIN_ZOOM_ALL) return;
     if (roadLayerState || (!roadLayerState && !highlightOverridden)) {
-      scriptEnabled && (highlightsEnabled || heuristicsChecksEnabled) &&
-          scanSegments(W.model.segments.getObjectArray(), false);
+      scriptEnabled &&
+        (highlightsEnabled || heuristicsChecksEnabled) &&
+        scanSegments(W.model.segments.getObjectArray(), false);
       if (scriptEnabled) {
         const selectedFeatures = W.selectionManager.getSelectedFeatures();
-        selectedFeatures.length === 0x2 && scanHeuristicsCandidates(selectedFeatures);
+        selectedFeatures.length === 0x2 &&
+          scanHeuristicsCandidates(selectedFeatures);
       }
     }
   }
 
   function scanHeuristicsCandidates(features) {
-    let segmentList = [], numSegments = 0x0;
+    let segmentList = [],
+      numSegments = 0x0;
     _.each(features, (feature) => {
-      feature && feature.attributes.wazeFeature._wmeObject &&
-          feature.attributes.wazeFeature._wmeObject.type === "segments" &&
-          (numSegments = segmentList.push(feature.attributes.wazeFeature._wmeObject));
+      feature &&
+        feature.attributes.wazeFeature._wmeObject &&
+        feature.attributes.wazeFeature._wmeObject.type === "segments" &&
+        (numSegments = segmentList.push(
+          feature.attributes.wazeFeature._wmeObject,
+        ));
     });
     scanSegments(segmentList, true);
-    return numSegments
+    return numSegments;
   }
 
-  function processOneSegment(segmentObj, segmentAttributes, segmentDirection, segmentLength, minZoomLevel,
-                             performHeuristicsCheck, errorsFound) {
-    const fwdLaneCount = segmentAttributes.fwdLaneCount, revLaneCount = segmentAttributes.revLaneCount,
-          highlightEnabled = getId("lt-HighlightsEnable").checked,
-          checkHeuristics = getId("lt-LaneHeuristicsChecks").checked,
-          heurPosHighlightEnabled = checkHeuristics && getId("lt-LaneHeurPosHighlight").checked,
-          heurNegHighlightEnabled = checkHeuristics && getId("lt-LaneHeurNegHighlight").checked,
-          highlightLIOEnabled = highlightEnabled && getId("lt-LIOEnable").checked,
-          highlightLabelsEnabled = highlightEnabled && getId("lt-LabelsEnable").checked,
-          turnGraph = W.model.getTurnGraph();
+  function processOneSegment(
+    segmentObj,
+    segmentAttributes,
+    segmentDirection,
+    segmentLength,
+    minZoomLevel,
+    performHeuristicsCheck,
+    errorsFound,
+  ) {
+    const fwdLaneCount = segmentAttributes.fwdLaneCount,
+      revLaneCount = segmentAttributes.revLaneCount,
+      highlightEnabled = getId("lt-HighlightsEnable").checked,
+      checkHeuristics = getId("lt-LaneHeuristicsChecks").checked,
+      heurPosHighlightEnabled =
+        checkHeuristics && getId("lt-LaneHeurPosHighlight").checked,
+      heurNegHighlightEnabled =
+        checkHeuristics && getId("lt-LaneHeurNegHighlight").checked,
+      highlightLIOEnabled = highlightEnabled && getId("lt-LIOEnable").checked,
+      highlightLabelsEnabled =
+        highlightEnabled && getId("lt-LabelsEnable").checked,
+      turnGraph = W.model.getTurnGraph();
 
-    let toNode = getNodeObj(segmentAttributes.toNodeID), fromNode = getNodeObj(segmentAttributes.fromNodeID),
-        fLaneCount = fwdLaneCount;
+    let toNode = getNodeObj(segmentAttributes.toNodeID),
+      fromNode = getNodeObj(segmentAttributes.fromNodeID),
+      fLaneCount = fwdLaneCount;
     if (segmentDirection !== Direction.FORWARD) {
       toNode = getNodeObj(segmentAttributes.fromNodeID);
       fromNode = getNodeObj(segmentAttributes.toNodeID);
       fLaneCount = revLaneCount;
     }
-    let _0x5855dd = false, _0x4d3a78 = false, _0x12606 = false, _0x58ba1e = false, _0x3a8c59 = 0x0,
-        heurCandidate = HeuristicsCandidate.NONE, _0x53f387 = null, _0x211d6a = {seg : 0x0, direction : Direction.NONE};
+    let _0x5855dd = false,
+      _0x4d3a78 = false,
+      _0x12606 = false,
+      _0x58ba1e = false,
+      _0x3a8c59 = 0x0,
+      heurCandidate = HeuristicsCandidate.NONE,
+      _0x53f387 = null,
+      _0x211d6a = { seg: 0x0, direction: Direction.NONE };
     if (onScreen(toNode, minZoomLevel)) {
       const toNodeAttachedSegmentIDs = toNode.getSegmentIds();
       if (fLaneCount > 0x0) {
-        let segmentLanesConfig = getLanesConfig(segmentObj, toNode, toNodeAttachedSegmentIDs, fLaneCount);
+        let segmentLanesConfig = getLanesConfig(
+          segmentObj,
+          toNode,
+          toNodeAttachedSegmentIDs,
+          fLaneCount,
+        );
         _0x5855dd = segmentLanesConfig[0x0];
         _0x4d3a78 = segmentLanesConfig[0x1];
         _0x58ba1e = segmentLanesConfig[0x2];
         _0x12606 = segmentLanesConfig[0x3];
         _0x3a8c59 = segmentLanesConfig[0x4];
-        errorsFound = (_0x12606 || errorsFound);
+        errorsFound = _0x12606 || errorsFound;
       }
       if (segmentLength <= MAX_LEN_HEUR) {
-        heurCandidate = heuristicsCandidateIndication(segmentObj, toNode, toNodeAttachedSegmentIDs, fromNode,
-                                                      fLaneCount, segmentLength, turnGraph, _0x211d6a);
-        (heurCandidate === HeuristicsCandidate.ERROR) && (_0x12606 = true);
-        if (!checkHeuristics)
-          heurCandidate = HeuristicsCandidate.NONE;
+        heurCandidate = heuristicsCandidateIndication(
+          segmentObj,
+          toNode,
+          toNodeAttachedSegmentIDs,
+          fromNode,
+          fLaneCount,
+          segmentLength,
+          turnGraph,
+          _0x211d6a,
+        );
+        heurCandidate === HeuristicsCandidate.ERROR && (_0x12606 = true);
+        if (!checkHeuristics) heurCandidate = HeuristicsCandidate.NONE;
         else
-          heurCandidate !== HeuristicsCandidate.NONE && (_0x53f387 = {..._0x211d6a});
+          heurCandidate !== HeuristicsCandidate.NONE &&
+            (_0x53f387 = { ..._0x211d6a });
       }
     }
     if (!performHeuristicsCheck) {
       let mutableHeurCandidate = null;
-      if ((heurPosHighlightEnabled && heurCandidate === HeuristicsCandidate.PASS) ||
-          (heurNegHighlightEnabled && heurCandidate === HeuristicsCandidate.FAIL))
+      if (
+        (heurPosHighlightEnabled &&
+          heurCandidate === HeuristicsCandidate.PASS) ||
+        (heurNegHighlightEnabled && heurCandidate === HeuristicsCandidate.FAIL)
+      )
         mutableHeurCandidate = heurCandidate;
       if (fLaneCount > 0x0 || mutableHeurCandidate !== null || _0x12606) {
-        highlightSegment(segmentObj.geometry, segmentDirection, highlightEnabled, highlightLabelsEnabled, fwdLaneCount,
-                         revLaneCount, _0x58ba1e && highlightLIOEnabled, _0x3a8c59, _0x12606, mutableHeurCandidate,
-                         false)
+        highlightSegment(
+          segmentObj.geometry,
+          segmentDirection,
+          highlightEnabled,
+          highlightLabelsEnabled,
+          fwdLaneCount,
+          revLaneCount,
+          _0x58ba1e && highlightLIOEnabled,
+          _0x3a8c59,
+          _0x12606,
+          mutableHeurCandidate,
+          false,
+        );
       }
       if (highlightEnabled && getId("lt-NodesEnable").checked) {
         _0x5855dd && highlightNode(toNode.geometry, "" + LtSettings.NodeColor);
@@ -1596,13 +2092,41 @@
     } else {
       lt_log("candidate(f):" + heurCandidate);
       if (heurCandidate !== HeuristicsCandidate.NONE) {
-        if (_0x53f387 != null && segmentArray.findIndex((_0x12b968) => _0x12b968 === _0x53f387.seg) > -0x1) {
+        if (
+          _0x53f387 != null &&
+          segmentArray.findIndex((_0x12b968) => _0x12b968 === _0x53f387.seg) >
+            -0x1
+        ) {
           let heurColor =
-              (heurCandidate === HeuristicsCandidate.PASS ? "" + LtSettings.NodeColor : "" + LtSettings.HeurFailColor);
-          highlightSegment(segmentObj.geometry, segmentDirection, false, false, 0x0, 0x0, false, _0x3a8c59, _0x12606,
-                           heurCandidate, true);
-          highlightSegment(_0x53f387["seg"].geometry, _0x53f387.direction, false, false, 0x0, 0x0, false, 0x0, false,
-                           heurCandidate, true);
+            heurCandidate === HeuristicsCandidate.PASS
+              ? "" + LtSettings.NodeColor
+              : "" + LtSettings.HeurFailColor;
+          highlightSegment(
+            segmentObj.geometry,
+            segmentDirection,
+            false,
+            false,
+            0x0,
+            0x0,
+            false,
+            _0x3a8c59,
+            _0x12606,
+            heurCandidate,
+            true,
+          );
+          highlightSegment(
+            _0x53f387["seg"].geometry,
+            _0x53f387.direction,
+            false,
+            false,
+            0x0,
+            0x0,
+            false,
+            0x0,
+            false,
+            heurCandidate,
+            true,
+          );
           highlightNode(toNode.geometry, heurColor, true);
           highlightNode(fromNode.geometry, heurColor, true);
         }
@@ -1616,9 +2140,17 @@
     _.each(segmentList, (segmentObj) => {
       if (onScreen(segmentObj, minZoomLevel)) {
         const featureAttributes = segmentObj.getFeatureAttributes();
-        let errorsFound = false, segmentLength = lt_segment_length(segmentObj);
-        errorsFound ||= processOneSegment(segmentObj, featureAttributes, Direction.FORWARD, segmentLength, minZoomLevel,
-                                          performHeuristicsCheck, errorsFound);
+        let errorsFound = false,
+          segmentLength = lt_segment_length(segmentObj);
+        errorsFound ||= processOneSegment(
+          segmentObj,
+          featureAttributes,
+          Direction.FORWARD,
+          segmentLength,
+          minZoomLevel,
+          performHeuristicsCheck,
+          errorsFound,
+        );
         if (errorsFound && lt_scanArea_recursive > 0x0) {
           lt_log("LT errors found, scanning again", 0x2);
           removeHighlights();
@@ -1626,8 +2158,15 @@
           lt_scanArea_timer.start();
           return;
         }
-        errorsFound ||= processOneSegment(segmentObj, featureAttributes, Direction.REVERSE, segmentLength, minZoomLevel,
-                                          performHeuristicsCheck, errorsFound);
+        errorsFound ||= processOneSegment(
+          segmentObj,
+          featureAttributes,
+          Direction.REVERSE,
+          segmentLength,
+          minZoomLevel,
+          performHeuristicsCheck,
+          errorsFound,
+        );
         if (errorsFound && lt_scanArea_recursive > 0x0) {
           lt_log("LT errors found, scanning again", 2);
           removeHighlights();
@@ -1639,25 +2178,40 @@
   }
 
   function getLanesConfig(segment, node, attachedSegments, laneCount) {
-    let turnLanesExist = false, turnDataInstructionOpcodeExists = false, _0x16f110 = false, turnAngleOverridden = false,
-        turnGuidanceMode = 0x0, streetName = null, _0x44a7d8 = [];
-    const turnGraph = W.model.getTurnGraph(), zoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16;
+    let turnLanesExist = false,
+      turnDataInstructionOpcodeExists = false,
+      _0x16f110 = false,
+      turnAngleOverridden = false,
+      turnGuidanceMode = 0x0,
+      streetName = null,
+      _0x44a7d8 = [];
+    const turnGraph = W.model.getTurnGraph(),
+      zoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16;
     for (let idx = 0x0; idx < attachedSegments.length; idx++) {
       const attachedSegment = getSegObj(attachedSegments[idx]),
-            turnData = turnGraph.getTurnThroughNode(node, segment, attachedSegment).getTurnData();
+        turnData = turnGraph
+          .getTurnThroughNode(node, segment, attachedSegment)
+          .getTurnData();
       if (turnData.state === 0x1) {
-        turnData.hasInstructionOpcode() && (turnDataInstructionOpcodeExists = true);
+        turnData.hasInstructionOpcode() &&
+          (turnDataInstructionOpcodeExists = true);
         if (turnData.hasLanes()) {
           turnLanesExist = true;
-          turnData.getLaneData().hasOverrideAngle() && (turnAngleOverridden = true);
+          turnData.getLaneData().hasOverrideAngle() &&
+            (turnAngleOverridden = true);
           if (turnData.getLaneData().getGuidanceMode() === 0x1) {
             turnGuidanceMode = 0x1;
-            streetName = W.model.streets.getObjectById(attachedSegment.attributes.primaryStreetID).name;
+            streetName = W.model.streets.getObjectById(
+              attachedSegment.attributes.primaryStreetID,
+            ).name;
           } else if (turnData.getLaneData().getGuidanceMode() === 0x2) {
             turnGuidanceMode = 0x2;
-            streetName = W.model.streets.getObjectById(attachedSegment.attributes.primaryStreetID).name;
+            streetName = W.model.streets.getObjectById(
+              attachedSegment.attributes.primaryStreetID,
+            ).name;
           }
-          const frmLnIdx = turnData.lanes.fromLaneIndex, toLnIdx = turnData.lanes.toLaneIndex;
+          const frmLnIdx = turnData.lanes.fromLaneIndex,
+            toLnIdx = turnData.lanes.toLaneIndex;
           for (let cnt = frmLnIdx; cnt < toLnIdx + 0x1; cnt++) {
             let _0x18e06a = true;
             for (let idx = 0x0; idx < _0x44a7d8.length; idx++) {
@@ -1673,54 +2227,84 @@
       _0x44a7d8[idx] !== idx && (_0x16f110 = true);
     }
     if (_0x44a7d8.length < laneCount && onScreen(node, zoomLevel))
-      (_0x16f110 = true);
+      _0x16f110 = true;
     return [
-      turnLanesExist, turnDataInstructionOpcodeExists, turnAngleOverridden, _0x16f110, turnGuidanceMode, streetName
-    ]
+      turnLanesExist,
+      turnDataInstructionOpcodeExists,
+      turnAngleOverridden,
+      _0x16f110,
+      turnGuidanceMode,
+      streetName,
+    ];
   }
 
   function setTurns(directionClass, numLanes) {
-    if (!getId("lt-ClickSaveEnable").checked)
-      return;
     let directionElement = document.getElementsByClassName(directionClass)[0x0],
-        leftTurnAngleClass =
-            directionElement.getElementsByClassName("angle--135").length > 0x0  ? "angle--135"
-            : directionElement.getElementsByClassName("angle--90").length > 0x0 ? "angle--90"
-                                                                                : "angle--45",
-        rightTurnAngleClass = directionElement.getElementsByClassName("angle-135").length > 0x0 ? "angle-135"
-                                         : directionElement.getElementsByClassName("angle-90").length > 0x0
-                                             ? "angle-90"
-                                             : "angle-45",
-        turnLaneEditTop = directionElement.getElementsByClassName("turn-lane-edit-top");
-    if(turnLaneEditTop.length !== numLanes) return;
-    let numGuidedLanes = [].slice.call(turnLaneEditTop)
-                             .reduce((turnGuidanceEnabledCounter, editElement) =>
-                                         turnGuidanceEnabledCounter +
-                                         [].slice.call(editElement.getElementsByTagName("wz-checkbox"))
-                                             .reduce((turnAppliedCounter, turnCheckBox) =>
-                                                         (turnCheckBox.checked === true ? turnAppliedCounter + 1
-                                                                                        : turnAppliedCounter),
-                                                     0),
-                                     0);
-    if (numGuidedLanes < numLanes) {
-      let isLeftHand = W.model.isLeftHand, leftTurnEnabled = false, rightTurnEnabled = false;
+      leftTurnAngleClass =
+        directionElement.getElementsByClassName("angle--135").length > 0x0
+          ? "angle--135"
+          : directionElement.getElementsByClassName("angle--90").length > 0x0
+          ? "angle--90"
+          : "angle--45",
+      rightTurnAngleClass =
+        directionElement.getElementsByClassName("angle-135").length > 0x0
+          ? "angle-135"
+          : directionElement.getElementsByClassName("angle-90").length > 0x0
+          ? "angle-90"
+          : "angle-45",
+      turnLaneEditTop =
+        directionElement.getElementsByClassName("turn-lane-edit-top"),
+        turnCheckBoxes
+    if (turnLaneEditTop.length !== numLanes) return;
+    let numGuidedLanes = [].slice
+      .call(turnLaneEditTop)
+      .reduce(
+        (turnGuidanceEnabledCounter, editElement) =>
+          turnGuidanceEnabledCounter +
+          [].slice
+            .call(editElement.getElementsByTagName("wz-checkbox"))
+            .reduce(
+              (turnAppliedCounter, turnCheckBox) =>
+                turnCheckBox.checked === true
+                  ? turnAppliedCounter + 1
+                  : turnAppliedCounter,
+              0,
+            ),
+        0,
+      );
+    if (numGuidedLanes !== numLanes) {
+      let isLeftHand = W.model.isLeftHand,
+        leftTurnEnabled = false,
+        rightTurnEnabled = false;
       for (let idx = 0x0; idx < turnLaneEditTop.length; idx++) {
         const turnLaneEditTopContainer = turnLaneEditTop[idx];
-        let turnCheckBoxes = turnLaneEditTopContainer.getElementsByTagName("wz-checkbox");
+        let turnCheckBoxes =
+          turnLaneEditTopContainer.getElementsByTagName("wz-checkbox");
         if (turnCheckBoxes && turnCheckBoxes.length > 0x0) {
-          if (turnLaneEditTopContainer.getElementsByClassName(leftTurnAngleClass).length > 0x0 &&
-              turnCheckBoxes[0].checked !== undefined) {
-            if (turnCheckBoxes[0].checked === true)
-              leftTurnEnabled = true;
-            if (getId("lt-ClickSaveTurns").checked && turnCheckBoxes[0].checked === false) {
+          if (
+            turnLaneEditTopContainer.getElementsByClassName(leftTurnAngleClass)
+              .length > 0x0 &&
+            turnCheckBoxes[0].checked !== undefined
+          ) {
+            if (turnCheckBoxes[0].checked === true) leftTurnEnabled = true;
+            if (
+              getId("lt-ClickSaveTurns").checked &&
+              turnCheckBoxes[0].checked === false
+            ) {
               turnCheckBoxes[0].click();
               leftTurnEnabled = true;
             }
-          } else if (turnLaneEditTopContainer.getElementsByClassName(rightTurnAngleClass).length > 0x0 &&
-                     turnCheckBoxes[turnCheckBoxes.length - 1].checked !== undefined) {
+          } else if (
+            turnLaneEditTopContainer.getElementsByClassName(rightTurnAngleClass)
+              .length > 0x0 &&
+            turnCheckBoxes[turnCheckBoxes.length - 1].checked !== undefined
+          ) {
             if (turnCheckBoxes[turnCheckBoxes.length - 1].checked === true)
               rightTurnEnabled = true;
-            if (getId("lt-ClickSaveTurns").checked && turnCheckBoxes[turnCheckBoxes.length - 1].checked === false) {
+            if (
+              getId("lt-ClickSaveTurns").checked &&
+              turnCheckBoxes[turnCheckBoxes.length - 1].checked === false
+            ) {
               rightTurnEnabled = true;
               turnCheckBoxes[turnCheckBoxes.length - 0x1].click();
             }
@@ -1729,19 +2313,30 @@
       }
       for (let idx = 0x0; idx < turnLaneEditTop.length; idx++) {
         const turnLanesContainer = turnLaneEditTop[idx];
-        let directionCheckBoxes = turnLanesContainer.getElementsByTagName("wz-checkbox");
+        let directionCheckBoxes =
+          turnLanesContainer.getElementsByTagName("wz-checkbox");
         if (turnLanesContainer.getElementsByClassName("angle-0").length > 0x0)
           for (let idx = 0x0; idx < directionCheckBoxes.length; idx++) {
             if (directionCheckBoxes[idx].checked === false) {
-              if (idx === 0x0 && (getId("lt-ClickSaveStraight").checked &&
-                                  ((!isLeftHand && !leftTurnEnabled) || (isLeftHand && !rightTurnEnabled))))
+              if (
+                idx === 0x0 &&
+                getId("lt-ClickSaveStraight").checked &&
+                ((!isLeftHand && !leftTurnEnabled) ||
+                  (isLeftHand && !rightTurnEnabled))
+              )
                 directionCheckBoxes[idx].click();
               else {
-                if (idx === directionCheckBoxes.length - 0x1 &&
-                    (getId("lt-ClickSaveStraight").checked &&
-                     ((!rightTurnEnabled && !isLeftHand) || (isLeftHand && !leftTurnEnabled))))
+                if (
+                  idx === directionCheckBoxes.length - 0x1 &&
+                  getId("lt-ClickSaveStraight").checked &&
+                  ((!rightTurnEnabled && !isLeftHand) ||
+                    (isLeftHand && !leftTurnEnabled))
+                )
                   directionCheckBoxes[idx].click();
-                else if (idx !== 0x0 && idx !== directionCheckBoxes.length - 0x1)
+                else if (
+                  idx !== 0x0 &&
+                  idx !== directionCheckBoxes.length - 0x1
+                )
                   directionCheckBoxes[idx].click();
               }
             }
@@ -1753,20 +2348,41 @@
   function initLaneGuidanceClickSaver() {
     let mutationObserver = new MutationObserver((_0x23b79c) => {
       let selectedFeatures = W.selectionManager.getSelectedFeatures();
-      if (selectedFeatures[0x0] && selectedFeatures[0x0].attributes.wazeFeature._wmeObject.type === "segment" &&
-          getId("lt-ScriptEnabled").checked) {
+      if (
+        selectedFeatures[0x0] &&
+        selectedFeatures[0x0].attributes.wazeFeature._wmeObject.type ===
+          "segment" &&
+        getId("lt-ScriptEnabled").checked
+      ) {
         let laneCountElement = document.getElementsByName("laneCount");
         for (let idx = 0; idx < laneCountElement.length; idx++) {
-          laneCountElement[idx].addEventListener("change", function() {
-            let parent9LevelsUp = $(this).parents().eq(9), elem = parent9LevelsUp[0], className = elem.className,
+          laneCountElement[idx].addEventListener(
+            "change",
+            function () {
+              let parent9LevelsUp = $(this).parents().eq(9),
+                elem = parent9LevelsUp[0],
+                className = elem.className,
                 numLanes = parseInt($(this).val(), 10);
-            let laneCountNums = $(this).parents().find(".lt-add-lanes"),
+              setTimeout(setTurns, 100, className, numLanes);
+              let laneCountNums = $(this).parents().find(".lt-add-lanes"),
                 counterClassName = laneCountNums[0].className,
                 selectorClassName = "." + counterClassName.replace(" ", ".");
-            let counterClassToSelectName = "#" + counterClassName.replace(" ", "-") + "-" + numLanes.toString();
-            $(selectorClassName).css({"background-color" : "transparent", "color" : "black"});
-            $(counterClassToSelectName).css({"background-color" : "navy", "color" : "white"});
-          }, false);
+              let counterClassToSelectName =
+                "#" +
+                counterClassName.replace(" ", "-") +
+                "-" +
+                numLanes.toString();
+              $(selectorClassName).css({
+                "background-color": "transparent",
+                color: "black",
+              });
+              $(counterClassToSelectName).css({
+                "background-color": "navy",
+                color: "white",
+              });
+            },
+            false,
+          );
         }
         // let addLanesElement = document.getElementsByClassName("lt-add-lanes");
         // for (let idx = 0; idx < addLanesElement.length; idx++) {
@@ -1779,84 +2395,158 @@
       }
     });
     mutationObserver.observe(document.getElementById("edit-panel"), {
-      childList : true,
-      subtree : true,
+      childList: true,
+      subtree: true,
     });
   }
 
   function _0xca5734(objectId, segment) {
-    if (objectId == null || segment == null)
-      return null;
+    if (objectId == null || segment == null) return null;
     let xCoord, yCoord;
     if (segment.attributes.fromNodeID === objectId) {
       xCoord = lt_get_second_point(segment).x - lt_get_first_point(segment).x;
-      yCoord = lt_get_second_point(segment).y - lt_get_first_point(segment).y
+      yCoord = lt_get_second_point(segment).y - lt_get_first_point(segment).y;
     } else {
-      (xCoord = lt_get_next_to_last_point(segment).x - lt_get_last_point(segment).x);
-      (yCoord = lt_get_next_to_last_point(segment).y - lt_get_last_point(segment).y);
+      xCoord =
+        lt_get_next_to_last_point(segment).x - lt_get_last_point(segment).x;
+      yCoord =
+        lt_get_next_to_last_point(segment).y - lt_get_last_point(segment).y;
     }
-    let angleInRadians = Math.atan2(yCoord, xCoord), angleInDegrees = ((angleInRadians * 180) / Math.PI) % 360;
-    lt_log("Azm from node " + objectId + " / " + segment.attributes.id + ": " + angleInDegrees, 0x3);
+    let angleInRadians = Math.atan2(yCoord, xCoord),
+      angleInDegrees = ((angleInRadians * 180) / Math.PI) % 360;
+    lt_log(
+      "Azm from node " +
+        objectId +
+        " / " +
+        segment.attributes.id +
+        ": " +
+        angleInDegrees,
+      0x3,
+    );
     return angleInDegrees;
   }
 
-  function heuristicsCandidateIndication(segmentObj, toNodeObj, attachedSegmentIDs, fromNodeObj, fwdLaneCount,
-                                         segmentlength, turnGraph, _0x1a610d) {
-    if (segmentObj == null || toNodeObj == null || attachedSegmentIDs == null || fromNodeObj == null ||
-        fwdLaneCount == null || turnGraph == null || _0x1a610d == null) {
+  function heuristicsCandidateIndication(
+    segmentObj,
+    toNodeObj,
+    attachedSegmentIDs,
+    fromNodeObj,
+    fwdLaneCount,
+    segmentlength,
+    turnGraph,
+    _0x1a610d,
+  ) {
+    if (
+      segmentObj == null ||
+      toNodeObj == null ||
+      attachedSegmentIDs == null ||
+      fromNodeObj == null ||
+      fwdLaneCount == null ||
+      turnGraph == null ||
+      _0x1a610d == null
+    ) {
       lt_log("heuristicsCandidateIndication received bad argument (null)", 0x1);
       return HeuristicsCandidate.NONE;
     }
-    let _0x1859f0 = null, _0x4f9be7 = null, _0x96949d = 0, _0x4777ff = null, _0x28857a = null, _0x96fad4 = null,
-        _0x4e91d5 = 0, _0x4fd61c = null, _0x1c6b60 = null, _0x5063e3 = 0, _0x296190 = 0;
-    if (segmentlength > MAX_LEN_HEUR)
-      return HeuristicsCandidate.NONE;
+    let _0x1859f0 = null,
+      _0x4f9be7 = null,
+      _0x96949d = 0,
+      _0x4777ff = null,
+      _0x28857a = null,
+      _0x96fad4 = null,
+      _0x4e91d5 = 0,
+      _0x4fd61c = null,
+      _0x1c6b60 = null,
+      _0x5063e3 = 0,
+      _0x296190 = 0;
+    if (segmentlength > MAX_LEN_HEUR) return HeuristicsCandidate.NONE;
     const segmentId = segmentObj.attributes.id;
     let _0x11d184 = _0x43a6d2(toNodeObj.attributes.id, segmentObj),
-        _0x5349e1 = _0xca5734(fromNodeObj.attributes.id, segmentObj), _0x18525c = -90, _0x26651c = 90;
+      _0x5349e1 = _0xca5734(fromNodeObj.attributes.id, segmentObj),
+      _0x18525c = -90,
+      _0x26651c = 90;
     if (W.model.isLeftHand) {
       _0x18525c = 90;
       _0x26651c = -90;
     }
-    lt_log("==================================================================================", 0x2);
-    lt_log("Checking heuristics candidate: seg" + segmentId + "node" + toNodeObj.attributes.id + " azm " + _0x11d184 +
-               "nodeExitSegIds:" + attachedSegmentIDs.length,
-           0x2);
+    lt_log(
+      "==================================================================================",
+      0x2,
+    );
+    lt_log(
+      "Checking heuristics candidate: seg" +
+        segmentId +
+        "node" +
+        toNodeObj.attributes.id +
+        " azm " +
+        _0x11d184 +
+        "nodeExitSegIds:" +
+        attachedSegmentIDs.length,
+      0x2,
+    );
     let segmentIDs = fromNodeObj.getSegmentIds();
     for (let idx = 0x0; idx < segmentIDs.length; idx++) {
       let heurState = 0x0;
-      if (segmentIDs[idx] === segmentId)
-        continue;
+      if (segmentIDs[idx] === segmentId) continue;
       const _0x71a39c = getSegObj(segmentIDs[idx]);
-      if (!_0x493643(_0x71a39c, fromNodeObj, segmentObj))
-        continue;
-      let _0x3c6b23 = _0x43a6d2(fromNodeObj.attributes.id, _0x71a39c), _0x4ef283 = _0xcd5d5b(_0x3c6b23, _0x5349e1);
-      lt_log("Turn angle from inseg " + segmentIDs[idx] + ": " + _0x4ef283 + "(" + _0x3c6b23 + "," + _0x5349e1 + ")",
-             3);
+      if (!_0x493643(_0x71a39c, fromNodeObj, segmentObj)) continue;
+      let _0x3c6b23 = _0x43a6d2(fromNodeObj.attributes.id, _0x71a39c),
+        _0x4ef283 = _0xcd5d5b(_0x3c6b23, _0x5349e1);
+      lt_log(
+        "Turn angle from inseg " +
+          segmentIDs[idx] +
+          ": " +
+          _0x4ef283 +
+          "(" +
+          _0x3c6b23 +
+          "," +
+          _0x5349e1 +
+          ")",
+        3,
+      );
       if (Math.abs(_0x4ef283) > MAX_STRAIGHT_DIF) {
-        if (Math.abs(_0x4ef283) > MAX_STRAIGHT_TO_CONSIDER)
-          continue;
+        if (Math.abs(_0x4ef283) > MAX_STRAIGHT_TO_CONSIDER) continue;
         lt_log("Not eligible as inseg: " + _0x4ef283, 0x2);
         heurState = HeuristicsCandidate.FAIL;
       }
-      const _0x4c0fc6 = turnGraph.getTurnThroughNode(fromNodeObj, _0x71a39c, segmentObj),
-            _0x264c0a = _0x4c0fc6.getTurnData();
+      const _0x4c0fc6 = turnGraph.getTurnThroughNode(
+          fromNodeObj,
+          _0x71a39c,
+          segmentObj,
+        ),
+        _0x264c0a = _0x4c0fc6.getTurnData();
       if (_0x264c0a.state !== 0x1 || !_0x264c0a.hasLanes()) {
-        lt_log("Straight turn has no lanes:" + segmentIDs[idx] + " to " + segmentId, 0x3);
+        lt_log(
+          "Straight turn has no lanes:" + segmentIDs[idx] + " to " + segmentId,
+          0x3,
+        );
         continue;
       }
-      let idxDiff = _0x264c0a.lanes.toLaneIndex - _0x264c0a.lanes.fromLaneIndex + 0x1;
-      if (idxDiff !== fwdLaneCount && !(fwdLaneCount === 0x0 && idxDiff === 0x1)) {
+      let idxDiff =
+        _0x264c0a.lanes.toLaneIndex - _0x264c0a.lanes.fromLaneIndex + 0x1;
+      if (
+        idxDiff !== fwdLaneCount &&
+        !(fwdLaneCount === 0x0 && idxDiff === 0x1)
+      ) {
         lt_log("Straight turn lane count does not match", 0x2);
-        heurState = HeuristicsCandidate.ERROR
+        heurState = HeuristicsCandidate.ERROR;
       }
       if (_0x4777ff !== null && heurState >= _0x4e91d5) {
         if (_0x4e91d5 === 0x0 && heurState === 0x0) {
-          lt_log("Error: >1 qualifying entry segment for " + segmentObj.attributes.id + ": " + _0x4777ff.attributes.id +
-                     "," + _0x71a39c.attributes.id,
-                 0x2);
-          lt_log("==================================================================================", 0x2);
-          return HeuristicsCandidate.NONE
+          lt_log(
+            "Error: >1 qualifying entry segment for " +
+              segmentObj.attributes.id +
+              ": " +
+              _0x4777ff.attributes.id +
+              "," +
+              _0x71a39c.attributes.id,
+            0x2,
+          );
+          lt_log(
+            "==================================================================================",
+            0x2,
+          );
+          return HeuristicsCandidate.NONE;
         }
       }
       _0x4777ff = _0x71a39c;
@@ -1865,38 +2555,65 @@
       _0x296190 = idxDiff;
       _0x4e91d5 = heurState;
       _0x1a610d.inSeg = _0x4777ff;
-      _0x1a610d.inSegDir = (_0x4c0fc6.fromVertex["direction"] === "fwd" ? Direction.FORWARD : Direction.REVERSE)
+      _0x1a610d.inSegDir =
+        _0x4c0fc6.fromVertex["direction"] === "fwd"
+          ? Direction.FORWARD
+          : Direction.REVERSE;
     }
     if (_0x4777ff == null) {
-      lt_log("== No inseg found ==================================================================", 0x2);
+      lt_log(
+        "== No inseg found ==================================================================",
+        0x2,
+      );
       return HeuristicsCandidate.NONE;
     } else
-      lt_log("Found inseg candidate: " + _0x4777ff.attributes.id + " " + (_0x4e91d5 === 0x0 ? "" : "(failed)"), 0x2);
+      lt_log(
+        "Found inseg candidate: " +
+          _0x4777ff.attributes.id +
+          " " +
+          (_0x4e91d5 === 0x0 ? "" : "(failed)"),
+        0x2,
+      );
     for (let idx = 0x0; idx < attachedSegmentIDs.length; idx++) {
       let _0x10d7bb = 0x0;
-      if (attachedSegmentIDs[idx] === segmentId)
-        continue;
+      if (attachedSegmentIDs[idx] === segmentId) continue;
       const _0x3e085f = getSegObj(attachedSegmentIDs[idx]);
-      if (!_0x493643(segmentObj, toNodeObj, _0x3e085f))
-        continue;
-      let _0xff74b4 = _0xca5734(toNodeObj.attributes.id, _0x3e085f), _0x1bf6a7 = _0xcd5d5b(_0x11d184, _0xff74b4);
-      lt_log("Turn angle to outseg2 " + attachedSegmentIDs[idx] + ": " + _0x1bf6a7 + "(" + _0x11d184 + "," + _0xff74b4 +
-                 ")",
-             0x2);
-      if (Math.abs(_0x18525c - _0x1bf6a7) < MAX_PERP_TO_CONSIDER)
-        return 0x0;
+      if (!_0x493643(segmentObj, toNodeObj, _0x3e085f)) continue;
+      let _0xff74b4 = _0xca5734(toNodeObj.attributes.id, _0x3e085f),
+        _0x1bf6a7 = _0xcd5d5b(_0x11d184, _0xff74b4);
+      lt_log(
+        "Turn angle to outseg2 " +
+          attachedSegmentIDs[idx] +
+          ": " +
+          _0x1bf6a7 +
+          "(" +
+          _0x11d184 +
+          "," +
+          _0xff74b4 +
+          ")",
+        0x2,
+      );
+      if (Math.abs(_0x18525c - _0x1bf6a7) < MAX_PERP_TO_CONSIDER) return 0x0;
       if (Math.abs(_0x26651c - _0x1bf6a7) > MAX_PERP_DIF) {
-        if (Math.abs(_0x26651c - _0x1bf6a7) > MAX_PERP_TO_CONSIDER)
-          continue;
+        if (Math.abs(_0x26651c - _0x1bf6a7) > MAX_PERP_TO_CONSIDER) continue;
         lt_log("   Not eligible as outseg2: " + _0x1bf6a7, 0x2);
         _0x10d7bb = HeuristicsCandidate.FAIL;
       }
       if (_0x1859f0 !== null && _0x10d7bb >= _0x96949d) {
         if (_0x96949d === 0x0 && _0x10d7bb === 0x0) {
-          lt_log("Error: >1 qualifying exit2 segment for " + segmentObj.attributes.id + ": " + _0x1859f0.attributes.id +
-                     "," + _0x3e085f.attributes.id,
-                 0x2);
-          lt_log("==================================================================================", 0x2);
+          lt_log(
+            "Error: >1 qualifying exit2 segment for " +
+              segmentObj.attributes.id +
+              ": " +
+              _0x1859f0.attributes.id +
+              "," +
+              _0x3e085f.attributes.id,
+            0x2,
+          );
+          lt_log(
+            "==================================================================================",
+            0x2,
+          );
           return 0x0;
         }
       }
@@ -1905,70 +2622,135 @@
       _0x96949d = _0x10d7bb;
     }
     if (_0x1859f0 == null) {
-      lt_log("== No Outseg2 found ==================================================================", 0x2);
+      lt_log(
+        "== No Outseg2 found ==================================================================",
+        0x2,
+      );
       return 0x0;
     } else
-      lt_log("Found outseg2 candidate: " + _0x1859f0.attributes.id + " " + (_0x96949d === 0x0 ? "" : "(failed)"), 0x2);
+      lt_log(
+        "Found outseg2 candidate: " +
+          _0x1859f0.attributes.id +
+          " " +
+          (_0x96949d === 0x0 ? "" : "(failed)"),
+        0x2,
+      );
     for (let idx = 0x0; idx < segmentIDs.length; idx++) {
-      if (segmentIDs[idx] === segmentId || segmentIDs[idx] === _0x4777ff.attributes.id)
+      if (
+        segmentIDs[idx] === segmentId ||
+        segmentIDs[idx] === _0x4777ff.attributes.id
+      )
         continue;
       const _0x1b9808 = getSegObj(segmentIDs[idx]);
       let _0x3edc74 = 0x0;
-      if ((_0x1b9808.attributes.fwdDirection && _0x1b9808.attributes.toNodeID !== fromNodeObj.attributes.id) ||
-          (_0x1b9808.attributes.revDirection && _0x1b9808.attributes.fromNodeID !== fromNodeObj.attributes.id))
+      if (
+        (_0x1b9808.attributes.fwdDirection &&
+          _0x1b9808.attributes.toNodeID !== fromNodeObj.attributes.id) ||
+        (_0x1b9808.attributes.revDirection &&
+          _0x1b9808.attributes.fromNodeID !== fromNodeObj.attributes.id)
+      )
         continue;
-      let _0x46ff80 = _0x43a6d2(fromNodeObj.attributes.id, _0x1b9808), _0x58b38d = _0xcd5d5b(_0x28857a, _0x46ff80);
-      lt_log("Turn angle from inseg (supplementary) " + segmentIDs[idx] + ": " + _0x58b38d + "(" + _0x28857a + "," +
-                 _0x46ff80 + ")",
-             0x3);
+      let _0x46ff80 = _0x43a6d2(fromNodeObj.attributes.id, _0x1b9808),
+        _0x58b38d = _0xcd5d5b(_0x28857a, _0x46ff80);
+      lt_log(
+        "Turn angle from inseg (supplementary) " +
+          segmentIDs[idx] +
+          ": " +
+          _0x58b38d +
+          "(" +
+          _0x28857a +
+          "," +
+          _0x46ff80 +
+          ")",
+        0x3,
+      );
       if (Math.abs(_0x18525c - _0x58b38d) > MAX_PERP_DIF_ALT) {
-        if (Math.abs(_0x18525c - _0x58b38d) > MAX_PERP_TO_CONSIDER)
-          continue;
+        if (Math.abs(_0x18525c - _0x58b38d) > MAX_PERP_TO_CONSIDER) continue;
         lt_log("Not eligible as altIn1: " + _0x58b38d, 0x3);
-        (_0x3edc74 = HeuristicsCandidate.FAIL);
+        _0x3edc74 = HeuristicsCandidate.FAIL;
       }
       if (_0x4fd61c !== null) {
-        if (_0x3edc74 < _0x5063e3)
-          continue;
+        if (_0x3edc74 < _0x5063e3) continue;
         if (_0x5063e3 === 0x0 && _0x3edc74 === 0x0)
-          lt_log("Error: >1 qualifying segment for " + segmentObj.attributes.id + ": " + _0x4fd61c.attributes.id + "," +
-                     _0x1b9808.attributes.id,
-                 0x2);
-        lt_log("==================================================================================", 0x2);
+          lt_log(
+            "Error: >1 qualifying segment for " +
+              segmentObj.attributes.id +
+              ": " +
+              _0x4fd61c.attributes.id +
+              "," +
+              _0x1b9808.attributes.id,
+            0x2,
+          );
+        lt_log(
+          "==================================================================================",
+          0x2,
+        );
         return HeuristicsCandidate.FAIL;
       }
-      (_0x4fd61c = _0x1b9808);
-      (_0x1c6b60 = _0x46ff80);
-      (_0x5063e3 = _0x3edc74);
+      _0x4fd61c = _0x1b9808;
+      _0x1c6b60 = _0x46ff80;
+      _0x5063e3 = _0x3edc74;
     }
     if (_0x4fd61c == null) {
-      lt_log("== No alt incoming-1 segment found ==================================================================\n",
-             0x2);
+      lt_log(
+        "== No alt incoming-1 segment found ==================================================================\n",
+        0x2,
+      );
       return 0;
     } else
-      lt_log("Alt incoming-1 segment found: " + _0x4fd61c.attributes.id + " " + (_0x5063e3 === 0x0 ? "" : "(failed)"),
-             0x2);
+      lt_log(
+        "Alt incoming-1 segment found: " +
+          _0x4fd61c.attributes.id +
+          " " +
+          (_0x5063e3 === 0x0 ? "" : "(failed)"),
+        0x2,
+      );
     if (_0x4e91d5 < 0x0 || _0x5063e3 < 0x0 || _0x96949d < 0x0) {
-      lt_log("Found a failed candidate for " + segmentId + " ( " + Math.min(_0x4e91d5, _0x5063e3, _0x96949d) + ")",
-             0x2);
-      return (_0x4e91d5 === HeuristicsCandidate.FAIL || _0x5063e3 === HeuristicsCandidate.FAIL ||
-                      _0x96949d === HeuristicsCandidate.FAIL
-                  ? HeuristicsCandidate.FAIL
-                  : HeuristicsCandidate.ERROR);
+      lt_log(
+        "Found a failed candidate for " +
+          segmentId +
+          " ( " +
+          Math.min(_0x4e91d5, _0x5063e3, _0x96949d) +
+          ")",
+        0x2,
+      );
+      return _0x4e91d5 === HeuristicsCandidate.FAIL ||
+        _0x5063e3 === HeuristicsCandidate.FAIL ||
+        _0x96949d === HeuristicsCandidate.FAIL
+        ? HeuristicsCandidate.FAIL
+        : HeuristicsCandidate.ERROR;
     }
-    lt_log("Found a heuristics candidate! " + segmentId + " to " + _0x1859f0.attributes.id + "at" + _0x4f9be7, 0x2);
+    lt_log(
+      "Found a heuristics candidate! " +
+        segmentId +
+        " to " +
+        _0x1859f0.attributes.id +
+        "at" +
+        _0x4f9be7,
+      0x2,
+    );
     return 0x1;
   }
 
   function _0x43a6d2(objectId, segment) {
-    let _0x39f1a3 = _0xca5734(objectId, segment), _0x228ce5 = _0x39f1a3 + 180;
+    let _0x39f1a3 = _0xca5734(objectId, segment),
+      _0x228ce5 = _0x39f1a3 + 180;
     _0x228ce5 >= 180 && (_0x228ce5 -= 360);
-    lt_log("Azm to node " + objectId + "/ " + segment.attributes.id + ": " + _0x228ce5, 0x3);
+    lt_log(
+      "Azm to node " +
+        objectId +
+        "/ " +
+        segment.attributes.id +
+        ": " +
+        _0x228ce5,
+      0x3,
+    );
     return _0x228ce5;
   }
 
   function _0xcd5d5b(_0x362a09, _0xd93a20) {
-    let _0x240602 = _0x362a09, _0x56fa6c = _0xd93a20;
+    let _0x240602 = _0x362a09,
+      _0x56fa6c = _0xd93a20;
     while (_0xd93a20 > 0xb4) {
       _0x56fa6c -= 360;
     }
@@ -1982,18 +2764,28 @@
       _0x240602 += 360;
     }
     let _0x1eb39a = _0x56fa6c - _0x240602;
-    return ((_0x1eb39a += _0x1eb39a > 0xb4    ? -360
-                          : _0x1eb39a < -0xb4 ? 360
-                                              : 0x0),
-            lt_log("Turn " + _0x240602 + "," + _0x56fa6c + ": " + _0x1eb39a, 0x3), _0x1eb39a);
+    return (
+      (_0x1eb39a += _0x1eb39a > 0xb4 ? -360 : _0x1eb39a < -0xb4 ? 360 : 0x0),
+      lt_log("Turn " + _0x240602 + "," + _0x56fa6c + ": " + _0x1eb39a, 0x3),
+      _0x1eb39a
+    );
   }
 
   function _0x493643(_0x17bc7b, _0x31445a, _0x85690c) {
-    lt_log("Allow from " + _0x17bc7b.attributes.id + "to " + _0x85690c.attributes.id + " via " +
-               _0x31445a.attributes.id + "? \n" +
-               "            " + _0x31445a["isTurnAllowedBySegDirections"](_0x17bc7b, _0x85690c) + "| " +
-               _0x17bc7b["isTurnAllowed"](_0x85690c, _0x31445a),
-           3);
+    lt_log(
+      "Allow from " +
+        _0x17bc7b.attributes.id +
+        "to " +
+        _0x85690c.attributes.id +
+        " via " +
+        _0x31445a.attributes.id +
+        "? \n" +
+        "            " +
+        _0x31445a["isTurnAllowedBySegDirections"](_0x17bc7b, _0x85690c) +
+        "| " +
+        _0x17bc7b["isTurnAllowed"](_0x85690c, _0x31445a),
+      3,
+    );
     if (!_0x31445a.isTurnAllowedBySegDirections(_0x17bc7b, _0x85690c)) {
       lt_log("Driving direction restriction applies", 3);
       return false;
@@ -2006,48 +2798,76 @@
   }
 
   function lt_segment_length(segment) {
-    let segmentLength = segment.geometry.getGeodesicLength(W.map.olMap.projection);
-    lt_log("segment:" + segment.attributes.id + "computed len: " + segmentLength +
-               "attrs len: " + segment.attributes.length,
-           3);
+    let segmentLength = segment.geometry.getGeodesicLength(
+      W.map.olMap.projection,
+    );
+    lt_log(
+      "segment:" +
+        segment.attributes.id +
+        "computed len: " +
+        segmentLength +
+        "attrs len: " +
+        segment.attributes.length,
+      3,
+    );
     return segmentLength;
   }
 
   function lt_log(devMsg, debugLevel = 0x1) {
-    return debugLevel <= LANETOOLS_DEBUG_LEVEL && console.log("LaneTools Dev Msg: ", devMsg);
+    return (
+      debugLevel <= LANETOOLS_DEBUG_LEVEL &&
+      console.log("LaneTools Dev Msg: ", devMsg)
+    );
   }
 
   function copyLaneInfo(nodeName) {
     _turnInfo = [];
     const selectedFeatures = W.selectionManager.getSelectedFeatures(),
-          featureObject = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
-          featureAttributes = featureObject.getFeatureAttributes(),
-          featureGeometryComponents = featureObject.geometry.components,
-          nodeID = nodeName === "A" ? featureAttributes.fromNodeID : featureAttributes.toNodeID,
-          laneCount = nodeName === "A" ? featureAttributes.revLaneCount : featureAttributes.fwdLaneCount;
+      featureObject = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
+      featureAttributes = featureObject.getFeatureAttributes(),
+      featureGeometryComponents = featureObject.geometry.components,
+      nodeID =
+        nodeName === "A"
+          ? featureAttributes.fromNodeID
+          : featureAttributes.toNodeID,
+      laneCount =
+        nodeName === "A"
+          ? featureAttributes.revLaneCount
+          : featureAttributes.fwdLaneCount;
     console.log(laneCount);
-    const nodeObj = getNodeObj(nodeID), attachedSegmentIDs = nodeObj.getSegmentIds(),
-          turnGraph = W.model.getTurnGraph();
+    const nodeObj = getNodeObj(nodeID),
+      attachedSegmentIDs = nodeObj.getSegmentIds(),
+      turnGraph = W.model.getTurnGraph();
     let _0x21c177;
-    nodeName === "A" ? (_0x21c177 = featureGeometryComponents[0x1])
-                     : (_0x21c177 = featureGeometryComponents[featureGeometryComponents.length - 0x2]);
-    let _0x17c96f = _0x21c177.x - nodeObj.geometry.x, _0x3b764f = _0x21c177.y - nodeObj.geometry.y,
-        _0x25f24a = Math.atan2(_0x3b764f, _0x17c96f), _0x1b508f = ((_0x25f24a * 0xb4) / Math.PI) % 360;
+    nodeName === "A"
+      ? (_0x21c177 = featureGeometryComponents[0x1])
+      : (_0x21c177 =
+          featureGeometryComponents[featureGeometryComponents.length - 0x2]);
+    let _0x17c96f = _0x21c177.x - nodeObj.geometry.x,
+      _0x3b764f = _0x21c177.y - nodeObj.geometry.y,
+      _0x25f24a = Math.atan2(_0x3b764f, _0x17c96f),
+      _0x1b508f = ((_0x25f24a * 0xb4) / Math.PI) % 360;
     for (let segIdx = 0x0; segIdx < attachedSegmentIDs.length; segIdx++) {
       const segmentObject = getSegObj(attachedSegmentIDs[segIdx]);
-      let _0x56f831 = segmentObject.getFeatureAttributes(), geometryComponents = segmentObject.geometry.components,
-          _0x165d3c, selectedNodeName,
-          turnData = turnGraph.getTurnThroughNode(nodeObj, featureObject, segmentObject).getTurnData();
+      let _0x56f831 = segmentObject.getFeatureAttributes(),
+        geometryComponents = segmentObject.geometry.components,
+        _0x165d3c,
+        selectedNodeName,
+        turnData = turnGraph
+          .getTurnThroughNode(nodeObj, featureObject, segmentObject)
+          .getTurnData();
       if (turnData.state === 0x1 && turnData.lanes) {
-        _0x56f831.fromNodeID === nodeID ? (selectedNodeName = "A") : (selectedNodeName = "B");
-        selectedNodeName === "A" ? (_0x165d3c = geometryComponents[0x1])
-                                 : (_0x165d3c = geometryComponents[geometryComponents.length - 0x2]);
+        _0x56f831.fromNodeID === nodeID
+          ? (selectedNodeName = "A")
+          : (selectedNodeName = "B");
+        selectedNodeName === "A"
+          ? (_0x165d3c = geometryComponents[0x1])
+          : (_0x165d3c = geometryComponents[geometryComponents.length - 0x2]);
         _0x17c96f = _0x165d3c.x - nodeObj.geometry.x;
         _0x3b764f = _0x165d3c.y - nodeObj.geometry.y;
         _0x25f24a = Math.atan2(_0x3b764f, _0x17c96f);
         let _0x422251 = ((_0x25f24a * 0xb4) / Math.PI) % 360;
-        if (_0x1b508f < 0x0)
-          _0x422251 = _0x1b508f - _0x422251;
+        if (_0x1b508f < 0x0) _0x422251 = _0x1b508f - _0x422251;
         _turnData = {};
         let _0x2ca8fc = turnData.getLaneData();
         _turnData.id = segmentObject.attributes.id;
@@ -2064,48 +2884,77 @@
     const mAction = new MultiAction();
     mAction.setModel(W.model);
     const selectedFeatures = W.selectionManager.getSelectedFeatures(),
-          featureObject = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
-          components = featureObject.geometry.components, featureAttributes = featureObject.getFeatureAttributes(),
-          _0xdafc0a = nodeName === "A" ? featureAttributes.fromNodeID : featureAttributes.toNodeID;
+      featureObject = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
+      components = featureObject.geometry.components,
+      featureAttributes = featureObject.getFeatureAttributes(),
+      _0xdafc0a =
+        nodeName === "A"
+          ? featureAttributes.fromNodeID
+          : featureAttributes.toNodeID;
     let _0x1989c7;
-    const _0x32336a = getNodeObj(_0xdafc0a), segmentIDs = _0x32336a["getSegmentIds"](),
-          turnGraph = W.model.getTurnGraph();
-    let _0x44e9fd = {}, _0x1b740b = [];
-    nodeName === "A" ? (_0x1989c7 = components[0x1]) : (_0x1989c7 = components[components.length - 0x2]);
-    let _0x2362eb = _0x1989c7.x - _0x32336a.geometry.x, _0x480d3d = _0x1989c7.y - _0x32336a.geometry.y,
-        _0x33018e = Math.atan2(_0x480d3d, _0x2362eb), _0xf2c260 = ((_0x33018e * 0xb4) / Math.PI) % 360;
+    const _0x32336a = getNodeObj(_0xdafc0a),
+      segmentIDs = _0x32336a["getSegmentIds"](),
+      turnGraph = W.model.getTurnGraph();
+    let _0x44e9fd = {},
+      _0x1b740b = [];
+    nodeName === "A"
+      ? (_0x1989c7 = components[0x1])
+      : (_0x1989c7 = components[components.length - 0x2]);
+    let _0x2362eb = _0x1989c7.x - _0x32336a.geometry.x,
+      _0x480d3d = _0x1989c7.y - _0x32336a.geometry.y,
+      _0x33018e = Math.atan2(_0x480d3d, _0x2362eb),
+      _0xf2c260 = ((_0x33018e * 0xb4) / Math.PI) % 360;
     for (let idx = 0x0; idx < segmentIDs.length; idx++) {
-      let _0x3831b2 = getSegObj(segmentIDs[idx]), _0x5842af = _0x3831b2.attributes,
-          _0x3619b7 = _0x3831b2.geometry.components, _0x3374c6 = {}, _0x52b37f,
-          turnData = turnGraph.getTurnThroughNode(_0x32336a, featureObject, _0x3831b2).getTurnData();
-      _0x5842af.fromNodeID === _0xdafc0a ? (_0x52b37f = "A") : (_0x52b37f = "B");
-      _0x52b37f === "A" ? (_0x3374c6 = _0x3619b7[0x1]) : (_0x3374c6 = _0x3619b7[_0x3619b7.length - 0x2]);
+      let _0x3831b2 = getSegObj(segmentIDs[idx]),
+        _0x5842af = _0x3831b2.attributes,
+        _0x3619b7 = _0x3831b2.geometry.components,
+        _0x3374c6 = {},
+        _0x52b37f,
+        turnData = turnGraph
+          .getTurnThroughNode(_0x32336a, featureObject, _0x3831b2)
+          .getTurnData();
+      _0x5842af.fromNodeID === _0xdafc0a
+        ? (_0x52b37f = "A")
+        : (_0x52b37f = "B");
+      _0x52b37f === "A"
+        ? (_0x3374c6 = _0x3619b7[0x1])
+        : (_0x3374c6 = _0x3619b7[_0x3619b7.length - 0x2]);
       if (turnData.state === 0x1) {
         _0x44e9fd = {};
         _0x2362eb = _0x3374c6.x - _0x32336a.geometry.x;
         _0x480d3d = _0x3374c6.y - _0x32336a.geometry.y;
         _0x33018e = Math.atan2(_0x480d3d, _0x2362eb);
         let _0x528fbb = ((_0x33018e * 180) / Math.PI) % 360;
-        if (_0xf2c260 < 0x0)
-          _0x528fbb = _0xf2c260 - _0x528fbb;
+        if (_0xf2c260 < 0x0) _0x528fbb = _0xf2c260 - _0x528fbb;
         _0x44e9fd.id = _0x5842af.id;
         _0x44e9fd.order = _0x528fbb;
         _0x1b740b.push(_0x44e9fd);
       }
-      _0x1b740b.sort((_0x42b904, _0xb23157) => (_0x42b904.order > _0xb23157.order ? 0x1 : -0x1));
+      _0x1b740b.sort((_0x42b904, _0xb23157) =>
+        _0x42b904.order > _0xb23157.order ? 0x1 : -0x1,
+      );
     }
     console.log(_0x1b740b);
     if (_turnInfo.length === _0x1b740b.length) {
-      nodeName === "A" ? mAction.doSubAction(new UpdateObj(featureObject, {revLaneCount : laneCount}))
-                       : mAction.doSubAction(new UpdateObj(featureObject, {fwdLaneCount : laneCount}));
+      nodeName === "A"
+        ? mAction.doSubAction(
+            new UpdateObj(featureObject, { revLaneCount: laneCount }),
+          )
+        : mAction.doSubAction(
+            new UpdateObj(featureObject, { fwdLaneCount: laneCount }),
+          );
       for (let idx = 0x0; idx < _0x1b740b.length; idx++) {
         let _0x1662da = {};
         for (let j = 0x0; j < _turnInfo.length; j++) {
           _0x1662da[j] = _turnInfo[j];
         }
         let _0x1d44a8 = getSegObj(_0x1b740b[idx].id),
-            _0x4e30d7 = turnGraph.getTurnThroughNode(_0x32336a, featureObject, _0x1d44a8),
-            _0x469b71 = _0x4e30d7.getTurnData();
+          _0x4e30d7 = turnGraph.getTurnThroughNode(
+            _0x32336a,
+            featureObject,
+            _0x1d44a8,
+          ),
+          _0x469b71 = _0x4e30d7.getTurnData();
         _0x469b71 = _0x469b71.withLanes(_0x1662da[idx].lanes);
         _0x4e30d7 = _0x4e30d7.withTurnData(_0x469b71);
         mAction.doSubAction(new SetTurn(turnGraph, _0x4e30d7));
@@ -2114,8 +2963,10 @@
       W.model.actionManager.add(mAction);
       $(".lanes-tab").trigger("click");
     } else
-      WazeWrap.Alerts.warning(GM_info.script.name,
-                              "There are a different number of enabled turns on this segment/node");
+      WazeWrap.Alerts.warning(
+        GM_info.script.name,
+        "There are a different number of enabled turns on this segment/node",
+      );
   }
 
   function addUturn(displayedTurns) {
@@ -2123,69 +2974,115 @@
     for (let idx = 0x0; idx < displayedTurns.length; idx++) {
       let uturnObject = {};
       let uturnDisplay = $(displayedTurns[idx]).find(".uturn").css("display"),
-          miniUturnDisplay = $(displayedTurns[idx]).find(".small-uturn").css("display");
-      uturnObject.uturn = (uturnDisplay && uturnDisplay !== "none");
-      uturnObject.miniuturn = (miniUturnDisplay && miniUturnDisplay !== "none");
-      uturnObject.svg = $(displayedTurns[idx]).find("svg").map(function() { return this; }).get();
+        miniUturnDisplay = $(displayedTurns[idx])
+          .find(".small-uturn")
+          .css("display");
+      uturnObject.uturn = uturnDisplay && uturnDisplay !== "none";
+      uturnObject.miniuturn = miniUturnDisplay && miniUturnDisplay !== "none";
+      uturnObject.svg = $(displayedTurns[idx])
+        .find("svg")
+        .map(function () {
+          return this;
+        })
+        .get();
       displayedWithUturn[idx] = uturnObject;
     }
     return displayedWithUturn;
   }
-  function getLaneBoxTopLeftVertex(departureAngleID, nodeObj, laneDisplayBoxConfiguration, segmentLength) {
+  function getLaneBoxTopLeftVertex(
+    departureAngleID,
+    nodeObj,
+    laneDisplayBoxConfiguration,
+    segmentLength,
+  ) {
     let temp = {};
     if (NEWZOOMLEVELS) {
       if (departureAngleID === 0x0)
         temp = {
-          x : nodeObj.geometry.x + laneDisplayBoxConfiguration.start * 2,
-          y : nodeObj.geometry.y + laneDisplayBoxConfiguration.boxheight,
+          x: nodeObj.geometry.x + laneDisplayBoxConfiguration.start * 2,
+          y: nodeObj.geometry.y + laneDisplayBoxConfiguration.boxheight,
         };
       else {
         if (departureAngleID === 0x1)
           temp = {
-            x : nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
-            y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 1.8,
+            x: nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
+            y:
+              nodeObj.geometry.y +
+              (laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 1.8,
           };
         else {
           if (departureAngleID === 0x2)
             temp = {
-              x : nodeObj.geometry.x -
-                      (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth * segmentLength),
-              y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
+              x:
+                nodeObj.geometry.x -
+                (laneDisplayBoxConfiguration.start +
+                  laneDisplayBoxConfiguration.boxincwidth * segmentLength),
+              y:
+                nodeObj.geometry.y +
+                (laneDisplayBoxConfiguration.start +
+                  laneDisplayBoxConfiguration.boxheight),
             };
           else {
             if (departureAngleID === 0x3)
               temp = {
-                x : nodeObj.geometry.x + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth),
-                y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
+                x:
+                  nodeObj.geometry.x +
+                  (laneDisplayBoxConfiguration.start +
+                    laneDisplayBoxConfiguration.boxincwidth),
+                y:
+                  nodeObj.geometry.y -
+                  (laneDisplayBoxConfiguration.start +
+                    laneDisplayBoxConfiguration.boxheight),
               };
             else {
               if (departureAngleID === 0x4)
                 temp = {
-                  x : nodeObj.geometry.x -
-                          (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 1.5),
-                  y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start +
-                                            laneDisplayBoxConfiguration.boxincwidth * segmentLength * 1.5),
+                  x:
+                    nodeObj.geometry.x -
+                    (laneDisplayBoxConfiguration.start +
+                      laneDisplayBoxConfiguration.boxheight * 1.5),
+                  y:
+                    nodeObj.geometry.y -
+                    (laneDisplayBoxConfiguration.start +
+                      laneDisplayBoxConfiguration.boxincwidth *
+                        segmentLength *
+                        1.5),
                 };
               else {
                 if (departureAngleID === 0x5)
                   temp = {
-                    x : nodeObj.geometry.x +
-                            (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth / 0x2),
-                    y : nodeObj.geometry.y + laneDisplayBoxConfiguration.start / 0x2,
+                    x:
+                      nodeObj.geometry.x +
+                      (laneDisplayBoxConfiguration.start +
+                        laneDisplayBoxConfiguration.boxincwidth / 0x2),
+                    y:
+                      nodeObj.geometry.y +
+                      laneDisplayBoxConfiguration.start / 0x2,
                   };
                 else {
                   if (departureAngleID === 0x6)
                     temp = {
-                      x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start,
-                      y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start *
-                                                   ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
+                      x: nodeObj.geometry.x - laneDisplayBoxConfiguration.start,
+                      y:
+                        nodeObj.geometry.y -
+                        laneDisplayBoxConfiguration.start *
+                          ((laneDisplayBoxConfiguration.boxincwidth *
+                            segmentLength) /
+                            0x2),
                     };
                   else
-                    departureAngleID === 0x7 && (temp = {
-                      x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start *
-                                                   ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
-                      y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start,
-                    });
+                    departureAngleID === 0x7 &&
+                      (temp = {
+                        x:
+                          nodeObj.geometry.x -
+                          laneDisplayBoxConfiguration.start *
+                            ((laneDisplayBoxConfiguration.boxincwidth *
+                              segmentLength) /
+                              0x2),
+                        y:
+                          nodeObj.geometry.y -
+                          laneDisplayBoxConfiguration.start,
+                      });
                 }
               }
             }
@@ -2195,57 +3092,90 @@
     } else {
       if (departureAngleID === 0x0)
         temp = {
-          x : nodeObj.geometry.x + laneDisplayBoxConfiguration.start * 0x2,
-          y : nodeObj.geometry.y + laneDisplayBoxConfiguration.boxheight,
+          x: nodeObj.geometry.x + laneDisplayBoxConfiguration.start * 0x2,
+          y: nodeObj.geometry.y + laneDisplayBoxConfiguration.boxheight,
         };
       else {
         if (departureAngleID === 0x1)
           temp = {
-            x : nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
-            y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 1.8,
+            x: nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
+            y:
+              nodeObj.geometry.y +
+              (laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 1.8,
           };
         else {
           if (departureAngleID === 0x2)
             temp = {
-              x : nodeObj.geometry.x -
-                      (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth * segmentLength),
-              y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
+              x:
+                nodeObj.geometry.x -
+                (laneDisplayBoxConfiguration.start +
+                  laneDisplayBoxConfiguration.boxincwidth * segmentLength),
+              y:
+                nodeObj.geometry.y +
+                (laneDisplayBoxConfiguration.start +
+                  laneDisplayBoxConfiguration.boxheight),
             };
           else {
             if (departureAngleID === 0x3)
               temp = {
-                x : nodeObj.geometry.x + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth),
-                y : nodeObj.geometry.y -
-                        (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 0x2),
+                x:
+                  nodeObj.geometry.x +
+                  (laneDisplayBoxConfiguration.start +
+                    laneDisplayBoxConfiguration.boxincwidth),
+                y:
+                  nodeObj.geometry.y -
+                  (laneDisplayBoxConfiguration.start +
+                    laneDisplayBoxConfiguration.boxheight * 0x2),
               };
             else {
               if (departureAngleID === 0x4)
                 temp = {
-                  x : nodeObj.geometry.x -
-                          (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 1.5),
-                  y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start +
-                                            laneDisplayBoxConfiguration.boxincwidth * segmentLength * 1.5),
+                  x:
+                    nodeObj.geometry.x -
+                    (laneDisplayBoxConfiguration.start +
+                      laneDisplayBoxConfiguration.boxheight * 1.5),
+                  y:
+                    nodeObj.geometry.y -
+                    (laneDisplayBoxConfiguration.start +
+                      laneDisplayBoxConfiguration.boxincwidth *
+                        segmentLength *
+                        1.5),
                 };
               else {
                 if (departureAngleID === 0x5)
                   temp = {
-                    x : nodeObj.geometry.x +
-                            (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth / 0x2),
-                    y : nodeObj.geometry.y + laneDisplayBoxConfiguration.start / 0x2,
+                    x:
+                      nodeObj.geometry.x +
+                      (laneDisplayBoxConfiguration.start +
+                        laneDisplayBoxConfiguration.boxincwidth / 0x2),
+                    y:
+                      nodeObj.geometry.y +
+                      laneDisplayBoxConfiguration.start / 0x2,
                   };
                 else {
                   if (departureAngleID === 0x6)
                     temp = {
-                      x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start,
-                      y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start *
-                                                   ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
+                      x: nodeObj.geometry.x - laneDisplayBoxConfiguration.start,
+                      y:
+                        nodeObj.geometry.y -
+                        laneDisplayBoxConfiguration.start *
+                          ((laneDisplayBoxConfiguration.boxincwidth *
+                            segmentLength) /
+                            0x2),
                     };
                   else
-                    departureAngleID === 0x7 && (temp = {
-                      x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start *
-                                                   ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
-                      y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start,
-                    });
+                    departureAngleID === 0x7 &&
+                      (temp = {
+                        x:
+                          nodeObj.geometry.x -
+                          laneDisplayBoxConfiguration.start *
+                            ((laneDisplayBoxConfiguration.boxincwidth *
+                              segmentLength) /
+                              0x2),
+                        y:
+                          nodeObj.geometry.y -
+                          laneDisplayBoxConfiguration.start,
+                      });
                 }
               }
             }
@@ -2258,53 +3188,90 @@
 
   function displayGuidanceBox(nodeObj, segmentObject, guidanceObject) {
     const numberOfTurnLanes = Object.getOwnPropertyNames(guidanceObject).length;
-    if (numberOfTurnLanes === 0)
-      return;
+    if (numberOfTurnLanes === 0) return;
     let laneDisplayBoxConfiguration = getLaneDisplayBoxObjectConfig(),
-        segmentDisplayCardinalAngle = getCardinalAngle(nodeObj.attributes.id, segmentObject), centroid,
-        guidanceBoxCoordinates = [], departureAngleID = 0;
-    if (!getId("lt-IconsRotate").checked)
-      segmentDisplayCardinalAngle = -90;
+      segmentDisplayCardinalAngle = getCardinalAngle(
+        nodeObj.attributes.id,
+        segmentObject,
+      ),
+      centroid,
+      guidanceBoxCoordinates = [],
+      departureAngleID = 0;
+    if (!getId("lt-IconsRotate").checked) segmentDisplayCardinalAngle = -90;
     if (segmentDisplayCardinalAngle === 0x0) {
       segmentDisplayCardinalAngle += 180;
       departureAngleID = 0x1;
     } else {
-      if (segmentDisplayCardinalAngle > 0 && segmentDisplayCardinalAngle <= 30) {
-        segmentDisplayCardinalAngle += (2 * (90 - segmentDisplayCardinalAngle));
+      if (
+        segmentDisplayCardinalAngle > 0 &&
+        segmentDisplayCardinalAngle <= 30
+      ) {
+        segmentDisplayCardinalAngle += 2 * (90 - segmentDisplayCardinalAngle);
         departureAngleID = 0x1;
       } else {
-        if (segmentDisplayCardinalAngle >= 330 && segmentDisplayCardinalAngle <= 360) {
-          segmentDisplayCardinalAngle -= (180 - 0x2 * (360 - segmentDisplayCardinalAngle));
+        if (
+          segmentDisplayCardinalAngle >= 330 &&
+          segmentDisplayCardinalAngle <= 360
+        ) {
+          segmentDisplayCardinalAngle -=
+            180 - 0x2 * (360 - segmentDisplayCardinalAngle);
           departureAngleID = 0x1;
         } else {
-          if (segmentDisplayCardinalAngle > 30 && segmentDisplayCardinalAngle < 60) {
-            segmentDisplayCardinalAngle -= (90 - 2 * (360 - segmentDisplayCardinalAngle));
+          if (
+            segmentDisplayCardinalAngle > 30 &&
+            segmentDisplayCardinalAngle < 60
+          ) {
+            segmentDisplayCardinalAngle -=
+              90 - 2 * (360 - segmentDisplayCardinalAngle);
             departureAngleID = 0x2;
           } else {
-            if (segmentDisplayCardinalAngle >= 60 && segmentDisplayCardinalAngle <= 120) {
-              segmentDisplayCardinalAngle -= (90 - 2 * (360 - segmentDisplayCardinalAngle));
+            if (
+              segmentDisplayCardinalAngle >= 60 &&
+              segmentDisplayCardinalAngle <= 120
+            ) {
+              segmentDisplayCardinalAngle -=
+                90 - 2 * (360 - segmentDisplayCardinalAngle);
               departureAngleID = 0x2;
             } else {
-              if (segmentDisplayCardinalAngle > 120 && segmentDisplayCardinalAngle < 150) {
-                segmentDisplayCardinalAngle -= (90 - 2 * (360 - segmentDisplayCardinalAngle));
+              if (
+                segmentDisplayCardinalAngle > 120 &&
+                segmentDisplayCardinalAngle < 150
+              ) {
+                segmentDisplayCardinalAngle -=
+                  90 - 2 * (360 - segmentDisplayCardinalAngle);
                 departureAngleID = 7;
               } else {
-                if (segmentDisplayCardinalAngle >= 150 && segmentDisplayCardinalAngle <= 210) {
-                  segmentDisplayCardinalAngle = 180 - segmentDisplayCardinalAngle;
+                if (
+                  segmentDisplayCardinalAngle >= 150 &&
+                  segmentDisplayCardinalAngle <= 210
+                ) {
+                  segmentDisplayCardinalAngle =
+                    180 - segmentDisplayCardinalAngle;
                   departureAngleID = 4;
                 } else {
-                  if (segmentDisplayCardinalAngle > 210 && segmentDisplayCardinalAngle < 240) {
-                    segmentDisplayCardinalAngle -= (90 - 0x2 * (360 - segmentDisplayCardinalAngle));
+                  if (
+                    segmentDisplayCardinalAngle > 210 &&
+                    segmentDisplayCardinalAngle < 240
+                  ) {
+                    segmentDisplayCardinalAngle -=
+                      90 - 0x2 * (360 - segmentDisplayCardinalAngle);
                     departureAngleID = 6;
                   } else {
-                    if (segmentDisplayCardinalAngle >= 240 && segmentDisplayCardinalAngle <= 300) {
-                      segmentDisplayCardinalAngle -= (180 - 0x2 * (360 - segmentDisplayCardinalAngle));
+                    if (
+                      segmentDisplayCardinalAngle >= 240 &&
+                      segmentDisplayCardinalAngle <= 300
+                    ) {
+                      segmentDisplayCardinalAngle -=
+                        180 - 0x2 * (360 - segmentDisplayCardinalAngle);
                       departureAngleID = 0x3;
-                    } else if (segmentDisplayCardinalAngle > 300 && segmentDisplayCardinalAngle < 330) {
-                      segmentDisplayCardinalAngle -= (180 - 2 * (360 - segmentDisplayCardinalAngle));
-                      departureAngleID = 0x5
-                    } else
-                      console.log("LT: icon angle is out of bounds");
+                    } else if (
+                      segmentDisplayCardinalAngle > 300 &&
+                      segmentDisplayCardinalAngle < 330
+                    ) {
+                      segmentDisplayCardinalAngle -=
+                        180 - 2 * (360 - segmentDisplayCardinalAngle);
+                      departureAngleID = 0x5;
+                    } else console.log("LT: icon angle is out of bounds");
                   }
                 }
               }
@@ -2314,98 +3281,155 @@
       }
     }
     let displayAngle =
-            segmentDisplayCardinalAngle > 315 ? segmentDisplayCardinalAngle : segmentDisplayCardinalAngle + 90,
-        reciprocalDisplayAngle = 360 - displayAngle;
+        segmentDisplayCardinalAngle > 315
+          ? segmentDisplayCardinalAngle
+          : segmentDisplayCardinalAngle + 90,
+      reciprocalDisplayAngle = 360 - displayAngle;
 
-    let guidanceBoxTopLeftCoord =
-        getLaneBoxTopLeftVertex(departureAngleID, nodeObj, laneDisplayBoxConfiguration, numberOfTurnLanes);
+    let guidanceBoxTopLeftCoord = getLaneBoxTopLeftVertex(
+      departureAngleID,
+      nodeObj,
+      laneDisplayBoxConfiguration,
+      numberOfTurnLanes,
+    );
     const guidanceBoxBottomLeftVtx = new OpenLayers.Geometry.Point(
-              guidanceBoxTopLeftCoord.x, guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.boxheight),
-          guidanceBoxTopRightPointVtx = new OpenLayers.Geometry.Point(
-              guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * numberOfTurnLanes,
-              guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.boxheight),
-          guidanceBoxBottomRightVtx = new OpenLayers.Geometry.Point(
-              guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * numberOfTurnLanes,
-              guidanceBoxTopLeftCoord.y),
-          guidanceBoxTopLeftVtx = new OpenLayers.Geometry.Point(guidanceBoxTopLeftCoord.x, guidanceBoxTopLeftCoord.y);
-    guidanceBoxCoordinates.push(guidanceBoxBottomLeftVtx, guidanceBoxTopRightPointVtx, guidanceBoxBottomRightVtx,
-                                guidanceBoxTopLeftVtx);
+        guidanceBoxTopLeftCoord.x,
+        guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.boxheight,
+      ),
+      guidanceBoxTopRightPointVtx = new OpenLayers.Geometry.Point(
+        guidanceBoxTopLeftCoord.x +
+          laneDisplayBoxConfiguration.boxincwidth * numberOfTurnLanes,
+        guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.boxheight,
+      ),
+      guidanceBoxBottomRightVtx = new OpenLayers.Geometry.Point(
+        guidanceBoxTopLeftCoord.x +
+          laneDisplayBoxConfiguration.boxincwidth * numberOfTurnLanes,
+        guidanceBoxTopLeftCoord.y,
+      ),
+      guidanceBoxTopLeftVtx = new OpenLayers.Geometry.Point(
+        guidanceBoxTopLeftCoord.x,
+        guidanceBoxTopLeftCoord.y,
+      );
+    guidanceBoxCoordinates.push(
+      guidanceBoxBottomLeftVtx,
+      guidanceBoxTopRightPointVtx,
+      guidanceBoxBottomRightVtx,
+      guidanceBoxTopLeftVtx,
+    );
     let guidanceBoxColors = {
-      strokeColor : "#ffffff",
-      strokeOpacity : 0x1,
-      strokeWidth : 0x8,
-      fillColor : "#ffffff",
+      strokeColor: "#ffffff",
+      strokeOpacity: 0x1,
+      strokeWidth: 0x8,
+      fillColor: "#ffffff",
     };
     let linearRing = new OpenLayers.Geometry.LinearRing(guidanceBoxCoordinates);
     centroid = linearRing.getCentroid();
     linearRing.rotate(reciprocalDisplayAngle, centroid);
-    let boxRingFeatues = new OpenLayers.Feature.Vector(linearRing, null, guidanceBoxColors);
-    LTLaneGraphics.addFeatures([ boxRingFeatues ]);
+    let boxRingFeatues = new OpenLayers.Feature.Vector(
+      linearRing,
+      null,
+      guidanceBoxColors,
+    );
+    LTLaneGraphics.addFeatures([boxRingFeatues]);
     let boxWidthThickness = 0;
     _.each(guidanceObject, (lg) => {
       let displayBoxVertices = [];
       var displayBoxLeftTopPoint = new OpenLayers.Geometry.Point(
-              guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
-                  laneDisplayBoxConfiguration.iconbordermargin,
-              guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconborderheight),
-          displayBoxLeftBottomPoint = new OpenLayers.Geometry.Point(
-              guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
-                  laneDisplayBoxConfiguration.iconborderwidth,
-              guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconborderheight),
-          displayBoxRightTopPoint = new OpenLayers.Geometry.Point(
-              guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
-                  laneDisplayBoxConfiguration.iconborderwidth,
-              guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconbordermargin),
-          displayBoxRightBottomPoint = new OpenLayers.Geometry.Point(
-              guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
-                  laneDisplayBoxConfiguration.iconbordermargin,
-              guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconbordermargin);
-      displayBoxVertices.push(displayBoxLeftTopPoint, displayBoxLeftBottomPoint, displayBoxRightTopPoint,
-                              displayBoxRightBottomPoint);
+          guidanceBoxTopLeftCoord.x +
+            laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
+            laneDisplayBoxConfiguration.iconbordermargin,
+          guidanceBoxTopLeftCoord.y +
+            laneDisplayBoxConfiguration.iconborderheight,
+        ),
+        displayBoxLeftBottomPoint = new OpenLayers.Geometry.Point(
+          guidanceBoxTopLeftCoord.x +
+            laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
+            laneDisplayBoxConfiguration.iconborderwidth,
+          guidanceBoxTopLeftCoord.y +
+            laneDisplayBoxConfiguration.iconborderheight,
+        ),
+        displayBoxRightTopPoint = new OpenLayers.Geometry.Point(
+          guidanceBoxTopLeftCoord.x +
+            laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
+            laneDisplayBoxConfiguration.iconborderwidth,
+          guidanceBoxTopLeftCoord.y +
+            laneDisplayBoxConfiguration.iconbordermargin,
+        ),
+        displayBoxRightBottomPoint = new OpenLayers.Geometry.Point(
+          guidanceBoxTopLeftCoord.x +
+            laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
+            laneDisplayBoxConfiguration.iconbordermargin,
+          guidanceBoxTopLeftCoord.y +
+            laneDisplayBoxConfiguration.iconbordermargin,
+        );
+      displayBoxVertices.push(
+        displayBoxLeftTopPoint,
+        displayBoxLeftBottomPoint,
+        displayBoxRightTopPoint,
+        displayBoxRightBottomPoint,
+      );
       const displayBoxColors = {
-        strokeColor : "#000000",
-        strokeOpacity : 0x1,
-        strokeWidth : 0x1,
-        fillColor : "#26bae8",
+        strokeColor: "#000000",
+        strokeOpacity: 0x1,
+        strokeWidth: 0x1,
+        fillColor: "#26bae8",
       };
-      let displayBoxLinearRing = new OpenLayers.Geometry.LinearRing(displayBoxVertices);
+      let displayBoxLinearRing = new OpenLayers.Geometry.LinearRing(
+        displayBoxVertices,
+      );
       displayBoxLinearRing.rotate(reciprocalDisplayAngle, centroid);
-      let displayBoxVector = new OpenLayers.Feature.Vector(displayBoxLinearRing, null, displayBoxColors);
-      LTLaneGraphics.addFeatures([ displayBoxVector ]);
+      let displayBoxVector = new OpenLayers.Feature.Vector(
+        displayBoxLinearRing,
+        null,
+        displayBoxColors,
+      );
+      LTLaneGraphics.addFeatures([displayBoxVector]);
       let displayBoxLinearRingCentroid = displayBoxLinearRing.getCentroid(),
-          displayBoxLinearRigntCentroidCoords =
-              new OpenLayers.Geometry.Point(displayBoxLinearRingCentroid.x, displayBoxLinearRingCentroid.y),
-          wazeFont = "", uTurnTopLeftCoordinates = {x : 0x0, y : 0x0}, uTurnBottomRightCoordinates = {x : 0x0, y : 0x0};
+        displayBoxLinearRigntCentroidCoords = new OpenLayers.Geometry.Point(
+          displayBoxLinearRingCentroid.x,
+          displayBoxLinearRingCentroid.y,
+        ),
+        wazeFont = "",
+        uTurnTopLeftCoordinates = { x: 0x0, y: 0x0 },
+        uTurnBottomRightCoordinates = { x: 0x0, y: 0x0 };
       if (lg["uturn"] === true) {
         wazeFont = constantStrings.wazeFontLink;
         uTurnTopLeftCoordinates.x = 0.6;
         uTurnTopLeftCoordinates.y = 0.6;
         uTurnBottomRightCoordinates.x = -7;
-        uTurnBottomRightCoordinates.y = -12
+        uTurnBottomRightCoordinates.y = -12;
       }
       if (lg["miniuturn"] === true) {
         wazeFont = constantStrings.wazeFontLink;
         uTurnTopLeftCoordinates.x = 0.3;
         uTurnTopLeftCoordinates.y = 0.25;
         uTurnBottomRightCoordinates.x = -8;
-        uTurnBottomRightCoordinates.y = 4
+        uTurnBottomRightCoordinates.y = 4;
       }
       let displayBoxConfiguration = {
-        externalGraphic : lg.svg,
-        graphicHeight : laneDisplayBoxConfiguration.graphicHeight,
-        graphicWidth : laneDisplayBoxConfiguration.graphicWidth,
-        fillColor : "#26bae8",
-        bgcolor : "#26bae8",
-        color : "#26bae8",
-        rotation : displayAngle,
-        backgroundGraphic : wazeFont,
-        backgroundHeight : laneDisplayBoxConfiguration.graphicHeight * uTurnTopLeftCoordinates.y,
-        backgroundWidth : laneDisplayBoxConfiguration.graphicWidth * uTurnTopLeftCoordinates.x,
-        backgroundXOffset : uTurnBottomRightCoordinates.x,
-        backgroundYOffset : uTurnBottomRightCoordinates.y,
-      },
-          _0x3f212b = new OpenLayers.Feature.Vector(displayBoxLinearRigntCentroidCoords, null, displayBoxConfiguration);
-      LTLaneGraphics.addFeatures([ _0x3f212b ]);
+          externalGraphic: lg.svg,
+          graphicHeight: laneDisplayBoxConfiguration.graphicHeight,
+          graphicWidth: laneDisplayBoxConfiguration.graphicWidth,
+          fillColor: "#26bae8",
+          bgcolor: "#26bae8",
+          color: "#26bae8",
+          rotation: displayAngle,
+          backgroundGraphic: wazeFont,
+          backgroundHeight:
+            laneDisplayBoxConfiguration.graphicHeight *
+            uTurnTopLeftCoordinates.y,
+          backgroundWidth:
+            laneDisplayBoxConfiguration.graphicWidth *
+            uTurnTopLeftCoordinates.x,
+          backgroundXOffset: uTurnBottomRightCoordinates.x,
+          backgroundYOffset: uTurnBottomRightCoordinates.y,
+        },
+        _0x3f212b = new OpenLayers.Feature.Vector(
+          displayBoxLinearRigntCentroidCoords,
+          null,
+          displayBoxConfiguration,
+        );
+      LTLaneGraphics.addFeatures([_0x3f212b]);
       boxWidthThickness++;
     });
     LTLaneGraphics.setZIndex(600);
@@ -2416,239 +3440,278 @@
     let zoomLevel = W.map.getOLMap().getZoom();
     if (NEWZOOMLEVELS)
       switch (zoomLevel) {
-      case 22:
-        boxDisplayObject.start = 0.5;
-        boxDisplayObject.boxheight = 1.7;
-        boxDisplayObject.boxincwidth = 1.1;
-        boxDisplayObject.iconbordermargin = 0.1;
-        boxDisplayObject.iconborderheight = 1.6;
-        boxDisplayObject.iconborderwidth = 1;
-        boxDisplayObject.graphicHeight = 42;
-        boxDisplayObject.graphicWidth = 25;
-        break;
-      case 21:
-        (boxDisplayObject.start = 0x1);
-        (boxDisplayObject.boxheight = 3.2);
-        (boxDisplayObject.boxincwidth = 2.2);
-        (boxDisplayObject.iconbordermargin = 0.2);
-        (boxDisplayObject.iconborderheight = 3);
-        (boxDisplayObject.iconborderwidth = 2);
-        (boxDisplayObject.graphicHeight = 42);
-        (boxDisplayObject.graphicWidth = 25);
-        break;
-      case 20:
-        (boxDisplayObject.start = 0x2);
-        (boxDisplayObject.boxheight = 5.2);
-        (boxDisplayObject.boxincwidth = 3.8);
-        (boxDisplayObject.iconbordermargin = 0.3);
-        (boxDisplayObject.iconborderheight = 4.9);
-        (boxDisplayObject.iconborderwidth = 3.5);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
-        break;
-      case 19:
-        (boxDisplayObject.start = 0x3);
-        (boxDisplayObject.boxheight = 0xa);
-        (boxDisplayObject.boxincwidth = 7.2);
-        (boxDisplayObject.iconbordermargin = 0.4);
-        (boxDisplayObject.iconborderheight = 9.6);
-        (boxDisplayObject.iconborderwidth = 6.8);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
-        break;
-      case 18:
-        (boxDisplayObject.start = 6);
-        (boxDisplayObject.boxheight = 20);
-        (boxDisplayObject.boxincwidth = 14);
-        boxDisplayObject.iconbordermargin = 0.5;
-        boxDisplayObject.iconborderheight = 19.5;
-        boxDisplayObject.iconborderwidth = 13.5;
-        boxDisplayObject.graphicHeight = 42;
-        boxDisplayObject.graphicWidth = 25;
-        break;
-      case 17:
-        (boxDisplayObject.start = 0xa);
-        (boxDisplayObject.boxheight = 0x27);
-        (boxDisplayObject.boxincwidth = 0x1c);
-        (boxDisplayObject.iconbordermargin = 0x1);
-        (boxDisplayObject.iconborderheight = 0x26);
-        (boxDisplayObject.iconborderwidth = 0x1b);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
-        break;
-      case 16:
-        (boxDisplayObject.start = 0xf);
-        (boxDisplayObject.boxheight = 0x50);
-        (boxDisplayObject.boxincwidth = 0x37);
-        (boxDisplayObject.iconbordermargin = 0x2);
-        (boxDisplayObject.iconborderheight = 0x4e);
-        (boxDisplayObject.iconborderwidth = 0x35);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
-        break;
-      case 15:
-        (boxDisplayObject.start = 0x2);
-        (boxDisplayObject.boxheight = 0x78);
-        (boxDisplayObject.boxincwidth = 90);
-        (boxDisplayObject.iconbordermargin = 0x3);
-        (boxDisplayObject.iconborderheight = 117);
-        (boxDisplayObject.iconborderwidth = 0x57);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        boxDisplayObject.graphicWidth = 0x19;
-        break;
-      case 14:
-        (boxDisplayObject.start = 0x2);
-        (boxDisplayObject.boxheight = 5.2);
-        (boxDisplayObject.boxincwidth = 3.8);
-        (boxDisplayObject.iconbordermargin = 0.3);
-        (boxDisplayObject.iconborderheight = 4.9);
-        (boxDisplayObject.iconborderwidth = 3.5);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
-        break;
+        case 22:
+          boxDisplayObject.start = 0.5;
+          boxDisplayObject.boxheight = 1.7;
+          boxDisplayObject.boxincwidth = 1.1;
+          boxDisplayObject.iconbordermargin = 0.1;
+          boxDisplayObject.iconborderheight = 1.6;
+          boxDisplayObject.iconborderwidth = 1;
+          boxDisplayObject.graphicHeight = 42;
+          boxDisplayObject.graphicWidth = 25;
+          break;
+        case 21:
+          boxDisplayObject.start = 0x1;
+          boxDisplayObject.boxheight = 3.2;
+          boxDisplayObject.boxincwidth = 2.2;
+          boxDisplayObject.iconbordermargin = 0.2;
+          boxDisplayObject.iconborderheight = 3;
+          boxDisplayObject.iconborderwidth = 2;
+          boxDisplayObject.graphicHeight = 42;
+          boxDisplayObject.graphicWidth = 25;
+          break;
+        case 20:
+          boxDisplayObject.start = 0x2;
+          boxDisplayObject.boxheight = 5.2;
+          boxDisplayObject.boxincwidth = 3.8;
+          boxDisplayObject.iconbordermargin = 0.3;
+          boxDisplayObject.iconborderheight = 4.9;
+          boxDisplayObject.iconborderwidth = 3.5;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
+        case 19:
+          boxDisplayObject.start = 0x3;
+          boxDisplayObject.boxheight = 0xa;
+          boxDisplayObject.boxincwidth = 7.2;
+          boxDisplayObject.iconbordermargin = 0.4;
+          boxDisplayObject.iconborderheight = 9.6;
+          boxDisplayObject.iconborderwidth = 6.8;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
+        case 18:
+          boxDisplayObject.start = 6;
+          boxDisplayObject.boxheight = 20;
+          boxDisplayObject.boxincwidth = 14;
+          boxDisplayObject.iconbordermargin = 0.5;
+          boxDisplayObject.iconborderheight = 19.5;
+          boxDisplayObject.iconborderwidth = 13.5;
+          boxDisplayObject.graphicHeight = 42;
+          boxDisplayObject.graphicWidth = 25;
+          break;
+        case 17:
+          boxDisplayObject.start = 0xa;
+          boxDisplayObject.boxheight = 0x27;
+          boxDisplayObject.boxincwidth = 0x1c;
+          boxDisplayObject.iconbordermargin = 0x1;
+          boxDisplayObject.iconborderheight = 0x26;
+          boxDisplayObject.iconborderwidth = 0x1b;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
+        case 16:
+          boxDisplayObject.start = 0xf;
+          boxDisplayObject.boxheight = 0x50;
+          boxDisplayObject.boxincwidth = 0x37;
+          boxDisplayObject.iconbordermargin = 0x2;
+          boxDisplayObject.iconborderheight = 0x4e;
+          boxDisplayObject.iconborderwidth = 0x35;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
+        case 15:
+          boxDisplayObject.start = 0x2;
+          boxDisplayObject.boxheight = 0x78;
+          boxDisplayObject.boxincwidth = 90;
+          boxDisplayObject.iconbordermargin = 0x3;
+          boxDisplayObject.iconborderheight = 117;
+          boxDisplayObject.iconborderwidth = 0x57;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
+        case 14:
+          boxDisplayObject.start = 0x2;
+          boxDisplayObject.boxheight = 5.2;
+          boxDisplayObject.boxincwidth = 3.8;
+          boxDisplayObject.iconbordermargin = 0.3;
+          boxDisplayObject.iconborderheight = 4.9;
+          boxDisplayObject.iconborderwidth = 3.5;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
       }
     else
       switch (zoomLevel) {
-      case 10:
-        (boxDisplayObject.start = 0.5);
-        (boxDisplayObject.boxheight = 1.7);
-        (boxDisplayObject.boxincwidth = 1.1);
-        (boxDisplayObject.iconbordermargin = 0.1);
-        (boxDisplayObject.iconborderheight = 1.6);
-        (boxDisplayObject.iconborderwidth = 0x1);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
-        break;
-      case 9:
-        (boxDisplayObject.start = 1);
-        (boxDisplayObject.boxheight = 3.2);
-        (boxDisplayObject.boxincwidth = 2.2);
-        (boxDisplayObject.iconbordermargin = 0.2);
-        (boxDisplayObject.iconborderheight = 0x3);
-        (boxDisplayObject.iconborderwidth = 0x2);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
-        break;
-      case 8:
-        (boxDisplayObject.start = 0x2);
-        (boxDisplayObject.boxheight = 5.2);
-        (boxDisplayObject.boxincwidth = 3.8);
-        (boxDisplayObject.iconbordermargin = 0.3);
-        (boxDisplayObject.iconborderheight = 4.9);
-        (boxDisplayObject.iconborderwidth = 3.5);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
-        break;
-      case 7:
-        (boxDisplayObject.start = 0x3);
-        (boxDisplayObject.boxheight = 0xa);
-        (boxDisplayObject.boxincwidth = 7.2);
-        (boxDisplayObject.iconbordermargin = 0.4);
-        (boxDisplayObject.iconborderheight = 9.6);
-        (boxDisplayObject.iconborderwidth = 6.8);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
-        break;
-      case 6:
-        (boxDisplayObject.start = 0x6);
-        (boxDisplayObject.boxheight = 0x14);
-        (boxDisplayObject.boxincwidth = 0xe);
-        (boxDisplayObject.iconbordermargin = 0.5);
-        (boxDisplayObject.iconborderheight = 19.5);
-        (boxDisplayObject.iconborderwidth = 13.5);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
-        break;
-      case 5:
-        (boxDisplayObject.start = 0xa);
-        (boxDisplayObject.boxheight = 0x28);
-        (boxDisplayObject.boxincwidth = 0x1d);
-        (boxDisplayObject.iconbordermargin = 0x1);
-        (boxDisplayObject.iconborderheight = 0x26);
-        (boxDisplayObject.iconborderwidth = 0x1b);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
-        break;
-      case 4:
-        (boxDisplayObject.start = 0xf);
-        (boxDisplayObject.boxheight = 0x50);
-        (boxDisplayObject.boxincwidth = 0x37);
-        (boxDisplayObject.iconbordermargin = 0x2);
-        (boxDisplayObject.iconborderheight = 0x4e);
-        (boxDisplayObject.iconborderwidth = 0x35);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
-        break;
-      case 3:
-        (boxDisplayObject.start = 0x2);
-        (boxDisplayObject.boxheight = 0x78);
-        (boxDisplayObject.boxincwidth = 90);
-        (boxDisplayObject.iconbordermargin = 0x3);
-        (boxDisplayObject.iconborderheight = 0x75);
-        (boxDisplayObject.iconborderwidth = 0x57);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
-        break;
-      case 2:
-        (boxDisplayObject.start = 0x2);
-        (boxDisplayObject.boxheight = 5.2);
-        (boxDisplayObject.boxincwidth = 3.8);
-        (boxDisplayObject.iconbordermargin = 0.3);
-        (boxDisplayObject.iconborderheight = 4.9);
-        (boxDisplayObject.iconborderwidth = 3.5);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
-        break;
-      case 1:
-        boxDisplayObject.start = 0x2;
-        boxDisplayObject.boxheight = 5.2;
-        boxDisplayObject.boxincwidth = 3.8;
-        boxDisplayObject.iconbordermargin = 0.3;
-        boxDisplayObject.iconborderheight = 4.9;
-        boxDisplayObject.iconborderwidth = 3.5;
-        boxDisplayObject.graphicHeight = 0x2a;
-        boxDisplayObject.graphicWidth = 0x19;
-        break;
+        case 10:
+          boxDisplayObject.start = 0.5;
+          boxDisplayObject.boxheight = 1.7;
+          boxDisplayObject.boxincwidth = 1.1;
+          boxDisplayObject.iconbordermargin = 0.1;
+          boxDisplayObject.iconborderheight = 1.6;
+          boxDisplayObject.iconborderwidth = 0x1;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
+        case 9:
+          boxDisplayObject.start = 1;
+          boxDisplayObject.boxheight = 3.2;
+          boxDisplayObject.boxincwidth = 2.2;
+          boxDisplayObject.iconbordermargin = 0.2;
+          boxDisplayObject.iconborderheight = 0x3;
+          boxDisplayObject.iconborderwidth = 0x2;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
+        case 8:
+          boxDisplayObject.start = 0x2;
+          boxDisplayObject.boxheight = 5.2;
+          boxDisplayObject.boxincwidth = 3.8;
+          boxDisplayObject.iconbordermargin = 0.3;
+          boxDisplayObject.iconborderheight = 4.9;
+          boxDisplayObject.iconborderwidth = 3.5;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
+        case 7:
+          boxDisplayObject.start = 0x3;
+          boxDisplayObject.boxheight = 0xa;
+          boxDisplayObject.boxincwidth = 7.2;
+          boxDisplayObject.iconbordermargin = 0.4;
+          boxDisplayObject.iconborderheight = 9.6;
+          boxDisplayObject.iconborderwidth = 6.8;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
+        case 6:
+          boxDisplayObject.start = 0x6;
+          boxDisplayObject.boxheight = 0x14;
+          boxDisplayObject.boxincwidth = 0xe;
+          boxDisplayObject.iconbordermargin = 0.5;
+          boxDisplayObject.iconborderheight = 19.5;
+          boxDisplayObject.iconborderwidth = 13.5;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
+        case 5:
+          boxDisplayObject.start = 0xa;
+          boxDisplayObject.boxheight = 0x28;
+          boxDisplayObject.boxincwidth = 0x1d;
+          boxDisplayObject.iconbordermargin = 0x1;
+          boxDisplayObject.iconborderheight = 0x26;
+          boxDisplayObject.iconborderwidth = 0x1b;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
+        case 4:
+          boxDisplayObject.start = 0xf;
+          boxDisplayObject.boxheight = 0x50;
+          boxDisplayObject.boxincwidth = 0x37;
+          boxDisplayObject.iconbordermargin = 0x2;
+          boxDisplayObject.iconborderheight = 0x4e;
+          boxDisplayObject.iconborderwidth = 0x35;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
+        case 3:
+          boxDisplayObject.start = 0x2;
+          boxDisplayObject.boxheight = 0x78;
+          boxDisplayObject.boxincwidth = 90;
+          boxDisplayObject.iconbordermargin = 0x3;
+          boxDisplayObject.iconborderheight = 0x75;
+          boxDisplayObject.iconborderwidth = 0x57;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
+        case 2:
+          boxDisplayObject.start = 0x2;
+          boxDisplayObject.boxheight = 5.2;
+          boxDisplayObject.boxincwidth = 3.8;
+          boxDisplayObject.iconbordermargin = 0.3;
+          boxDisplayObject.iconborderheight = 4.9;
+          boxDisplayObject.iconborderwidth = 3.5;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
+        case 1:
+          boxDisplayObject.start = 0x2;
+          boxDisplayObject.boxheight = 5.2;
+          boxDisplayObject.boxincwidth = 3.8;
+          boxDisplayObject.iconbordermargin = 0.3;
+          boxDisplayObject.iconborderheight = 4.9;
+          boxDisplayObject.iconborderwidth = 3.5;
+          boxDisplayObject.graphicHeight = 0x2a;
+          boxDisplayObject.graphicWidth = 0x19;
+          break;
       }
     return boxDisplayObject;
   }
 
   function serializeTurns(guidanceLaneInfoArray) {
     const serializer = new XMLSerializer();
-    return (_.each(guidanceLaneInfoArray, (guidanceLaneInfo) => {
-      try {
-        let guidanceSVG = guidanceLaneInfo["svg"][0x0], svgXML = serializer.serializeToString(guidanceSVG);
-        guidanceLaneInfo["svg"] = "data:image/svg+xml;base64," + window.btoa(svgXML);
-      } catch (ex) {
-      }
-    }, guidanceLaneInfoArray));
+    return _.each(
+      guidanceLaneInfoArray,
+      (guidanceLaneInfo) => {
+        try {
+          let guidanceSVG = guidanceLaneInfo["svg"][0x0],
+            svgXML = serializer.serializeToString(guidanceSVG);
+          guidanceLaneInfo["svg"] =
+            "data:image/svg+xml;base64," + window.btoa(svgXML);
+        } catch (ex) {}
+      },
+      guidanceLaneInfoArray,
+    );
   }
 
   function displayLaneGraphics() {
     removeLaneGraphics();
     const features = W.selectionManager.getSelectedFeatures();
-    if (!getId("lt-ScriptEnabled").checked || !getId("lt-IconsEnable").checked || features.length !== 0x1 ||
-        features[0x0].attributes.wazeFeature._wmeObject.type !== "segment")
+    if (
+      !getId("lt-ScriptEnabled").checked ||
+      !getId("lt-IconsEnable").checked ||
+      features.length !== 0x1 ||
+      features[0x0].attributes.wazeFeature._wmeObject.type !== "segment"
+    )
       return;
-    const wmeObject = features[0x0].attributes.wazeFeature._wmeObject, currentZoomLevel = W.map.getOLMap().getZoom();
-    if ((currentZoomLevel < 15) ||
-        (wmeObject.attributes.roadType !== LT_ROAD_TYPE.FREEWAY &&
-         wmeObject.attributes.roadType !== LT_ROAD_TYPE.MAJOR_HIGHWAY &&
-         wmeObject.attributes.roadType !== LT_ROAD_TYPE.MAJOR_HIGHWAY && currentZoomLevel < 16))
+    const wmeObject = features[0x0].attributes.wazeFeature._wmeObject,
+      currentZoomLevel = W.map.getOLMap().getZoom();
+    if (
+      currentZoomLevel < 15 ||
+      (wmeObject.attributes.roadType !== LT_ROAD_TYPE.FREEWAY &&
+        wmeObject.attributes.roadType !== LT_ROAD_TYPE.MAJOR_HIGHWAY &&
+        wmeObject.attributes.roadType !== LT_ROAD_TYPE.MAJOR_HIGHWAY &&
+        currentZoomLevel < 16)
+    )
       return;
-    let fwdTurnsObject = wmeObject.attributes.fwdLaneCount > 0x0
-                             ? addUturn($(".fwd-lanes").find(".lane-arrow").map(function() { return this; }).get())
-                             : false,
-        revTurnsObject = wmeObject.attributes.revLaneCount > 0x0
-                             ? addUturn($(".rev-lanes").find(".lane-arrow").map(function() { return this; }).get())
-                             : false;
+    let fwdTurnsObject =
+        wmeObject.attributes.fwdLaneCount > 0x0
+          ? addUturn(
+              $(".fwd-lanes")
+                .find(".lane-arrow")
+                .map(function () {
+                  return this;
+                })
+                .get(),
+            )
+          : false,
+      revTurnsObject =
+        wmeObject.attributes.revLaneCount > 0x0
+          ? addUturn(
+              $(".rev-lanes")
+                .find(".lane-arrow")
+                .map(function () {
+                  return this;
+                })
+                .get(),
+            )
+          : false;
 
-    let fwdGuidance = fwdTurnsObject !== false ? serializeTurns(fwdTurnsObject) : false,
-        revGuidance = revTurnsObject !== false ? serializeTurns(revTurnsObject) : false;
+    let fwdGuidance =
+        fwdTurnsObject !== false ? serializeTurns(fwdTurnsObject) : false,
+      revGuidance =
+        revTurnsObject !== false ? serializeTurns(revTurnsObject) : false;
     fwdTurnsObject &&
-        displayGuidanceBox(W.model.nodes.getObjectById(wmeObject.attributes.toNodeID), wmeObject, fwdGuidance);
+      displayGuidanceBox(
+        W.model.nodes.getObjectById(wmeObject.attributes.toNodeID),
+        wmeObject,
+        fwdGuidance,
+      );
     revTurnsObject &&
-        displayGuidanceBox(W.model.nodes.getObjectById(wmeObject.attributes.fromNodeID), wmeObject, revGuidance);
+      displayGuidanceBox(
+        W.model.nodes.getObjectById(wmeObject.attributes.fromNodeID),
+        wmeObject,
+        revGuidance,
+      );
   }
 
   laneToolsBootstrap();
