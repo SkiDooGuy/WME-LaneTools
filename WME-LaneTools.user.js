@@ -1005,7 +1005,14 @@
     for (let i = 1; i <= count; ++i) {
       let idString = idStringBase + "-" + i.toString();
       let selectorString = "<div class=\"" + classString + "\" id=\"" + idString + "\">" + i.toString() + "</div>";
-      let newItem = $(selectorString).css({"padding" : "2px 2px 2px 2px", "margin" : "2px 5px 2px 5px"});
+      let newItem = $(selectorString).css({
+          padding: "2px",
+          border: "2px",
+          "border-radius": "50%",
+          height: "20px",
+          width: "20px",
+          "text-align": "center"
+      });
       itemsList.push(newItem)
     }
     return itemsList;
