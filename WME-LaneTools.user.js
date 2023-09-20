@@ -407,18 +407,19 @@
     const message = $(constantStrings.divStr);
     message.html([
       "       <div class='lt-Toolbar-Container' id='lt-toolbar-container'>\n" +
-      "           <div id='lt-toolbar-drag-handle' class='lt-toolbar-draggable-handle'></div>\n" +
-      "           <div class='lt-toolbar-button-container'>\n" +
-      "               <button type='button' class='lt-toolbar-button' id='copyA-button'>Copy A</button>\n" +
-      "           </div>\n" +
-      "           <div class='lt-toolbar-button-container'>\n" +
-      "               <button type='button' class='lt-toolbar-button' id='copyB-button'>Copy B</button>\n" +
-      "           </div>\n" +
-      "           <div class='lt-toolbar-button-container'>\n" +
-      "               <button type='button' class='lt-toolbar-button' id='pasteA-button'>Paste A</button>\n" +
-      "           </div>\n" +
-      "           <div class='lt-toolbar-button-container'>\n" +
-      "               <button type='button' class='lt-toolbar-button' id='pasteB-button'>Paste B</button>\n" +
+      "           <div id='lt-toolbar-drag-handle' class='lt-toolbar-drag-handle'>LT\n" +
+      "               <div class='lt-toolbar-button-container'>\n" +
+      "                   <button type='button' class='lt-toolbar-button' id='copyA-button'>Copy A</button>\n" +
+      "               </div>\n" +
+      "               <div class='lt-toolbar-button-container'>\n" +
+      "                   <button type='button' class='lt-toolbar-button' id='copyB-button'>Copy B</button>\n" +
+      "               </div>\n" +
+      "               <div class='lt-toolbar-button-container'>\n" +
+      "                   <button type='button' class='lt-toolbar-button' id='pasteA-button'>Paste A</button>\n" +
+      "               </div>\n" +
+      "               <div class='lt-toolbar-button-container'>\n" +
+      "                   <button type='button' class='lt-toolbar-button' id='pasteB-button'>Paste B</button>\n" +
+      "               </div>\n" +
       "           </div>\n" +
       "       </div>",
     ].join(" "));
@@ -429,15 +430,23 @@
       $("#map").append(message.html());
       WazeWrap.Interface.ShowScriptUpdate(GM_info.script.name, GM_info.script.version, LI_UPDATE_NOTES, GF_LINK,
                                           FORUM_LINK);
-      $(".lt-toolbar-draggable-handle").css({
-        position: "relative",
-        height: "12px",
-        width: "12px",
-        left: "-12px",
+      $("#lt-toolbar-container").css({
+        position: "fixed",
+        left: "500px",
+        top: "500px",
+        "z-index": 1004,
+        height: "150px",
+        width: "70px",
+      });
+      $(".lt-toolbar-drag-handle").css({
+        position: "absolute",
+        height: "150px",
+        width: "70px",
         border: "2px solid rgb(0, 117, 227)",
-        "border-radius": "8px",
-        "background-color": "cyan",
-        cursor: "default"});
+        "background-color": "navy",
+        color: "white",
+        "text-align": "center",
+        cursor: "move"});
       console.log("LaneTools: Loaded");
     } else
       console.error("LaneTools: loading error....");
@@ -487,8 +496,12 @@
     !getId("lt-LaneHeuristicsChecks").checked && $("#lt-heur-wrapper").hide();
     if(!getId("lt-DevToolsEnable").checked) {
       $("#lt-dev-tools-wrapper").hide();
-      displayToolbar();
+      allowCpyPst = false;
     }
+    else {
+      allowCpyPst = getId("lt-CopyEnable").checked;
+    }
+    displayToolbar();
 
     function setSetting(propertyID, propertyValue) { $("#" + propertyID).prop("checked", propertyValue); }
 
@@ -574,7 +587,7 @@
     setHeuristics();
     setTranslations();
     let toolbarContainerSelector = $("#lt-toolbar-container");
-    toolbarContainerSelector.draggable();
+    toolbarContainerSelector.draggable({handle: ".lt-toolbar-drag-handle"});
     if (_pickleColor > 0x1) {
       let jqQuickTog = $("#lt-trans-quickTog");
       let ltEnabledFeatures = "LaneTools: The following special access features are enabled: ";
@@ -609,7 +622,7 @@
         });
         ltEnabledFeatures = isRBS ? ltEnabledFeatures + ", Copy/Paste" : ltEnabledFeatures + "Copy/Paste";
       } else {
-        toolbarContainerSelector.css({display: "none"});
+        toolbarContainerSelector.css({visibility: "hidden"});
       }
       if (isRBS || allowCpyPst) {
         console.log(ltEnabledFeatures);
@@ -1506,7 +1519,7 @@
   function displayToolbar() {
     let toolbarContainer = $("#lt-toolbar-container");
     if (!getId("lt-ScriptEnabled").checked || !getId("lt-DevToolsEnable").checked || !getId("lt-CopyEnable").checked) {
-      toolbarContainer.css({display : "none"});
+      toolbarContainer.css({visibility : "hidden"});
       return;
     }
     const featureList = W.selectionManager.getSelectedFeatures();
@@ -1515,13 +1528,13 @@
       if (featureList[0x0].attributes.wazeFeature._wmeObject.type.toLowerCase() === "segment") {
         const mapSelector = $("#map");
         toolbarContainer.css({
-          display : "block",
+          visibility : "visible",
           left : mapSelector.width() * 0.1,
           top : mapSelector.height() * 0.1,
         });
       }
     } else
-      toolbarContainer.css({display : "block"});
+      toolbarContainer.css({visibility : "visible"});
   }
 
   function getId(elementId) { return document.getElementById(elementId); }
