@@ -145,8 +145,8 @@
   let MAX_LEN_HEUR, MAX_PERP_DIF, MAX_PERP_DIF_ALT, MAX_PERP_TO_CONSIDER, MAX_STRAIGHT_TO_CONSIDER, MAX_STRAIGHT_DIF,
   lt_scanArea_recursive = 0x0, LtSettings = {}, strings = {}, _turnInfo = [], _turnData = {}, laneCount,
   LTHighlightLayer, LTNamesLayer, LTLaneGraphics, _pickleColor, seaPickle, UpdateObj, MultiAction, SetTurn,
-  shortcutsDisabled = false, draggingToolbar = false, isRBS = false, allowCpyPst = false, langLocality = "default",
-  NEWZOOMLEVELS, currentMousePos = {x : -1, y : -1};
+  shortcutsDisabled = false, isRBS = false, allowCpyPst = false, langLocality = "default",
+  NEWZOOMLEVELS;
   console.log("LaneTools: initializing...");
 
   function laneToolsBootstrap(bootStrapAttempt = 0x0) {
@@ -2881,44 +2881,44 @@
         (boxDisplayObject.graphicWidth = 0x19);
         break;
       case 4:
-        (boxDisplayObject.start = 0xf);
-        (boxDisplayObject.boxheight = 0x50);
-        (boxDisplayObject.boxincwidth = 0x37);
-        (boxDisplayObject.iconbordermargin = 0x2);
-        (boxDisplayObject.iconborderheight = 0x4e);
-        (boxDisplayObject.iconborderwidth = 0x35);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
+        (boxDisplayObject.start = 15);
+        (boxDisplayObject.boxheight = 80);
+        (boxDisplayObject.boxincwidth = 55);
+        (boxDisplayObject.iconbordermargin = 2);
+        (boxDisplayObject.iconborderheight = 78);
+        (boxDisplayObject.iconborderwidth = 53);
+        (boxDisplayObject.graphicHeight = 42);
+        (boxDisplayObject.graphicWidth = 25);
         break;
       case 3:
-        (boxDisplayObject.start = 0x2);
-        (boxDisplayObject.boxheight = 0x78);
+        (boxDisplayObject.start = 2);
+        (boxDisplayObject.boxheight = 120);
         (boxDisplayObject.boxincwidth = 90);
-        (boxDisplayObject.iconbordermargin = 0x3);
-        (boxDisplayObject.iconborderheight = 0x75);
-        (boxDisplayObject.iconborderwidth = 0x57);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
+        (boxDisplayObject.iconbordermargin = 3);
+        (boxDisplayObject.iconborderheight = 117);
+        (boxDisplayObject.iconborderwidth = 87);
+        (boxDisplayObject.graphicHeight = 42);
+        (boxDisplayObject.graphicWidth = 25);
         break;
       case 2:
-        (boxDisplayObject.start = 0x2);
+        (boxDisplayObject.start = 2);
         (boxDisplayObject.boxheight = 5.2);
         (boxDisplayObject.boxincwidth = 3.8);
         (boxDisplayObject.iconbordermargin = 0.3);
         (boxDisplayObject.iconborderheight = 4.9);
         (boxDisplayObject.iconborderwidth = 3.5);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
+        (boxDisplayObject.graphicHeight = 42);
+        (boxDisplayObject.graphicWidth = 25);
         break;
       case 1:
-        boxDisplayObject.start = 0x2;
+        boxDisplayObject.start = 2;
         boxDisplayObject.boxheight = 5.2;
         boxDisplayObject.boxincwidth = 3.8;
         boxDisplayObject.iconbordermargin = 0.3;
         boxDisplayObject.iconborderheight = 4.9;
         boxDisplayObject.iconborderwidth = 3.5;
-        boxDisplayObject.graphicHeight = 0x2a;
-        boxDisplayObject.graphicWidth = 0x19;
+        boxDisplayObject.graphicHeight = 42;
+        boxDisplayObject.graphicWidth = 25;
         break;
       }
     return boxDisplayObject;
@@ -2953,13 +2953,26 @@
         revTurnsObject = wmeObject.attributes.revLaneCount > 0x0
                          ? addUturn($(".rev-lanes").find(".lane-arrow").map(function() { return this; }).get())
                          : false;
-
-    let fwdGuidance = fwdTurnsObject !== false ? serializeTurns(fwdTurnsObject) : false,
-        revGuidance = revTurnsObject !== false ? serializeTurns(revTurnsObject) : false;
-    fwdTurnsObject &&
-    displayGuidanceBox(W.model.nodes.getObjectById(wmeObject.attributes.toNodeID), wmeObject, fwdGuidance);
-    revTurnsObject &&
-    displayGuidanceBox(W.model.nodes.getObjectById(wmeObject.attributes.fromNodeID), wmeObject, revGuidance);
+    if(fwdTurnsObject !== false) {
+        if(Object.keys(fwdTurnsObject).length === 0) {
+            setTimeout(displayLaneGraphics, 200);
+            return;
+        }
+        displayGuidanceBox(W.model.nodes.getObjectById(wmeObject.attributes.toNodeID), wmeObject, serializeTurns(fwdTurnsObject));
+    }
+    if(revTurnsObject !== false) {
+        if(Object.keys(revTurnsObject).length === 0) {
+            setTimeout(displayLaneGraphics, 200);
+            return;
+        }
+        displayGuidanceBox(W.model.nodes.getObjectById(wmeObject.attributes.fromNodeID), wmeObject, serializeTurns(revTurnsObject));
+    }
+    // let fwdGuidance = fwdTurnsObject !== false ? serializeTurns(fwdTurnsObject) : false,
+    //     revGuidance = revTurnsObject !== false ? serializeTurns(revTurnsObject) : false;
+    // fwdTurnsObject &&
+    // displayGuidanceBox(W.model.nodes.getObjectById(wmeObject.attributes.toNodeID), wmeObject, fwdGuidance);
+    // revTurnsObject &&
+    // displayGuidanceBox(W.model.nodes.getObjectById(wmeObject.attributes.fromNodeID), wmeObject, revGuidance);
   }
 
   laneToolsBootstrap();
