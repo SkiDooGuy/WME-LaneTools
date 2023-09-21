@@ -2453,7 +2453,7 @@
         if (departureAngleID === 0x1)
           temp = {
             x : nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
-            y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 1.8,
+            y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * segmentLength),
           };
         else {
           if (departureAngleID === 0x2)
