@@ -2441,7 +2441,7 @@
     }
     return displayedWithUturn;
   }
-  function getLaneBoxAnchor(departureAngleID, nodeObj, laneDisplayBoxConfiguration, segmentLength) {
+  function getLaneBoxAnchor(departureAngleID, nodeObj, laneDisplayBoxConfiguration, numLanes) {
     let temp = {};
     if (NEWZOOMLEVELS) {
       if (departureAngleID === 0x0)
@@ -2453,19 +2453,19 @@
         if (departureAngleID === 0x1)
           temp = {
             x : nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
-            y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * segmentLength),
+            y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * numLanes),
           };
         else {
           if (departureAngleID === 0x2)
             temp = {
               x : nodeObj.geometry.x -
-                  (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth * segmentLength),
+                  (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth * numLanes),
               y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
             };
           else {
             if (departureAngleID === 0x3)
               temp = {
-                x : nodeObj.geometry.x + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth),
+                x : nodeObj.geometry.x + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth)/2.0,
                 y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
               };
             else {
@@ -2474,7 +2474,7 @@
                   x : nodeObj.geometry.x -
                       (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 1.5),
                   y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start +
-                                            laneDisplayBoxConfiguration.boxincwidth * segmentLength * 1.5),
+                                            laneDisplayBoxConfiguration.boxincwidth * numLanes * 1.5),
                 };
               else {
                 if (departureAngleID === 0x5)
@@ -2488,12 +2488,12 @@
                     temp = {
                       x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start,
                       y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start *
-                                               ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
+                                               ((laneDisplayBoxConfiguration.boxincwidth * numLanes) / 0x2),
                     };
                   else
                     departureAngleID === 0x7 && (temp = {
                       x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start *
-                                               ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
+                                               ((laneDisplayBoxConfiguration.boxincwidth * numLanes) / 0x2),
                       y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start,
                     });
                 }
@@ -2512,13 +2512,13 @@
         if (departureAngleID === 0x1)
           temp = {
             x : nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
-            y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 1.8,
+            y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * numLanes) / 1.8,
           };
         else {
           if (departureAngleID === 0x2)
             temp = {
               x : nodeObj.geometry.x -
-                  (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth * segmentLength),
+                  (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth * numLanes),
               y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
             };
           else {
@@ -2534,7 +2534,7 @@
                   x : nodeObj.geometry.x -
                       (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 1.5),
                   y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start +
-                                            laneDisplayBoxConfiguration.boxincwidth * segmentLength * 1.5),
+                                            laneDisplayBoxConfiguration.boxincwidth * numLanes * 1.5),
                 };
               else {
                 if (departureAngleID === 0x5)
@@ -2548,12 +2548,12 @@
                     temp = {
                       x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start,
                       y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start *
-                                               ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
+                                               ((laneDisplayBoxConfiguration.boxincwidth * numLanes) / 0x2),
                     };
                   else
                     departureAngleID === 0x7 && (temp = {
                       x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start *
-                                               ((laneDisplayBoxConfiguration.boxincwidth * segmentLength) / 0x2),
+                                               ((laneDisplayBoxConfiguration.boxincwidth * numLanes) / 0x2),
                       y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start,
                     });
                 }
@@ -2738,7 +2738,7 @@
         boxDisplayObject.graphicWidth = 25;
         break;
       case 21:
-        (boxDisplayObject.start = 0x1);
+        (boxDisplayObject.start = 1);
         (boxDisplayObject.boxheight = 3.2);
         (boxDisplayObject.boxincwidth = 2.2);
         (boxDisplayObject.iconbordermargin = 0.2);
@@ -2748,7 +2748,7 @@
         (boxDisplayObject.graphicWidth = 25);
         break;
       case 20:
-        (boxDisplayObject.start = 0x2);
+        (boxDisplayObject.start = 2);
         (boxDisplayObject.boxheight = 5.2);
         (boxDisplayObject.boxincwidth = 3.8);
         (boxDisplayObject.iconbordermargin = 0.3);
@@ -2758,7 +2758,7 @@
         (boxDisplayObject.graphicWidth = 0x19);
         break;
       case 19:
-        (boxDisplayObject.start = 0x3);
+        (boxDisplayObject.start = 3);
         (boxDisplayObject.boxheight = 0xa);
         (boxDisplayObject.boxincwidth = 7.2);
         (boxDisplayObject.iconbordermargin = 0.4);
@@ -2778,14 +2778,14 @@
         boxDisplayObject.graphicWidth = 25;
         break;
       case 17:
-        (boxDisplayObject.start = 0xa);
-        (boxDisplayObject.boxheight = 0x27);
-        (boxDisplayObject.boxincwidth = 0x1c);
-        (boxDisplayObject.iconbordermargin = 0x1);
-        (boxDisplayObject.iconborderheight = 0x26);
-        (boxDisplayObject.iconborderwidth = 0x1b);
-        (boxDisplayObject.graphicHeight = 0x2a);
-        (boxDisplayObject.graphicWidth = 0x19);
+        (boxDisplayObject.start = 30);
+        (boxDisplayObject.boxheight = 39);
+        (boxDisplayObject.boxincwidth = 28);
+        (boxDisplayObject.iconbordermargin = 1);
+        (boxDisplayObject.iconborderheight = 38);
+        (boxDisplayObject.iconborderwidth = 27);
+        (boxDisplayObject.graphicHeight = 42);
+        (boxDisplayObject.graphicWidth = 25);
         break;
       case 16:
         (boxDisplayObject.start = 0xf);
