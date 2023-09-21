@@ -587,7 +587,7 @@
     setHeuristics();
     setTranslations();
     let toolbarContainerSelector = $("#lt-toolbar-container");
-    toolbarContainerSelector.draggable({handle: ".lt-toolbar-drag-handle"});
+    toolbarContainerSelector.draggable({handle : ".lt-toolbar-drag-handle", containment : "#map"});
     if (_pickleColor > 0x1) {
       let jqQuickTog = $("#lt-trans-quickTog");
       let ltEnabledFeatures = "LaneTools: The following special access features are enabled: ";
