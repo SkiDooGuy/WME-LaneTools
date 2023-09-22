@@ -1298,7 +1298,7 @@
     if (fwdLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-fwd-add-lanes")) {
       let
       addLanesItem = $(
-      "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22 id=\x22lt-fwd-add-lanes\x22 />"),
+      '<div style="display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;" id="lt-fwd-add-lanes" />'),
       classNamesList = [ "lt-add-lanes", "fwd" ], laneCountsToAppend = getLaneItems(8, classNamesList);
       for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
         addLanesItem.append(laneCountsToAppend[idx]);
@@ -1309,7 +1309,7 @@
     if (revLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-rev-add-lanes")) {
       let
       reverseLaneDiv = $(
-      "<div style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22 id=\x22lt-rev-add-lanes\x22 />"),
+      '<div style="display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;" id="lt-rev-add-lanes" />'),
       classNamesList = [ "lt-add-lanes", "rev" ], laneCountsToAppend = getLaneItems(8, classNamesList);
       for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
         reverseLaneDiv.append(laneCountsToAppend[idx]);
@@ -1336,7 +1336,7 @@
     });
     if (fwdLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-fwd-add-Width")) {
       let addFwdLanes =
-          $("<div style=\x22display:inline-flex;flex-direction:row;width:100%;\x22 id=\x22lt-fwd-add-Width\x22 />"),
+          $('<div style="display:inline-flex;flex-direction:row;width:100%;" id="lt-fwd-add-Width" />'),
           classNamesList = [ "lt-add-Width", "fwd" ], laneCountsToAppend = getLaneItems(8, classNamesList);
       for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
         addFwdLanes.append(laneCountsToAppend[idx]);
@@ -1351,7 +1351,7 @@
     }
     if (revLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-rev-add-Width")) {
       let appendRevLanes =
-          $("<div style=\x22display:inline-flex;flex-direction:row;width:100%;\x22 id=\x22lt-rev-add-Width\x22 />"),
+          $('<div style="display:inline-flex;flex-direction:row;width:100%;" id="lt-rev-add-Width" />'),
           classNamesList = [ "lt-add-Width", "rev" ], laneCountsToAppend = getLaneItems(8, classNamesList);
       for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
         appendRevLanes.append(laneCountsToAppend[idx]);
