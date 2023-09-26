@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2023.09.24.01
+// @version      2023.09.26.01
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -16,4 +16,2983 @@
 // @contributionURL https://github.com/WazeDev/Thank-The-Authors
 // ==/UserScript==
 
-function _0x3793(){const _0x3d8ee8=['\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x20border\x27\x20style=\x27border-bottom:2px\x20double\x20grey;\x27>\x0a','getElementsByTagName','Click\x20to\x20toggle\x20color\x20inputs','.street-name','UIEnable','4px\x20dashed\x20','?\x20\x0a','Feature','replace','highlightCSIcons','delRev','serializeToString','lt-BAColor','getOwnPropertyNames','TIO','direction','==================================================================================','Exit\x20Left','Point','hasOverrideAngle','heading','isLeftHand','Node\x20Highlights','userName','.lane-arrows\x20>\x20div','changed\x20to\x20','prependTo','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x27display:inline-block;\x27><span\x20class=\x27lt-trans-tglshcut\x27></span>:<span\x20id=\x27lt-UIEnhanceShortcut\x27\x20style=\x27padding-left:10px;\x27></span></div>\x0a','<b>NEW:</b><br>\x0a<b>FIXES:</b><br>Code\x20clean\x20up\x20contributed\x20by\x20Karlsosha<br>\x0a','#lt-trans-uiEnhance','CS1Color','none','.direction-lanes','Ready','#lt-trans-posCol','lt-fwd-add-Width','.lt-toolbar-button','Toggle\x20lane\x20highlights','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ReverseLanesIcon\x27><span\x20id=\x27lt-trans-orient\x27></span></label>\x0a','<div\x20style=\x22display:inline-flex;flex-direction:row;width:100%;\x22\x20id=\x22lt-fwd-add-Width\x22\x20/>','LIOColor','_description','AutoOpenWidth','#lt-ScriptEnabled','\x20to\x20','lt-LIOColor','150px','lt-NodeColor','afterundoaction','#lt-trans-orient','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x20border\x27>\x0a','Shift','Map\x20Highlights','value','#lt-trans-nodeCol','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-SelAllEnable\x27\x20/>\x0a','.fwd-lanes','rank','divStr','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-CS2Color\x27\x20id=\x27lt-CS2ColorLabel\x27><span\x20id=\x27lt-trans-hearCol\x27></span></label>\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AutoOpenWidth\x27><span\x20id=\x27lt-trans-autoWidth\x27></span></label>\x0a','0px','<style>','getItem','#li-del-opp-btn','Enable\x20ClickSaver','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-TIOColor\x27\x20id=\x27lt-TIOColorLabel\x27><span\x20id=\x27lt-trans-tioCol\x27></span></label>\x0a','forEach','Alt','#li-del-rev-btn','lt-CS1Color','MIN_ZOOM_ALL','.checkbox-large.checkbox-white','disabled','#lt-HighlightsEnable','clickStraight','.lt-add-Width','highlightOverride','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LabelsEnable\x27><span\x20id=\x27lt-trans-lnLabel\x27></span></label>\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27\x20id=\x27lt-tab-body\x27>\x0a','LaneTools:\x20initializing...','tooltip','lt-CopyEnable','turn-lane-checkbox','BAColor','lt-NodesEnable','#lt-trans-devTools','IconsRotate','getOLMap','roadType','ShowScriptUpdate','MAX_STRAIGHT_DIF','olMap','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LaneHeurNegHighlight\x27><span\x20id=\x27lt-trans-heurNeg\x27></span></label>\x0a','revLanesNthChild','Rev\x20(B>A)','fwdLaneCount','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a','clearTimeout','translationSpreadSheetBaseURL','Lane\x20Tools','turn-lane-edit-top','editPanelCSS','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a','#lt-LaneHeurPosHighlight','CSEnable','addTIO','</button>','toggle','input[type=\x22text\x22].lt-color-input\x20{position:relative;width:70px;padding:3px;border:2px\x20solid\x20black;border-radius:6px;}','getTurnData','Vector','south','inSegDir','FREEWAY','#lt-LIOEnable','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x27button\x27\x20class=\x27lt-toolbar-button\x27\x20id=\x27pasteA-button\x27>Paste\x20A</button>\x0a','keys','revLanesInstructionsFromCSS','#lt-UI-wrapper','hasInstructionOpcode','.lanes-tab','Layer','30UCcgyG','#lt-ClickSaveEnable','fromVertex','https://editor-assets.waze.com/production/font/aae5ed152758cb6a9191b91e6cedf322.svg','lt-ClickSaveTurns','wazeFeature','visible','REVERSE','Open\x20Sans,\x20Alef,\x20helvetica,\x20sans-serif,\x20monospace','\x20\x20\x20Not\x20eligible\x20as\x20outseg2:\x20','fromLaneIndex','#li-del-fwd-btn','fail','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x27button\x27\x20class=\x27lt-toolbar-button\x27\x20id=\x27pasteB-button\x27>Paste\x20B</button>\x0a','getNumZoomLevels','#segment-edit-lanes\x20>\x20div\x20>\x20div\x20>\x20div.fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.lane-arrows\x20>\x20div','-1px\x20-1px\x201px\x201px\x20gray','lt-LaneHeurNegHighlight',',\x20Copy/Paste','.set-road-width\x20>\x20wz-button','.lane-arrow','setModel','lt-HighlightsEnable','LinearRing','hasClass','head','iconborderheight','Driving\x20direction\x20restriction\x20applies','LTHighlightLayer','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-CSEnable\x27\x20/>\x0a','toLowerCase','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AutoLanesTab\x27\x20/>\x0a','boxincwidth','Checking\x20heuristics\x20candidate:\x20seg','changelayer','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ClickSaveStraight\x27\x20/>\x0a','StyleMap','LaneTools\x20-\x20v','MAX_STRAIGHT_TO_CONSIDER','RBSAccessSheetBaseURL','#lt-trans-laoCol','CSOHigh','LT\x20errors\x20found,\x20scanning\x20again','Turn\x20angle\x20from\x20inseg\x20(supplementary)\x20','#lt-trans-enClick','ceil','sort','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x27font-weight:bold;\x27><span\x20id=\x27lt-trans-devTools\x27></span>\x20(WARNING:\x20-\x20\x20May\x20Produce\x20Undesirable\x20Results)</span>\x0a','LT:\x20icon\x20angle\x20is\x20out\x20of\x20bounds','lt-add-lanes','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-LabelColor\x27\x20/>\x0a','LaneTools:\x20Unable\x20to\x20save\x20settings\x20to\x20server','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27\x27>\x0a','IconsEnable','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ClickSaveTurns\x27><span\x20id=\x27lt-trans-turnClick\x27></span></label>\x0a','className','NONE','.fwd-lanes\x20>\x20div\x20>\x20.direction-lanes','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-highlightCSIcons\x27><span\x20id=\x27lt-trans-csIcons\x27></span></label>\x0a','#lt-trans-csIcons','toNodeID','remove','Quick\x20toggle\x20all\x20lanes','<button\x20type=\x22button\x22\x20id=\x22li-del-fwd-btn\x22\x20style=\x22height:20px;background-color:white;border:1px\x20solid\x20grey;border-radius:8px;\x22>','lt-add-lanes\x20fwd','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a','Remote','Ctrl','DevToolsEnable','getSegmentIds','.rev-lanes','#ff9900','svg','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27margin-bottom:5px;\x27>\x0a','register','lt-LaneHeurPosHighlight','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-toolbar-button-container\x27>\x0a','#lt-heur-wrapper','70px','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-IconsRotate\x27\x20/>\x0a','lt-LabelsEnable','transparent','.lt-add-lanes:hover\x20{border:1px\x20solid\x20#26bae8;background-color:#26bae8;cursor:pointer;}','6px','LTLaneGraphics','Auto-expand\x20lane\x20editor','ClickSaveStraight','fwdDirection','#990033','#number-of-lanes','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x27font-weight:bold;\x27><span\x20id=\x27lt-trans-uiEnhance\x27></span></span>\x0a','input[type=\x22checkbox\x22].lt-checkbox\x20{position:relative;top:3px;vertical-align:top;margin:0;}','prop','lt-LabelColor','angle-135','reOrient','Use\x20RBS\x20heuristics','parseInt','ErrorColor','MAJOR_HIGHWAY','move','Tools/Features\x20Under\x20Development','lt-highlightOverride','angle-45','#lt-trans-nodeHigh','withTurnData','length','substring','getTurnThroughNode','#eeeeee','#lt-trans-laOver','.lt-checkbox','LaneHeurPosHighlight','margin-bottom','revCol','enableHeuristics','.lt-trans-tglshcut','lt-LaneHeuristicsChecks','https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/Angles!A2:B?key=','Delete\x20FWD\x20Lanes','label.lt-label\x20{position:relative;max-width:90%;font-weight:normal;padding-left:5px}','Display\x20lane\x20icons\x20on\x20map','autoOpenTriggered','withLanes','AutoLanesTab','rotateDisplayLanes','model','findIndex','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-highlights-wrapper\x27>\x0a','appendTo','2px\x20solid','10px','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x27font-weight:bold;\x27><span\x20id=\x27lt-trans-heurCan\x27></span></span>\x0a','#lt-toolbar-container','#lt-UIEnhanceShortcut','calculate','#lt-serverSelect','lt-HeurFailColor','#lt-IconsEnable','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LaneHeuristicsChecks\x27\x20/>\x0a','DASH_THICK','Tab\x20UI\x20Enhancements','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AddTIO\x27><span\x20id=\x27lt-trans-AddTIO\x27></span></label>\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-NodesEnable\x27><span\x20id=\x27lt-trans-nodeHigh\x27></span></label>\x0a','getGeodesicLength','<button\x20type=\x22button\x22\x20id=\x22li-del-rev-btn\x22\x20style=\x22height:20px;background-color:white;border:1px\x20solid\x20grey;border-radius:8px;\x22>','fwdLanesEnabled','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-UIEnable\x27><span\x20class=\x27lt-trans-enabled\x27></span></label>\x0a','removeAllFeatures','getObjectById','https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/Translations!A2:C?key=','LaneTools:\x20Stored\x20shortcut\x20','Found\x20inseg\x20candidate:\x20','#lt-LaneHeuristicsChecks','revLanesEnabled','includes','loginManager','attrs\x20len:\x20','iconbordermargin','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27>\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LabelColor\x27\x20id=\x27lt-LabelColorLabel\x27><span\x20id=\x27lt-trans-labelCol\x27></span></label>\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-CopyEnable\x27>Copy/Paste\x20Lanes</label>\x0a','LaneHeurNegHighlight','selectionchanged','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-toolbar-drag-handle\x27\x20class=\x27lt-toolbar-drag-handle\x27>LT\x0a','376764ZIliLK','LaneTools:\x20Failed\x20to\x20load','lt-fwd-add-lanes','angle--45','ABColor','lt-add-Width\x20fwd','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LaneHeurPosHighlight\x27><span\x20id=\x27lt-trans-heurPos\x27></span></label>\x0a','#lt-trans-heurRBS','addEventListener','stroke-width','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-DevToolsEnable\x27><span\x20class=\x27lt-trans-dev-tools-enable\x27></span></label>\x0a','setZIndex','click','clickTurn','Click\x20on\x20turn\x20name\x20to\x20toggle\x20all\x20lane\x20associations','lt-AutoOpenWidth','LaneTools:\x20Error\x20communicating\x20with\x20WW\x20settings\x20server','lt-AutoExpandLanes','LaneTools:\x20Error\x20loading\x20settings:','Auto-open\x20lanes\x20tab','5px\x205px\x2010px','#lt-trans-csOver','LabelsEnable','lt-IconsRotate','Other\x20restriction\x20applies','border-bottom','isTurnAllowed','showRBS','lt-UIEnable','border','rev','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AutoLanesTab\x27><span\x20id=\x27lt-trans-autoTab\x27></span></label>\x0a','.fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-from\x20>\x20div.instruction','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27display:none;\x27>\x0a','<div\x20class=\x22','ReverseLanesIcon','#lt-HighlightShortcut','lt-add-lanes\x20rev','LTNamesLayer','LaneTools:\x20Saved\x20Settings\x20to\x20the\x20Server','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-SelAllEnable\x27\x20><span\x20id=\x27lt-trans-quickTog\x27></span></label>\x0a','DASH_THIN','MAX_PERP_TO_CONSIDER','#lt-trans-autoFocus','add','lt-TIOColor','fwdLanesNthChild','LineString','slice','stroke','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-HeurFailColor\x27\x20id=\x27lt-HeurFailColorLabel\x27><span\x20id=\x27lt-trans-negCol\x27></span></label>\x0a','type','enabled','round','state','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-heur-wrapper\x27>\x0a','.uturn','lt-CSEnable','setVisibility','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LabelsEnable\x27\x20/>\x0a','Waze/Action/MultiAction','MAX_LEN_HEUR','stroke-opacity','fwdLanesDivInstructionCSS','posHeur','abs','==\x20No\x20alt\x20incoming-1\x20segment\x20found\x20==================================================================\x0a','parse','Lane\x20heuristics\x20likely','lt-ErrorColor','append','call','#lt-EnableShortcut','lt-DevToolsEnable','ITEM_ROAD_V2','angle-0','.form-control','Not\x20eligible\x20as\x20inseg:\x20','Keep\x20Left','warning','val','keyCode','checked','Alerts','#lt-trans-AddTIO','LaneHeuristicsChecks','css','black','HeurColor','lt-ClickSaveStraight','timeoutID','push','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ErrorColor\x27\x20id=\x27lt-ErrorColorLabel\x27><span\x20id=\x27lt-trans-errorCol\x27></span></label>\x0a','#lt-trans-highCol','altKey','4px','getSelectedFeatures','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-DevToolsEnable\x27\x20/>\x0a','fromNodeID','lt-ScriptEnabled','Copy\x20Lane\x20Info\x20Lane\x20Count:\x20','\x20/\x20','toString','<div\x20class=\x27lt-wrapper\x27\x20id=\x27lt-tab-wrapper\x27>\x0a','.rev-lanes\x20>\x20div\x20>\x20div\x20>\x20.lane-instruction.lane-instruction-from\x20>\x20.instruction\x20>\x20.road-width-edit\x20>\x20div\x20>\x20div\x20>\x20div\x20>\x20.lane-width-card','streets','block','heurNegCol','projection','.rev-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.edit-region\x20>\x20div\x20>\x20div\x20>\x20div:nth-child(1)\x20>\x20div','HIGHLIGHT','name','TIOColor','LabelColor','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20style=\x27font-weight:bold;\x27><span\x20id=\x27lt-trans-mapHigh\x27></span></span>\x0a','FORWARD','selectionManager','Waze\x20Selected','0.9','getTogglerState','ERROR','Continue\x20straight\x20overrides','layerSwitcherController','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-color-inputs\x27\x20style=\x27display:none;\x27>\x0a','ITEM_ROAD','#lt-LaneHeurNegHighlight','nodeTIOCol','NodeColor','24TxDTWU','.edit-region','.fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.edit-region\x20>\x20div\x20>\x20div\x20>\x20div:nth-child(1)','stringify','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-highlightCSIcons\x27\x20/>\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x27display:inline-block;\x27><span\x20class=\x27lt-trans-tglshcut\x27></span>:<span\x20id=\x27lt-HighlightShortcut\x27\x20style=\x27padding-left:10px;\x27></span></div>\x0a','reduce','to\x20','Toggle\x20script','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-serverSelect\x27\x20/>\x0a','#lt-trans-enIcons','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ScriptEnabled\x27\x20/>\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27float:right;\x27>\x0a','white','https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/RBS_Access!A2:C?key=','lt-ClickSaveEnable','getFeatureAttributes','focus','trigger','#lt-highlights-wrapper','negHeur','.lt-section-wrapper\x20{display:block;width:100%;padding:4px;','Lane\x20labels','Copy/Paste','map','values','Interface','Highlight\x20CS\x20Icons','AIzaSyDZjmkSx5xWc-86hsAIzedgDgRgy8vB7BQ','graphicWidth','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ClickSaveTurns\x27\x20/>\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a','Toggle\x20UI\x20enhancements','CS2Color','title','#0033cc','join','attributes','csIcons','rotate','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-ErrorColor\x27\x20/>\x0a','width','failed','All\x20straight\x20lanes','revLanesInstructionsToCSS','LAOHigh','display','lt-HeurColor','enableHighlights','HighlightsEnable','.lt-tio-select\x20{max-width:80%;color:rgb(32,\x2033,\x2036);background-color:rgb(242,\x20243,\x20244);border:0px;border-radius:6px;padding:0\x2016px\x200\x2010px;cursor:pointer;}','log','li-del-fwd-btn','18089307OymmMw','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-NodesEnable\x27\x20/>\x0a','Azm\x20to\x20node\x20','fwd','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-HeurFailColor\x27\x20/>\x0a','.lt-toolbar-drag-handle','html','Negative\x20heuristics\x20candidate','each','graphicHeight','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AutoOpenWidth\x27\x20/>\x0a','atan2','Toggle\x20heuristic\x20highlights','FAIL','currentLocale','change','getElementsByName','computed\x20len:\x20','hidden','geometry','#keyboard-dialog','input[type=\x22text\x22].lt-color-input:focus\x20{outline-width:0;}','#lt-trans-heurPos','\x20via\x20','angle--90','NodesEnable','Geometry','4870088olecbG','_wmeObject','View\x20and\x20hear\x20CS','segments','LT_Settings','U-Turn','#8F47FA','2px','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-HeurColor\x27\x20id=\x27lt-HeurColorLabel\x27><span\x20id=\x27lt-trans-posCol\x27></span></label>\x0a','lt-AutoLanesTab','lt-highlightCSIcons','1272970HANBKZ','Events','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-highlightOverride\x27\x20/>\x0a','lt-AutoFocusLanes','stroke-dasharray','Unable\x20to\x20load\x20heuristics\x20data\x20for\x20LG.\x20This\x20feature\x20will\x20not\x20be\x20available','Lane\x20angle\x20overrides','#lt-trans-revCol','HeurFailColor','#lt-LaneTabFeatures','doSubAction','8\x2010','start','parentElement','attr','isTurnAllowedBySegDirections','text','colTooltip','Fwd\x20(A>B)','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-CS1Color\x27\x20id=\x27lt-CS1ColorLabel\x27><span\x20id=\x27lt-trans-viewCol\x27></span></label>\x0a','<div\x20style=\x22display:inline-block;position:relative;\x22\x20/>','primaryStreetID','SelAllEnable','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ClickSaveStraight\x27><span\x20id=\x27lt-trans-straClick\x27></span></label>\x0a','ScriptEnabled','#lt-trans-negCol','center','copyA-button','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27>\x0a','lt-AddTIO','extend','Positive\x20heuristics\x20candidate','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-LIOColor\x27\x20/>\x0a','shiftKey','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AutoExpandLanes\x27><span\x20title=\x22Feature\x20disabled\x20as\x20of\x20Aug\x2027,\x202022\x20to\x20prevent\x20flickering\x20issue\x22\x20id=\x27lt-trans-autoExpand\x27></span></label>\x0a','reverse','#lt-toolbar-container\x20{position:\x20relative;z-index:1010;text-align:center;}','.lt-color-input','#lt-trans-autoExpand','#lt-color-inputs','Delete\x20Rev\x20Lanes','LaneTools:\x20Error\x20loading\x20RBS:\x20','ClickSaveTurns','copyB-button','LT\x20Error\x20creating\x20shortcuts.\x20This\x20feature\x20will\x20be\x20disabled.','#26bae8','get','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','fill','fwdLanesInstructionsFromCSS','#lt-trans-turnClick','(failed)','indexOf','Continue','number','Turn\x20Left','#lt-LabelsEnable','user','fixed','navy','.lt-option-container.clk-svr','hide','Deleted\x20lanes\x20and\x20turn\x20associations','.lt-add-lanes','Allow\x20from\x20','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-NodeColor\x27\x20id=\x27lt-NodeColorLabel\x27><span\x20id=\x27lt-trans-nodeCol\x27></span></label>\x0a','padding-top','hasOwnProperty','\x27><span\x20id=\x27lt-trans-highCol\x27></span>:</span>\x0a','Found\x20a\x20failed\x20candidate\x20for\x20','wazeFontLink','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20id=\x27lt-serverSelectContainer\x27>\x0a','split','#lt-color-title','Nodes\x20with\x20lanes','script','version','https://www.waze.com/forum/viewtopic.php?t=301158','boxheight','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-CS1Color\x27\x20/>\x0a','order','#00aa00','Tab','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-BAColor\x27\x20id=\x27lt-BAColorLabel\x27><span\x20id=\x27lt-trans-revCol\x27></span></label>\x0a','now','MIN_ZOOM_NONFREEWAY','LaneTools\x20Dev\x20Msg:\x20','#lt-trans-highOver','getGuidanceMode','RPS','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-IconsRotate\x27><span\x20id=\x27lt-trans-IconsRotate\x27></span></label>\x0a','MAX_PERP_DIF','#lt-trans-heurNeg','draggable','getElementById','<button\x20type=\x22button\x22\x20id=\x22li-del-opp-btn\x22\x20style=\x22height:auto;background-color:orange;border:1px\x20solid\x20grey;border-radius:8px;\x20margin-bottom:5px;\x22>','lt-serverSelect','#lt-trans-autoTab','autoOpen','#66ccff','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-UI-wrapper\x27>\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-UIEnable\x27\x20/>\x0a','laneCount','.controls-container.turns-region','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-HeurColor\x27\x20/>\x0a','quickTog','\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-Toolbar-Container\x27\x20id=\x27lt-toolbar-container\x27>\x0a','Segs\x20with\x20TIOs','#edit-panel\x20>\x20div\x20>\x20div\x20>\x20div\x20>\x20div.segment-edit-section\x20>\x20wz-tabs\x20>\x20wz-tab.lanes-tab','segment','viewCSCol','laneLabel','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ScriptEnabled\x27><span\x20class=\x27lt-trans-enabled\x27></span></label>\x0a','fwdCol','.rev-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.edit-region\x20>\x20div\x20>\x20div\x20>\x20div:nth-child(1)','Actions','\x20(\x20','Disabled','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-BAColor\x27\x20/>\x0a','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AddTIO\x27\x20/>\x0a','LaneTools:\x20Error\x20loading\x20trans:\x20','#lt-color-title\x20{display:block;width:100%;padding:5px\x200\x205px\x200;font-weight:bold;text-decoration:underline;cursor:pointer;}','angle-90','delOpp','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LaneHeurNegHighlight\x27\x20/>\x0a','#lt-','cancel','getExtent','Labels','textContent','Lane\x20heuristics\x20candidates','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-CopyEnable\x27\x20/>\x0a','children','.fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20.lane-instruction.lane-instruction-from\x20>\x20.instruction\x20>\x20.road-width-edit\x20>\x20div\x20>\x20div\x20>\x20div\x20>\x20.lane-width-card','error','LAOCol','#ffffff','.fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20.lane-instruction.lane-instruction-to\x20>\x20.instruction\x20>\x20.lane-edit\x20>\x20.edit-region\x20>\x20div\x20>\x20.controls.direction-lanes-edit','Nodes\x20with\x20TIOs','data:image/svg+xml;base64,','accelerators','913752BFxihT','uturn','Found\x20a\x20heuristics\x20candidate!\x20','addFeatures','labelCol','#lt-trans-errorCol','actionManager','#lt-trans-straClick','.rev-lanes\x20>\x20div\x20>\x20div\x20>\x20.lane-instruction.lane-instruction-to\x20>\x20.instruction\x20>\x20.lane-edit\x20>\x20.edit-region\x20>\x20div\x20>\x20.controls.direction-lanes-edit','enableScript','afteraction','seg','#map','delFwd','Waze/Model/Graph/Actions/SetTurn','absolute','clone','moveend','#F50E0E','OVER_HIGHLIGHT','.small-uturn','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-dev-tools-wrapper\x27>','find','This\x20segment\x20is\x20one-way\x20but\x20has\x20lanes\x20set\x20in\x20the\x20opposite\x20direction.\x20Click\x20here\x20to\x20delete\x20them','revDirection','segment:','toggleShortcut','miniuturn','Error:\x20>1\x20qualifying\x20segment\x20for\x20','getLaneData','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-IconsEnable\x27\x20/>\x0a','View\x20only\x20CS','selAllTooltip','data-original-title','.cancel-button','then','observe','getJSON','#lt-sheet-link\x20>\x20a','PASS','.fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-to\x20>\x20div.instruction\x20>\x20div.edit-region\x20>\x20div\x20>\x20div\x20>\x20div:nth-child(1)\x20>\x20div','wmelt','Turn\x20angle\x20to\x20outseg2\x20','getZoom','setAttribute','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-AutoFocusLanes\x27><span\x20id=\x27lt-trans-autoFocus\x27></span></label>\x0a','laneNodeCol','nodes','getElementsByClassName','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-IconsEnable\x27><span\x20id=\x27lt-trans-enIcons\x27></span></label>\x0a','zoomend','parents','#000000','.lt-option-container.color\x20{text-decoration:none;}','Azm\x20from\x20node\x20','.lt-add-Width:hover\x20{border:1px\x20solid\x20#26bae8;background-color:#26bae8;cursor:pointer;}','Found\x20outseg2\x20candidate:\x20','.apply-button.waze-btn.waze-btn-blue','mapHighlight','revLaneCount','fwdLanesDirectionControlEditCSS','<div\x20style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22\x20id=\x22lt-fwd-add-lanes\x22\x20/>','584390uOhsHl','getTurnGraph','lanes','edit-panel','Toggle\x20Shortcut','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-ABColor\x27\x20/>\x0a','off','</a>\x0a','.lt-chkAll-lns\x20{display:inline-block;width:20px;height:20px;text-decoration:underline;font-weight:bold;font-size:10px;padding-left:3px;cursor:pointer;}','#lt-dev-tools-wrapper','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a','Lane\x20heuristics\x20-\x20not\x20qualified','hasLanes','Exit\x20Right','https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js','lt-CS2Color','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-NodeColor\x27\x20/>\x0a','btoa','wz-checkbox','129110UeDBgb','Only\x20highlight\x20if\x20segment\x20layer\x20active','height','min','angleSpreadSheetBaseURL','Auto-focus\x20lane\x20input','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20color\x27>\x0a','Auto-open\x20road\x20width','20px','background-color','getObjectArray','getCentroid','2px\x20solid\x20black','#lt-DevToolsEnable','done','lt-ABColor','lastSaveAction','default','Shortcut','rotate(180deg)','lt-rev-add-lanes','addLayer','autoFocus','Style','mouseleave','iconborderwidth','components','There\x20are\x20a\x20different\x20number\x20of\x20enabled\x20turns\x20on\x20this\x20segment/node','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LaneHeurPosHighlight\x27\x20/>\x0a','lt-add-Width','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ClickSaveEnable\x27\x20/>\x0a','wz-tabs','#lt-LaneHeurChecksShortcut','lt-LIOEnable','mouseenter','pasteB-button','Keep\x20Right','enableUIEnhancements','#04E6F6','\x20\x20\x20\x20\x20\x20\x20</div>','enIcons','#FFAD08','toLaneIndex','setItem','#lt-trans-quickTog','LIOEnable','lt-IconsEnable'];_0x3793=function(){return _0x3d8ee8;};return _0x3793();}function _0x34f3(_0x2b78e4,_0x4fddc8){const _0x3793ed=_0x3793();return _0x34f3=function(_0x34f35a,_0x378202){_0x34f35a=_0x34f35a-0x7f;let _0xa486ba=_0x3793ed[_0x34f35a];return _0xa486ba;},_0x34f3(_0x2b78e4,_0x4fddc8);}(function(_0x9a0898,_0xcd7c26){const _0x30beb1=_0x34f3,_0xcbce9a=_0x9a0898();while(!![]){try{const _0x5d01a4=-parseInt(_0x30beb1(0x290))/0x1+-parseInt(_0x30beb1(0x1b2))/0x2+parseInt(_0x30beb1(0xd7))/0x3*(-parseInt(_0x30beb1(0x157))/0x4)+parseInt(_0x30beb1(0x27d))/0x5*(parseInt(_0x30beb1(0x33b))/0x6)+parseInt(_0x30beb1(0x23f))/0x7+-parseInt(_0x30beb1(0x1a7))/0x8+parseInt(_0x30beb1(0x18c))/0x9;if(_0x5d01a4===_0xcd7c26)break;else _0xcbce9a['push'](_0xcbce9a['shift']());}catch(_0x517c8b){_0xcbce9a['push'](_0xcbce9a['shift']());}}}(_0x3793,0x91be5),function main(){'use strict';const _0x2392fd=_0x34f3;const _0x48e860={'divStr':'<div>','checkedStr':_0x2392fd(0x129),'htmlStr':_0x2392fd(0x192),'translationSpreadSheetBaseURL':_0x2392fd(0xc8),'angleSpreadSheetBaseURL':_0x2392fd(0xa8),'RBSAccessSheetBaseURL':_0x2392fd(0x165),'revLanesInstructionsFromCSS':'.rev-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-from\x20>\x20div.instruction','fwdLanesInstructionsFromCSS':'.fwd-lanes\x20>\x20div\x20>\x20div\x20>\x20div.lane-instruction.lane-instruction-from\x20>\x20div.instruction','editPanelCSS':_0x2392fd(0x21e),'fwdLanesDivInstructionCSS':_0x2392fd(0xf7),'fwdLanesNthChild':_0x2392fd(0x267),'revLanesNthChild':_0x2392fd(0x144),'fwdLanesDirectionControlEditCSS':_0x2392fd(0x23b),'fwdLanesLaneInstrunctionToCSS':_0x2392fd(0x159),'revLanesInstructionsToCSS':_0x2392fd(0x247),'wazeFontLink':_0x2392fd(0x33e),'segmentEditLanes':_0x2392fd(0x34a)},_0x28d868=''+GM_info[_0x2392fd(0x1fd)]['version'],_0x1445e5=_0x2392fd(0x28b),_0x3f683e=_0x2392fd(0x1ff),_0x23e29c=_0x2392fd(0x2db),_0x40774c=0x1,_0x44988b={},_0x1239fd={'failed':![]},_0x64fb13=location['href'][_0x2392fd(0x1e6)]('beta.waze.com')!==-0x1,_0xbeacdb={'default':{'enabled':'Enabled','disabled':_0x2392fd(0x227),'toggleShortcut':_0x2392fd(0x281),'UIEnhance':_0x2392fd(0xbf),'autoWidth':_0x2392fd(0x297),'autoOpen':_0x2392fd(0xea),'autoExpand':_0x2392fd(0x87),'autoFocus':_0x2392fd(0x295),'reOrient':'Re-orient\x20lane\x20icons','enClick':_0x2392fd(0x301),'clickStraight':_0x2392fd(0x182),'clickTurn':_0x2392fd(0x2a1),'mapHighlight':_0x2392fd(0x2f4),'laneLabel':_0x2392fd(0x16d),'nodeHigh':_0x2392fd(0x2d5),'LAOHigh':_0x2392fd(0x1b8),'CSOHigh':_0x2392fd(0x150),'heuristics':_0x2392fd(0x234),'posHeur':_0x2392fd(0x1d1),'negHeur':_0x2392fd(0x193),'highColor':'Highlight\x20Colors','colTooltip':_0x2392fd(0x2c1),'selAllTooltip':_0x2392fd(0xe5),'fwdCol':_0x2392fd(0x1c4),'revCol':_0x2392fd(0x31f),'labelCol':_0x2392fd(0x232),'errorCol':'Lane\x20errors','laneNodeCol':_0x2392fd(0x1fc),'nodeTIOCol':_0x2392fd(0x23c),'LAOCol':_0x2392fd(0x21d),'viewCSCol':_0x2392fd(0x25e),'hearCSCol':_0x2392fd(0x1a9),'heurPosCol':_0x2392fd(0x11b),'heurNegCol':_0x2392fd(0x288),'devTools':_0x2392fd(0x97),'quickTog':_0x2392fd(0x379),'showRBS':_0x2392fd(0x92),'delFwd':_0x2392fd(0xa9),'delRev':_0x2392fd(0x1da),'delOpp':_0x2392fd(0x256),'csIcons':_0x2392fd(0x172),'highlightOverride':_0x2392fd(0x291),'addTIO':'Include\x20TIO\x20in\x20lanes\x20tab','labelTIO':_0x2392fd(0x2cd),'defaultTIO':_0x2392fd(0x14c),'noneTIO':'None','tlTIO':_0x2392fd(0x1e9),'trTIO':'Turn\x20Right','klTIO':_0x2392fd(0x125),'krTIO':_0x2392fd(0x2b4),'conTIO':_0x2392fd(0x1e7),'elTIO':_0x2392fd(0x2d0),'erTIO':_0x2392fd(0x28a),'uturnTIO':_0x2392fd(0x1ac),'enIcons':_0x2392fd(0xab),'IconsRotate':_0x2392fd(0x317)}},_0x355007={'REVERSE':-0x1,'ANY':0x0,'FORWARD':0x1},_0x54a11d={'NARROW_STREET':0x16,'STREET':0x1,'PRIMARY_STREET':0x2,'RAMP':0x4,'FREEWAY':0x3,'MAJOR_HIGHWAY':0x6,'MINOR_HIGHWAY':0x7,'DIRT_ROAD':0x8,'FERRY':0xe,'PRIVATE_ROAD':0x11,'PARKING_LOT_ROAD':0x14,'WALKING_TRAIL':0x5,'PEDESTRIAN_BOARDWALK':0xa,'STAIRWAY':0x10,'RAILROAD':0x12,'RUNWAY':0x13},_0x29219a={'MIN_ZOOM_ALL':0xe,'MIN_ZOOM_NONFREEWAY':0x11},_0x4e008b={'ERROR':-0x2,'FAIL':-0x1,'NONE':0x0,'PASS':0x1};let _0x4d91c3,_0x49326c,_0x2ab443,_0x3d354a,_0x4cb7b2,_0x5937c5,_0x2d166c=0x0,_0x4e30cc={},_0x50a55a={},_0x5e2c3f=[],_0xd2fcf7={},_0x1bba79,_0x1db759,_0x1da6b2,_0x1a571b,_0x974cac,_0x148e61,_0x254a0b,_0x4c1d84,_0x16cd1b,_0x452929=![],_0x3fa128=![],_0x4f2063=![],_0x76549c='default',_0xa0d0ac;console[_0x2392fd(0x18a)](_0x2392fd(0x310));function _0x2dcc82(_0x4c1d66=0x0){const _0x53d39c=_0x2392fd;if(W&&W[_0x53d39c(0x16f)]&&W['model']&&W[_0x53d39c(0xce)]['user']&&$&&WazeWrap[_0x53d39c(0x2e0)])_0x47dc7a();else _0x4c1d66<0x1f4?setTimeout(()=>{_0x2dcc82(_0x4c1d66++);},0xc8):console[_0x53d39c(0x238)](_0x53d39c(0xd8));}function _0x47dc7a(){const _0x3c6be5=_0x2392fd;_0x148e61=W['loginManager'][_0x3c6be5(0x1eb)],_0x254a0b=require('Waze/Action/UpdateObject'),_0x4c1d84=require(_0x3c6be5(0x113)),_0x16cd1b=require(_0x3c6be5(0x24d)),_0xa0d0ac=W[_0x3c6be5(0x16f)][_0x3c6be5(0x318)]()[_0x3c6be5(0x349)]()===0x17;const _0x4b91e0=['.lt-wrapper\x20{position:relative;width:100%;font-size:12px;font-family:\x22Rubik\x22,\x20\x22Boing-light\x22,\x20sans-serif;user-select:none;}',_0x3c6be5(0x16c),'.lt-section-wrapper.border\x20{border-bottom:1px\x20solid\x20grey;margin-bottom:5px;}','.lt-option-container\x20{padding:3px;}',_0x3c6be5(0x274),_0x3c6be5(0x8d),_0x3c6be5(0x32d),_0x3c6be5(0x1a1),_0x3c6be5(0xaa),_0x3c6be5(0x1d6),'.lt-add-Width\x20{display:inline-block;width:15px;height:15px;border:1px\x20solid\x20black;border-radius:8px;margin:0\x203px\x200\x203px;line-height:\x201.5;text-align:center;font-size:10px;}',_0x3c6be5(0x276),'.lt-add-lanes\x20{display:inline-block;width:15px;height:15px;border:1px\x20solid\x20black;border-radius:8px;margin:0\x203px\x200\x203px;line-height:\x201.5;text-align:center;font-size:10px;}',_0x3c6be5(0x84),_0x3c6be5(0x285),_0x3c6be5(0x189),_0x3c6be5(0x22b)][_0x3c6be5(0x17b)]('\x20'),_0x3281ff=$(_0x48e860[_0x3c6be5(0x2fa)]);_0x3281ff[_0x3c6be5(0x192)]=[_0x3c6be5(0x13e)+_0x3c6be5(0x30f)+_0x3c6be5(0x2bf)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x27https://www.waze.com/forum/viewtopic.php?f=819&t=301158\x27\x20style=\x27font-weight:bold;font-size:12px;text-decoration:underline;\x27\x20\x20target=\x27_blank\x27>'+_0x3c6be5(0x360)+_0x28d868+_0x3c6be5(0x284)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x27display:inline-block;\x27><span\x20class=\x27lt-trans-tglshcut\x27></span>:<span\x20id=\x27lt-EnableShortcut\x27\x20style=\x27padding-left:10px;\x27></span></div>\x0a'+_0x3c6be5(0x163)+_0x3c6be5(0x162)+_0x3c6be5(0x222)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+_0x3c6be5(0x37c)+_0x3c6be5(0x2e5)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x27\x20id=\x27lt-LaneTabFeatures\x27>\x0a'+_0x3c6be5(0x2f2)+_0x3c6be5(0x8c)+_0x3c6be5(0x163)+_0x3c6be5(0x217)+_0x3c6be5(0xc5)+_0x3c6be5(0x176)+_0x3c6be5(0x37c)+_0x3c6be5(0x216)+_0x3c6be5(0x384)+_0x3c6be5(0x2da)+_0x3c6be5(0x176)+_0x3c6be5(0x287)+_0x3c6be5(0x196)+_0x3c6be5(0x2fc)+_0x3c6be5(0x176)+_0x3c6be5(0x287)+_0x3c6be5(0x35a)+_0x3c6be5(0xf6)+_0x3c6be5(0x176)+_0x3c6be5(0x287)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AutoExpandLanes\x27\x20/>\x0a'+_0x3c6be5(0x1d4)+_0x3c6be5(0x176)+_0x3c6be5(0x287)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-AutoFocusLanes\x27\x20/>\x0a'+_0x3c6be5(0x26c)+_0x3c6be5(0x176)+_0x3c6be5(0x287)+_0x3c6be5(0x15b)+_0x3c6be5(0x375)+_0x3c6be5(0x176)+_0x3c6be5(0x287)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-ReverseLanesIcon\x27\x20/>\x0a'+_0x3c6be5(0x2e6)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+_0x3c6be5(0xf8)+_0x3c6be5(0x229)+_0x3c6be5(0xc0)+_0x3c6be5(0x176)+_0x3c6be5(0x287)+_0x3c6be5(0x2ae)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ClickSaveEnable\x27><span\x20id=\x27lt-trans-enClick\x27></span></label>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20clk-svr\x27\x20style=\x27padding-left:10%;\x27>\x0a'+_0x3c6be5(0x35e)+_0x3c6be5(0x1c9)+_0x3c6be5(0x176)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20clk-svr\x27\x20style=\x27padding-left:10%;\x27>\x0a'+_0x3c6be5(0x175)+_0x3c6be5(0x371)+_0x3c6be5(0x176)+_0x3c6be5(0x37c)+_0x3c6be5(0x2e5)+_0x3c6be5(0xd1)+_0x3c6be5(0x2f2)+_0x3c6be5(0x149)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20style=\x27float:right;\x27>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-HighlightsEnable\x27\x20/>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-HighlightsEnable\x27><span\x20class=\x27lt-trans-enabled\x27></span></label>\x0a'+_0x3c6be5(0x176)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+_0x3c6be5(0xb2)+_0x3c6be5(0x384)+_0x3c6be5(0x15c)+_0x3c6be5(0x176)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a'+_0x3c6be5(0x25d)+_0x3c6be5(0x270)+_0x3c6be5(0x176)+_0x3c6be5(0x287)+_0x3c6be5(0x81)+_0x3c6be5(0x20c)+_0x3c6be5(0x176)+_0x3c6be5(0x287)+_0x3c6be5(0x112)+_0x3c6be5(0x30e)+_0x3c6be5(0x176)+_0x3c6be5(0x287)+_0x3c6be5(0x18d)+_0x3c6be5(0xc1)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+_0x3c6be5(0x287)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=checkbox\x20class=\x27lt-checkbox\x27\x20id=\x27lt-LIOEnable\x27\x20/>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LIOEnable\x27><span\x20id=\x27lt-trans-laOver\x27></span></label>\x0a'+_0x3c6be5(0x176)+_0x3c6be5(0x287)+_0x3c6be5(0x358)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-CSEnable\x27><span\x20id=\x27lt-trans-csOver\x27></span></label>\x0a'+_0x3c6be5(0x176)+_0x3c6be5(0x287)+_0x3c6be5(0x1b4)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-highlightOverride\x27><span\x20id=\x27lt-trans-highOver\x27></span></label>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+_0x3c6be5(0x2e5)+_0x3c6be5(0xd1)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x20border\x27>\x0a'+_0x3c6be5(0xb6)+_0x3c6be5(0x163)+_0x3c6be5(0xbd)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-LaneHeuristicsChecks\x27><span\x20class=\x27lt-trans-enabled\x27></span></label>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+_0x3c6be5(0x10e)+_0x3c6be5(0x384)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x27display:inline-block;\x27><span\x20class=\x27lt-trans-tglshcut\x27></span>:<span\x20id=\x27lt-LaneHeurChecksShortcut\x27\x20style=\x27padding-left:10px;\x27></span></div>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+_0x3c6be5(0x287)+_0x3c6be5(0x2ac)+_0x3c6be5(0xdd)+_0x3c6be5(0x176)+_0x3c6be5(0x287)+_0x3c6be5(0x22e)+_0x3c6be5(0x31d)+_0x3c6be5(0x176)+_0x3c6be5(0x37c)+_0x3c6be5(0x2e5)+_0x3c6be5(0xd1)+_0x3c6be5(0x1ce)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20id=\x27lt-color-title\x27\x20data-original-title=\x27'+_0xbeacdb[_0x76549c][_0x3c6be5(0x1c3)]+_0x3c6be5(0x1f6)+_0x3c6be5(0x152)+_0x3c6be5(0x296)+_0x3c6be5(0x282)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-ABColor\x27\x20id=\x27lt-ABColorLabel\x27><span\x20id=\x27lt-trans-fwdCol\x27></span></label>\x0a'+_0x3c6be5(0x321)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20color\x27>\x0a'+_0x3c6be5(0x228)+_0x3c6be5(0x205)+_0x3c6be5(0x321)+_0x3c6be5(0x296)+_0x3c6be5(0x36d)+_0x3c6be5(0xd2)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+_0x3c6be5(0x296)+_0x3c6be5(0x17f)+_0x3c6be5(0x133)+_0x3c6be5(0x321)+_0x3c6be5(0x296)+_0x3c6be5(0x28d)+_0x3c6be5(0x1f3)+_0x3c6be5(0x321)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x20color\x27>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-TIOColor\x27\x20/>\x0a'+_0x3c6be5(0x302)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+_0x3c6be5(0x296)+_0x3c6be5(0x1d2)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-TIOColor\x27\x20id=\x27lt-LIOColorLabel\x27><span\x20id=\x27lt-trans-laoCol\x27></span></label>\x0a'+_0x3c6be5(0x321)+_0x3c6be5(0x296)+_0x3c6be5(0x201)+_0x3c6be5(0x1c5)+_0x3c6be5(0x321)+_0x3c6be5(0x296)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<input\x20type=color\x20class=\x27lt-color-input\x27\x20id=\x27lt-CS2Color\x27\x20/>\x0a'+_0x3c6be5(0x2fb)+_0x3c6be5(0x321)+_0x3c6be5(0x296)+_0x3c6be5(0x21a)+_0x3c6be5(0x1af)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+_0x3c6be5(0x296)+_0x3c6be5(0x190)+_0x3c6be5(0x109)+_0x3c6be5(0x321)+_0x3c6be5(0x176)+_0x3c6be5(0x37c)+_0x3c6be5(0x2e5)+_0x3c6be5(0x36f)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-section-wrapper\x20border\x27>\x0a'+_0x3c6be5(0x36a)+_0x3c6be5(0x163)+_0x3c6be5(0x138)+_0x3c6be5(0xe1)+_0x3c6be5(0x176)+_0x3c6be5(0x37c)+_0x3c6be5(0x254)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27>\x0a'+_0x3c6be5(0x2f7)+_0x3c6be5(0xff)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+_0x3c6be5(0x1f9)+_0x3c6be5(0x160)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<label\x20class=\x27lt-label\x27\x20for=\x27lt-serverSelect\x27><span\x20id=\x27lt-trans-heurRBS\x27></span></label>\x0a'+_0x3c6be5(0x176)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-option-container\x27\x20id=\x27lt-cpy-pst\x27>\x0a'+_0x3c6be5(0x235)+_0x3c6be5(0xd3)+_0x3c6be5(0x176)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20id=\x27lt-sheet-link\x27\x20style=\x27display:none;\x27>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<a\x20href=\x27https://docs.google.com/spreadsheets/d/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/edit?usp=sharing\x27\x20target=\x27_blank\x27>LT\x20Config\x20Sheet</a>\x0a'+_0x3c6be5(0x176)+_0x3c6be5(0x37c)+_0x3c6be5(0x2e5)+_0x3c6be5(0x327)+'\x20\x20\x20\x20\x20\x20\x20</div>']['join']('\x20');const _0x2cdef0=$(_0x48e860[_0x3c6be5(0x2fa)]);_0x2cdef0['html']([_0x3c6be5(0x21c)+_0x3c6be5(0xd6)+_0x3c6be5(0x387)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x27button\x27\x20class=\x27lt-toolbar-button\x27\x20id=\x27copyA-button\x27>Copy\x20A</button>\x0a'+_0x3c6be5(0x2e5)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-toolbar-button-container\x27>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<button\x20type=\x27button\x27\x20class=\x27lt-toolbar-button\x27\x20id=\x27copyB-button\x27>Copy\x20B</button>\x0a'+_0x3c6be5(0x2e5)+_0x3c6be5(0x387)+_0x3c6be5(0x334)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27lt-toolbar-button-container\x27>\x0a'+_0x3c6be5(0x348)+_0x3c6be5(0x2e5)+'\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a'+_0x3c6be5(0x2b7)]['join']('\x20')),_0x974cac=_0x148e61[_0x3c6be5(0x17c)][_0x3c6be5(0x2f9)];if(_0x974cac>=0x0)WazeWrap[_0x3c6be5(0x171)][_0x3c6be5(0x204)]('LT',_0x3281ff['html'],_0x8fa7a,'LT'),$(_0x3c6be5(0x2fe)+_0x4b91e0+'</style>')['appendTo'](_0x3c6be5(0x354)),$(_0x3c6be5(0x24b))['append'](_0x2cdef0[_0x3c6be5(0x192)]()),WazeWrap[_0x3c6be5(0x171)][_0x3c6be5(0x31a)](GM_info[_0x3c6be5(0x1fd)][_0x3c6be5(0x146)],GM_info[_0x3c6be5(0x1fd)][_0x3c6be5(0x1fe)],_0x23e29c,_0x1445e5,_0x3f683e),$(_0x3c6be5(0xb7))['css']({'position':_0x3c6be5(0x1ec),'left':'500px','top':'500px','z-index':0x3ec,'height':_0x3c6be5(0x2ee),'width':'70px'}),$(_0x3c6be5(0x191))[_0x3c6be5(0x12d)]({'position':_0x3c6be5(0x24e),'height':_0x3c6be5(0x2ee),'width':_0x3c6be5(0x80),'border':'2px\x20solid\x20rgb(0,\x20117,\x20227)','background-color':_0x3c6be5(0x1ed),'color':'white','text-align':'center','cursor':_0x3c6be5(0x96)}),console['log']('LaneTools:\x20Loaded');else console['error']('LaneTools:\x20loading\x20error....');}function _0x3b1111(){const _0x211840=_0x2392fd;_0xe9158a(_0x211840(0x13a),_0x4e30cc[_0x211840(0x1ca)]),_0xe9158a(_0x211840(0xf3),_0x4e30cc[_0x211840(0x2c3)]),_0xe9158a(_0x211840(0xe6),_0x4e30cc[_0x211840(0x2ea)]),_0xe9158a(_0x211840(0xe8),_0x4e30cc['AutoExpandLanes']),_0xe9158a(_0x211840(0x1b0),_0x4e30cc[_0x211840(0xae)]),_0xe9158a(_0x211840(0x351),_0x4e30cc[_0x211840(0x188)]),_0xe9158a(_0x211840(0x82),_0x4e30cc[_0x211840(0xed)]),_0xe9158a(_0x211840(0x315),_0x4e30cc[_0x211840(0x1a5)]),_0xe9158a('lt-LIOEnable',_0x4e30cc[_0x211840(0x2bd)]),_0xe9158a(_0x211840(0x110),_0x4e30cc[_0x211840(0x329)]),_0xe9158a(_0x211840(0x98),_0x4e30cc[_0x211840(0x30d)]),_0xe9158a(_0x211840(0x312),_0x4e30cc['CopyEnable']),_0xe9158a('lt-SelAllEnable',_0x4e30cc[_0x211840(0x1c8)]),_0xe9158a(_0x211840(0x212),_0x4e30cc['serverSelect']),_0xe9158a(_0x211840(0x1b5),_0x4e30cc['AutoFocusLanes']),_0xe9158a('lt-ReverseLanesIcon',_0x4e30cc[_0x211840(0xfa)]),_0xe9158a(_0x211840(0x166),_0x4e30cc['ClickSaveEnable']),_0xe9158a(_0x211840(0x130),_0x4e30cc[_0x211840(0x88)]),_0xe9158a(_0x211840(0x33f),_0x4e30cc[_0x211840(0x1dc)]),_0xe9158a(_0x211840(0x386),_0x4e30cc[_0x211840(0xa2)]),_0xe9158a(_0x211840(0x34c),_0x4e30cc[_0x211840(0xd4)]),_0xe9158a(_0x211840(0xa7),_0x4e30cc[_0x211840(0x12c)]),_0xe9158a(_0x211840(0x1b1),_0x4e30cc[_0x211840(0x2c8)]),_0xe9158a(_0x211840(0x1cf),_0x4e30cc['addTIO']),_0xe9158a('lt-IconsEnable',_0x4e30cc[_0x211840(0x370)]),_0xe9158a(_0x211840(0xee),_0x4e30cc[_0x211840(0x317)]),_0xe9158a(_0x211840(0x120),_0x4e30cc[_0x211840(0x37f)]),_0x2b349d(_0x211840(0x29f),_0x4e30cc[_0x211840(0xdb)]),_0x2b349d(_0x211840(0x2cb),_0x4e30cc[_0x211840(0x314)]),_0x2b349d(_0x211840(0x8f),_0x4e30cc[_0x211840(0x148)]),_0x2b349d(_0x211840(0x11c),_0x4e30cc[_0x211840(0x94)]),_0x2b349d(_0x211840(0x2ef),_0x4e30cc[_0x211840(0x156)]),_0x2b349d(_0x211840(0x104),_0x4e30cc[_0x211840(0x147)]),_0x2b349d(_0x211840(0x2ed),_0x4e30cc[_0x211840(0x2e8)]),_0x2b349d(_0x211840(0x306),_0x4e30cc['CS1Color']),_0x2b349d(_0x211840(0x28c),_0x4e30cc['CS2Color']),_0x2b349d(_0x211840(0x186),_0x4e30cc[_0x211840(0x12f)]),_0x2b349d(_0x211840(0xbb),_0x4e30cc['HeurFailColor']),!_0x3c6d6c(_0x211840(0xf3))['checked']&&$(_0x211840(0x337))[_0x211840(0x1ef)](),!_0x3c6d6c(_0x211840(0x351))[_0x211840(0x129)]&&$(_0x211840(0x16a))[_0x211840(0x1ef)](),!_0x3c6d6c(_0x211840(0xa7))[_0x211840(0x129)]&&$(_0x211840(0x7f))[_0x211840(0x1ef)]();!_0x3c6d6c(_0x211840(0x120))[_0x211840(0x129)]?($(_0x211840(0x286))['hide'](),_0x4f2063=![]):_0x4f2063=_0x3c6d6c(_0x211840(0x312))[_0x211840(0x129)];_0x353804();function _0xe9158a(_0x5956a2,_0x34c9ef){const _0x178921=_0x211840;$('#'+_0x5956a2)[_0x178921(0x8e)](_0x178921(0x129),_0x34c9ef);}function _0x2b349d(_0x55ab3f,_0x154d4c){const _0x3dfc2d=_0x211840,_0x10bf47=$('#'+_0x55ab3f);_0x10bf47[_0x3dfc2d(0x1c0)](_0x3dfc2d(0x2f5),_0x154d4c),_0x10bf47[_0x3dfc2d(0x12d)](_0x3dfc2d(0xf4),_0x3dfc2d(0xb4)+_0x154d4c);}}async function _0x8fa7a(){const _0x37b6cf=_0x2392fd;await _0x188b8a(),await _0x163026(),_0x5433f2(),_0x1db759=new OpenLayers[(_0x37b6cf(0x33a))][(_0x37b6cf(0x32f))](_0x37b6cf(0x357),{'uniqueName':'_LTHighlightLayer'}),W['map'][_0x37b6cf(0x2a5)](_0x1db759),_0x1db759[_0x37b6cf(0x111)](!![]),_0x1a571b=new OpenLayers[(_0x37b6cf(0x33a))][(_0x37b6cf(0x32f))](_0x37b6cf(0x86),{'uniqueName':_0x37b6cf(0x86)}),W['map'][_0x37b6cf(0x2a5)](_0x1a571b),_0x1a571b[_0x37b6cf(0x111)](!![]);const _0x786bea=new OpenLayers[(_0x37b6cf(0x2a7))]({'fontFamily':_0x37b6cf(0x343),'labelOutlineColor':_0x37b6cf(0x12e),'fontColor':'${labelColor}','fontSize':'16','labelXOffset':0xf,'labelYOffset':-0xf,'labelOutlineWidth':'3','label':'${labelText}','angle':'','labelAlign':'cm','stroke-width':'0'});_0x1da6b2=new OpenLayers['Layer'][(_0x37b6cf(0x32f))](_0x37b6cf(0xfd),{'uniqueName':_0x37b6cf(0xfd),'styleMap':new OpenLayers[(_0x37b6cf(0x35f))](_0x786bea)}),W[_0x37b6cf(0x16f)]['addLayer'](_0x1da6b2),_0x1da6b2[_0x37b6cf(0x111)](!![]),WazeWrap[_0x37b6cf(0x1b3)][_0x37b6cf(0x385)](_0x37b6cf(0x250),null,_0x211658),WazeWrap[_0x37b6cf(0x1b3)][_0x37b6cf(0x385)](_0x37b6cf(0x250),null,_0x163614),WazeWrap[_0x37b6cf(0x1b3)][_0x37b6cf(0x385)](_0x37b6cf(0x271),null,_0x211658),WazeWrap[_0x37b6cf(0x1b3)][_0x37b6cf(0x385)]('zoomend',null,_0x163614),WazeWrap[_0x37b6cf(0x1b3)][_0x37b6cf(0x385)](_0x37b6cf(0x249),null,_0x211658),WazeWrap[_0x37b6cf(0x1b3)][_0x37b6cf(0x385)](_0x37b6cf(0x249),null,_0x524fb6),WazeWrap[_0x37b6cf(0x1b3)]['register'](_0x37b6cf(0x249),null,_0x163614),WazeWrap[_0x37b6cf(0x1b3)][_0x37b6cf(0x385)](_0x37b6cf(0x2f0),null,_0x211658),WazeWrap['Events'][_0x37b6cf(0x385)]('afterundoaction',null,_0x524fb6),WazeWrap[_0x37b6cf(0x1b3)]['register']('afterundoaction',null,_0x163614),WazeWrap['Events']['register']('afterclearactions',null,_0x211658),WazeWrap['Events'][_0x37b6cf(0x385)]('selectionchanged',null,_0x211658),WazeWrap[_0x37b6cf(0x1b3)]['register'](_0x37b6cf(0xd5),null,_0x524fb6),WazeWrap[_0x37b6cf(0x1b3)]['register'](_0x37b6cf(0xd5),null,_0x163614),WazeWrap[_0x37b6cf(0x1b3)]['register'](_0x37b6cf(0x35d),null,_0x211658);try{new WazeWrap[(_0x37b6cf(0x171))][(_0x37b6cf(0x2a2))](_0x37b6cf(0x187),_0x37b6cf(0x2e4),_0x37b6cf(0x268),_0x37b6cf(0x324),_0x4e30cc[_0x37b6cf(0x187)],_0x28f32d,null)[_0x37b6cf(0x103)](),new WazeWrap[(_0x37b6cf(0x171))][(_0x37b6cf(0x2a2))](_0x37b6cf(0x2b5),_0x37b6cf(0x177),_0x37b6cf(0x268),_0x37b6cf(0x324),_0x4e30cc[_0x37b6cf(0x2b5)],_0x28dfd8,null)[_0x37b6cf(0x103)](),new WazeWrap[(_0x37b6cf(0x171))][(_0x37b6cf(0x2a2))](_0x37b6cf(0xa5),_0x37b6cf(0x198),_0x37b6cf(0x268),_0x37b6cf(0x324),_0x4e30cc['enableHeuristics'],_0x400a64,null)[_0x37b6cf(0x103)](),new WazeWrap[(_0x37b6cf(0x171))][(_0x37b6cf(0x2a2))](_0x37b6cf(0x248),_0x37b6cf(0x15f),_0x37b6cf(0x268),_0x37b6cf(0x324),_0x4e30cc['enableScript'],_0x7e018e,null)['add']();}catch(_0x100b1f){console['log'](_0x37b6cf(0x1de)),$('#lt-EnableShortcut')[_0x37b6cf(0x1c2)](''+_0xbeacdb[_0x37b6cf(0x2a1)][_0x37b6cf(0x309)]),$('#lt-HighlightShortcut')['text'](''+_0xbeacdb[_0x37b6cf(0x2a1)][_0x37b6cf(0x309)]),$(_0x37b6cf(0xb8))[_0x37b6cf(0x1c2)](''+_0xbeacdb[_0x37b6cf(0x2a1)][_0x37b6cf(0x309)]),$(_0x37b6cf(0x2b0))[_0x37b6cf(0x1c2)](''+_0xbeacdb[_0x37b6cf(0x2a1)][_0x37b6cf(0x309)]),_0x452929=!![];}const _0x1b3dbe=$(_0x37b6cf(0x30a)),_0x3d73cf=$(_0x37b6cf(0x1fb)),_0x2f9bcd=$(_0x37b6cf(0xcb)),_0x2a5cfe=$(_0x37b6cf(0x29d));_0x3b1111(),setTimeout(()=>{_0x4b46c4();},0x32),_0x512eac(),_0x113ec9();let _0x222b72=$(_0x37b6cf(0xb7));_0x222b72[_0x37b6cf(0x20f)]({'handle':_0x37b6cf(0x191),'containment':'#map'});if(_0x974cac>0x1){let _0x1835f8=$(_0x37b6cf(0x2bc)),_0x2cedde='LaneTools:\x20The\x20following\x20special\x20access\x20features\x20are\x20enabled:\x20';_0x1835f8['attr'](_0x37b6cf(0x260),''+_0x50a55a[_0x37b6cf(0x25f)]),_0x1835f8['tooltip'](),_[_0x37b6cf(0x194)](_0x1239fd,_0x9aa502=>{const _0xf183a5=_0x37b6cf;_0x9aa502[0x0]===_0x148e61[_0xf183a5(0x2d6)]&&(_0x9aa502[0x1]==='1'&&(_0x3fa128=!![]),_0x9aa502[0x2]==='1'&&(_0x4f2063=!![]));});_0x3fa128&&(_0x3c6d6c('lt-DevToolsEnable')[_0x37b6cf(0x129)]&&$('#lt-serverSelectContainer')[_0x37b6cf(0x12d)]('display','block'),_0x2cedde+='RBS\x20Heuristics');if(_0x4f2063){$('#lt-sheet-link')['css']({'display':_0x37b6cf(0x141),'margin':_0x37b6cf(0x1ae)});let _0x31dd87=$(_0x37b6cf(0x265));_0x31dd87['css']({'padding':'2px','border':_0x37b6cf(0x29c),'border-radius':_0x37b6cf(0x85),'text-decoration':_0x37b6cf(0x2de)}),_0x31dd87['on'](_0x37b6cf(0x2b2),function(){const _0x33e44a=_0x37b6cf;$(this)[_0x33e44a(0x12d)](_0x33e44a(0x299),'orange');})['on'](_0x37b6cf(0x2a8),function(){const _0x15c08a=_0x37b6cf;$(this)[_0x15c08a(0x12d)](_0x15c08a(0x299),_0x15c08a(0x9f));}),$(_0x37b6cf(0x2e3))['on']('click',function(){const _0x1b25e0=_0x37b6cf;$(this)[0x0]['id']===_0x1b25e0(0x1cd)&&_0xe99d32('A'),$(this)[0x0]['id']===_0x1b25e0(0x1dd)&&_0xe99d32('B'),$(this)[0x0]['id']==='pasteA-button'&&_0x2439eb('A'),$(this)[0x0]['id']===_0x1b25e0(0x2b3)&&_0x2439eb('B');}),_0x2cedde=_0x3fa128?_0x2cedde+_0x37b6cf(0x34d):_0x2cedde+_0x37b6cf(0x16e);}else _0x222b72['css']({'visibility':_0x37b6cf(0x19e)});(_0x3fa128||_0x4f2063)&&console[_0x37b6cf(0x18a)](_0x2cedde);}else $(_0x37b6cf(0x1bb))[_0x37b6cf(0x12d)](_0x37b6cf(0x185),_0x37b6cf(0x2de));$(_0x37b6cf(0xa1))['on'](_0x37b6cf(0xe3),function(){const _0x34814b=_0x37b6cf;let _0x5a2e01=$(this)[0x0]['id']['substring'](0x3);_0x4e30cc[_0x5a2e01]=this[_0x34814b(0x129)],_0x28aeb2();}),$(_0x37b6cf(0x1d7))['on'](_0x37b6cf(0x19b),function(){const _0x39d8b9=_0x37b6cf;let _0x12b8d0=$(this)[0x0]['id'][_0x39d8b9(0x9d)](0x3);_0x4e30cc[_0x12b8d0]=this['value'],_0x28aeb2(),$(_0x39d8b9(0x22f)+_0x12b8d0)['css'](_0x39d8b9(0xf4),_0x39d8b9(0xb4)+this[_0x39d8b9(0x2f5)]),_0x178db7(),_0x211658();}),$(_0x37b6cf(0x2eb))['on'](_0x37b6cf(0xe3),()=>{const _0xa11463=_0x37b6cf;if(_0x3c6d6c('lt-ScriptEnabled')[_0xa11463(0x129)])_0x211658();else _0x178db7(),_0x214fc0();}),_0x1b3dbe['on'](_0x37b6cf(0xe3),()=>{const _0x102841=_0x37b6cf;if(!_0x3c6d6c(_0x102841(0x351))[_0x102841(0x129)])_0x178db7();_0x211658();}),_0x2a5cfe['on']('click',()=>{const _0x2838bf=_0x37b6cf;if(!_0x3c6d6c(_0x2838bf(0x120))[_0x2838bf(0x129)])_0x178db7();_0x211658(),_0x353804(),$('#lt-dev-tools-wrapper')['toggle']();}),$(_0x37b6cf(0x1ea))['on'](_0x37b6cf(0xe3),()=>{const _0x359696=_0x37b6cf;if(!_0x3c6d6c('lt-LabelsEnable')[_0x359696(0x129)])_0x178db7();_0x211658();}),$('#lt-NodesEnable')['on'](_0x37b6cf(0xe3),()=>{const _0x4a346e=_0x37b6cf;if(!_0x3c6d6c(_0x4a346e(0x315))[_0x4a346e(0x129)])_0x178db7();_0x211658();}),$(_0x37b6cf(0x333))['on']('click',()=>{const _0xd5120=_0x37b6cf;if(!_0x3c6d6c(_0xd5120(0x2b1))[_0xd5120(0x129)])_0x178db7();_0x211658();}),$(_0x37b6cf(0xbc))['on'](_0x37b6cf(0xe3),()=>{const _0x331dd7=_0x37b6cf;_0x3c6d6c(_0x331dd7(0x2be))['checked']?_0x163614():_0x214fc0();}),$('#lt-highlightOverride')['on'](_0x37b6cf(0xe3),()=>{const _0xe7b0a1=_0x37b6cf;if(!_0x3c6d6c(_0xe7b0a1(0x98))['checked'])_0x178db7();_0x211658();}),_0x3d73cf['on']('click',()=>{const _0x47f019=_0x37b6cf;$(_0x47f019(0x1d9))[_0x47f019(0x32c)]();}),$(_0x37b6cf(0x33c))['on'](_0x37b6cf(0xe3),()=>{const _0x21aac8=_0x37b6cf;$(_0x21aac8(0x1ee))[_0x21aac8(0x32c)]();}),$('#lt-UIEnable')['on'](_0x37b6cf(0xe3),()=>{$('#lt-UI-wrapper')['toggle'](),_0x214fc0();}),_0x1b3dbe['on'](_0x37b6cf(0xe3),()=>{const _0x4af0b3=_0x37b6cf;$(_0x4af0b3(0x16a))[_0x4af0b3(0x32c)]();}),_0x2f9bcd['on'](_0x37b6cf(0xe3),()=>{const _0x22ed21=_0x37b6cf;$('#lt-heur-wrapper')[_0x22ed21(0x32c)]();}),_0x2f9bcd['on'](_0x37b6cf(0xe3),()=>{const _0x35dc0a=_0x37b6cf;if(!_0x3c6d6c(_0x35dc0a(0xa7))[_0x35dc0a(0x129)])_0x178db7();_0x211658();}),$(_0x37b6cf(0x328))['on']('click',()=>{const _0x399edf=_0x37b6cf;if(!_0x3c6d6c(_0x399edf(0x386))[_0x399edf(0x129)])_0x178db7();_0x211658();}),$(_0x37b6cf(0x154))['on'](_0x37b6cf(0xe3),()=>{const _0x2577d6=_0x37b6cf;if(!_0x3c6d6c(_0x2577d6(0x34c))[_0x2577d6(0x129)])_0x178db7();_0x211658();}),$(_0x37b6cf(0xba))['on'](_0x37b6cf(0xe3),()=>{_0x512eac(),_0x178db7(),_0x211658();}),$(_0x37b6cf(0x1a0))['on'](_0x37b6cf(0x1ef),()=>{_0x3b1484();}),$('#lt-CopyEnable')['on'](_0x37b6cf(0xe3),_0x353804),_0x3d73cf[_0x37b6cf(0x311)](),_0x211658(),_0x163614();}async function _0x188b8a(){const _0x1b639f=_0x2392fd,_0xa2c46=JSON[_0x1b639f(0x11a)](localStorage[_0x1b639f(0x2ff)](_0x1b639f(0x1ab))),_0x337bda=await WazeWrap[_0x1b639f(0x37d)]['RetrieveSettings']('LT_Settings');!_0x337bda&&console[_0x1b639f(0x238)](_0x1b639f(0xe7));const _0x1eb79b={'lastSaveAction':0x0,'ScriptEnabled':!![],'UIEnable':!![],'AutoOpenWidth':![],'AutoExpandLanes':![],'AutoLanesTab':![],'HighlightsEnable':!![],'LabelsEnable':!![],'NodesEnable':!![],'ABColor':_0x1b639f(0x8a),'BAColor':_0x1b639f(0x17a),'LabelColor':_0x1b639f(0x2b9),'ErrorColor':_0x1b639f(0x251),'NodeColor':_0x1b639f(0x215),'TIOColor':_0x1b639f(0x382),'LIOColor':'#ff9900','CS1Color':_0x1b639f(0x2b6),'CS2Color':_0x1b639f(0x1ad),'HeurColor':_0x1b639f(0x203),'HeurFailColor':'#E804F6','CopyEnable':![],'SelAllEnable':![],'serverSelect':![],'LIOEnable':!![],'CSEnable':!![],'AutoFocusLanes':!![],'ReverseLanesIcon':![],'ClickSaveEnable':!![],'ClickSaveStraight':![],'ClickSaveTurns':!![],'enableScript':'','enableHighlights':'','enableUIEnhancements':'','enableHeuristics':'','LaneHeurNegHighlight':![],'LaneHeurPosHighlight':![],'LaneHeuristicsChecks':![],'highlightCSIcons':![],'highlightOverride':!![],'AddTIO':![],'IconsEnable':!![],'IconsRotate':!![],'DevToolsEnable':![]};_0x4e30cc=$[_0x1b639f(0x1d0)]({},_0x1eb79b,_0xa2c46),_0x337bda&&_0x337bda[_0x1b639f(0x2a0)]>_0x4e30cc[_0x1b639f(0x2a0)]&&$['extend'](_0x4e30cc,_0x337bda),Object[_0x1b639f(0x335)](_0x1eb79b)[_0x1b639f(0x303)](_0x37ab8a=>{const _0x286d56=_0x1b639f;!_0x4e30cc[_0x286d56(0x1f5)](_0x37ab8a)&&(_0x4e30cc[_0x37ab8a]=_0x1eb79b[_0x37ab8a]);});}async function _0x28aeb2(){const _0x29431a=_0x2392fd,{ScriptEnabled:_0x561d98,HighlightsEnable:_0x5189e4,LabelsEnable:_0x354ba6,NodesEnable:_0x5568fa,UIEnable:_0x4fe638,AutoLanesTab:_0x42cabc,AutoOpenWidth:_0x25c954,AutoExpandLanes:_0x42b128,ABColor:_0x493287,BAColor:_0x2a3d46,LabelColor:_0x4e568f,ErrorColor:_0x58f56b,NodeColor:_0x2a036f,TIOColor:_0x2122fb,LIOColor:_0x3d77cb,CS1Color:_0x4aca86,CS2Color:_0x14379e,CopyEnable:_0x3c1d46,SelAllEnable:_0x42ab01,serverSelect:_0x33cc6c,LIOEnable:_0x4735e5,CSEnable:_0x230379,AutoFocusLanes:_0x1779fc,ReverseLanesIcon:_0x340efd,ClickSaveEnable:_0x2fc041,ClickSaveStraight:_0x466414,ClickSaveTurns:_0x9e7694,enableScript:_0x1debde,enableHighlights:_0xcdbd4b,enableUIEnhancements:_0x3a5681,enableHeuristics:_0x32766c,HeurColor:_0x378a96,HeurFailColor:_0x15d60d,LaneHeurPosHighlight:_0x23a43a,LaneHeurNegHighlight:_0x31fc65,LaneHeuristicsChecks:_0x4c691e,highlightCSIcons:_0x2b30c7,highlightOverride:_0x1e474e,AddTIO:_0x5ad342,IconsEnable:_0x505e1a,IconsRotate:_0x31c659,DevToolsEnable:_0x6923e0}=_0x4e30cc,_0x1f3d8f={'lastSaveAction':Date[_0x29431a(0x206)](),'ScriptEnabled':_0x561d98,'HighlightsEnable':_0x5189e4,'LabelsEnable':_0x354ba6,'NodesEnable':_0x5568fa,'UIEnable':_0x4fe638,'AutoOpenWidth':_0x25c954,'AutoLanesTab':_0x42cabc,'AutoExpandLanes':_0x42b128,'ABColor':_0x493287,'BAColor':_0x2a3d46,'LabelColor':_0x4e568f,'ErrorColor':_0x58f56b,'NodeColor':_0x2a036f,'TIOColor':_0x2122fb,'LIOColor':_0x3d77cb,'CS1Color':_0x4aca86,'CS2Color':_0x14379e,'CopyEnable':_0x3c1d46,'SelAllEnable':_0x42ab01,'serverSelect':_0x33cc6c,'LIOEnable':_0x4735e5,'CSEnable':_0x230379,'AutoFocusLanes':_0x1779fc,'ReverseLanesIcon':_0x340efd,'ClickSaveEnable':_0x2fc041,'ClickSaveStraight':_0x466414,'ClickSaveTurns':_0x9e7694,'enableScript':_0x1debde,'enableHighlights':_0xcdbd4b,'enableUIEnhancements':_0x3a5681,'enableHeuristics':_0x32766c,'HeurColor':_0x378a96,'HeurFailColor':_0x15d60d,'LaneHeurPosHighlight':_0x23a43a,'LaneHeurNegHighlight':_0x31fc65,'LaneHeuristicsChecks':_0x4c691e,'highlightCSIcons':_0x2b30c7,'highlightOverride':_0x1e474e,'AddTIO':_0x5ad342,'IconsEnable':_0x505e1a,'IconsRotate':_0x31c659,'DevToolsEnable':_0x6923e0};for(const _0x4486d4 in W[_0x29431a(0x23e)][_0x29431a(0x225)]){const {shortcut:_0x548ae3,group:_0x41e419}=W['accelerators'][_0x29431a(0x225)][_0x4486d4];let _0x256152='';_0x41e419===_0x29431a(0x268)&&(_0x548ae3?(_0x548ae3[_0x29431a(0x135)]===!![]&&(_0x256152+='A'),_0x548ae3[_0x29431a(0x1d3)]===!![]&&(_0x256152+='S'),_0x548ae3['ctrlKey']===!![]&&(_0x256152+='C'),_0x256152!==''&&(_0x256152+='+'),_0x548ae3['keyCode']&&(_0x256152+=_0x548ae3[_0x29431a(0x128)])):_0x256152='-1',_0x1f3d8f[_0x4486d4]=_0x256152);}_0x4e30cc=_0x1f3d8f,localStorage&&localStorage[_0x29431a(0x2bb)](_0x29431a(0x1ab),JSON[_0x29431a(0x15a)](_0x1f3d8f));const _0x12ea65=await WazeWrap[_0x29431a(0x37d)]['SaveSettings'](_0x29431a(0x1ab),_0x1f3d8f);if(_0x12ea65===null)console['warn']('LaneTools:\x20User\x20PIN\x20not\x20set\x20in\x20WazeWrap\x20tab');else{if(_0x12ea65===![])console['error'](_0x29431a(0x36e));else console[_0x29431a(0x18a)](_0x29431a(0xfe));}}async function _0x163026(){const _0x1cfa06=_0x2392fd;let _0x20d414=![];const _0x5c92b9=_0x1cfa06(0x173),_0x3d7d88=(_0x309d0b,_0xbb1688,_0x4e4338)=>{const _0x44a625=_0x1cfa06;console['error'](_0x44a625(0xe9),_0x4e4338);},_0x27512d=(_0x84aadf,_0x2f4339,_0x4ee95a)=>{const _0x1d58c1=_0x1cfa06;console[_0x1d58c1(0x238)](_0x1d58c1(0x1db),_0x4ee95a),!_0x1239fd[_0x1d58c1(0x181)]&&(WazeWrap['Alerts'][_0x1d58c1(0x238)](GM_info[_0x1d58c1(0x1fd)][_0x1d58c1(0x146)],_0x1d58c1(0x1b7)),_0x1239fd['failed']=!![]);},_0x1c2524=(_0x2e70ea,_0x26c59a,_0x33bdb2)=>{const _0x1781c0=_0x1cfa06;console[_0x1781c0(0x238)](_0x1781c0(0x22a),_0x33bdb2);};try{await $[_0x1cfa06(0x264)](_0x48e860[_0x1cfa06(0x323)]+_0x5c92b9)['done'](async _0x39d2ff=>{const _0x30ff5b=_0x1cfa06;_0x39d2ff[_0x30ff5b(0x170)][_0x30ff5b(0x9c)]>0x0?_[_0x30ff5b(0x194)](_0x39d2ff[_0x30ff5b(0x170)],_0x52e8c1=>{const _0x181adf=_0x30ff5b;let _0x4cde01=_0x52e8c1[0x1],_0x3b3477=Number[_0x181adf(0x93)](_0x52e8c1[0x2],0xa)===0x1;!_0xbeacdb[_0x4cde01]&&_0x3b3477&&(_0xbeacdb[_0x4cde01]=JSON[_0x181adf(0x11a)](_0x52e8c1[0x0]));}):_0x1c2524();})['fail'](_0x1c2524);}catch(_0x5cb103){_0x1c2524(null,null,_0x5cb103);}try{await $[_0x1cfa06(0x264)](_0x48e860[_0x1cfa06(0x294)]+_0x5c92b9)[_0x1cfa06(0x29e)](_0x352de7=>{const _0x224a29=_0x1cfa06;if(_0x352de7[_0x224a29(0x170)][_0x224a29(0x9c)]>0x0)_[_0x224a29(0x194)](_0x352de7[_0x224a29(0x170)],_0x2d00f9=>{const _0x1786bc=_0x224a29;!_0x44988b[_0x2d00f9[0x1]]&&(_0x44988b[_0x2d00f9[0x1]]=JSON[_0x1786bc(0x11a)](_0x2d00f9[0x0]));}),_0x20d414=!![];else _0x3d7d88();})[_0x1cfa06(0x347)](_0x3d7d88);}catch(_0x4ff65d){_0x3d7d88(null,null,_0x4ff65d);}try{await $[_0x1cfa06(0x264)](_0x48e860[_0x1cfa06(0x362)]+_0x5c92b9)['done'](_0x4aef37=>{const _0xa4d97d=_0x1cfa06;if(_0x4aef37[_0xa4d97d(0x170)]['length']>0x0){for(let _0xba9488=0x0;_0xba9488<_0x4aef37['values'][_0xa4d97d(0x9c)];_0xba9488++){_0x1239fd[_0xba9488]=_0x4aef37[_0xa4d97d(0x170)][_0xba9488];}_0x1239fd[_0xa4d97d(0x181)]=![];}else _0x27512d();})['fail'](_0x27512d);}catch(_0x363d43){_0x27512d(null,null,_0x363d43);}_0x20d414&&_[_0x1cfa06(0x194)](_0x44988b,_0x51526b=>{const _0x423e22=_0x1cfa06;for(const _0x2aeaf7 in _0x51526b){if(_0x51526b[_0x423e22(0x1f5)](_0x2aeaf7)){let _0x428a05=_0x51526b[_0x2aeaf7];_0x51526b[_0x2aeaf7]=Number['parseFloat'](_0x428a05);}}});}function _0x113ec9(){const _0x646640=_0x2392fd;_0x76549c=I18n[_0x646640(0x19a)]()[_0x646640(0x359)]();if(_0xbeacdb[_0x76549c])_0x50a55a=_0xbeacdb[_0x76549c];else _0x76549c[_0x646640(0xcd)]('-')&&_0xbeacdb[_0x76549c[_0x646640(0x1fa)]('-')[0x0]]?_0x50a55a=_0xbeacdb[_0x76549c['split']('-')[0x0]]:_0x50a55a=_0xbeacdb[_0x646640(0x2a1)];Object[_0x646640(0x335)](_0xbeacdb[_0x646640(0x2a1)])['forEach'](_0x29e84b=>{(!_0x50a55a['hasOwnProperty'](_0x29e84b)||_0x50a55a[_0x29e84b]==='')&&(_0x50a55a[_0x29e84b]=_0xbeacdb['default'][_0x29e84b]);}),$('.lt-trans-enabled')[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x10b)]),$(_0x646640(0xa6))[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x259)]),$(_0x646640(0x2dc))[_0x646640(0x1c2)](_0x50a55a['UIEnhance']),$(_0x646640(0x213))[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x214)]),$('#lt-trans-autoWidth')[_0x646640(0x1c2)](_0x50a55a['autoWidth']),$(_0x646640(0x1d8))[_0x646640(0x1c2)](_0x50a55a['autoExpand']),$(_0x646640(0x102))[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x2a6)]),$(_0x646640(0x2f1))[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x91)]),$(_0x646640(0x367))['text'](_0x50a55a['enClick']),$(_0x646640(0x246))[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x30b)]),$(_0x646640(0x1e4))[_0x646640(0x1c2)](_0x50a55a[_0x646640(0xe4)]),$('#lt-trans-mapHigh')[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x279)]),$('#lt-trans-lnLabel')['text'](_0x50a55a[_0x646640(0x221)]),$(_0x646640(0x9a))['text'](_0x50a55a['nodeHigh']),$(_0x646640(0xa0))[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x184)]),$(_0x646640(0xec))['text'](_0x50a55a[_0x646640(0x364)]),$('#lt-trans-heurCan')[_0x646640(0x1c2)](_0x50a55a['heuristics']),$(_0x646640(0x1a2))[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x117)]),$(_0x646640(0x20e))[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x16b)]),$(_0x646640(0x134))['text'](_0x50a55a['highColor']),$('#lt-trans-fwdCol')[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x223)]),$(_0x646640(0x1b9))[_0x646640(0x1c2)](_0x50a55a[_0x646640(0xa4)]),$('#lt-trans-labelCol')[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x243)]),$(_0x646640(0x244))['text'](_0x50a55a['errorCol']),$(_0x646640(0x2f6))[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x26d)]),$('#lt-trans-tioCol')['text'](_0x50a55a[_0x646640(0x155)]),$(_0x646640(0x363))['text'](_0x50a55a[_0x646640(0x239)]),$('#lt-trans-viewCol')[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x220)]),$('#lt-trans-hearCol')['text'](_0x50a55a['hearCSCol']),$(_0x646640(0x2e1))['text'](_0x50a55a['heurPosCol']),$(_0x646640(0x1cb))['text'](_0x50a55a[_0x646640(0x142)]),$(_0x646640(0x316))[_0x646640(0x1c2)](_0x50a55a['devTools']),$('#lt-trans-quickTog')[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x21b)]),$(_0x646640(0xde))[_0x646640(0x1c2)](_0x50a55a[_0x646640(0xf2)]),$(_0x646640(0x376))[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x17d)]),$(_0x646640(0x209))[_0x646640(0x1c2)](_0x50a55a['highlightOverride']),$(_0x646640(0x12b))['text'](_0x50a55a[_0x646640(0x32a)]),$(_0x646640(0x161))['text'](_0x50a55a[_0x646640(0x2b8)]),$('#lt-trans-IconsRotate')[_0x646640(0x1c2)](_0x50a55a[_0x646640(0x317)]),$(_0x646640(0x1fb))['attr'](_0x646640(0x260),_0x50a55a['colTooltip']),_0x452929&&($(_0x646640(0x11f))[_0x646640(0x1c2)](''+_0x50a55a[_0x646640(0x309)]),$(_0x646640(0xfb))[_0x646640(0x1c2)](''+_0x50a55a[_0x646640(0x309)]),$(_0x646640(0xb8))['text'](''+_0x50a55a['disabled']),$(_0x646640(0x2b0))[_0x646640(0x1c2)](''+_0x50a55a[_0x646640(0x309)]));}function _0x512eac(){const _0x274a19=_0x2392fd;if(_0x1239fd[_0x274a19(0x181)])return;let _0x34ffc3=_0x3fa128&&_0x3c6d6c(_0x274a19(0x212))['checked']?_0x44988b['RBS']:_0x44988b[_0x274a19(0x20b)];_0x4d91c3=_0x34ffc3[_0x274a19(0x114)],_0x49326c=_0x34ffc3[_0x274a19(0x20d)],_0x2ab443=_0x34ffc3['MAX_PERP_DIF_ALT'],_0x3d354a=_0x34ffc3[_0x274a19(0x101)],_0x4cb7b2=_0x34ffc3[_0x274a19(0x361)],_0x5937c5=_0x34ffc3[_0x274a19(0x31b)];}function _0x3b1484(){const _0x2c6202=_0x2392fd;let _0x2b4dc4=![];for(const _0x25f3e0 in W[_0x2c6202(0x23e)][_0x2c6202(0x225)]){const {shortcut:_0x4798c6,group:_0x1f0433}=W[_0x2c6202(0x23e)][_0x2c6202(0x225)][_0x25f3e0];if(_0x1f0433===_0x2c6202(0x268)){let _0x296c61='';if(_0x4798c6)_0x4798c6[_0x2c6202(0x135)]===!![]&&(_0x296c61+='A'),_0x4798c6[_0x2c6202(0x1d3)]===!![]&&(_0x296c61+='S'),_0x4798c6['ctrlKey']===!![]&&(_0x296c61+='C'),_0x296c61!==''&&(_0x296c61+='+'),_0x4798c6[_0x2c6202(0x128)]&&(_0x296c61+=_0x4798c6[_0x2c6202(0x128)]);else _0x296c61='-1';if(_0x4e30cc[_0x25f3e0]!==_0x296c61){_0x2b4dc4=!![],console['log'](_0x2c6202(0xc9)+_0x25f3e0+':\x20'+_0x4e30cc[_0x25f3e0]+_0x2c6202(0x2d8)+_0x296c61);break;}}}_0x2b4dc4&&_0x28aeb2()[_0x2c6202(0x262)](_0x80298a=>setTimeout(()=>{_0x4b46c4();},0xc8));}function _0x1962bb(_0x160da3){const _0x304e4c=_0x2392fd,_0x18e1de=_0x4e30cc[_0x160da3];let _0xcbbdb9='';if(_0x18e1de!=='-1'){if(_0x18e1de['indexOf']('+')>-0x1){const _0x23c198=_0x18e1de['split']('+')[0x0];for(let _0x42d81f=0x0;_0x42d81f<_0x23c198[_0x304e4c(0x9c)];_0x42d81f++){_0xcbbdb9[_0x304e4c(0x9c)]>0x0&&(_0xcbbdb9+='+'),_0x23c198[_0x42d81f]==='C'&&(_0xcbbdb9+=_0x304e4c(0x37e)),_0x23c198[_0x42d81f]==='S'&&(_0xcbbdb9+=_0x304e4c(0x2f3)),_0x23c198[_0x42d81f]==='A'&&(_0xcbbdb9+=_0x304e4c(0x304));}_0xcbbdb9[_0x304e4c(0x9c)]>0x0&&(_0xcbbdb9+='+');let _0x49a86d=_0x18e1de['split']('+')[0x1];_0x49a86d>=0x60&&_0x49a86d<=0x69&&(_0x49a86d-=0x30,_0xcbbdb9+='[num\x20pad]'),_0xcbbdb9+=String['fromCharCode'](_0x49a86d);}else{let _0x1e56ed=Number[_0x304e4c(0x93)](_0x18e1de,0xa);_0x1e56ed>=0x60&&_0x1e56ed<=0x69&&(_0x1e56ed-=0x30,_0xcbbdb9+='[num\x20pad]'),_0xcbbdb9+=String['fromCharCode'](_0x1e56ed);}}return _0xcbbdb9;}function _0x4b46c4(){const _0x18b389=_0x2392fd;!_0x452929&&($(_0x18b389(0x11f))[_0x18b389(0x1c2)](_0x1962bb(_0x18b389(0x248))),$('#lt-HighlightShortcut')['text'](_0x1962bb(_0x18b389(0x187))),$(_0x18b389(0xb8))[_0x18b389(0x1c2)](_0x1962bb(_0x18b389(0x2b5))),$(_0x18b389(0x2b0))[_0x18b389(0x1c2)](_0x1962bb(_0x18b389(0xa5))));}function _0x104205(_0x5482ef){const _0x38e74f=_0x2392fd;return W[_0x38e74f(0xb0)][_0x38e74f(0x1aa)]['getObjectById'](_0x5482ef);}function _0xf7e638(_0x690d1){const _0x45076e=_0x2392fd;return W['model'][_0x45076e(0x26e)][_0x45076e(0xc7)](_0x690d1);}function _0xb63981(_0x2ac8ff,_0x1af938,_0x46d82f=null){const _0x353413=_0x2392fd;_0x46d82f!==null&&_0x46d82f['stopPropagation']();_0x3c6d6c('lt-ReverseLanesIcon')[_0x353413(0x129)]&&!_0x2ac8ff['rotateDisplayLanes']&&_0x187ecf(_0x2ac8ff),_0x3c6d6c(_0x353413(0x1b1))[_0x353413(0x129)]&&_0x3880ce(_0x1af938);if(_0x974cac>=0x1||editorInfo['editableCountryIDS'][_0x353413(0x9c)]>0x0){if(_0x3c6d6c('li-del-opp-btn'))$(_0x353413(0x300))[_0x353413(0x378)]();let _0x263165=$(_0x353413(0x37a)+_0x50a55a[_0x353413(0x24c)]+_0x353413(0x32b)),_0x5974e3=$(_0x353413(0xc3)+_0x50a55a[_0x353413(0x2c9)]+'</button>'),_0x143a29=$(_0x353413(0x211)+_0x50a55a[_0x353413(0x22d)]+_0x353413(0x32b)),_0x2c2606=$(_0x353413(0x1c6)),_0x3264aa=$(_0x353413(0x1c6)),_0x20e34b=$(_0x353413(0x1c6));_0x263165[_0x353413(0xb3)](_0x2c2606),_0x5974e3[_0x353413(0xb3)](_0x3264aa),_0x143a29[_0x353413(0xb3)](_0x20e34b);const _0x54ba51=$(_0x353413(0x346)),_0x3e4c2e=$(_0x353413(0x305)),_0x24dfbe=$('#li-del-opp-btn');_0x54ba51['off'](),_0x3e4c2e[_0x353413(0x283)](),_0x24dfbe[_0x353413(0x283)]();if(!_0x3c6d6c('li-del-rev-btn')&&!_0x2ac8ff[_0x353413(0xcc)]&&_0x1af938[0x0][_0x353413(0x17c)][_0x353413(0x340)][_0x353413(0x1a8)]['getRevLanes']()[_0x353413(0x218)]>0x0){if($(_0x48e860[_0x353413(0x336)])[_0x353413(0x9c)]>0x0)_0x3264aa[_0x353413(0x2d9)](_0x48e860[_0x353413(0x336)]),$(_0x48e860[_0x353413(0x336)])[_0x353413(0x12d)](_0x353413(0xf0),'4px\x20dashed\x20'+_0x4e30cc['BAColor']);else _0x1af938[0x0]['attributes'][_0x353413(0x340)][_0x353413(0x1a8)][_0x353413(0x17c)][_0x353413(0x257)]!==!![]&&(_0x143a29[_0x353413(0x8e)](_0x353413(0x179),_0x353413(0xf5)),_0x143a29['prependTo'](_0x48e860[_0x353413(0x326)]));}else $(_0x48e860[_0x353413(0x336)])['css'](_0x353413(0xf0),_0x353413(0x2c4)+_0x4e30cc[_0x353413(0x314)]);if(!_0x3c6d6c(_0x353413(0x18b))&&!_0x2ac8ff[_0x353413(0xc4)]&&_0x1af938[0x0][_0x353413(0x17c)][_0x353413(0x340)][_0x353413(0x1a8)]['getFwdLanes']()[_0x353413(0x218)]>0x0){if($(_0x48e860[_0x353413(0x116)])['length']>0x0)_0x2c2606[_0x353413(0x2d9)](_0x48e860[_0x353413(0x116)]),$(_0x48e860[_0x353413(0x116)])[_0x353413(0x12d)]('border-bottom',_0x353413(0x2c4)+_0x4e30cc['ABColor']);else _0x1af938[0x0][_0x353413(0x17c)][_0x353413(0x340)][_0x353413(0x1a8)]['attributes']['fwdDirection']!==!![]&&(_0x143a29['prop'](_0x353413(0x179),'fwd'),_0x143a29[_0x353413(0x2d9)](_0x48e860[_0x353413(0x326)]));}else $(_0x48e860[_0x353413(0x1e3)])['css'](_0x353413(0xf0),_0x353413(0x2c4)+_0x4e30cc[_0x353413(0xdb)]);_0x54ba51['on'](_0x353413(0xe3),function(){const _0x3b1deb=_0x353413;_0x333326('fwd'),_0x2ac8ff[_0x3b1deb(0xc4)]=!![],setTimeout(function(){_0xb63981(_0x2ac8ff,_0x1af938);},0xc8);}),_0x3e4c2e['on'](_0x353413(0xe3),function(){const _0x5ea28d=_0x353413;_0x333326(_0x5ea28d(0xf5)),_0x2ac8ff[_0x5ea28d(0xcc)]=!![],setTimeout(function(){_0xb63981(_0x2ac8ff,_0x1af938);},0xc8);}),_0x24dfbe['on']('click',function(){const _0x40fd8d=_0x353413;let _0x1c717a=$(this)[_0x40fd8d(0x8e)](_0x40fd8d(0x179));_0x333326(_0x1c717a),_0x1c717a==='rev'?_0x2ac8ff[_0x40fd8d(0xcc)]=!![]:_0x2ac8ff['fwdLanesEnabled']=!![],_0xb63981(_0x2ac8ff,_0x1af938);});}const _0x2c813e=$('.edit-lane-guidance');_0x2c813e[_0x353413(0x283)](),_0x2c813e['on'](_0x353413(0xe3),function(){const _0xa9885e=_0x353413;$(this)[_0xa9885e(0x272)](_0xa9885e(0x2f8))[_0xa9885e(0x9c)]&&setTimeout(function(){const _0x32297e=_0xa9885e;_0x43deee('fwd'),_0x1bcdd(),_0x8cf42c(),_0x4c429a(_0x2ac8ff),_0x29e90a(_0x2ac8ff,_0x1af938);if(_0x3c6d6c(_0x32297e(0x1cf))[_0x32297e(0x129)])addTIOUI('fwd');},0x64),$(this)['parents'](_0xa9885e(0x381))[_0xa9885e(0x9c)]&&setTimeout(function(){const _0x31e3a4=_0xa9885e;_0x43deee('rev'),_0x1bcdd(),_0x8cf42c(),_0x4c429a(_0x2ac8ff),_0x29e90a(_0x2ac8ff,_0x1af938);if(_0x3c6d6c('lt-AddTIO')[_0x31e3a4(0x129)])addTIOUI(_0x31e3a4(0xf5));},0x64);});if(!_0x2ac8ff['fwdLanesEnabled']&&!_0x2ac8ff[_0x353413(0xcc)]&&!_0x2ac8ff[_0x353413(0xac)])_0x29310a(_0x2ac8ff);_0x8cf42c();}function _0x29e90a(_0x53b4c5,_0x59c189){const _0xcfe9a5=_0x2392fd;$(_0xcfe9a5(0x278))[_0xcfe9a5(0x283)](),$('.cancel-button')[_0xcfe9a5(0x283)]();const _0x229990=$('.fwd-lanes'),_0xfa1ff1=$(_0xcfe9a5(0x381));_0x229990[_0xcfe9a5(0x255)](_0xcfe9a5(0x278))['on'](_0xcfe9a5(0xe3),()=>{_0x53b4c5['fwdLanesEnabled']=!![],setTimeout(function(){_0xb63981(_0x53b4c5,_0x59c189);},0xc8);}),_0xfa1ff1['find'](_0xcfe9a5(0x278))['on'](_0xcfe9a5(0xe3),()=>{const _0x3d60f7=_0xcfe9a5;_0x53b4c5[_0x3d60f7(0xcc)]=!![],setTimeout(function(){_0xb63981(_0x53b4c5,_0x59c189);},0xc8);}),_0x229990[_0xcfe9a5(0x255)](_0xcfe9a5(0x261))['on'](_0xcfe9a5(0xe3),()=>{const _0x131267=_0xcfe9a5;_0x53b4c5[_0x131267(0xc4)]=!![],setTimeout(function(){_0xb63981(_0x53b4c5,_0x59c189);},0xc8);}),_0xfa1ff1[_0xcfe9a5(0x255)](_0xcfe9a5(0x261))['on']('click',()=>{const _0x18d41f=_0xcfe9a5;_0x53b4c5[_0x18d41f(0xcc)]=!![],setTimeout(function(){_0xb63981(_0x53b4c5,_0x59c189);},0xc8);});}function _0x29310a(_0x52c8c0){const _0x1dae11=_0x2392fd;_0x52c8c0['autoOpenTriggered']=!![];if(_0x3c6d6c(_0x1dae11(0xe8))[_0x1dae11(0x129)]){if(!_0x52c8c0[_0x1dae11(0xc4)]){}if(!_0x52c8c0[_0x1dae11(0xcc)]){}}if(_0x3c6d6c(_0x1dae11(0xe6))[_0x1dae11(0x129)]){let _0x3ce970=$(_0x1dae11(0x34e));!_0x52c8c0[_0x1dae11(0xc4)]&&$(_0x1dae11(0x2f8))[_0x1dae11(0x255)](_0x3ce970)[_0x1dae11(0x169)](_0x1dae11(0xe3)),!_0x52c8c0['revLanesEnabled']&&$(_0x1dae11(0x381))['find'](_0x3ce970)[_0x1dae11(0x169)](_0x1dae11(0xe3));}}function _0x8cf42c(){const _0x168ef6=_0x2392fd;$(_0x168ef6(0x374))[_0x168ef6(0x12d)]({'padding':_0x168ef6(0xeb),'margin-bottom':_0x168ef6(0xb5)}),$('<div\x20class=\x22lt-add-Width\x20fwd\x22>2</div>')['css']({'padding':'5px\x205px\x2010px','margin':_0x168ef6(0x2fd)}),$(_0x48e860[_0x168ef6(0x27b)])[_0x168ef6(0x12d)](_0x168ef6(0x1f4),_0x168ef6(0xb5)),$(_0x48e860[_0x168ef6(0x183)])[_0x168ef6(0x12d)](_0x168ef6(0x1f4),_0x168ef6(0xb5)),$(_0x48e860['fwdLanesLaneInstrunctionToCSS'])[_0x168ef6(0x12d)](_0x168ef6(0xa3),_0x168ef6(0x136)),$(_0x168ef6(0x224))[_0x168ef6(0x12d)](_0x168ef6(0xa3),'4px');}function _0x3e20ce(_0x3d08cd,_0xf01a49){const _0x229f75=_0x2392fd;let _0x184205=[],_0x45377c=_0xf01a49[_0x229f75(0x17b)]('\x20'),_0x418010=_0xf01a49[_0x229f75(0x17b)]('-');for(let _0x444a2b=0x1;_0x444a2b<=_0x3d08cd;++_0x444a2b){let _0x1af70b=_0x418010+'-'+_0x444a2b['toString'](),_0x131fcc=_0x229f75(0xf9)+_0x45377c+'\x22\x20id=\x22'+_0x1af70b+'\x22>'+_0x444a2b[_0x229f75(0x13d)]()+'</div>',_0x57ffbe=$(_0x131fcc)['css']({'padding':'1px\x201px\x201px\x201px','margin':_0x229f75(0x1ae),'border':_0x229f75(0x1ae),'border-radius':'50%','border-color':_0x229f75(0x12e),'box-shadow':_0x229f75(0x34b),'height':_0x229f75(0x298),'width':_0x229f75(0x298),'text-align':_0x229f75(0x1cc)});_0x184205[_0x229f75(0x132)](_0x57ffbe);}return _0x184205;}function _0x506457(_0x1023ae,_0x11402f){const _0x49c896=_0x2392fd,_0x59c27b='.'+_0x11402f['join']('.');$(_0x59c27b)['on'](_0x49c896(0xe3),function(){const _0x527913=_0x49c896;$(_0x59c27b)[_0x527913(0x12d)]({'background-color':'transparent','color':'black'}),$(this)[_0x527913(0x12d)]({'background-color':'navy','color':'white'});});let _0x3bfa9d=_0x1023ae[_0x49c896(0x255)]('.form-control'),_0x32880c='#'+_0x11402f[_0x49c896(0x17b)]('-')+'-'+_0x3bfa9d[_0x49c896(0x127)]();$(_0x32880c)[_0x49c896(0x12d)]({'background-color':_0x49c896(0x1ed),'color':_0x49c896(0x164)});}function _0x1bcdd(){const _0x1e51b0=_0x2392fd;let _0x1fc5b9=$('.fwd-lanes'),_0x2fb58c=$('.rev-lanes');if(_0x1fc5b9[_0x1e51b0(0x255)](_0x1e51b0(0x2df))[_0x1e51b0(0x236)]()[_0x1e51b0(0x9c)]>0x0&&!_0x3c6d6c(_0x1e51b0(0xd9))){let _0x39d879=$(_0x1e51b0(0x27c)),_0x3e8de9=['lt-add-lanes',_0x1e51b0(0x18f)],_0x16c079=_0x3e20ce(0x8,_0x3e8de9);for(let _0xcaae6f=0x0;_0xcaae6f<_0x16c079[_0x1e51b0(0x9c)];++_0xcaae6f){_0x39d879[_0x1e51b0(0x11d)](_0x16c079[_0xcaae6f]);}_0x39d879[_0x1e51b0(0xb3)](_0x48e860[_0x1e51b0(0x105)]),_0x506457(_0x1fc5b9,_0x3e8de9);}if(_0x2fb58c[_0x1e51b0(0x255)](_0x1e51b0(0x2df))[_0x1e51b0(0x236)]()[_0x1e51b0(0x9c)]>0x0&&!_0x3c6d6c(_0x1e51b0(0x2a4))){let _0x122945=$('<div\x20style=\x22display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;\x22\x20id=\x22lt-rev-add-lanes\x22\x20/>'),_0x4c5b5a=[_0x1e51b0(0x36c),_0x1e51b0(0xf5)],_0x35ce6a=_0x3e20ce(0x8,_0x4c5b5a);for(let _0x8a57a0=0x0;_0x8a57a0<_0x35ce6a[_0x1e51b0(0x9c)];++_0x8a57a0){_0x122945['append'](_0x35ce6a[_0x8a57a0]);}_0x122945[_0x1e51b0(0xb3)](_0x48e860[_0x1e51b0(0x31e)]),_0x506457(_0x2fb58c,_0x4c5b5a);}$(_0x1e51b0(0x1f1))['on'](_0x1e51b0(0xe3),function(){const _0x25a760=_0x1e51b0;let _0x4208a8=$(this)[_0x25a760(0x1c2)](),_0x2ef999=$(_0x25a760(0x123));_0x4208a8=Number[_0x25a760(0x93)](_0x4208a8,0xa),$(this)[_0x25a760(0x353)](_0x25a760(0x37b))&&(_0x1fc5b9[_0x25a760(0x255)](_0x2ef999)[_0x25a760(0x127)](_0x4208a8),_0x1fc5b9[_0x25a760(0x255)](_0x2ef999)[_0x25a760(0x169)](_0x25a760(0xe3)),_0x1fc5b9[_0x25a760(0x255)](_0x2ef999)[_0x25a760(0x169)](_0x25a760(0x19b))),$(this)[_0x25a760(0x353)](_0x25a760(0xfc))&&(_0x2fb58c[_0x25a760(0x255)](_0x2ef999)[_0x25a760(0x127)](_0x4208a8),_0x2fb58c['find'](_0x2ef999)[_0x25a760(0x169)]('focus'),_0x2fb58c[_0x25a760(0x255)](_0x2ef999)['trigger'](_0x25a760(0x19b)));});if(_0x1fc5b9[_0x1e51b0(0x255)](_0x1e51b0(0x2df))['children']()[_0x1e51b0(0x9c)]>0x0&&!_0x3c6d6c(_0x1e51b0(0x2e2))){let _0x2d4735=$(_0x1e51b0(0x2e7)),_0x3c1d3b=[_0x1e51b0(0x2ad),_0x1e51b0(0x18f)],_0x23ddc5=_0x3e20ce(0x8,_0x3c1d3b);for(let _0x549d66=0x0;_0x549d66<_0x23ddc5[_0x1e51b0(0x9c)];++_0x549d66){_0x2d4735[_0x1e51b0(0x11d)](_0x23ddc5[_0x549d66]);}_0x2d4735[_0x1e51b0(0x2d9)](_0x1e51b0(0x237));const _0x4db805='.'+_0x3c1d3b[_0x1e51b0(0x17b)]('.');$(_0x4db805)['on']('click',function(){const _0xd17e25=_0x1e51b0;$(_0x4db805)['css']({'background-color':_0xd17e25(0x83),'color':_0xd17e25(0x12e)}),$(this)[_0xd17e25(0x12d)]({'background-color':_0xd17e25(0x1ed),'color':_0xd17e25(0x164)});});}if(_0x2fb58c[_0x1e51b0(0x255)](_0x1e51b0(0x2df))[_0x1e51b0(0x236)]()[_0x1e51b0(0x9c)]>0x0&&!_0x3c6d6c('lt-rev-add-Width')){let _0x23a390=$('<div\x20style=\x22display:inline-flex;flex-direction:row;width:100%;\x22\x20id=\x22lt-rev-add-Width\x22\x20/>'),_0x33ee19=[_0x1e51b0(0x2ad),_0x1e51b0(0xf5)],_0xa0f051=_0x3e20ce(0x8,_0x33ee19);for(let _0x1baf96=0x0;_0x1baf96<_0xa0f051[_0x1e51b0(0x9c)];++_0x1baf96){_0x23a390['append'](_0xa0f051[_0x1baf96]);}_0x23a390[_0x1e51b0(0x2d9)](_0x1e51b0(0x13f));const _0x4a59a4='.'+_0x33ee19['join']('.');$(_0x4a59a4)['on'](_0x1e51b0(0xe3),function(){const _0x2c2d0b=_0x1e51b0;$(_0x4a59a4)[_0x2c2d0b(0x12d)]({'background-color':'transparent','color':'black'}),$(this)[_0x2c2d0b(0x12d)]({'background-color':_0x2c2d0b(0x1ed),'color':'white'});});}$(_0x1e51b0(0x30c))['on'](_0x1e51b0(0xe3),function(){const _0x1dbeb5=_0x1e51b0;let _0x33086d=$(this)['text']();_0x33086d=Number[_0x1dbeb5(0x93)](_0x33086d,0xa),$(this)[_0x1dbeb5(0x353)](_0x1dbeb5(0xdc))&&(_0x1fc5b9['find'](_0x1dbeb5(0x8b))[_0x1dbeb5(0x127)](_0x33086d),_0x1fc5b9['find']('#number-of-lanes')[_0x1dbeb5(0x169)]('change'),_0x1fc5b9[_0x1dbeb5(0x255)](_0x1dbeb5(0x8b))[_0x1dbeb5(0x169)](_0x1dbeb5(0x168))),$(this)[_0x1dbeb5(0x353)]('lt-add-Width\x20rev')&&(_0x2fb58c[_0x1dbeb5(0x255)](_0x1dbeb5(0x8b))[_0x1dbeb5(0x127)](_0x33086d),_0x2fb58c[_0x1dbeb5(0x255)](_0x1dbeb5(0x8b))[_0x1dbeb5(0x169)](_0x1dbeb5(0x168)),_0x2fb58c[_0x1dbeb5(0x255)](_0x1dbeb5(0x8b))['trigger'](_0x1dbeb5(0x19b)));});}function _0x4c429a(_0x3639c9){const _0x27012a=_0x2392fd;if(_0x3c6d6c(_0x27012a(0x1b5))[_0x27012a(0x129)]){const _0x380300=$('.fwd-lanes'),_0x4a8899=$(_0x27012a(0x381)),_0x4c4ed6=$(_0x27012a(0x158)),_0x1513c1=$(_0x27012a(0x123));if(_0x380300[_0x27012a(0x255)](_0x4c4ed6)[_0x27012a(0x236)]()[_0x27012a(0x9c)]>0x0&&!_0x3639c9[_0x27012a(0xc4)])_0x380300[_0x27012a(0x255)](_0x1513c1)[_0x27012a(0x169)](_0x27012a(0x168));else _0x4a8899[_0x27012a(0x255)](_0x4c4ed6)[_0x27012a(0x236)]()[_0x27012a(0x9c)]>0x0&&!_0x3639c9[_0x27012a(0xcc)]&&_0x4a8899[_0x27012a(0x255)](_0x1513c1)['trigger'](_0x27012a(0x168));}}function _0x43deee(_0x49fb02){const _0x512064=_0x2392fd;if(_0x3c6d6c(_0x512064(0x120))[_0x512064(0x129)]&&_0x3c6d6c('lt-SelAllEnable')[_0x512064(0x129)]){$(_0x512064(0x2c2))[_0x512064(0x12d)]('user-select',_0x512064(0x2de));let _0x48e7d9=_0x49fb02===_0x512064(0x18f)?$(_0x512064(0x2f8))[_0x512064(0x255)](_0x512064(0x123))[0x0]:$(_0x512064(0x381))[_0x512064(0x255)](_0x512064(0x123))[0x0],_0x440bcb=$(_0x48e7d9)[_0x512064(0x127)]();$(_0x48e7d9)['on'](_0x512064(0x19b),function(){const _0x45efe0=_0x512064;let _0x43caad;if($(this)[_0x45efe0(0x272)]('.fwd-lanes')[_0x45efe0(0x9c)])_0x43caad=$(_0x45efe0(0x2f8))[_0x45efe0(0x255)](_0x45efe0(0x219));else{if($(this)['parents'](_0x45efe0(0x381))[_0x45efe0(0x9c)])_0x43caad=$('.rev-lanes')[_0x45efe0(0x255)](_0x45efe0(0x219));}_0x43caad=$(_0x45efe0(0x2c2),_0x43caad);for(let _0x167d33=0x0;_0x167d33<_0x43caad[_0x45efe0(0x9c)];_0x167d33++){$(_0x43caad[_0x167d33])[_0x45efe0(0x283)](),$(_0x43caad[_0x167d33])['on'](_0x45efe0(0xe3),function(){const _0x1e6eb1=_0x45efe0;let _0x136aec=$(this)[_0x1e6eb1(0x1e0)](0x0),_0x440e39=_0x136aec[_0x1e6eb1(0x1bf)],_0x169ee7=$(_0x1e6eb1(0x308),_0x440e39);if(_0x169ee7[_0x1e6eb1(0x9c)]>0x0){const _0x1c6c9e=!_0x3c6d6c(_0x169ee7[0x0]['id'])[_0x1e6eb1(0x129)];for(let _0x4f318a=0x0;_0x4f318a<_0x169ee7[_0x1e6eb1(0x9c)];_0x4f318a++){const _0x5a56cb=$('#'+_0x169ee7[_0x4f318a]['id']);_0x5a56cb[_0x1e6eb1(0x8e)](_0x1e6eb1(0x129),_0x1c6c9e),_0x5a56cb[_0x1e6eb1(0x169)](_0x1e6eb1(0x19b));}}});}}),_0x440bcb>0x0&&$(_0x48e7d9)[_0x512064(0x169)](_0x512064(0x19b));}}function _0x3880ce(_0x303c50){const _0x58394b=_0x2392fd,_0x4945ee=_0x303c50[0x0][_0x58394b(0x17c)][_0x58394b(0x340)]['_wmeObject'],_0x568bb3=_0xf7e638(_0x4945ee['attributes'][_0x58394b(0x377)]),_0xdf32ce=_0xf7e638(_0x4945ee[_0x58394b(0x17c)][_0x58394b(0x139)]);let _0x34841c=_0x2cbffb(_0x4945ee,_0x568bb3,_0x568bb3[_0x58394b(0x17c)]['segIDs'],_0x4945ee[_0x58394b(0x17c)][_0x58394b(0x320)]),_0x526fc9=_0x34841c[0x4],_0x460d02=_0x2cbffb(_0x4945ee,_0xdf32ce,_0xdf32ce[_0x58394b(0x17c)]['segIDs'],_0x4945ee[_0x58394b(0x17c)][_0x58394b(0x27a)]),_0x3e6325=_0x460d02[0x4];if(_0x526fc9>0x0){let _0x5a4801=_0x526fc9===0x1?_0x4e30cc[_0x58394b(0x2dd)]:_0x4e30cc['CS2Color'],_0xab8e73=$(_0x48e860['segmentEditLanes'])[_0x58394b(0x236)]();for(let _0x82ea5a=0x0;_0x82ea5a<_0xab8e73[_0x58394b(0x9c)];_0x82ea5a++){_0xab8e73[_0x82ea5a][_0x58394b(0x179)]===_0x34841c[0x5]&&$(_0xab8e73[_0x82ea5a])[_0x58394b(0x12d)](_0x58394b(0x299),_0x5a4801);}}if(_0x3e6325>0x0){let _0xe5842b=_0x3e6325===0x1?_0x4e30cc[_0x58394b(0x2dd)]:_0x4e30cc['CS2Color'],_0x2e8c99=$(_0x48e860['segmentEditLanes'])[_0x58394b(0x236)]();for(let _0x2a4954=0x0;_0x2a4954<_0x2e8c99[_0x58394b(0x9c)];_0x2a4954++){_0x2e8c99[_0x2a4954]['title']===_0x460d02[0x5]&&$(_0x2e8c99[_0x2a4954])['css'](_0x58394b(0x299),_0xe5842b);}}}function _0x187ecf(_0xbee9e2){const _0x51fd2c=_0x2392fd;let _0x417ad0=document[_0x51fd2c(0x26f)](_0x51fd2c(0x2d3)),_0x577dc5=$(_0x51fd2c(0x2d7))[_0x51fd2c(0x1e0)]();for(let _0x170db3=0x0;_0x170db3<_0x417ad0[_0x51fd2c(0x9c)];_0x170db3++){if(_0x417ad0[_0x170db3][_0x51fd2c(0x233)][_0x51fd2c(0xcd)](_0x51fd2c(0x330))){let _0xf95f83=$(_0x577dc5[_0x170db3])[_0x51fd2c(0x236)]();$(_0xf95f83)[_0x51fd2c(0x12d)]('transform',_0x51fd2c(0x2a3)),$(_0x577dc5[_0x170db3])['append'](_0xf95f83[_0x51fd2c(0x1e0)]()[_0x51fd2c(0x1d5)]());}}_0xbee9e2[_0x51fd2c(0xaf)]=!![];}function _0x524fb6(){const _0x5a0db2=_0x2392fd;if(_0x3c6d6c(_0x5a0db2(0x280))[_0x5a0db2(0x2c0)](_0x5a0db2(0x2af))[_0x5a0db2(0x9c)]===0x0){setTimeout(_0x524fb6,0x7d0),console[_0x5a0db2(0x18a)]('Edit\x20panel\x20not\x20yet\x20loaded.');return;}const _0x31eda8=W[_0x5a0db2(0x14b)][_0x5a0db2(0x137)]();let _0x5c69b7={};_0x5c69b7['fwdLanesEnabled']=![],_0x5c69b7[_0x5a0db2(0xcc)]=![],_0x5c69b7[_0x5a0db2(0xaf)]=![],_0x5c69b7[_0x5a0db2(0xac)]=![];if(_0x3c6d6c(_0x5a0db2(0xf3))[_0x5a0db2(0x129)]&&_0x3c6d6c('lt-ScriptEnabled')['checked']&&_0x31eda8['length']>0x0){if(_0x31eda8[_0x5a0db2(0x9c)]===0x1&&_0x31eda8[0x0]['attributes'][_0x5a0db2(0x340)]['_wmeObject']['type']===_0x5a0db2(0x21f))$(_0x5a0db2(0x339))['on']('click',_0x264a41=>{_0xb63981(_0x5c69b7,_0x31eda8,_0x264a41);}),_0x3c6d6c(_0x5a0db2(0x1b0))[_0x5a0db2(0x129)]&&setTimeout(()=>{const _0x448e6c=_0x5a0db2;$(_0x448e6c(0x339))[_0x448e6c(0x169)](_0x448e6c(0xe3));},0x64);else _0x31eda8[_0x5a0db2(0x9c)]===0x2&&_0x2fde77(_0x31eda8);}}function _0x7e018e(){const _0x4f7b3c=_0x2392fd;$(_0x4f7b3c(0x2eb))['trigger'](_0x4f7b3c(0xe3));}function _0x28f32d(){const _0x481c8f=_0x2392fd;$(_0x481c8f(0x30a))[_0x481c8f(0x169)]('click');}function _0x28dfd8(){const _0x565556=_0x2392fd;$('#lt-UIEnable')[_0x565556(0xe3)]();}function _0x400a64(){const _0x27c613=_0x2392fd;$('#lt-LaneHeuristicsChecks')[_0x27c613(0xe3)]();}function _0x353804(){const _0x5c97f9=_0x2392fd;let _0x2afdd4=$(_0x5c97f9(0xb7));if(!_0x3c6d6c(_0x5c97f9(0x13a))['checked']||!_0x3c6d6c(_0x5c97f9(0x120))[_0x5c97f9(0x129)]||!_0x3c6d6c(_0x5c97f9(0x312))[_0x5c97f9(0x129)]){_0x2afdd4['css']({'visibility':_0x5c97f9(0x19e)});return;}const _0x1de588=W[_0x5c97f9(0x14b)][_0x5c97f9(0x137)]();if(_0x1de588['length']===0x1&&_0x3c6d6c(_0x5c97f9(0x312))[_0x5c97f9(0x129)]&&_0x3c6d6c('lt-DevToolsEnable')[_0x5c97f9(0x129)]&&_0x3c6d6c(_0x5c97f9(0x13a))['checked']){if(_0x1de588[0x0][_0x5c97f9(0x17c)][_0x5c97f9(0x340)][_0x5c97f9(0x1a8)][_0x5c97f9(0x10a)]['toLowerCase']()==='segment'){const _0x43f09b=$('#map');_0x2afdd4[_0x5c97f9(0x12d)]({'visibility':_0x5c97f9(0x341),'left':_0x43f09b[_0x5c97f9(0x180)]()*0.1,'top':_0x43f09b[_0x5c97f9(0x292)]()*0.1});}}else _0x2afdd4[_0x5c97f9(0x12d)]({'visibility':_0x5c97f9(0x341)});}function _0x3c6d6c(_0x3a18ab){const _0x559b0c=_0x2392fd;return document[_0x559b0c(0x210)](_0x3a18ab);}function _0x1daa03(_0x5b8048,_0x27274e){const _0x32ba6c=_0x2392fd;if(!_0x5b8048||!_0x5b8048[_0x32ba6c(0x19f)]||!_0x5b8048[_0x32ba6c(0x17c)])return![];if(_0x27274e>=_0x29219a[_0x32ba6c(0x207)]||_0x5b8048[_0x32ba6c(0x10a)]===_0x32ba6c(0x21f)&&_0x5b8048[_0x32ba6c(0x17c)][_0x32ba6c(0x319)]===_0x54a11d[_0x32ba6c(0x332)])return W['map'][_0x32ba6c(0x231)]()['intersectsBounds'](_0x5b8048[_0x32ba6c(0x19f)]['getBounds']());return![];}function _0xa0e09d(_0x3ec61c,_0x396d92){const _0xe5f8c8=_0x2392fd;if(_0x3ec61c==null||_0x396d92==null)return null;let _0x963f3,_0x1486ca;_0x396d92[_0xe5f8c8(0x17c)][_0xe5f8c8(0x139)]===_0x3ec61c?(_0x963f3=_0x265db8(_0x396d92)['x']-_0x152c18(_0x396d92)['x'],_0x1486ca=_0x265db8(_0x396d92)['y']-_0x152c18(_0x396d92)['y']):(_0x963f3=_0x3d1b47(_0x396d92)['x']-_0x2962d1(_0x396d92)['x'],_0x1486ca=_0x3d1b47(_0x396d92)['y']-_0x2962d1(_0x396d92)['y']);let _0x237ab3=Math['atan2'](_0x1486ca,_0x963f3),_0x7763fd=_0x237ab3*0xb4/Math['PI']%0x168;if(_0x7763fd<0x0)_0x7763fd=_0x7763fd+0x168;return Math[_0xe5f8c8(0x10c)](_0x7763fd);}function _0x152c18(_0x1e8383){const _0x299285=_0x2392fd;return _0x1e8383[_0x299285(0x19f)][_0x299285(0x2aa)][0x0];}function _0x2962d1(_0x527326){const _0x4708a7=_0x2392fd;return _0x527326[_0x4708a7(0x19f)]['components'][_0x527326['geometry'][_0x4708a7(0x2aa)][_0x4708a7(0x9c)]-0x1];}function _0x265db8(_0x5589ae){const _0x2bcb86=_0x2392fd;return _0x5589ae[_0x2bcb86(0x19f)][_0x2bcb86(0x2aa)][0x1];}function _0x3d1b47(_0x2eee30){const _0x2129a4=_0x2392fd;return _0x2eee30[_0x2129a4(0x19f)]['components'][_0x2eee30['geometry'][_0x2129a4(0x2aa)][_0x2129a4(0x9c)]-0x2];}function _0x333326(_0x57f398){const _0x30d480=_0x2392fd,_0x389388=W[_0x30d480(0x14b)][_0x30d480(0x137)](),_0x1fe91d=_0x389388[0x0][_0x30d480(0x17c)][_0x30d480(0x340)][_0x30d480(0x1a8)],_0x10a1f5=W[_0x30d480(0xb0)][_0x30d480(0x27e)](),_0x5de717=new _0x4c1d84();let _0x4e1ddf,_0x2aea58,_0x495f8b={};_0x5de717[_0x30d480(0x350)](W[_0x30d480(0xb0)]);if(_0x57f398==='fwd'){_0x495f8b[_0x30d480(0x320)]=0x0,_0x4e1ddf=_0xf7e638(_0x1fe91d['attributes']['toNodeID']),_0x2aea58=_0x4e1ddf[_0x30d480(0x380)]();const _0x5be113=$(_0x30d480(0x2f8));_0x5be113[_0x30d480(0x255)](_0x30d480(0x123))[_0x30d480(0x127)](0x0),_0x5be113['find'](_0x30d480(0x123))[_0x30d480(0x169)](_0x30d480(0x19b));}if(_0x57f398===_0x30d480(0xf5)){_0x495f8b[_0x30d480(0x27a)]=0x0,_0x4e1ddf=_0xf7e638(_0x1fe91d[_0x30d480(0x17c)][_0x30d480(0x139)]),_0x2aea58=_0x4e1ddf[_0x30d480(0x380)]();const _0x4c1566=$(_0x30d480(0x381));_0x4c1566[_0x30d480(0x255)](_0x30d480(0x123))[_0x30d480(0x127)](0x0),_0x4c1566['find'](_0x30d480(0x123))[_0x30d480(0x169)](_0x30d480(0x19b));}_0x5de717['doSubAction'](new _0x254a0b(_0x1fe91d,_0x495f8b));for(let _0x13d054=0x0;_0x13d054<_0x2aea58[_0x30d480(0x9c)];_0x13d054++){let _0x57ab79=_0x10a1f5[_0x30d480(0x9e)](_0x4e1ddf,_0x1fe91d,_0x104205(_0x2aea58[_0x13d054])),_0x47363f=_0x57ab79[_0x30d480(0x32e)]();_0x47363f[_0x30d480(0x289)]()&&(_0x47363f=_0x47363f[_0x30d480(0xad)](),_0x57ab79=_0x57ab79[_0x30d480(0x9b)](_0x47363f),_0x5de717[_0x30d480(0x1bc)](new _0x16cd1b(_0x10a1f5,_0x57ab79)));}_0x5de717[_0x30d480(0x2e9)]=_0x30d480(0x1f0),W[_0x30d480(0xb0)][_0x30d480(0x245)]['add'](_0x5de717);}function _0x178db7(){const _0xcca1a2=_0x2392fd;_0x1db759[_0xcca1a2(0xc6)](),_0x1da6b2[_0xcca1a2(0xc6)]();}function _0x214fc0(){const _0x4aa9df=_0x2392fd;_0x1a571b[_0x4aa9df(0xc6)]();}function _0xfe6b3b(_0x2f1a2e,_0x5707b6,_0x5b3b9d){const _0x28da06=_0x2392fd;let _0x286d1d=_0x2f1a2e[_0x28da06(0x24f)](),_0x59a215=_0x5707b6+_0x28da06(0x13c)+_0x5b3b9d,_0x4e65e0=new OpenLayers['Feature']['Vector'](_0x286d1d,{'labelText':_0x59a215,'labelColor':_0x4e30cc[_0x28da06(0x148)]});_0x1da6b2[_0x28da06(0x242)]([_0x4e65e0]);}function _0x3ebe7e(_0x3df306,_0x5b4717,_0x48ba6a,_0x1bf8a5,_0x5ec10b,_0x225ffb,_0x5a66e9,_0x2be355,_0x62f61e,_0x55e0ac,_0x9feb57){const _0x1fd328=_0x2392fd,_0x20cf74={'DASH_THIN':0x1,'DASH_THICK':0x2,'HIGHLIGHT':0xa,'OVER_HIGHLIGHT':0x14},_0x54de13=_0x3df306['clone'](),_0x28c5ba=_0x3c6d6c(_0x1fd328(0x110))[_0x1fd328(0x129)];if(_0x54de13[_0x1fd328(0x2aa)][_0x1fd328(0x9c)]>0x2){let _0x2bd34d=_0x54de13[_0x1fd328(0x2aa)]['length'],_0x1204ed=_0x2bd34d/0x2,_0xb2709f=_0x2bd34d%0x2?Math[_0x1fd328(0x368)](_0x1204ed)-0x1:Math[_0x1fd328(0x368)](_0x1204ed),_0x49132a=_0x2bd34d%0x2?Math['floor'](_0x1204ed)+0x1:Math['floor'](_0x1204ed);if(_0x5b4717===_0x355007['FORWARD']){let _0x50022e=_0x260fe5(_0x54de13,_0xb2709f,_0x2bd34d);_0x48ba6a&&_0x260ef7(_0x50022e,''+_0x4e30cc[_0x1fd328(0xdb)],_0x20cf74[_0x1fd328(0x100)]),_0xe12201(_0x50022e,_0x5a66e9,_0x62f61e,_0x55e0ac,_0x9feb57);}else{if(_0x5b4717===_0x355007[_0x1fd328(0x342)]){let _0x31dbd3=_0x260fe5(_0x54de13,0x0,_0x49132a);_0x48ba6a&&_0x260ef7(_0x31dbd3,''+_0x4e30cc['BAColor'],_0x20cf74['DASH_THIN']),_0xe12201(_0x31dbd3,_0x5a66e9,_0x62f61e,_0x55e0ac,_0x9feb57);}}if(_0x1bf8a5&&(_0x355007['FORWARD']||_0x5ec10b===0x0)){if(_0x2bd34d%0x2)_0xfe6b3b(_0x54de13[_0x1fd328(0x2aa)][_0xb2709f],_0x5ec10b,_0x225ffb);else{let _0x1ff091=_0x54de13[_0x1fd328(0x2aa)][_0x49132a-0x1],_0x5b7205=_0x54de13['components'][_0xb2709f],_0x13c2a1=new OpenLayers[(_0x1fd328(0x1a6))][(_0x1fd328(0x2d1))]((_0x1ff091['x']+_0x5b7205['x'])/0x2,(_0x1ff091['y']+_0x5b7205['y'])/0x2);_0xfe6b3b(_0x13c2a1,_0x5ec10b,_0x225ffb);}}}else{let _0x1eeade=_0x54de13[_0x1fd328(0x2aa)][0x0],_0x3a6c0a=_0x54de13[_0x1fd328(0x2aa)][0x1],_0x2d9b31=new OpenLayers[(_0x1fd328(0x1a6))]['Point']((_0x1eeade['x']+_0x3a6c0a['x'])/0x2,(_0x1eeade['y']+_0x3a6c0a['y'])/0x2);if(_0x5b4717===_0x355007[_0x1fd328(0x14a)]){let _0x434135=new OpenLayers[(_0x1fd328(0x1a6))][(_0x1fd328(0x2d1))](_0x54de13[_0x1fd328(0x2aa)][0x1][_0x1fd328(0x24f)]()['x'],_0x54de13[_0x1fd328(0x2aa)][0x1][_0x1fd328(0x24f)]()['y']),_0x4a6223=new OpenLayers['Geometry'][(_0x1fd328(0x106))]([_0x2d9b31,_0x434135],{});_0x48ba6a&&_0x260ef7(_0x4a6223,''+_0x4e30cc['ABColor'],_0x20cf74[_0x1fd328(0x100)]),_0xe12201(_0x4a6223,_0x5a66e9,_0x62f61e,_0x55e0ac,_0x9feb57);}else{if(_0x5b4717===_0x355007['REVERSE']){let _0x1eb65d=new OpenLayers[(_0x1fd328(0x1a6))][(_0x1fd328(0x2d1))](_0x54de13[_0x1fd328(0x2aa)][0x0][_0x1fd328(0x24f)]()['x'],_0x54de13[_0x1fd328(0x2aa)][0x0][_0x1fd328(0x24f)]()['y']),_0x3957a8=new OpenLayers[(_0x1fd328(0x1a6))]['LineString']([_0x2d9b31,_0x1eb65d],{});_0x48ba6a&&_0x260ef7(_0x3957a8,''+_0x4e30cc[_0x1fd328(0x314)],_0x20cf74['DASH_THIN']),_0xe12201(_0x3957a8,_0x5a66e9,_0x62f61e,_0x55e0ac,_0x9feb57);}}_0x1bf8a5&&(_0x355007[_0x1fd328(0x14a)]||_0x5ec10b===0x0)&&_0xfe6b3b(_0x2d9b31,_0x5ec10b,_0x225ffb);}function _0x260fe5(_0x5d0da6,_0x265d29,_0x3fe948){const _0x2b8f04=_0x1fd328;let _0x5087ca=[];for(let _0xadff50=_0x265d29;_0xadff50<_0x3fe948;_0xadff50++){_0x5087ca[_0xadff50]=_0x5d0da6[_0x2b8f04(0x2aa)][_0xadff50][_0x2b8f04(0x24f)]();}return new OpenLayers['Geometry'][(_0x2b8f04(0x106))](_0x5087ca,{});}function _0xe12201(_0x2352a6,_0x15a046,_0x972dfa,_0x5746ab,_0x5a9a4d=![]){const _0x120d3e=_0x1fd328;if(_0x972dfa){_0x260ef7(_0x2352a6[_0x120d3e(0x24f)](),''+_0x4e30cc['ErrorColor'],_0x20cf74[_0x120d3e(0x252)]);return;}_0x15a046&&_0x260ef7(_0x2352a6[_0x120d3e(0x24f)](),''+_0x4e30cc['LIOColor'],_0x20cf74[_0x120d3e(0x145)]),_0x2be355===0x1&&_0x28c5ba&&_0x260ef7(_0x2352a6[_0x120d3e(0x24f)](),''+_0x4e30cc['CS1Color'],_0x20cf74[_0x120d3e(0x145)]),_0x2be355===0x2&&_0x28c5ba&&_0x260ef7(_0x2352a6[_0x120d3e(0x24f)](),''+_0x4e30cc[_0x120d3e(0x178)],_0x20cf74[_0x120d3e(0x145)]);if(_0x5746ab===_0x4e008b['PASS'])_0x260ef7(_0x2352a6[_0x120d3e(0x24f)](),''+_0x4e30cc[_0x120d3e(0x12f)],_0x5a9a4d?_0x20cf74['OVER_HIGHLIGHT']:_0x20cf74[_0x120d3e(0x145)]);else _0x5746ab===_0x4e008b[_0x120d3e(0x199)]&&_0x260ef7(_0x2352a6[_0x120d3e(0x24f)](),''+_0x4e30cc[_0x120d3e(0x1ba)],_0x5a9a4d?_0x20cf74[_0x120d3e(0x252)]:_0x20cf74[_0x120d3e(0x145)]);}function _0x260ef7(_0x5d70c5,_0x464067,_0x150e2c){const _0x272214=_0x1fd328;let _0x2ccbcd=new OpenLayers[(_0x272214(0x2c6))][(_0x272214(0x32f))](_0x5d70c5,{},{});_0x1db759['addFeatures']([_0x2ccbcd]);const _0x38fca2=document[_0x272214(0x210)](_0x5d70c5['id']);if(_0x38fca2){_0x38fca2['setAttribute'](_0x272214(0x108),''+_0x464067);if(_0x150e2c===_0x20cf74[_0x272214(0x145)])_0x38fca2['setAttribute'](_0x272214(0xe0),'15'),_0x38fca2['setAttribute'](_0x272214(0x115),'.6');else{if(_0x150e2c===_0x20cf74['OVER_HIGHLIGHT'])_0x38fca2[_0x272214(0x26b)]('stroke-width','18'),_0x38fca2[_0x272214(0x26b)](_0x272214(0x115),'.85');else{_0x38fca2[_0x272214(0x26b)](_0x272214(0x115),'1');if(_0x150e2c===_0x20cf74[_0x272214(0xbe)])_0x38fca2[_0x272214(0x26b)](_0x272214(0xe0),'8'),_0x38fca2[_0x272214(0x26b)](_0x272214(0x1b6),_0x272214(0x1bd));else _0x150e2c===_0x20cf74[_0x272214(0x100)]&&(_0x38fca2['setAttribute'](_0x272214(0xe0),'4'),_0x38fca2[_0x272214(0x26b)]('stroke-dasharray','10\x2010'));}}}}_0x1db759['setZIndex'](0x1c2);}function _0x25bc8b(_0xfa783b,_0x5b3ae2,_0x9cb8fc=![]){const _0x4b2449=_0x2392fd,_0x2d6d73=_0xfa783b[_0x4b2449(0x24f)](),_0x500353=new OpenLayers[(_0x4b2449(0x2c6))][(_0x4b2449(0x32f))](_0x2d6d73,{});_0x1db759['addFeatures']([_0x500353]);const _0x26ad85=document[_0x4b2449(0x210)](_0x2d6d73['id']);_0x26ad85!==null&&(_0x26ad85[_0x4b2449(0x26b)](_0x4b2449(0x1e2),_0x5b3ae2),_0x26ad85[_0x4b2449(0x26b)]('r',_0x9cb8fc?'18':'10'),_0x26ad85[_0x4b2449(0x26b)]('fill-opacity',_0x4b2449(0x14d)),_0x26ad85[_0x4b2449(0x26b)]('stroke-width','0'));}let _0x4451dd={'start':function(){const _0x551e9f=_0x2392fd;this[_0x551e9f(0x230)]();let _0x2bb816=this;this[_0x551e9f(0x131)]=window['setTimeout'](function(){const _0x54ad0e=_0x551e9f;_0x2bb816[_0x54ad0e(0xb9)]();},0x1f4);},'calculate':function(){const _0x4a565d=_0x2392fd;_0x42b953(),delete this[_0x4a565d(0x131)];},'cancel':function(){const _0x5d0d45=_0x2392fd;typeof this['timeoutID']===_0x5d0d45(0x1e8)&&(window[_0x5d0d45(0x322)](this[_0x5d0d45(0x131)]),delete this[_0x5d0d45(0x131)],_0x2d166c=0x0);}};function _0x211658(){if(_0x2d166c===0x0)_0x2d166c=0x3;else _0x2d166c--;if(_0x2d166c===0x0)return;_0x42b953();}function _0x42b953(){const _0x54e293=_0x2392fd;if(_0x2d166c===0x0)return;const _0x3be87c=_0x3c6d6c(_0x54e293(0x13a))[_0x54e293(0x129)],_0x4361f4=_0x3c6d6c(_0x54e293(0x351))[_0x54e293(0x129)],_0x18b970=_0x3c6d6c('lt-LaneHeuristicsChecks')[_0x54e293(0x129)],_0x3d8f01=W[_0x54e293(0x16f)][_0x54e293(0x26a)]()!=null?W[_0x54e293(0x16f)][_0x54e293(0x26a)]():0x10,_0x312da9=_0x3c6d6c('lt-highlightOverride')[_0x54e293(0x129)],_0x4c9f77=W[_0x54e293(0x151)][_0x54e293(0x14e)](_0x54e293(0x153))||W[_0x54e293(0x151)][_0x54e293(0x14e)](_0x54e293(0x121));_0x178db7();if(_0x3d8f01<_0x29219a[_0x54e293(0x307)])return;if(_0x4c9f77||!_0x4c9f77&&!_0x312da9){_0x3be87c&&(_0x4361f4||_0x18b970)&&_0x235976(W[_0x54e293(0xb0)]['segments'][_0x54e293(0x29a)](),![]);if(_0x3be87c){const _0x5ea048=W[_0x54e293(0x14b)]['getSelectedFeatures']();_0x5ea048['length']===0x2&&_0x2fde77(_0x5ea048);}}}function _0x2fde77(_0x47ba04){let _0xe3d277=[],_0x41de8c=0x0;return _['each'](_0x47ba04,_0x218f3f=>{const _0x51df16=_0x34f3;_0x218f3f&&_0x218f3f[_0x51df16(0x17c)][_0x51df16(0x340)][_0x51df16(0x1a8)]&&_0x218f3f[_0x51df16(0x17c)][_0x51df16(0x340)][_0x51df16(0x1a8)][_0x51df16(0x10a)]==='segments'&&(_0x41de8c=_0xe3d277['push'](_0x218f3f[_0x51df16(0x17c)][_0x51df16(0x340)][_0x51df16(0x1a8)]));}),_0x235976(_0xe3d277,!![]),_0x41de8c;}function _0x2feca4(_0xabebb2,_0x2f01cf,_0x45ee20,_0x589d72,_0x5991b4,_0x431662,_0x3a1fa7){const _0x2fbbf5=_0x2392fd,_0x1feccc=_0x2f01cf[_0x2fbbf5(0x320)],_0x55ada3=_0x2f01cf['revLaneCount'],_0x430fd6=_0x3c6d6c(_0x2fbbf5(0x351))[_0x2fbbf5(0x129)],_0x82fe62=_0x3c6d6c(_0x2fbbf5(0xa7))[_0x2fbbf5(0x129)],_0x15b95a=_0x82fe62&&_0x3c6d6c(_0x2fbbf5(0x386))[_0x2fbbf5(0x129)],_0x44225b=_0x82fe62&&_0x3c6d6c(_0x2fbbf5(0x34c))[_0x2fbbf5(0x129)],_0x239612=_0x430fd6&&_0x3c6d6c(_0x2fbbf5(0x2b1))[_0x2fbbf5(0x129)],_0x1aa82a=_0x430fd6&&_0x3c6d6c(_0x2fbbf5(0x82))[_0x2fbbf5(0x129)],_0x419fe0=W[_0x2fbbf5(0xb0)][_0x2fbbf5(0x27e)]();let _0x4798df=_0xf7e638(_0x2f01cf[_0x2fbbf5(0x377)]),_0x34ba35=_0xf7e638(_0x2f01cf[_0x2fbbf5(0x139)]),_0x5a1a47=_0x1feccc;_0x45ee20!==_0x355007[_0x2fbbf5(0x14a)]&&(_0x4798df=_0xf7e638(_0x2f01cf[_0x2fbbf5(0x139)]),_0x34ba35=_0xf7e638(_0x2f01cf[_0x2fbbf5(0x377)]),_0x5a1a47=_0x55ada3);let _0x3f191c=![],_0x38b179=![],_0x1dce18=![],_0x2b4347=![],_0x3db589=0x0,_0x2334d3=_0x4e008b[_0x2fbbf5(0x373)],_0x5e60bc=null,_0x39511a={'seg':0x0,'direction':_0x355007[_0x2fbbf5(0x373)]};if(_0x1daa03(_0x4798df,_0x5991b4)){const _0x4e76ff=_0x4798df['getSegmentIds']();if(_0x5a1a47>0x0){let _0xe3c5ab=_0x2cbffb(_0xabebb2,_0x4798df,_0x4e76ff,_0x5a1a47);_0x3f191c=_0xe3c5ab[0x0],_0x38b179=_0xe3c5ab[0x1],_0x2b4347=_0xe3c5ab[0x2],_0x1dce18=_0xe3c5ab[0x3],_0x3db589=_0xe3c5ab[0x4],_0x3a1fa7=_0x1dce18||_0x3a1fa7;}if(_0x589d72<=_0x4d91c3){_0x2334d3=_0x3ad0d(_0xabebb2,_0x4798df,_0x4e76ff,_0x34ba35,_0x5a1a47,_0x589d72,_0x419fe0,_0x39511a),_0x2334d3===_0x4e008b[_0x2fbbf5(0x14f)]&&(_0x1dce18=!![]);if(!_0x82fe62)_0x2334d3=_0x4e008b[_0x2fbbf5(0x373)];else _0x2334d3!==_0x4e008b['NONE']&&(_0x5e60bc={..._0x39511a});}}if(!_0x431662){let _0x297d28=null;if(_0x15b95a&&_0x2334d3===_0x4e008b[_0x2fbbf5(0x266)]||_0x44225b&&_0x2334d3===_0x4e008b[_0x2fbbf5(0x199)])_0x297d28=_0x2334d3;(_0x5a1a47>0x0||_0x297d28!==null||_0x1dce18)&&_0x3ebe7e(_0xabebb2[_0x2fbbf5(0x19f)],_0x45ee20,_0x430fd6,_0x1aa82a,_0x1feccc,_0x55ada3,_0x2b4347&&_0x239612,_0x3db589,_0x1dce18,_0x297d28,![]),_0x430fd6&&_0x3c6d6c(_0x2fbbf5(0x315))['checked']&&(_0x3f191c&&_0x25bc8b(_0x4798df['geometry'],''+_0x4e30cc[_0x2fbbf5(0x156)]),_0x38b179&&_0x25bc8b(_0x4798df[_0x2fbbf5(0x19f)],''+_0x4e30cc['TIOColor']));}else{_0x3ca0a2('candidate(f):'+_0x2334d3);if(_0x2334d3!==_0x4e008b['NONE']){if(_0x5e60bc!=null&&segmentArray[_0x2fbbf5(0xb1)](_0x1f1a12=>_0x1f1a12===_0x5e60bc['seg'])>-0x1){let _0x297bf8=_0x2334d3===_0x4e008b['PASS']?''+_0x4e30cc[_0x2fbbf5(0x156)]:''+_0x4e30cc['HeurFailColor'];_0x3ebe7e(_0xabebb2[_0x2fbbf5(0x19f)],_0x45ee20,![],![],0x0,0x0,![],_0x3db589,_0x1dce18,_0x2334d3,!![]),_0x3ebe7e(_0x5e60bc[_0x2fbbf5(0x24a)]['geometry'],_0x5e60bc[_0x2fbbf5(0x2ce)],![],![],0x0,0x0,![],0x0,![],_0x2334d3,!![]),_0x25bc8b(_0x4798df[_0x2fbbf5(0x19f)],_0x297bf8,!![]),_0x25bc8b(_0x34ba35[_0x2fbbf5(0x19f)],_0x297bf8,!![]);}}}return _0x3a1fa7;}function _0x235976(_0x43186b,_0x4dda9d){const _0x189bde=_0x2392fd,_0x1101db=W[_0x189bde(0x16f)][_0x189bde(0x26a)]()!=null?W[_0x189bde(0x16f)][_0x189bde(0x26a)]():0x10;_[_0x189bde(0x194)](_0x43186b,_0x236805=>{const _0x482992=_0x189bde;if(_0x1daa03(_0x236805,_0x1101db)){const _0x172f85=_0x236805[_0x482992(0x167)]();let _0x2a3881=![],_0x9ac7f1=_0x2e6546(_0x236805);_0x2a3881||=_0x2feca4(_0x236805,_0x172f85,_0x355007[_0x482992(0x14a)],_0x9ac7f1,_0x1101db,_0x4dda9d,_0x2a3881);if(_0x2a3881&&_0x2d166c>0x0){_0x3ca0a2(_0x482992(0x365),0x2),_0x178db7(),_0x2d166c--,_0x4451dd['start']();return;}_0x2a3881||=_0x2feca4(_0x236805,_0x172f85,_0x355007[_0x482992(0x342)],_0x9ac7f1,_0x1101db,_0x4dda9d,_0x2a3881),_0x2a3881&&_0x2d166c>0x0&&(_0x3ca0a2('LT\x20errors\x20found,\x20scanning\x20again',0x2),_0x178db7(),_0x2d166c--,_0x4451dd['start']());}});}function _0x2cbffb(_0x5a1817,_0x23a869,_0x4f7061,_0x32451d){const _0x2fbb17=_0x2392fd;let _0x31b7dd=![],_0x581762=![],_0x5ed059=![],_0x497414=![],_0x2a36d0=0x0,_0x266e03=null,_0x449b25=[];const _0x5c74a5=W[_0x2fbb17(0xb0)]['getTurnGraph'](),_0x5497be=W[_0x2fbb17(0x16f)][_0x2fbb17(0x26a)]()!=null?W[_0x2fbb17(0x16f)][_0x2fbb17(0x26a)]():0x10;for(let _0x58a8ef=0x0;_0x58a8ef<_0x4f7061[_0x2fbb17(0x9c)];_0x58a8ef++){const _0x182b26=_0x104205(_0x4f7061[_0x58a8ef]),_0x15c1da=_0x5c74a5['getTurnThroughNode'](_0x23a869,_0x5a1817,_0x182b26)[_0x2fbb17(0x32e)]();if(_0x15c1da['state']===0x1){_0x15c1da[_0x2fbb17(0x338)]()&&(_0x581762=!![]);if(_0x15c1da[_0x2fbb17(0x289)]()){_0x31b7dd=!![],_0x15c1da[_0x2fbb17(0x25c)]()[_0x2fbb17(0x2d2)]()&&(_0x497414=!![]);if(_0x15c1da[_0x2fbb17(0x25c)]()[_0x2fbb17(0x20a)]()===0x1)_0x2a36d0=0x1,_0x266e03=W['model'][_0x2fbb17(0x140)][_0x2fbb17(0xc7)](_0x182b26[_0x2fbb17(0x17c)][_0x2fbb17(0x1c7)])['name'];else _0x15c1da[_0x2fbb17(0x25c)]()[_0x2fbb17(0x20a)]()===0x2&&(_0x2a36d0=0x2,_0x266e03=W[_0x2fbb17(0xb0)]['streets'][_0x2fbb17(0xc7)](_0x182b26[_0x2fbb17(0x17c)][_0x2fbb17(0x1c7)])[_0x2fbb17(0x146)]);const _0x3820c3=_0x15c1da['lanes'][_0x2fbb17(0x345)],_0xa25d0d=_0x15c1da[_0x2fbb17(0x27f)]['toLaneIndex'];for(let _0x2908e7=_0x3820c3;_0x2908e7<=_0xa25d0d;_0x2908e7++){let _0x3407f0=!![];for(let _0x2f0adf=0x0;_0x2f0adf<_0x449b25[_0x2fbb17(0x9c)];_0x2f0adf++){_0x449b25[_0x2f0adf]===_0x2908e7&&(_0x3407f0=![]);}_0x3407f0&&_0x449b25[_0x2fbb17(0x132)](_0x2908e7);}}}}_0x449b25['sort']();for(let _0x241556=0x0;_0x241556<_0x449b25[_0x2fbb17(0x9c)];_0x241556++){_0x449b25[_0x241556]!==_0x241556&&(_0x5ed059=!![]);}if(_0x449b25[_0x2fbb17(0x9c)]<_0x32451d&&_0x1daa03(_0x23a869,_0x5497be))_0x5ed059=!![];return[_0x31b7dd,_0x581762,_0x497414,_0x5ed059,_0x2a36d0,_0x266e03];}function _0x2ec140(_0x5f0cb3,_0x15bedd){const _0x2f1a67=_0x2392fd;if(!_0x3c6d6c('lt-ClickSaveEnable')['checked'])return;let _0x2e1180=document[_0x2f1a67(0x26f)](_0x5f0cb3)[0x0],_0x12dd6f=_0x2e1180[_0x2f1a67(0x26f)]('angle--135')[_0x2f1a67(0x9c)]>0x0?'angle--135':_0x2e1180[_0x2f1a67(0x26f)](_0x2f1a67(0x1a4))[_0x2f1a67(0x9c)]>0x0?_0x2f1a67(0x1a4):_0x2f1a67(0xda),_0x4ffd36=_0x2e1180[_0x2f1a67(0x26f)](_0x2f1a67(0x90))['length']>0x0?_0x2f1a67(0x90):_0x2e1180[_0x2f1a67(0x26f)](_0x2f1a67(0x22c))[_0x2f1a67(0x9c)]>0x0?_0x2f1a67(0x22c):_0x2f1a67(0x99),_0x567726=_0x2e1180[_0x2f1a67(0x26f)](_0x2f1a67(0x325));for(let _0x5eaff6=0x0;_0x5eaff6<_0x567726[_0x2f1a67(0x9c)];++_0x5eaff6){let _0x3ef7e6=_0x567726[_0x5eaff6][_0x2f1a67(0x26f)](_0x2f1a67(0x313));if(_0x3ef7e6['length']!==_0x15bedd)return;}let _0x4c2884=[][_0x2f1a67(0x107)][_0x2f1a67(0x11e)](_0x567726)[_0x2f1a67(0x15d)]((_0x21d90e,_0xd407d3)=>_0x21d90e+[][_0x2f1a67(0x107)][_0x2f1a67(0x11e)](_0xd407d3[_0x2f1a67(0x2c0)]('wz-checkbox'))[_0x2f1a67(0x15d)]((_0x3c5d00,_0x116e97)=>_0x116e97[_0x2f1a67(0x129)]===!![]?_0x3c5d00+0x1:_0x3c5d00,0x0),0x0);if(_0x4c2884<_0x15bedd){let _0xffe2b=W[_0x2f1a67(0xb0)]['isLeftHand'],_0x2c1277=![],_0x152bc5=![];for(let _0x4cedb0=0x0;_0x4cedb0<_0x567726[_0x2f1a67(0x9c)];_0x4cedb0++){const _0x13db3c=_0x567726[_0x4cedb0];let _0x1ce31c=_0x13db3c[_0x2f1a67(0x2c0)]('wz-checkbox');if(_0x1ce31c&&_0x1ce31c[_0x2f1a67(0x9c)]>0x0){if(_0x13db3c[_0x2f1a67(0x26f)](_0x12dd6f)[_0x2f1a67(0x9c)]>0x0&&_0x1ce31c[0x0][_0x2f1a67(0x129)]!==undefined){if(_0x1ce31c[0x0][_0x2f1a67(0x129)]===!![])_0x2c1277=!![];_0x3c6d6c('lt-ClickSaveTurns')['checked']&&_0x1ce31c[0x0]['checked']===![]&&(_0x1ce31c[0x0][_0x2f1a67(0xe3)](),_0x2c1277=!![]);}else{if(_0x13db3c[_0x2f1a67(0x26f)](_0x4ffd36)[_0x2f1a67(0x9c)]>0x0&&_0x1ce31c[_0x1ce31c[_0x2f1a67(0x9c)]-0x1][_0x2f1a67(0x129)]!==undefined){if(_0x1ce31c[_0x1ce31c[_0x2f1a67(0x9c)]-0x1][_0x2f1a67(0x129)]===!![])_0x152bc5=!![];_0x3c6d6c('lt-ClickSaveTurns')[_0x2f1a67(0x129)]&&_0x1ce31c[_0x1ce31c[_0x2f1a67(0x9c)]-0x1][_0x2f1a67(0x129)]===![]&&(_0x152bc5=!![],_0x1ce31c[_0x1ce31c[_0x2f1a67(0x9c)]-0x1]['click']());}}}}for(let _0x285ced=0x0;_0x285ced<_0x567726[_0x2f1a67(0x9c)];_0x285ced++){const _0x5eb456=_0x567726[_0x285ced];let _0x7b1f8f=_0x5eb456[_0x2f1a67(0x2c0)](_0x2f1a67(0x28f));if(_0x5eb456[_0x2f1a67(0x26f)](_0x2f1a67(0x122))[_0x2f1a67(0x9c)]>0x0)for(let _0x4b57d9=0x0;_0x4b57d9<_0x7b1f8f[_0x2f1a67(0x9c)];_0x4b57d9++){if(_0x7b1f8f[_0x4b57d9][_0x2f1a67(0x129)]===![]){if(_0x4b57d9===0x0&&(_0x3c6d6c('lt-ClickSaveStraight')['checked']&&(!_0xffe2b&&!_0x2c1277||_0xffe2b&&!_0x152bc5)))_0x7b1f8f[_0x4b57d9][_0x2f1a67(0xe3)]();else{if(_0x4b57d9===_0x7b1f8f['length']-0x1&&(_0x3c6d6c(_0x2f1a67(0x130))[_0x2f1a67(0x129)]&&(!_0x152bc5&&!_0xffe2b||_0xffe2b&&!_0x2c1277)))_0x7b1f8f[_0x4b57d9][_0x2f1a67(0xe3)]();else{if(_0x4b57d9!==0x0&&_0x4b57d9!==_0x7b1f8f[_0x2f1a67(0x9c)]-0x1)_0x7b1f8f[_0x4b57d9]['click']();}}}}}}}function _0x5433f2(){const _0x24fe8b=_0x2392fd;let _0x163544=new MutationObserver(_0x1845b9=>{const _0x9d9d86=_0x34f3;let _0x179c35=W[_0x9d9d86(0x14b)][_0x9d9d86(0x137)]();if(_0x179c35[0x0]&&_0x179c35[0x0]['attributes'][_0x9d9d86(0x340)][_0x9d9d86(0x1a8)]['type']==='segment'&&_0x3c6d6c(_0x9d9d86(0x13a))[_0x9d9d86(0x129)]){let _0xfd9486=document[_0x9d9d86(0x19c)](_0x9d9d86(0x218));for(let _0x5a6745=0x0;_0x5a6745<_0xfd9486[_0x9d9d86(0x9c)];_0x5a6745++){_0xfd9486[_0x5a6745][_0x9d9d86(0xdf)](_0x9d9d86(0x19b),function(){const _0xf07d35=_0x9d9d86;let _0x37e948=$(this)[_0xf07d35(0x272)]()['eq'](0x9),_0x47e87a=_0x37e948[0x0],_0x19996e=_0x47e87a[_0xf07d35(0x372)],_0x36d714=parseInt($(this)[_0xf07d35(0x127)](),0xa);_0x2ec140(_0x19996e,_0x36d714);let _0x4a5880=$(this)[_0xf07d35(0x272)]()['find'](_0xf07d35(0x1f1)),_0x5a75ac=_0x4a5880[0x0][_0xf07d35(0x372)],_0x14a772='.'+_0x5a75ac[_0xf07d35(0x2c7)]('\x20','.'),_0x25d8f6='#'+_0x5a75ac[_0xf07d35(0x2c7)]('\x20','-')+'-'+_0x36d714['toString']();$(_0x14a772)[_0xf07d35(0x12d)]({'background-color':_0xf07d35(0x83),'color':'black'}),$(_0x25d8f6)[_0xf07d35(0x12d)]({'background-color':_0xf07d35(0x1ed),'color':_0xf07d35(0x164)});},![]);}let _0x26e564=document['getElementsByClassName'](_0x9d9d86(0x36c));for(let _0x341586=0x0;_0x341586<_0x26e564['length'];_0x341586++){_0x26e564[_0x341586][_0x9d9d86(0xdf)](_0x9d9d86(0xe3),function(){const _0x42b969=_0x9d9d86;let _0x504401=$(this)['parents']()['eq'](0xa),_0x1fe2cb=_0x504401[0x0][_0x42b969(0x372)],_0x5d97e7=parseInt($(this)[_0x42b969(0x1c2)](),0xa);_0x2ec140(_0x1fe2cb,_0x5d97e7);},![]);}}});_0x163544[_0x24fe8b(0x263)](document[_0x24fe8b(0x210)]('edit-panel'),{'childList':!![],'subtree':!![]});}function _0x5e8de8(_0x16b71e,_0x12429b){const _0x49f172=_0x2392fd;if(_0x16b71e==null||_0x12429b==null)return null;let _0x534bb9,_0x28bd25;_0x12429b[_0x49f172(0x17c)][_0x49f172(0x139)]===_0x16b71e?(_0x534bb9=_0x265db8(_0x12429b)['x']-_0x152c18(_0x12429b)['x'],_0x28bd25=_0x265db8(_0x12429b)['y']-_0x152c18(_0x12429b)['y']):(_0x534bb9=_0x3d1b47(_0x12429b)['x']-_0x2962d1(_0x12429b)['x'],_0x28bd25=_0x3d1b47(_0x12429b)['y']-_0x2962d1(_0x12429b)['y']);let _0x4f2a56=Math[_0x49f172(0x197)](_0x28bd25,_0x534bb9),_0x5c2904=_0x4f2a56*0xb4/Math['PI']%0x168;return _0x3ca0a2(_0x49f172(0x275)+_0x16b71e+'\x20/\x20'+_0x12429b['attributes']['id']+':\x20'+_0x5c2904,0x3),_0x5c2904;}function _0x3ad0d(_0x5a7194,_0x241b21,_0x218e49,_0x4ed215,_0x33c555,_0xb04eb3,_0x149ad2,_0x1224f7){const _0x508b63=_0x2392fd;if(_0x5a7194==null||_0x241b21==null||_0x218e49==null||_0x4ed215==null||_0x33c555==null||_0x149ad2==null||_0x1224f7==null)return _0x3ca0a2('heuristicsCandidateIndication\x20received\x20bad\x20argument\x20(null)',0x1),_0x4e008b[_0x508b63(0x373)];let _0x10b686=null,_0x170e78=null,_0x1012c6=0x0,_0x2220dd=null,_0x42164d=null,_0x179d32=null,_0x3069ff=0x0,_0xf0c9fa=null,_0x4efd97=null,_0x2449b7=0x0,_0x32ccd7=0x0;if(_0xb04eb3>_0x4d91c3)return _0x4e008b[_0x508b63(0x373)];const _0x114f63=_0x5a7194[_0x508b63(0x17c)]['id'];let _0x4d701d=_0x42d99a(_0x241b21[_0x508b63(0x17c)]['id'],_0x5a7194),_0x5ad01d=_0x5e8de8(_0x4ed215['attributes']['id'],_0x5a7194),_0x43fb85=-0x5a,_0x46d04b=0x5a;W[_0x508b63(0xb0)][_0x508b63(0x2d4)]&&(_0x43fb85=0x5a,_0x46d04b=-0x5a);_0x3ca0a2('==================================================================================',0x2),_0x3ca0a2(_0x508b63(0x35c)+_0x114f63+'node'+_0x241b21[_0x508b63(0x17c)]['id']+'\x20azm\x20'+_0x4d701d+'nodeExitSegIds:'+_0x218e49[_0x508b63(0x9c)],0x2);let _0x80dfe=_0x4ed215[_0x508b63(0x380)]();for(let _0x2dcf7f=0x0;_0x2dcf7f<_0x80dfe[_0x508b63(0x9c)];_0x2dcf7f++){let _0x383cde=0x0;if(_0x80dfe[_0x2dcf7f]===_0x114f63)continue;const _0x2b3d8f=_0x104205(_0x80dfe[_0x2dcf7f]);if(!_0x5de549(_0x2b3d8f,_0x4ed215,_0x5a7194))continue;let _0x22269d=_0x42d99a(_0x4ed215[_0x508b63(0x17c)]['id'],_0x2b3d8f),_0x5e75b3=_0x5981c6(_0x22269d,_0x5ad01d);_0x3ca0a2('Turn\x20angle\x20from\x20inseg\x20'+_0x80dfe[_0x2dcf7f]+':\x20'+_0x5e75b3+'('+_0x22269d+','+_0x5ad01d+')',0x3);if(Math[_0x508b63(0x118)](_0x5e75b3)>_0x5937c5){if(Math[_0x508b63(0x118)](_0x5e75b3)>_0x4cb7b2)continue;_0x3ca0a2(_0x508b63(0x124)+_0x5e75b3,0x2),_0x383cde=_0x4e008b[_0x508b63(0x199)];}const _0x5b0942=_0x149ad2[_0x508b63(0x9e)](_0x4ed215,_0x2b3d8f,_0x5a7194),_0x484d2a=_0x5b0942['getTurnData']();if(_0x484d2a[_0x508b63(0x10d)]!==0x1||!_0x484d2a[_0x508b63(0x289)]()){_0x3ca0a2('Straight\x20turn\x20has\x20no\x20lanes:'+_0x80dfe[_0x2dcf7f]+_0x508b63(0x2ec)+_0x114f63,0x3);continue;}let _0x4578a7=_0x484d2a[_0x508b63(0x27f)][_0x508b63(0x2ba)]-_0x484d2a['lanes'][_0x508b63(0x345)]+0x1;_0x4578a7!==_0x33c555&&!(_0x33c555===0x0&&_0x4578a7===0x1)&&(_0x3ca0a2('Straight\x20turn\x20lane\x20count\x20does\x20not\x20match',0x2),_0x383cde=_0x4e008b[_0x508b63(0x14f)]);if(_0x2220dd!==null&&_0x383cde>=_0x3069ff){if(_0x3069ff===0x0&&_0x383cde===0x0)return _0x3ca0a2('Error:\x20>1\x20qualifying\x20entry\x20segment\x20for\x20'+_0x5a7194[_0x508b63(0x17c)]['id']+':\x20'+_0x2220dd['attributes']['id']+','+_0x2b3d8f['attributes']['id'],0x2),_0x3ca0a2(_0x508b63(0x2cf),0x2),_0x4e008b[_0x508b63(0x373)];}_0x2220dd=_0x2b3d8f,_0x42164d=_0x22269d,_0x179d32=_0x5e75b3,_0x32ccd7=_0x4578a7,_0x3069ff=_0x383cde,_0x1224f7['inSeg']=_0x2220dd,_0x1224f7[_0x508b63(0x331)]=_0x5b0942[_0x508b63(0x33d)]['direction']===_0x508b63(0x18f)?_0x355007['FORWARD']:_0x355007[_0x508b63(0x342)];}if(_0x2220dd==null)return _0x3ca0a2('==\x20No\x20inseg\x20found\x20==================================================================',0x2),_0x4e008b['NONE'];else _0x3ca0a2(_0x508b63(0xca)+_0x2220dd[_0x508b63(0x17c)]['id']+'\x20'+(_0x3069ff===0x0?'':_0x508b63(0x1e5)),0x2);for(let _0x470200=0x0;_0x470200<_0x218e49['length'];_0x470200++){let _0x2d9f31=0x0;if(_0x218e49[_0x470200]===_0x114f63)continue;const _0x2589b5=_0x104205(_0x218e49[_0x470200]);if(!_0x5de549(_0x5a7194,_0x241b21,_0x2589b5))continue;let _0x5b97ca=_0x5e8de8(_0x241b21[_0x508b63(0x17c)]['id'],_0x2589b5),_0x48d8da=_0x5981c6(_0x4d701d,_0x5b97ca);_0x3ca0a2(_0x508b63(0x269)+_0x218e49[_0x470200]+':\x20'+_0x48d8da+'('+_0x4d701d+','+_0x5b97ca+')',0x2);if(Math[_0x508b63(0x118)](_0x43fb85-_0x48d8da)<_0x3d354a)return 0x0;if(Math['abs'](_0x46d04b-_0x48d8da)>_0x49326c){if(Math[_0x508b63(0x118)](_0x46d04b-_0x48d8da)>_0x3d354a)continue;_0x3ca0a2(_0x508b63(0x344)+_0x48d8da,0x2),_0x2d9f31=_0x4e008b[_0x508b63(0x199)];}if(_0x10b686!==null&&_0x2d9f31>=_0x1012c6){if(_0x1012c6===0x0&&_0x2d9f31===0x0)return _0x3ca0a2('Error:\x20>1\x20qualifying\x20exit2\x20segment\x20for\x20'+_0x5a7194[_0x508b63(0x17c)]['id']+':\x20'+_0x10b686[_0x508b63(0x17c)]['id']+','+_0x2589b5[_0x508b63(0x17c)]['id'],0x2),_0x3ca0a2('==================================================================================',0x2),0x0;}_0x10b686=_0x2589b5,_0x170e78=_0x48d8da,_0x1012c6=_0x2d9f31;}if(_0x10b686==null)return _0x3ca0a2('==\x20No\x20Outseg2\x20found\x20==================================================================',0x2),_0x4e008b[_0x508b63(0x373)];else _0x3ca0a2(_0x508b63(0x277)+_0x10b686[_0x508b63(0x17c)]['id']+'\x20'+(_0x1012c6===0x0?'':_0x508b63(0x1e5)),0x2);for(let _0x290991=0x0;_0x290991<_0x80dfe[_0x508b63(0x9c)];_0x290991++){if(_0x80dfe[_0x290991]===_0x114f63||_0x80dfe[_0x290991]===_0x2220dd[_0x508b63(0x17c)]['id'])continue;const _0x6f10a0=_0x104205(_0x80dfe[_0x290991]);let _0x29f241=0x0;if(_0x6f10a0[_0x508b63(0x17c)][_0x508b63(0x89)]&&_0x6f10a0[_0x508b63(0x17c)]['toNodeID']!==_0x4ed215[_0x508b63(0x17c)]['id']||_0x6f10a0[_0x508b63(0x17c)]['revDirection']&&_0x6f10a0[_0x508b63(0x17c)][_0x508b63(0x139)]!==_0x4ed215[_0x508b63(0x17c)]['id'])continue;let _0x241ebc=_0x42d99a(_0x4ed215[_0x508b63(0x17c)]['id'],_0x6f10a0),_0x580b9d=_0x5981c6(_0x42164d,_0x241ebc);_0x3ca0a2(_0x508b63(0x366)+_0x80dfe[_0x290991]+':\x20'+_0x580b9d+'('+_0x42164d+','+_0x241ebc+')',0x3);if(Math[_0x508b63(0x118)](_0x43fb85-_0x580b9d)>_0x2ab443){if(Math[_0x508b63(0x118)](_0x43fb85-_0x580b9d)>_0x3d354a)continue;_0x3ca0a2('Not\x20eligible\x20as\x20altIn1:\x20'+_0x580b9d,0x3),_0x29f241=_0x4e008b['FAIL'];}if(_0xf0c9fa!==null){if(_0x29f241<_0x2449b7)continue;if(_0x2449b7===0x0&&_0x29f241===0x0)_0x3ca0a2(_0x508b63(0x25b)+_0x5a7194[_0x508b63(0x17c)]['id']+':\x20'+_0xf0c9fa[_0x508b63(0x17c)]['id']+','+_0x6f10a0['attributes']['id'],0x2);return _0x3ca0a2(_0x508b63(0x2cf),0x2),_0x4e008b[_0x508b63(0x199)];}_0xf0c9fa=_0x6f10a0,_0x4efd97=_0x241ebc,_0x2449b7=_0x29f241;}if(_0xf0c9fa==null)return _0x3ca0a2(_0x508b63(0x119),0x2),_0x4e008b[_0x508b63(0x373)];else _0x3ca0a2('Alt\x20incoming-1\x20segment\x20found:\x20'+_0xf0c9fa['attributes']['id']+'\x20'+(_0x2449b7===0x0?'':_0x508b63(0x1e5)),0x2);if(_0x3069ff<0x0||_0x2449b7<0x0||_0x1012c6<0x0)return _0x3ca0a2(_0x508b63(0x1f7)+_0x114f63+_0x508b63(0x226)+Math[_0x508b63(0x293)](_0x3069ff,_0x2449b7,_0x1012c6)+')',0x2),_0x3069ff===_0x4e008b[_0x508b63(0x199)]||_0x2449b7===_0x4e008b[_0x508b63(0x199)]||_0x1012c6===_0x4e008b[_0x508b63(0x199)]?_0x4e008b[_0x508b63(0x199)]:_0x4e008b[_0x508b63(0x14f)];return _0x3ca0a2(_0x508b63(0x241)+_0x114f63+_0x508b63(0x2ec)+_0x10b686[_0x508b63(0x17c)]['id']+'at'+_0x170e78,0x2),_0x4e008b[_0x508b63(0x266)];}function _0x42d99a(_0x255064,_0x5167fd){const _0x58dbb0=_0x2392fd;let _0x5a6639=_0x5e8de8(_0x255064,_0x5167fd),_0x3592e9=_0x5a6639+0xb4;return _0x3592e9>=0xb4&&(_0x3592e9-=0x168),_0x3ca0a2(_0x58dbb0(0x18e)+_0x255064+'/\x20'+_0x5167fd[_0x58dbb0(0x17c)]['id']+':\x20'+_0x3592e9,0x3),_0x3592e9;}function _0x5981c6(_0x2adcb3,_0x2d5e77){let _0x24e3f8=_0x2adcb3,_0x257993=_0x2d5e77;while(_0x2d5e77>0xb4){_0x257993-=0x168;}while(_0x2d5e77<-0xb4){_0x257993+=0x168;}while(_0x2adcb3>0xb4){_0x24e3f8-=0x168;}while(_0x2adcb3<-0xb4){_0x24e3f8+=0x168;}let _0x2f323a=_0x257993-_0x24e3f8;return _0x2f323a+=_0x2f323a>0xb4?-0x168:_0x2f323a<-0xb4?0x168:0x0,_0x3ca0a2('Turn\x20'+_0x24e3f8+','+_0x257993+':\x20'+_0x2f323a,0x3),_0x2f323a;}function _0x5de549(_0x55d7c8,_0xe33482,_0x477052){const _0x3745d4=_0x2392fd;_0x3ca0a2(_0x3745d4(0x1f2)+_0x55d7c8[_0x3745d4(0x17c)]['id']+_0x3745d4(0x15e)+_0x477052[_0x3745d4(0x17c)]['id']+_0x3745d4(0x1a3)+_0xe33482['attributes']['id']+_0x3745d4(0x2c5)+_0x3745d4(0x1e1)+_0xe33482[_0x3745d4(0x1c1)](_0x55d7c8,_0x477052)+'|\x20'+_0x55d7c8[_0x3745d4(0xf1)](_0x477052,_0xe33482),0x3);if(!_0xe33482[_0x3745d4(0x1c1)](_0x55d7c8,_0x477052))return _0x3ca0a2(_0x3745d4(0x356),0x3),![];if(!_0x55d7c8['isTurnAllowed'](_0x477052,_0xe33482))return _0x3ca0a2(_0x3745d4(0xef),0x3),![];return!![];}function _0x2e6546(_0xd7c34a){const _0x3777b1=_0x2392fd;let _0x21bb30=_0xd7c34a[_0x3777b1(0x19f)][_0x3777b1(0xc2)](W[_0x3777b1(0x16f)][_0x3777b1(0x31c)][_0x3777b1(0x143)]);return _0x3ca0a2(_0x3777b1(0x258)+_0xd7c34a[_0x3777b1(0x17c)]['id']+_0x3777b1(0x19d)+_0x21bb30+_0x3777b1(0xcf)+_0xd7c34a[_0x3777b1(0x17c)][_0x3777b1(0x9c)],0x3),_0x21bb30;}function _0x3ca0a2(_0x37e691,_0xc67d44=0x1){const _0x466adc=_0x2392fd;return _0xc67d44<=_0x40774c&&console['log'](_0x466adc(0x208),_0x37e691);}function _0xe99d32(_0x397b7d){const _0x209195=_0x2392fd;_0x5e2c3f=[];const _0x1b605f=W[_0x209195(0x14b)][_0x209195(0x137)](),_0x50e4f0=_0x1b605f[0x0]['attributes'][_0x209195(0x340)][_0x209195(0x1a8)],_0x2bd7a3=_0x50e4f0['getFeatureAttributes'](),_0x174eb0=_0x50e4f0[_0x209195(0x19f)][_0x209195(0x2aa)],_0x1c7899=_0x397b7d==='A'?_0x2bd7a3[_0x209195(0x139)]:_0x2bd7a3[_0x209195(0x377)],_0x1c0c37=_0x397b7d==='A'?_0x2bd7a3[_0x209195(0x27a)]:_0x2bd7a3[_0x209195(0x320)];console['log'](_0x209195(0x13b)+_0x1c0c37);const _0x5bb762=_0xf7e638(_0x1c7899),_0x4aa7d8=_0x5bb762[_0x209195(0x380)](),_0x3043aa=W[_0x209195(0xb0)][_0x209195(0x27e)]();let _0x37e1c6;_0x397b7d==='A'?_0x37e1c6=_0x174eb0[0x1]:_0x37e1c6=_0x174eb0[_0x174eb0['length']-0x2];let _0x3c0140=_0x37e1c6['x']-_0x5bb762[_0x209195(0x19f)]['x'],_0x3e3eb0=_0x37e1c6['y']-_0x5bb762[_0x209195(0x19f)]['y'],_0x6e49b0=Math['atan2'](_0x3e3eb0,_0x3c0140),_0x4b8ac6=_0x6e49b0*0xb4/Math['PI']%0x168;for(let _0x3029d4=0x0;_0x3029d4<_0x4aa7d8[_0x209195(0x9c)];_0x3029d4++){const _0x550775=_0x104205(_0x4aa7d8[_0x3029d4]);let _0x2d3a33=_0x550775[_0x209195(0x167)](),_0x2af99e=_0x550775[_0x209195(0x19f)][_0x209195(0x2aa)],_0x3dd18d,_0x5f4fc4,_0x578abb=_0x3043aa[_0x209195(0x9e)](_0x5bb762,_0x50e4f0,_0x550775)['getTurnData']();if(_0x578abb[_0x209195(0x10d)]===0x1&&_0x578abb[_0x209195(0x27f)]){_0x2d3a33['fromNodeID']===_0x1c7899?_0x5f4fc4='A':_0x5f4fc4='B',_0x5f4fc4==='A'?_0x3dd18d=_0x2af99e[0x1]:_0x3dd18d=_0x2af99e[_0x2af99e[_0x209195(0x9c)]-0x2],_0x3c0140=_0x3dd18d['x']-_0x5bb762[_0x209195(0x19f)]['x'],_0x3e3eb0=_0x3dd18d['y']-_0x5bb762[_0x209195(0x19f)]['y'],_0x6e49b0=Math['atan2'](_0x3e3eb0,_0x3c0140);let _0xaca912=_0x6e49b0*0xb4/Math['PI']%0x168;if(_0x4b8ac6<0x0)_0xaca912=_0x4b8ac6-_0xaca912;_0xd2fcf7={};let _0xa9d419=_0x578abb[_0x209195(0x25c)]();_0xd2fcf7['id']=_0x550775[_0x209195(0x17c)]['id'],_0xd2fcf7[_0x209195(0x202)]=_0xaca912,_0xd2fcf7['lanes']=_0xa9d419,_0x5e2c3f[_0x209195(0x132)](_0xd2fcf7);}_0x5e2c3f[_0x209195(0x369)]((_0x8e5bc4,_0x4165db)=>_0x8e5bc4[_0x209195(0x202)]>_0x4165db[_0x209195(0x202)]?0x1:-0x1);}console[_0x209195(0x18a)](_0x5e2c3f);}function _0x2439eb(_0x1e8846){const _0x6aa96e=_0x2392fd,_0x5ce937=new _0x4c1d84();_0x5ce937[_0x6aa96e(0x350)](W[_0x6aa96e(0xb0)]);const _0x40ec3a=W[_0x6aa96e(0x14b)][_0x6aa96e(0x137)](),_0x34c90b=_0x40ec3a[0x0]['attributes'][_0x6aa96e(0x340)][_0x6aa96e(0x1a8)],_0x361115=_0x34c90b['geometry'][_0x6aa96e(0x2aa)],_0x568b01=_0x34c90b[_0x6aa96e(0x167)](),_0x168e99=_0x1e8846==='A'?_0x568b01['fromNodeID']:_0x568b01[_0x6aa96e(0x377)];let _0x3e0fe6;const _0x1efb7f=_0xf7e638(_0x168e99),_0x1686a9=_0x1efb7f[_0x6aa96e(0x380)](),_0x16c557=W[_0x6aa96e(0xb0)]['getTurnGraph']();let _0x4d22d3={},_0x4327e3=[];_0x1e8846==='A'?_0x3e0fe6=_0x361115[0x1]:_0x3e0fe6=_0x361115[_0x361115['length']-0x2];let _0x56502c=_0x3e0fe6['x']-_0x1efb7f['geometry']['x'],_0x1b4913=_0x3e0fe6['y']-_0x1efb7f[_0x6aa96e(0x19f)]['y'],_0x499530=Math[_0x6aa96e(0x197)](_0x1b4913,_0x56502c),_0x572968=_0x499530*0xb4/Math['PI']%0x168;for(let _0x1ee8af=0x0;_0x1ee8af<_0x1686a9['length'];_0x1ee8af++){let _0x32db96=_0x104205(_0x1686a9[_0x1ee8af]),_0x452f37=_0x32db96[_0x6aa96e(0x17c)],_0x5cf2bd=_0x32db96['geometry'][_0x6aa96e(0x2aa)],_0x4fa862={},_0x26817a,_0x22cf26=_0x16c557['getTurnThroughNode'](_0x1efb7f,_0x34c90b,_0x32db96)['getTurnData']();_0x452f37[_0x6aa96e(0x139)]===_0x168e99?_0x26817a='A':_0x26817a='B',_0x26817a==='A'?_0x4fa862=_0x5cf2bd[0x1]:_0x4fa862=_0x5cf2bd[_0x5cf2bd['length']-0x2];if(_0x22cf26[_0x6aa96e(0x10d)]===0x1){_0x4d22d3={},_0x56502c=_0x4fa862['x']-_0x1efb7f['geometry']['x'],_0x1b4913=_0x4fa862['y']-_0x1efb7f[_0x6aa96e(0x19f)]['y'],_0x499530=Math[_0x6aa96e(0x197)](_0x1b4913,_0x56502c);let _0x540c82=_0x499530*0xb4/Math['PI']%0x168;if(_0x572968<0x0)_0x540c82=_0x572968-_0x540c82;_0x4d22d3['id']=_0x452f37['id'],_0x4d22d3[_0x6aa96e(0x202)]=_0x540c82,_0x4327e3[_0x6aa96e(0x132)](_0x4d22d3);}_0x4327e3['sort']((_0x328542,_0x1648b2)=>_0x328542['order']>_0x1648b2[_0x6aa96e(0x202)]?0x1:-0x1);}console[_0x6aa96e(0x18a)](_0x4327e3);if(_0x5e2c3f[_0x6aa96e(0x9c)]===_0x4327e3[_0x6aa96e(0x9c)]){_0x1e8846==='A'?_0x5ce937[_0x6aa96e(0x1bc)](new _0x254a0b(_0x34c90b,{'revLaneCount':_0x1bba79})):_0x5ce937[_0x6aa96e(0x1bc)](new _0x254a0b(_0x34c90b,{'fwdLaneCount':_0x1bba79}));for(let _0x2fbaee=0x0;_0x2fbaee<_0x4327e3[_0x6aa96e(0x9c)];_0x2fbaee++){let _0x2a376a={};for(let _0x516513=0x0;_0x516513<_0x5e2c3f[_0x6aa96e(0x9c)];_0x516513++){_0x2a376a[_0x516513]=_0x5e2c3f[_0x516513];}let _0x523269=_0x104205(_0x4327e3[_0x2fbaee]['id']),_0x494eb9=_0x16c557[_0x6aa96e(0x9e)](_0x1efb7f,_0x34c90b,_0x523269),_0x473926=_0x494eb9[_0x6aa96e(0x32e)]();_0x473926=_0x473926[_0x6aa96e(0xad)](_0x2a376a[_0x2fbaee][_0x6aa96e(0x27f)]),_0x494eb9=_0x494eb9[_0x6aa96e(0x9b)](_0x473926),_0x5ce937[_0x6aa96e(0x1bc)](new _0x16cd1b(_0x16c557,_0x494eb9));}_0x5ce937[_0x6aa96e(0x2e9)]='Pasted\x20some\x20lane\x20stuff',W[_0x6aa96e(0xb0)][_0x6aa96e(0x245)][_0x6aa96e(0x103)](_0x5ce937),$(_0x6aa96e(0x339))[_0x6aa96e(0x169)](_0x6aa96e(0xe3));}else WazeWrap[_0x6aa96e(0x12a)][_0x6aa96e(0x126)](GM_info['script'][_0x6aa96e(0x146)],_0x6aa96e(0x2ab));}function _0x4fe5ce(_0x34e062){const _0x493f6c=_0x2392fd;let _0x118485={};for(let _0x17cd3e=0x0;_0x17cd3e<_0x34e062[_0x493f6c(0x9c)];_0x17cd3e++){let _0x408524={},_0x34eb8e=$(_0x34e062[_0x17cd3e])[_0x493f6c(0x255)](_0x493f6c(0x10f))[_0x493f6c(0x12d)](_0x493f6c(0x185)),_0x4d9d13=$(_0x34e062[_0x17cd3e])[_0x493f6c(0x255)](_0x493f6c(0x253))['css']('display');_0x408524[_0x493f6c(0x240)]=_0x34eb8e&&_0x34eb8e!==_0x493f6c(0x2de),_0x408524['miniuturn']=_0x4d9d13&&_0x4d9d13!==_0x493f6c(0x2de),_0x408524[_0x493f6c(0x383)]=$(_0x34e062[_0x17cd3e])[_0x493f6c(0x255)](_0x493f6c(0x383))[_0x493f6c(0x16f)](function(){return this;})[_0x493f6c(0x1e0)](),_0x118485[_0x17cd3e]=_0x408524;}return _0x118485;}function _0x5d57df(_0x2a3f73,_0x1d1e59,_0x353b7b,_0x40c55c){const _0x458ffb=_0x2392fd;let _0xbff7a={};if(_0xa0d0ac){if(_0x2a3f73===0x0)_0xbff7a={'x':_0x1d1e59[_0x458ffb(0x19f)]['x']+_0x353b7b[_0x458ffb(0x1be)]*0x2,'y':_0x1d1e59[_0x458ffb(0x19f)]['y']+_0x353b7b[_0x458ffb(0x200)]};else{if(_0x2a3f73===0x1)_0xbff7a={'x':_0x1d1e59[_0x458ffb(0x19f)]['x']+_0x353b7b[_0x458ffb(0x200)],'y':_0x1d1e59[_0x458ffb(0x19f)]['y']+_0x353b7b[_0x458ffb(0x35b)]*_0x40c55c};else{if(_0x2a3f73===0x2)_0xbff7a={'x':_0x1d1e59['geometry']['x']-(_0x353b7b[_0x458ffb(0x1be)]+_0x353b7b[_0x458ffb(0x35b)]*_0x40c55c),'y':_0x1d1e59['geometry']['y']+(_0x353b7b[_0x458ffb(0x1be)]+_0x353b7b[_0x458ffb(0x200)])};else{if(_0x2a3f73===0x3)_0xbff7a={'x':_0x1d1e59[_0x458ffb(0x19f)]['x']+(_0x353b7b[_0x458ffb(0x1be)]+_0x353b7b[_0x458ffb(0x35b)])/0x2,'y':_0x1d1e59[_0x458ffb(0x19f)]['y']-(_0x353b7b['start']+_0x353b7b[_0x458ffb(0x200)])};else{if(_0x2a3f73===0x4)_0xbff7a={'x':_0x1d1e59[_0x458ffb(0x19f)]['x']-(_0x353b7b[_0x458ffb(0x1be)]+_0x353b7b['boxheight']*1.5),'y':_0x1d1e59[_0x458ffb(0x19f)]['y']-(_0x353b7b['start']+_0x353b7b[_0x458ffb(0x35b)]*_0x40c55c*1.5)};else{if(_0x2a3f73===0x5)_0xbff7a={'x':_0x1d1e59['geometry']['x']+(_0x353b7b['start']+_0x353b7b[_0x458ffb(0x35b)]/0x2),'y':_0x1d1e59['geometry']['y']+_0x353b7b[_0x458ffb(0x1be)]/0x2};else{if(_0x2a3f73===0x6)_0xbff7a={'x':_0x1d1e59[_0x458ffb(0x19f)]['x']-_0x353b7b[_0x458ffb(0x1be)],'y':_0x1d1e59[_0x458ffb(0x19f)]['y']-_0x353b7b['start']*(_0x353b7b[_0x458ffb(0x35b)]*_0x40c55c/0x2)};else _0x2a3f73===0x7&&(_0xbff7a={'x':_0x1d1e59[_0x458ffb(0x19f)]['x']-_0x353b7b[_0x458ffb(0x1be)]*(_0x353b7b[_0x458ffb(0x35b)]*_0x40c55c/0x2),'y':_0x1d1e59[_0x458ffb(0x19f)]['y']-_0x353b7b['start']});}}}}}}}else{if(_0x2a3f73===0x0)_0xbff7a={'x':_0x1d1e59[_0x458ffb(0x19f)]['x']+_0x353b7b[_0x458ffb(0x1be)]*0x2,'y':_0x1d1e59[_0x458ffb(0x19f)]['y']+_0x353b7b[_0x458ffb(0x200)]};else{if(_0x2a3f73===0x1)_0xbff7a={'x':_0x1d1e59[_0x458ffb(0x19f)]['x']+_0x353b7b[_0x458ffb(0x200)],'y':_0x1d1e59[_0x458ffb(0x19f)]['y']+_0x353b7b[_0x458ffb(0x35b)]*_0x40c55c/1.8};else{if(_0x2a3f73===0x2)_0xbff7a={'x':_0x1d1e59[_0x458ffb(0x19f)]['x']-(_0x353b7b['start']+_0x353b7b[_0x458ffb(0x35b)]*_0x40c55c),'y':_0x1d1e59[_0x458ffb(0x19f)]['y']+(_0x353b7b[_0x458ffb(0x1be)]+_0x353b7b['boxheight'])};else{if(_0x2a3f73===0x3)_0xbff7a={'x':_0x1d1e59[_0x458ffb(0x19f)]['x']+(_0x353b7b[_0x458ffb(0x1be)]+_0x353b7b[_0x458ffb(0x35b)]),'y':_0x1d1e59[_0x458ffb(0x19f)]['y']-(_0x353b7b[_0x458ffb(0x1be)]+_0x353b7b[_0x458ffb(0x200)]*0x2)};else{if(_0x2a3f73===0x4)_0xbff7a={'x':_0x1d1e59[_0x458ffb(0x19f)]['x']-(_0x353b7b['start']+_0x353b7b[_0x458ffb(0x200)]*1.5),'y':_0x1d1e59[_0x458ffb(0x19f)]['y']-(_0x353b7b['start']+_0x353b7b[_0x458ffb(0x35b)]*_0x40c55c*1.5)};else{if(_0x2a3f73===0x5)_0xbff7a={'x':_0x1d1e59[_0x458ffb(0x19f)]['x']+(_0x353b7b[_0x458ffb(0x1be)]+_0x353b7b[_0x458ffb(0x35b)]/0x2),'y':_0x1d1e59[_0x458ffb(0x19f)]['y']+_0x353b7b['start']/0x2};else{if(_0x2a3f73===0x6)_0xbff7a={'x':_0x1d1e59[_0x458ffb(0x19f)]['x']-_0x353b7b[_0x458ffb(0x1be)],'y':_0x1d1e59[_0x458ffb(0x19f)]['y']-_0x353b7b['start']*(_0x353b7b[_0x458ffb(0x35b)]*_0x40c55c/0x2)};else _0x2a3f73===0x7&&(_0xbff7a={'x':_0x1d1e59[_0x458ffb(0x19f)]['x']-_0x353b7b[_0x458ffb(0x1be)]*(_0x353b7b[_0x458ffb(0x35b)]*_0x40c55c/0x2),'y':_0x1d1e59[_0x458ffb(0x19f)]['y']-_0x353b7b[_0x458ffb(0x1be)]});}}}}}}}return _0xbff7a;}function _0x5d03c9(_0x551691,_0xd554d1,_0x24d5a9){const _0x5c179b=_0x2392fd,_0x46c070=Object[_0x5c179b(0x2cc)](_0x24d5a9)['length'];if(_0x46c070===0x0)return;let _0x4a14a5=_0x322df6(),_0x4cbf2d=_0xa0e09d(_0x551691[_0x5c179b(0x17c)]['id'],_0xd554d1),_0x20033b,_0x429221=[],_0x2cc961=0x0;if(!_0x3c6d6c('lt-IconsRotate')[_0x5c179b(0x129)])_0x4cbf2d=-0x5a;if(_0x4cbf2d===0x0)_0x4cbf2d+=0xb4,_0x2cc961=0x1;else{if(_0x4cbf2d>0x0&&_0x4cbf2d<=0x1e)_0x4cbf2d+=0x2*(0x5a-_0x4cbf2d),_0x2cc961=0x1;else{if(_0x4cbf2d>=0x14a&&_0x4cbf2d<=0x168)_0x4cbf2d-=0xb4-0x2*(0x168-_0x4cbf2d),_0x2cc961=0x1;else{if(_0x4cbf2d>0x1e&&_0x4cbf2d<0x3c)_0x4cbf2d-=0x5a-0x2*(0x168-_0x4cbf2d),_0x2cc961=0x2;else{if(_0x4cbf2d>=0x3c&&_0x4cbf2d<=0x78)_0x4cbf2d-=0x5a-0x2*(0x168-_0x4cbf2d),_0x2cc961=0x2;else{if(_0x4cbf2d>0x78&&_0x4cbf2d<0x96)_0x4cbf2d-=0x5a-0x2*(0x168-_0x4cbf2d),_0x2cc961=0x7;else{if(_0x4cbf2d>=0x96&&_0x4cbf2d<=0xd2)_0x4cbf2d=0xb4-_0x4cbf2d,_0x2cc961=0x4;else{if(_0x4cbf2d>0xd2&&_0x4cbf2d<0xf0)_0x4cbf2d-=0x5a-0x2*(0x168-_0x4cbf2d),_0x2cc961=0x6;else{if(_0x4cbf2d>=0xf0&&_0x4cbf2d<=0x12c)_0x4cbf2d-=0xb4-0x2*(0x168-_0x4cbf2d),_0x2cc961=0x3;else{if(_0x4cbf2d>0x12c&&_0x4cbf2d<0x14a)_0x4cbf2d-=0xb4-0x2*(0x168-_0x4cbf2d),_0x2cc961=0x5;else console[_0x5c179b(0x18a)](_0x5c179b(0x36b));}}}}}}}}}let _0x4a45f5=_0x4cbf2d>0x13b?_0x4cbf2d:_0x4cbf2d+0x5a,_0x1b6fc7=0x168-_0x4a45f5,_0x1b085d=_0x5d57df(_0x2cc961,_0x551691,_0x4a14a5,_0x46c070);const _0x5dc498=new OpenLayers[(_0x5c179b(0x1a6))][(_0x5c179b(0x2d1))](_0x1b085d['x'],_0x1b085d['y']+_0x4a14a5[_0x5c179b(0x200)]),_0x3457a5=new OpenLayers[(_0x5c179b(0x1a6))][(_0x5c179b(0x2d1))](_0x1b085d['x']+_0x4a14a5[_0x5c179b(0x35b)]*_0x46c070,_0x1b085d['y']+_0x4a14a5[_0x5c179b(0x200)]),_0x2e9257=new OpenLayers[(_0x5c179b(0x1a6))][(_0x5c179b(0x2d1))](_0x1b085d['x']+_0x4a14a5['boxincwidth']*_0x46c070,_0x1b085d['y']),_0x4a1f09=new OpenLayers[(_0x5c179b(0x1a6))]['Point'](_0x1b085d['x'],_0x1b085d['y']);_0x429221['push'](_0x5dc498,_0x3457a5,_0x2e9257,_0x4a1f09);let _0x5f08bd={'strokeColor':'#ffffff','strokeOpacity':0x1,'strokeWidth':0x8,'fillColor':_0x5c179b(0x23a)},_0x3facb7=new OpenLayers[(_0x5c179b(0x1a6))]['LinearRing'](_0x429221);_0x20033b=_0x3facb7[_0x5c179b(0x29b)](),_0x3facb7['rotate'](_0x1b6fc7,_0x20033b);let _0x26b081=new OpenLayers[(_0x5c179b(0x2c6))][(_0x5c179b(0x32f))](_0x3facb7,null,_0x5f08bd);_0x1a571b[_0x5c179b(0x242)]([_0x26b081]);let _0xfc55aa=0x0;_['each'](_0x24d5a9,_0x4177a5=>{const _0x34055e=_0x5c179b;let _0xd85d5c=[];var _0x5c39a8=new OpenLayers[(_0x34055e(0x1a6))][(_0x34055e(0x2d1))](_0x1b085d['x']+_0x4a14a5['boxincwidth']*_0xfc55aa+_0x4a14a5[_0x34055e(0xd0)],_0x1b085d['y']+_0x4a14a5[_0x34055e(0x355)]),_0x45d689=new OpenLayers[(_0x34055e(0x1a6))][(_0x34055e(0x2d1))](_0x1b085d['x']+_0x4a14a5[_0x34055e(0x35b)]*_0xfc55aa+_0x4a14a5['iconborderwidth'],_0x1b085d['y']+_0x4a14a5[_0x34055e(0x355)]),_0x2cfb9e=new OpenLayers[(_0x34055e(0x1a6))][(_0x34055e(0x2d1))](_0x1b085d['x']+_0x4a14a5[_0x34055e(0x35b)]*_0xfc55aa+_0x4a14a5[_0x34055e(0x2a9)],_0x1b085d['y']+_0x4a14a5[_0x34055e(0xd0)]),_0x16d15f=new OpenLayers[(_0x34055e(0x1a6))]['Point'](_0x1b085d['x']+_0x4a14a5['boxincwidth']*_0xfc55aa+_0x4a14a5[_0x34055e(0xd0)],_0x1b085d['y']+_0x4a14a5[_0x34055e(0xd0)]);_0xd85d5c['push'](_0x5c39a8,_0x45d689,_0x2cfb9e,_0x16d15f);const _0x58b907={'strokeColor':_0x34055e(0x273),'strokeOpacity':0x1,'strokeWidth':0x1,'fillColor':_0x34055e(0x1df)};let _0x421ab1=new OpenLayers[(_0x34055e(0x1a6))][(_0x34055e(0x352))](_0xd85d5c);_0x421ab1[_0x34055e(0x17e)](_0x1b6fc7,_0x20033b);let _0x470bdd=new OpenLayers['Feature'][(_0x34055e(0x32f))](_0x421ab1,null,_0x58b907);_0x1a571b[_0x34055e(0x242)]([_0x470bdd]);let _0x2545d=_0x421ab1['getCentroid'](),_0x234f04=new OpenLayers[(_0x34055e(0x1a6))]['Point'](_0x2545d['x'],_0x2545d['y']),_0x5c8b59='',_0x295c1b={'x':0x0,'y':0x0},_0x47f99f={'x':0x0,'y':0x0};_0x4177a5[_0x34055e(0x240)]===!![]&&(_0x5c8b59=_0x48e860[_0x34055e(0x1f8)],_0x295c1b['x']=0.6,_0x295c1b['y']=0.6,_0x47f99f['x']=-0x7,_0x47f99f['y']=-0xc);_0x4177a5[_0x34055e(0x25a)]===!![]&&(_0x5c8b59=_0x48e860[_0x34055e(0x1f8)],_0x295c1b['x']=0.3,_0x295c1b['y']=0.25,_0x47f99f['x']=-0x8,_0x47f99f['y']=0x4);let _0xbb688a={'externalGraphic':_0x4177a5['svg'],'graphicHeight':_0x4a14a5[_0x34055e(0x195)],'graphicWidth':_0x4a14a5[_0x34055e(0x174)],'fillColor':'#26bae8','bgcolor':'#26bae8','color':_0x34055e(0x1df),'rotation':_0x4a45f5,'backgroundGraphic':_0x5c8b59,'backgroundHeight':_0x4a14a5[_0x34055e(0x195)]*_0x295c1b['y'],'backgroundWidth':_0x4a14a5[_0x34055e(0x174)]*_0x295c1b['x'],'backgroundXOffset':_0x47f99f['x'],'backgroundYOffset':_0x47f99f['y']},_0x5ec332=new OpenLayers[(_0x34055e(0x2c6))][(_0x34055e(0x32f))](_0x234f04,null,_0xbb688a);_0x1a571b[_0x34055e(0x242)]([_0x5ec332]),_0xfc55aa++;}),_0x1a571b[_0x5c179b(0xe2)](0x258);}function _0x322df6(){const _0x487bae=_0x2392fd;var _0x3b62ac={};let _0x1cafbb=W['map']['getOLMap']()[_0x487bae(0x26a)]();if(_0xa0d0ac)switch(_0x1cafbb){case 0x16:_0x3b62ac['start']=0.5,_0x3b62ac['boxheight']=1.7,_0x3b62ac['boxincwidth']=1.1,_0x3b62ac['iconbordermargin']=0.1,_0x3b62ac[_0x487bae(0x355)]=1.6,_0x3b62ac[_0x487bae(0x2a9)]=0x1,_0x3b62ac['graphicHeight']=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;case 0x15:_0x3b62ac[_0x487bae(0x1be)]=0x1,_0x3b62ac[_0x487bae(0x200)]=3.2,_0x3b62ac[_0x487bae(0x35b)]=2.2,_0x3b62ac[_0x487bae(0xd0)]=0.2,_0x3b62ac[_0x487bae(0x355)]=0x3,_0x3b62ac[_0x487bae(0x2a9)]=0x2,_0x3b62ac['graphicHeight']=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;case 0x14:_0x3b62ac[_0x487bae(0x1be)]=0x2,_0x3b62ac['boxheight']=5.2,_0x3b62ac['boxincwidth']=3.8,_0x3b62ac[_0x487bae(0xd0)]=0.3,_0x3b62ac[_0x487bae(0x355)]=4.9,_0x3b62ac[_0x487bae(0x2a9)]=3.5,_0x3b62ac[_0x487bae(0x195)]=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;case 0x13:_0x3b62ac[_0x487bae(0x1be)]=0x3,_0x3b62ac['boxheight']=0xa,_0x3b62ac[_0x487bae(0x35b)]=7.2,_0x3b62ac[_0x487bae(0xd0)]=0.4,_0x3b62ac[_0x487bae(0x355)]=9.6,_0x3b62ac['iconborderwidth']=6.8,_0x3b62ac[_0x487bae(0x195)]=0x2a,_0x3b62ac['graphicWidth']=0x19;break;case 0x12:_0x3b62ac['start']=0x6,_0x3b62ac[_0x487bae(0x200)]=0x14,_0x3b62ac[_0x487bae(0x35b)]=0xe,_0x3b62ac['iconbordermargin']=0.5,_0x3b62ac[_0x487bae(0x355)]=19.5,_0x3b62ac[_0x487bae(0x2a9)]=13.5,_0x3b62ac['graphicHeight']=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;case 0x11:_0x3b62ac[_0x487bae(0x1be)]=0x1e,_0x3b62ac[_0x487bae(0x200)]=0x27,_0x3b62ac[_0x487bae(0x35b)]=0x1c,_0x3b62ac[_0x487bae(0xd0)]=0x1,_0x3b62ac[_0x487bae(0x355)]=0x26,_0x3b62ac[_0x487bae(0x2a9)]=0x1b,_0x3b62ac[_0x487bae(0x195)]=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;case 0x10:_0x3b62ac[_0x487bae(0x1be)]=0xf,_0x3b62ac[_0x487bae(0x200)]=0x50,_0x3b62ac[_0x487bae(0x35b)]=0x37,_0x3b62ac[_0x487bae(0xd0)]=0x2,_0x3b62ac[_0x487bae(0x355)]=0x4e,_0x3b62ac[_0x487bae(0x2a9)]=0x35,_0x3b62ac[_0x487bae(0x195)]=0x2a,_0x3b62ac['graphicWidth']=0x19;break;case 0xf:_0x3b62ac[_0x487bae(0x1be)]=0x2,_0x3b62ac['boxheight']=0x78,_0x3b62ac['boxincwidth']=0x5a,_0x3b62ac[_0x487bae(0xd0)]=0x3,_0x3b62ac[_0x487bae(0x355)]=0x75,_0x3b62ac[_0x487bae(0x2a9)]=0x57,_0x3b62ac[_0x487bae(0x195)]=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;case 0xe:_0x3b62ac[_0x487bae(0x1be)]=0x2,_0x3b62ac['boxheight']=5.2,_0x3b62ac[_0x487bae(0x35b)]=3.8,_0x3b62ac[_0x487bae(0xd0)]=0.3,_0x3b62ac['iconborderheight']=4.9,_0x3b62ac['iconborderwidth']=3.5,_0x3b62ac['graphicHeight']=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;}else switch(_0x1cafbb){case 0xa:_0x3b62ac[_0x487bae(0x1be)]=0.5,_0x3b62ac[_0x487bae(0x200)]=1.7,_0x3b62ac[_0x487bae(0x35b)]=1.1,_0x3b62ac[_0x487bae(0xd0)]=0.1,_0x3b62ac[_0x487bae(0x355)]=1.6,_0x3b62ac['iconborderwidth']=0x1,_0x3b62ac[_0x487bae(0x195)]=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;case 0x9:_0x3b62ac[_0x487bae(0x1be)]=0x1,_0x3b62ac['boxheight']=3.2,_0x3b62ac[_0x487bae(0x35b)]=2.2,_0x3b62ac[_0x487bae(0xd0)]=0.2,_0x3b62ac[_0x487bae(0x355)]=0x3,_0x3b62ac['iconborderwidth']=0x2,_0x3b62ac['graphicHeight']=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;case 0x8:_0x3b62ac['start']=0x2,_0x3b62ac['boxheight']=5.2,_0x3b62ac[_0x487bae(0x35b)]=3.8,_0x3b62ac[_0x487bae(0xd0)]=0.3,_0x3b62ac[_0x487bae(0x355)]=4.9,_0x3b62ac[_0x487bae(0x2a9)]=3.5,_0x3b62ac['graphicHeight']=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;case 0x7:_0x3b62ac[_0x487bae(0x1be)]=0x3,_0x3b62ac['boxheight']=0xa,_0x3b62ac[_0x487bae(0x35b)]=7.2,_0x3b62ac[_0x487bae(0xd0)]=0.4,_0x3b62ac[_0x487bae(0x355)]=9.6,_0x3b62ac['iconborderwidth']=6.8,_0x3b62ac[_0x487bae(0x195)]=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;case 0x6:_0x3b62ac[_0x487bae(0x1be)]=0x6,_0x3b62ac[_0x487bae(0x200)]=0x14,_0x3b62ac[_0x487bae(0x35b)]=0xe,_0x3b62ac[_0x487bae(0xd0)]=0.5,_0x3b62ac[_0x487bae(0x355)]=19.5,_0x3b62ac[_0x487bae(0x2a9)]=13.5,_0x3b62ac[_0x487bae(0x195)]=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;case 0x5:_0x3b62ac[_0x487bae(0x1be)]=0xa,_0x3b62ac['boxheight']=0x28,_0x3b62ac[_0x487bae(0x35b)]=0x1d,_0x3b62ac[_0x487bae(0xd0)]=0x1,_0x3b62ac[_0x487bae(0x355)]=0x26,_0x3b62ac[_0x487bae(0x2a9)]=0x1b,_0x3b62ac[_0x487bae(0x195)]=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;case 0x4:_0x3b62ac[_0x487bae(0x1be)]=0xf,_0x3b62ac['boxheight']=0x50,_0x3b62ac['boxincwidth']=0x37,_0x3b62ac[_0x487bae(0xd0)]=0x2,_0x3b62ac[_0x487bae(0x355)]=0x4e,_0x3b62ac['iconborderwidth']=0x35,_0x3b62ac['graphicHeight']=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;case 0x3:_0x3b62ac['start']=0x2,_0x3b62ac['boxheight']=0x78,_0x3b62ac[_0x487bae(0x35b)]=0x5a,_0x3b62ac[_0x487bae(0xd0)]=0x3,_0x3b62ac['iconborderheight']=0x75,_0x3b62ac[_0x487bae(0x2a9)]=0x57,_0x3b62ac[_0x487bae(0x195)]=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;case 0x2:_0x3b62ac[_0x487bae(0x1be)]=0x2,_0x3b62ac[_0x487bae(0x200)]=5.2,_0x3b62ac[_0x487bae(0x35b)]=3.8,_0x3b62ac[_0x487bae(0xd0)]=0.3,_0x3b62ac[_0x487bae(0x355)]=4.9,_0x3b62ac[_0x487bae(0x2a9)]=3.5,_0x3b62ac[_0x487bae(0x195)]=0x2a,_0x3b62ac['graphicWidth']=0x19;break;case 0x1:_0x3b62ac['start']=0x2,_0x3b62ac[_0x487bae(0x200)]=5.2,_0x3b62ac[_0x487bae(0x35b)]=3.8,_0x3b62ac['iconbordermargin']=0.3,_0x3b62ac['iconborderheight']=4.9,_0x3b62ac[_0x487bae(0x2a9)]=3.5,_0x3b62ac[_0x487bae(0x195)]=0x2a,_0x3b62ac[_0x487bae(0x174)]=0x19;break;}return _0x3b62ac;}function _0x3e2c70(_0x4da425){const _0x1617ba=_0x2392fd,_0x3f0952=new XMLSerializer();return _[_0x1617ba(0x194)](_0x4da425,_0x4f982e=>{const _0x47f23b=_0x1617ba;try{let _0x5d2ea9=_0x4f982e[_0x47f23b(0x383)][0x0],_0x293560=_0x3f0952[_0x47f23b(0x2ca)](_0x5d2ea9);_0x4f982e[_0x47f23b(0x383)]=_0x47f23b(0x23d)+window[_0x47f23b(0x28e)](_0x293560);}catch(_0x95448a){}},_0x4da425);}function _0x163614(){const _0xcc4cfa=_0x2392fd;_0x214fc0();const _0x321203=W[_0xcc4cfa(0x14b)][_0xcc4cfa(0x137)]();if(!_0x3c6d6c(_0xcc4cfa(0x13a))[_0xcc4cfa(0x129)]||!_0x3c6d6c(_0xcc4cfa(0x2be))[_0xcc4cfa(0x129)]||_0x321203[_0xcc4cfa(0x9c)]!==0x1||_0x321203[0x0][_0xcc4cfa(0x17c)][_0xcc4cfa(0x340)]['_wmeObject']['type']!=='segment')return;const _0x49e47a=_0x321203[0x0]['attributes'][_0xcc4cfa(0x340)][_0xcc4cfa(0x1a8)],_0x30296e=W[_0xcc4cfa(0x16f)][_0xcc4cfa(0x318)]()['getZoom']();if(_0x30296e<0xf||_0x49e47a[_0xcc4cfa(0x17c)]['roadType']!==_0x54a11d[_0xcc4cfa(0x332)]&&_0x49e47a['attributes'][_0xcc4cfa(0x319)]!==_0x54a11d[_0xcc4cfa(0x95)]&&_0x49e47a[_0xcc4cfa(0x17c)][_0xcc4cfa(0x319)]!==_0x54a11d[_0xcc4cfa(0x95)]&&_0x30296e<0x10)return;let _0x9513b1=_0x49e47a['attributes'][_0xcc4cfa(0x320)]>0x0?_0x4fe5ce($(_0xcc4cfa(0x2f8))[_0xcc4cfa(0x255)](_0xcc4cfa(0x34f))[_0xcc4cfa(0x16f)](function(){return this;})['get']()):![],_0x40c031=_0x49e47a['attributes'][_0xcc4cfa(0x27a)]>0x0?_0x4fe5ce($(_0xcc4cfa(0x381))['find']('.lane-arrow')[_0xcc4cfa(0x16f)](function(){return this;})['get']()):![];if(_0x9513b1!==![]){if(Object[_0xcc4cfa(0x335)](_0x9513b1)['length']===0x0){setTimeout(_0x163614,0xc8);return;}_0x5d03c9(W['model'][_0xcc4cfa(0x26e)][_0xcc4cfa(0xc7)](_0x49e47a[_0xcc4cfa(0x17c)][_0xcc4cfa(0x377)]),_0x49e47a,_0x3e2c70(_0x9513b1));}if(_0x40c031!==![]){if(Object[_0xcc4cfa(0x335)](_0x40c031)['length']===0x0){setTimeout(_0x163614,0xc8);return;}_0x5d03c9(W[_0xcc4cfa(0xb0)]['nodes']['getObjectById'](_0x49e47a['attributes'][_0xcc4cfa(0x139)]),_0x49e47a,_0x3e2c70(_0x40c031));}}_0x2dcc82();}());
+/* global W */
+/* global WazeWrap */
+/* global OpenLayers */
+/* global I18n */
+/* global _ */
+/* jshint esversion:6 */
+/* eslint-disable */
+
+(
+    function main() {
+      "use strict";
+
+      const constantStrings = {
+        divStr : "<div>",
+        checkedStr : "checked",
+        htmlStr : "html",
+        translationSpreadSheetBaseURL :
+            "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/Translations!A2:C?key=",
+        angleSpreadSheetBaseURL :
+            "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/Angles!A2:B?key=",
+        RBSAccessSheetBaseURL :
+            "https://sheets.googleapis.com/v4/spreadsheets/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/values/RBS_Access!A2:C?key=",
+        revLanesInstructionsFromCSS :
+            ".rev-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
+        fwdLanesInstructionsFromCSS :
+            ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
+        editPanelCSS : "#edit-panel > div > div > div > div.segment-edit-section > wz-tabs > wz-tab.lanes-tab",
+        fwdLanesDivInstructionCSS :
+            ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction",
+        fwdLanesNthChild :
+            ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1) > div",
+        revLanesNthChild :
+            ".rev-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1) > div",
+        fwdLanesDirectionControlEditCSS :
+            ".fwd-lanes > div > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit",
+        fwdLanesLaneInstrunctionToCSS :
+            ".fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1)",
+        revLanesInstructionsToCSS :
+            ".rev-lanes > div > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit",
+        wazeFontLink : "https://editor-assets.waze.com/production/font/aae5ed152758cb6a9191b91e6cedf322.svg",
+        segmentEditLanes :
+            "#segment-edit-lanes > div > div > div.fwd-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-arrows > div"
+      };
+      const LANETOOLS_VERSION = "" + GM_info.script.version,
+            GF_LINK = "https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js",
+            FORUM_LINK = "https://www.waze.com/forum/viewtopic.php?t=301158",
+            LI_UPDATE_NOTES = "<b>NEW:</b><br>\n<b>FIXES:</b><br>Code clean up contributed by Karlsosha<br>\n", LANETOOLS_DEBUG_LEVEL = 0x1, configArray = {},
+            RBSArray = {failed : false}, IsBeta = location.href.indexOf("beta.waze.com") !== -0x1, TRANSLATIONS = {
+              default : {
+                enabled : "Enabled",
+                disabled : "Disabled",
+                toggleShortcut : "Toggle Shortcut",
+                UIEnhance : "Tab UI Enhancements",
+                autoWidth : "Auto-open road width",
+                autoOpen : "Auto-open lanes tab",
+                autoExpand : "Auto-expand lane editor",
+                autoFocus : "Auto-focus lane input",
+                reOrient : "Re-orient lane icons",
+                enClick : "Enable ClickSaver",
+                clickStraight : "All straight lanes",
+                clickTurn : "default",
+                mapHighlight : "Map Highlights",
+                laneLabel : "Lane labels",
+                nodeHigh : "Node Highlights",
+                LAOHigh : "Lane angle overrides",
+                CSOHigh : "Continue straight overrides",
+                heuristics : "Lane heuristics candidates",
+                posHeur : "Positive heuristics candidate",
+                negHeur : "Negative heuristics candidate",
+                highColor : "Highlight Colors",
+                colTooltip : "Click to toggle color inputs",
+                selAllTooltip : "Click on turn name to toggle all lane associations",
+                fwdCol : "Fwd (A>B)",
+                revCol : "Rev (B>A)",
+                labelCol : "Labels",
+                errorCol : "Lane errors",
+                laneNodeCol : "Nodes with lanes",
+                nodeTIOCol : "Nodes with TIOs",
+                LAOCol : "Segs with TIOs",
+                viewCSCol : "View only CS",
+                hearCSCol : "View and hear CS",
+                heurPosCol : "Lane heuristics likely",
+                heurNegCol : "Lane heuristics - not qualified",
+                devTools : "Tools/Features Under Development",
+                quickTog : "Quick toggle all lanes",
+                showRBS : "Use RBS heuristics",
+                delFwd : "Delete FWD Lanes",
+                delRev : "Delete Rev Lanes",
+                delOpp :
+                    "This segment is one-way but has lanes set in the opposite direction. Click here to delete them",
+                csIcons : "Highlight CS Icons",
+                highlightOverride : "Only highlight if segment layer active",
+                addTIO : "Include TIO in lanes tab",
+                labelTIO : "TIO",
+                defaultTIO : "Waze Selected",
+                noneTIO : "None",
+                tlTIO : "Turn Left",
+                trTIO : "Turn Right",
+                klTIO : "Keep Left",
+                krTIO : "Keep Right",
+                conTIO : "Continue",
+                elTIO : "Exit Left",
+                erTIO : "Exit Right",
+                uturnTIO : "U-Turn",
+                enIcons : "Display lane icons on map",
+                IconsRotate : "IconsRotate",
+              },
+            },
+            Direction = {REVERSE : -1, ANY : 0, FORWARD : 1}, LT_ROAD_TYPE = {
+              NARROW_STREET : 22,
+              STREET : 1,
+              PRIMARY_STREET : 2,
+              RAMP : 4,
+              FREEWAY : 3,
+              MAJOR_HIGHWAY : 6,
+              MINOR_HIGHWAY : 7,
+              DIRT_ROAD : 8,
+              FERRY : 14,
+              PRIVATE_ROAD : 17,
+              PARKING_LOT_ROAD : 20,
+              WALKING_TRAIL : 5,
+              PEDESTRIAN_BOARDWALK : 10,
+              STAIRWAY : 16,
+              RAILROAD : 18,
+              RUNWAY : 19,
+            },
+            DisplayLevels = {MIN_ZOOM_ALL : 14, MIN_ZOOM_NONFREEWAY : 17},
+            HeuristicsCandidate = {ERROR : -2, FAIL : -1, NONE : 0, PASS : 1};
+      let MAX_LEN_HEUR, MAX_PERP_DIF, MAX_PERP_DIF_ALT, MAX_PERP_TO_CONSIDER, MAX_STRAIGHT_TO_CONSIDER,
+          MAX_STRAIGHT_DIF, lt_scanArea_recursive = 0x0, LtSettings = {}, strings = {}, _turnInfo = [], _turnData = {},
+                            laneCount, LTHighlightLayer, LTNamesLayer, LTLaneGraphics, _pickleColor, seaPickle,
+                            UpdateObj, MultiAction, SetTurn, shortcutsDisabled = false, isRBS = false,
+                            allowCpyPst = false, langLocality = "default", NEWZOOMLEVELS;
+      console.log("LaneTools: initializing...");
+
+      function laneToolsBootstrap(bootStrapAttempt = 0x0) {
+        if (W && W.map && W.model && W.loginManager.user && $ && WazeWrap.Ready)
+          initLaneTools();
+        else
+          bootStrapAttempt < 500 ? setTimeout(() => { laneToolsBootstrap(bootStrapAttempt++); }, 200)
+                                 : console.error("LaneTools: Failed to load");
+      }
+
+      function initLaneTools() {
+        seaPickle = W.loginManager.user;
+        UpdateObj = require("Waze/Action/UpdateObject");
+        MultiAction = require("Waze/Action/MultiAction");
+        SetTurn = require("Waze/Model/Graph/Actions/SetTurn");
+        NEWZOOMLEVELS = W.map.getOLMap().getNumZoomLevels() === 23;
+        const
+            ltCSSClasses =
+                [
+                  ".lt-wrapper {position:relative;width:100%;font-size:12px;font-family:\x22Rubik\x22, \x22Boing-light\x22, sans-serif;user-select:none;}",
+                  ".lt-section-wrapper {display:block;width:100%;padding:4px;",
+                  ".lt-section-wrapper.border {border-bottom:1px solid grey;margin-bottom:5px;}",
+                  ".lt-option-container {padding:3px;}",
+                  ".lt-option-container.color {text-decoration:none;}",
+                  "input[type=\x22checkbox\x22].lt-checkbox {position:relative;top:3px;vertical-align:top;margin:0;}",
+                  "input[type=\x22text\x22].lt-color-input {position:relative;width:70px;padding:3px;border:2px solid black;border-radius:6px;}",
+                  "input[type=\x22text\x22].lt-color-input:focus {outline-width:0;}",
+                  "label.lt-label {position:relative;max-width:90%;font-weight:normal;padding-left:5px}",
+                  // ".lt-Toolbar-Container {display:none;position:absolute;background-color:orange;border-radius:6px;border:1.5px
+                  // solid;box-size:border-box;z-index:1050;}",
+                  // ".lt-Toolbar-Wrapper {position:relative;padding:3px;",
+                  // ".lt-toolbar-button-container {display:inline-block;padding:5px;}",
+                  // ".lt-toolbar-button {position:relative;display:block;width:60px;height:25px;border-radius:6px;font-size:12px;}",
+                  "#lt-toolbar-container {position: relative;z-index:1010;text-align:center;}",
+                  ".lt-add-Width {display:inline-block;width:15px;height:15px;border:1px solid black;border-radius:8px;margin:0 3px 0 3px;line-height: 1.5;text-align:center;font-size:10px;}",
+                  ".lt-add-Width:hover {border:1px solid #26bae8;background-color:#26bae8;cursor:pointer;}",
+                  ".lt-add-lanes {display:inline-block;width:15px;height:15px;border:1px solid black;border-radius:8px;margin:0 3px 0 3px;line-height: 1.5;text-align:center;font-size:10px;}",
+                  ".lt-add-lanes:hover {border:1px solid #26bae8;background-color:#26bae8;cursor:pointer;}",
+                  ".lt-chkAll-lns {display:inline-block;width:20px;height:20px;text-decoration:underline;font-weight:bold;font-size:10px;padding-left:3px;cursor:pointer;}",
+                  ".lt-tio-select {max-width:80%;color:rgb(32, 33, 36);background-color:rgb(242, 243, 244);border:0px;border-radius:6px;padding:0 16px 0 10px;cursor:pointer;}",
+                  "#lt-color-title {display:block;width:100%;padding:5px 0 5px 0;font-weight:bold;text-decoration:underline;cursor:pointer;}",
+                ].join(" "),
+            initMsg = $(constantStrings.divStr);
+        initMsg.html = [
+          "<div class='lt-wrapper' id='lt-tab-wrapper'>\n" +
+              "            <div class='lt-section-wrapper' id='lt-tab-body'>\n" +
+              "                <div class='lt-section-wrapper border' style='border-bottom:2px double grey;'>\n" +
+              "                    <a href='https://www.waze.com/forum/viewtopic.php?f=819&t=301158' style='font-weight:bold;font-size:12px;text-decoration:underline;'  target='_blank'>" +
+              "LaneTools - v" + LANETOOLS_VERSION + "</a>\n" +
+              "                    <div>\n" +
+              "                        <div style='display:inline-block;'><span class='lt-trans-tglshcut'></span>:<span id='lt-EnableShortcut' style='padding-left:10px;'></span></div>\n" +
+              "                       <div class='lt-option-container' style='float:right;'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-ScriptEnabled' />\n" +
+              "                           <label class='lt-label' for='lt-ScriptEnabled'><span class='lt-trans-enabled'></span></label>\n" +
+              "                       </div>\n" +
+              "                   </div>\n" +
+              "               </div>\n" +
+              "               <div class='lt-section-wrapper' id='lt-LaneTabFeatures'>\n" +
+              "                   <div class='lt-section-wrapper border'>\n" +
+              "                       <span style='font-weight:bold;'><span id='lt-trans-uiEnhance'></span></span>\n" +
+              "                       <div class='lt-option-container' style='float:right;'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-UIEnable' />\n" +
+              "                           <label class='lt-label' for='lt-UIEnable'><span class='lt-trans-enabled'></span></label>\n" +
+              "                       </div>\n" +
+              "                   </div>\n" +
+              "                   <div id='lt-UI-wrapper'>\n" +
+              "                       <div class='lt-option-container' style='margin-bottom:5px;'>\n" +
+              "                           <div style='display:inline-block;'><span class='lt-trans-tglshcut'></span>:<span id='lt-UIEnhanceShortcut' style='padding-left:10px;'></span></div>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-AutoOpenWidth' />\n" +
+              "                           <label class='lt-label' for='lt-AutoOpenWidth'><span id='lt-trans-autoWidth'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-AutoLanesTab' />\n" +
+              "                           <label class='lt-label' for='lt-AutoLanesTab'><span id='lt-trans-autoTab'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-AutoExpandLanes' />\n" +
+              "                           <label class='lt-label' for='lt-AutoExpandLanes'><span title=\x22Feature disabled as of Aug 27, 2022 to prevent flickering issue\x22 id='lt-trans-autoExpand'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-AutoFocusLanes' />\n" +
+              "                           <label class='lt-label' for='lt-AutoFocusLanes'><span id='lt-trans-autoFocus'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-highlightCSIcons' />\n" +
+              "                           <label class='lt-label' for='lt-highlightCSIcons'><span id='lt-trans-csIcons'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-ReverseLanesIcon' />\n" +
+              "                           <label class='lt-label' for='lt-ReverseLanesIcon'><span id='lt-trans-orient'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container' style='display:none;'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-AddTIO' />\n" +
+              "                           <label class='lt-label' for='lt-AddTIO'><span id='lt-trans-AddTIO'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-ClickSaveEnable' />\n" +
+              "                           <label class='lt-label' for='lt-ClickSaveEnable'><span id='lt-trans-enClick'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container clk-svr' style='padding-left:10%;'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-ClickSaveStraight' />\n" +
+              "                           <label class='lt-label' for='lt-ClickSaveStraight'><span id='lt-trans-straClick'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container clk-svr' style='padding-left:10%;'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-ClickSaveTurns' />\n" +
+              "                           <label class='lt-label' for='lt-ClickSaveTurns'><span id='lt-trans-turnClick'></span></label>\n" +
+              "                       </div>\n" +
+              "                   </div>\n" +
+              "               </div>\n" +
+              "               <div class='lt-section-wrapper'>\n" +
+              "                   <div class='lt-section-wrapper border'>\n" +
+              "                       <span style='font-weight:bold;'><span id='lt-trans-mapHigh'></span></span>\n" +
+              "                       <div class='lt-option-container' style='float:right;'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-HighlightsEnable' />\n" +
+              "                           <label class='lt-label' for='lt-HighlightsEnable'><span class='lt-trans-enabled'></span></label>\n" +
+              "                       </div>\n" +
+              "                   </div>\n" +
+              "                   <div id='lt-highlights-wrapper'>\n" +
+              "                       <div class='lt-option-container' style='margin-bottom:5px;'>\n" +
+              "                           <div style='display:inline-block;'><span class='lt-trans-tglshcut'></span>:<span id='lt-HighlightShortcut' style='padding-left:10px;'></span></div>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-IconsEnable' />\n" +
+              "                           <label class='lt-label' for='lt-IconsEnable'><span id='lt-trans-enIcons'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-IconsRotate' />\n" +
+              "                           <label class='lt-label' for='lt-IconsRotate'><span id='lt-trans-IconsRotate'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-LabelsEnable' />\n" +
+              "                           <label class='lt-label' for='lt-LabelsEnable'><span id='lt-trans-lnLabel'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-NodesEnable' />\n" +
+              "                           <label class='lt-label' for='lt-NodesEnable'><span id='lt-trans-nodeHigh'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-LIOEnable' />\n" +
+              "                           <label class='lt-label' for='lt-LIOEnable'><span id='lt-trans-laOver'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-CSEnable' />\n" +
+              "                           <label class='lt-label' for='lt-CSEnable'><span id='lt-trans-csOver'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-highlightOverride' />\n" +
+              "                           <label class='lt-label' for='lt-highlightOverride'><span id='lt-trans-highOver'></span></label>\n" +
+              "                       </div>\n" +
+              "                   </div>\n" +
+              "               </div>\n" +
+              "               <div class='lt-section-wrapper'>\n" +
+              "                   <div class='lt-section-wrapper border'>\n" +
+              "                       <span style='font-weight:bold;'><span id='lt-trans-heurCan'></span></span>\n" +
+              "                       <div class='lt-option-container' style='float:right;'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-LaneHeuristicsChecks' />\n" +
+              "                           <label class='lt-label' for='lt-LaneHeuristicsChecks'><span class='lt-trans-enabled'></span></label>\n" +
+              "                       </div>\n" +
+              "                   </div>\n" +
+              "                   <div id='lt-heur-wrapper'>\n" +
+              "                       <div class='lt-option-container' style='margin-bottom:5px;'>\n" +
+              "                           <div style='display:inline-block;'><span class='lt-trans-tglshcut'></span>:<span id='lt-LaneHeurChecksShortcut' style='padding-left:10px;'></span></div>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-LaneHeurPosHighlight' />\n" +
+              "                           <label class='lt-label' for='lt-LaneHeurPosHighlight'><span id='lt-trans-heurPos'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-LaneHeurNegHighlight' />\n" +
+              "                           <label class='lt-label' for='lt-LaneHeurNegHighlight'><span id='lt-trans-heurNeg'></span></label>\n" +
+              "                       </div>\n" +
+              "                   </div>\n" +
+              "               </div>\n" +
+              "               <div class='lt-section-wrapper'>\n" +
+              "                   <div class='lt-section-wrapper'>\n" +
+              "                       <span id='lt-color-title' data-original-title='" +
+              TRANSLATIONS[langLocality].colTooltip + "'><span id='lt-trans-highCol'></span>:</span>\n" +
+              "                        <div id='lt-color-inputs' style='display:none;'>\n" +
+              "                           <div class='lt-option-container color'>\n" +
+              "                               <input type=color class='lt-color-input' id='lt-ABColor' />\n" +
+              "                               <label class='lt-label' for='lt-ABColor' id='lt-ABColorLabel'><span id='lt-trans-fwdCol'></span></label>\n" +
+              "                           </div>\n" +
+              "                           <div class='lt-option-container color'>\n" +
+              "                               <input type=color class='lt-color-input' id='lt-BAColor' />\n" +
+              "                               <label class='lt-label' for='lt-BAColor' id='lt-BAColorLabel'><span id='lt-trans-revCol'></span></label>\n" +
+              "                           </div>\n" +
+              "                           <div class='lt-option-container color'>\n" +
+              "                               <input type=color class='lt-color-input' id='lt-LabelColor' />\n" +
+              "                               <label class='lt-label' for='lt-LabelColor' id='lt-LabelColorLabel'><span id='lt-trans-labelCol'></span></label>\n" +
+              "                           </div>\n" +
+              "                           <div class='lt-option-container color'>\n" +
+              "                               <input type=color class='lt-color-input' id='lt-ErrorColor' />\n" +
+              "                               <label class='lt-label' for='lt-ErrorColor' id='lt-ErrorColorLabel'><span id='lt-trans-errorCol'></span></label>\n" +
+              "                           </div>\n" +
+              "                           <div class='lt-option-container color'>\n" +
+              "                               <input type=color class='lt-color-input' id='lt-NodeColor' />\n" +
+              "                               <label class='lt-label' for='lt-NodeColor' id='lt-NodeColorLabel'><span id='lt-trans-nodeCol'></span></label>\n" +
+              "                           </div>\n" +
+              "                           <div class='lt-option-container color'>\n" +
+              "                               <input type=color class='lt-color-input' id='lt-TIOColor' />\n" +
+              "                               <label class='lt-label' for='lt-TIOColor' id='lt-TIOColorLabel'><span id='lt-trans-tioCol'></span></label>\n" +
+              "                           </div>\n" +
+              "                           <div class='lt-option-container color'>\n" +
+              "                               <input type=color class='lt-color-input' id='lt-LIOColor' />\n" +
+              "                               <label class='lt-label' for='lt-TIOColor' id='lt-LIOColorLabel'><span id='lt-trans-laoCol'></span></label>\n" +
+              "                           </div>\n" +
+              "                           <div class='lt-option-container color'>\n" +
+              "                               <input type=color class='lt-color-input' id='lt-CS1Color' />\n" +
+              "                               <label class='lt-label' for='lt-CS1Color' id='lt-CS1ColorLabel'><span id='lt-trans-viewCol'></span></label>\n" +
+              "                           </div>\n" +
+              "                           <div class='lt-option-container color'>\n" +
+              "                               <input type=color class='lt-color-input' id='lt-CS2Color' />\n" +
+              "                               <label class='lt-label' for='lt-CS2Color' id='lt-CS2ColorLabel'><span id='lt-trans-hearCol'></span></label>\n" +
+              "                           </div>\n" +
+              "                           <div class='lt-option-container color'>\n" +
+              "                               <input type=color class='lt-color-input' id='lt-HeurColor' />\n" +
+              "                               <label class='lt-label' for='lt-HeurColor' id='lt-HeurColorLabel'><span id='lt-trans-posCol'></span></label>\n" +
+              "                           </div>\n" +
+              "                           <div class='lt-option-container color'>\n" +
+              "                               <input type=color class='lt-color-input' id='lt-HeurFailColor' />\n" +
+              "                               <label class='lt-label' for='lt-HeurFailColor' id='lt-HeurFailColorLabel'><span id='lt-trans-negCol'></span></label>\n" +
+              "                           </div>\n" +
+              "                       </div>\n" +
+              "                   </div>\n" +
+              "               </div>\n" +
+              "               <div class='lt-section-wrapper''>\n" +
+              "                   <div class='lt-section-wrapper border'>\n" +
+              "                       <span style='font-weight:bold;'><span id='lt-trans-devTools'></span> (WARNING: -  May Produce Undesirable Results)</span>\n" +
+              "                       <div class='lt-option-container' style='float:right;'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-DevToolsEnable' />\n" +
+              "                           <label class='lt-label' for='lt-DevToolsEnable'><span class='lt-trans-dev-tools-enable'></span></label>\n" +
+              "                       </div>\n" +
+              "                   </div>\n" +
+              "                   <div id='lt-dev-tools-wrapper'>" +
+              "                       <div class='lt-option-container'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-SelAllEnable' />\n" +
+              "                           <label class='lt-label' for='lt-SelAllEnable' ><span id='lt-trans-quickTog'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container' id='lt-serverSelectContainer'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-serverSelect' />\n" +
+              "                           <label class='lt-label' for='lt-serverSelect'><span id='lt-trans-heurRBS'></span></label>\n" +
+              "                       </div>\n" +
+              "                       <div class='lt-option-container' id='lt-cpy-pst'>\n" +
+              "                           <input type=checkbox class='lt-checkbox' id='lt-CopyEnable' />\n" +
+              "                           <label class='lt-label' for='lt-CopyEnable'>Copy/Paste Lanes</label>\n" +
+              "                       </div>\n" +
+              "                       <div id='lt-sheet-link' style='display:none;'>\n" +
+              "                           <a href='https://docs.google.com/spreadsheets/d/1_3sF09sMOid_us37j5CQqJZlBGGr1vI_3Rrmp5K-KCQ/edit?usp=sharing' target='_blank'>LT Config Sheet</a>\n" +
+              "                       </div>\n" +
+              "                   </div>\n" +
+              "               </div>\n" +
+              "           </div>\n" +
+              "       </div>",
+        ].join(" ");
+        const message = $(constantStrings.divStr);
+        message.html([
+          "       <div class='lt-Toolbar-Container' id='lt-toolbar-container'>\n" +
+              "           <div id='lt-toolbar-drag-handle' class='lt-toolbar-drag-handle'>LT\n" +
+              "               <div class='lt-toolbar-button-container'>\n" +
+              "                   <button type='button' class='lt-toolbar-button' id='copyA-button'>Copy A</button>\n" +
+              "               </div>\n" +
+              "               <div class='lt-toolbar-button-container'>\n" +
+              "                   <button type='button' class='lt-toolbar-button' id='copyB-button'>Copy B</button>\n" +
+              "               </div>\n" +
+              "               <div class='lt-toolbar-button-container'>\n" +
+              "                   <button type='button' class='lt-toolbar-button' id='pasteA-button'>Paste A</button>\n" +
+              "               </div>\n" +
+              "               <div class='lt-toolbar-button-container'>\n" +
+              "                   <button type='button' class='lt-toolbar-button' id='pasteB-button'>Paste B</button>\n" +
+              "               </div>\n" +
+              "           </div>\n" +
+              "       </div>",
+        ].join(" "));
+        _pickleColor = seaPickle.attributes.rank;
+        if (_pickleColor >= 0x0) {
+          WazeWrap.Interface.Tab("LT", initMsg.html, setupOptions, "LT");
+          $("<style>" + ltCSSClasses + "</style>").appendTo("head");
+          $("#map").append(message.html());
+          WazeWrap.Interface.ShowScriptUpdate(GM_info.script.name, GM_info.script.version, LI_UPDATE_NOTES, GF_LINK,
+                                              FORUM_LINK);
+          $("#lt-toolbar-container").css({
+            position : "fixed",
+            left : "500px",
+            top : "500px",
+            "z-index" : 1004,
+            height : "150px",
+            width : "70px",
+          });
+          $(".lt-toolbar-drag-handle").css({
+            position : "absolute",
+            height : "150px",
+            width : "70px",
+            border : "2px solid rgb(0, 117, 227)",
+            "background-color" : "navy",
+            color : "white",
+            "text-align" : "center",
+            cursor : "move"
+          });
+          console.log("LaneTools: Loaded");
+        } else
+          console.error("LaneTools: loading error....");
+      }
+      function processOptionSettings() {
+        setSetting("lt-ScriptEnabled", LtSettings.ScriptEnabled);
+        setSetting("lt-UIEnable", LtSettings.UIEnable);
+        setSetting("lt-AutoOpenWidth", LtSettings.AutoOpenWidth);
+        setSetting("lt-AutoExpandLanes", LtSettings.AutoExpandLanes);
+        setSetting("lt-AutoLanesTab", LtSettings.AutoLanesTab);
+        setSetting("lt-HighlightsEnable", LtSettings.HighlightsEnable);
+        setSetting("lt-LabelsEnable", LtSettings.LabelsEnable);
+        setSetting("lt-NodesEnable", LtSettings.NodesEnable);
+        setSetting("lt-LIOEnable", LtSettings.LIOEnable);
+        setSetting("lt-CSEnable", LtSettings.CSEnable);
+        setSetting("lt-highlightOverride", LtSettings.highlightOverride);
+        setSetting("lt-CopyEnable", LtSettings.CopyEnable);
+        setSetting("lt-SelAllEnable", LtSettings.SelAllEnable);
+        setSetting("lt-serverSelect", LtSettings.serverSelect);
+        setSetting("lt-AutoFocusLanes", LtSettings.AutoFocusLanes);
+        setSetting("lt-ReverseLanesIcon", LtSettings.ReverseLanesIcon);
+        setSetting("lt-ClickSaveEnable", LtSettings.ClickSaveEnable);
+        setSetting("lt-ClickSaveStraight", LtSettings.ClickSaveStraight);
+        setSetting("lt-ClickSaveTurns", LtSettings.ClickSaveTurns);
+        setSetting("lt-LaneHeurPosHighlight", LtSettings.LaneHeurPosHighlight);
+        setSetting("lt-LaneHeurNegHighlight", LtSettings.LaneHeurNegHighlight);
+        setSetting("lt-LaneHeuristicsChecks", LtSettings.LaneHeuristicsChecks);
+        setSetting("lt-highlightCSIcons", LtSettings.highlightCSIcons);
+        setSetting("lt-AddTIO", LtSettings.addTIO);
+        setSetting("lt-IconsEnable", LtSettings.IconsEnable);
+        setSetting("lt-IconsRotate", LtSettings.IconsRotate);
+        setSetting("lt-DevToolsEnable", LtSettings.DevToolsEnable);
+        setCSSBorder("lt-ABColor", LtSettings.ABColor);
+        setCSSBorder("lt-BAColor", LtSettings.BAColor);
+        setCSSBorder("lt-LabelColor", LtSettings.LabelColor);
+        setCSSBorder("lt-ErrorColor", LtSettings.ErrorColor);
+        setCSSBorder("lt-NodeColor", LtSettings.NodeColor);
+        setCSSBorder("lt-TIOColor", LtSettings.TIOColor);
+        setCSSBorder("lt-LIOColor", LtSettings.LIOColor);
+        setCSSBorder("lt-CS1Color", LtSettings.CS1Color);
+        setCSSBorder("lt-CS2Color", LtSettings.CS2Color);
+        setCSSBorder("lt-HeurColor", LtSettings.HeurColor);
+        setCSSBorder("lt-HeurFailColor", LtSettings.HeurFailColor);
+        // !getId("lt-ClickSaveEnable").checked && $("#lt-ClickSaveEnable").hide();
+        !getId("lt-UIEnable").checked && $("#lt-UI-wrapper").hide();
+        !getId("lt-HighlightsEnable").checked && $("#lt-highlights-wrapper").hide();
+        !getId("lt-LaneHeuristicsChecks").checked && $("#lt-heur-wrapper").hide();
+        if (!getId("lt-DevToolsEnable").checked) {
+          $("#lt-dev-tools-wrapper").hide();
+          allowCpyPst = false;
+        } else {
+          allowCpyPst = getId("lt-CopyEnable").checked;
+        }
+        displayToolbar();
+
+        function setSetting(propertyID, propertyValue) { $("#" + propertyID).prop("checked", propertyValue); }
+
+        function setCSSBorder(idName, value) {
+          const idSelector = $("#" + idName);
+          idSelector.attr("value", value);
+          idSelector.css("border", "2px solid" + value);
+        }
+      }
+
+      async function setupOptions() {
+        await loadSettings();
+        await loadSpreadsheet();
+        initLaneGuidanceClickSaver();
+        LTHighlightLayer = new OpenLayers.Layer.Vector("LTHighlightLayer", {uniqueName : "_LTHighlightLayer"});
+        W.map.addLayer(LTHighlightLayer);
+        LTHighlightLayer.setVisibility(true);
+        LTLaneGraphics = new OpenLayers.Layer.Vector("LTLaneGraphics", {uniqueName : "LTLaneGraphics"});
+        W.map.addLayer(LTLaneGraphics);
+        LTLaneGraphics.setVisibility(true);
+        const style_map = new OpenLayers.Style({
+          fontFamily : "Open Sans, Alef, helvetica, sans-serif, monospace",
+          labelOutlineColor : "black",
+          fontColor : "${labelColor}",
+          fontSize : "16",
+          labelXOffset : 0xf,
+          labelYOffset : -0xf,
+          labelOutlineWidth : "3",
+          label : "${labelText}",
+          angle : "",
+          labelAlign : "cm",
+          "stroke-width" : "0",
+        });
+        LTNamesLayer = new OpenLayers.Layer.Vector("LTNamesLayer", {
+          uniqueName : "LTNamesLayer",
+          styleMap : new OpenLayers.StyleMap(style_map),
+        });
+        W.map.addLayer(LTNamesLayer);
+        LTNamesLayer.setVisibility(true);
+        WazeWrap.Events.register("moveend", null, scanArea)
+        WazeWrap.Events.register("moveend", null, displayLaneGraphics);
+        WazeWrap.Events.register("zoomend", null, scanArea);
+        WazeWrap.Events.register("zoomend", null, displayLaneGraphics);
+        WazeWrap.Events.register("afteraction", null, scanArea);
+        WazeWrap.Events.register("afteraction", null, lanesTabSetup);
+        WazeWrap.Events.register("afteraction", null, displayLaneGraphics);
+        WazeWrap.Events.register("afterundoaction", null, scanArea);
+        WazeWrap.Events.register("afterundoaction", null, lanesTabSetup);
+        WazeWrap.Events.register("afterundoaction", null, displayLaneGraphics);
+        WazeWrap.Events.register("afterclearactions", null, scanArea);
+        WazeWrap.Events.register("selectionchanged", null, scanArea);
+        WazeWrap.Events.register("selectionchanged", null, lanesTabSetup);
+        WazeWrap.Events.register("selectionchanged", null, displayLaneGraphics);
+        WazeWrap.Events.register("changelayer", null, scanArea);
+        try {
+          new WazeWrap.Interface
+              .Shortcut("enableHighlights", "Toggle lane highlights", "wmelt", "Lane Tools",
+                        LtSettings.enableHighlights, toggleHighlights, null)
+              .add();
+          new WazeWrap.Interface
+              .Shortcut("enableUIEnhancements", "Toggle UI enhancements", "wmelt", "Lane Tools",
+                        LtSettings.enableUIEnhancements, toggleUIEnhancements, null)
+              .add();
+          new WazeWrap.Interface
+              .Shortcut("enableHeuristics", "Toggle heuristic highlights", "wmelt", "Lane Tools",
+                        LtSettings.enableHeuristics, toggleLaneHeuristicsChecks, null)
+              .add();
+          new WazeWrap.Interface
+              .Shortcut("enableScript", "Toggle script", "wmelt", "Lane Tools", LtSettings.enableScript, toggleScript,
+                        null)
+              .add();
+        } catch (err) {
+          console.log("LT Error creating shortcuts. This feature will be disabled.");
+          $("#lt-EnableShortcut").text("" + TRANSLATIONS.default.disabled);
+          $("#lt-HighlightShortcut").text("" + TRANSLATIONS.default.disabled);
+          $("#lt-UIEnhanceShortcut").text("" + TRANSLATIONS.default.disabled);
+          $("#lt-LaneHeurChecksShortcut").text("" + TRANSLATIONS.default.disabled);
+          shortcutsDisabled = true
+        }
+        const highlightsEnabledID = $("#lt-HighlightsEnable"), colorTitleID = $("#lt-color-title"),
+              laneHeuristicsChecksID = $("#lt-LaneHeuristicsChecks"), devToolsEnable = $("#lt-DevToolsEnable");
+        processOptionSettings();
+        setTimeout(() => { updateShortcutLabels(); }, 50);
+        setHeuristics();
+        setTranslations();
+        let toolbarContainerSelector = $("#lt-toolbar-container");
+        toolbarContainerSelector.draggable({handle : ".lt-toolbar-drag-handle", containment : "#map"});
+        if (_pickleColor > 0x1) {
+          let jqQuickTog = $("#lt-trans-quickTog");
+          let ltEnabledFeatures = "LaneTools: The following special access features are enabled: ";
+          jqQuickTog.attr("data-original-title", "" + strings["selAllTooltip"]);
+          jqQuickTog.tooltip();
+          _.each(RBSArray, (argument) => {
+            if (argument[0x0] === seaPickle.userName) {
+              argument[0x1] === "1" && (isRBS = true);
+              argument[0x2] === "1" && (allowCpyPst = true);
+            }
+          });
+          if (isRBS) {
+            getId("lt-DevToolsEnable").checked && $("#lt-serverSelectContainer").css("display", "block");
+            ltEnabledFeatures += "RBS Heuristics";
+          }
+          if (allowCpyPst) {
+            $("#lt-sheet-link").css({display : "block", margin : "2px"});
+            let sheetLinkSelector = $("#lt-sheet-link > a");
+            sheetLinkSelector.css({
+              padding : "2px",
+              border : "2px solid black",
+              "border-radius" : "6px",
+              "text-decoration" : "none",
+            });
+            sheetLinkSelector.on("mouseenter", function() { $(this).css("background-color", "orange"); })
+                .on("mouseleave", function() { $(this).css("background-color", "#eeeeee"); });
+            $(".lt-toolbar-button").on("click", function() {
+              $(this)[0].id === "copyA-button" && copyLaneInfo("A");
+              $(this)[0].id === "copyB-button" && copyLaneInfo("B");
+              $(this)[0].id === "pasteA-button" && pasteLaneInfo("A");
+              $(this)[0].id === "pasteB-button" && pasteLaneInfo("B");
+            });
+            ltEnabledFeatures = isRBS ? ltEnabledFeatures + ", Copy/Paste" : ltEnabledFeatures + "Copy/Paste";
+          } else {
+            toolbarContainerSelector.css({visibility : "hidden"});
+          }
+          if (isRBS || allowCpyPst) {
+            console.log(ltEnabledFeatures);
+          }
+        } else {
+          $("#lt-LaneTabFeatures").css("display", "none");
+        }
+        $(".lt-checkbox").on("click", function() {
+          let settingName = $(this)[0x0].id.substring(3);
+          LtSettings[settingName] = this.checked;
+          saveSettings();
+        })
+        $(".lt-color-input").on("change", function() {
+          let color_input = $(this)[0].id.substring(3);
+          LtSettings[color_input] = this["value"];
+          saveSettings();
+          $("#lt-" + color_input).css("border", "2px solid" + this["value"]);
+          removeHighlights();
+          scanArea();
+        });
+        $("#lt-ScriptEnabled").on("click", () => {
+          if (getId("lt-ScriptEnabled").checked)
+            scanArea();
+          else {
+            removeHighlights();
+            removeLaneGraphics();
+          }
+        });
+        highlightsEnabledID.on("click", () => {
+          if (!getId("lt-HighlightsEnable").checked)
+            removeHighlights();
+          scanArea();
+        });
+        devToolsEnable.on("click", () => {
+          if (!getId("lt-DevToolsEnable").checked)
+            removeHighlights();
+          scanArea();
+          displayToolbar();
+          $("#lt-dev-tools-wrapper").toggle();
+        })
+        $("#lt-LabelsEnable").on("click", () => {
+          if (!getId("lt-LabelsEnable").checked)
+            removeHighlights();
+          scanArea();
+        });
+        $("#lt-NodesEnable").on("click", () => {
+          if (!getId("lt-NodesEnable").checked)
+            removeHighlights();
+          scanArea();
+        });
+        $("#lt-LIOEnable").on("click", () => {
+          if (!getId("lt-LIOEnable").checked)
+            removeHighlights();
+          scanArea();
+        });
+        $("#lt-IconsEnable")
+            .on("click", () => { getId("lt-IconsEnable").checked ? displayLaneGraphics() : removeLaneGraphics(); });
+        $("#lt-highlightOverride").on("click", () => {
+          if (!getId("lt-highlightOverride").checked)
+            removeHighlights();
+          scanArea();
+        });
+        colorTitleID.on("click", () => { $("#lt-color-inputs").toggle(); });
+        $("#lt-ClickSaveEnable").on("click", () => { $(".lt-option-container.clk-svr").toggle(); });
+        $("#lt-UIEnable").on("click", () => {
+          $("#lt-UI-wrapper").toggle();
+          removeLaneGraphics();
+        });
+        highlightsEnabledID.on("click", () => { $("#lt-highlights-wrapper").toggle(); });
+        laneHeuristicsChecksID.on("click", () => { $("#lt-heur-wrapper").toggle(); });
+        laneHeuristicsChecksID.on("click", () => {
+          if (!getId("lt-LaneHeuristicsChecks").checked)
+            removeHighlights();
+          scanArea();
+        });
+        $("#lt-LaneHeurPosHighlight").on("click", () => {
+          if (!getId("lt-LaneHeurPosHighlight").checked)
+            removeHighlights();
+          scanArea();
+        });
+        $("#lt-LaneHeurNegHighlight").on("click", () => {
+          if (!getId("lt-LaneHeurNegHighlight").checked)
+            removeHighlights();
+          scanArea();
+        });
+        $("#lt-serverSelect").on("click", () => {
+          setHeuristics();
+          removeHighlights();
+          scanArea();
+        });
+        // $.fn.hide = function() {
+        //   this.trigger("hide");
+        //   $.fn.hide.apply(this, arguments);
+        // };
+        $("#keyboard-dialog").on("hide", () => { checkShortcutsChanged(); });
+        $("#lt-CopyEnable").on("click", displayToolbar);
+        colorTitleID.tooltip();
+        scanArea();
+        displayLaneGraphics();
+      }
+
+      async function loadSettings() {
+        const                           parsedSettings = JSON.parse(localStorage.getItem("LT_Settings")),
+              laneToolsSettings = await WazeWrap.Remote.RetrieveSettings("LT_Settings");
+        !laneToolsSettings && console.error("LaneTools: Error communicating with WW settings server");
+        const settingsObject = {
+          lastSaveAction : 0x0,
+          ScriptEnabled : true,
+          UIEnable : true,
+          AutoOpenWidth : false,
+          AutoExpandLanes : false,
+          AutoLanesTab : false,
+          HighlightsEnable : true,
+          LabelsEnable : true,
+          NodesEnable : true,
+          ABColor : "#990033",
+          BAColor : "#0033cc",
+          LabelColor : "#FFAD08",
+          ErrorColor : "#F50E0E",
+          NodeColor : "#66ccff",
+          TIOColor : "#ff9900",
+          LIOColor : "#ff9900",
+          CS1Color : "#04E6F6",
+          CS2Color : "#8F47FA",
+          HeurColor : "#00aa00",
+          HeurFailColor : "#E804F6",
+          CopyEnable : false,
+          SelAllEnable : false,
+          serverSelect : false,
+          LIOEnable : true,
+          CSEnable : true,
+          AutoFocusLanes : true,
+          ReverseLanesIcon : false,
+          ClickSaveEnable : true,
+          ClickSaveStraight : false,
+          ClickSaveTurns : true,
+          enableScript : "",
+          enableHighlights : "",
+          enableUIEnhancements : "",
+          enableHeuristics : "",
+          LaneHeurNegHighlight : false,
+          LaneHeurPosHighlight : false,
+          LaneHeuristicsChecks : false,
+          highlightCSIcons : false,
+          highlightOverride : true,
+          AddTIO : false,
+          IconsEnable : true,
+          IconsRotate : true,
+          DevToolsEnable : false
+        };
+        LtSettings = $.extend({}, settingsObject, parsedSettings);
+        if (laneToolsSettings && laneToolsSettings["lastSaveAction"] > LtSettings.lastSaveAction) {
+          $.extend(LtSettings, laneToolsSettings);
+        }
+
+        Object.keys(settingsObject).forEach((propertyName) => {
+          !LtSettings.hasOwnProperty(propertyName) && (LtSettings[propertyName] = settingsObject[propertyName]);
+        });
+      }
+
+      async function saveSettings() {
+        const {
+          ScriptEnabled : scriptEnabledValue,
+          HighlightsEnable : highlightsEnabledValue,
+          LabelsEnable : labelsEnabledValue,
+          NodesEnable : nodesEnabledValue,
+          UIEnable : uiEnabledValue,
+          AutoLanesTab : autoLanesTab,
+          AutoOpenWidth : autoOpenWidth,
+          AutoExpandLanes : autoExpandLanes,
+          ABColor : abColorValue,
+          BAColor : baColor,
+          LabelColor : labelColorValue,
+          ErrorColor : errorColorValue,
+          NodeColor : nodeColorValue,
+          TIOColor : tioColorValue,
+          LIOColor : lioColorValue,
+          CS1Color : cs1ColorValue,
+          CS2Color : cs2ColorValue,
+          CopyEnable : copyEnable,
+          SelAllEnable : setEallEnable,
+          serverSelect : serverSelectValue,
+          LIOEnable : lioEnableValue,
+          CSEnable : csEnableValue,
+          AutoFocusLanes : autoFocusLanesValue,
+          ReverseLanesIcon : revLanesIcon,
+          ClickSaveEnable : clickSaveEnable,
+          ClickSaveStraight : clickSaveStraightValue,
+          ClickSaveTurns : clickSaveTurns,
+          enableScript : enableScriptValue,
+          enableHighlights : enableHighlightsValue,
+          enableUIEnhancements : enableUIEnhancementsValue,
+          enableHeuristics : enableHeuristicsValue,
+          HeurColor : heurColorValue,
+          HeurFailColor : heurFailColorValue,
+          LaneHeurPosHighlight : laneHeurPosHighlightValue,
+          LaneHeurNegHighlight : laneHeurNegHighlightValue,
+          LaneHeuristicsChecks : laneHeuristicsChecksValue,
+          highlightCSIcons : highlightCSIconsValue,
+          highlightOverride : highlightOverrideValue,
+          AddTIO : addTIOValue,
+          IconsEnable : iconsEnableValue,
+          IconsRotate : iconsRotateValue,
+          DevToolsEnable : devToolsEnable
+        } = LtSettings,
+        savedLTSettings = {
+          lastSaveAction : Date.now(),
+          ScriptEnabled : scriptEnabledValue,
+          HighlightsEnable : highlightsEnabledValue,
+          LabelsEnable : labelsEnabledValue,
+          NodesEnable : nodesEnabledValue,
+          UIEnable : uiEnabledValue,
+          AutoOpenWidth : autoOpenWidth,
+          AutoLanesTab : autoLanesTab,
+          AutoExpandLanes : autoExpandLanes,
+          ABColor : abColorValue,
+          BAColor : baColor,
+          LabelColor : labelColorValue,
+          ErrorColor : errorColorValue,
+          NodeColor : nodeColorValue,
+          TIOColor : tioColorValue,
+          LIOColor : lioColorValue,
+          CS1Color : cs1ColorValue,
+          CS2Color : cs2ColorValue,
+          CopyEnable : copyEnable,
+          SelAllEnable : setEallEnable,
+          serverSelect : serverSelectValue,
+          LIOEnable : lioEnableValue,
+          CSEnable : csEnableValue,
+          AutoFocusLanes : autoFocusLanesValue,
+          ReverseLanesIcon : revLanesIcon,
+          ClickSaveEnable : clickSaveEnable,
+          ClickSaveStraight : clickSaveStraightValue,
+          ClickSaveTurns : clickSaveTurns,
+          enableScript : enableScriptValue,
+          enableHighlights : enableHighlightsValue,
+          enableUIEnhancements : enableUIEnhancementsValue,
+          enableHeuristics : enableHeuristicsValue,
+          HeurColor : heurColorValue,
+          HeurFailColor : heurFailColorValue,
+          LaneHeurPosHighlight : laneHeurPosHighlightValue,
+          LaneHeurNegHighlight : laneHeurNegHighlightValue,
+          LaneHeuristicsChecks : laneHeuristicsChecksValue,
+          highlightCSIcons : highlightCSIconsValue,
+          highlightOverride : highlightOverrideValue,
+          AddTIO : addTIOValue,
+          IconsEnable : iconsEnableValue,
+          IconsRotate : iconsRotateValue,
+          DevToolsEnable : devToolsEnable
+        };
+        for (const action in W.accelerators.Actions) {
+          const {shortcut : keyboardShortcut, group : keyboardActionGroup} = W.accelerators.Actions[action];
+          let keyPressed = "";
+          if (keyboardActionGroup === "wmelt") {
+            if (keyboardShortcut) {
+              keyboardShortcut.altKey === true && (keyPressed += "A");
+              keyboardShortcut.shiftKey === true && (keyPressed += "S");
+              keyboardShortcut.ctrlKey === true && (keyPressed += "C");
+              keyPressed !== "" && (keyPressed += "+");
+              keyboardShortcut.keyCode && (keyPressed += keyboardShortcut.keyCode);
+            } else {
+              keyPressed = "-1";
+            }
+            savedLTSettings[action] = keyPressed
+          }
+        }
+        LtSettings = savedLTSettings;
+        localStorage && localStorage.setItem("LT_Settings", JSON.stringify(savedLTSettings));
+        const ltSettingsSaveStatus = await WazeWrap.Remote.SaveSettings("LT_Settings", savedLTSettings);
+        if (ltSettingsSaveStatus === null)
+          console.warn("LaneTools: User PIN not set in WazeWrap tab");
+        else {
+          if (ltSettingsSaveStatus === false)
+            console.error("LaneTools: Unable to save settings to server");
+          else
+            console.log("LaneTools: Saved Settings to the Server")
+        }
+      }
+
+      async function loadSpreadsheet() {
+        let   spreadSheetLoadStatus = false;
+        const spreadsheetID = "AIzaSyDZjmkSx5xWc-86hsAIzedgDgRgy8vB7BQ",
+              angleFail = (_0x135a7d, _0x3e3ad5,
+                           errorMsg) => { console.error("LaneTools: Error loading settings:", errorMsg); },
+              rbsFail =
+                  (_0x2d5151, _0x4e197b, reason) => {
+                    console.error("LaneTools: Error loading RBS: ", reason);
+                    if (!RBSArray.failed) {
+                      WazeWrap.Alerts.error(
+                          GM_info.script.name,
+                          "Unable to load heuristics data for LG. This feature will not be available");
+                      RBSArray.failed = true
+                    }
+                  },
+              translationFailedToLoad =
+                  (_0x4e546b, _0x559463, err) => { console.error("LaneTools: Error loading trans: ", err); };
+        try {
+          await $.getJSON(constantStrings.translationSpreadSheetBaseURL + spreadsheetID)
+              .done(async (spreadSheetData) => {
+                spreadSheetData.values.length > 0x0 ? _.each(spreadSheetData.values, (translationValue) => {
+                  let localeName = translationValue[1];
+                  let translationsAvailable = Number.parseInt(translationValue[2], 10) === 1;
+                  !TRANSLATIONS[localeName] && translationsAvailable &&
+                      (TRANSLATIONS[localeName] = JSON.parse(translationValue[0]));
+                }) : translationFailedToLoad();
+              })
+              .fail(translationFailedToLoad);
+        } catch (ex) {
+          translationFailedToLoad(null, null, ex);
+        }
+        try {
+          await $.getJSON(constantStrings.angleSpreadSheetBaseURL + spreadsheetID)
+              .done((angleValueJSON) => {
+                if (angleValueJSON.values.length > 0x0) {
+                  _.each(angleValueJSON.values, (angleValue) => {
+                    !configArray[angleValue[1]] && (configArray[angleValue[1]] = JSON.parse(angleValue[0]));
+                  });
+                  spreadSheetLoadStatus = true
+                } else
+                  angleFail();
+              })
+              .fail(angleFail);
+        } catch (angleException) {
+          angleFail(null, null, angleException);
+        }
+        try {
+          await $.getJSON(constantStrings.RBSAccessSheetBaseURL + spreadsheetID)
+              .done((rbsValueJSON) => {
+                if (rbsValueJSON.values.length > 0x0) {
+                  for (let idx = 0x0; idx < rbsValueJSON.values.length; idx++) {
+                    RBSArray[idx] = rbsValueJSON.values[idx];
+                  }
+                  RBSArray.failed = false;
+                } else
+                  rbsFail();
+              })
+              .fail(rbsFail);
+        } catch (rbsException) {
+          rbsFail(null, null, rbsException);
+        }
+        spreadSheetLoadStatus && _.each(configArray, (configValueJSON) => {
+          for (const configValue in configValueJSON) {
+            if (configValueJSON.hasOwnProperty(configValue)) {
+              let value = configValueJSON[configValue];
+              configValueJSON[configValue] = Number.parseFloat(value);
+            }
+          }
+        });
+      }
+
+      function setTranslations() {
+        langLocality = I18n.currentLocale().toLowerCase();
+        if (TRANSLATIONS[langLocality])
+          strings = TRANSLATIONS[langLocality];
+        else
+          langLocality.includes("-") && TRANSLATIONS[langLocality.split("-")[0x0]]
+              ? (strings = TRANSLATIONS[langLocality.split("-")[0x0]])
+              : (strings = TRANSLATIONS["default"]);
+        Object.keys(TRANSLATIONS.default).forEach((propertyName) => {
+          (!strings.hasOwnProperty(propertyName) || strings[propertyName] === "") &&
+              (strings[propertyName] = TRANSLATIONS.default[ propertyName ]);
+        });
+        $(".lt-trans-enabled").text(strings.enabled);
+        $(".lt-trans-tglshcut").text(strings["toggleShortcut"]);
+        $("#lt-trans-uiEnhance").text(strings["UIEnhance"]);
+        $("#lt-trans-autoTab").text(strings["autoOpen"]);
+        $("#lt-trans-autoWidth").text(strings["autoWidth"]);
+        $("#lt-trans-autoExpand").text(strings["autoExpand"]);
+        $("#lt-trans-autoFocus").text(strings["autoFocus"]);
+        $("#lt-trans-orient").text(strings["reOrient"]);
+        $("#lt-trans-enClick").text(strings["enClick"]);
+        $("#lt-trans-straClick").text(strings["clickStraight"]);
+        $("#lt-trans-turnClick").text(strings["clickTurn"]);
+        $("#lt-trans-mapHigh").text(strings["mapHighlight"]);
+        $("#lt-trans-lnLabel").text(strings["laneLabel"]);
+        $("#lt-trans-nodeHigh").text(strings["nodeHigh"]);
+        $("#lt-trans-laOver").text(strings["LAOHigh"]);
+        $("#lt-trans-csOver").text(strings["CSOHigh"]);
+        $("#lt-trans-heurCan").text(strings["heuristics"]);
+        $("#lt-trans-heurPos").text(strings["posHeur"]);
+        $("#lt-trans-heurNeg").text(strings["negHeur"]);
+        $("#lt-trans-highCol").text(strings["highColor"]);
+        $("#lt-trans-fwdCol").text(strings["fwdCol"]);
+        $("#lt-trans-revCol").text(strings["revCol"]);
+        $("#lt-trans-labelCol").text(strings["labelCol"]);
+        $("#lt-trans-errorCol").text(strings["errorCol"]);
+        $("#lt-trans-nodeCol").text(strings["laneNodeCol"]);
+        $("#lt-trans-tioCol").text(strings["nodeTIOCol"]);
+        $("#lt-trans-laoCol").text(strings["LAOCol"]);
+        $("#lt-trans-viewCol").text(strings["viewCSCol"]);
+        $("#lt-trans-hearCol").text(strings["hearCSCol"]);
+        $("#lt-trans-posCol").text(strings["heurPosCol"]);
+        $("#lt-trans-negCol").text(strings["heurNegCol"]);
+        $("#lt-trans-devTools").text(strings["devTools"]);
+        $("#lt-trans-quickTog").text(strings["quickTog"]);
+        $("#lt-trans-heurRBS").text(strings["showRBS"]);
+        $("#lt-trans-csIcons").text(strings["csIcons"]);
+        $("#lt-trans-highOver").text(strings["highlightOverride"]);
+        $("#lt-trans-AddTIO").text(strings["addTIO"]);
+        $("#lt-trans-enIcons").text(strings["enIcons"]);
+        $("#lt-trans-IconsRotate").text(strings["IconsRotate"]);
+        $("#lt-color-title").attr("data-original-title", strings["colTooltip"]);
+        if (shortcutsDisabled) {
+          $("#lt-EnableShortcut").text("" + strings["disabled"]);
+          $("#lt-HighlightShortcut").text("" + strings["disabled"]);
+          $("#lt-UIEnhanceShortcut").text("" + strings["disabled"]);
+          $("#lt-LaneHeurChecksShortcut").text("" + strings["disabled"])
+        }
+      }
+
+      function setHeuristics() {
+        if (RBSArray.failed)
+          return;
+        let config = isRBS && getId("lt-serverSelect").checked ? configArray.RBS : configArray.RPS;
+        MAX_LEN_HEUR = config.MAX_LEN_HEUR;
+        (MAX_PERP_DIF = config.MAX_PERP_DIF);
+        (MAX_PERP_DIF_ALT = config.MAX_PERP_DIF_ALT);
+        (MAX_PERP_TO_CONSIDER = config.MAX_PERP_TO_CONSIDER);
+        (MAX_STRAIGHT_TO_CONSIDER = config.MAX_STRAIGHT_TO_CONSIDER);
+        (MAX_STRAIGHT_DIF = config.MAX_STRAIGHT_DIF);
+      }
+
+      function checkShortcutsChanged() {
+        let shortCutInvoked = false;
+        for (const actionValue in W.accelerators.Actions) {
+          const {shortcut : shortCutValue, group : groupValue} = W.accelerators.Actions[actionValue];
+          if (groupValue === "wmelt") {
+            let shortCutString = "";
+            if (shortCutValue) {
+              shortCutValue["altKey"] === true && (shortCutString += "A");
+              shortCutValue["shiftKey"] === true && (shortCutString += "S");
+              shortCutValue["ctrlKey"] === true && (shortCutString += "C");
+              shortCutString !== "" && (shortCutString += "+");
+              shortCutValue["keyCode"] && (shortCutString += shortCutValue["keyCode"]);
+            } else
+              shortCutString = "-1";
+            if (LtSettings[actionValue] !== shortCutString) {
+              (shortCutInvoked = true);
+              console.log("LaneTools: Stored shortcut " + actionValue + ": " + LtSettings[actionValue] + "changed to " +
+                          shortCutString);
+              break;
+            }
+          }
+        }
+        if (shortCutInvoked) {
+          saveSettings().then(r => setTimeout(() => { updateShortcutLabels(); }, 200));
+        }
+      }
+
+      function getKeyboardShortcut(settingValue) {
+        const keyboardShortCut = LtSettings[settingValue];
+        let   shortCutValue = "";
+        if (keyboardShortCut !== "-1") {
+          if (keyboardShortCut.indexOf("+") > -1) {
+            const keyboardKeyValue = keyboardShortCut.split("+")[0x0];
+            for (let index = 0x0; index < keyboardKeyValue.length; index++) {
+              shortCutValue.length > 0x0 && (shortCutValue += "+");
+              keyboardKeyValue[index] === "C" && (shortCutValue += "Ctrl");
+              keyboardKeyValue[index] === "S" && (shortCutValue += "Shift");
+              keyboardKeyValue[index] === "A" && (shortCutValue += "Alt");
+            }
+            shortCutValue.length > 0x0 && (shortCutValue += "+");
+            let keyboardKey = keyboardShortCut.split("+")[0x1];
+            if (keyboardKey >= 96 && keyboardKey <= 105) {
+              keyboardKey -= 48;
+              shortCutValue += "[num pad]";
+            }
+            shortCutValue += String.fromCharCode(keyboardKey);
+          } else {
+            let keyboardKey = Number.parseInt(keyboardShortCut, 10);
+            if (keyboardKey >= 96 && keyboardKey <= 105) {
+              keyboardKey -= 48;
+              shortCutValue += "[num pad]";
+            }
+            shortCutValue += String.fromCharCode(keyboardKey);
+          }
+        }
+        return shortCutValue;
+      }
+
+      function updateShortcutLabels() {
+        if (!shortcutsDisabled) {
+          $("#lt-EnableShortcut").text(getKeyboardShortcut("enableScript"));
+          $("#lt-HighlightShortcut").text(getKeyboardShortcut("enableHighlights"));
+          $("#lt-UIEnhanceShortcut").text(getKeyboardShortcut("enableUIEnhancements"));
+          $("#lt-LaneHeurChecksShortcut").text(getKeyboardShortcut("enableHeuristics"))
+        }
+      }
+
+      function getSegObj(objectID) { return W.model.segments.getObjectById(objectID); }
+
+      function getNodeObj(objectID) { return W.model.nodes.getObjectById(objectID); }
+      function decorateSegments(flagsObject, selectedFeatures, eventInfo = null) {
+        if (eventInfo !== null) {
+          eventInfo.stopPropagation();
+        }
+        getId("lt-ReverseLanesIcon").checked && !flagsObject.rotateDisplayLanes && rotateDisplay(flagsObject);
+        getId("lt-highlightCSIcons").checked && decorateCSIcons(selectedFeatures);
+        if (_pickleColor >= 0x1 || editorInfo["editableCountryIDS"].length > 0x0) {
+          if (getId("li-del-opp-btn"))
+            $("#li-del-opp-btn").remove();
+          let delForwardButton = $(
+                  "<button type=\"button\" id=\"li-del-fwd-btn\" style=\"height:20px;background-color:white;border:1px solid grey;border-radius:8px;\">" +
+                  strings.delFwd + "</button>"),
+              deleteRefButton = $(
+                  "<button type=\"button\" id=\"li-del-rev-btn\" style=\"height:20px;background-color:white;border:1px solid grey;border-radius:8px;\">" +
+                  strings.delRev + "</button>"),
+              deleteOppButton = $(
+                  "<button type=\"button\" id=\"li-del-opp-btn\" style=\"height:auto;background-color:orange;border:1px solid grey;border-radius:8px; margin-bottom:5px;\">" +
+                  strings.delOpp + "</button>"),
+              fwdDisplayRelative = $("<div style=\"display:inline-block;position:relative;\" />"),
+              revDisplayRelativeSelector = $("<div style=\"display:inline-block;position:relative;\" />"),
+              oppDisplayRelativeSelector = $("<div style=\"display:inline-block;position:relative;\" />");
+          delForwardButton.appendTo(fwdDisplayRelative);
+          deleteRefButton.appendTo(revDisplayRelativeSelector);
+          deleteOppButton.appendTo(oppDisplayRelativeSelector);
+          const liDeleteFwdButtonSelector = $("#li-del-fwd-btn"), liDeleteReverseButtonSelector = $("#li-del-rev-btn"),
+                liDeleteOppositeButtonSelector = $("#li-del-opp-btn");
+          liDeleteFwdButtonSelector.off();
+          liDeleteReverseButtonSelector.off();
+          liDeleteOppositeButtonSelector.off();
+          if (!getId("li-del-rev-btn") && !flagsObject.revLanesEnabled &&
+              selectedFeatures[0x0].attributes.wazeFeature._wmeObject.getRevLanes().laneCount > 0x0) {
+            if ($(constantStrings.revLanesInstructionsFromCSS).length > 0x0) {
+              revDisplayRelativeSelector.prependTo(constantStrings.revLanesInstructionsFromCSS);
+              $(constantStrings.revLanesInstructionsFromCSS).css("border-bottom", "4px dashed " + LtSettings.BAColor);
+            } else if (selectedFeatures[0x0].attributes.wazeFeature._wmeObject.attributes.revDirection !== true) {
+              deleteOppButton.prop("title", "rev");
+              deleteOppButton.prependTo(constantStrings.editPanelCSS);
+            }
+          } else
+            $(constantStrings.revLanesInstructionsFromCSS).css("border-bottom", "4px dashed " + LtSettings.BAColor);
+          if (!getId("li-del-fwd-btn") && !flagsObject.fwdLanesEnabled &&
+              selectedFeatures[0x0].attributes.wazeFeature._wmeObject.getFwdLanes().laneCount > 0x0) {
+            if ($(constantStrings.fwdLanesDivInstructionCSS).length > 0x0) {
+              fwdDisplayRelative.prependTo(constantStrings.fwdLanesDivInstructionCSS);
+              $(constantStrings.fwdLanesDivInstructionCSS).css("border-bottom", "4px dashed " + LtSettings.ABColor);
+            } else if (selectedFeatures[0x0].attributes.wazeFeature._wmeObject.attributes.fwdDirection !== true) {
+              deleteOppButton.prop("title", "fwd");
+              deleteOppButton.prependTo(constantStrings.editPanelCSS);
+            }
+          } else
+            $(constantStrings.fwdLanesInstructionsFromCSS).css("border-bottom", "4px dashed " + LtSettings.ABColor);
+          liDeleteFwdButtonSelector.on("click", function() {
+            delLanes("fwd");
+            flagsObject.fwdLanesEnabled = true;
+            setTimeout(function() { decorateSegments(flagsObject, selectedFeatures); }, 200);
+          });
+          liDeleteReverseButtonSelector.on("click", function() {
+            delLanes("rev");
+            flagsObject.revLanesEnabled = true;
+            setTimeout(function() { decorateSegments(flagsObject, selectedFeatures); }, 200);
+          });
+          liDeleteOppositeButtonSelector.on("click", function() {
+            let laneDirection = $(this).prop("title");
+            delLanes(laneDirection);
+            laneDirection === "rev" ? (flagsObject.revLanesEnabled = true) : (flagsObject.fwdLanesEnabled = true);
+            decorateSegments(flagsObject, selectedFeatures);
+          });
+        }
+        const editLaneGuidanceSelector = $(".edit-lane-guidance");
+        editLaneGuidanceSelector.off();
+        editLaneGuidanceSelector.on("click", function() {
+          $(this).parents(".fwd-lanes").length && setTimeout(function() {
+            setupTurnLanesForDirection("fwd");
+            populateNumberOfLanes();
+            configureDirectionLanesHTML();
+            setupAutoFocusLanes(flagsObject);
+            setUpActionButtons(flagsObject, selectedFeatures);
+            if (getId("lt-AddTIO").checked)
+              addTIOUI("fwd");
+          }, 100);
+          $(this).parents(".rev-lanes").length && setTimeout(function() {
+            setupTurnLanesForDirection("rev");
+            populateNumberOfLanes();
+            configureDirectionLanesHTML();
+            setupAutoFocusLanes(flagsObject);
+            setUpActionButtons(flagsObject, selectedFeatures);
+            if (getId("lt-AddTIO").checked)
+              addTIOUI("rev");
+          }, 100);
+        });
+        if (!flagsObject.fwdLanesEnabled && !flagsObject.revLanesEnabled && !flagsObject.autoOpenTriggered)
+          triggerAutoFunctions(flagsObject);
+        configureDirectionLanesHTML();
+      }
+      function setUpActionButtons(flagsObject, selectedFeatures) {
+        $(".apply-button.waze-btn.waze-btn-blue").off();
+        $(".cancel-button").off();
+        const fwdLanesSelector = $(".fwd-lanes"), revLanesSelector = $(".rev-lanes");
+        fwdLanesSelector.find(".apply-button.waze-btn.waze-btn-blue").on("click", () => {
+          flagsObject.fwdLanesEnabled = true;
+          setTimeout(function() { decorateSegments(flagsObject, selectedFeatures); }, 200);
+        });
+        revLanesSelector.find(".apply-button.waze-btn.waze-btn-blue").on("click", () => {
+          flagsObject.revLanesEnabled = true;
+          setTimeout(function() { decorateSegments(flagsObject, selectedFeatures); }, 200);
+        });
+        fwdLanesSelector.find(".cancel-button").on("click", () => {
+          flagsObject.fwdLanesEnabled = true;
+          setTimeout(function() { decorateSegments(flagsObject, selectedFeatures); }, 200);
+        });
+        revLanesSelector.find(".cancel-button").on("click", () => {
+          flagsObject.revLanesEnabled = true;
+          setTimeout(function() { decorateSegments(flagsObject, selectedFeatures); }, 200);
+        });
+      }
+      function triggerAutoFunctions(flagsObject) {
+        flagsObject.autoOpenTriggered = true;
+        if (getId("lt-AutoExpandLanes").checked) {
+          if (!flagsObject.fwdLanesEnabled) {
+          }
+          if (!flagsObject.revLanesEnabled) {
+          }
+        }
+        if (getId("lt-AutoOpenWidth").checked) {
+          let wzButtonSelector = $(".set-road-width > wz-button");
+          if (!flagsObject.fwdLanesEnabled) {
+            $(".fwd-lanes").find(wzButtonSelector).trigger("click");
+          }
+          if (!flagsObject.revLanesEnabled) {
+            $(".rev-lanes").find(wzButtonSelector).trigger("click");
+          }
+        }
+      }
+
+      function configureDirectionLanesHTML() {
+        $(".fwd-lanes > div > .direction-lanes").css({
+          padding : "5px 5px 10px",
+          "margin-bottom" : "10px",
+        });
+        $("<div class=\x22lt-add-Width fwd\x22>2</div>").css({
+          padding : "5px 5px 10px",
+          margin : "0px",
+        });
+        $(constantStrings.fwdLanesDirectionControlEditCSS).css("padding-top", "10px");
+        $(constantStrings.revLanesInstructionsToCSS).css("padding-top", "10px");
+        $(constantStrings.fwdLanesLaneInstrunctionToCSS).css("margin-bottom", "4px");
+        $(".rev-lanes > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1)")
+            .css("margin-bottom", "4px");
+      }
+
+      function getLaneItems(count, class_names_list) {
+        let itemsList = [], classString = class_names_list.join(" "), idStringBase = class_names_list.join("-");
+        for (let i = 1; i <= count; ++i) {
+          let idString = idStringBase + "-" + i.toString();
+          let selectorString = "<div class=\"" + classString + "\" id=\"" + idString + "\">" + i.toString() + "</div>";
+          let newItem = $(selectorString).css({
+            padding : "1px 1px 1px 1px",
+            margin : "2px",
+            border : "2px",
+            "border-radius" : "50%",
+            "border-color" : "black",
+            "box-shadow" : "-1px -1px 1px 1px gray",
+            height : "20px",
+            width : "20px",
+            "text-align" : "center"
+          });
+          itemsList.push(newItem)
+        }
+        return itemsList;
+      }
+
+      function setupLaneCountControls(parentSelector, classNamesList) {
+        const jqueryClassSelector = "." + classNamesList.join(".");
+        $(jqueryClassSelector).on("click", function() {
+          $(jqueryClassSelector).css({"background-color" : "transparent", "color" : "black"});
+          $(this).css({"background-color" : "navy", "color" : "white"});
+        });
+        let numLanesSelector = parentSelector.find(".form-control");
+        let idString = "#" + classNamesList.join("-") + "-" + numLanesSelector.val();
+        $(idString).css({"background-color" : "navy", "color" : "white"});
+      }
+      function populateNumberOfLanes() {
+        let fwdLanesSelector = $(".fwd-lanes"), revLanesSelector = $(".rev-lanes");
+        if (fwdLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-fwd-add-lanes")) {
+          let addLanesItem = $(
+                  '<div style="display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;" id="lt-fwd-add-lanes" />'),
+              classNamesList = [ "lt-add-lanes", "fwd" ], laneCountsToAppend = getLaneItems(8, classNamesList);
+          for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
+            addLanesItem.append(laneCountsToAppend[idx]);
+          }
+          addLanesItem.appendTo(constantStrings.fwdLanesNthChild);
+          setupLaneCountControls(fwdLanesSelector, classNamesList);
+        }
+        if (revLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-rev-add-lanes")) {
+          let reverseLaneDiv = $(
+                  '<div style="display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;" id="lt-rev-add-lanes" />'),
+              classNamesList = [ "lt-add-lanes", "rev" ], laneCountsToAppend = getLaneItems(8, classNamesList);
+          for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
+            reverseLaneDiv.append(laneCountsToAppend[idx]);
+          }
+          reverseLaneDiv.appendTo(constantStrings.revLanesNthChild);
+          setupLaneCountControls(revLanesSelector, classNamesList);
+        }
+
+        $(".lt-add-lanes").on("click", function() {
+          let addLanesText = $(this).text(), formControlSelector = $(".form-control");
+          addLanesText = Number.parseInt(addLanesText, 10);
+          if ($(this).hasClass("lt-add-lanes fwd")) {
+            // const fwdLanesSelector = $(".fwd-lanes");
+            fwdLanesSelector.find(formControlSelector).val(addLanesText);
+            fwdLanesSelector.find(formControlSelector).trigger("click");
+            fwdLanesSelector.find(formControlSelector).trigger("change");
+          }
+          if ($(this).hasClass("lt-add-lanes rev")) {
+            // const revLanesSelector = $(".rev-lanes");
+            revLanesSelector.find(formControlSelector).val(addLanesText);
+            revLanesSelector.find(formControlSelector).trigger("focus");
+            revLanesSelector.find(formControlSelector).trigger("change");
+          }
+        });
+        if (fwdLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-fwd-add-Width")) {
+          let addFwdLanes =
+                  $('<div style="display:inline-flex;flex-direction:row;width:100%;" id="lt-fwd-add-Width" />'),
+              classNamesList = [ "lt-add-Width", "fwd" ], laneCountsToAppend = getLaneItems(8, classNamesList);
+          for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
+            addFwdLanes.append(laneCountsToAppend[idx]);
+          }
+          addFwdLanes.prependTo(
+              ".fwd-lanes > div > div > .lane-instruction.lane-instruction-from > .instruction > .road-width-edit > div > div > div > .lane-width-card");
+          const jqueryClassSelector = "." + classNamesList.join(".");
+          $(jqueryClassSelector).on("click", function() {
+            $(jqueryClassSelector).css({"background-color" : "transparent", "color" : "black"});
+            $(this).css({"background-color" : "navy", "color" : "white"});
+          });
+        }
+        if (revLanesSelector.find(".direction-lanes").children().length > 0x0 && !getId("lt-rev-add-Width")) {
+          let appendRevLanes =
+                  $('<div style="display:inline-flex;flex-direction:row;width:100%;" id="lt-rev-add-Width" />'),
+              classNamesList = [ "lt-add-Width", "rev" ], laneCountsToAppend = getLaneItems(8, classNamesList);
+          for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
+            appendRevLanes.append(laneCountsToAppend[idx]);
+          }
+          appendRevLanes.prependTo(
+              ".rev-lanes > div > div > .lane-instruction.lane-instruction-from > .instruction > .road-width-edit > div > div > div > .lane-width-card");
+          const jqueryClassSelector = "." + classNamesList.join(".");
+          $(jqueryClassSelector).on("click", function() {
+            $(jqueryClassSelector).css({"background-color" : "transparent", "color" : "black"});
+            $(this).css({"background-color" : "navy", "color" : "white"});
+          });
+        }
+        $(".lt-add-Width").on("click", function() {
+          let numLanesToAdd = $(this).text();
+          numLanesToAdd = Number.parseInt(numLanesToAdd, 10);
+          if ($(this).hasClass("lt-add-Width fwd")) {
+            // const fwdLanesSelector = $(".fwd-lanes");
+            fwdLanesSelector.find("#number-of-lanes").val(numLanesToAdd);
+            fwdLanesSelector.find("#number-of-lanes").trigger("change");
+            fwdLanesSelector.find("#number-of-lanes").trigger("focus");
+          }
+          if ($(this).hasClass("lt-add-Width rev")) {
+            // const revLanesSelector = $(".rev-lanes");
+            revLanesSelector.find("#number-of-lanes").val(numLanesToAdd);
+            revLanesSelector.find("#number-of-lanes").trigger("focus");
+            revLanesSelector.find("#number-of-lanes").trigger("change");
+          }
+        });
+      }
+
+      function setupAutoFocusLanes(flagsObject) {
+        if (getId("lt-AutoFocusLanes").checked) {
+          const fwdLanesSelector = $(".fwd-lanes"), revLanesSelector = $(".rev-lanes"),
+                editRegionSelectors = $(".edit-region"), formControlSelectors = $(".form-control");
+          if (fwdLanesSelector.find(editRegionSelectors).children().length > 0x0 && !flagsObject.fwdLanesEnabled)
+            fwdLanesSelector.find(formControlSelectors).trigger("focus");
+          else if (revLanesSelector.find(editRegionSelectors).children().length > 0x0 && !flagsObject.revLanesEnabled) {
+            revLanesSelector.find(formControlSelectors).trigger("focus");
+          }
+        }
+      }
+
+      function setupTurnLanesForDirection(laneDirection) {
+        if (getId("lt-DevToolsEnable").checked && getId("lt-SelAllEnable").checked) {
+          $(".street-name").css("user-select", "none");
+          let formControlSelector = laneDirection === "fwd" ? $(".fwd-lanes").find(".form-control")[0x0]
+                                                            : $(".rev-lanes").find(".form-control")[0x0],
+              numOfLanesForGuidance = $(formControlSelector).val();
+          $(formControlSelector).on("change", function() {
+            let turnsRegion;
+            if ($(this).parents(".fwd-lanes").length)
+              turnsRegion = $(".fwd-lanes").find(".controls-container.turns-region");
+            else if ($(this).parents(".rev-lanes").length)
+              turnsRegion = $(".rev-lanes").find(".controls-container.turns-region");
+            turnsRegion = $(".street-name", turnsRegion);
+            for (let idx = 0x0; idx < turnsRegion.length; idx++) {
+              $(turnsRegion[idx]).off();
+              $(turnsRegion[idx]).on("click", function() {
+                let turnDirection = $(this).get(0x0), parentElement = turnDirection["parentElement"],
+                    htmlElements = $(".checkbox-large.checkbox-white", parentElement);
+                if (htmlElements.length > 0) {
+                  const elementDisabled = !getId(htmlElements[0x0].id).checked;
+                  for (let idx = 0x0; idx < htmlElements.length; idx++) {
+                    const idElement = $("#" + htmlElements[idx].id);
+                    idElement.prop("checked", elementDisabled);
+                    idElement.trigger("change");
+                  }
+                }
+              });
+            }
+          });
+          numOfLanesForGuidance > 0x0 && $(formControlSelector).trigger("change");
+        }
+      }
+      function decorateCSIcons(selectedFeatures) {
+        const segmentRef = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
+              bNodeRef = getNodeObj(segmentRef.attributes.toNodeID),
+              aNodeRef = getNodeObj(segmentRef.attributes.fromNodeID);
+        let fwdLanesConfig =
+                getLanesConfig(segmentRef, bNodeRef, bNodeRef.attributes.segIDs, segmentRef.attributes.fwdLaneCount),
+            numFwdGuidedLanes = fwdLanesConfig[4],
+            revLanesConfig =
+                getLanesConfig(segmentRef, aNodeRef, aNodeRef.attributes.segIDs, segmentRef.attributes.revLaneCount),
+            numRevGuidedLanes = revLanesConfig[4];
+        if (numFwdGuidedLanes > 0) {
+          let fwdCSIconColor = (numFwdGuidedLanes === 0x1 ? LtSettings.CS1Color : LtSettings.CS2Color),
+              _0x1d2fa0 = $(constantStrings.segmentEditLanes).children();
+          for (let i = 0x0; i < _0x1d2fa0.length; i++) {
+            _0x1d2fa0[i]["title"] === fwdLanesConfig[5] && $(_0x1d2fa0[i]).css("background-color", fwdCSIconColor);
+          }
+        }
+        if (numRevGuidedLanes > 0x0) {
+          let revCSIconColor = (numRevGuidedLanes === 0x1 ? LtSettings.CS1Color : LtSettings.CS2Color),
+              _0x37b735 = $(constantStrings.segmentEditLanes).children();
+          for (let i = 0x0; i < _0x37b735.length; i++) {
+            _0x37b735[i]["title"] === revLanesConfig[0x5] && $(_0x37b735[i]).css("background-color", revCSIconColor);
+          }
+        }
+      }
+
+      function rotateDisplay(flagsObject) {
+        let headingElement = document.getElementsByClassName("heading"), laneArrows = $(".lane-arrows > div").get();
+        for (let idx = 0x0; idx < headingElement.length; idx++) {
+          if (headingElement[idx].textContent.includes("south")) {
+            let kids = $(laneArrows[idx]).children();
+            $(kids).css("transform", "rotate(180deg)");
+            $(laneArrows[idx]).append(kids.get().reverse());
+          }
+        }
+        flagsObject.rotateDisplayLanes = true;
+      }
+
+      function lanesTabSetup() {
+        if (getId("edit-panel").getElementsByTagName("wz-tabs").length === 0x0) {
+          setTimeout(lanesTabSetup, 2000);
+          console.log("Edit panel not yet loaded.");
+          return;
+        }
+        const selectedFeatures = W.selectionManager.getSelectedFeatures();
+        let   flagsObject = {};
+        flagsObject.fwdLanesEnabled = false;
+        flagsObject.revLanesEnabled = false;
+        flagsObject.rotateDisplayLanes = false;
+        flagsObject.autoOpenTriggered = false;
+        // function _0x47ffa9() {
+        //   W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.toNodeID).attributes.geometry;
+        //   document.getElementById(
+        //       W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.toNodeID)
+        //           .attributes.geometry.id);
+        //   console.log("hovering to B");
+        // }
+        // function _0x758543() {
+        //   W.model.nodes
+        //       .get(W.selectionManager.getSegmentSelection()
+        //                .segments[0]
+        //                .attributes.fromNodeID)
+        //       .attributes.geometry;
+        //   document.getElementById(
+        //       W.model.nodes
+        //           .get(W.selectionManager.getSegmentSelection()
+        //                    .segments[0]
+        //                    .attributes.fromNodeID)
+        //           .attributes.geometry.id),
+        //       console.log("hovering to A");
+        // }
+
+        if (getId("lt-UIEnable").checked && getId("lt-ScriptEnabled").checked && selectedFeatures.length > 0x0) {
+          if (selectedFeatures.length === 0x1 &&
+              selectedFeatures[0x0].attributes.wazeFeature._wmeObject.type === "segment") {
+            $(".lanes-tab").on("click", (event) => { decorateSegments(flagsObject, selectedFeatures, event); });
+            getId("lt-AutoLanesTab").checked && setTimeout(() => { $(".lanes-tab").trigger("click"); }, 100);
+          } else
+            selectedFeatures.length === 0x2 && scanHeuristicsCandidates(selectedFeatures);
+        }
+      }
+
+      function toggleScript() { $("#lt-ScriptEnabled").trigger("click"); }
+
+      function toggleHighlights() { $("#lt-HighlightsEnable").trigger("click"); }
+
+      function toggleUIEnhancements() { $("#lt-UIEnable").click(); }
+
+      function toggleLaneHeuristicsChecks() { $("#lt-LaneHeuristicsChecks").click(); }
+
+      function displayToolbar() {
+        let toolbarContainer = $("#lt-toolbar-container");
+        if (!getId("lt-ScriptEnabled").checked || !getId("lt-DevToolsEnable").checked ||
+            !getId("lt-CopyEnable").checked) {
+          toolbarContainer.css({visibility : "hidden"});
+          return;
+        }
+        const featureList = W.selectionManager.getSelectedFeatures();
+        if (featureList.length === 0x1 && getId("lt-CopyEnable").checked && getId("lt-DevToolsEnable").checked &&
+            getId("lt-ScriptEnabled").checked) {
+          if (featureList[0x0].attributes.wazeFeature._wmeObject.type.toLowerCase() === "segment") {
+            const mapSelector = $("#map");
+            toolbarContainer.css({
+              visibility : "visible",
+              left : mapSelector.width() * 0.1,
+              top : mapSelector.height() * 0.1,
+            });
+          }
+        } else
+          toolbarContainer.css({visibility : "visible"});
+      }
+
+      function getId(elementId) { return document.getElementById(elementId); }
+
+      function onScreen(wmeObject, zoomLevel) {
+        if (!wmeObject || !wmeObject.geometry || !wmeObject.attributes)
+          return false;
+        if (zoomLevel >= DisplayLevels.MIN_ZOOM_NONFREEWAY ||
+            (wmeObject.type === "segment" && wmeObject.attributes.roadType === LT_ROAD_TYPE.FREEWAY))
+          return W.map.getExtent().intersectsBounds(wmeObject.geometry.getBounds());
+        return false;
+      }
+
+      function getSegmentAngle(nodeId, segment) {
+        if (nodeId == null || segment == null)
+          return null;
+        let xDiff, yDiff;
+        if (segment.attributes.fromNodeID === nodeId) {
+          xDiff = lt_get_second_point(segment).x - lt_get_first_point(segment).x;
+          yDiff = lt_get_second_point(segment).y - lt_get_first_point(segment).y;
+        } else {
+          xDiff = lt_get_next_to_last_point(segment).x - lt_get_last_point(segment).x;
+          yDiff = lt_get_next_to_last_point(segment).y - lt_get_last_point(segment).y;
+        }
+        let angleRad = Math.atan2(yDiff, xDiff), angleDegrees = ((angleRad * 180) / Math.PI) % 360;
+        if (angleDegrees < 0x0)
+          angleDegrees = angleDegrees + 360;
+        return Math.round(angleDegrees);
+      }
+
+      function lt_get_first_point(segment) { return segment.geometry.components[0x0]; }
+
+      function lt_get_last_point(segment) {
+        return segment.geometry.components[segment.geometry.components.length - 0x1];
+      }
+
+      function lt_get_second_point(segment) { return segment.geometry.components[0x1]; }
+
+      function lt_get_next_to_last_point(segment) {
+        return segment.geometry.components[segment.geometry.components.length - 0x2];
+      }
+
+      function delLanes(laneDirection) {
+        const selectedFeatures = W.selectionManager.getSelectedFeatures(),
+              wmeObject = selectedFeatures[0x0].attributes.wazeFeature._wmeObject, turnGraph = W.model.getTurnGraph(),
+              mAction = new MultiAction();
+        let nodeObject, attachedSegmentIDs, lanesObject = {};
+        mAction.setModel(W.model);
+        if (laneDirection === "fwd") {
+          lanesObject.fwdLaneCount = 0x0;
+          nodeObject = getNodeObj(wmeObject.attributes.toNodeID);
+          attachedSegmentIDs = nodeObject.getSegmentIds();
+          const fwdLanesSelector = $(".fwd-lanes");
+          fwdLanesSelector.find(".form-control").val(0x0);
+          fwdLanesSelector.find(".form-control").trigger("change");
+        }
+        if (laneDirection === "rev") {
+          lanesObject.revLaneCount = 0x0;
+          nodeObject = getNodeObj(wmeObject.attributes.fromNodeID);
+          attachedSegmentIDs = nodeObject.getSegmentIds();
+          const revLanesSelector = $(".rev-lanes");
+          revLanesSelector.find(".form-control").val(0x0);
+          revLanesSelector.find(".form-control").trigger("change");
+        }
+        mAction.doSubAction(new UpdateObj(wmeObject, lanesObject));
+        for (let idx = 0x0; idx < attachedSegmentIDs.length; idx++) {
+          let turnNode = turnGraph.getTurnThroughNode(nodeObject, wmeObject, getSegObj(attachedSegmentIDs[idx])),
+              turnData = turnNode.getTurnData();
+          if (turnData.hasLanes()) {
+            turnData = turnData.withLanes();
+            turnNode = turnNode.withTurnData(turnData);
+            mAction.doSubAction(new SetTurn(turnGraph, turnNode));
+          }
+        }
+        mAction._description = "Deleted lanes and turn associations";
+        W.model.actionManager.add(mAction);
+      }
+
+      function removeHighlights() {
+        LTHighlightLayer.removeAllFeatures();
+        LTNamesLayer.removeAllFeatures();
+      }
+
+      function removeLaneGraphics() { LTLaneGraphics.removeAllFeatures(); }
+
+      function applySegmentCountDisplay(anchorPoint, fwdSegmentLaneCount, revSegmentLaneCount) {
+        let replAnchorPoint = anchorPoint.clone(), _0x58bfcc = fwdSegmentLaneCount + " / " + revSegmentLaneCount,
+            newLayer = new OpenLayers.Feature.Vector(replAnchorPoint, {
+              labelText : _0x58bfcc,
+              labelColor : LtSettings.LabelColor,
+            });
+        LTNamesLayer.addFeatures([ newLayer ]);
+      }
+
+      function highlightSegment(segGeom, segDirection, highlightEnabled, highlightLabelsEnabled, forwardLaneCount,
+                                reverseLaneCount, tioAndLIO, turnGuidanceMode, lanesMissingConfiguration, heurCandidate,
+                                applyHeuristics) {
+        const segmentHighlightTypes = {
+          DASH_THIN : 0x1,
+          DASH_THICK : 0x2,
+          HIGHLIGHT : 0xa,
+          OVER_HIGHLIGHT : 0x14,
+        },
+              newSegmentGeometry = segGeom.clone(), csEnabled = getId("lt-CSEnable").checked;
+        if (newSegmentGeometry.components.length > 0x2) {
+          let numComponents = newSegmentGeometry.components.length, oneDirectionNumComponents = numComponents / 2,
+              fwdNumComponents = numComponents % 0x2 ? Math.ceil(oneDirectionNumComponents) - 0x1
+                                                     : Math.ceil(oneDirectionNumComponents),
+              revNumComponents = numComponents % 0x2 ? Math.floor(oneDirectionNumComponents) + 0x1
+                                                     : Math.floor(oneDirectionNumComponents);
+          if (segDirection === Direction.FORWARD) {
+            let _0x21e1e8 = getModifiableComponents(newSegmentGeometry, fwdNumComponents, numComponents);
+            highlightEnabled &&
+                applyLineDecoration(_0x21e1e8, "" + LtSettings.ABColor, segmentHighlightTypes.DASH_THIN);
+            _0x43deae(_0x21e1e8, tioAndLIO, lanesMissingConfiguration, heurCandidate, applyHeuristics);
+          } else {
+            if (segDirection === Direction.REVERSE) {
+              let _0x3e6b6f = getModifiableComponents(newSegmentGeometry, 0x0, revNumComponents);
+              highlightEnabled &&
+                  applyLineDecoration(_0x3e6b6f, "" + LtSettings.BAColor, segmentHighlightTypes.DASH_THIN);
+              _0x43deae(_0x3e6b6f, tioAndLIO, lanesMissingConfiguration, heurCandidate, applyHeuristics);
+            }
+          }
+          if (highlightLabelsEnabled && (Direction.FORWARD || forwardLaneCount === 0x0)) {
+            if (numComponents % 0x2)
+              applySegmentCountDisplay(newSegmentGeometry.components[fwdNumComponents], forwardLaneCount,
+                                       reverseLaneCount);
+            else {
+              let _0x3f4fb2 = newSegmentGeometry.components[revNumComponents - 0x1],
+                  _0x196425 = newSegmentGeometry.components[fwdNumComponents],
+                  _0x2daf64 = new OpenLayers.Geometry.Point((_0x3f4fb2.x + _0x196425.x) / 0x2,
+                                                            (_0x3f4fb2.y + _0x196425.y) / 0x2);
+              applySegmentCountDisplay(_0x2daf64, forwardLaneCount, reverseLaneCount);
+            }
+          }
+        } else {
+          let _0x5b73aa = newSegmentGeometry.components[0x0], _0x3cd08d = newSegmentGeometry.components[0x1],
+              startPoint =
+                  new OpenLayers.Geometry.Point((_0x5b73aa.x + _0x3cd08d.x) / 0x2, (_0x5b73aa.y + _0x3cd08d.y) / 0x2);
+          if (segDirection === Direction.FORWARD) {
+            let fwdEndPoint = new OpenLayers.Geometry.Point(newSegmentGeometry.components[0x1].clone().x,
+                                                            newSegmentGeometry.components[0x1].clone().y),
+                fwdLaneDecorationLine = new OpenLayers.Geometry.LineString([ startPoint, fwdEndPoint ], {});
+            highlightEnabled &&
+                applyLineDecoration(fwdLaneDecorationLine, "" + LtSettings.ABColor, segmentHighlightTypes.DASH_THIN);
+            _0x43deae(fwdLaneDecorationLine, tioAndLIO, lanesMissingConfiguration, heurCandidate, applyHeuristics);
+          } else {
+            if (segDirection === Direction.REVERSE) {
+              let revEndPoint = new OpenLayers.Geometry.Point(newSegmentGeometry.components[0x0].clone().x,
+                                                              newSegmentGeometry.components[0x0].clone().y),
+                  revLaneDecorationLine = new OpenLayers.Geometry.LineString([ startPoint, revEndPoint ], {});
+              highlightEnabled &&
+                  applyLineDecoration(revLaneDecorationLine, "" + LtSettings.BAColor, segmentHighlightTypes.DASH_THIN);
+              _0x43deae(revLaneDecorationLine, tioAndLIO, lanesMissingConfiguration, heurCandidate, applyHeuristics);
+            }
+          }
+          highlightLabelsEnabled && (Direction.FORWARD || forwardLaneCount === 0x0) &&
+              applySegmentCountDisplay(startPoint, forwardLaneCount, reverseLaneCount);
+        }
+
+        function getModifiableComponents(_0x1226a0, _0x5d1ef6, _0x2d2248) {
+          let _0x3411db = [];
+          for (let idx = _0x5d1ef6; idx < _0x2d2248; idx++) {
+            _0x3411db[idx] = _0x1226a0.components[idx].clone();
+          }
+          return new OpenLayers.Geometry.LineString(_0x3411db, {});
+        }
+
+        function _0x43deae(decorationLine, tioAndLIO, lanesMissingConfiguration, heuristicsCandidate,
+                           applyHeuristics = false) {
+          if (lanesMissingConfiguration) {
+            applyLineDecoration(decorationLine.clone(), "" + LtSettings.ErrorColor,
+                                segmentHighlightTypes.OVER_HIGHLIGHT);
+            return;
+          }
+          tioAndLIO &&
+              applyLineDecoration(decorationLine.clone(), "" + LtSettings.LIOColor, segmentHighlightTypes.HIGHLIGHT);
+          turnGuidanceMode === 0x1 && csEnabled &&
+              applyLineDecoration(decorationLine.clone(), "" + LtSettings.CS1Color, segmentHighlightTypes.HIGHLIGHT);
+          turnGuidanceMode === 0x2 && csEnabled &&
+              applyLineDecoration(decorationLine.clone(), "" + LtSettings.CS2Color, segmentHighlightTypes.HIGHLIGHT);
+          if (heuristicsCandidate === HeuristicsCandidate["PASS"])
+            applyLineDecoration(decorationLine.clone(), "" + LtSettings.HeurColor,
+                                applyHeuristics ? segmentHighlightTypes.OVER_HIGHLIGHT
+                                                : segmentHighlightTypes.HIGHLIGHT);
+          else
+            heuristicsCandidate === HeuristicsCandidate.FAIL &&
+                applyLineDecoration(decorationLine.clone(), "" + LtSettings.HeurFailColor,
+                                    applyHeuristics ? segmentHighlightTypes.OVER_HIGHLIGHT
+                                                    : segmentHighlightTypes.HIGHLIGHT);
+        }
+
+        function applyLineDecoration(lineLayerObject, lineColor, highLightType) {
+          let lineLayerVector = new OpenLayers.Feature.Vector(lineLayerObject, {}, {});
+          LTHighlightLayer.addFeatures([ lineLayerVector ]);
+          const lineLayerObjectId = document.getElementById(lineLayerObject.id);
+          if (lineLayerObjectId) {
+            lineLayerObjectId.setAttribute("stroke", "" + lineColor);
+            if (highLightType === segmentHighlightTypes.HIGHLIGHT) {
+              lineLayerObjectId.setAttribute("stroke-width", "15");
+              lineLayerObjectId.setAttribute("stroke-opacity", ".6");
+            } else {
+              if (highLightType === segmentHighlightTypes.OVER_HIGHLIGHT) {
+                lineLayerObjectId.setAttribute("stroke-width", "18");
+                lineLayerObjectId.setAttribute("stroke-opacity", ".85");
+              } else {
+                lineLayerObjectId.setAttribute("stroke-opacity", "1");
+                if (highLightType === segmentHighlightTypes.DASH_THICK) {
+                  lineLayerObjectId.setAttribute("stroke-width", "8");
+                  lineLayerObjectId.setAttribute("stroke-dasharray", "8 10");
+                } else if (highLightType === segmentHighlightTypes.DASH_THIN) {
+                  lineLayerObjectId.setAttribute("stroke-width", "4");
+                  lineLayerObjectId.setAttribute("stroke-dasharray", "10 10")
+                }
+              }
+            }
+          }
+        }
+
+        LTHighlightLayer.setZIndex(450);
+      }
+
+      function highlightNode(nodeGeometry, highLightColor, indicateHeuristics = false) {
+        const clonedNodeGeometry = nodeGeometry.clone(),
+              _0x1313c1 = new OpenLayers.Feature.Vector(clonedNodeGeometry, {});
+        LTHighlightLayer.addFeatures([ _0x1313c1 ]);
+        const nodeElement = document.getElementById(clonedNodeGeometry.id);
+        if (nodeElement !== null) {
+          nodeElement.setAttribute("fill", highLightColor);
+          nodeElement.setAttribute("r", indicateHeuristics ? "18" : "10");
+          nodeElement.setAttribute("fill-opacity", "0.9");
+          nodeElement.setAttribute("stroke-width", "0");
+        }
+      }
+
+      let lt_scanArea_timer = {
+        start : function() {
+          this.cancel();
+          let timerObject = this;
+          this["timeoutID"] = window.setTimeout(function() { timerObject.calculate(); }, 500);
+        },
+        calculate : function() {
+          scanArea_real();
+          delete this.timeoutID;
+        },
+        cancel : function() {
+          if (typeof this.timeoutID === "number") {
+            window.clearTimeout(this.timeoutID);
+            delete this.timeoutID;
+            lt_scanArea_recursive = 0x0;
+          }
+        },
+      };
+
+      function scanArea() {
+        if (lt_scanArea_recursive === 0)
+          lt_scanArea_recursive = 0x3;
+        else
+          lt_scanArea_recursive--;
+        if (lt_scanArea_recursive === 0)
+          return;
+        scanArea_real();
+      }
+
+      function scanArea_real() {
+        if (lt_scanArea_recursive === 0)
+          return;
+        const scriptEnabled = getId("lt-ScriptEnabled").checked,
+              highlightsEnabled = getId("lt-HighlightsEnable").checked,
+              heuristicsChecksEnabled = getId("lt-LaneHeuristicsChecks").checked,
+              currentZoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16,
+              highlightOverridden = getId("lt-highlightOverride").checked,
+              roadLayerState = W.layerSwitcherController.getTogglerState("ITEM_ROAD") ||
+                               W.layerSwitcherController.getTogglerState("ITEM_ROAD_V2");
+        removeHighlights();
+        if (currentZoomLevel < DisplayLevels.MIN_ZOOM_ALL)
+          return;
+        if (roadLayerState || (!roadLayerState && !highlightOverridden)) {
+          scriptEnabled && (highlightsEnabled || heuristicsChecksEnabled) &&
+              scanSegments(W.model.segments.getObjectArray(), false);
+          if (scriptEnabled) {
+            const selectedFeatures = W.selectionManager.getSelectedFeatures();
+            selectedFeatures.length === 0x2 && scanHeuristicsCandidates(selectedFeatures);
+          }
+        }
+      }
+
+      function scanHeuristicsCandidates(features) {
+        let segmentList = [], numSegments = 0x0;
+        _.each(features, (feature) => {
+          feature && feature.attributes.wazeFeature._wmeObject &&
+              feature.attributes.wazeFeature._wmeObject.type === "segments" &&
+              (numSegments = segmentList.push(feature.attributes.wazeFeature._wmeObject));
+        });
+        scanSegments(segmentList, true);
+        return numSegments
+      }
+
+      function processOneSegment(segmentObj, segmentAttributes, segmentDirection, segmentLength, minZoomLevel,
+                                 performHeuristicsCheck, errorsFound) {
+        const fwdLaneCount = segmentAttributes.fwdLaneCount, revLaneCount = segmentAttributes.revLaneCount,
+              highlightEnabled = getId("lt-HighlightsEnable").checked,
+              checkHeuristics = getId("lt-LaneHeuristicsChecks").checked,
+              heurPosHighlightEnabled = checkHeuristics && getId("lt-LaneHeurPosHighlight").checked,
+              heurNegHighlightEnabled = checkHeuristics && getId("lt-LaneHeurNegHighlight").checked,
+              highlightLIOEnabled = highlightEnabled && getId("lt-LIOEnable").checked,
+              highlightLabelsEnabled = highlightEnabled && getId("lt-LabelsEnable").checked,
+              turnGraph = W.model.getTurnGraph();
+
+        let toNode = getNodeObj(segmentAttributes.toNodeID), fromNode = getNodeObj(segmentAttributes.fromNodeID),
+            fLaneCount = fwdLaneCount;
+        if (segmentDirection !== Direction.FORWARD) {
+          toNode = getNodeObj(segmentAttributes.fromNodeID);
+          fromNode = getNodeObj(segmentAttributes.toNodeID);
+          fLaneCount = revLaneCount;
+        }
+        let turnLanesExist = false, turnDataInstructionOpcodeExists = false, lanesMissingConfiguration = false,
+            turnAngleOverridden = false, turnGuidanceMode = 0x0, heurCandidate = HeuristicsCandidate.NONE,
+            mutableSegmentWithDirection = null, segmentWithDirection = {seg : 0x0, direction : Direction.NONE};
+        if (onScreen(toNode, minZoomLevel)) {
+          const toNodeAttachedSegmentIDs = toNode.getSegmentIds();
+          if (fLaneCount > 0x0) {
+            let segmentLanesConfig = getLanesConfig(segmentObj, toNode, toNodeAttachedSegmentIDs, fLaneCount);
+            turnLanesExist = segmentLanesConfig[0x0];
+            turnDataInstructionOpcodeExists = segmentLanesConfig[0x1];
+            turnAngleOverridden = segmentLanesConfig[0x2];
+            lanesMissingConfiguration = segmentLanesConfig[0x3];
+            turnGuidanceMode = segmentLanesConfig[0x4];
+            errorsFound = (lanesMissingConfiguration || errorsFound);
+          }
+          if (segmentLength <= MAX_LEN_HEUR) {
+            heurCandidate = heuristicsCandidateIndication(segmentObj, toNode, toNodeAttachedSegmentIDs, fromNode,
+                                                          fLaneCount, segmentLength, turnGraph, segmentWithDirection);
+            (heurCandidate === HeuristicsCandidate.ERROR) && (lanesMissingConfiguration = true);
+            if (!checkHeuristics)
+              heurCandidate = HeuristicsCandidate.NONE;
+            else
+              heurCandidate !== HeuristicsCandidate.NONE && (mutableSegmentWithDirection = {...segmentWithDirection});
+          }
+        }
+        if (!performHeuristicsCheck) {
+          let mutableHeurCandidate = null;
+          if ((heurPosHighlightEnabled && heurCandidate === HeuristicsCandidate.PASS) ||
+              (heurNegHighlightEnabled && heurCandidate === HeuristicsCandidate.FAIL))
+            mutableHeurCandidate = heurCandidate;
+          if (fLaneCount > 0x0 || mutableHeurCandidate !== null || lanesMissingConfiguration) {
+            highlightSegment(segmentObj.geometry, segmentDirection, highlightEnabled, highlightLabelsEnabled,
+                             fwdLaneCount, revLaneCount, turnAngleOverridden && highlightLIOEnabled, turnGuidanceMode,
+                             lanesMissingConfiguration, mutableHeurCandidate, false)
+          }
+          if (highlightEnabled && getId("lt-NodesEnable").checked) {
+            turnLanesExist && highlightNode(toNode.geometry, "" + LtSettings.NodeColor);
+            turnDataInstructionOpcodeExists && highlightNode(toNode.geometry, "" + LtSettings.TIOColor);
+          }
+        } else {
+          lt_log("candidate(f):" + heurCandidate);
+          if (heurCandidate !== HeuristicsCandidate.NONE) {
+            if (mutableSegmentWithDirection != null &&
+                segmentArray.findIndex((segId) => segId === mutableSegmentWithDirection.seg) > -0x1) {
+              let heurColor = (heurCandidate === HeuristicsCandidate.PASS ? "" + LtSettings.NodeColor
+                                                                          : "" + LtSettings.HeurFailColor);
+              highlightSegment(segmentObj.geometry, segmentDirection, false, false, 0x0, 0x0, false, turnGuidanceMode,
+                               lanesMissingConfiguration, heurCandidate, true);
+              highlightSegment(mutableSegmentWithDirection["seg"].geometry, mutableSegmentWithDirection.direction,
+                               false, false, 0x0, 0x0, false, 0x0, false, heurCandidate, true);
+              highlightNode(toNode.geometry, heurColor, true);
+              highlightNode(fromNode.geometry, heurColor, true);
+            }
+          }
+        }
+        return errorsFound;
+      }
+
+      function scanSegments(segmentList, performHeuristicsCheck) {
+        const minZoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16; //
+        _.each(segmentList, (segmentObj) => {
+          if (onScreen(segmentObj, minZoomLevel)) {
+            const featureAttributes = segmentObj.getFeatureAttributes();
+            let   errorsFound = false, segmentLength = lt_segment_length(segmentObj);
+            errorsFound ||= processOneSegment(segmentObj, featureAttributes, Direction.FORWARD, segmentLength,
+                                              minZoomLevel, performHeuristicsCheck, errorsFound);
+            if (errorsFound && lt_scanArea_recursive > 0x0) {
+              lt_log("LT errors found, scanning again", 0x2);
+              removeHighlights();
+              lt_scanArea_recursive--;
+              lt_scanArea_timer.start();
+              return;
+            }
+            errorsFound ||= processOneSegment(segmentObj, featureAttributes, Direction.REVERSE, segmentLength,
+                                              minZoomLevel, performHeuristicsCheck, errorsFound);
+            if (errorsFound && lt_scanArea_recursive > 0x0) {
+              lt_log("LT errors found, scanning again", 2);
+              removeHighlights();
+              lt_scanArea_recursive--;
+              lt_scanArea_timer.start();
+            }
+          }
+        });
+      }
+
+      function getLanesConfig(segment, node, attachedSegments, laneCount) {
+        let turnLanesExist = false, turnDataInstructionOpcodeExists = false, laneMissingConfiguration = false,
+            turnAngleOverridden = false, turnGuidanceMode = 0x0, streetName = null, _0x44a7d8 = [];
+        const turnGraph = W.model.getTurnGraph(), zoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16;
+        for (let idx = 0x0; idx < attachedSegments.length; idx++) {
+          const attachedSegment = getSegObj(attachedSegments[idx]),
+                turnData = turnGraph.getTurnThroughNode(node, segment, attachedSegment).getTurnData();
+          if (turnData.state === 0x1) {
+            turnData.hasInstructionOpcode() && (turnDataInstructionOpcodeExists = true);
+            if (turnData.hasLanes()) {
+              turnLanesExist = true;
+              turnData.getLaneData().hasOverrideAngle() && (turnAngleOverridden = true);
+              if (turnData.getLaneData().getGuidanceMode() === 0x1) {
+                turnGuidanceMode = 0x1;
+                streetName = W.model.streets.getObjectById(attachedSegment.attributes.primaryStreetID).name;
+              } else if (turnData.getLaneData().getGuidanceMode() === 0x2) {
+                turnGuidanceMode = 0x2;
+                streetName = W.model.streets.getObjectById(attachedSegment.attributes.primaryStreetID).name;
+              }
+              const frmLnIdx = turnData.lanes.fromLaneIndex, toLnIdx = turnData.lanes.toLaneIndex;
+              for (let cnt = frmLnIdx; cnt <= toLnIdx; cnt++) {
+                let _0x18e06a = true;
+                for (let idx = 0x0; idx < _0x44a7d8.length; idx++) {
+                  _0x44a7d8[idx] === cnt && (_0x18e06a = false);
+                }
+                _0x18e06a && _0x44a7d8.push(cnt);
+              }
+            }
+          }
+        }
+        _0x44a7d8.sort();
+        for (let idx = 0x0; idx < _0x44a7d8.length; idx++) {
+          _0x44a7d8[idx] !== idx && (laneMissingConfiguration = true);
+        }
+        if (_0x44a7d8.length < laneCount && onScreen(node, zoomLevel))
+          laneMissingConfiguration = true;
+        return [
+          turnLanesExist, turnDataInstructionOpcodeExists, turnAngleOverridden, laneMissingConfiguration,
+          turnGuidanceMode, streetName
+        ]
+      }
+
+      function setTurns(directionClass, numLanes) {
+        if (!getId("lt-ClickSaveEnable").checked)
+          return;
+        let directionElement = document.getElementsByClassName(directionClass)[0x0],
+            leftTurnAngleClass = directionElement.getElementsByClassName("angle--135").length > 0x0  ? "angle--135"
+                                 : directionElement.getElementsByClassName("angle--90").length > 0x0 ? "angle--90"
+                                                                                                     : "angle--45",
+            rightTurnAngleClass = directionElement.getElementsByClassName("angle-135").length > 0x0  ? "angle-135"
+                                  : directionElement.getElementsByClassName("angle-90").length > 0x0 ? "angle-90"
+                                                                                                     : "angle-45",
+            turnLaneEditTop = directionElement.getElementsByClassName("turn-lane-edit-top");
+        for (let idx = 0; idx < turnLaneEditTop.length; ++idx) {
+          let checboxesElems = turnLaneEditTop[idx].getElementsByClassName("turn-lane-checkbox");
+          if (checboxesElems.length !== numLanes)
+            return;
+        }
+        let numGuidedLanes = [].slice.call(turnLaneEditTop)
+                                 .reduce((turnGuidanceEnabledCounter, editElement) =>
+                                             turnGuidanceEnabledCounter +
+                                             [].slice.call(editElement.getElementsByTagName("wz-checkbox"))
+                                                 .reduce((turnAppliedCounter, turnCheckBox) =>
+                                                             (turnCheckBox.checked === true ? turnAppliedCounter + 1
+                                                                                            : turnAppliedCounter),
+                                                         0),
+                                         0);
+        if (numGuidedLanes < numLanes) {
+          let isLeftHand = W.model.isLeftHand, leftTurnEnabled = false, rightTurnEnabled = false;
+          for (let idx = 0x0; idx < turnLaneEditTop.length; idx++) {
+            const turnLaneEditTopContainer = turnLaneEditTop[idx];
+            let   turnCheckBoxes = turnLaneEditTopContainer.getElementsByTagName("wz-checkbox");
+            if (turnCheckBoxes && turnCheckBoxes.length > 0x0) {
+              if (turnLaneEditTopContainer.getElementsByClassName(leftTurnAngleClass).length > 0x0 &&
+                  turnCheckBoxes[0].checked !== undefined) {
+                if (turnCheckBoxes[0].checked === true)
+                  leftTurnEnabled = true;
+                if (getId("lt-ClickSaveTurns").checked && turnCheckBoxes[0].checked === false) {
+                  turnCheckBoxes[0].click();
+                  leftTurnEnabled = true;
+                }
+              } else if (turnLaneEditTopContainer.getElementsByClassName(rightTurnAngleClass).length > 0x0 &&
+                         turnCheckBoxes[turnCheckBoxes.length - 1].checked !== undefined) {
+                if (turnCheckBoxes[turnCheckBoxes.length - 1].checked === true)
+                  rightTurnEnabled = true;
+                if (getId("lt-ClickSaveTurns").checked && turnCheckBoxes[turnCheckBoxes.length - 1].checked === false) {
+                  rightTurnEnabled = true;
+                  turnCheckBoxes[turnCheckBoxes.length - 0x1].click();
+                }
+              }
+            }
+          }
+          for (let idx = 0x0; idx < turnLaneEditTop.length; idx++) {
+            const turnLanesContainer = turnLaneEditTop[idx];
+            let   directionCheckBoxes = turnLanesContainer.getElementsByTagName("wz-checkbox");
+            if (turnLanesContainer.getElementsByClassName("angle-0").length > 0x0)
+              for (let idx = 0x0; idx < directionCheckBoxes.length; idx++) {
+                if (directionCheckBoxes[idx].checked === false) {
+                  if (idx === 0x0 && (getId("lt-ClickSaveStraight").checked &&
+                                      ((!isLeftHand && !leftTurnEnabled) || (isLeftHand && !rightTurnEnabled))))
+                    directionCheckBoxes[idx].click();
+                  else {
+                    if (idx === directionCheckBoxes.length - 0x1 &&
+                        (getId("lt-ClickSaveStraight").checked &&
+                         ((!rightTurnEnabled && !isLeftHand) || (isLeftHand && !leftTurnEnabled))))
+                      directionCheckBoxes[idx].click();
+                    else if (idx !== 0x0 && idx !== directionCheckBoxes.length - 0x1)
+                      directionCheckBoxes[idx].click();
+                  }
+                }
+              }
+          }
+        }
+      }
+
+      function initLaneGuidanceClickSaver() {
+        let mutationObserver = new MutationObserver((mutationRecordList) => {
+          let selectedFeatures = W.selectionManager.getSelectedFeatures();
+          if (selectedFeatures[0x0] && selectedFeatures[0x0].attributes.wazeFeature._wmeObject.type === "segment" &&
+              getId("lt-ScriptEnabled").checked) {
+            let laneCountElement = document.getElementsByName("laneCount");
+            for (let idx = 0; idx < laneCountElement.length; idx++) {
+              laneCountElement[idx].addEventListener("change", function() {
+                let parent9LevelsUp = $(this).parents().eq(9), elem = parent9LevelsUp[0], className = elem.className,
+                    numLanes = parseInt($(this).val(), 10);
+                setTurns(className, numLanes);
+                let laneCountNums = $(this).parents().find(".lt-add-lanes"),
+                    counterClassName = laneCountNums[0].className,
+                    selectorClassName = "." + counterClassName.replace(" ", ".");
+                let counterClassToSelectName = "#" + counterClassName.replace(" ", "-") + "-" + numLanes.toString();
+                $(selectorClassName).css({"background-color" : "transparent", "color" : "black"});
+                $(counterClassToSelectName).css({"background-color" : "navy", "color" : "white"});
+              }, false);
+            }
+            let addLanesElement = document.getElementsByClassName("lt-add-lanes");
+            for (let idx = 0; idx < addLanesElement.length; idx++) {
+              addLanesElement[idx].addEventListener("click", function() {
+                let parents9LevelsUp = $(this).parents().eq(10), className = parents9LevelsUp[0x0].className,
+                    numLanes = parseInt($(this).text(), 10);
+                setTurns(className, numLanes);
+              }, false);
+            }
+          }
+        });
+        mutationObserver.observe(document.getElementById("edit-panel"), {
+          childList : true,
+          subtree : true,
+        });
+      }
+
+      function getAzimuthAngle(objectId, segment) {
+        if (objectId == null || segment == null)
+          return null;
+        let xCoord, yCoord;
+        if (segment.attributes.fromNodeID === objectId) {
+          xCoord = lt_get_second_point(segment).x - lt_get_first_point(segment).x;
+          yCoord = lt_get_second_point(segment).y - lt_get_first_point(segment).y
+        } else {
+          (xCoord = lt_get_next_to_last_point(segment).x - lt_get_last_point(segment).x);
+          (yCoord = lt_get_next_to_last_point(segment).y - lt_get_last_point(segment).y);
+        }
+        let angleInRadians = Math.atan2(yCoord, xCoord), angleInDegrees = ((angleInRadians * 180) / Math.PI) % 360;
+        lt_log("Azm from node " + objectId + " / " + segment.attributes.id + ": " + angleInDegrees, 0x3);
+        return angleInDegrees;
+      }
+
+      function heuristicsCandidateIndication(segmentObj, toNodeObj, attachedSegmentIDs, fromNodeObj, fwdLaneCount,
+                                             segmentlength, turnGraph, segWDirectionObject) {
+        if (segmentObj == null || toNodeObj == null || attachedSegmentIDs == null || fromNodeObj == null ||
+            fwdLaneCount == null || turnGraph == null || segWDirectionObject == null) {
+          lt_log("heuristicsCandidateIndication received bad argument (null)", 0x1);
+          return HeuristicsCandidate.NONE;
+        }
+        let outSegment = null, outTurnAngleDifference = null, attachedSegmentHeuristicsCandidate = 0,
+            inSegDestinationSegment = null, insegTurnAngle = null, insegAngleDiff = null, fromNodeHeurState = 0,
+            outsegDestinationSegment = null, outsegDestinationAngle = null, outHeuristicsCandidate = 0,
+            insegIdxDiff = 0;
+        if (segmentlength > MAX_LEN_HEUR)
+          return HeuristicsCandidate.NONE;
+        const segmentId = segmentObj.attributes.id;
+        let   fwdAngle = getSegmentAngleFromZero(toNodeObj.attributes.id, segmentObj),
+            revAngle = getAzimuthAngle(fromNodeObj.attributes.id, segmentObj), turnAngleDirectionClass = -90,
+            reverseTurnAngleDirectionClass = 90;
+        if (W.model.isLeftHand) {
+          turnAngleDirectionClass = 90;
+          reverseTurnAngleDirectionClass = -90;
+        }
+        lt_log("==================================================================================", 2);
+        lt_log("Checking heuristics candidate: seg" + segmentId + "node" + toNodeObj.attributes.id + " azm " +
+                   fwdAngle + "nodeExitSegIds:" + attachedSegmentIDs.length,
+               2);
+        let segmentIDs = fromNodeObj.getSegmentIds();
+        for (let idx = 0; idx < segmentIDs.length; idx++) {
+          let heurState = 0;
+          if (segmentIDs[idx] === segmentId)
+            continue;
+          const destinationSegment = getSegObj(segmentIDs[idx]);
+          if (!isTurnAllowed(destinationSegment, fromNodeObj, segmentObj))
+            continue;
+          let turnAngleToDestination = getSegmentAngleFromZero(fromNodeObj.attributes.id, destinationSegment),
+              angleDifference = getAngleBetweenFwdAndReverse(turnAngleToDestination, revAngle);
+          lt_log("Turn angle from inseg " + segmentIDs[idx] + ": " + angleDifference + "(" + turnAngleToDestination +
+                     "," + revAngle + ")",
+                 3);
+          if (Math.abs(angleDifference) > MAX_STRAIGHT_DIF) {
+            if (Math.abs(angleDifference) > MAX_STRAIGHT_TO_CONSIDER)
+              continue;
+            lt_log("Not eligible as inseg: " + angleDifference, 2);
+            heurState = HeuristicsCandidate.FAIL;
+          }
+          const fromNodeDestSegmentTurnGraph =
+                    turnGraph.getTurnThroughNode(fromNodeObj, destinationSegment, segmentObj),
+                fromNodeDestSegmentTurnData = fromNodeDestSegmentTurnGraph.getTurnData();
+          if (fromNodeDestSegmentTurnData.state !== 0x1 || !fromNodeDestSegmentTurnData.hasLanes()) {
+            lt_log("Straight turn has no lanes:" + segmentIDs[idx] + " to " + segmentId, 3);
+            continue;
+          }
+          let idxDiff =
+              fromNodeDestSegmentTurnData.lanes.toLaneIndex - fromNodeDestSegmentTurnData.lanes.fromLaneIndex + 0x1;
+          if (idxDiff !== fwdLaneCount && !(fwdLaneCount === 0x0 && idxDiff === 0x1)) {
+            lt_log("Straight turn lane count does not match", 0x2);
+            heurState = HeuristicsCandidate.ERROR
+          }
+          if (inSegDestinationSegment !== null && heurState >= fromNodeHeurState) {
+            if (fromNodeHeurState === 0x0 && heurState === 0x0) {
+              lt_log("Error: >1 qualifying entry segment for " + segmentObj.attributes.id + ": " +
+                         inSegDestinationSegment.attributes.id + "," + destinationSegment.attributes.id,
+                     0x2);
+              lt_log("==================================================================================", 0x2);
+              return HeuristicsCandidate.NONE
+            }
+          }
+          inSegDestinationSegment = destinationSegment;
+          insegTurnAngle = turnAngleToDestination;
+          insegAngleDiff = angleDifference;
+          insegIdxDiff = idxDiff;
+          fromNodeHeurState = heurState;
+          segWDirectionObject.inSeg = inSegDestinationSegment;
+          segWDirectionObject.inSegDir =
+              (fromNodeDestSegmentTurnGraph.fromVertex["direction"] === "fwd" ? Direction.FORWARD : Direction.REVERSE)
+        }
+        if (inSegDestinationSegment == null) {
+          lt_log("== No inseg found ==================================================================", 0x2);
+          return HeuristicsCandidate.NONE;
+        } else
+          lt_log("Found inseg candidate: " + inSegDestinationSegment.attributes.id + " " +
+                     (fromNodeHeurState === 0x0 ? "" : "(failed)"),
+                 0x2);
+        for (let idx = 0x0; idx < attachedSegmentIDs.length; idx++) {
+          let attachSegHeuristics = 0;
+          if (attachedSegmentIDs[idx] === segmentId)
+            continue;
+          const destinationSegment = getSegObj(attachedSegmentIDs[idx]);
+          if (!isTurnAllowed(segmentObj, toNodeObj, destinationSegment))
+            continue;
+          let turnAngle = getAzimuthAngle(toNodeObj.attributes.id, destinationSegment),
+              turnAngleDifference = getAngleBetweenFwdAndReverse(fwdAngle, turnAngle);
+          lt_log("Turn angle to outseg2 " + attachedSegmentIDs[idx] + ": " + turnAngleDifference + "(" + fwdAngle +
+                     "," + turnAngle + ")",
+                 2);
+          if (Math.abs(turnAngleDirectionClass - turnAngleDifference) < MAX_PERP_TO_CONSIDER)
+            return 0x0;
+          if (Math.abs(reverseTurnAngleDirectionClass - turnAngleDifference) > MAX_PERP_DIF) {
+            if (Math.abs(reverseTurnAngleDirectionClass - turnAngleDifference) > MAX_PERP_TO_CONSIDER)
+              continue;
+            lt_log("   Not eligible as outseg2: " + turnAngleDifference, 0x2);
+            attachSegHeuristics = HeuristicsCandidate.FAIL;
+          }
+          if (outSegment !== null && attachSegHeuristics >= attachedSegmentHeuristicsCandidate) {
+            if (attachedSegmentHeuristicsCandidate === 0x0 && attachSegHeuristics === 0x0) {
+              lt_log("Error: >1 qualifying exit2 segment for " + segmentObj.attributes.id + ": " +
+                         outSegment.attributes.id + "," + destinationSegment.attributes.id,
+                     0x2);
+              lt_log("==================================================================================", 0x2);
+              return 0x0;
+            }
+          }
+          outSegment = destinationSegment;
+          outTurnAngleDifference = turnAngleDifference;
+          attachedSegmentHeuristicsCandidate = attachSegHeuristics;
+        }
+        if (outSegment == null) {
+          lt_log("== No Outseg2 found ==================================================================", 0x2);
+          return HeuristicsCandidate.NONE;
+        } else
+          lt_log("Found outseg2 candidate: " + outSegment.attributes.id + " " +
+                     (attachedSegmentHeuristicsCandidate === 0x0 ? "" : "(failed)"),
+                 0x2);
+        for (let idx = 0x0; idx < segmentIDs.length; idx++) {
+          if (segmentIDs[idx] === segmentId || segmentIDs[idx] === inSegDestinationSegment.attributes.id)
+            continue;
+          const destinationSegment = getSegObj(segmentIDs[idx]);
+          let   outsegHeuristicsCandidate = 0;
+          if ((destinationSegment.attributes.fwdDirection &&
+               destinationSegment.attributes.toNodeID !== fromNodeObj.attributes.id) ||
+              (destinationSegment.attributes.revDirection &&
+               destinationSegment.attributes.fromNodeID !== fromNodeObj.attributes.id))
+            continue;
+          let destinationAngle = getSegmentAngleFromZero(fromNodeObj.attributes.id, destinationSegment),
+              destinationReciprocalAngle = getAngleBetweenFwdAndReverse(insegTurnAngle, destinationAngle);
+          lt_log("Turn angle from inseg (supplementary) " + segmentIDs[idx] + ": " + destinationReciprocalAngle + "(" +
+                     insegTurnAngle + "," + destinationAngle + ")",
+                 3);
+          if (Math.abs(turnAngleDirectionClass - destinationReciprocalAngle) > MAX_PERP_DIF_ALT) {
+            if (Math.abs(turnAngleDirectionClass - destinationReciprocalAngle) > MAX_PERP_TO_CONSIDER)
+              continue;
+            lt_log("Not eligible as altIn1: " + destinationReciprocalAngle, 0x3);
+            (outsegHeuristicsCandidate = HeuristicsCandidate.FAIL);
+          }
+          if (outsegDestinationSegment !== null) {
+            if (outsegHeuristicsCandidate < outHeuristicsCandidate)
+              continue;
+            if (outHeuristicsCandidate === 0x0 && outsegHeuristicsCandidate === 0x0)
+              lt_log("Error: >1 qualifying segment for " + segmentObj.attributes.id + ": " +
+                         outsegDestinationSegment.attributes.id + "," + destinationSegment.attributes.id,
+                     2);
+            lt_log("==================================================================================", 0x2);
+            return HeuristicsCandidate.FAIL;
+          }
+          (outsegDestinationSegment = destinationSegment);
+          (outsegDestinationAngle = destinationAngle);
+          (outHeuristicsCandidate = outsegHeuristicsCandidate);
+        }
+        if (outsegDestinationSegment == null) {
+          lt_log(
+              "== No alt incoming-1 segment found ==================================================================\n",
+              2);
+          return HeuristicsCandidate.NONE;
+        } else
+          lt_log("Alt incoming-1 segment found: " + outsegDestinationSegment.attributes.id + " " +
+                     (outHeuristicsCandidate === 0x0 ? "" : "(failed)"),
+                 2);
+        if (fromNodeHeurState < 0x0 || outHeuristicsCandidate < 0x0 || attachedSegmentHeuristicsCandidate < 0x0) {
+          lt_log("Found a failed candidate for " + segmentId + " ( " +
+                     Math.min(fromNodeHeurState, outHeuristicsCandidate, attachedSegmentHeuristicsCandidate) + ")",
+                 2);
+          return (fromNodeHeurState === HeuristicsCandidate.FAIL ||
+                          outHeuristicsCandidate === HeuristicsCandidate.FAIL ||
+                          attachedSegmentHeuristicsCandidate === HeuristicsCandidate.FAIL
+                      ? HeuristicsCandidate.FAIL
+                      : HeuristicsCandidate.ERROR);
+        }
+        lt_log("Found a heuristics candidate! " + segmentId + " to " + outSegment.attributes.id + "at" +
+                   outTurnAngleDifference,
+               0x2);
+        return HeuristicsCandidate.PASS;
+      }
+
+      function getSegmentAngleFromZero(objectId, segment) {
+        let azimuthAngle = getAzimuthAngle(objectId, segment), reciprocalAngle = azimuthAngle + 180;
+        reciprocalAngle >= 180 && (reciprocalAngle -= 360);
+        lt_log("Azm to node " + objectId + "/ " + segment.attributes.id + ": " + reciprocalAngle, 0x3);
+        return reciprocalAngle;
+      }
+
+      function getAngleBetweenFwdAndReverse(turnAngle, revAngle) {
+        let turnAngleCopy = turnAngle, revAngleCopy = revAngle;
+        while (revAngle > 180) {
+          revAngleCopy -= 360;
+        }
+        while (revAngle < -180) {
+          revAngleCopy += 360;
+        }
+        while (turnAngle > 180) {
+          turnAngleCopy -= 360;
+        }
+        while (turnAngle < -180) {
+          turnAngleCopy += 360;
+        }
+        let angleDiffBetweenTurnAngles = revAngleCopy - turnAngleCopy;
+        (angleDiffBetweenTurnAngles += angleDiffBetweenTurnAngles > 180    ? -360
+                                       : angleDiffBetweenTurnAngles < -180 ? 360
+                                                                           : 0);
+        lt_log("Turn " + turnAngleCopy + "," + revAngleCopy + ": " + angleDiffBetweenTurnAngles, 0x3);
+        return angleDiffBetweenTurnAngles
+      }
+
+      function isTurnAllowed(destinationSegment, nodeObject, sourceSegment) {
+        lt_log("Allow from " + destinationSegment.attributes.id + "to " + sourceSegment.attributes.id + " via " +
+                   nodeObject.attributes.id + "? \n" +
+                   "            " + nodeObject.isTurnAllowedBySegDirections(destinationSegment, sourceSegment) + "| " +
+                   destinationSegment.isTurnAllowed(sourceSegment, nodeObject),
+               3);
+        if (!nodeObject.isTurnAllowedBySegDirections(destinationSegment, sourceSegment)) {
+          lt_log("Driving direction restriction applies", 3);
+          return false;
+        }
+        if (!destinationSegment.isTurnAllowed(sourceSegment, nodeObject)) {
+          lt_log("Other restriction applies", 0x3);
+          return false;
+        }
+        return true;
+      }
+
+      function lt_segment_length(segment) {
+        let segmentLength = segment.geometry.getGeodesicLength(W.map.olMap.projection);
+        lt_log("segment:" + segment.attributes.id + "computed len: " + segmentLength +
+                   "attrs len: " + segment.attributes.length,
+               3);
+        return segmentLength;
+      }
+
+      function lt_log(devMsg, debugLevel = 1) {
+        return debugLevel <= LANETOOLS_DEBUG_LEVEL && console.log("LaneTools Dev Msg: ", devMsg);
+      }
+
+      function copyLaneInfo(nodeName) {
+        _turnInfo = [];
+        const selectedFeatures = W.selectionManager.getSelectedFeatures(),
+              featureObject = selectedFeatures[0].attributes.wazeFeature._wmeObject,
+              featureAttributes = featureObject.getFeatureAttributes(),
+              featureGeometryComponents = featureObject.geometry.components,
+              nodeID = nodeName === "A" ? featureAttributes.fromNodeID : featureAttributes.toNodeID,
+              laneCount = nodeName === "A" ? featureAttributes.revLaneCount : featureAttributes.fwdLaneCount;
+        console.log("Copy Lane Info Lane Count: " + laneCount);
+        const nodeObj = getNodeObj(nodeID), attachedSegmentIDs = nodeObj.getSegmentIds(),
+              turnGraph = W.model.getTurnGraph();
+        let _0x21c177;
+        nodeName === "A" ? (_0x21c177 = featureGeometryComponents[1])
+                         : (_0x21c177 = featureGeometryComponents[featureGeometryComponents.length - 2]);
+        let _0x17c96f = _0x21c177.x - nodeObj.geometry.x, _0x3b764f = _0x21c177.y - nodeObj.geometry.y,
+            _0x25f24a = Math.atan2(_0x3b764f, _0x17c96f), _0x1b508f = ((_0x25f24a * 180) / Math.PI) % 360;
+        for (let segIdx = 0x0; segIdx < attachedSegmentIDs.length; segIdx++) {
+          const segmentObject = getSegObj(attachedSegmentIDs[segIdx]);
+          let _0x56f831 = segmentObject.getFeatureAttributes(), geometryComponents = segmentObject.geometry.components,
+              _0x165d3c, selectedNodeName,
+              turnData = turnGraph.getTurnThroughNode(nodeObj, featureObject, segmentObject).getTurnData();
+          if (turnData.state === 0x1 && turnData.lanes) {
+            _0x56f831.fromNodeID === nodeID ? (selectedNodeName = "A") : (selectedNodeName = "B");
+            selectedNodeName === "A" ? (_0x165d3c = geometryComponents[0x1])
+                                     : (_0x165d3c = geometryComponents[geometryComponents.length - 0x2]);
+            _0x17c96f = _0x165d3c.x - nodeObj.geometry.x;
+            _0x3b764f = _0x165d3c.y - nodeObj.geometry.y;
+            _0x25f24a = Math.atan2(_0x3b764f, _0x17c96f);
+            let _0x422251 = ((_0x25f24a * 0xb4) / Math.PI) % 360;
+            if (_0x1b508f < 0x0)
+              _0x422251 = _0x1b508f - _0x422251;
+            _turnData = {};
+            let _0x2ca8fc = turnData.getLaneData();
+            _turnData.id = segmentObject.attributes.id;
+            _turnData.order = _0x422251;
+            _turnData.lanes = _0x2ca8fc;
+            _turnInfo.push(_turnData);
+          }
+          _turnInfo.sort((lhs, rhs) => (lhs.order > rhs.order ? 0x1 : -0x1));
+        }
+        console.log(_turnInfo);
+      }
+
+      function pasteLaneInfo(nodeName) {
+        const mAction = new MultiAction();
+        mAction.setModel(W.model);
+        const selectedFeatures = W.selectionManager.getSelectedFeatures(),
+              featureObject = selectedFeatures[0x0].attributes.wazeFeature._wmeObject,
+              components = featureObject.geometry.components, featureAttributes = featureObject.getFeatureAttributes(),
+              _0xdafc0a = nodeName === "A" ? featureAttributes.fromNodeID : featureAttributes.toNodeID;
+        let   _0x1989c7;
+        const _0x32336a = getNodeObj(_0xdafc0a), segmentIDs = _0x32336a["getSegmentIds"](),
+              turnGraph = W.model.getTurnGraph();
+        let _0x44e9fd = {}, _0x1b740b = [];
+        nodeName === "A" ? (_0x1989c7 = components[0x1]) : (_0x1989c7 = components[components.length - 0x2]);
+        let _0x2362eb = _0x1989c7.x - _0x32336a.geometry.x, _0x480d3d = _0x1989c7.y - _0x32336a.geometry.y,
+            _0x33018e = Math.atan2(_0x480d3d, _0x2362eb), _0xf2c260 = ((_0x33018e * 0xb4) / Math.PI) % 360;
+        for (let idx = 0x0; idx < segmentIDs.length; idx++) {
+          let _0x3831b2 = getSegObj(segmentIDs[idx]), _0x5842af = _0x3831b2.attributes,
+              _0x3619b7 = _0x3831b2.geometry.components, _0x3374c6 = {}, _0x52b37f,
+              turnData = turnGraph.getTurnThroughNode(_0x32336a, featureObject, _0x3831b2).getTurnData();
+          _0x5842af.fromNodeID === _0xdafc0a ? (_0x52b37f = "A") : (_0x52b37f = "B");
+          _0x52b37f === "A" ? (_0x3374c6 = _0x3619b7[0x1]) : (_0x3374c6 = _0x3619b7[_0x3619b7.length - 0x2]);
+          if (turnData.state === 0x1) {
+            _0x44e9fd = {};
+            _0x2362eb = _0x3374c6.x - _0x32336a.geometry.x;
+            _0x480d3d = _0x3374c6.y - _0x32336a.geometry.y;
+            _0x33018e = Math.atan2(_0x480d3d, _0x2362eb);
+            let _0x528fbb = ((_0x33018e * 180) / Math.PI) % 360;
+            if (_0xf2c260 < 0x0)
+              _0x528fbb = _0xf2c260 - _0x528fbb;
+            _0x44e9fd.id = _0x5842af.id;
+            _0x44e9fd.order = _0x528fbb;
+            _0x1b740b.push(_0x44e9fd);
+          }
+          _0x1b740b.sort((_0x42b904, _0xb23157) => (_0x42b904.order > _0xb23157.order ? 0x1 : -0x1));
+        }
+        console.log(_0x1b740b);
+        if (_turnInfo.length === _0x1b740b.length) {
+          nodeName === "A" ? mAction.doSubAction(new UpdateObj(featureObject, {revLaneCount : laneCount}))
+                           : mAction.doSubAction(new UpdateObj(featureObject, {fwdLaneCount : laneCount}));
+          for (let idx = 0x0; idx < _0x1b740b.length; idx++) {
+            let _0x1662da = {};
+            for (let j = 0x0; j < _turnInfo.length; j++) {
+              _0x1662da[j] = _turnInfo[j];
+            }
+            let _0x1d44a8 = getSegObj(_0x1b740b[idx].id),
+                _0x4e30d7 = turnGraph.getTurnThroughNode(_0x32336a, featureObject, _0x1d44a8),
+                _0x469b71 = _0x4e30d7.getTurnData();
+            _0x469b71 = _0x469b71.withLanes(_0x1662da[idx].lanes);
+            _0x4e30d7 = _0x4e30d7.withTurnData(_0x469b71);
+            mAction.doSubAction(new SetTurn(turnGraph, _0x4e30d7));
+          }
+          mAction._description = "Pasted some lane stuff";
+          W.model.actionManager.add(mAction);
+          $(".lanes-tab").trigger("click");
+        } else
+          WazeWrap.Alerts.warning(GM_info.script.name,
+                                  "There are a different number of enabled turns on this segment/node");
+      }
+
+      function addUturn(displayedTurns) {
+        let displayedWithUturn = {};
+        for (let idx = 0x0; idx < displayedTurns.length; idx++) {
+          let uturnObject = {};
+          let uturnDisplay = $(displayedTurns[idx]).find(".uturn").css("display"),
+              miniUturnDisplay = $(displayedTurns[idx]).find(".small-uturn").css("display");
+          uturnObject.uturn = (uturnDisplay && uturnDisplay !== "none");
+          uturnObject.miniuturn = (miniUturnDisplay && miniUturnDisplay !== "none");
+          uturnObject.svg = $(displayedTurns[idx]).find("svg").map(function() { return this; }).get();
+          displayedWithUturn[idx] = uturnObject;
+        }
+        return displayedWithUturn;
+      }
+      function getLaneBoxAnchor(departureAngleID, nodeObj, laneDisplayBoxConfiguration, numLanes) {
+        let temp = {};
+        if (NEWZOOMLEVELS) {
+          if (departureAngleID === 0x0)
+            temp = {
+              x : nodeObj.geometry.x + laneDisplayBoxConfiguration.start * 2,
+              y : nodeObj.geometry.y + laneDisplayBoxConfiguration.boxheight,
+            };
+          else {
+            if (departureAngleID === 0x1)
+              temp = {
+                x : nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
+                y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * numLanes),
+              };
+            else {
+              if (departureAngleID === 0x2)
+                temp = {
+                  x : nodeObj.geometry.x -
+                          (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth * numLanes),
+                  y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
+                };
+              else {
+                if (departureAngleID === 0x3)
+                  temp = {
+                    x : nodeObj.geometry.x +
+                            (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth) / 2.0,
+                    y : nodeObj.geometry.y -
+                            (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
+                  };
+                else {
+                  if (departureAngleID === 0x4)
+                    temp = {
+                      x : nodeObj.geometry.x -
+                              (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 1.5),
+                      y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start +
+                                                laneDisplayBoxConfiguration.boxincwidth * numLanes * 1.5),
+                    };
+                  else {
+                    if (departureAngleID === 0x5)
+                      temp = {
+                        x : nodeObj.geometry.x +
+                                (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth / 0x2),
+                        y : nodeObj.geometry.y + laneDisplayBoxConfiguration.start / 0x2,
+                      };
+                    else {
+                      if (departureAngleID === 0x6)
+                        temp = {
+                          x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start,
+                          y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start *
+                                                       ((laneDisplayBoxConfiguration.boxincwidth * numLanes) / 0x2),
+                        };
+                      else
+                        departureAngleID === 0x7 && (temp = {
+                          x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start *
+                                                       ((laneDisplayBoxConfiguration.boxincwidth * numLanes) / 0x2),
+                          y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start,
+                        });
+                    }
+                  }
+                }
+              }
+            }
+          }
+        } else {
+          if (departureAngleID === 0x0)
+            temp = {
+              x : nodeObj.geometry.x + laneDisplayBoxConfiguration.start * 0x2,
+              y : nodeObj.geometry.y + laneDisplayBoxConfiguration.boxheight,
+            };
+          else {
+            if (departureAngleID === 0x1)
+              temp = {
+                x : nodeObj.geometry.x + laneDisplayBoxConfiguration.boxheight,
+                y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.boxincwidth * numLanes) / 1.8,
+              };
+            else {
+              if (departureAngleID === 0x2)
+                temp = {
+                  x : nodeObj.geometry.x -
+                          (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth * numLanes),
+                  y : nodeObj.geometry.y + (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight),
+                };
+              else {
+                if (departureAngleID === 0x3)
+                  temp = {
+                    x : nodeObj.geometry.x +
+                            (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth),
+                    y : nodeObj.geometry.y -
+                            (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 0x2),
+                  };
+                else {
+                  if (departureAngleID === 0x4)
+                    temp = {
+                      x : nodeObj.geometry.x -
+                              (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxheight * 1.5),
+                      y : nodeObj.geometry.y - (laneDisplayBoxConfiguration.start +
+                                                laneDisplayBoxConfiguration.boxincwidth * numLanes * 1.5),
+                    };
+                  else {
+                    if (departureAngleID === 0x5)
+                      temp = {
+                        x : nodeObj.geometry.x +
+                                (laneDisplayBoxConfiguration.start + laneDisplayBoxConfiguration.boxincwidth / 0x2),
+                        y : nodeObj.geometry.y + laneDisplayBoxConfiguration.start / 0x2,
+                      };
+                    else {
+                      if (departureAngleID === 0x6)
+                        temp = {
+                          x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start,
+                          y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start *
+                                                       ((laneDisplayBoxConfiguration.boxincwidth * numLanes) / 0x2),
+                        };
+                      else
+                        departureAngleID === 0x7 && (temp = {
+                          x : nodeObj.geometry.x - laneDisplayBoxConfiguration.start *
+                                                       ((laneDisplayBoxConfiguration.boxincwidth * numLanes) / 0x2),
+                          y : nodeObj.geometry.y - laneDisplayBoxConfiguration.start,
+                        });
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        return temp;
+      }
+
+      function displayGuidanceBox(nodeObj, segmentObject, guidanceObject) {
+        const numberOfTurnLanes = Object.getOwnPropertyNames(guidanceObject).length;
+        if (numberOfTurnLanes === 0)
+          return;
+        let laneDisplayBoxConfiguration = getLaneDisplayBoxObjectConfig(),
+            segmentDisplayCardinalAngle = getSegmentAngle(nodeObj.attributes.id, segmentObject), centroid,
+            guidanceBoxCoordinates = [], departureAngleID = 0;
+        if (!getId("lt-IconsRotate").checked)
+          segmentDisplayCardinalAngle = -90;
+        if (segmentDisplayCardinalAngle === 0) {
+          segmentDisplayCardinalAngle += 180;
+          departureAngleID = 0x1;
+        } else {
+          if (segmentDisplayCardinalAngle > 0 && segmentDisplayCardinalAngle <= 30) {
+            segmentDisplayCardinalAngle += (2 * (90 - segmentDisplayCardinalAngle));
+            departureAngleID = 0x1;
+          } else {
+            if (segmentDisplayCardinalAngle >= 330 && segmentDisplayCardinalAngle <= 360) {
+              segmentDisplayCardinalAngle -= (180 - 0x2 * (360 - segmentDisplayCardinalAngle));
+              departureAngleID = 0x1;
+            } else {
+              if (segmentDisplayCardinalAngle > 30 && segmentDisplayCardinalAngle < 60) {
+                segmentDisplayCardinalAngle -= (90 - 2 * (360 - segmentDisplayCardinalAngle));
+                departureAngleID = 0x2;
+              } else {
+                if (segmentDisplayCardinalAngle >= 60 && segmentDisplayCardinalAngle <= 120) {
+                  segmentDisplayCardinalAngle -= (90 - 2 * (360 - segmentDisplayCardinalAngle));
+                  departureAngleID = 0x2;
+                } else {
+                  if (segmentDisplayCardinalAngle > 120 && segmentDisplayCardinalAngle < 150) {
+                    segmentDisplayCardinalAngle -= (90 - 2 * (360 - segmentDisplayCardinalAngle));
+                    departureAngleID = 7;
+                  } else {
+                    if (segmentDisplayCardinalAngle >= 150 && segmentDisplayCardinalAngle <= 210) {
+                      segmentDisplayCardinalAngle = 180 - segmentDisplayCardinalAngle;
+                      departureAngleID = 4;
+                    } else {
+                      if (segmentDisplayCardinalAngle > 210 && segmentDisplayCardinalAngle < 240) {
+                        segmentDisplayCardinalAngle -= (90 - 0x2 * (360 - segmentDisplayCardinalAngle));
+                        departureAngleID = 6;
+                      } else {
+                        if (segmentDisplayCardinalAngle >= 240 && segmentDisplayCardinalAngle <= 300) {
+                          segmentDisplayCardinalAngle -= (180 - 0x2 * (360 - segmentDisplayCardinalAngle));
+                          departureAngleID = 0x3;
+                        } else if (segmentDisplayCardinalAngle > 300 && segmentDisplayCardinalAngle < 330) {
+                          segmentDisplayCardinalAngle -= (180 - 2 * (360 - segmentDisplayCardinalAngle));
+                          departureAngleID = 0x5
+                        } else
+                          console.log("LT: icon angle is out of bounds");
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        let displayAngle =
+                segmentDisplayCardinalAngle > 315 ? segmentDisplayCardinalAngle : segmentDisplayCardinalAngle + 90,
+            reciprocalDisplayAngle = 360 - displayAngle;
+
+        let guidanceBoxTopLeftCoord =
+            getLaneBoxAnchor(departureAngleID, nodeObj, laneDisplayBoxConfiguration, numberOfTurnLanes);
+        const guidanceBoxBottomLeftVtx = new OpenLayers.Geometry.Point(
+                  guidanceBoxTopLeftCoord.x, guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.boxheight),
+              guidanceBoxTopRightPointVtx = new OpenLayers.Geometry.Point(
+                  guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * numberOfTurnLanes,
+                  guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.boxheight),
+              guidanceBoxBottomRightVtx = new OpenLayers.Geometry.Point(
+                  guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * numberOfTurnLanes,
+                  guidanceBoxTopLeftCoord.y),
+              guidanceBoxTopLeftVtx =
+                  new OpenLayers.Geometry.Point(guidanceBoxTopLeftCoord.x, guidanceBoxTopLeftCoord.y);
+        guidanceBoxCoordinates.push(guidanceBoxBottomLeftVtx, guidanceBoxTopRightPointVtx, guidanceBoxBottomRightVtx,
+                                    guidanceBoxTopLeftVtx);
+        let guidanceBoxColors = {
+          strokeColor : "#ffffff",
+          strokeOpacity : 0x1,
+          strokeWidth : 0x8,
+          fillColor : "#ffffff",
+        };
+        let linearRing = new OpenLayers.Geometry.LinearRing(guidanceBoxCoordinates);
+        centroid = linearRing.getCentroid();
+        linearRing.rotate(reciprocalDisplayAngle, centroid);
+        let boxRingFeatues = new OpenLayers.Feature.Vector(linearRing, null, guidanceBoxColors);
+        LTLaneGraphics.addFeatures([ boxRingFeatues ]);
+        let boxWidthThickness = 0;
+        _.each(guidanceObject, (lg) => {
+          let displayBoxVertices = [];
+          var displayBoxLeftTopPoint = new OpenLayers.Geometry.Point(
+                  guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
+                      laneDisplayBoxConfiguration.iconbordermargin,
+                  guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconborderheight),
+              displayBoxLeftBottomPoint = new OpenLayers.Geometry.Point(
+                  guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
+                      laneDisplayBoxConfiguration.iconborderwidth,
+                  guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconborderheight),
+              displayBoxRightTopPoint = new OpenLayers.Geometry.Point(
+                  guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
+                      laneDisplayBoxConfiguration.iconborderwidth,
+                  guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconbordermargin),
+              displayBoxRightBottomPoint = new OpenLayers.Geometry.Point(
+                  guidanceBoxTopLeftCoord.x + laneDisplayBoxConfiguration.boxincwidth * boxWidthThickness +
+                      laneDisplayBoxConfiguration.iconbordermargin,
+                  guidanceBoxTopLeftCoord.y + laneDisplayBoxConfiguration.iconbordermargin);
+          displayBoxVertices.push(displayBoxLeftTopPoint, displayBoxLeftBottomPoint, displayBoxRightTopPoint,
+                                  displayBoxRightBottomPoint);
+          const displayBoxColors = {
+            strokeColor : "#000000",
+            strokeOpacity : 0x1,
+            strokeWidth : 0x1,
+            fillColor : "#26bae8",
+          };
+          let displayBoxLinearRing = new OpenLayers.Geometry.LinearRing(displayBoxVertices);
+          displayBoxLinearRing.rotate(reciprocalDisplayAngle, centroid);
+          let displayBoxVector = new OpenLayers.Feature.Vector(displayBoxLinearRing, null, displayBoxColors);
+          LTLaneGraphics.addFeatures([ displayBoxVector ]);
+          let displayBoxLinearRingCentroid = displayBoxLinearRing.getCentroid(),
+              displayBoxLinearRigntCentroidCoords =
+                  new OpenLayers.Geometry.Point(displayBoxLinearRingCentroid.x, displayBoxLinearRingCentroid.y),
+              wazeFont = "", uTurnTopLeftCoordinates = {x : 0x0, y : 0x0},
+              uTurnBottomRightCoordinates = {x : 0x0, y : 0x0};
+          if (lg["uturn"] === true) {
+            wazeFont = constantStrings.wazeFontLink;
+            uTurnTopLeftCoordinates.x = 0.6;
+            uTurnTopLeftCoordinates.y = 0.6;
+            uTurnBottomRightCoordinates.x = -7;
+            uTurnBottomRightCoordinates.y = -12
+          }
+          if (lg["miniuturn"] === true) {
+            wazeFont = constantStrings.wazeFontLink;
+            uTurnTopLeftCoordinates.x = 0.3;
+            uTurnTopLeftCoordinates.y = 0.25;
+            uTurnBottomRightCoordinates.x = -8;
+            uTurnBottomRightCoordinates.y = 4
+          }
+          let displayBoxConfiguration = {
+            externalGraphic : lg.svg,
+            graphicHeight : laneDisplayBoxConfiguration.graphicHeight,
+            graphicWidth : laneDisplayBoxConfiguration.graphicWidth,
+            fillColor : "#26bae8",
+            bgcolor : "#26bae8",
+            color : "#26bae8",
+            rotation : displayAngle,
+            backgroundGraphic : wazeFont,
+            backgroundHeight : laneDisplayBoxConfiguration.graphicHeight * uTurnTopLeftCoordinates.y,
+            backgroundWidth : laneDisplayBoxConfiguration.graphicWidth * uTurnTopLeftCoordinates.x,
+            backgroundXOffset : uTurnBottomRightCoordinates.x,
+            backgroundYOffset : uTurnBottomRightCoordinates.y,
+          },
+              displayBoxVectorLayer =
+                  new OpenLayers.Feature.Vector(displayBoxLinearRigntCentroidCoords, null, displayBoxConfiguration);
+          LTLaneGraphics.addFeatures([ displayBoxVectorLayer ]);
+          boxWidthThickness++;
+        });
+        LTLaneGraphics.setZIndex(600);
+      }
+
+      function getLaneDisplayBoxObjectConfig() {
+        var boxDisplayObject = {};
+        let zoomLevel = W.map.getOLMap().getZoom();
+        if (NEWZOOMLEVELS)
+          switch (zoomLevel) {
+          case 22:
+            boxDisplayObject.start = 0.5;
+            boxDisplayObject.boxheight = 1.7;
+            boxDisplayObject.boxincwidth = 1.1;
+            boxDisplayObject.iconbordermargin = 0.1;
+            boxDisplayObject.iconborderheight = 1.6;
+            boxDisplayObject.iconborderwidth = 1;
+            boxDisplayObject.graphicHeight = 42;
+            boxDisplayObject.graphicWidth = 25;
+            break;
+          case 21:
+            (boxDisplayObject.start = 1);
+            (boxDisplayObject.boxheight = 3.2);
+            (boxDisplayObject.boxincwidth = 2.2);
+            (boxDisplayObject.iconbordermargin = 0.2);
+            (boxDisplayObject.iconborderheight = 3);
+            (boxDisplayObject.iconborderwidth = 2);
+            (boxDisplayObject.graphicHeight = 42);
+            (boxDisplayObject.graphicWidth = 25);
+            break;
+          case 20:
+            (boxDisplayObject.start = 2);
+            (boxDisplayObject.boxheight = 5.2);
+            (boxDisplayObject.boxincwidth = 3.8);
+            (boxDisplayObject.iconbordermargin = 0.3);
+            (boxDisplayObject.iconborderheight = 4.9);
+            (boxDisplayObject.iconborderwidth = 3.5);
+            (boxDisplayObject.graphicHeight = 0x2a);
+            (boxDisplayObject.graphicWidth = 0x19);
+            break;
+          case 19:
+            (boxDisplayObject.start = 3);
+            (boxDisplayObject.boxheight = 0xa);
+            (boxDisplayObject.boxincwidth = 7.2);
+            (boxDisplayObject.iconbordermargin = 0.4);
+            (boxDisplayObject.iconborderheight = 9.6);
+            (boxDisplayObject.iconborderwidth = 6.8);
+            (boxDisplayObject.graphicHeight = 0x2a);
+            (boxDisplayObject.graphicWidth = 0x19);
+            break;
+          case 18:
+            (boxDisplayObject.start = 6);
+            (boxDisplayObject.boxheight = 20);
+            (boxDisplayObject.boxincwidth = 14);
+            boxDisplayObject.iconbordermargin = 0.5;
+            boxDisplayObject.iconborderheight = 19.5;
+            boxDisplayObject.iconborderwidth = 13.5;
+            boxDisplayObject.graphicHeight = 42;
+            boxDisplayObject.graphicWidth = 25;
+            break;
+          case 17:
+            (boxDisplayObject.start = 30);
+            (boxDisplayObject.boxheight = 39);
+            (boxDisplayObject.boxincwidth = 28);
+            (boxDisplayObject.iconbordermargin = 1);
+            (boxDisplayObject.iconborderheight = 38);
+            (boxDisplayObject.iconborderwidth = 27);
+            (boxDisplayObject.graphicHeight = 42);
+            (boxDisplayObject.graphicWidth = 25);
+            break;
+          case 16:
+            (boxDisplayObject.start = 0xf);
+            (boxDisplayObject.boxheight = 80);
+            (boxDisplayObject.boxincwidth = 55);
+            (boxDisplayObject.iconbordermargin = 2);
+            (boxDisplayObject.iconborderheight = 78);
+            (boxDisplayObject.iconborderwidth = 53);
+            (boxDisplayObject.graphicHeight = 42);
+            (boxDisplayObject.graphicWidth = 25);
+            break;
+          case 15:
+            (boxDisplayObject.start = 0x2);
+            (boxDisplayObject.boxheight = 120);
+            (boxDisplayObject.boxincwidth = 90);
+            (boxDisplayObject.iconbordermargin = 3);
+            (boxDisplayObject.iconborderheight = 117);
+            (boxDisplayObject.iconborderwidth = 0x57);
+            (boxDisplayObject.graphicHeight = 42);
+            boxDisplayObject.graphicWidth = 25;
+            break;
+          case 14:
+            (boxDisplayObject.start = 0x2);
+            (boxDisplayObject.boxheight = 5.2);
+            (boxDisplayObject.boxincwidth = 3.8);
+            (boxDisplayObject.iconbordermargin = 0.3);
+            (boxDisplayObject.iconborderheight = 4.9);
+            (boxDisplayObject.iconborderwidth = 3.5);
+            (boxDisplayObject.graphicHeight = 0x2a);
+            (boxDisplayObject.graphicWidth = 0x19);
+            break;
+          }
+        else
+          switch (zoomLevel) {
+          case 10:
+            (boxDisplayObject.start = 0.5);
+            (boxDisplayObject.boxheight = 1.7);
+            (boxDisplayObject.boxincwidth = 1.1);
+            (boxDisplayObject.iconbordermargin = 0.1);
+            (boxDisplayObject.iconborderheight = 1.6);
+            (boxDisplayObject.iconborderwidth = 0x1);
+            (boxDisplayObject.graphicHeight = 0x2a);
+            (boxDisplayObject.graphicWidth = 0x19);
+            break;
+          case 9:
+            (boxDisplayObject.start = 1);
+            (boxDisplayObject.boxheight = 3.2);
+            (boxDisplayObject.boxincwidth = 2.2);
+            (boxDisplayObject.iconbordermargin = 0.2);
+            (boxDisplayObject.iconborderheight = 0x3);
+            (boxDisplayObject.iconborderwidth = 0x2);
+            (boxDisplayObject.graphicHeight = 0x2a);
+            (boxDisplayObject.graphicWidth = 0x19);
+            break;
+          case 8:
+            (boxDisplayObject.start = 0x2);
+            (boxDisplayObject.boxheight = 5.2);
+            (boxDisplayObject.boxincwidth = 3.8);
+            (boxDisplayObject.iconbordermargin = 0.3);
+            (boxDisplayObject.iconborderheight = 4.9);
+            (boxDisplayObject.iconborderwidth = 3.5);
+            (boxDisplayObject.graphicHeight = 0x2a);
+            (boxDisplayObject.graphicWidth = 0x19);
+            break;
+          case 7:
+            (boxDisplayObject.start = 0x3);
+            (boxDisplayObject.boxheight = 0xa);
+            (boxDisplayObject.boxincwidth = 7.2);
+            (boxDisplayObject.iconbordermargin = 0.4);
+            (boxDisplayObject.iconborderheight = 9.6);
+            (boxDisplayObject.iconborderwidth = 6.8);
+            (boxDisplayObject.graphicHeight = 0x2a);
+            (boxDisplayObject.graphicWidth = 0x19);
+            break;
+          case 6:
+            (boxDisplayObject.start = 0x6);
+            (boxDisplayObject.boxheight = 0x14);
+            (boxDisplayObject.boxincwidth = 0xe);
+            (boxDisplayObject.iconbordermargin = 0.5);
+            (boxDisplayObject.iconborderheight = 19.5);
+            (boxDisplayObject.iconborderwidth = 13.5);
+            (boxDisplayObject.graphicHeight = 0x2a);
+            (boxDisplayObject.graphicWidth = 0x19);
+            break;
+          case 5:
+            (boxDisplayObject.start = 0xa);
+            (boxDisplayObject.boxheight = 0x28);
+            (boxDisplayObject.boxincwidth = 0x1d);
+            (boxDisplayObject.iconbordermargin = 0x1);
+            (boxDisplayObject.iconborderheight = 0x26);
+            (boxDisplayObject.iconborderwidth = 0x1b);
+            (boxDisplayObject.graphicHeight = 0x2a);
+            (boxDisplayObject.graphicWidth = 0x19);
+            break;
+          case 4:
+            (boxDisplayObject.start = 15);
+            (boxDisplayObject.boxheight = 80);
+            (boxDisplayObject.boxincwidth = 55);
+            (boxDisplayObject.iconbordermargin = 2);
+            (boxDisplayObject.iconborderheight = 78);
+            (boxDisplayObject.iconborderwidth = 53);
+            (boxDisplayObject.graphicHeight = 42);
+            (boxDisplayObject.graphicWidth = 25);
+            break;
+          case 3:
+            (boxDisplayObject.start = 2);
+            (boxDisplayObject.boxheight = 120);
+            (boxDisplayObject.boxincwidth = 90);
+            (boxDisplayObject.iconbordermargin = 3);
+            (boxDisplayObject.iconborderheight = 117);
+            (boxDisplayObject.iconborderwidth = 87);
+            (boxDisplayObject.graphicHeight = 42);
+            (boxDisplayObject.graphicWidth = 25);
+            break;
+          case 2:
+            (boxDisplayObject.start = 2);
+            (boxDisplayObject.boxheight = 5.2);
+            (boxDisplayObject.boxincwidth = 3.8);
+            (boxDisplayObject.iconbordermargin = 0.3);
+            (boxDisplayObject.iconborderheight = 4.9);
+            (boxDisplayObject.iconborderwidth = 3.5);
+            (boxDisplayObject.graphicHeight = 42);
+            (boxDisplayObject.graphicWidth = 25);
+            break;
+          case 1:
+            boxDisplayObject.start = 2;
+            boxDisplayObject.boxheight = 5.2;
+            boxDisplayObject.boxincwidth = 3.8;
+            boxDisplayObject.iconbordermargin = 0.3;
+            boxDisplayObject.iconborderheight = 4.9;
+            boxDisplayObject.iconborderwidth = 3.5;
+            boxDisplayObject.graphicHeight = 42;
+            boxDisplayObject.graphicWidth = 25;
+            break;
+          }
+        return boxDisplayObject;
+      }
+
+      function serializeTurns(guidanceLaneInfoArray) {
+        const serializer = new XMLSerializer();
+        return (_.each(guidanceLaneInfoArray, (guidanceLaneInfo) => {
+          try {
+            let guidanceSVG = guidanceLaneInfo.svg[0], svgXML = serializer.serializeToString(guidanceSVG);
+            guidanceLaneInfo["svg"] = "data:image/svg+xml;base64," + window.btoa(svgXML);
+          } catch (ex) {
+          }
+        }, guidanceLaneInfoArray));
+      }
+
+      function displayLaneGraphics() {
+        removeLaneGraphics();
+        const features = W.selectionManager.getSelectedFeatures();
+        if (!getId("lt-ScriptEnabled").checked || !getId("lt-IconsEnable").checked || features.length !== 0x1 ||
+            features[0].attributes.wazeFeature._wmeObject.type !== "segment")
+          return;
+        const wmeObject = features[0].attributes.wazeFeature._wmeObject, currentZoomLevel = W.map.getOLMap().getZoom();
+        if ((currentZoomLevel < 15) ||
+            (wmeObject.attributes.roadType !== LT_ROAD_TYPE.FREEWAY &&
+             wmeObject.attributes.roadType !== LT_ROAD_TYPE.MAJOR_HIGHWAY &&
+             wmeObject.attributes.roadType !== LT_ROAD_TYPE.MAJOR_HIGHWAY && currentZoomLevel < 16))
+          return;
+        let fwdTurnsObject = wmeObject.attributes.fwdLaneCount > 0x0
+                                 ? addUturn($(".fwd-lanes").find(".lane-arrow").map(function() { return this; }).get())
+                                 : false,
+            revTurnsObject = wmeObject.attributes.revLaneCount > 0x0
+                                 ? addUturn($(".rev-lanes").find(".lane-arrow").map(function() { return this; }).get())
+                                 : false;
+        if (fwdTurnsObject !== false) {
+          if (Object.keys(fwdTurnsObject).length === 0) {
+            setTimeout(displayLaneGraphics, 200);
+            return;
+          }
+          displayGuidanceBox(W.model.nodes.getObjectById(wmeObject.attributes.toNodeID), wmeObject,
+                             serializeTurns(fwdTurnsObject));
+        }
+        if (revTurnsObject !== false) {
+          if (Object.keys(revTurnsObject).length === 0) {
+            setTimeout(displayLaneGraphics, 200);
+            return;
+          }
+          displayGuidanceBox(W.model.nodes.getObjectById(wmeObject.attributes.fromNodeID), wmeObject,
+                             serializeTurns(revTurnsObject));
+        }
+      }
+
+      laneToolsBootstrap();
+    })();
