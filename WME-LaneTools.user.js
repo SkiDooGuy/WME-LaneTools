@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2023.09.20.01
+// @version      2023.09.26.01
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -12,8 +12,7 @@
 // @match        https://beta.waze.com/*/editor*
 // @exclude      https://www.waze.com/user/editor*
 // @require      https://greasyfork.org/scripts/24851-wazewrap/code/WazeWrap.js
-// @grant        GM_xmlhttpRequest
-// @connect       greasyfork.org
+// @grant        none
 // @contributionURL https://github.com/WazeDev/Thank-The-Authors
 // ==/UserScript==
 
@@ -62,8 +61,8 @@
       };
       const LANETOOLS_VERSION = "" + GM_info.script.version,
             GF_LINK = "https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js",
-            FORUM_LINK = "https://www.waze.com/forum/viewtopic.php?f=819&t=30115",
-            LI_UPDATE_NOTES = "<b>NEW:</b><br>\n<b>FIXES:</b><br><br>\n", LANETOOLS_DEBUG_LEVEL = 0x1, configArray = {},
+            FORUM_LINK = "https://www.waze.com/forum/viewtopic.php?t=301158",
+            LI_UPDATE_NOTES = "<b>NEW:</b><br>\n<b>FIXES:</b><br>Code clean up contributed by Karlsosha<br>\n", LANETOOLS_DEBUG_LEVEL = 0x1, configArray = {},
             RBSArray = {failed : false}, IsBeta = location.href.indexOf("beta.waze.com") !== -0x1, TRANSLATIONS = {
               default : {
                 enabled : "Enabled",
