@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2023.09.26.01
+// @version      2023.09.28.01
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -406,24 +406,24 @@
               "       </div>",
         ].join(" ");
         const message = $(constantStrings.divStr);
-        message.html([
-          "       <div class='lt-Toolbar-Container' id='lt-toolbar-container'>\n" +
-              "           <div id='lt-toolbar-drag-handle' class='lt-toolbar-drag-handle'>LT\n" +
-              "               <div class='lt-toolbar-button-container'>\n" +
-              "                   <button type='button' class='lt-toolbar-button' id='copyA-button'>Copy A</button>\n" +
-              "               </div>\n" +
-              "               <div class='lt-toolbar-button-container'>\n" +
-              "                   <button type='button' class='lt-toolbar-button' id='copyB-button'>Copy B</button>\n" +
-              "               </div>\n" +
-              "               <div class='lt-toolbar-button-container'>\n" +
-              "                   <button type='button' class='lt-toolbar-button' id='pasteA-button'>Paste A</button>\n" +
-              "               </div>\n" +
-              "               <div class='lt-toolbar-button-container'>\n" +
-              "                   <button type='button' class='lt-toolbar-button' id='pasteB-button'>Paste B</button>\n" +
-              "               </div>\n" +
-              "           </div>\n" +
-              "       </div>",
-        ].join(" "));
+//         message.html([
+//           "       <div class='lt-Toolbar-Container' id='lt-toolbar-container'>\n" +
+//               "           <div id='lt-toolbar-drag-handle' class='lt-toolbar-drag-handle'>LT\n" +
+//               "               <div class='lt-toolbar-button-container'>\n" +
+//               "                   <button type='button' class='lt-toolbar-button' id='copyA-button'>Copy A</button>\n" +
+//               "               </div>\n" +
+//               "               <div class='lt-toolbar-button-container'>\n" +
+//               "                   <button type='button' class='lt-toolbar-button' id='copyB-button'>Copy B</button>\n" +
+//               "               </div>\n" +
+//               "               <div class='lt-toolbar-button-container'>\n" +
+//               "                   <button type='button' class='lt-toolbar-button' id='pasteA-button'>Paste A</button>\n" +
+//               "               </div>\n" +
+//               "               <div class='lt-toolbar-button-container'>\n" +
+//               "                   <button type='button' class='lt-toolbar-button' id='pasteB-button'>Paste B</button>\n" +
+//               "               </div>\n" +
+//               "           </div>\n" +
+//               "       </div>",
+//         ].join(" "));
         _pickleColor = seaPickle.attributes.rank;
         if (_pickleColor >= 0x0) {
           WazeWrap.Interface.Tab("LT", initMsg.html, setupOptions, "LT");
