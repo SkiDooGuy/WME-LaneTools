@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         WME LaneTools D
-// @namespace    https://github.com/SkiDooGuy/WME-LaneTools-Dev
-// @version      2023.09.29.00
+// @name         WME LaneTools
+// @namespace    https://github.com/SkiDooGuy/WME-LaneTools
+// @version      2023.09.30.00
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools-Dev/raw/master/LaneTools.user.js
