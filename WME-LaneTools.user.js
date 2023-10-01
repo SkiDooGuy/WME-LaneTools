@@ -438,6 +438,7 @@
             "z-index" : 1004,
             height : "150px",
             width : "70px",
+            visibility : "hidden"
           });
           $(".lt-toolbar-drag-handle").css({
             position : "absolute",
