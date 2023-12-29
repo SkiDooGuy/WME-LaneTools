@@ -1503,9 +1503,9 @@ function lanesTabSetup() {
             for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
                 addLanesItem.append(laneCountsToAppend[idx]);
             }
-            let prependSelector = dirLanesClass + "> div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div.controls.direction-lanes-edit > div.form-group > div.controls-container";
+            let prependSelector = dirLanesClass + "> div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div.controls.direction-lanes-edit > div.form-group > div.controls-container > input[name=laneCount]";
             waitForElementLoaded(prependSelector).then((elm) => {
-                let prependElement = $(prependSelector);
+                let prependElement = $(prependSelector).parent();
                 prependElement.prepend(addLanesItem);
                 setupLaneCountControls(lanes, classNamesList);
                 $('.lt-add-lanes').on("click",function () {
