@@ -2326,18 +2326,18 @@ function setTurns(direction) {
             // Check if the lanes are already set. If already set, don't change anything.
             let laneCheckboxes = turnSection.getElementsByTagName('wz-checkbox');
             if (laneCheckboxes && laneCheckboxes.length > 0) {
-                if (turnSection.getElementsByClassName(left).length > 0 &&
-                    laneCheckboxes[0].checked !== undefined &&
-                    laneCheckboxes[0].checked === false &&
-                    getId('lt-ClickSaveTurns').checked) {
-                    setLeft = true;
-                    laneCheckboxes[0].click();
-                } else if (turnSection.getElementsByClassName(right).length > 0 &&
-                           laneCheckboxes[laneCheckboxes.length - 1].checked !== undefined &&
-                           laneCheckboxes[laneCheckboxes.length - 1].checked === false &&
-                           getId('lt-ClickSaveTurns').checked) {
-                    setRight = true;
-                    laneCheckboxes[laneCheckboxes.length - 1].click();
+                if(getId('lt-ClickSaveTurns').checked) {
+                    if (turnSection.getElementsByClassName(left).length > 0 &&
+                        laneCheckboxes[0].checked !== undefined &&
+                        laneCheckboxes[0].checked === false ) {
+                        setLeft = true;
+                        laneCheckboxes[0].click();
+                    } else if (turnSection.getElementsByClassName(right).length > 0 &&
+                        laneCheckboxes[laneCheckboxes.length - 1].checked !== undefined &&
+                        laneCheckboxes[laneCheckboxes.length - 1].checked === false) {
+                        setRight = true;
+                        laneCheckboxes[laneCheckboxes.length - 1].click();
+                    }
                 }
             }
         }
@@ -2346,16 +2346,33 @@ function setTurns(direction) {
             const turnSection = turnSections[i];
 
             let laneCheckboxes = turnSection.getElementsByTagName('wz-checkbox');
+            if(setRight) {
+                // Clear All Lanes Except the Right most for right turn
+                if (turnSection.getElementsByClassName(right).length > 0) {
+                    console.info("Number Lane Checkboxes = " + laneCheckboxes.length);
+                    for (let j = 0; j < laneCheckboxes.length - 1; ++j) {
+                        if(laneCheckboxes[j].checked) laneCheckboxes[j].checked = false;
+                    }
+                }
+            }
+            if(setLeft) {
+                // Clear all Lanes except left most for left turn
+                if(turnSection.getElementsByClassName(left).length > 0) {
+                    for(let j = 1 ; j < laneCheckboxes.length ; ++j) {
+                        if(laneCheckboxes[j].checked) laneCheckboxes[j].checked = false;
+                    }
+                }
+            }
             if (turnSection.getElementsByClassName('angle-0').length > 0) {
                 // Set all lanes for straight turns
                 for (let j = 0; j < laneCheckboxes.length; j++) {
                     if (laneCheckboxes[j].checked === false) {
                         if (j === 0 && (getId('lt-ClickSaveStraight').checked || setLeft === false)) {
-                            laneCheckboxes[j].click();
+                            laneCheckboxes[j].checked = true;
                         } else if (j === (laneCheckboxes.length - 1) && (getId('lt-ClickSaveStraight').checked || setRight === false)) {
-                            laneCheckboxes[j].click();
+                            laneCheckboxes[j].checked = true;
                         } else if (j !== 0 && j !== (laneCheckboxes.length - 1)) {
-                            laneCheckboxes[j].click();
+                            laneCheckboxes[j].checked = true;
                         }
                     }
                 }
@@ -2406,17 +2423,17 @@ function initLaneGuidanceClickSaver() {
                 }, false);
             }
 
-            let laneToolsButtons = document.getElementsByClassName('lt-add-lanes');
-            for (let i = 0; i < laneToolsButtons.length; i++) {
-                laneToolsButtons[i].addEventListener('click', function () {
-                    // wait for the input to appear
-                    let parent = $(this).parents().eq(8);
-                    let direction = parent[0].className;
-                    waitForElementLoaded('.turn-lane-edit-container').then((elem) => {
-                        setTurns(direction);
-                    })
-                }, false);
-            }
+            // let laneToolsButtons = document.getElementsByClassName('lt-add-lanes');
+            // for (let i = 0; i < laneToolsButtons.length; i++) {
+            //     laneToolsButtons[i].addEventListener('click', function () {
+            //         // wait for the input to appear
+            //         let parent = $(this).parents().eq(8);
+            //         let direction = parent[0].className;
+            //         waitForElementLoaded('.turn-lane-edit-container').then((elem) => {
+            //             setTurns(direction);
+            //         })
+            //     }, false);
+            // }
         }
     });
 
