@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2023.12.28.01
+// @version      2023.12.30.01
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/LaneTools.user.js
@@ -1503,7 +1503,8 @@ function lanesTabSetup() {
             for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
                 addLanesItem.append(laneCountsToAppend[idx]);
             }
-            let prependSelector = dirLanesClass + "> div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div.controls.direction-lanes-edit > div.form-group > div.controls-container";
+            let prependSelector = dirLanesClass + "> div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div";
+            // let prependSelector = dirLanesClass + "> div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div.controls.direction-lanes-edit > div.form-group > div.controls-container";
             waitForElementLoaded(prependSelector).then((elm) => {
                 let prependElement = $(prependSelector);
                 prependElement.prepend(addLanesItem);
