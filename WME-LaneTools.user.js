@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2023.12.30.01
+// @version      2023.12.30.02
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
-// @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/LaneTools.user.js
-// @downloadURL  https://github.com/SkiDooGuy/WME-LaneTools/raw/master/LaneTools.user.js
+// @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
+// @downloadURL  https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
 // @match        https://www.waze.com/editor*
 // @match        https://www.waze.com/*/editor*
 // @match        https://beta.waze.com/editor*
