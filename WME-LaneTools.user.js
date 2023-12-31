@@ -1515,12 +1515,15 @@ function lanesTabSetup() {
                         // As of React >=15.6.  Triggering change or input events on the input form cannot be
                         // done via jquery selectors.  Which means that they have to be triggered via
                         // React native calls.
-                        let nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value").set;
+                        let nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+                            window.HTMLInputElement.prototype,
+                            "value"
+                        ).set;
                         let inputForm = document.querySelector("div" + dirLanesClass + " input[name=laneCount]");
                         nativeInputValueSetter.call(inputForm, numAdd);
-                        let inputEvent = new Event('input', {bubbles: true});
+                        let inputEvent = new Event("input", { bubbles: true });
                         inputForm.dispatchEvent(inputEvent);
-                        let changeEvent = new Event('change', {bubbles: true});
+                        let changeEvent = new Event("change", { bubbles: true });
                         inputForm.dispatchEvent(changeEvent);
                     }
                 });
@@ -2349,7 +2352,6 @@ function setTurns(direction) {
             if(setRight) {
                 // Clear All Lanes Except the Right most for right turn
                 if (turnSection.getElementsByClassName(right).length > 0) {
-                    console.info("Number Lane Checkboxes = " + laneCheckboxes.length);
                     for (let j = 0; j < laneCheckboxes.length - 1; ++j) {
                         if(laneCheckboxes[j].checked) laneCheckboxes[j].checked = false;
                     }
@@ -2411,7 +2413,7 @@ function initLaneGuidanceClickSaver() {
                 laneCountElement[idx].addEventListener("change", function() {
                     let parent = $(this).parents().eq(8), elem = parent[0], className = elem.className,
                         numLanes = parseInt($(this).val(), 10);
-                    waitForElementLoaded('.turn-lane-edit-container').then((elem) => {
+                    waitForElementLoaded('.turn-lane-checkbox').then((elem) => {
                         setTurns(className, numLanes);
                     });
                     let laneCountNums = $(this).parents().find(".lt-add-lanes"),
