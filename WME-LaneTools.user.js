@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2023.12.25.00
+// @version      2023.12.30.03
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
-// @updateURL    https://github.com/SkiDooGuy/WME-LaneTools-Dev/raw/master/LaneTools.user.js
-// @downloadURL  https://github.com/SkiDooGuy/WME-LaneTools-Dev/raw/master/LaneTools.user.js
+// @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
+// @downloadURL  https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
 // @match        https://www.waze.com/editor*
 // @match        https://www.waze.com/*/editor*
 // @match        https://beta.waze.com/editor*
@@ -27,7 +27,7 @@ const LANETOOLS_VERSION = `${GM_info.script.version}`;
 const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js';
 const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
 const LI_UPDATE_NOTES = `<b>Reverting Version</b><br>
-Reverting back to a previous version while researching bugs<br>
+Fixes submitted by Karlsosha<br>
 <b>FIXES:</b><br><br>
 `;
 
@@ -1503,9 +1503,10 @@ function lanesTabSetup() {
             for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
                 addLanesItem.append(laneCountsToAppend[idx]);
             }
-            let prependSelector = dirLanesClass + "> div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div.controls.direction-lanes-edit > div.form-group > div.controls-container > input[name=laneCount]";
+            let prependSelector = dirLanesClass + "> div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div";
+            // let prependSelector = dirLanesClass + "> div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div.controls.direction-lanes-edit > div.form-group > div.controls-container";
             waitForElementLoaded(prependSelector).then((elm) => {
-                let prependElement = $(prependSelector).parent();
+                let prependElement = $(prependSelector);
                 prependElement.prepend(addLanesItem);
                 setupLaneCountControls(lanes, classNamesList);
                 $('.lt-add-lanes').on("click",function () {
