@@ -1522,8 +1522,6 @@ function lanesTabSetup() {
                         ).set;
                         let inputForm = document.querySelector("div" + dirLanesClass + " input[name=laneCount]");
                         nativeInputValueSetter.call(inputForm, numAdd);
-                        let inputEvent = new Event("input", { bubbles: true });
-                        inputForm.dispatchEvent(inputEvent);
                         let changeEvent = new Event("change", { bubbles: true });
                         inputForm.dispatchEvent(changeEvent);
                     }
@@ -2354,7 +2352,10 @@ function setTurns(direction) {
                 // Clear All Lanes Except the Right most for right turn
                 if (turnSection.getElementsByClassName(right).length > 0) {
                     for (let j = 0; j < laneCheckboxes.length - 1; ++j) {
-                        if(laneCheckboxes[j].checked) laneCheckboxes[j].shadowRoot.querySelector(".wz-checkbox").click();
+                        waitForElementLoaded("input[type='checkbox']", laneCheckboxes[j].shadowRoot)
+                        {
+                            if (laneCheckboxes[j].checked) laneCheckboxes[j].click();
+                        }
                     }
                 }
             }
@@ -2362,20 +2363,26 @@ function setTurns(direction) {
                 // Clear all Lanes except left most for left turn
                 if(turnSection.getElementsByClassName(left).length > 0) {
                     for(let j = 1 ; j < laneCheckboxes.length ; ++j) {
-                        if(laneCheckboxes[j].checked) laneCheckboxes[j].shadowRoot.querySelector(".wz-checkbox").click();
+                        waitForElementLoaded("input[type='checkbox']", laneCheckboxes[j].shadowRoot)
+                        {
+                            if (laneCheckboxes[j].checked) laneCheckboxes[j].click();
+                        }
                     }
                 }
             }
             if (turnSection.getElementsByClassName('angle-0').length > 0) {
                 // Set all lanes for straight turns
                 for (let j = 0; j < laneCheckboxes.length; j++) {
-                    if (laneCheckboxes[j].checked === false) {
-                        if (j === 0 && (getId('lt-ClickSaveStraight').checked || setLeft === false)) {
-                            laneCheckboxes[j].shadowRoot.querySelector(".wz-checkbox").click();
-                        } else if (j === (laneCheckboxes.length - 1) && (getId('lt-ClickSaveStraight').checked || setRight === false)) {
-                            laneCheckboxes[j].shadowRoot.querySelector(".wz-checkbox").click();
-                        } else if (j !== 0 && j !== (laneCheckboxes.length - 1)) {
-                            laneCheckboxes[j].shadowRoot.querySelector(".wz-checkbox").click();
+                    waitForElementLoaded("input[type='checkbox']", laneCheckboxes[j].shadowRoot)
+                    {
+                        if (laneCheckboxes[j].checked === false) {
+                            if (j === 0 && (getId('lt-ClickSaveStraight').checked || setLeft === false)) {
+                                laneCheckboxes[j].click();
+                            } else if (j === (laneCheckboxes.length - 1) && (getId('lt-ClickSaveStraight').checked || setRight === false)) {
+                                laneCheckboxes[j].click();
+                            } else if (j !== 0 && j !== (laneCheckboxes.length - 1)) {
+                                laneCheckboxes[j].click();
+                            }
                         }
                     }
                 }
@@ -2384,23 +2391,42 @@ function setTurns(direction) {
     }
 }
 
-function waitForElementLoaded(selector) {
+function waitForElementLoaded(selector, root = null) {
     return new Promise(resolve => {
-        if (document.querySelector(selector)) {
-            return resolve(document.querySelector(selector));
-        }
-
-        const observer = new MutationObserver(mutations => {
+        if(root === null) {
             if (document.querySelector(selector)) {
-                observer.disconnect();
-                resolve(document.querySelector(selector));
+                return resolve(document.querySelector(selector));
             }
-        });
 
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
+            const observer = new MutationObserver(mutations => {
+                if (document.querySelector(selector)) {
+                    observer.disconnect();
+                    resolve(document.querySelector(selector));
+                }
+            });
+
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        }
+        else {
+            if (root.querySelector(selector)) {
+                return resolve(root.querySelector(selector));
+            }
+
+            const observer = new MutationObserver(mutations => {
+                if (root.querySelector(selector)) {
+                    observer.disconnect();
+                    resolve(root.querySelector(selector));
+                }
+            });
+
+            observer.observe(root, {
+                childList: true,
+                subtree: true
+            });
+        }
     });
 }
 
