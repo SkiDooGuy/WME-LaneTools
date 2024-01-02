@@ -2354,7 +2354,7 @@ function setTurns(direction) {
                 // Clear All Lanes Except the Right most for right turn
                 if (turnSection.getElementsByClassName(right).length > 0) {
                     for (let j = 0; j < laneCheckboxes.length - 1; ++j) {
-                        if(laneCheckboxes[j].checked) laneCheckboxes[j].checked = false;
+                        if(laneCheckboxes[j].checked) laneCheckboxes[j].shadowRoot.querySelector(".wz-checkbox").click();
                     }
                 }
             }
@@ -2362,7 +2362,7 @@ function setTurns(direction) {
                 // Clear all Lanes except left most for left turn
                 if(turnSection.getElementsByClassName(left).length > 0) {
                     for(let j = 1 ; j < laneCheckboxes.length ; ++j) {
-                        if(laneCheckboxes[j].checked) laneCheckboxes[j].checked = false;
+                        if(laneCheckboxes[j].checked) laneCheckboxes[j].shadowRoot.querySelector(".wz-checkbox").click();
                     }
                 }
             }
@@ -2371,11 +2371,11 @@ function setTurns(direction) {
                 for (let j = 0; j < laneCheckboxes.length; j++) {
                     if (laneCheckboxes[j].checked === false) {
                         if (j === 0 && (getId('lt-ClickSaveStraight').checked || setLeft === false)) {
-                            laneCheckboxes[j].checked = true;
+                            laneCheckboxes[j].shadowRoot.querySelector(".wz-checkbox").click();
                         } else if (j === (laneCheckboxes.length - 1) && (getId('lt-ClickSaveStraight').checked || setRight === false)) {
-                            laneCheckboxes[j].checked = true;
+                            laneCheckboxes[j].shadowRoot.querySelector(".wz-checkbox").click();
                         } else if (j !== 0 && j !== (laneCheckboxes.length - 1)) {
-                            laneCheckboxes[j].checked = true;
+                            laneCheckboxes[j].shadowRoot.querySelector(".wz-checkbox").click();
                         }
                     }
                 }
