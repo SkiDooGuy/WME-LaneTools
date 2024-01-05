@@ -1522,6 +1522,8 @@ function lanesTabSetup() {
                         ).set;
                         let inputForm = document.querySelector("div" + dirLanesClass + " input[name=laneCount]");
                         nativeInputValueSetter.call(inputForm, numAdd);
+                        let inputEvent = new Event("input", {bubbles: true});
+                        inputForm.dispatchEvent(inputEvent);
                         let changeEvent = new Event("change", { bubbles: true });
                         inputForm.dispatchEvent(changeEvent);
                     }
