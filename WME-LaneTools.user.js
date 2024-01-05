@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2023.12.30.03
+// @version      2024.01.04.01
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -1279,14 +1279,18 @@ function lanesTabSetup() {
 
     // Highlights junction node when hovering over left panel
     function hoverNodeTo() {
-        W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.toNodeID).attributes.geometry
-        document.getElementById(W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.toNodeID).attributes.geometry.id)
+        W.model.nodes.getObjectById(W.selectionManager.getSegmentSelection().segments[0].attributes.toNodeID).attributes.geometry
+//        W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.toNodeID).attributes.geometry
+        document.getElementById(W.model.nodes.getObjectById(W.selectionManager.getSegmentSelection().segments[0].attributes.toNodeID).attributes.geometry.id)
+//        document.getElementById(W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.toNodeID).attributes.geometry.id)
         console.log("hovering to B");
     }
 
     function hoverNodeFrom() {
-        W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.fromNodeID).attributes.geometry
-        document.getElementById(W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.fromNodeID).attributes.geometry.id)
+        W.model.nodes.getObjectById(W.selectionManager.getSegmentSelection().segments[0].attributes.fromNodeID).attributes.geometry
+//        W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.fromNodeID).attributes.geometry
+        document.getElementById(W.model.nodes.getObjectById(W.selectionManager.getSegmentSelection().segments[0].attributes.fromNodeID).attributes.geometry.id)
+//        document.getElementById(W.model.nodes.get(W.selectionManager.getSegmentSelection().segments[0].attributes.fromNodeID).attributes.geometry.id)
         console.log("hovering to A");
     }
 
@@ -1503,7 +1507,7 @@ function lanesTabSetup() {
             for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
                 addLanesItem.append(laneCountsToAppend[idx]);
             }
-            let prependSelector = dirLanesClass + "> div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div";
+            let prependSelector = dirLanesClass + " > div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div";
             // let prependSelector = dirLanesClass + "> div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div.controls.direction-lanes-edit > div.form-group > div.controls-container";
             waitForElementLoaded(prependSelector).then((elm) => {
                 let prependElement = $(prependSelector);
@@ -1767,14 +1771,16 @@ function getId(ele) {
 
 // returns true if object is within window  bounds and above zoom threshold
 function onScreen(obj, curZoomLevel) {
-    if (!obj.geometry || !obj.attributes) {
+    if (!obj.getOLGeometry() || !obj.attributes) {
+//    if (!obj.geometry || !obj.attributes) {
         return false;
     }
 
     // Either FREEWAY or Zoom >=4
     if ((curZoomLevel >= DisplayLevels.MIN_ZOOM_NONFREEWAY) ||
         (obj.type === 'segment' && obj.attributes.roadType === LT_ROAD_TYPE.FREEWAY)) {
-        return (W.map.getExtent().intersectsBounds(obj.geometry.getBounds()));
+        return (W.map.getExtent().intersectsBounds(obj.getOLGeometry().getBounds()));
+//        return (W.map.getExtent().intersectsBounds(obj.geometry.getBounds()));
     }
 
     return false;
@@ -1803,22 +1809,26 @@ function getCardinalAngle(nodeId,segment) {
 
 // borrowed from JAI
 function lt_get_first_point(segment) {
-    return segment.geometry.components[0];
+    return segment.getOLGeometry().components[0];
+//    return segment.geometry.components[0];
 }
 
 // borrowed from JAI
 function lt_get_last_point(segment) {
-    return segment.geometry.components[segment.geometry.components.length - 1];
+    return segment.getOLGeometry().components[segment.getOLGeometry().components.length - 1];
+//    return segment.geometry.components[segment.geometry.components.length - 1];
 }
 
 // borrowed from JAI
 function lt_get_second_point(segment) {
-    return segment.geometry.components[1];
+    return segment.getOLGeometry().components[1];
+//    return segment.geometry.components[1];
 }
 
 // borrowed from JAI
 function lt_get_next_to_last_point(segment) {
-    return segment.geometry.components[segment.geometry.components.length - 2];
+    return segment.getOLGeometry().components[segment.getOLGeometry().components.length - 2];
+//    return segment.geometry.components[segment.geometry.components.length - 2];
 }
 
 function delLanes(dir) {
@@ -1925,6 +1935,7 @@ function highlightSegment(objGeo, direction, applyDash, applyLabels, fwdLnsCount
             } else {
                 let p0 = geo.components[revPoint - 1];
                 let p1 = geo.components[fwdPoint];
+//                let newPoint = new OpenLayers.getOLGeometry().Point((p0.x + p1.x) / 2, (p0.y + p1.y) / 2);
                 let newPoint = new OpenLayers.Geometry.Point((p0.x + p1.x) / 2, (p0.y + p1.y) / 2);
                 applyName(newPoint, fwdLnsCount, revLnsCount);
             }
@@ -1932,9 +1943,12 @@ function highlightSegment(objGeo, direction, applyDash, applyLabels, fwdLnsCount
     } else {
         let p0 = geo.components[0];
         let p1 = geo.components[1];
+//        let point1 = new OpenLayers.getOLGeometry().Point((p0.x + p1.x) / 2, (p0.y + p1.y) / 2);
         let point1 = new OpenLayers.Geometry.Point((p0.x + p1.x) / 2, (p0.y + p1.y) / 2);
 
         if (direction === Direction.FORWARD) {
+//            let point2 = new OpenLayers.getOLGeometry().Point(geo.components[1].clone().x, geo.components[1].clone().y);
+//            let newString = new OpenLayers.getOLGeometry().LineString([point1, point2], {});
             let point2 = new OpenLayers.Geometry.Point(geo.components[1].clone().x, geo.components[1].clone().y);
             let newString = new OpenLayers.Geometry.LineString([point1, point2], {});
             if (applyDash) {
@@ -1942,6 +1956,8 @@ function highlightSegment(objGeo, direction, applyDash, applyLabels, fwdLnsCount
             }
             drawHighlight(newString, applyLioHighlight, isBad, heur, heurOverHighlight);
         } else if (direction === Direction.REVERSE) {
+//            let point2 = new OpenLayers.getOLGeometry().Point(geo.components[0].clone().x, geo.components[0].clone().y);
+//            let newString = new OpenLayers.getOLGeometry().LineString([point1, point2], {});
             let point2 = new OpenLayers.Geometry.Point(geo.components[0].clone().x, geo.components[0].clone().y);
             let newString = new OpenLayers.Geometry.LineString([point1, point2], {});
             if (applyDash) {
@@ -2215,15 +2231,18 @@ function scanSegments(segments, selectedSegsOverride) {
                 heur = heurCand;
             }
             if (laneCount > 0 || heur !== null || badLn) {
-                highlightSegment(seg.geometry, direction, mapHighlights, applyLabels, fwdLaneCount, revLaneCount, lio && applyLioHighlight, csMode, badLn, heur, false);
+                highlightSegment(seg.getOLGeometry(), direction, mapHighlights, applyLabels, fwdLaneCount, revLaneCount, lio && applyLioHighlight, csMode, badLn, heur, false);
+//                highlightSegment(seg.geometry, direction, mapHighlights, applyLabels, fwdLaneCount, revLaneCount, lio && applyLioHighlight, csMode, badLn, heur, false);
             }
             // Nodes highlights
             if (mapHighlights && getId('lt-NodesEnable').checked) {
                 if (tlns) {
-                    highlightNode(node.geometry, `${LtSettings.NodeColor}`);
+                    highlightNode(node.getOLGeometry(), `${LtSettings.NodeColor}`);
+//                    highlightNode(node.geometry, `${LtSettings.NodeColor}`);
                 }
                 if (tio) {
-                    highlightNode(node.geometry, `${LtSettings.TIOColor}`);
+                    highlightNode(node.getOLGeometry(), `${LtSettings.TIOColor}`);
+//                    highlightNode(node.geometry, `${LtSettings.TIOColor}`);
                 }
             }
         }
@@ -2233,10 +2252,14 @@ function scanSegments(segments, selectedSegsOverride) {
             if (heurCand !== HeuristicsCandidate.NONE) {
                 if (entrySeg != null && (segments.findIndex(element => element === entrySeg.seg) > -1)) {
                     let nodeColor = heurCand === HeuristicsCandidate.PASS ? `${LtSettings.NodeColor}` : `${LtSettings.HeurFailColor}`;
-                    highlightSegment(seg.geometry, direction, false, false, 0, 0, false, csMode, badLn, heurCand, true);
-                    highlightSegment(entrySeg.seg.geometry, entrySeg.direction, false, false, 0, 0, false, 0, false, heurCand, true);
-                    highlightNode(node.geometry, nodeColor, true);
-                    highlightNode(oppNode.geometry, nodeColor, true);
+                    highlightSegment(seg.getOLGeometry(), direction, false, false, 0, 0, false, csMode, badLn, heurCand, true);
+                    highlightSegment(entrySeg.seg.getOLGeometry(), entrySeg.direction, false, false, 0, 0, false, 0, false, heurCand, true);
+                    highlightNode(node.getOLGeometry(), nodeColor, true);
+                    highlightNode(oppNode.getOLGeometry(), nodeColor, true);
+//                    highlightSegment(seg.geometry, direction, false, false, 0, 0, false, csMode, badLn, heurCand, true);
+//                    highlightSegment(entrySeg.seg.geometry, entrySeg.direction, false, false, 0, 0, false, 0, false, heurCand, true);
+//                    highlightNode(node.geometry, nodeColor, true);
+//                    highlightNode(oppNode.geometry, nodeColor, true);
                 }
             }
         }
@@ -2809,7 +2832,8 @@ function isHeuristicsCandidate(segCandidate, curNodeExit, nodeExitSegIds, curNod
 
 // Segment Length - borrowed from JAI
 function lt_segment_length(segment) {
-    let len = segment.geometry.getGeodesicLength(window.W.map.olMap.projection);
+    let len = segment.getOLGeometry().getGeodesicLength(window.W.map.olMap.projection);
+//    let len = segment.geometry.getGeodesicLength(window.W.map.olMap.projection);
     lt_log(`segment: ${segment.attributes.id} computed len: ${len} attrs len: ${segment.attributes.length}`, 3);
     return len;
 }
@@ -3033,85 +3057,117 @@ function getStartPoints(node, featDis, numIcons, sign) {
     if (UPDATEDZOOM) {
         if (sign === 0) {
             temp = {
-                x: node.geometry.x + (featDis.start * 2),
-                y: node.geometry.y + (featDis.boxheight)
+                x: node.getOLGeometry().x + (featDis.start * 2),
+                y: node.getOLGeometry().y + (featDis.boxheight)
+//                x: node.geometry.x + (featDis.start * 2),
+//                y: node.geometry.y + (featDis.boxheight)
             }
         } else if (sign === 1) {
             temp = {
-                x: node.geometry.x + featDis.boxheight,
-                y: node.geometry.y + (featDis.boxincwidth * numIcons/1.8)
+                x: node.getOLGeometry().x + featDis.boxheight,
+                y: node.getOLGeometry().y + (featDis.boxincwidth * numIcons/1.8)
+//                x: node.geometry.x + featDis.boxheight,
+//                y: node.geometry.y + (featDis.boxincwidth * numIcons/1.8)
             }
         } else if (sign === 2) {
             temp = {
-                x: node.geometry.x - (featDis.start + (featDis.boxincwidth * numIcons)),
-                y: node.geometry.y + (featDis.start + featDis.boxheight)
+                x: node.getOLGeometry().x - (featDis.start + (featDis.boxincwidth * numIcons)),
+                y: node.getOLGeometry().y + (featDis.start + featDis.boxheight)
+//                x: node.geometry.x - (featDis.start + (featDis.boxincwidth * numIcons)),
+//                y: node.geometry.y + (featDis.start + featDis.boxheight)
             }
         } else if (sign === 3) {
             temp = {
-                x: node.geometry.x + (featDis.start + featDis.boxincwidth),
-                y: node.geometry.y - (featDis.start + featDis.boxheight)
+                x: node.getOLGeometry().x + (featDis.start + featDis.boxincwidth),
+                y: node.getOLGeometry().y - (featDis.start + featDis.boxheight)
+//                x: node.geometry.x + (featDis.start + featDis.boxincwidth),
+//                y: node.geometry.y - (featDis.start + featDis.boxheight)
             }
         } else if (sign === 4) {
             temp = {
-                x: node.geometry.x - (featDis.start + (featDis.boxheight * 1.5)),
-                y: node.geometry.y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
+                x: node.getOLGeometry().x - (featDis.start + (featDis.boxheight * 1.5)),
+                y: node.getOLGeometry().y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
+//                x: node.geometry.x - (featDis.start + (featDis.boxheight * 1.5)),
+//                y: node.geometry.y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
             }
         } else if (sign === 5) {
             temp = {
-                x: node.geometry.x + (featDis.start + featDis.boxincwidth/2),
-                y: node.geometry.y + (featDis.start/2)
+                x: node.getOLGeometry().x + (featDis.start + featDis.boxincwidth/2),
+                y: node.getOLGeometry().y + (featDis.start/2)
+//                x: node.geometry.x + (featDis.start + featDis.boxincwidth/2),
+//                y: node.geometry.y + (featDis.start/2)
             }
         } else if (sign === 6) {
             temp = {
-                x: node.geometry.x - (featDis.start),
-                y: node.geometry.y - (featDis.start * (featDis.boxincwidth * numIcons/2))
+                x: node.getOLGeometry().x - (featDis.start),
+                y: node.getOLGeometry().y - (featDis.start * (featDis.boxincwidth * numIcons/2))
+//                x: node.geometry.x - (featDis.start),
+//                y: node.geometry.y - (featDis.start * (featDis.boxincwidth * numIcons/2))
             }
         } else if (sign === 7) {
             temp = {
-                x: node.geometry.x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
-                y: node.geometry.y - (featDis.start)
+                x: node.getOLGeometry().x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
+                y: node.getOLGeometry().y - (featDis.start)
+//                x: node.geometry.x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
+//                y: node.geometry.y - (featDis.start)
             }
         }
     } else {
         if (sign === 0) {
             temp = {
-                x: node.geometry.x + (featDis.start * 2),
-                y: node.geometry.y + (featDis.boxheight)
+                x: node.getOLGeometry().x + (featDis.start * 2),
+                y: node.getOLGeometry().y + (featDis.boxheight)
+//                x: node.geometry.x + (featDis.start * 2),
+//                y: node.geometry.y + (featDis.boxheight)
             }
         } else if (sign === 1) {
             temp = {
-                x: node.geometry.x + featDis.boxheight,
-                y: node.geometry.y + (featDis.boxincwidth * numIcons/1.8)
+                x: node.getOLGeometry().x + featDis.boxheight,
+                y: node.getOLGeometry().y + (featDis.boxincwidth * numIcons/1.8)
+//                x: node.geometry.x + featDis.boxheight,
+//                y: node.geometry.y + (featDis.boxincwidth * numIcons/1.8)
             }
         } else if (sign === 2) {
             temp = {
-                x: node.geometry.x - (featDis.start + (featDis.boxincwidth * numIcons)),
-                y: node.geometry.y + (featDis.start + featDis.boxheight)
+                x: node.getOLGeometry().x - (featDis.start + (featDis.boxincwidth * numIcons)),
+                y: node.getOLGeometry().y + (featDis.start + featDis.boxheight)
+//                x: node.geometry.x - (featDis.start + (featDis.boxincwidth * numIcons)),
+//                y: node.geometry.y + (featDis.start + featDis.boxheight)
             }
         } else if (sign === 3) {
             temp = {
-                x: node.geometry.x + (featDis.start + featDis.boxincwidth),
-                y: node.geometry.y - (featDis.start + featDis.boxheight * 2)
+                x: node.getOLGeometry().x + (featDis.start + featDis.boxincwidth),
+                y: node.getOLGeometry().y - (featDis.start + featDis.boxheight * 2)
+//                x: node.geometry.x + (featDis.start + featDis.boxincwidth),
+//                y: node.geometry.y - (featDis.start + featDis.boxheight * 2)
             }
         } else if (sign === 4) {
             temp = {
-                x: node.geometry.x - (featDis.start + (featDis.boxheight * 1.5)),
-                y: node.geometry.y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
+                x: node.getOLGeometry().x - (featDis.start + (featDis.boxheight * 1.5)),
+                y: node.getOLGeometry().y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
+//                x: node.geometry.x - (featDis.start + (featDis.boxheight * 1.5)),
+//                y: node.geometry.y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
             }
         } else if (sign === 5) {
             temp = {
-                x: node.geometry.x + (featDis.start + featDis.boxincwidth/2),
-                y: node.geometry.y + (featDis.start/2)
+                x: node.getOLGeometry().x + (featDis.start + featDis.boxincwidth/2),
+                y: node.getOLGeometry().y + (featDis.start/2)
+//                x: node.geometry.x + (featDis.start + featDis.boxincwidth/2),
+//                y: node.geometry.y + (featDis.start/2)
             }
         } else if (sign === 6) {
             temp = {
-                x: node.geometry.x - (featDis.start),
-                y: node.geometry.y - (featDis.start * (featDis.boxincwidth * numIcons/2))
+                x: node.getOLGeometry().x - (featDis.start),
+                y: node.getOLGeometry().y - (featDis.start * (featDis.boxincwidth * numIcons/2))
+//                x: node.geometry.x - (featDis.start),
+//                y: node.geometry.y - (featDis.start * (featDis.boxincwidth * numIcons/2))
             }
         } else if (sign === 7) {
             temp = {
-                x: node.geometry.x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
-                y: node.geometry.y - (featDis.start)
+                x: node.getOLGeometry().x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
+                y: node.getOLGeometry().y - (featDis.start)
+//                x: node.geometry.x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
+//                y: node.geometry.y - (featDis.start)
             }
         }
     }
