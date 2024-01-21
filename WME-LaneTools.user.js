@@ -12,7 +12,8 @@
 // @match        https://beta.waze.com/*/editor*
 // @exclude      https://www.waze.com/user/editor*
 // @require      https://greasyfork.org/scripts/24851-wazewrap/code/WazeWrap.js
-// @grant        none
+// @grant        GM_xmlhttpRequest
+// @connect      raw.githubusercontent.com
 // @contributionURL https://github.com/WazeDev/Thank-The-Authors
 // ==/UserScript==
 
@@ -25,6 +26,7 @@
 
 const LANETOOLS_VERSION = `${GM_info.script.version}`;
 const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js';
+const DOWNLOAD_URL = 'https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js';
 const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
 const LI_UPDATE_NOTES = `<b>Reverting Version</b><br>
 Fixes submitted by Karlsosha<br>
@@ -154,7 +156,7 @@ let seaPickle;
 let UpdateObj;
 let MultiAction;
 let SetTurn;
-let shortcutsDisabled = false; 
+let shortcutsDisabled = false;
 let isRBS = false;
 let allowCpyPst = false;
 let langLocality = 'default';
@@ -163,7 +165,7 @@ let UPDATEDZOOM;
 console.log('LaneTools: initializing...');
 
 function laneToolsBootstrap(tries = 0) {
-    if (window.W && window.W.map && window.W.model && window.W.loginManager.user && $ && WazeWrap.Ready) {
+    if (W && W.map && W.model && W.loginManager.user && $ && WazeWrap.Ready) {
         initLaneTools();
     } else if (tries < 500) {
         setTimeout(() => {
@@ -175,6 +177,7 @@ function laneToolsBootstrap(tries = 0) {
 }
 
 function initLaneTools() {
+    startScriptUpdateMonitor();
     seaPickle = W.loginManager.user;
     UpdateObj = require('Waze/Action/UpdateObject');
     MultiAction = require('Waze/Action/MultiAction');
@@ -444,6 +447,17 @@ function initLaneTools() {
         console.log('LaneTools: loaded');
     } else {
         console.error('LaneTools: loading error....');
+    }
+}
+
+function startScriptUpdateMonitor() {
+    let updateMonitor;
+    try {
+        updateMonitor = new WazeWrap.Alerts.ScriptUpdateMonitor(GM_info.script.name, GM_info.script.version, DOWNLOAD_URL, GM_xmlhttpRequest, DOWNLOAD_URL);
+        updateMonitor.start();
+    } catch (ex) {
+        // Report, but don't stop if ScriptUpdateMonitor fails.
+        console.error('WME LaneTools:', ex);
     }
 }
 
@@ -1270,7 +1284,7 @@ function lanesTabSetup() {
         console.log('Edit panel not yet loaded.');
         return;
     }
-    
+
     const selSeg = W.selectionManager.getSelectedFeatures();
     let fwdDone = false;
     let revDone = false;
@@ -2172,7 +2186,7 @@ function scanSegments(segments, selectedSegsOverride) {
             node = getNodeObj(sAtts.fromNodeID);
             oppNode = getNodeObj(sAtts.toNodeID);
             laneCount = revLaneCount;
-            oppLaneCount = fwdLaneCount;    
+            oppLaneCount = fwdLaneCount;
         }
 
         let tlns = false;
@@ -2756,7 +2770,7 @@ function isHeuristicsCandidate(segCandidate, curNodeExit, nodeExitSegIds, curNod
     }
 
     function lt_is_turn_allowed(s_from, via_node, s_to) {
-        lt_log(`Allow from ${s_from.attributes.id} to ${s_to.attributes.id} via ${via_node.attributes.id}? 
+        lt_log(`Allow from ${s_from.attributes.id} to ${s_to.attributes.id} via ${via_node.attributes.id}?
             ${via_node.isTurnAllowedBySegDirections(s_from, s_to)} | ${s_from.isTurnAllowed(s_to, via_node)}`, 3);
 
         // Is there a driving direction restriction?
@@ -2785,8 +2799,8 @@ function isHeuristicsCandidate(segCandidate, curNodeExit, nodeExitSegIds, curNod
 
 // Segment Length - borrowed from JAI
 function lt_segment_length(segment) {
-    let len = segment.getOLGeometry().getGeodesicLength(window.W.map.olMap.projection);
-//    let len = segment.geometry.getGeodesicLength(window.W.map.olMap.projection);
+    let len = segment.getOLGeometry().getGeodesicLength(W.map.olMap.projection);
+//    let len = segment.geometry.getGeodesicLength(W.map.olMap.projection);
     lt_log(`segment: ${segment.attributes.id} computed len: ${len} attrs len: ${segment.attributes.length}`, 3);
     return len;
 }
