@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.01.22.02
+// @version      2024.01.22.03
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -29,7 +29,7 @@ const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-Lane
 const DOWNLOAD_URL = 'https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js';
 const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
 const LI_UPDATE_NOTES = `<b>Reverting Version</b><br>
-Fixes submitted by Karlsosha<br>
+Fixes for latest WME Release 01/22/2024<br>
 <b>FIXES:</b><br><br>
 `;
 
@@ -1349,11 +1349,11 @@ function lanesTabSetup() {
             delRev.off();
             delOpp.off();
 
-            if (!getId('li-del-rev-btn') && !revDone && selSeg[0].attributes.wazeFeature._wmeObject.getRevLanes().laneCount > 0) {
+            if (!getId('li-del-rev-btn') && !revDone && selSeg[0]._wmeObject.getRevLanes().laneCount > 0) {
                 if($('.rev-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction').length > 0) {
                     $btnCont2.prependTo('.rev-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction');
                     $('.rev-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction').css('border-bottom', `4px dashed ${LtSettings.BAColor}`);
-                } else if (selSeg[0].attributes.wazeFeature._wmeObject.attributes.revDirection != true) { //jm6087
+                } else if (selSeg[0]._wmeObject.attributes.revDirection != true) { //jm6087
                     $oppButton.prop('title', 'rev');
                     $oppButton.prependTo(("#edit-panel > div > div > div > div.segment-edit-section > wz-tabs > wz-tab.lanes-tab"));
                 }
@@ -1361,11 +1361,11 @@ function lanesTabSetup() {
                 $('.rev-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction').css('border-bottom', `4px dashed ${LtSettings.BAColor}`);
             }
 
-            if (!getId('li-del-fwd-btn') && !fwdDone && selSeg[0].attributes.wazeFeature._wmeObject.getFwdLanes().laneCount > 0) {
+            if (!getId('li-del-fwd-btn') && !fwdDone && selSeg[0]._wmeObject.getFwdLanes().laneCount > 0) {
                 if($('.fwd-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction').length > 0) {
                     $btnCont1.prependTo('.fwd-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction');
                     $('.fwd-lanes > div > div > div.lane-instruction.lane-instruction-from > div.instruction').css('border-bottom', `4px dashed ${LtSettings.ABColor}`);
-                } else if (selSeg[0].attributes.wazeFeature._wmeObject.attributes.fwdDirection != true) { //jm6087
+                } else if (selSeg[0]._wmeObject.attributes.fwdDirection != true) { //jm6087
                     $oppButton.prop('title', 'fwd');
                     $oppButton.prependTo(("#edit-panel > div > div > div > div.segment-edit-section > wz-tabs > wz-tab.lanes-tab"));
                 }
@@ -1675,7 +1675,7 @@ function lanesTabSetup() {
     }
 
     function colorCSDir() {
-        const seg = selSeg[0].attributes.wazeFeature._wmeObject;
+        const seg = selSeg[0]._wmeObject;
         const fwdNode = getNodeObj(seg.attributes.toNodeID);
         const revNode = getNodeObj(seg.attributes.fromNodeID);
 
@@ -1722,7 +1722,7 @@ function lanesTabSetup() {
     }
     // Begin lanes tab enhancements
     if (getId('lt-UIEnable').checked && getId('lt-ScriptEnabled').checked && (selSeg.length > 0)) {
-        if (selSeg.length === 1 && selSeg[0].attributes.wazeFeature._wmeObject.type === 'segment') { // Check to ensure that there is only one segment object selected, then setup click event
+        if (selSeg.length === 1 && selSeg[0]._wmeObject.type === 'segment') { // Check to ensure that there is only one segment object selected, then setup click event
             $('.lanes-tab').on("click",(event) => {
                 fwdDone = false;
                 revDone = false;
@@ -1762,7 +1762,7 @@ function displayToolbar() {
     const objSelected = W.selectionManager.getSelectedFeatures();
 
     if (objSelected.length === 1 && getId('lt-CopyEnable').checked && getId('lt-ScriptEnabled').checked) {
-        if (objSelected[0].attributes.wazeFeature._wmeObject.type.toLowerCase() === 'segment') {
+        if (objSelected[0]._wmeObject.type.toLowerCase() === 'segment') {
 //        if (objSelected[0].model.type.toLowerCase() === 'segment') {
             const map = $('#map');
             $('#lt-toolbar-container').css({
@@ -1844,7 +1844,7 @@ function lt_get_next_to_last_point(segment) {
 
 function delLanes(dir) {
     const selObjs = W.selectionManager.getSelectedFeatures();
-    const selSeg = selObjs[0].attributes.wazeFeature._wmeObject;
+    const selSeg = selObjs[0]._wmeObject;
     const turnGraph = W.model.getTurnGraph();
     const mAction = new MultiAction();
     let node;
@@ -2121,8 +2121,8 @@ function scanHeuristicsCandidates(features) {
     let segs = [];
     let count = 0;
     _.each(features, f => {
-        if (f && f.attributes.wazeFeature._wmeObject && f.attributes.wazeFeature._wmeObject.type === 'segment') {
-            count = segs.push(f.attributes.wazeFeature._wmeObject);
+        if (f && f._wmeObject && f._wmeObject.type === 'segment') {
+            count = segs.push(f._wmeObject);
         }
     });
 
@@ -2425,7 +2425,7 @@ function waitForElementLoaded(selector) {
 function initLaneGuidanceClickSaver() {
     let laneObserver = new MutationObserver(mutations => {
         if (W.selectionManager.getSelectedFeatures()[0] &&
-            W.selectionManager.getSelectedFeatures()[0].attributes.wazeFeature._wmeObject.type === 'segment' &&
+            W.selectionManager.getSelectedFeatures()[0]._wmeObject.type === 'segment' &&
             getId('lt-ScriptEnabled').checked) {
             let laneCountElement = document.getElementsByName("laneCount");
             for (let idx = 0; idx < laneCountElement.length; idx++) {
@@ -2818,7 +2818,7 @@ function lt_log(lt_log_msg, lt_log_level = 1) {
 function copyLaneInfo(side) {
     _turnInfo = [];
     const selFeatures = W.selectionManager.getSelectedFeatures();
-    const seg = selFeatures[0].attributes.wazeFeature._wmeObject;
+    const seg = selFeatures[0]._wmeObject;
     const segAtt = seg.getFeatureAttributes();
     const segGeo = seg.geometry.components;
     const nodeID = side === 'A' ? segAtt.fromNodeID : segAtt.toNodeID;
@@ -2886,7 +2886,7 @@ function pasteLaneInfo(side) {
     const mAction = new MultiAction();
     mAction.setModel(W.model);
     const selFeatures = W.selectionManager.getSelectedFeatures();
-    const seg = selFeatures[0].attributes.wazeFeature._wmeObject;
+    const seg = selFeatures[0]._wmeObject;
     const segGeo = seg.geometry.components;
     const segAtt = seg.getFeatureAttributes();
     const nodeID = side === 'A' ? segAtt.fromNodeID : segAtt.toNodeID;
@@ -3518,10 +3518,10 @@ function displayLaneGraphics() {
     removeLaneGraphics();
     const sel = W.selectionManager.getSelectedFeatures();
 
-    if (!getId('lt-ScriptEnabled').checked || !getId('lt-IconsEnable').checked || sel.length !== 1 || sel[0].attributes.wazeFeature._wmeObject.type !== 'segment')
+    if (!getId('lt-ScriptEnabled').checked || !getId('lt-IconsEnable').checked || sel.length !== 1 || sel[0]._wmeObject.type !== 'segment')
         return;
 
-    const seg = sel[0].attributes.wazeFeature._wmeObject;
+    const seg = sel[0]._wmeObject;
     const zoomLevel = W.map.getOLMap().getZoom();
 
     if (zoomLevel < 15 ||
