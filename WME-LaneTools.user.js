@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.01.21.02
+// @version      2024.01.22.02
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -611,7 +611,7 @@ async function setupOptions() {
     setHeuristics();
     setTranslations();
 
-    if (_pickleColor > 1) {
+    if (_pickleColor > 0) {
         let featureList = 'LaneTools: The following special access features are enabled: ';
         $('#lt-adv-tools').css('display', 'block');
         let quickTog = $('#lt-trans-quickTog');
