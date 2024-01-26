@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.01.22.03
+// @version      2024.01.25.01
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -28,9 +28,9 @@ const LANETOOLS_VERSION = `${GM_info.script.version}`;
 const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js';
 const DOWNLOAD_URL = 'https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js';
 const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
-const LI_UPDATE_NOTES = `<b>Reverting Version</b><br>
-Fixes for latest WME Release 01/22/2024<br>
-<b>FIXES:</b><br><br>
+const LI_UPDATE_NOTES = `<b>More fixes</b><br>
+KNOWN ISSUE:  You have to click on the clicksaver twice for lanes to get added<br>
+<b></b><br><br>
 `;
 
 const LANETOOLS_DEBUG_LEVEL = 1;
@@ -1851,7 +1851,7 @@ function delLanes(dir) {
     let conSegs;
     let updates = {};
 
-    mAction.setModel(W.model);
+//    mAction.setModel(W.model);
 
     if (dir === 'fwd') {
         updates.fwdLaneCount = 0;
@@ -1870,7 +1870,7 @@ function delLanes(dir) {
         revLanes.find('.form-control').trigger("change");
     }
 
-    mAction.doSubAction(new UpdateObj(selSeg, updates));
+    mAction.doSubAction(W.model, new UpdateObj(selSeg, updates));
 
     for (let i = 0; i < conSegs.length; i++) {
         let turnStatus = turnGraph.getTurnThroughNode(node, selSeg, getSegObj(conSegs[i]));
@@ -1880,7 +1880,7 @@ function delLanes(dir) {
             turnData = turnData.withLanes();
             turnStatus = turnStatus.withTurnData(turnData);
 
-            mAction.doSubAction(new SetTurn(turnGraph, turnStatus));
+            mAction.doSubAction(W.model, new SetTurn(turnGraph, turnStatus));
         }
     }
 
@@ -2884,7 +2884,7 @@ function copyLaneInfo(side) {
 
 function pasteLaneInfo(side) {
     const mAction = new MultiAction();
-    mAction.setModel(W.model);
+//    mAction.setModel(W.model);
     const selFeatures = W.selectionManager.getSelectedFeatures();
     const seg = selFeatures[0]._wmeObject;
     const segGeo = seg.geometry.components;
@@ -2953,9 +2953,9 @@ function pasteLaneInfo(side) {
 
     if (_turnInfo.length === pasteInfo.length) {
         if (side === 'A') {
-            mAction.doSubAction(new UpdateObj(seg, { revLaneCount: laneCount }));
+            mAction.doSubAction(W.model, new UpdateObj(seg, { revLaneCount: laneCount }));
         } else {
-            mAction.doSubAction(new UpdateObj(seg, { fwdLaneCount: laneCount }));
+            mAction.doSubAction(W.model, new UpdateObj(seg, { fwdLaneCount: laneCount }));
         }
 
         for (let k = 0; k < pasteInfo.length; k++) {
@@ -2979,7 +2979,7 @@ function pasteLaneInfo(side) {
             turnData = turnData.withLanes(pasteTurn[k].lanes);
             turnStatus = turnStatus.withTurnData(turnData);
 
-            mAction.doSubAction(new SetTurn(turnGraph, turnStatus));
+            mAction.doSubAction(W.model, new SetTurn(turnGraph, turnStatus));
         }
 
         mAction._description = 'Pasted some lane stuff';
@@ -3562,3 +3562,4 @@ function displayLaneGraphics() {
 }
 
 laneToolsBootstrap();
+
