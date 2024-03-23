@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.03.23.02
+// @version      2024.03.23.03
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -29,7 +29,7 @@ const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-Lane
 const DOWNLOAD_URL = 'https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js';
 const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
 const LI_UPDATE_NOTES = `Chased around some data playing hide and seek in WME.><br>
-KNOWN ISSUE:  The 1 lane clicksver button may not function.<br>
+KNOWN ISSUE:  The 1 lane clicksver button may not function. [FIXED-hopefully]<br>
 KNOWN ISSUE:  The voice options for LG won't work while the script is enabled.<br>
 KNOWN ISSUE:  Several tab UI enhancements not working yet.<br>
 `;
@@ -1519,7 +1519,7 @@ function lanesTabSetup() {
         let lanes = $(dirLanesClass);
         if (lanes.find(".direction-lanes").children().length > 0x0 && !getId(addLanesTag)) {
             let addLanesItem = $(
-                    '<div style="display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;" id="' + addLanesTag + '" />'),
+                    '<div style="display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;margin-left:15px;" id="' + addLanesTag + '" />'),
                 classNamesList = [ "lt-add-lanes", laneDir ], laneCountsToAppend = getLaneItems(10, classNamesList);
             for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
                 addLanesItem.append(laneCountsToAppend[idx]);
