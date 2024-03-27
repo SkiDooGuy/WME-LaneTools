@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.03.23.03
+// @version      2024.03.27.01
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -28,11 +28,12 @@ const LANETOOLS_VERSION = `${GM_info.script.version}`;
 const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js';
 const DOWNLOAD_URL = 'https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js';
 const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
-const LI_UPDATE_NOTES = `Chased around some data playing hide and seek in WME.><br>
-KNOWN ISSUE:  The 1 lane clicksver button may not function. [FIXED-hopefully]<br>
-KNOWN ISSUE:  The voice options for LG won't work while the script is enabled.<br>
-KNOWN ISSUE:  Several tab UI enhancements not working yet.<br>
-`;
+const LI_UPDATE_NOTES = `Removed some outdated code.<br>
+FIXED:  The 1 lane clicksver button may not function. (Even more fixed than last time!)<br>
+FIXED:  The voice options for LG didn't work while the script is enabled.<br>
+FIXED:  Auto-open lanes tab wasn't actually auto-opening the lanes tab.
+KNOWN ISSUE:  Some tab UI enhancements may not work as expected.<br>
+KNOWN ISSUE:  Highlighting hasn't worked right since far lanes. Maybe I'll try to tacke that? Time will tell.`;
 
 const LANETOOLS_DEBUG_LEVEL = 1;
 const configArray = {};
@@ -161,7 +162,6 @@ let shortcutsDisabled = false;
 let isRBS = false;
 let allowCpyPst = false;
 let langLocality = 'default';
-let UPDATEDZOOM;
 
 console.log('LaneTools: initializing...');
 
@@ -183,7 +183,6 @@ function initLaneTools() {
     UpdateObj = require('Waze/Action/UpdateObject');
     MultiAction = require('Waze/Action/MultiAction');
     SetTurn = require('Waze/Model/Graph/Actions/SetTurn');
-    UPDATEDZOOM = W.map.getOLMap().getNumZoomLevels() === 23;
 
     const ltCss = [
         '.lt-wrapper {position:relative;width:100%;font-size:12px;font-family:"Rubik", "Boing-light", sans-serif;user-select:none;}',
@@ -436,7 +435,6 @@ function initLaneTools() {
         </div>`
     ].join(' '));
 
-    seaPickle = W.loginManager.user;
     _pickleColor = seaPickle.attributes.rank;
     let proceedReady = _pickleColor >= 0;
 
@@ -619,7 +617,7 @@ async function setupOptions() {
         quickTog.attr('data-original-title', `${strings.selAllTooltip}`);
         quickTog.tooltip();
         _.each(RBSArray, u => {
-            if (u[0] === seaPickle.userName) {
+            if (u[0] === seaPickle.attributes.userName) {
                 if (u[1] === '1') {
                     isRBS = true;
                 }
@@ -799,6 +797,9 @@ async function setupOptions() {
         checkShortcutsChanged();
     });
 
+    scanArea();
+    lanesTabSetup();
+    displayLaneGraphics();
     colorTitle.tooltip();
 }
 
@@ -1519,7 +1520,7 @@ function lanesTabSetup() {
         let lanes = $(dirLanesClass);
         if (lanes.find(".direction-lanes").children().length > 0x0 && !getId(addLanesTag)) {
             let addLanesItem = $(
-                    '<div style="display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;margin-left:15px;" id="' + addLanesTag + '" />'),
+                    '<div style="display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;position:relative;" id="' + addLanesTag + '" />'),
                 classNamesList = [ "lt-add-lanes", laneDir ], laneCountsToAppend = getLaneItems(10, classNamesList);
             for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
                 addLanesItem.append(laneCountsToAppend[idx]);
@@ -1726,21 +1727,36 @@ function lanesTabSetup() {
     // Begin lanes tab enhancements
     if (getId('lt-UIEnable').checked && getId('lt-ScriptEnabled').checked && (selSeg.length > 0)) {
         if (selSeg.length === 1 && selSeg[0]._wmeObject.type === 'segment') { // Check to ensure that there is only one segment object selected, then setup click event
-            $('.lanes-tab').on("click",(event) => {
-                fwdDone = false;
-                revDone = false;
-                updateUI(event);
-            });
+            //$('.lanes-tab').on("click",(event) => {
+            //    fwdDone = false;
+            //    revDone = false;
+            //    updateUI(event);
+            //});
             if (getId('lt-AutoLanesTab').checked) { // If the auto open lanes option is enabled, initiate a click event on the Lanes tab element
                 let timeout = 10;
                 waitForElementLoaded(".lanes-tab").then((elm) => {
-                    $('.tabs-labels:nth-child(3)').trigger("click");
+                    clickLanesTab();
+                    fwdDone = false;
+                    revDone = false;
+                    updateUI(event);
                 });
             }
         } else if (selSeg.length === 2) {
             // We have exactly TWO features selected.  Check heuristics and highlight
             scanHeuristicsCandidates(selSeg,);
         }
+    }
+}
+
+function clickLanesTab(tries = 0) {
+    if ($('.tabs-labels > div:nth-child(3)', $('.segment-edit-section > wz-tabs')[0].shadowRoot).length >0) {
+        $('.tabs-labels > div:nth-child(3)', $('.segment-edit-section > wz-tabs')[0].shadowRoot).trigger('click');
+    } else if (tries < 500) {
+        setTimeout(() => {
+            clickLanesTab(tries + 1);
+        }, 200);
+    } else {
+        console.error('LaneTools: Failed to click lanes tab');
     }
 }
 
@@ -3024,121 +3040,61 @@ function convertToBase64(svgs) {
 }
 function getStartPoints(node, featDis, numIcons, sign) {
     let temp = {};
-    if (UPDATEDZOOM) {
-        if (sign === 0) {
-            temp = {
-                x: node.getOLGeometry().x + (featDis.start * 2),
-                y: node.getOLGeometry().y + (featDis.boxheight)
-//                x: node.geometry.x + (featDis.start * 2),
-//                y: node.geometry.y + (featDis.boxheight)
-            }
-        } else if (sign === 1) {
-            temp = {
-                x: node.getOLGeometry().x + featDis.boxheight,
-                y: node.getOLGeometry().y + (featDis.boxincwidth * numIcons/1.8)
-//                x: node.geometry.x + featDis.boxheight,
-//                y: node.geometry.y + (featDis.boxincwidth * numIcons/1.8)
-            }
-        } else if (sign === 2) {
-            temp = {
-                x: node.getOLGeometry().x - (featDis.start + (featDis.boxincwidth * numIcons)),
-                y: node.getOLGeometry().y + (featDis.start + featDis.boxheight)
-//                x: node.geometry.x - (featDis.start + (featDis.boxincwidth * numIcons)),
-//                y: node.geometry.y + (featDis.start + featDis.boxheight)
-            }
-        } else if (sign === 3) {
-            temp = {
-                x: node.getOLGeometry().x + (featDis.start + featDis.boxincwidth),
-                y: node.getOLGeometry().y - (featDis.start + featDis.boxheight)
-//                x: node.geometry.x + (featDis.start + featDis.boxincwidth),
-//                y: node.geometry.y - (featDis.start + featDis.boxheight)
-            }
-        } else if (sign === 4) {
-            temp = {
-                x: node.getOLGeometry().x - (featDis.start + (featDis.boxheight * 1.5)),
-                y: node.getOLGeometry().y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
-//                x: node.geometry.x - (featDis.start + (featDis.boxheight * 1.5)),
-//                y: node.geometry.y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
-            }
-        } else if (sign === 5) {
-            temp = {
-                x: node.getOLGeometry().x + (featDis.start + featDis.boxincwidth/2),
-                y: node.getOLGeometry().y + (featDis.start/2)
-//                x: node.geometry.x + (featDis.start + featDis.boxincwidth/2),
-//                y: node.geometry.y + (featDis.start/2)
-            }
-        } else if (sign === 6) {
-            temp = {
-                x: node.getOLGeometry().x - (featDis.start),
-                y: node.getOLGeometry().y - (featDis.start * (featDis.boxincwidth * numIcons/2))
-//                x: node.geometry.x - (featDis.start),
-//                y: node.geometry.y - (featDis.start * (featDis.boxincwidth * numIcons/2))
-            }
-        } else if (sign === 7) {
-            temp = {
-                x: node.getOLGeometry().x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
-                y: node.getOLGeometry().y - (featDis.start)
-//                x: node.geometry.x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
-//                y: node.geometry.y - (featDis.start)
-            }
+    if (sign === 0) {
+        temp = {
+            x: node.getOLGeometry().x + (featDis.start * 2),
+            y: node.getOLGeometry().y + (featDis.boxheight)
+            //                x: node.geometry.x + (featDis.start * 2),
+            //                y: node.geometry.y + (featDis.boxheight)
         }
-    } else {
-        if (sign === 0) {
-            temp = {
-                x: node.getOLGeometry().x + (featDis.start * 2),
-                y: node.getOLGeometry().y + (featDis.boxheight)
-//                x: node.geometry.x + (featDis.start * 2),
-//                y: node.geometry.y + (featDis.boxheight)
-            }
-        } else if (sign === 1) {
-            temp = {
-                x: node.getOLGeometry().x + featDis.boxheight,
-                y: node.getOLGeometry().y + (featDis.boxincwidth * numIcons/1.8)
-//                x: node.geometry.x + featDis.boxheight,
-//                y: node.geometry.y + (featDis.boxincwidth * numIcons/1.8)
-            }
-        } else if (sign === 2) {
-            temp = {
-                x: node.getOLGeometry().x - (featDis.start + (featDis.boxincwidth * numIcons)),
-                y: node.getOLGeometry().y + (featDis.start + featDis.boxheight)
-//                x: node.geometry.x - (featDis.start + (featDis.boxincwidth * numIcons)),
-//                y: node.geometry.y + (featDis.start + featDis.boxheight)
-            }
-        } else if (sign === 3) {
-            temp = {
-                x: node.getOLGeometry().x + (featDis.start + featDis.boxincwidth),
-                y: node.getOLGeometry().y - (featDis.start + featDis.boxheight * 2)
-//                x: node.geometry.x + (featDis.start + featDis.boxincwidth),
-//                y: node.geometry.y - (featDis.start + featDis.boxheight * 2)
-            }
-        } else if (sign === 4) {
-            temp = {
-                x: node.getOLGeometry().x - (featDis.start + (featDis.boxheight * 1.5)),
-                y: node.getOLGeometry().y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
-//                x: node.geometry.x - (featDis.start + (featDis.boxheight * 1.5)),
-//                y: node.geometry.y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
-            }
-        } else if (sign === 5) {
-            temp = {
-                x: node.getOLGeometry().x + (featDis.start + featDis.boxincwidth/2),
-                y: node.getOLGeometry().y + (featDis.start/2)
-//                x: node.geometry.x + (featDis.start + featDis.boxincwidth/2),
-//                y: node.geometry.y + (featDis.start/2)
-            }
-        } else if (sign === 6) {
-            temp = {
-                x: node.getOLGeometry().x - (featDis.start),
-                y: node.getOLGeometry().y - (featDis.start * (featDis.boxincwidth * numIcons/2))
-//                x: node.geometry.x - (featDis.start),
-//                y: node.geometry.y - (featDis.start * (featDis.boxincwidth * numIcons/2))
-            }
-        } else if (sign === 7) {
-            temp = {
-                x: node.getOLGeometry().x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
-                y: node.getOLGeometry().y - (featDis.start)
-//                x: node.geometry.x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
-//                y: node.geometry.y - (featDis.start)
-            }
+    } else if (sign === 1) {
+        temp = {
+            x: node.getOLGeometry().x + featDis.boxheight,
+            y: node.getOLGeometry().y + (featDis.boxincwidth * numIcons/1.8)
+            //                x: node.geometry.x + featDis.boxheight,
+            //                y: node.geometry.y + (featDis.boxincwidth * numIcons/1.8)
+        }
+    } else if (sign === 2) {
+        temp = {
+            x: node.getOLGeometry().x - (featDis.start + (featDis.boxincwidth * numIcons)),
+            y: node.getOLGeometry().y + (featDis.start + featDis.boxheight)
+            //                x: node.geometry.x - (featDis.start + (featDis.boxincwidth * numIcons)),
+            //                y: node.geometry.y + (featDis.start + featDis.boxheight)
+        }
+    } else if (sign === 3) {
+        temp = {
+            x: node.getOLGeometry().x + (featDis.start + featDis.boxincwidth),
+            y: node.getOLGeometry().y - (featDis.start + featDis.boxheight)
+            //                x: node.geometry.x + (featDis.start + featDis.boxincwidth),
+            //                y: node.geometry.y - (featDis.start + featDis.boxheight)
+        }
+    } else if (sign === 4) {
+        temp = {
+            x: node.getOLGeometry().x - (featDis.start + (featDis.boxheight * 1.5)),
+            y: node.getOLGeometry().y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
+            //                x: node.geometry.x - (featDis.start + (featDis.boxheight * 1.5)),
+            //                y: node.geometry.y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
+        }
+    } else if (sign === 5) {
+        temp = {
+            x: node.getOLGeometry().x + (featDis.start + featDis.boxincwidth/2),
+            y: node.getOLGeometry().y + (featDis.start/2)
+            //                x: node.geometry.x + (featDis.start + featDis.boxincwidth/2),
+            //                y: node.geometry.y + (featDis.start/2)
+        }
+    } else if (sign === 6) {
+        temp = {
+            x: node.getOLGeometry().x - (featDis.start),
+            y: node.getOLGeometry().y - (featDis.start * (featDis.boxincwidth * numIcons/2))
+            //                x: node.geometry.x - (featDis.start),
+            //                y: node.geometry.y - (featDis.start * (featDis.boxincwidth * numIcons/2))
+        }
+    } else if (sign === 7) {
+        temp = {
+            x: node.getOLGeometry().x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
+            y: node.getOLGeometry().y - (featDis.start)
+            //                x: node.geometry.x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
+            //                y: node.geometry.y - (featDis.start)
         }
     }
     return temp;
@@ -3146,98 +3102,97 @@ function getStartPoints(node, featDis, numIcons, sign) {
 
 function getFeatDistance() {
     var label_distance = {};
-    if (UPDATEDZOOM) {
-        switch (W.map.getOLMap().getZoom()) {
-            case 22:
-                label_distance.start = .5;
-                label_distance.boxheight = 1.7;
-                label_distance.boxincwidth = 1.1;
-                label_distance.iconbordermargin = .1;
-                label_distance.iconborderheight = 1.6;
-                label_distance.iconborderwidth = 1;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 21:
-                label_distance.start = 1;
-                label_distance.boxheight = 3.2;
-                label_distance.boxincwidth = 2.2;
-                label_distance.iconbordermargin = .2;
-                label_distance.iconborderheight = 3;
-                label_distance.iconborderwidth = 2;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 20:
-                label_distance.start = 2;
-                label_distance.boxheight = 5.2;
-                label_distance.boxincwidth = 3.8;
-                label_distance.iconbordermargin = .3;
-                label_distance.iconborderheight = 4.9;
-                label_distance.iconborderwidth = 3.5;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 19:
-                label_distance.start = 3;
-                label_distance.boxheight = 10.0;
-                label_distance.boxincwidth = 7.2;
-                label_distance.iconbordermargin = .4;
-                label_distance.iconborderheight = 9.6;
-                label_distance.iconborderwidth = 6.8;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 18:
-                label_distance.start = 6;
-                label_distance.boxheight = 20.0;
-                label_distance.boxincwidth = 14.0;
-                label_distance.iconbordermargin = .5;
-                label_distance.iconborderheight = 19.5;
-                label_distance.iconborderwidth = 13.5;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 17:
-                label_distance.start = 10;
-                label_distance.boxheight = 39.0;
-                label_distance.boxincwidth = 28.0;
-                label_distance.iconbordermargin = 1.0;
-                label_distance.iconborderheight = 38.0;
-                label_distance.iconborderwidth = 27.0;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 16:
-                label_distance.start = 15;
-                label_distance.boxheight = 80.0;
-                label_distance.boxincwidth = 55;
-                label_distance.iconbordermargin = 2.0;
-                label_distance.iconborderheight = 78.0;
-                label_distance.iconborderwidth = 53;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 15:
-                label_distance.start = 2;
-                label_distance.boxheight = 120.0;
-                label_distance.boxincwidth = 90;
-                label_distance.iconbordermargin = 3.0;
-                label_distance.iconborderheight = 117.0;
-                label_distance.iconborderwidth = 87;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 14:
-                label_distance.start = 2;
-                label_distance.boxheight = 5.2;
-                label_distance.boxincwidth = 3.8;
-                label_distance.iconbordermargin = .3;
-                label_distance.iconborderheight = 4.9;
-                label_distance.iconborderwidth = 3.5;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
+    switch (W.map.getOLMap().getZoom()) {
+        case 22:
+            label_distance.start = .5;
+            label_distance.boxheight = 1.7;
+            label_distance.boxincwidth = 1.1;
+            label_distance.iconbordermargin = .1;
+            label_distance.iconborderheight = 1.6;
+            label_distance.iconborderwidth = 1;
+            label_distance.graphicHeight = 42;
+            label_distance.graphicWidth = 25;
+            break;
+        case 21:
+            label_distance.start = 1;
+            label_distance.boxheight = 3.2;
+            label_distance.boxincwidth = 2.2;
+            label_distance.iconbordermargin = .2;
+            label_distance.iconborderheight = 3;
+            label_distance.iconborderwidth = 2;
+            label_distance.graphicHeight = 42;
+            label_distance.graphicWidth = 25;
+            break;
+        case 20:
+            label_distance.start = 2;
+            label_distance.boxheight = 5.2;
+            label_distance.boxincwidth = 3.8;
+            label_distance.iconbordermargin = .3;
+            label_distance.iconborderheight = 4.9;
+            label_distance.iconborderwidth = 3.5;
+            label_distance.graphicHeight = 42;
+            label_distance.graphicWidth = 25;
+            break;
+        case 19:
+            label_distance.start = 3;
+            label_distance.boxheight = 10.0;
+            label_distance.boxincwidth = 7.2;
+            label_distance.iconbordermargin = .4;
+            label_distance.iconborderheight = 9.6;
+            label_distance.iconborderwidth = 6.8;
+            label_distance.graphicHeight = 42;
+            label_distance.graphicWidth = 25;
+            break;
+        case 18:
+            label_distance.start = 6;
+            label_distance.boxheight = 20.0;
+            label_distance.boxincwidth = 14.0;
+            label_distance.iconbordermargin = .5;
+            label_distance.iconborderheight = 19.5;
+            label_distance.iconborderwidth = 13.5;
+            label_distance.graphicHeight = 42;
+            label_distance.graphicWidth = 25;
+            break;
+        case 17:
+            label_distance.start = 10;
+            label_distance.boxheight = 39.0;
+            label_distance.boxincwidth = 28.0;
+            label_distance.iconbordermargin = 1.0;
+            label_distance.iconborderheight = 38.0;
+            label_distance.iconborderwidth = 27.0;
+            label_distance.graphicHeight = 42;
+            label_distance.graphicWidth = 25;
+            break;
+        case 16:
+            label_distance.start = 15;
+            label_distance.boxheight = 80.0;
+            label_distance.boxincwidth = 55;
+            label_distance.iconbordermargin = 2.0;
+            label_distance.iconborderheight = 78.0;
+            label_distance.iconborderwidth = 53;
+            label_distance.graphicHeight = 42;
+            label_distance.graphicWidth = 25;
+            break;
+        case 15:
+            label_distance.start = 2;
+            label_distance.boxheight = 120.0;
+            label_distance.boxincwidth = 90;
+            label_distance.iconbordermargin = 3.0;
+            label_distance.iconborderheight = 117.0;
+            label_distance.iconborderwidth = 87;
+            label_distance.graphicHeight = 42;
+            label_distance.graphicWidth = 25;
+            break;
+        case 14:
+            label_distance.start = 2;
+            label_distance.boxheight = 5.2;
+            label_distance.boxincwidth = 3.8;
+            label_distance.iconbordermargin = .3;
+            label_distance.iconborderheight = 4.9;
+            label_distance.iconborderwidth = 3.5;
+            label_distance.graphicHeight = 42;
+            label_distance.graphicWidth = 25;
+            break;
             // case 13:
             //     label_distance.start = 2;
             //     label_distance.boxheight = 5.2;
@@ -3248,110 +3203,6 @@ function getFeatDistance() {
             //     label_distance.graphicHeight = 42;
             //     label_distance.graphicWidth = 25;
             //     break;
-        }
-    } else {
-        switch (W.map.getOLMap().getZoom()) {
-            case 10:
-                label_distance.start = .5;
-                label_distance.boxheight = 1.7;
-                label_distance.boxincwidth = 1.1;
-                label_distance.iconbordermargin = .1;
-                label_distance.iconborderheight = 1.6;
-                label_distance.iconborderwidth = 1;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 9:
-                label_distance.start = 1;
-                label_distance.boxheight = 3.2;
-                label_distance.boxincwidth = 2.2;
-                label_distance.iconbordermargin = .2;
-                label_distance.iconborderheight = 3;
-                label_distance.iconborderwidth = 2;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 8:
-                label_distance.start = 2;
-                label_distance.boxheight = 5.2;
-                label_distance.boxincwidth = 3.8;
-                label_distance.iconbordermargin = .3;
-                label_distance.iconborderheight = 4.9;
-                label_distance.iconborderwidth = 3.5;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 7:
-                label_distance.start = 3;
-                label_distance.boxheight = 10.0;
-                label_distance.boxincwidth = 7.2;
-                label_distance.iconbordermargin = .4;
-                label_distance.iconborderheight = 9.6;
-                label_distance.iconborderwidth = 6.8;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 6:
-                label_distance.start = 6;
-                label_distance.boxheight = 20.0;
-                label_distance.boxincwidth = 14.0;
-                label_distance.iconbordermargin = .5;
-                label_distance.iconborderheight = 19.5;
-                label_distance.iconborderwidth = 13.5;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 5:
-                label_distance.start = 10;
-                label_distance.boxheight = 40.0;
-                label_distance.boxincwidth = 29.0;
-                label_distance.iconbordermargin = 1.0;
-                label_distance.iconborderheight = 38.0;
-                label_distance.iconborderwidth = 27.0;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 4:
-                label_distance.start = 15;
-                label_distance.boxheight = 80.0;
-                label_distance.boxincwidth = 55;
-                label_distance.iconbordermargin = 2.0;
-                label_distance.iconborderheight = 78.0;
-                label_distance.iconborderwidth = 53;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 3:
-                label_distance.start = 2;
-                label_distance.boxheight = 120.0;
-                label_distance.boxincwidth = 90;
-                label_distance.iconbordermargin = 3.0;
-                label_distance.iconborderheight = 117.0;
-                label_distance.iconborderwidth = 87;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 2:
-                label_distance.start = 2;
-                label_distance.boxheight = 5.2;
-                label_distance.boxincwidth = 3.8;
-                label_distance.iconbordermargin = .3;
-                label_distance.iconborderheight = 4.9;
-                label_distance.iconborderwidth = 3.5;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-            case 1:
-                label_distance.start = 2;
-                label_distance.boxheight = 5.2;
-                label_distance.boxincwidth = 3.8;
-                label_distance.iconbordermargin = .3;
-                label_distance.iconborderheight = 4.9;
-                label_distance.iconborderwidth = 3.5;
-                label_distance.graphicHeight = 42;
-                label_distance.graphicWidth = 25;
-                break;
-        }
     }
     return label_distance;
 }
@@ -3565,4 +3416,3 @@ function displayLaneGraphics() {
 }
 
 laneToolsBootstrap();
-
