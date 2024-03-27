@@ -28,7 +28,7 @@ const LANETOOLS_VERSION = `${GM_info.script.version}`;
 const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js';
 const DOWNLOAD_URL = 'https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js';
 const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
-const LI_UPDATE_NOTES = `Removed some outdated code.<br>
+const LI_UPDATE_NOTES = `Removed some outdated code. Lane highlighting now happens prior to moving the map.<br>
 FIXED:  The 1 lane clicksver button may not function. (Even more fixed than last time!)<br>
 FIXED:  The voice options for LG didn't work while the script is enabled.<br>
 FIXED:  Auto-open lanes tab wasn't actually auto-opening the lanes tab.
@@ -1736,9 +1736,6 @@ function lanesTabSetup() {
                 let timeout = 10;
                 waitForElementLoaded(".lanes-tab").then((elm) => {
                     clickLanesTab();
-                    fwdDone = false;
-                    revDone = false;
-                    updateUI(event);
                 });
             }
         } else if (selSeg.length === 2) {
@@ -1746,17 +1743,20 @@ function lanesTabSetup() {
             scanHeuristicsCandidates(selSeg,);
         }
     }
-}
 
-function clickLanesTab(tries = 0) {
-    if ($('.tabs-labels > div:nth-child(3)', $('.segment-edit-section > wz-tabs')[0].shadowRoot).length >0) {
-        $('.tabs-labels > div:nth-child(3)', $('.segment-edit-section > wz-tabs')[0].shadowRoot).trigger('click');
-    } else if (tries < 500) {
-        setTimeout(() => {
-            clickLanesTab(tries + 1);
-        }, 200);
-    } else {
-        console.error('LaneTools: Failed to click lanes tab');
+    function clickLanesTab(tries = 0) {
+        if ($('.tabs-labels > div:nth-child(3)', $('.segment-edit-section > wz-tabs')[0].shadowRoot).length >0) {
+            fwdDone = false;
+            revDone = false;
+            $('.tabs-labels > div:nth-child(3)', $('.segment-edit-section > wz-tabs')[0].shadowRoot).trigger('click');
+            updateUI();
+        } else if (tries < 500) {
+            setTimeout(() => {
+                clickLanesTab(tries + 1);
+            }, 200);
+        } else {
+            console.error('LaneTools: Failed to click lanes tab');
+        }
     }
 }
 
@@ -3004,7 +3004,7 @@ function pasteLaneInfo(side) {
         mAction._description = 'Pasted some lane stuff';
         W.model.actionManager.add(mAction);
 
-        $('.lanes-tab').click();
+        lanesTabSetup.clickLanesTab();
     } else {
         WazeWrap.Alerts.warning(GM_info.script.name, 'There are a different number of enabled turns on this segment/node');
     }
