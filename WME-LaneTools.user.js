@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.03.27.01
+// @version      2024.03.27.02
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -31,7 +31,8 @@ const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
 const LI_UPDATE_NOTES = `Removed some outdated code. Lane highlighting now happens prior to moving the map.<br>
 FIXED:  The 1 lane clicksver button may not function. (Even more fixed than last time!)<br>
 FIXED:  The voice options for LG didn't work while the script is enabled.<br>
-FIXED:  Auto-open lanes tab wasn't actually auto-opening the lanes tab.
+FIXED:  Auto-open lanes tab wasn't actually auto-opening the lanes tab.<br>
+FIXED:  Clicksaver wasn't working without auto-open lane tab. Now it should.<br>
 KNOWN ISSUE:  Some tab UI enhancements may not work as expected.<br>
 KNOWN ISSUE:  Highlighting hasn't worked right since far lanes. Maybe I'll try to tacke that? Time will tell.`;
 
@@ -1727,32 +1728,38 @@ function lanesTabSetup() {
     // Begin lanes tab enhancements
     if (getId('lt-UIEnable').checked && getId('lt-ScriptEnabled').checked && (selSeg.length > 0)) {
         if (selSeg.length === 1 && selSeg[0]._wmeObject.type === 'segment') { // Check to ensure that there is only one segment object selected, then setup click event
+            waitForElementLoaded(".lanes-tab").then((elm) => {
+                formatLanesTab(getId('lt-AutoLanesTab').checked || elm.isActive);
+            });
             //$('.lanes-tab').on("click",(event) => {
             //    fwdDone = false;
             //    revDone = false;
             //    updateUI(event);
             //});
-            if (getId('lt-AutoLanesTab').checked) { // If the auto open lanes option is enabled, initiate a click event on the Lanes tab element
-                let timeout = 10;
-                waitForElementLoaded(".lanes-tab").then((elm) => {
-                    clickLanesTab();
-                });
-            }
         } else if (selSeg.length === 2) {
             // We have exactly TWO features selected.  Check heuristics and highlight
             scanHeuristicsCandidates(selSeg,);
         }
     }
 
-    function clickLanesTab(tries = 0) {
+    function formatLanesTab(clickTab = false, tries = 0) {
         if ($('.tabs-labels > div:nth-child(3)', $('.segment-edit-section > wz-tabs')[0].shadowRoot).length >0) {
             fwdDone = false;
             revDone = false;
-            $('.tabs-labels > div:nth-child(3)', $('.segment-edit-section > wz-tabs')[0].shadowRoot).trigger('click');
-            updateUI();
+            $('.tabs-labels > div:nth-child(3)', $('.segment-edit-section > wz-tabs')[0].shadowRoot).on('click', function() {
+                fwdDone = false;
+                revDone = false;
+                updateUI();
+            });
+            if (clickTab) { // If the auto open lanes option is enabled, initiate a click event on the Lanes tab element
+                let timeout = 10;
+                waitForElementLoaded(".lanes-tab").then((elm) => {
+                    $('.tabs-labels > div:nth-child(3)', $('.segment-edit-section > wz-tabs')[0].shadowRoot).trigger('click');
+                });
+            }
         } else if (tries < 500) {
             setTimeout(() => {
-                clickLanesTab(tries + 1);
+                formatLanesTab(clickTab, tries + 1);
             }, 200);
         } else {
             console.error('LaneTools: Failed to click lanes tab');
@@ -3004,7 +3011,7 @@ function pasteLaneInfo(side) {
         mAction._description = 'Pasted some lane stuff';
         W.model.actionManager.add(mAction);
 
-        lanesTabSetup.clickLanesTab();
+        lanesTabSetup.formatLanesTab(true);
     } else {
         WazeWrap.Alerts.warning(GM_info.script.name, 'There are a different number of enabled turns on this segment/node');
     }
