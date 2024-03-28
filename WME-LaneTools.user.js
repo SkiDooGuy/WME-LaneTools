@@ -3011,7 +3011,7 @@ function pasteLaneInfo(side) {
         mAction._description = 'Pasted some lane stuff';
         W.model.actionManager.add(mAction);
 
-        lanesTabSetup.clickLanesTab();
+        lanesTabSetup.formatLanesTab(true);
     } else {
         WazeWrap.Alerts.warning(GM_info.script.name, 'There are a different number of enabled turns on this segment/node');
     }
