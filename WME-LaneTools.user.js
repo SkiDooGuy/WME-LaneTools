@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.03.27.02
+// @version      2024.04.14.01
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -2495,6 +2495,21 @@ function waitForElementLoaded(selector, root = null) {
     });
 }
 
+function processLaneNumberChange() {
+    let parent = $(this).parents().eq(8), elem = parent[0], className = elem.className,
+        numLanes = parseInt($(this).val(), 10);
+    waitForElementLoaded('.turn-lane-checkbox').then((elem) => {
+        setTurns(className, numLanes);
+    });
+    let laneCountNums = $(this).parents().find(".lt-add-lanes");
+    if(laneCountNums.length > 0) {
+        let counterClassName = laneCountNums[0].className,
+            selectorClassName = "." + counterClassName.replace(" ", ".");
+        let counterClassToSelectName = "#" + counterClassName.replace(" ", "-") + "-" + numLanes.toString();
+        $(selectorClassName).css({"background-color": "transparent", "color": "black"});
+        $(counterClassToSelectName).css({"background-color": "navy", "color": "white"});
+    }
+}
 function initLaneGuidanceClickSaver() {
     let laneObserver = new MutationObserver(mutations => {
         if (W.selectionManager.getSelectedFeatures()[0] &&
@@ -2502,19 +2517,8 @@ function initLaneGuidanceClickSaver() {
             getId('lt-ScriptEnabled').checked) {
             let laneCountElement = document.getElementsByName("laneCount");
             for (let idx = 0; idx < laneCountElement.length; idx++) {
-                laneCountElement[idx].addEventListener("change", function() {
-                    let parent = $(this).parents().eq(8), elem = parent[0], className = elem.className,
-                        numLanes = parseInt($(this).val(), 10);
-                    waitForElementLoaded('.turn-lane-checkbox').then((elem) => {
-                        setTurns(className, numLanes);
-                    });
-                    let laneCountNums = $(this).parents().find(".lt-add-lanes"),
-                        counterClassName = laneCountNums[0].className,
-                        selectorClassName = "." + counterClassName.replace(" ", ".");
-                    let counterClassToSelectName = "#" + counterClassName.replace(" ", "-") + "-" + numLanes.toString();
-                    $(selectorClassName).css({"background-color" : "transparent", "color" : "black"});
-                    $(counterClassToSelectName).css({"background-color" : "navy", "color" : "white"});
-                }, false);
+                laneCountElement[idx].addEventListener("keyup", processLaneNumberChange, false);
+                laneCountElement[idx].addEventListener("change", processLaneNumberChange, false);
             }
 
             // let laneToolsButtons = document.getElementsByClassName('lt-add-lanes');
