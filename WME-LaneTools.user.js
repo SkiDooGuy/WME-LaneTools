@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.04.14.01
+// @version      2024.04.18.01
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -23,18 +23,6 @@
 /* global OpenLayers */
 /* global _ */
 /* global require */
-
-const LANETOOLS_VERSION = `${GM_info.script.version}`;
-const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js';
-const DOWNLOAD_URL = 'https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js';
-const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
-const LI_UPDATE_NOTES = `Removed some outdated code. Lane highlighting now happens prior to moving the map.<br>
-FIXED:  The 1 lane clicksver button may not function. (Even more fixed than last time!)<br>
-FIXED:  The voice options for LG didn't work while the script is enabled.<br>
-FIXED:  Auto-open lanes tab wasn't actually auto-opening the lanes tab.<br>
-FIXED:  Clicksaver wasn't working without auto-open lane tab. Now it should.<br>
-KNOWN ISSUE:  Some tab UI enhancements may not work as expected.<br>
-KNOWN ISSUE:  Highlighting hasn't worked right since far lanes. Maybe I'll try to tacke that? Time will tell.`;
 
 const LANETOOLS_DEBUG_LEVEL = 1;
 const configArray = {};
@@ -1353,27 +1341,27 @@ function lanesTabSetup() {
             delOpp.off();
 
             if (!getId('li-del-rev-btn') && !revDone && selSeg[0]._wmeObject.attributes.revLaneCount > 0) {
-                if($('.rev-lanes > div > div.lane-instruction.lane-instruction-from > div.instruction').length > 0) {
-                    $btnCont2.prependTo('.rev-lanes > div > div.lane-instruction.lane-instruction-from > div.instruction');
-                    $('.rev-lanes > div > div.lane-instruction.lane-instruction-from > div.instruction').css('border-bottom', `4px dashed ${LtSettings.BAColor}`);
+                if($('.rev-lanes > div.lane-instruction.lane-instruction-from > div.instruction').length > 0) {
+                    $btnCont2.prependTo('.rev-lanes > div.lane-instruction.lane-instruction-from > div.instruction');
+                    $('.rev-lanes > div.lane-instruction.lane-instruction-from > div.instruction').css('border-bottom', `4px dashed ${LtSettings.BAColor}`);
                 } else if (selSeg[0]._wmeObject.attributes.revDirection != true) { //jm6087
                     $oppButton.prop('title', 'rev');
                     $oppButton.prependTo(("#edit-panel > div > div > div > div.segment-edit-section > wz-tabs > wz-tab.lanes-tab"));
                 }
             } else {
-                $('.rev-lanes > div > div.lane-instruction.lane-instruction-from > div.instruction').css('border-bottom', `4px dashed ${LtSettings.BAColor}`);
+                $('.rev-lanes > div.lane-instruction.lane-instruction-from > div.instruction').css('border-bottom', `4px dashed ${LtSettings.BAColor}`);
             }
 
             if (!getId('li-del-fwd-btn') && !fwdDone && selSeg[0]._wmeObject.attributes.fwdLaneCount > 0) {
-                if($('.fwd-lanes > div > div.lane-instruction.lane-instruction-from > div.instruction').length > 0) {
-                    $btnCont1.prependTo('.fwd-lanes > div > div.lane-instruction.lane-instruction-from > div.instruction');
-                    $('.fwd-lanes > div > div.lane-instruction.lane-instruction-from > div.instruction').css('border-bottom', `4px dashed ${LtSettings.ABColor}`);
+                if($('.fwd-lanes > div.lane-instruction.lane-instruction-from > div.instruction').length > 0) {
+                    $btnCont1.prependTo('.fwd-lanes > div.lane-instruction.lane-instruction-from > div.instruction');
+                    $('.fwd-lanes > div.lane-instruction.lane-instruction-from > div.instruction').css('border-bottom', `4px dashed ${LtSettings.ABColor}`);
                 } else if (selSeg[0]._wmeObject.attributes.fwdDirection != true) { //jm6087
                     $oppButton.prop('title', 'fwd');
                     $oppButton.prependTo(("#edit-panel > div > div > div > div.segment-edit-section > wz-tabs > wz-tab.lanes-tab"));
                 }
             } else {
-                $('.fwd-lanes > div > div.lane-instruction.lane-instruction-from > div.instruction').css('border-bottom', `4px dashed ${LtSettings.ABColor}`);
+                $('.fwd-lanes > div.lane-instruction.lane-instruction-from > div.instruction').css('border-bottom', `4px dashed ${LtSettings.ABColor}`);
             }
 
             $('#li-del-fwd-btn').on("click",function () {
@@ -1403,14 +1391,14 @@ function lanesTabSetup() {
             });
         }
 
-        waitForElementLoaded(".fwd-lanes > div > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-edit > .edit-lane-guidance").then((elem) => {
+        waitForElementLoaded(".fwd-lanes > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-edit > .edit-lane-guidance").then((elem) => {
             $(elem).off();
             $(elem).on("click",function() {
                 let actions = [];
                 showAddLaneGuidance('fwd');
             });
         })
-        waitForElementLoaded(".rev-lanes > div > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-edit > .edit-lane-guidance").then((elem) => {
+        waitForElementLoaded(".rev-lanes > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-edit > .edit-lane-guidance").then((elem) => {
             $(elem).off();
             $(elem).on("click",function() {;
                 let actions = [];
@@ -1471,8 +1459,8 @@ function lanesTabSetup() {
         $('.rev-lanes > div > .direction-lanes').css({'padding': '5px 5px 10px', 'margin': '0px'});
         $('.fwd-lanes > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit').css('padding-top', '10px');
         $('.rev-lanes > div > .lane-instruction.lane-instruction-to > .instruction > .lane-edit > .edit-region > div > .controls.direction-lanes-edit').css('padding-top', '10px');
-        $('.fwd-lanes > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1)').css('margin-bottom', '4px');
-        $('.rev-lanes > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1)').css('margin-bottom', '4px');
+        $('.fwd-lanes > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1)').css('margin-bottom', '4px');
+        $('.rev-lanes > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div > div > div:nth-child(1)').css('margin-bottom', '4px');
     }
 
     function getLaneItems(count, class_names_list) {
@@ -1526,7 +1514,7 @@ function lanesTabSetup() {
             for (let idx = 0; idx < laneCountsToAppend.length; ++idx) {
                 addLanesItem.append(laneCountsToAppend[idx]);
             }
-            let prependSelector = dirLanesClass + " > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div";
+            let prependSelector = dirLanesClass + " > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div";
             // let prependSelector = dirLanesClass + "> div > div > div.lane-instruction.lane-instruction-to > div.instruction > div.edit-region > div.controls.direction-lanes-edit > div.form-group > div.controls-container";
             waitForElementLoaded(prependSelector).then((elm) => {
                 let prependElement = $(prependSelector);
@@ -1693,7 +1681,7 @@ function lanesTabSetup() {
         if (fwdConfig[4] > 0) {
             let csColor = fwdConfig[4] === 1 ? LtSettings.CS1Color : LtSettings.CS2Color;
 
-            let arrowDiv = $('#segment-edit-lanes > div > div > div.fwd-lanes > div > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-arrows > div').children();
+            let arrowDiv = $('#segment-edit-lanes > div > div > div.fwd-lanes > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-arrows > div').children();
             for (let i = 0; i < arrowDiv.length; i++) {
                 if (arrowDiv[i].title === fwdConfig[5]) {
                     $(arrowDiv[i]).css('background-color', csColor)
@@ -1704,7 +1692,7 @@ function lanesTabSetup() {
         if (revConfig[4] > 0) {
             let csColor = revConfig[4] === 1 ? LtSettings.CS1Color : LtSettings.CS2Color;
 
-            let arrowDiv = $('#segment-edit-lanes > div > div > div.rev-lanes > div > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-arrows > div').children();
+            let arrowDiv = $('#segment-edit-lanes > div > div > div.rev-lanes > div.lane-instruction.lane-instruction-to > div.instruction > div.lane-arrows > div').children();
             for (let i = 0; i < arrowDiv.length; i++) {
                 if (arrowDiv[i].title === revConfig[5]) {
                     $(arrowDiv[i]).css('background-color', csColor)
