@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.04.18.01
+// @version      2024.04.18.02
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -23,6 +23,18 @@
 /* global OpenLayers */
 /* global _ */
 /* global require */
+const LANETOOLS_VERSION = `${GM_info.script.version}`;
+const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js';
+const DOWNLOAD_URL = 'https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js';
+const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
+const LI_UPDATE_NOTES = `Removed some outdated code. Lane highlighting now happens prior to moving the map.<br>
+FIXED:  The 1 lane clicksver button may not function. (Even more fixed than last time!)<br>
+FIXED:  The voice options for LG didn't work while the script is enabled.<br>
+FIXED:  Auto-open lanes tab wasn't actually auto-opening the lanes tab.<br>
+FIXED:  Clicksaver wasn't working without auto-open lane tab. Now it should.<br>
+FIXED:  Clicksaver now populates turns when number of Lanes is Updated
+KNOWN ISSUE:  Some tab UI enhancements may not work as expected.<br>
+KNOWN ISSUE:  Highlighting hasn't worked right since far lanes. Maybe I'll try to tacke that? Time will tell.`;
 
 const LANETOOLS_DEBUG_LEVEL = 1;
 const configArray = {};
