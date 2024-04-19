@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.04.18.02
+// @version      2024.04.18.03
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -1519,7 +1519,7 @@ function lanesTabSetup() {
         const dirLanesClass = "." + laneDir + "-lanes", addLanesTag = "lt-" + laneDir + "-add-lanes",
               addWidthTag = 'lt-' + laneDir + '-add-Width';
         let lanes = $(dirLanesClass);
-        if (lanes.find(".direction-lanes").children().length > 0x0 && !getId(addLanesTag)) {
+        if (lanes.find(".lane-instruction-to").children().length > 0x0 && !getId(addLanesTag)) {
             let addLanesItem = $(
                     '<div style="display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;position:relative;" id="' + addLanesTag + '" />'),
                 classNamesList = [ "lt-add-lanes", laneDir ], laneCountsToAppend = getLaneItems(10, classNamesList);
@@ -1543,7 +1543,7 @@ function lanesTabSetup() {
                             window.HTMLInputElement.prototype,
                             "value"
                         ).set;
-                        let inputForm = document.querySelector("div" + dirLanesClass + " input[name=laneCount]");
+                        let inputForm = document.querySelector("wz-card" + dirLanesClass + " input[name=laneCount]");
                         nativeInputValueSetter.call(inputForm, numAdd);
                         let inputEvent = new Event("input", {bubbles: true});
                         inputForm.dispatchEvent(inputEvent);
