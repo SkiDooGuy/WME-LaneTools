@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.04.18.02
+// @version      2024.04.18.03
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -32,9 +32,10 @@ FIXED:  The 1 lane clicksver button may not function. (Even more fixed than last
 FIXED:  The voice options for LG didn't work while the script is enabled.<br>
 FIXED:  Auto-open lanes tab wasn't actually auto-opening the lanes tab.<br>
 FIXED:  Clicksaver wasn't working without auto-open lane tab. Now it should.<br>
-FIXED:  Clicksaver now populates turns when number of Lanes is Updated
+FIXED:  Clicksaver now populates turns when number of Lanes is Updated<br>
+FIXED:  Clicksaver Buttons now properly set the number of lanes and checkboxes
 KNOWN ISSUE:  Some tab UI enhancements may not work as expected.<br>
-KNOWN ISSUE:  Highlighting hasn't worked right since far lanes. Maybe I'll try to tacke that? Time will tell.`;
+KNOWN ISSUE:  Highlighting hasn't worked right since far lanes. Maybe I'll try to tackle that? Time will tell.`;
 
 const LANETOOLS_DEBUG_LEVEL = 1;
 const configArray = {};
@@ -1519,7 +1520,7 @@ function lanesTabSetup() {
         const dirLanesClass = "." + laneDir + "-lanes", addLanesTag = "lt-" + laneDir + "-add-lanes",
               addWidthTag = 'lt-' + laneDir + '-add-Width';
         let lanes = $(dirLanesClass);
-        if (lanes.find(".direction-lanes").children().length > 0x0 && !getId(addLanesTag)) {
+        if (lanes.find(".lane-instruction-to").children().length > 0x0 && !getId(addLanesTag)) {
             let addLanesItem = $(
                     '<div style="display:inline-flex;flex-direction:row;justify-content:space-around;margin-top:4px;position:relative;" id="' + addLanesTag + '" />'),
                 classNamesList = [ "lt-add-lanes", laneDir ], laneCountsToAppend = getLaneItems(10, classNamesList);
@@ -1543,7 +1544,7 @@ function lanesTabSetup() {
                             window.HTMLInputElement.prototype,
                             "value"
                         ).set;
-                        let inputForm = document.querySelector("div" + dirLanesClass + " input[name=laneCount]");
+                        let inputForm = document.querySelector("wz-card" + dirLanesClass + " input[name=laneCount]");
                         nativeInputValueSetter.call(inputForm, numAdd);
                         let inputEvent = new Event("input", {bubbles: true});
                         inputForm.dispatchEvent(inputEvent);
