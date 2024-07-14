@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.04.18.03
+// @version      2024.07.14.01
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -27,14 +27,9 @@ const LANETOOLS_VERSION = `${GM_info.script.version}`;
 const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js';
 const DOWNLOAD_URL = 'https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js';
 const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
-const LI_UPDATE_NOTES = `Removed some outdated code. Lane highlighting now happens prior to moving the map.<br>
-FIXED:  The 1 lane clicksver button may not function. (Even more fixed than last time!)<br>
-FIXED:  The voice options for LG didn't work while the script is enabled.<br>
-FIXED:  Auto-open lanes tab wasn't actually auto-opening the lanes tab.<br>
-FIXED:  Clicksaver wasn't working without auto-open lane tab. Now it should.<br>
-FIXED:  Clicksaver now populates turns when number of Lanes is Updated
-KNOWN ISSUE:  Some tab UI enhancements may not work as expected.<br>
-KNOWN ISSUE:  Highlighting hasn't worked right since far lanes. Maybe I'll try to tacke that? Time will tell.`;
+const LI_UPDATE_NOTES = `FIXED:  Highlighting when there are far lanes.<br>
+FIXED:  Lane highlighting and turn icon display.<br>
+KNOWN ISSUE:  Some tab UI enhancements may not work as expected.`;
 
 const LANETOOLS_DEBUG_LEVEL = 1;
 const configArray = {};
@@ -2069,7 +2064,7 @@ function highlightSegment(objGeo, direction, applyDash, applyLabels, fwdLnsCount
         }
     }
 
-    LTHighlightLayer.setZIndex(450);
+    LTHighlightLayer.setZIndex(2880);
 }
 
 function highlightNode(objGeo, color, overSized = false) {
@@ -2316,7 +2311,22 @@ function checkLanesConfiguration(s, node, segs, numLanes) {
     let csStreet = null;
     let turnLanes = [];
     const turnGraph = W.model.getTurnGraph();
+    const pturns = turnGraph.getAllPathTurns();
     const zoomLevel = W.map.getZoom() != null ? W.map.getZoom() : 16;
+
+    function addTurns(fromLns, toLns) {
+        for (let k = fromLns; k < toLns + 1; k++) {
+            let newValue = true;
+            for (let j = 0; j < turnLanes.length; j++) {
+                if (turnLanes[j] === k) {
+                    newValue = false;
+                }
+            }
+            if (newValue) {
+                turnLanes.push(k);
+            }
+        }
+    }
 
     for (let i = 0; i < segs.length; i++) {
         const seg2 = getSegObj(segs[i]);
@@ -2345,18 +2355,16 @@ function checkLanesConfiguration(s, node, segs, numLanes) {
 
                 const fromLns = turnData.lanes.fromLaneIndex;
                 const toLns = turnData.lanes.toLaneIndex;
-                for (let k = fromLns; k < toLns + 1; k++) {
-                    let newValue = true;
-                    for (let j = 0; j < turnLanes.length; j++) {
-                        if (turnLanes[j] === k) {
-                            newValue = false;
-                        }
-                    }
-                    if (newValue) {
-                        turnLanes.push(k);
-                    }
-                }
+                addTurns(fromLns, toLns);
             }
+        }
+    }
+    // check paths
+    for (let i = 0; i < pturns.length; i++) {
+        if (pturns[i].fromVertex.segmentID == s.attributes.id && pturns[i].turnData.hasLanes()) {
+            const fromLns = pturns[i].turnData.lanes.fromLaneIndex;
+            const toLns = pturns[i].turnData.lanes.toLaneIndex;
+            addTurns(fromLns, toLns);
         }
     }
     turnLanes.sort();
@@ -3423,7 +3431,7 @@ function drawIcons(seg, node, imgs) {
         LTLaneGraphics.addFeatures([iconFeature]);
         num++;
     });
-    LTLaneGraphics.setZIndex(600);
+    // LTLaneGraphics.setZIndex(2890);
 }
 
 function displayLaneGraphics() {
