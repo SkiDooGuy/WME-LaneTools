@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.07.14.01
+// @version      2024.08.17.01
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -27,8 +27,8 @@ const LANETOOLS_VERSION = `${GM_info.script.version}`;
 const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js';
 const DOWNLOAD_URL = 'https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js';
 const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
-const LI_UPDATE_NOTES = `FIXED:  Highlighting when there are far lanes.<br>
-FIXED:  Lane highlighting and turn icon display.<br>
+const LI_UPDATE_NOTES = `FIXED:  Works with latest beta.<br>
+FIXED:  Dont show turn icon display when turn data not available.<br>
 KNOWN ISSUE:  Some tab UI enhancements may not work as expected.`;
 
 const LANETOOLS_DEBUG_LEVEL = 1;
@@ -1279,7 +1279,7 @@ function lanesTabSetup() {
     // hook into edit panel on the left
     if (getId('edit-panel').getElementsByTagName('wz-tabs').length === 0) {
         setTimeout(lanesTabSetup, 8000);
-        console.log('Edit panel not yet loaded.');
+        //console.log('Edit panel not yet loaded.');
         return;
     }
 
@@ -1807,15 +1807,18 @@ function getId(ele) {
 // returns true if object is within window  bounds and above zoom threshold
 function onScreen(obj, curZoomLevel) {
     if (!obj.getOLGeometry() || !obj.attributes) {
-//    if (!obj.geometry || !obj.attributes) {
         return false;
     }
 
     // Either FREEWAY or Zoom >=4
     if ((curZoomLevel >= DisplayLevels.MIN_ZOOM_NONFREEWAY) ||
         (obj.type === 'segment' && obj.attributes.roadType === LT_ROAD_TYPE.FREEWAY)) {
-        return (W.map.getExtent().intersectsBounds(obj.getOLGeometry().getBounds()));
-//        return (W.map.getExtent().intersectsBounds(obj.geometry.getBounds()));
+        var ext = W.map.getExtent();
+        if (typeof ext.intersectsBounds !== 'function') {
+            ext = new OpenLayers.Bounds(ext);
+            ext = ext.transform(W.Config.map.projection.remote, W.Config.map.projection.local);
+        }
+        return (ext.intersectsBounds(obj.getOLGeometry().getBounds()));
     }
 
     return false;
@@ -2361,10 +2364,12 @@ function checkLanesConfiguration(s, node, segs, numLanes) {
     }
     // check paths
     for (let i = 0; i < pturns.length; i++) {
-        if (pturns[i].fromVertex.segmentID == s.attributes.id && pturns[i].turnData.hasLanes()) {
-            const fromLns = pturns[i].turnData.lanes.fromLaneIndex;
-            const toLns = pturns[i].turnData.lanes.toLaneIndex;
-            addTurns(fromLns, toLns);
+        if (pturns[i].fromVertex.segmentID == s.attributes.id) {
+            if (pturns[i].turnData.hasLanes()) {
+                const fromLns = pturns[i].turnData.lanes.fromLaneIndex;
+                const toLns = pturns[i].turnData.lanes.toLaneIndex;
+                addTurns(fromLns, toLns);
+            }
         }
     }
     turnLanes.sort();
@@ -3078,6 +3083,7 @@ function pasteLaneInfo(side) {
 
 function getIcons(dir) {
     let tempEle = {};
+    let svgcount = 0;
     for (let i = 0; i < dir.length; i++) {
         //if (dir[i].id !== "") {
         let temp = {};
@@ -3086,9 +3092,10 @@ function getIcons(dir) {
         temp.uturn =  (uTurnDisplay && uTurnDisplay !== 'none');
         temp.miniuturn = (miniUturnDisplay && miniUturnDisplay !== 'none');
         temp['svg'] = $(dir[i]).find('svg').map(function() { return this }).get();
+        if (temp.svg.length > 0) { svgcount++; }
         tempEle[i] = temp;
     }
-    return tempEle;
+    return svgcount>0 ? tempEle : false;
 }
 function convertToBase64(svgs) {
     const serial = new XMLSerializer();
