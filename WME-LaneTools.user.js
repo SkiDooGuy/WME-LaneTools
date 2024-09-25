@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.08.25.01
+// @version      2024.09.23.01
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -27,7 +27,7 @@ const LANETOOLS_VERSION = `${GM_info.script.version}`;
 const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js';
 const DOWNLOAD_URL = 'https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js';
 const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
-const LI_UPDATE_NOTES = `FIXED:  Works with latest prod.<br>
+const LI_UPDATE_NOTES = `FIXED:  Better error/red highlight check in JB.<br>
 KNOWN ISSUE:  Some tab UI enhancements may not work as expected.`;
 
 const LANETOOLS_DEBUG_LEVEL = 1;
@@ -1812,11 +1812,7 @@ function onScreen(obj, curZoomLevel) {
     // Either FREEWAY or Zoom >=4
     if ((curZoomLevel >= DisplayLevels.MIN_ZOOM_NONFREEWAY) ||
         (obj.type === 'segment' && obj.attributes.roadType === LT_ROAD_TYPE.FREEWAY)) {
-        var ext = W.map.getExtent();
-        if (Array.isArray(ext)) {
-            ext = new OpenLayers.Bounds(ext);
-            ext.transform('EPSG:4326', 'EPSG:3857');
-        }
+        var ext = W.map.getOLExtent();
         return (ext.intersectsBounds(obj.getOLGeometry().getBounds()));
     }
 
@@ -2371,6 +2367,21 @@ function checkLanesConfiguration(s, node, segs, numLanes) {
             }
         }
     }
+    // check turns in JBs
+    const jb = W.model.bigJunctions.getObjectArray();
+    for (let j = 0; j < jb.length; j++) {
+        const jb1 = jb[j];
+        const jpturns = jb1.getAllPossibleTurns(W.model);
+        for (let t = 0; t < jpturns.length; t++) {
+            if (jpturns[t].fromVertex.segmentID == s.attributes.id) {
+                const tdat = jpturns[t].turnData.lanes;
+                if (tdat) {
+                    addTurns(tdat.fromLaneIndex, tdat.toLaneIndex);
+                }
+            }
+        }
+    }
+
     turnLanes.sort();
     for (let z = 0; z < turnLanes.length; z++) {
         if (turnLanes[z] !== z) {
