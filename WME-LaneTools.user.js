@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.09.23.01
+// @version      2024.11.15.000
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -1282,7 +1282,7 @@ function lanesTabSetup() {
         return;
     }
 
-    const selSeg = W.selectionManager.getSelectedFeatures();
+    const selSeg = W.selectionManager.getSelectedWMEFeatures();
     let fwdDone = false;
     let revDone = false;
     let isRotated = false;
@@ -1782,7 +1782,7 @@ function toggleLaneHeuristicsChecks() {
 }
 
 function displayToolbar() {
-    const objSelected = W.selectionManager.getSelectedFeatures();
+    const objSelected = W.selectionManager.getSelectedWMEFeatures();
 
     if (objSelected.length === 1 && getId('lt-CopyEnable').checked && getId('lt-ScriptEnabled').checked) {
         if (objSelected[0]._wmeObject.type.toLowerCase() === 'segment') {
@@ -1865,7 +1865,7 @@ function lt_get_next_to_last_point(segment) {
 }
 
 function delLanes(dir) {
-    const selObjs = W.selectionManager.getSelectedFeatures();
+    const selObjs = W.selectionManager.getSelectedWMEFeatures();
     const selSeg = selObjs[0]._wmeObject;
     const turnGraph = W.model.getTurnGraph();
     const mAction = new MultiAction();
@@ -2129,7 +2129,7 @@ function scanArea_real() {
         }
 
         if (isEnabled) {
-            const selFeat = W.selectionManager.getSelectedFeatures();
+            const selFeat = W.selectionManager.getSelectedWMEFeatures();
             if (selFeat.length === 2) {
                 // We have exactly TWO features selected.  Check heuristics and highlight
                 scanHeuristicsCandidates(selFeat);
@@ -2535,8 +2535,8 @@ function processLaneNumberChange() {
 }
 function initLaneGuidanceClickSaver() {
     let laneObserver = new MutationObserver(mutations => {
-        if (W.selectionManager.getSelectedFeatures()[0] &&
-            W.selectionManager.getSelectedFeatures()[0].featureType === 'segment' &&
+        if (W.selectionManager.getSelectedWMEFeatures()[0] &&
+            W.selectionManager.getSelectedWMEFeatures()[0].featureType === 'segment' &&
             getId('lt-ScriptEnabled').checked) {
             let laneCountElement = document.getElementsByName("laneCount");
             for (let idx = 0; idx < laneCountElement.length; idx++) {
@@ -2917,7 +2917,7 @@ function lt_log(lt_log_msg, lt_log_level = 1) {
 
 function copyLaneInfo(side) {
     _turnInfo = [];
-    const selFeatures = W.selectionManager.getSelectedFeatures();
+    const selFeatures = W.selectionManager.getSelectedWMEFeatures();
     const seg = selFeatures[0]._wmeObject;
     const segAtt = seg.getFeatureAttributes();
     const segGeo = seg.geometry.components;
@@ -2985,7 +2985,7 @@ function copyLaneInfo(side) {
 function pasteLaneInfo(side) {
     const mAction = new MultiAction();
 //    mAction.setModel(W.model);
-    const selFeatures = W.selectionManager.getSelectedFeatures();
+    const selFeatures = W.selectionManager.getSelectedWMEFeatures();
     const seg = selFeatures[0]._wmeObject;
     const segGeo = seg.geometry.components;
     const segAtt = seg.getFeatureAttributes();
@@ -3453,7 +3453,7 @@ function drawIcons(seg, node, imgs) {
 
 function displayLaneGraphics() {
     removeLaneGraphics();
-    const sel = W.selectionManager.getSelectedFeatures();
+    const sel = W.selectionManager.getSelectedWMEFeatures();
 
     if (!getId('lt-ScriptEnabled').checked || !getId('lt-IconsEnable').checked || sel.length !== 1 || sel[0]._wmeObject.type !== 'segment')
         return;
