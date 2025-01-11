@@ -23,6 +23,15 @@
 /* global OpenLayers */
 /* global _ */
 /* global require */
+
+let sdkVersion = "";
+unsafeWindow.SDK_INITIALIZED.then(() => {
+    let sdk = unsafeWindow.getWmeSdk({
+        scriptId: "wme-lane-tools",
+        scriptName: "WME LaneTools",
+    });
+    sdkVersion = sdk.getSDKVersion()
+});
 const LANETOOLS_VERSION = `${GM_info.script.version}`;
 const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js';
 const DOWNLOAD_URL = 'https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js';
@@ -33,7 +42,9 @@ KNOWN ISSUE:  Some tab UI enhancements may not work as expected.`;
 const LANETOOLS_DEBUG_LEVEL = 1;
 const configArray = {};
 const RBSArray = { failed: false };
-const IsBeta = location.href.indexOf('beta.waze.com') !== -1;
+const IsBeta = location.href.indexOf("beta.waze.com") !== -1;
+const env = IsBeta ? "beta" : "production";
+
 const TRANSLATIONS = {
     // Default english values
     default: {
@@ -3414,14 +3425,14 @@ function drawIcons(seg, node, imgs) {
             y: 0
         }
         if (img['uturn'] === true) {
-            ulabel = 'https://editor-assets.waze.com/production/font/aae5ed152758cb6a9191b91e6cedf322.svg';
+            ulabel = `https://web-assets.waze.com/webapps/wme/v2.268-2-g2718bf0c1-${env}/font/cc0384586f6a553e/u-turn.svg`;
             usize.x = 0.6;
             usize.y = 0.6;
             uoffset.x = -7;
             uoffset.y = -12;
         }
         if (img['miniuturn'] === true) {
-            ulabel = 'https://editor-assets.waze.com/production/font/aae5ed152758cb6a9191b91e6cedf322.svg';
+            ulabel = `https://web-assets.waze.com/webapps/wme/v2.268-2-g2718bf0c1-${env}/font/cc0384586f6a553e/u-turn.svg`;
             usize.x = 0.3;
             usize.y = 0.25;
             uoffset.x = -8;
