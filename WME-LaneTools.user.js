@@ -218,7 +218,7 @@ function initLaneTools() {
         `<div class='lt-wrapper' id='lt-tab-wrapper'>
             <div class='lt-section-wrapper' id='lt-tab-body'>
                 <div class='lt-section-wrapper border' style='border-bottom:2px double grey;'>
-                    <a href='https://www.waze.com/forum/viewtopic.php?f=819&t=301158' style='font-weight:bold;font-size:12px;text-decoration:underline;'  target='_blank'>LaneTools - v${LANETOOLS_VERSION}</a>
+                    <a href='https://www.waze.com/discuss/t/script-wme-lanetools/53136' style='font-weight:bold;font-size:12px;text-decoration:underline;'  target='_blank'>LaneTools - v${LANETOOLS_VERSION}</a>
                     <div>
                         <div style='display:inline-block;'><span class='lt-trans-tglshcut'></span>:<span id='lt-EnableShortcut' style='padding-left:10px;'></span></div>
                         <div class='lt-option-container' style='float:right;'>
