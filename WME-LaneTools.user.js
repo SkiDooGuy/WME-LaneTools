@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2025.01.21.01
+// @version      2025.01.21.02
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -218,7 +218,7 @@ function initLaneTools() {
         `<div class='lt-wrapper' id='lt-tab-wrapper'>
             <div class='lt-section-wrapper' id='lt-tab-body'>
                 <div class='lt-section-wrapper border' style='border-bottom:2px double grey;'>
-                    <a href='https://www.waze.com/discuss/t/script-wme-lanetools/53136' style='font-weight:bold;font-size:12px;text-decoration:underline;'  target='_blank'>LaneTools - v${LANETOOLS_VERSION}</a>
+                    <a href=${FORUM_LINK} style='font-weight:bold;font-size:12px;text-decoration:underline;'  target='_blank'>LaneTools - v${LANETOOLS_VERSION}</a>
                     <div>
                         <div style='display:inline-block;'><span class='lt-trans-tglshcut'></span>:<span id='lt-EnableShortcut' style='padding-left:10px;'></span></div>
                         <div class='lt-option-container' style='float:right;'>
