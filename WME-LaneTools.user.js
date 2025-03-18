@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.12.02.01
+// @version      2025.01.21.02
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -23,17 +23,28 @@
 /* global OpenLayers */
 /* global _ */
 /* global require */
+
+let sdkVersion = "";
+unsafeWindow.SDK_INITIALIZED.then(() => {
+    let sdk = unsafeWindow.getWmeSdk({
+        scriptId: "wme-lane-tools",
+        scriptName: "WME LaneTools",
+    });
+    sdkVersion = sdk.getSDKVersion()
+});
 const LANETOOLS_VERSION = `${GM_info.script.version}`;
 const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js';
 const DOWNLOAD_URL = 'https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js';
-const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
-const LI_UPDATE_NOTES = `FIXED:  Better error/red highlight check in JB.<br>
+const FORUM_LINK = 'https://www.waze.com/discuss/t/script-wme-lanetools/53136';
+const LI_UPDATE_NOTES = `FIXED:  Better error/red highlight check in JB.<br>FIXED:   Forum Link<br>
 KNOWN ISSUE:  Some tab UI enhancements may not work as expected.`;
 
 const LANETOOLS_DEBUG_LEVEL = 1;
 const configArray = {};
 const RBSArray = { failed: false };
-const IsBeta = location.href.indexOf('beta.waze.com') !== -1;
+const IsBeta = location.href.indexOf("beta.waze.com") !== -1;
+const env = IsBeta ? "beta" : "production";
+
 const TRANSLATIONS = {
     // Default english values
     default: {
@@ -207,7 +218,7 @@ function initLaneTools() {
         `<div class='lt-wrapper' id='lt-tab-wrapper'>
             <div class='lt-section-wrapper' id='lt-tab-body'>
                 <div class='lt-section-wrapper border' style='border-bottom:2px double grey;'>
-                    <a href='https://www.waze.com/forum/viewtopic.php?f=819&t=301158' style='font-weight:bold;font-size:12px;text-decoration:underline;'  target='_blank'>LaneTools - v${LANETOOLS_VERSION}</a>
+                    <a href=${FORUM_LINK} style='font-weight:bold;font-size:12px;text-decoration:underline;'  target='_blank'>LaneTools - v${LANETOOLS_VERSION}</a>
                     <div>
                         <div style='display:inline-block;'><span class='lt-trans-tglshcut'></span>:<span id='lt-EnableShortcut' style='padding-left:10px;'></span></div>
                         <div class='lt-option-container' style='float:right;'>
@@ -3414,14 +3425,14 @@ function drawIcons(seg, node, imgs) {
             y: 0
         }
         if (img['uturn'] === true) {
-            ulabel = 'https://editor-assets.waze.com/production/font/aae5ed152758cb6a9191b91e6cedf322.svg';
+            ulabel = `https://web-assets.waze.com/webapps/wme/v2.268-2-g2718bf0c1-${env}/font/cc0384586f6a553e/u-turn.svg`;
             usize.x = 0.6;
             usize.y = 0.6;
             uoffset.x = -7;
             uoffset.y = -12;
         }
         if (img['miniuturn'] === true) {
-            ulabel = 'https://editor-assets.waze.com/production/font/aae5ed152758cb6a9191b91e6cedf322.svg';
+            ulabel = `https://web-assets.waze.com/webapps/wme/v2.268-2-g2718bf0c1-${env}/font/cc0384586f6a553e/u-turn.svg`;
             usize.x = 0.3;
             usize.y = 0.25;
             uoffset.x = -8;
