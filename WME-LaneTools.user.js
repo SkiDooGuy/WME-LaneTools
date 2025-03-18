@@ -2555,17 +2555,6 @@ function initLaneGuidanceClickSaver() {
                 laneCountElement[idx].addEventListener("change", processLaneNumberChange, false);
             }
 
-            // let laneToolsButtons = document.getElementsByClassName('lt-add-lanes');
-            // for (let i = 0; i < laneToolsButtons.length; i++) {
-            //     laneToolsButtons[i].addEventListener('click', function () {
-            //         // wait for the input to appear
-            //         let parent = $(this).parents().eq(8);
-            //         let direction = parent[0].className;
-            //         waitForElementLoaded('.turn-lane-edit-container').then((elem) => {
-            //             setTurns(direction);
-            //         })
-            //     }, false);
-            // }
         }
     });
 
@@ -3106,15 +3095,17 @@ function getIcons(dir) {
     let tempEle = {};
     let svgcount = 0;
     for (let i = 0; i < dir.length; i++) {
-        //if (dir[i].id !== "") {
-        let temp = {};
-        let uTurnDisplay =$(dir[i]).find('.uturn').css('display'),
-            miniUturnDisplay = $(dir[i]).find('.small-uturn').css('display');
-        temp.uturn =  (uTurnDisplay && uTurnDisplay !== 'none');
-        temp.miniuturn = (miniUturnDisplay && miniUturnDisplay !== 'none');
-        temp['svg'] = $(dir[i]).find('svg').map(function() { return this }).get();
-        if (temp.svg.length > 0) { svgcount++; }
-        tempEle[i] = temp;
+        waitForElementLoaded("polyline", dir[i]).then((elem) => {
+            let temp = {};
+            let uTurnDisplay =$(dir[i]).find('.uturn').css('display'),
+                miniUturnDisplay = $(dir[i]).find('.small-uturn').css('display');
+            temp.uturn =  (uTurnDisplay && uTurnDisplay !== 'none');
+            temp.miniuturn = (miniUturnDisplay && miniUturnDisplay !== 'none');
+            temp['svg'] = $(dir[i]).find('svg').map(function() { return this }).get();
+
+            if (temp.svg.length > 0) { svgcount++; }
+            tempEle[i] = temp;
+        });
     }
     return svgcount>0 ? tempEle : false;
 }
@@ -3138,57 +3129,41 @@ function getStartPoints(node, featDis, numIcons, sign) {
         temp = {
             x: node.getOLGeometry().x + (featDis.start * 2),
             y: node.getOLGeometry().y + (featDis.boxheight)
-            //                x: node.geometry.x + (featDis.start * 2),
-            //                y: node.geometry.y + (featDis.boxheight)
         }
     } else if (sign === 1) {
         temp = {
             x: node.getOLGeometry().x + featDis.boxheight,
             y: node.getOLGeometry().y + (featDis.boxincwidth * numIcons/1.8)
-            //                x: node.geometry.x + featDis.boxheight,
-            //                y: node.geometry.y + (featDis.boxincwidth * numIcons/1.8)
         }
     } else if (sign === 2) {
         temp = {
             x: node.getOLGeometry().x - (featDis.start + (featDis.boxincwidth * numIcons)),
             y: node.getOLGeometry().y + (featDis.start + featDis.boxheight)
-            //                x: node.geometry.x - (featDis.start + (featDis.boxincwidth * numIcons)),
-            //                y: node.geometry.y + (featDis.start + featDis.boxheight)
         }
     } else if (sign === 3) {
         temp = {
             x: node.getOLGeometry().x + (featDis.start + featDis.boxincwidth),
             y: node.getOLGeometry().y - (featDis.start + featDis.boxheight)
-            //                x: node.geometry.x + (featDis.start + featDis.boxincwidth),
-            //                y: node.geometry.y - (featDis.start + featDis.boxheight)
         }
     } else if (sign === 4) {
         temp = {
             x: node.getOLGeometry().x - (featDis.start + (featDis.boxheight * 1.5)),
             y: node.getOLGeometry().y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
-            //                x: node.geometry.x - (featDis.start + (featDis.boxheight * 1.5)),
-            //                y: node.geometry.y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
         }
     } else if (sign === 5) {
         temp = {
             x: node.getOLGeometry().x + (featDis.start + featDis.boxincwidth/2),
             y: node.getOLGeometry().y + (featDis.start/2)
-            //                x: node.geometry.x + (featDis.start + featDis.boxincwidth/2),
-            //                y: node.geometry.y + (featDis.start/2)
         }
     } else if (sign === 6) {
         temp = {
             x: node.getOLGeometry().x - (featDis.start),
             y: node.getOLGeometry().y - (featDis.start * (featDis.boxincwidth * numIcons/2))
-            //                x: node.geometry.x - (featDis.start),
-            //                y: node.geometry.y - (featDis.start * (featDis.boxincwidth * numIcons/2))
         }
     } else if (sign === 7) {
         temp = {
             x: node.getOLGeometry().x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
             y: node.getOLGeometry().y - (featDis.start)
-            //                x: node.geometry.x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
-            //                y: node.geometry.y - (featDis.start)
         }
     }
     return temp;
@@ -3425,7 +3400,7 @@ function drawIcons(seg, node, imgs) {
             y: 0
         }
         if (img['uturn'] === true) {
-            ulabel = `https://web-assets.waze.com/webapps/wme/v2.268-2-g2718bf0c1-${env}/font/cc0384586f6a553e/u-turn.svg`;
+            ulabel = `https://web-assets.waze.com/webapps/wme/v2.278-3-ga6f1d33d1-${env}/font/cc0384586f6a553e/u-turn.svg`;
             usize.x = 0.6;
             usize.y = 0.6;
             uoffset.x = -7;
@@ -3482,9 +3457,6 @@ function displayLaneGraphics() {
     let revEle = seg.attributes.revLaneCount > 0
                      ? getIcons($('.rev-lanes').find('.lane-arrow').map(function() { return this }).get())
                      : false;
-
-    //let fwdEle = seg.attributes.fwdLaneCount > 0 ? getIcons($('.fwd-lanes').find('svg').map(function() { return this }).get()) : false;
-    //let revEle = seg.attributes.revLaneCount > 0 ? getIcons($('.rev-lanes').find('svg').map(function() { return this }).get()) : false;
 
     let fwdImgs = fwdEle !== false ? convertToBase64(fwdEle) : false;
     let revImgs = revEle !== false ? convertToBase64(revEle) : false;
