@@ -3450,7 +3450,7 @@ function displayLaneGraphics() {
     ) return;
 
     if(seg.attributes.fwdLaneCount > 0) {
-        waitForElementLoaded(".fwd-lanes > div.lane-instruction-from > div.instruction > div.lane-arrows > div.lane-arrow > svg > polyline").then((elem) => {
+        waitForElementLoaded(".fwd-lanes > div.lane-instruction-to > div.instruction > div.lane-arrows > div.lane-arrow > svg > polyline").then((elem) => {
             let fwdEle = getIcons($('.fwd-lanes').find('.lane-arrow').map(function() { return this }).get());
             let fwdImgs = convertToBase64(fwdEle);
             if (Object.keys(fwdEle).length === 0) {
