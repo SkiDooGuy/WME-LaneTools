@@ -3095,17 +3095,15 @@ function getIcons(dir) {
     let tempEle = {};
     let svgcount = 0;
     for (let i = 0; i < dir.length; i++) {
-        waitForElementLoaded("polyline", dir[i]).then((elem) => {
-            let temp = {};
-            let uTurnDisplay =$(dir[i]).find('.uturn').css('display'),
-                miniUturnDisplay = $(dir[i]).find('.small-uturn').css('display');
-            temp.uturn =  (uTurnDisplay && uTurnDisplay !== 'none');
-            temp.miniuturn = (miniUturnDisplay && miniUturnDisplay !== 'none');
-            temp['svg'] = $(dir[i]).find('svg').map(function() { return this }).get();
+        let temp = {};
+        let uTurnDisplay =$(dir[i]).find('.uturn').css('display'),
+            miniUturnDisplay = $(dir[i]).find('.small-uturn').css('display');
+        temp.uturn =  (uTurnDisplay && uTurnDisplay !== 'none');
+        temp.miniuturn = (miniUturnDisplay && miniUturnDisplay !== 'none');
+        temp['svg'] = $(dir[i]).find('svg').map(function() { return this }).get();
 
-            if (temp.svg.length > 0) { svgcount++; }
-            tempEle[i] = temp;
-        });
+        if (temp.svg.length > 0) { svgcount++; }
+        tempEle[i] = temp;
     }
     return svgcount>0 ? tempEle : false;
 }
@@ -3451,34 +3449,28 @@ function displayLaneGraphics() {
         (seg.attributes.roadType !== (LT_ROAD_TYPE.FREEWAY || LT_ROAD_TYPE.MAJOR_HIGHWAY || LT_ROAD_TYPE.MINOR_HIGHWAY) && zoomLevel < 16)
     ) return;
 
-    let fwdEle = seg.attributes.fwdLaneCount > 0
-                     ? getIcons($('.fwd-lanes').find('.lane-arrow').map(function() { return this }).get())
-                     : false;
-    let revEle = seg.attributes.revLaneCount > 0
-                     ? getIcons($('.rev-lanes').find('.lane-arrow').map(function() { return this }).get())
-                     : false;
-
-    let fwdImgs = fwdEle !== false ? convertToBase64(fwdEle) : false;
-    let revImgs = revEle !== false ? convertToBase64(revEle) : false;
-
-    if (fwdEle) {
-        if (Object.keys(fwdEle).length === 0) {
-            setTimeout(displayLaneGraphics, 200);
-            return;
-        }
-        drawIcons(seg, W.model.nodes.getObjectById(seg.attributes.toNodeID), fwdImgs);
+    if(seg.attributes.fwdLaneCount > 0) {
+        waitForElementLoaded(".fwd-lanes > div.lane-instruction-from > div.instruction > div.lane-arrows > div.lane-arrow > svg > polyline").then((elem) => {
+            let fwdEle = getIcons($('.fwd-lanes').find('.lane-arrow').map(function() { return this }).get());
+            let fwdImgs = convertToBase64(fwdEle);
+            if (Object.keys(fwdEle).length === 0) {
+                setTimeout(displayLaneGraphics, 200);
+                return;
+            }
+            drawIcons(seg, W.model.nodes.getObjectById(seg.attributes.toNodeID), fwdImgs);
+        });
     }
-    if (revEle) {
-        if (Object.keys(revEle).length === 0) {
-            setTimeout(displayLaneGraphics, 200);
-            return;
-        }
-        drawIcons(seg, W.model.nodes.getObjectById(seg.attributes.fromNodeID), revImgs);
+    if(seg.attributes.revLaneCount > 0) {
+        waitForElementLoaded('.rev-lanes > div.lane-instruction-to > div.instruction > div.lane-arrows > div.lane-arrow > svg > polyline').then((elem) => {
+            let revEle = getIcons($('.rev-lanes').find('.lane-arrow').map(function() { return this }).get());
+            let revImgs = convertToBase64(revEle);
+            if (Object.keys(revEle).length === 0) {
+                setTimeout(displayLaneGraphics, 200);
+                return;
+            }
+            drawIcons(seg, W.model.nodes.getObjectById(seg.attributes.fromNodeID), revImgs);    
+        })
     }
-
-
-    // There are now 23 zoom levels where 22 is fully zoomed and currently 14 is where major road types load data and 16 loads the rest
-
 }
 
 laneToolsBootstrap();
