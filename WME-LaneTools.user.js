@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME LaneTools
 // @namespace    https://github.com/SkiDooGuy/WME-LaneTools
-// @version      2024.11.15.000
+// @version      2025.03.18.01
 // @description  Adds highlights and tools to WME to supplement the lanes feature
 // @author       SkiDooGuy, Click Saver by HBiede, Heuristics by kndcajun, assistance by jm6087
 // @updateURL    https://github.com/SkiDooGuy/WME-LaneTools/raw/master/WME-LaneTools.user.js
@@ -23,17 +23,28 @@
 /* global OpenLayers */
 /* global _ */
 /* global require */
+
+let sdkVersion = "";
+unsafeWindow.SDK_INITIALIZED.then(() => {
+    let sdk = unsafeWindow.getWmeSdk({
+        scriptId: "wme-lane-tools",
+        scriptName: "WME LaneTools",
+    });
+    sdkVersion = sdk.getSDKVersion()
+});
 const LANETOOLS_VERSION = `${GM_info.script.version}`;
 const GF_LINK = 'https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js';
 const DOWNLOAD_URL = 'https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js';
-const FORUM_LINK = 'https://www.waze.com/forum/viewtopic.php?f=819&t=301158';
-const LI_UPDATE_NOTES = `FIXED:  Better error/red highlight check in JB.<br>
+const FORUM_LINK = 'https://www.waze.com/discuss/t/script-wme-lanetools/53136';
+const LI_UPDATE_NOTES = `FIXED:  Better error/red highlight check in JB.<br>FIXED:   Forum Link<br>
 KNOWN ISSUE:  Some tab UI enhancements may not work as expected.`;
 
 const LANETOOLS_DEBUG_LEVEL = 1;
 const configArray = {};
 const RBSArray = { failed: false };
-const IsBeta = location.href.indexOf('beta.waze.com') !== -1;
+const IsBeta = location.href.indexOf("beta.waze.com") !== -1;
+const env = IsBeta ? "beta" : "production";
+
 const TRANSLATIONS = {
     // Default english values
     default: {
@@ -207,7 +218,7 @@ function initLaneTools() {
         `<div class='lt-wrapper' id='lt-tab-wrapper'>
             <div class='lt-section-wrapper' id='lt-tab-body'>
                 <div class='lt-section-wrapper border' style='border-bottom:2px double grey;'>
-                    <a href='https://www.waze.com/forum/viewtopic.php?f=819&t=301158' style='font-weight:bold;font-size:12px;text-decoration:underline;'  target='_blank'>LaneTools - v${LANETOOLS_VERSION}</a>
+                    <a href=${FORUM_LINK} style='font-weight:bold;font-size:12px;text-decoration:underline;'  target='_blank'>LaneTools - v${LANETOOLS_VERSION}</a>
                     <div>
                         <div style='display:inline-block;'><span class='lt-trans-tglshcut'></span>:<span id='lt-EnableShortcut' style='padding-left:10px;'></span></div>
                         <div class='lt-option-container' style='float:right;'>
@@ -2544,17 +2555,6 @@ function initLaneGuidanceClickSaver() {
                 laneCountElement[idx].addEventListener("change", processLaneNumberChange, false);
             }
 
-            // let laneToolsButtons = document.getElementsByClassName('lt-add-lanes');
-            // for (let i = 0; i < laneToolsButtons.length; i++) {
-            //     laneToolsButtons[i].addEventListener('click', function () {
-            //         // wait for the input to appear
-            //         let parent = $(this).parents().eq(8);
-            //         let direction = parent[0].className;
-            //         waitForElementLoaded('.turn-lane-edit-container').then((elem) => {
-            //             setTurns(direction);
-            //         })
-            //     }, false);
-            // }
         }
     });
 
@@ -3095,13 +3095,13 @@ function getIcons(dir) {
     let tempEle = {};
     let svgcount = 0;
     for (let i = 0; i < dir.length; i++) {
-        //if (dir[i].id !== "") {
         let temp = {};
         let uTurnDisplay =$(dir[i]).find('.uturn').css('display'),
             miniUturnDisplay = $(dir[i]).find('.small-uturn').css('display');
         temp.uturn =  (uTurnDisplay && uTurnDisplay !== 'none');
         temp.miniuturn = (miniUturnDisplay && miniUturnDisplay !== 'none');
         temp['svg'] = $(dir[i]).find('svg').map(function() { return this }).get();
+
         if (temp.svg.length > 0) { svgcount++; }
         tempEle[i] = temp;
     }
@@ -3127,57 +3127,41 @@ function getStartPoints(node, featDis, numIcons, sign) {
         temp = {
             x: node.getOLGeometry().x + (featDis.start * 2),
             y: node.getOLGeometry().y + (featDis.boxheight)
-            //                x: node.geometry.x + (featDis.start * 2),
-            //                y: node.geometry.y + (featDis.boxheight)
         }
     } else if (sign === 1) {
         temp = {
             x: node.getOLGeometry().x + featDis.boxheight,
             y: node.getOLGeometry().y + (featDis.boxincwidth * numIcons/1.8)
-            //                x: node.geometry.x + featDis.boxheight,
-            //                y: node.geometry.y + (featDis.boxincwidth * numIcons/1.8)
         }
     } else if (sign === 2) {
         temp = {
             x: node.getOLGeometry().x - (featDis.start + (featDis.boxincwidth * numIcons)),
             y: node.getOLGeometry().y + (featDis.start + featDis.boxheight)
-            //                x: node.geometry.x - (featDis.start + (featDis.boxincwidth * numIcons)),
-            //                y: node.geometry.y + (featDis.start + featDis.boxheight)
         }
     } else if (sign === 3) {
         temp = {
             x: node.getOLGeometry().x + (featDis.start + featDis.boxincwidth),
             y: node.getOLGeometry().y - (featDis.start + featDis.boxheight)
-            //                x: node.geometry.x + (featDis.start + featDis.boxincwidth),
-            //                y: node.geometry.y - (featDis.start + featDis.boxheight)
         }
     } else if (sign === 4) {
         temp = {
             x: node.getOLGeometry().x - (featDis.start + (featDis.boxheight * 1.5)),
             y: node.getOLGeometry().y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
-            //                x: node.geometry.x - (featDis.start + (featDis.boxheight * 1.5)),
-            //                y: node.geometry.y - (featDis.start + (featDis.boxincwidth * numIcons * 1.5))
         }
     } else if (sign === 5) {
         temp = {
             x: node.getOLGeometry().x + (featDis.start + featDis.boxincwidth/2),
             y: node.getOLGeometry().y + (featDis.start/2)
-            //                x: node.geometry.x + (featDis.start + featDis.boxincwidth/2),
-            //                y: node.geometry.y + (featDis.start/2)
         }
     } else if (sign === 6) {
         temp = {
             x: node.getOLGeometry().x - (featDis.start),
             y: node.getOLGeometry().y - (featDis.start * (featDis.boxincwidth * numIcons/2))
-            //                x: node.geometry.x - (featDis.start),
-            //                y: node.geometry.y - (featDis.start * (featDis.boxincwidth * numIcons/2))
         }
     } else if (sign === 7) {
         temp = {
             x: node.getOLGeometry().x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
             y: node.getOLGeometry().y - (featDis.start)
-            //                x: node.geometry.x - (featDis.start * (featDis.boxincwidth * numIcons/2)),
-            //                y: node.geometry.y - (featDis.start)
         }
     }
     return temp;
@@ -3414,14 +3398,14 @@ function drawIcons(seg, node, imgs) {
             y: 0
         }
         if (img['uturn'] === true) {
-            ulabel = 'https://editor-assets.waze.com/production/font/aae5ed152758cb6a9191b91e6cedf322.svg';
+            ulabel = `https://web-assets.waze.com/webapps/wme/v2.278-3-ga6f1d33d1-${env}/font/cc0384586f6a553e/u-turn.svg`;
             usize.x = 0.6;
             usize.y = 0.6;
             uoffset.x = -7;
             uoffset.y = -12;
         }
         if (img['miniuturn'] === true) {
-            ulabel = 'https://editor-assets.waze.com/production/font/aae5ed152758cb6a9191b91e6cedf322.svg';
+            ulabel = `https://web-assets.waze.com/webapps/wme/v2.268-2-g2718bf0c1-${env}/font/cc0384586f6a553e/u-turn.svg`;
             usize.x = 0.3;
             usize.y = 0.25;
             uoffset.x = -8;
@@ -3465,37 +3449,28 @@ function displayLaneGraphics() {
         (seg.attributes.roadType !== (LT_ROAD_TYPE.FREEWAY || LT_ROAD_TYPE.MAJOR_HIGHWAY || LT_ROAD_TYPE.MINOR_HIGHWAY) && zoomLevel < 16)
     ) return;
 
-    let fwdEle = seg.attributes.fwdLaneCount > 0
-                     ? getIcons($('.fwd-lanes').find('.lane-arrow').map(function() { return this }).get())
-                     : false;
-    let revEle = seg.attributes.revLaneCount > 0
-                     ? getIcons($('.rev-lanes').find('.lane-arrow').map(function() { return this }).get())
-                     : false;
-
-    //let fwdEle = seg.attributes.fwdLaneCount > 0 ? getIcons($('.fwd-lanes').find('svg').map(function() { return this }).get()) : false;
-    //let revEle = seg.attributes.revLaneCount > 0 ? getIcons($('.rev-lanes').find('svg').map(function() { return this }).get()) : false;
-
-    let fwdImgs = fwdEle !== false ? convertToBase64(fwdEle) : false;
-    let revImgs = revEle !== false ? convertToBase64(revEle) : false;
-
-    if (fwdEle) {
-        if (Object.keys(fwdEle).length === 0) {
-            setTimeout(displayLaneGraphics, 200);
-            return;
-        }
-        drawIcons(seg, W.model.nodes.getObjectById(seg.attributes.toNodeID), fwdImgs);
+    if(seg.attributes.fwdLaneCount > 0) {
+        waitForElementLoaded(".fwd-lanes > div.lane-instruction-to > div.instruction > div.lane-arrows > div.lane-arrow > svg > polyline").then((elem) => {
+            let fwdEle = getIcons($('.fwd-lanes').find('.lane-arrow').map(function() { return this }).get());
+            let fwdImgs = convertToBase64(fwdEle);
+            if (Object.keys(fwdEle).length === 0) {
+                setTimeout(displayLaneGraphics, 200);
+                return;
+            }
+            drawIcons(seg, W.model.nodes.getObjectById(seg.attributes.toNodeID), fwdImgs);
+        });
     }
-    if (revEle) {
-        if (Object.keys(revEle).length === 0) {
-            setTimeout(displayLaneGraphics, 200);
-            return;
-        }
-        drawIcons(seg, W.model.nodes.getObjectById(seg.attributes.fromNodeID), revImgs);
+    if(seg.attributes.revLaneCount > 0) {
+        waitForElementLoaded('.rev-lanes > div.lane-instruction-to > div.instruction > div.lane-arrows > div.lane-arrow > svg > polyline').then((elem) => {
+            let revEle = getIcons($('.rev-lanes').find('.lane-arrow').map(function() { return this }).get());
+            let revImgs = convertToBase64(revEle);
+            if (Object.keys(revEle).length === 0) {
+                setTimeout(displayLaneGraphics, 200);
+                return;
+            }
+            drawIcons(seg, W.model.nodes.getObjectById(seg.attributes.fromNodeID), revImgs);    
+        })
     }
-
-
-    // There are now 23 zoom levels where 22 is fully zoomed and currently 14 is where major road types load data and 16 loads the rest
-
 }
 
 laneToolsBootstrap();
