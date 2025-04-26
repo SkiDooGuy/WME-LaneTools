@@ -919,11 +919,11 @@ async function loadSettings() {
     }
 
     // If there is no value set in any of the stored settings then use the default
-    for(const funcProp of Object.keys(defaultSettings)) {
+    for (const funcProp of Object.keys(defaultSettings)) {
         if (!Object.prototype.hasOwnProperty.call(LtSettings, funcProp)) {
             LtSettings[funcProp] = defaultSettings[funcProp];
         }
-    };
+    }
 }
 
 async function saveSettings() {
@@ -1164,11 +1164,11 @@ function setTranslations() {
     }
 
     // If there is no value set in any of the translated strings then use the defaults
-    for(const transString of Object.keys(TRANSLATIONS.default)) {
-        if (!Object.prototype.hasOwnProperty.call(strings,transString) || strings[transString] === "") {
+    for (const transString of Object.keys(TRANSLATIONS.default)) {
+        if (!Object.prototype.hasOwnProperty.call(strings, transString) || strings[transString] === "") {
             strings[transString] = TRANSLATIONS.default[transString];
         }
-    };
+    }
 
     $(".lt-trans-enabled").text(strings.enabled);
     $(".lt-trans-tglshcut").text(strings.toggleShortcut);
@@ -2662,8 +2662,11 @@ function setTurns(direction) {
                 // Clear all Lanes except left most for left turn
                 if (turnSection.getElementsByClassName(left).length > 0) {
                     for (let j = 1; j < laneCheckboxes.length; ++j) {
-                        waitForElementLoaded("input[type='checkbox']", laneCheckboxes[j].shadowRoot);
-                        if (laneCheckboxes[j].checked) laneCheckboxes[j].click();
+                        waitForElementLoaded("input[type='checkbox']", laneCheckboxes[j].shadowRoot).then(
+                            (checkBox) => {
+                                if (checkBox.checked) checkBox.click();
+                            }
+                        );
                     }
                 }
             }
