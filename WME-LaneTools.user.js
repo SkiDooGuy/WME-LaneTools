@@ -1840,6 +1840,14 @@ function lanesTabSetup() {
         if (selSeg.length === 1 && selSeg[0]._wmeObject.type === "segment") {
             // Check to ensure that there is only one segment object selected, then setup click event
             waitForElementLoaded(".lanes-tab").then((elm) => {
+                const sectionHeader = $("wz-section-header");
+                if(sectionHeader.length > 0) {
+                    const subtitle = sectionHeader[0].subtitle;
+                    if(!subtitle || subtitle.indexOf(selSeg[0].id.toString()) === -1) {
+                        setTimeout(lanesTabSetup, 500);
+                        return;
+                    }
+                }
                 formatLanesTab(getId("lt-AutoLanesTab").checked || elm.isActive);
             });
             //$('.lanes-tab').on("click",(event) => {
