@@ -1339,7 +1339,7 @@ function getNodeObj(id) {
 function lanesTabSetup() {
     // hook into edit panel on the left
     if (getId("edit-panel").getElementsByTagName("wz-tabs").length === 0) {
-        setTimeout(lanesTabSetup, 8000);
+        setTimeout(lanesTabSetup, 300);
         //console.log('Edit panel not yet loaded.');
         return;
     }
