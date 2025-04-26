@@ -36,8 +36,9 @@ const LANETOOLS_VERSION = `${GM_info.script.version}`;
 const GF_LINK = "https://github.com/SkiDooGuy/WME-LaneTools/blob/master/WME-LaneTools.user.js";
 const DOWNLOAD_URL = "https://raw.githubusercontent.com/SkiDooGuy/WME-LaneTools/master/WME-LaneTools.user.js";
 const FORUM_LINK = "https://www.waze.com/discuss/t/script-wme-lanetools/53136";
-const LI_UPDATE_NOTES = `FIXED:  Better error/red highlight check in JB.<br>FIXED:   Forum Link<br>
-KNOWN ISSUE:  Some tab UI enhancements may not work as expected.`;
+const LI_UPDATE_NOTES = `FIXED:  <br>
+Fix Loading of Controls in the Panel<br>
+Fix issue with Selection of Segment after another Selected Segment<br>`;
 
 const LANETOOLS_DEBUG_LEVEL = 1;
 const configArray = {};
